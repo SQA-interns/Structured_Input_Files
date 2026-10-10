@@ -6,6 +6,6 @@ Updated at every gate and before any stop, so a fresh session can resume from he
 
 - Workflow: spec-driven, acceptance tests first (`general/phases.md`)
 - Current phase: 4 (build)
-- Last gate result: phase 3 passed (98 frozen tests, all failing behaviourally except 3 listed bootstrap passes; manifest committed as freeze commit)
-- Next step: implement backend (migrations, domain, API, storage, mail, export, security) and frontend story by story, plus docker compose stack; make every frozen test pass
-- Waiting for the human on: nothing
+- Last gate result: phase 4 gate blocked: 97 of 98 frozen tests pass (backend 80/81, frontend 12/12, e2e 5/5 against the compose stack); AC-008-03 frozen test is self-contradictory (D-15); format, lint, type check and static analysis clean
+- Next step: on the answer to D-15, apply the approved test change and manifest update in their own commits (or stop), rerun the full suite, close phase 4, start phase 5 (unit tests, ArchUnit)
+- Waiting for the human on: D-15
