@@ -1,0 +1,10 @@
+
+Running 5 tests using 1 worker
+
+  ok 1 [chromium] › e2e\export.spec.ts:5:3 › US-008 export, end to end › AC-008-02 export without organizer credentials is refused (52ms)
+  ok 2 [chromium] › e2e\export.spec.ts:12:3 › US-008 export, end to end › AC-008-01 export with organizer credentials returns a workbook (1.5s)
+  ok 3 [chromium] › e2e\external-registration.spec.ts:13:3 › US-001 external participant, end to end › AC-001-02 AC-001-06 AC-004-01 AC-006-01 AC-007-01 AC-008-01 Slovenian names survive form, emails and export (1.1s)
+  ok 4 [chromium] › e2e\external-registration.spec.ts:70:3 › US-001 external participant, end to end › AC-001-12 shows field errors and sends nothing when the form is incomplete (265ms)
+  ok 5 [chromium] › e2e\student-registration.spec.ts:5:3 › US-002 student, end to end › AC-002-01 AC-002-02 AC-006-01 student registers and receives the confirmation email (545ms)
+
+  5 passed (4.2s)
