@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konferenca.si/contracts/registration-copy.schema.json",
+  "title": "Raw JSON copy of an accepted registration (backend -> persistent volume)",
+  "description": "One UTF-8 file registration-<reference>.json per accepted registration in app.json-copy.directory, written before the success response (AR-05, BR-07). The same bytes are attached to the organizer email (AC-007-01). Strings are the trimmed accepted values. Spec section 5.",
+  "type": "object",
+  "required": ["schemaVersion", "reference", "submittedAt", "type", "participant", "options", "consents"],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "reference": { "type": "string", "format": "uuid" },
+    "submittedAt": { "type": "string", "format": "date-time" },
+    "type": { "enum": ["EXTERNAL", "STUDENT"] },
+    "participant": {
+      "type": "object",
+      "required": ["firstName", "lastName", "email"],
+      "additionalProperties": false,
+      "properties": {
+        "firstName": { "type": "string" },
+        "lastName": { "type": "string" },
+        "email": { "type": "string" },
+        "organization": { "type": "string" },
+        "studyInstitution": { "type": "string" },
+        "studyProgramme": { "type": "string" },
+        "studentId": { "type": "string" }
+      }
+    },
+    "options": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "category"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "category": { "enum": ["WORKSHOP", "EVENT", "MEAL", "OTHER"] }
+        }
+      }
+    },
+    "consents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "text", "givenAt"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string" },
+          "text": { "type": "string" },
+          "givenAt": { "type": "string", "format": "date-time" }
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "type": { "const": "EXTERNAL" } } },
+      "then": { "properties": { "participant": { "required": ["organization"] } } }
+    },
+    {
+      "if": { "properties": { "type": { "const": "STUDENT" } } },
+      "then": {
+        "properties": {
+          "participant": { "required": ["studyInstitution", "studyProgramme", "studentId"] }
+        }
+      }
+    }
+  ]
+}
