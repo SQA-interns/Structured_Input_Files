@@ -17,7 +17,9 @@ final class RequestFilters {
                 limits.registration().window(),
                 System::nanoTime),
             new FixedWindowRateLimiter(
-                limits.export().maxRequests(), limits.export().window(), System::nanoTime)),
+                limits.export().maxRequests(), limits.export().window(), System::nanoTime),
+            new FixedWindowRateLimiter(
+                limits.publicApi().maxRequests(), limits.publicApi().window(), System::nanoTime)),
         new HttpsOnlyFilter(properties.organizer().httpsOnly()),
         new RequestSizeFilter(properties.request().maxBodyBytes()));
   }

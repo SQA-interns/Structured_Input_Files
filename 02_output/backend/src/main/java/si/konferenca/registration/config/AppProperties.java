@@ -45,7 +45,10 @@ public record AppProperties(
 
   public record Cors(String allowedOrigin) {}
 
-  public record RateLimits(@DefaultValue Limit registration, @DefaultValue ExportLimit export) {}
+  public record RateLimits(
+      @DefaultValue Limit registration,
+      @DefaultValue ExportLimit export,
+      @DefaultValue PublicLimit publicApi) {}
 
   /** Registration requests per client and window. */
   public record Limit(
@@ -54,6 +57,10 @@ public record AppProperties(
   /** Export requests per client and window. */
   public record ExportLimit(
       @DefaultValue("20") int maxRequests, @DefaultValue("PT10M") Duration window) {}
+
+  /** Other public API requests per client and window (SB-06). */
+  public record PublicLimit(
+      @DefaultValue("120") int maxRequests, @DefaultValue("PT1M") Duration window) {}
 
   public record Request(@DefaultValue("16384") long maxBodyBytes) {}
 }

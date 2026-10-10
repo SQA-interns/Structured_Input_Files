@@ -57,7 +57,7 @@ class RequestFiltersTest {
 
   @Test
   void rateLimitFilterChoosesTheBucketByPath() throws Exception {
-    RateLimitFilter filter = new RateLimitFilter(limiter(1), limiter(1));
+    RateLimitFilter filter = new RateLimitFilter(limiter(1), limiter(1), limiter(3));
     MockHttpServletRequest post = new MockHttpServletRequest("POST", "/api/registrations");
     MockHttpServletRequest export =
         new MockHttpServletRequest("GET", "/api/export/registrations.xlsx");
@@ -72,9 +72,13 @@ class RequestFiltersTest {
     assertThat(limited.getContentAsString()).contains("\"error\":\"TOO_MANY_REQUESTS\"");
     assertThat(run(filter, export).getStatus()).isEqualTo(200);
     assertThat(run(filter, export).getStatus()).isEqualTo(429);
-    for (int i = 0; i < 3; i++) {
-      assertThat(run(filter, other).getStatus()).isEqualTo(200);
-      assertThat(run(filter, getRegistrations).getStatus()).isEqualTo(200);
+    assertThat(run(filter, other).getStatus()).isEqualTo(200);
+    assertThat(run(filter, getRegistrations).getStatus()).isEqualTo(200);
+    assertThat(run(filter, other).getStatus()).isEqualTo(200);
+    assertThat(run(filter, other).getStatus()).isEqualTo(429);
+    MockHttpServletRequest health = new MockHttpServletRequest("GET", "/actuator/health");
+    for (int i = 0; i < 5; i++) {
+      assertThat(run(filter, health).getStatus()).isEqualTo(200);
     }
   }
 

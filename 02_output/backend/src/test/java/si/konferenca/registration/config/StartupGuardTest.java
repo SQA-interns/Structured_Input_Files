@@ -31,7 +31,8 @@ class StartupGuardTest {
         new AppProperties.Cors(cors),
         new AppProperties.RateLimits(
             new AppProperties.Limit(10, Duration.ofMinutes(10)),
-            new AppProperties.ExportLimit(20, Duration.ofMinutes(10))),
+            new AppProperties.ExportLimit(20, Duration.ofMinutes(10)),
+            new AppProperties.PublicLimit(120, Duration.ofMinutes(1))),
         new AppProperties.Request(16384));
   }
 

@@ -50,6 +50,7 @@ All settings are Spring properties bound to `AppProperties` (`app.*`) and set th
 | `app.cors.allowed-origin` (`APP_CORS_ALLOWEDORIGIN`) | CORS origin, local only | empty (no CORS) |
 | `app.rate-limit.registration.max-requests` / `window` | SR-03 | `10` per `PT10M` |
 | `app.rate-limit.export.max-requests` / `window` | SR-03 | `20` per `PT10M` |
+| `app.rate-limit.public-api.max-requests` / `window` | SB-06, every other `/api` request (F-07) | `120` per `PT1M` |
 | `app.request.max-body-bytes` | SR-03 | `16384` |
 
 Startup guards (`StartupGuard`, fail start with a message naming the setting, never its value):
@@ -106,7 +107,7 @@ JSON copy (contract `02_contracts/registration-copy.schema.json`): UTF-8, one fi
 - Spring Security filter chain: `/api/export/**` requires role `ORGANIZER` via HTTP Basic, everything else under `/api/**` and `/actuator/health/**` is `permitAll`; all other paths denied. Stateless (no session), CSRF disabled because no cookie/session authentication exists (Basic credentials are not sent automatically cross-site from a form); 401 responses carry the JSON error body and `WWW-Authenticate: Basic realm="organizer"`.
 - Organizer password: hashed with BCrypt (strength 12) at startup into an in-memory user store; the plain value is not retained in the user store (SB-03).
 - `HttpsOnlyFilter` before authentication: when `app.organizer.https-only=true`, a request to `/api/export/**` that is not secure (`request.isSecure()`, which honours `X-Forwarded-Proto` from trusted proxies through `server.forward-headers-strategy=native`) and whose remote address is not loopback is refused with 403 `HTTPS_REQUIRED` (SR-06, AC-008-03).
-- `RateLimitFilter`: fixed window per client IP (`request.getRemoteAddr()` after forwarded-header processing) and bucket (`POST /api/registrations`, `/api/export/**`), in memory, limits from configuration → 429 with `Retry-After` (SR-03, SB-06). Single backend instance assumed (release notes).
+- `RateLimitFilter`: fixed window per client IP (`request.getRemoteAddr()` after forwarded-header processing) and bucket (`POST /api/registrations`, `/api/export/**`, every other `/api/**` request), in memory, limits from configuration → 429 with `Retry-After` (SR-03, SB-06). Single backend instance assumed (release notes).
 - `RequestSizeFilter`: `Content-Length` above `app.request.max-body-bytes` → 413; bodies without length are read through a counting stream that fails with 413 when exceeded (SR-03).
 - Headers (SB-10): `Content-Security-Policy: default-src 'none'; frame-ancestors 'none'` on API responses, `X-Content-Type-Options: nosniff`, `X-Frame-Options: DENY`, `Referrer-Policy: no-referrer`, `Cache-Control: no-store`. Frontend nginx: CSP `default-src 'self'; script-src 'self' https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/; frame-src https://www.google.com/recaptcha/ https://recaptcha.google.com/recaptcha/; connect-src 'self'; img-src 'self' data:; style-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'`, plus `X-Content-Type-Options`, `X-Frame-Options: DENY`, `Referrer-Policy: no-referrer`.
 - CORS: only when `app.cors.allowed-origin` is set (local development via Vite), `GET`/`POST`, no credentials.
