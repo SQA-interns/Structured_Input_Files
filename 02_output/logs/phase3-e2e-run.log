@@ -1,0 +1,158 @@
+
+Running 5 tests using 1 worker
+
+  x  1 [chromium] › e2e\export.spec.ts:5:3 › US-008 export, end to end › AC-008-02 export without organizer credentials is refused (66ms)
+  x  2 [chromium] › e2e\export.spec.ts:12:3 › US-008 export, end to end › AC-008-01 export with organizer credentials returns a workbook (29ms)
+  x  3 [chromium] › e2e\external-registration.spec.ts:13:3 › US-001 external participant, end to end › AC-001-02 AC-001-06 AC-004-01 AC-006-01 AC-007-01 AC-008-01 Slovenian names survive form, emails and export (321ms)
+  x  4 [chromium] › e2e\external-registration.spec.ts:70:3 › US-001 external participant, end to end › AC-001-12 shows field errors and sends nothing when the form is incomplete (30.0s)
+  x  5 [chromium] › e2e\student-registration.spec.ts:5:3 › US-002 student, end to end › AC-002-01 AC-002-02 AC-006-01 student registers and receives the confirmation email (159ms)
+
+
+  1) [chromium] › e2e\export.spec.ts:5:3 › US-008 export, end to end › AC-008-02 export without organizer credentials is refused 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 401
+    Received: 500
+
+       6 |     const response = await request.get("/api/export/registrations.xlsx");
+       7 |
+    >  8 |     expect(response.status()).toBe(401);
+         |                               ^
+       9 |     expect(response.headers()["content-type"] ?? "").not.toContain("spreadsheetml");
+      10 |   });
+      11 |
+        at E:\13 - Lab Projects\01_Runs\_____SECOND______ROUND_____\01_kyuhi_single-agent_sdd_v003\02_output\frontend\e2e\export.spec.ts:8:31
+
+    Error Context: test-results\export-US-008-export-end-t-cf696-izer-credentials-is-refused-chromium\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\export-US-008-export-end-t-cf696-izer-credentials-is-refused-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\export-US-008-export-end-t-cf696-izer-credentials-is-refused-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [chromium] › e2e\export.spec.ts:12:3 › US-008 export, end to end › AC-008-01 export with organizer credentials returns a workbook 
+
+    Error: E2E_ORGANIZER_USERNAME must be set
+
+    expect(received).not.toBe(expected) // Object.is equality
+
+    Expected: not ""
+
+       at support.ts:10
+
+       8 |   const username = process.env.E2E_ORGANIZER_USERNAME ?? "";
+       9 |   const password = process.env.E2E_ORGANIZER_PASSWORD ?? "";
+    > 10 |   expect(username, "E2E_ORGANIZER_USERNAME must be set").not.toBe("");
+         |                                                              ^
+      11 |   expect(password, "E2E_ORGANIZER_PASSWORD must be set").not.toBe("");
+      12 |   return { username, password };
+      13 | }
+        at organizerCredentials (E:\13 - Lab Projects\01_Runs\_____SECOND______ROUND_____\01_kyuhi_single-agent_sdd_v003\02_output\frontend\e2e\support.ts:10:62)
+        at E:\13 - Lab Projects\01_Runs\_____SECOND______ROUND_____\01_kyuhi_single-agent_sdd_v003\02_output\frontend\e2e\export.spec.ts:13:36
+
+    Error Context: test-results\export-US-008-export-end-t-d8b90-dentials-returns-a-workbook-chromium\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\export-US-008-export-end-t-d8b90-dentials-returns-a-workbook-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\export-US-008-export-end-t-d8b90-dentials-returns-a-workbook-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [chromium] › e2e\external-registration.spec.ts:13:3 › US-001 external participant, end to end › AC-001-02 AC-001-06 AC-004-01 AC-006-01 AC-007-01 AC-008-01 Slovenian names survive form, emails and export 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 200
+    Received: 500
+
+       at support.ts:26
+
+      24 | export async function formConfig(request: APIRequestContext): Promise<FormConfig> {
+      25 |   const response = await request.get("/api/form-config");
+    > 26 |   expect(response.status()).toBe(200);
+         |                             ^
+      27 |   return (await response.json()) as FormConfig;
+      28 | }
+      29 |
+        at formConfig (E:\13 - Lab Projects\01_Runs\_____SECOND______ROUND_____\01_kyuhi_single-agent_sdd_v003\02_output\frontend\e2e\support.ts:26:29)
+        at E:\13 - Lab Projects\01_Runs\_____SECOND______ROUND_____\01_kyuhi_single-agent_sdd_v003\02_output\frontend\e2e\external-registration.spec.ts:17:20
+
+    Error Context: test-results\external-registration-US-0-86c49-vive-form-emails-and-export-chromium\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\external-registration-US-0-86c49-vive-form-emails-and-export-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\external-registration-US-0-86c49-vive-form-emails-and-export-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) [chromium] › e2e\external-registration.spec.ts:70:3 › US-001 external participant, end to end › AC-001-12 shows field errors and sends nothing when the form is incomplete 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.check: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByRole('radiogroup', { name: 'Registration type' }).getByRole('radio', { name: 'External participant' })
+
+
+      80 |       .getByRole("radiogroup", { name: "Registration type" })
+      81 |       .getByRole("radio", { name: "External participant" })
+    > 82 |       .check();
+         |        ^
+      83 |     await page.getByLabel("Email").fill("not-an-email");
+      84 |     await page.getByRole("button", { name: "Register" }).click();
+      85 |
+        at E:\13 - Lab Projects\01_Runs\_____SECOND______ROUND_____\01_kyuhi_single-agent_sdd_v003\02_output\frontend\e2e\external-registration.spec.ts:82:8
+
+    Error Context: test-results\external-registration-US-0-123dc-when-the-form-is-incomplete-chromium\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\external-registration-US-0-123dc-when-the-form-is-incomplete-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\external-registration-US-0-123dc-when-the-form-is-incomplete-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5) [chromium] › e2e\student-registration.spec.ts:5:3 › US-002 student, end to end › AC-002-01 AC-002-02 AC-006-01 student registers and receives the confirmation email 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 200
+    Received: 500
+
+       at support.ts:26
+
+      24 | export async function formConfig(request: APIRequestContext): Promise<FormConfig> {
+      25 |   const response = await request.get("/api/form-config");
+    > 26 |   expect(response.status()).toBe(200);
+         |                             ^
+      27 |   return (await response.json()) as FormConfig;
+      28 | }
+      29 |
+        at formConfig (E:\13 - Lab Projects\01_Runs\_____SECOND______ROUND_____\01_kyuhi_single-agent_sdd_v003\02_output\frontend\e2e\support.ts:26:29)
+        at E:\13 - Lab Projects\01_Runs\_____SECOND______ROUND_____\01_kyuhi_single-agent_sdd_v003\02_output\frontend\e2e\student-registration.spec.ts:9:20
+
+    Error Context: test-results\student-registration-US-00-dc8a3-ives-the-confirmation-email-chromium\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\student-registration-US-00-dc8a3-ives-the-confirmation-email-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\student-registration-US-00-dc8a3-ives-the-confirmation-email-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5 failed
+    [chromium] › e2e\export.spec.ts:5:3 › US-008 export, end to end › AC-008-02 export without organizer credentials is refused 
+    [chromium] › e2e\export.spec.ts:12:3 › US-008 export, end to end › AC-008-01 export with organizer credentials returns a workbook 
+    [chromium] › e2e\external-registration.spec.ts:13:3 › US-001 external participant, end to end › AC-001-02 AC-001-06 AC-004-01 AC-006-01 AC-007-01 AC-008-01 Slovenian names survive form, emails and export 
+    [chromium] › e2e\external-registration.spec.ts:70:3 › US-001 external participant, end to end › AC-001-12 shows field errors and sends nothing when the form is incomplete 
+    [chromium] › e2e\student-registration.spec.ts:5:3 › US-002 student, end to end › AC-002-01 AC-002-02 AC-006-01 student registers and receives the confirmation email 

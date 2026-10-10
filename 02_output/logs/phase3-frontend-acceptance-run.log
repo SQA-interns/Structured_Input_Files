@@ -1,0 +1,474 @@
+
+ RUN  v5.0.3 E:/13 - Lab Projects/01_Runs/_____SECOND______ROUND_____/01_kyuhi_single-agent_sdd_v003/02_output/frontend
+
+ ❯ tests/acceptance/student-form.test.tsx (3 tests | 3 failed) 3057ms
+   ❯ US-002 student form (3)
+     × AC-002-01 shows exactly the student fields, student options and unchecked consents 1028ms
+     × AC-002-04 does not offer options whose audience excludes students 1020ms
+     × AC-002-03 requires the student fields before submission 1008ms
+ ❯ tests/acceptance/confirmation.test.tsx (3 tests | 3 failed) 3057ms
+   ❯ US-004 registration confirmation (3)
+     × AC-004-01 shows the confirmation only after the backend accepted the registration 1027ms
+     × AC-004-02 keeps the values and shows a general error when the backend fails 1020ms
+     × AC-004-02 shows a general error without details when the network fails 1008ms
+ ❯ tests/acceptance/external-form.test.tsx (6 tests | 6 failed) 6094ms
+   ❯ US-001 external participant form (6)
+     × AC-001-01 shows exactly the external fields, grouped options and unchecked consents 1028ms
+     × AC-001-12 validates before submission and shows errors next to the fields 1020ms
+     × AC-001-12 rejects too long values and control characters before submission 1008ms
+     × AC-001-12 shows the backend's field errors next to their fields 1017ms
+     × AC-001-09 sends the test-mode reCAPTCHA token with the registration 1005ms
+     × AC-001-09 loads the Google reCAPTCHA widget with the configured site key outside test mode 1015ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 12 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/acceptance/confirmation.test.tsx > US-004 registration confirmation > AC-004-01 shows the confirmation only after the backend accepted the registration
+TestingLibraryElementError: Unable to find role="radiogroup" and name "Registration type"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ chooseType tests/acceptance/support.tsx:92:30
+     90| /** Chooses the registration type in the radio group named "Registrati…
+     91| export async function chooseType(label: "External participant" | "Stud…
+     92|   const group = await screen.findByRole("radiogroup", { name: "Registr…
+       |                              ^
+     93|   fireEvent.click(within(group).getByRole("radio", { name: label }));
+     94| }
+ ❯ tests/acceptance/confirmation.test.tsx:22:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/12]⎯
+
+ FAIL  tests/acceptance/confirmation.test.tsx > US-004 registration confirmation > AC-004-02 keeps the values and shows a general error when the backend fails
+TestingLibraryElementError: Unable to find role="radiogroup" and name "Registration type"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ chooseType tests/acceptance/support.tsx:92:30
+     90| /** Chooses the registration type in the radio group named "Registrati…
+     91| export async function chooseType(label: "External participant" | "Stud…
+     92|   const group = await screen.findByRole("radiogroup", { name: "Registr…
+       |                              ^
+     93|   fireEvent.click(within(group).getByRole("radio", { name: label }));
+     94| }
+ ❯ tests/acceptance/confirmation.test.tsx:60:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/12]⎯
+
+ FAIL  tests/acceptance/confirmation.test.tsx > US-004 registration confirmation > AC-004-02 shows a general error without details when the network fails
+TestingLibraryElementError: Unable to find role="radiogroup" and name "Registration type"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ chooseType tests/acceptance/support.tsx:92:30
+     90| /** Chooses the registration type in the radio group named "Registrati…
+     91| export async function chooseType(label: "External participant" | "Stud…
+     92|   const group = await screen.findByRole("radiogroup", { name: "Registr…
+       |                              ^
+     93|   fireEvent.click(within(group).getByRole("radio", { name: label }));
+     94| }
+ ❯ tests/acceptance/confirmation.test.tsx:80:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/12]⎯
+
+ FAIL  tests/acceptance/external-form.test.tsx > US-001 external participant form > AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+TestingLibraryElementError: Unable to find role="radiogroup" and name "Registration type"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ chooseType tests/acceptance/support.tsx:92:30
+     90| /** Chooses the registration type in the radio group named "Registrati…
+     91| export async function chooseType(label: "External participant" | "Stud…
+     92|   const group = await screen.findByRole("radiogroup", { name: "Registr…
+       |                              ^
+     93|   fireEvent.click(within(group).getByRole("radio", { name: label }));
+     94| }
+ ❯ tests/acceptance/external-form.test.tsx:40:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/12]⎯
+
+ FAIL  tests/acceptance/external-form.test.tsx > US-001 external participant form > AC-001-12 validates before submission and shows errors next to the fields
+TestingLibraryElementError: Unable to find role="radiogroup" and name "Registration type"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ chooseType tests/acceptance/support.tsx:92:30
+     90| /** Chooses the registration type in the radio group named "Registrati…
+     91| export async function chooseType(label: "External participant" | "Stud…
+     92|   const group = await screen.findByRole("radiogroup", { name: "Registr…
+       |                              ^
+     93|   fireEvent.click(within(group).getByRole("radio", { name: label }));
+     94| }
+ ❯ tests/acceptance/external-form.test.tsx:68:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/12]⎯
+
+ FAIL  tests/acceptance/external-form.test.tsx > US-001 external participant form > AC-001-12 rejects too long values and control characters before submission
+TestingLibraryElementError: Unable to find role="radiogroup" and name "Registration type"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ chooseType tests/acceptance/support.tsx:92:30
+     90| /** Chooses the registration type in the radio group named "Registrati…
+     91| export async function chooseType(label: "External participant" | "Stud…
+     92|   const group = await screen.findByRole("radiogroup", { name: "Registr…
+       |                              ^
+     93|   fireEvent.click(within(group).getByRole("radio", { name: label }));
+     94| }
+ ❯ tests/acceptance/external-form.test.tsx:90:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/12]⎯
+
+ FAIL  tests/acceptance/external-form.test.tsx > US-001 external participant form > AC-001-12 shows the backend's field errors next to their fields
+TestingLibraryElementError: Unable to find role="radiogroup" and name "Registration type"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ chooseType tests/acceptance/support.tsx:92:30
+     90| /** Chooses the registration type in the radio group named "Registrati…
+     91| export async function chooseType(label: "External participant" | "Stud…
+     92|   const group = await screen.findByRole("radiogroup", { name: "Registr…
+       |                              ^
+     93|   fireEvent.click(within(group).getByRole("radio", { name: label }));
+     94| }
+ ❯ tests/acceptance/external-form.test.tsx:123:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/12]⎯
+
+ FAIL  tests/acceptance/external-form.test.tsx > US-001 external participant form > AC-001-09 sends the test-mode reCAPTCHA token with the registration
+TestingLibraryElementError: Unable to find role="radiogroup" and name "Registration type"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ chooseType tests/acceptance/support.tsx:92:30
+     90| /** Chooses the registration type in the radio group named "Registrati…
+     91| export async function chooseType(label: "External participant" | "Stud…
+     92|   const group = await screen.findByRole("radiogroup", { name: "Registr…
+       |                              ^
+     93|   fireEvent.click(within(group).getByRole("radio", { name: label }));
+     94| }
+ ❯ tests/acceptance/external-form.test.tsx:137:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/12]⎯
+
+ FAIL  tests/acceptance/external-form.test.tsx > US-001 external participant form > AC-001-09 loads the Google reCAPTCHA widget with the configured site key outside test mode
+TestingLibraryElementError: Unable to find role="radiogroup" and name "Registration type"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ chooseType tests/acceptance/support.tsx:92:30
+     90| /** Chooses the registration type in the radio group named "Registrati…
+     91| export async function chooseType(label: "External participant" | "Stud…
+     92|   const group = await screen.findByRole("radiogroup", { name: "Registr…
+       |                              ^
+     93|   fireEvent.click(within(group).getByRole("radio", { name: label }));
+     94| }
+ ❯ tests/acceptance/external-form.test.tsx:152:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/12]⎯
+
+ FAIL  tests/acceptance/student-form.test.tsx > US-002 student form > AC-002-01 shows exactly the student fields, student options and unchecked consents
+TestingLibraryElementError: Unable to find role="radiogroup" and name "Registration type"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ chooseType tests/acceptance/support.tsx:92:30
+     90| /** Chooses the registration type in the radio group named "Registrati…
+     91| export async function chooseType(label: "External participant" | "Stud…
+     92|   const group = await screen.findByRole("radiogroup", { name: "Registr…
+       |                              ^
+     93|   fireEvent.click(within(group).getByRole("radio", { name: label }));
+     94| }
+ ❯ tests/acceptance/student-form.test.tsx:39:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/12]⎯
+
+ FAIL  tests/acceptance/student-form.test.tsx > US-002 student form > AC-002-04 does not offer options whose audience excludes students
+TestingLibraryElementError: Unable to find role="radiogroup" and name "Registration type"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ chooseType tests/acceptance/support.tsx:92:30
+     90| /** Chooses the registration type in the radio group named "Registrati…
+     91| export async function chooseType(label: "External participant" | "Stud…
+     92|   const group = await screen.findByRole("radiogroup", { name: "Registr…
+       |                              ^
+     93|   fireEvent.click(within(group).getByRole("radio", { name: label }));
+     94| }
+ ❯ tests/acceptance/student-form.test.tsx:58:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/12]⎯
+
+ FAIL  tests/acceptance/student-form.test.tsx > US-002 student form > AC-002-03 requires the student fields before submission
+TestingLibraryElementError: Unable to find role="radiogroup" and name "Registration type"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ chooseType tests/acceptance/support.tsx:92:30
+     90| /** Chooses the registration type in the radio group named "Registrati…
+     91| export async function chooseType(label: "External participant" | "Stud…
+     92|   const group = await screen.findByRole("radiogroup", { name: "Registr…
+       |                              ^
+     93|   fireEvent.click(within(group).getByRole("radio", { name: label }));
+     94| }
+ ❯ tests/acceptance/student-form.test.tsx:72:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/12]⎯
+
+
+ Test Files  3 failed (3)
+      Tests  12 failed (12)
+   Start at  00:39:07
+   Duration  7.02s (tests 84%, environment 11%, import 2%, setup 2%, transform 2%)
+
