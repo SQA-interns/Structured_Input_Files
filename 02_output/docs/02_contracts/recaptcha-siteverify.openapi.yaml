@@ -1,0 +1,51 @@
+# Contract: backend -> Google reCAPTCHA v2 verification (HTTPS). Spec section 4, step 2. SR-01, DoD-P05.
+# Only the subset the backend uses. In tests the server URL is replaced by a local mock
+# (app.recaptcha.verify-url); the production code path is the same.
+openapi: 3.1.0
+info:
+  title: reCAPTCHA siteverify (subset)
+  version: "2"
+servers:
+  - url: https://www.google.com/recaptcha/api
+paths:
+  /siteverify:
+    post:
+      operationId: siteverify
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required: [secret, response]
+              properties:
+                secret:
+                  type: string
+                  description: app.recaptcha.secret-key
+                response:
+                  type: string
+                  description: captchaToken from the registration request
+                remoteip:
+                  type: string
+                  description: client IP as seen by the backend
+      responses:
+        "200":
+          description: >
+            Verification result. The backend accepts the token only when success is true;
+            any other body, non-200 status, malformed JSON or timeout (5 s) rejects it.
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [success]
+                properties:
+                  success:
+                    type: boolean
+                  challenge_ts:
+                    type: string
+                  hostname:
+                    type: string
+                  error-codes:
+                    type: array
+                    items:
+                      type: string
