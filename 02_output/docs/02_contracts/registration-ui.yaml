@@ -1,0 +1,60 @@
+# Contract: participant <-> frontend (UI). Spec section 9. Tests locate elements by these
+# accessible names and ids; visible texts are in English.
+page:
+  title: "<conferenceName> – registration"   # h1
+  typeChoice:
+    role: radiogroup
+    name: Registration type
+    options:
+      - { value: EXTERNAL, label: External participant }
+      - { value: STUDENT, label: Student }
+    default: none   # no form fields are shown until a type is chosen
+  form:
+    role: form
+    name: Registration form
+    fields:
+      common:
+        - { id: firstName, label: First name, type: text, required: true }
+        - { id: lastName, label: Last name, type: text, required: true }
+        - { id: email, label: Email, type: email, required: true }
+      EXTERNAL:
+        - { id: organization, label: Organization / institution, type: text, required: true }
+      STUDENT:
+        - { id: studyInstitution, label: Study institution, type: text, required: true }
+        - { id: studyProgramme, label: Study programme, type: text, required: true }
+        - { id: studentId, label: Student ID, type: text, required: true }
+    fieldError:
+      element: "<p id='<fieldId>-error' role='alert'>"   # referenced by aria-describedby of the input
+    options:
+      groups:   # fieldset with legend, shown only when it has options for the chosen type
+        - { category: WORKSHOP, legend: Workshops }
+        - { category: EVENT, legend: Events }
+        - { category: MEAL, legend: Meals }
+        - { category: OTHER, legend: Other activities }
+      control: checkbox labelled with the option name, value = option id, unchecked initially
+      error: "<p id='optionIds-error' role='alert'>"
+    consents:
+      control: checkbox labelled with the consent text, unchecked initially (never preselected)
+      error: "<p id='consents.<consentId>-error' role='alert'>"
+    captcha:
+      testMode: checkbox labelled "I am not a robot (test mode)", token "test-pass"
+      production: Google reCAPTCHA v2 widget with siteKey from GET /api/form-config
+      error: "<p id='captchaToken-error' role='alert'>"
+    submit: { role: button, name: Register }
+    generalError: "<div role='alert' id='form-error'>"   # non-field errors; no internal details
+  confirmation:
+    role: status
+    heading: Registration received   # h2
+    content:
+      - "Reference: <reference>"
+      - "<firstName> <lastName>"
+      - list of selected option names (or "No activities selected")
+messages:
+  REQUIRED: This field is required.
+  TOO_LONG: This value is too long.
+  INVALID_CHARACTERS: This value contains characters that are not allowed.
+  INVALID_EMAIL: Enter a valid email address.
+  CONSENT_REQUIRED: This consent is required.
+  CAPTCHA_REQUIRED: Please confirm that you are not a robot.
+  generalError: Your registration could not be processed. Please try again later.
+  loadError: The registration form could not be loaded. Please try again later.
