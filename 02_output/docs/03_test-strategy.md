@@ -72,4 +72,30 @@ Tests that pass only because bootstrap code already provides the behaviour (Spri
 
 ## First complete run (before any fix)
 
+Phase 5, after the unit, integration and architecture tests were written; all levels, one run each (`logs/phase5-first-run-*.log`).
+
+| Suite | Level | Passed | Failed |
+|---|---|---|---|
+| backend (`./mvnw -B verify`) | acceptance | 81 | 0 |
+| backend | architecture (ArchUnit) | 7 | 0 |
+| backend | integration (`JpaRegistrationStoreIntegrationTest`) | 0 | 3 |
+| backend | unit | 88 | 1 |
+| frontend (`npx vitest run`) | acceptance | 12 | 0 |
+| frontend | unit / component | 47 | 0 |
+| e2e (`npx playwright test`, compose stack) | e2e | 5 | 0 |
+| **total** | | **240** | **4** |
+
+Classification of the failures:
+
+| Test | Class | Cause | Action |
+|---|---|---|---|
+| `OptionCatalogLoaderTest.rejectsInvalidFilesNamingTheProblem` (1 error for the whole parameterised source) | Defect in a non-frozen test | `@CsvSource` treats the apostrophe as quote character; the expected messages contain apostrophes | quote character set to a backtick; the source now yields 17 cases |
+| `JpaRegistrationStoreIntegrationTest` (3 errors) | Defect in a non-frozen test | `webEnvironment = NONE` cannot create the servlet `SecurityFilterChain` | `webEnvironment = MOCK` |
+
+No implementation defect and no frozen-test problem was found by the first run.
+
+### Phase 5 gate run
+
+Backend 196 passed, 0 failed (acceptance 81, architecture 7, integration 3, unit 105); frontend 59 passed (acceptance 12, unit/component 47); e2e 5 passed (`logs/phase5-gate-*.log`, `logs/phase5-first-run-e2e.log`).
+
 ## Final run (phase 6)

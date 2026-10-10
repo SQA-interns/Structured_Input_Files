@@ -1,0 +1,133 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< si.konferenca:registration-backend >-----------------
+[INFO] Building registration-backend 0.1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- jacoco:0.8.12:prepare-agent (prepare-agent) @ registration-backend ---
+[INFO] argLine set to "-javaagent:C:\\Users\\sense\\.m2\\repository\\org\\jacoco\\org.jacoco.agent\\0.8.12\\org.jacoco.agent-0.8.12-runtime.jar=destfile=E:\\13 - Lab Projects\\01_Runs\\_____SECOND______ROUND_____\\01_kyuhi_single-agent_sdd_v003\\02_output\\backend\\target\\jacoco.exec"
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ registration-backend ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 2 resources from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ registration-backend ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ registration-backend ---
+[INFO] Copying 1 resource from src\test\resources to target\test-classes
+[INFO] 
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ registration-backend ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 32 source files with javac [debug parameters release 21] to target\test-classes
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ registration-backend ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running si.konferenca.registration.infrastructure.OptionCatalogLoaderTest
+[INFO] Tests run: 20, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.815 s -- in si.konferenca.registration.infrastructure.OptionCatalogLoaderTest
+[INFO] Running si.konferenca.registration.persistence.JpaRegistrationStoreIntegrationTest
+01:13:21.785 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.konferenca.registration.persistence.JpaRegistrationStoreIntegrationTest]: JpaRegistrationStoreIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+01:13:21.903 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration si.konferenca.registration.RegistrationApplication for test class si.konferenca.registration.persistence.JpaRegistrationStoreIntegrationTest
+01:13:22.006 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.konferenca.registration.persistence.JpaRegistrationStoreIntegrationTest]: JpaRegistrationStoreIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+01:13:22.008 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration si.konferenca.registration.RegistrationApplication for test class si.konferenca.registration.persistence.JpaRegistrationStoreIntegrationTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-10-11T01:13:22.398+02:00  INFO 39124 --- [registration-backend] [           main] org.testcontainers.images.PullPolicy     : Image pull policy will be performed by: DefaultPullPolicy()
+2026-10-11T01:13:22.402+02:00  INFO 39124 --- [registration-backend] [           main] o.t.utility.ImageNameSubstitutor         : Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2026-10-11T01:13:22.446+02:00  INFO 39124 --- [registration-backend] [           main] org.testcontainers.DockerClientFactory   : Testcontainers version: 2.0.5
+2026-10-11T01:13:23.022+02:00  INFO 39124 --- [registration-backend] [           main] o.t.d.DockerClientProviderStrategy       : Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2026-10-11T01:13:23.640+02:00  INFO 39124 --- [registration-backend] [           main] o.t.d.DockerClientProviderStrategy       : Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+2026-10-11T01:13:23.641+02:00  INFO 39124 --- [registration-backend] [           main] org.testcontainers.DockerClientFactory   : Docker host IP address is localhost
+2026-10-11T01:13:23.666+02:00  INFO 39124 --- [registration-backend] [           main] org.testcontainers.DockerClientFactory   : Connected to docker: 
+  Server Version: 29.8.1
+  API Version: 1.56
+  Operating System: Docker Desktop
+  Total Memory: 40065 MB
+  Labels: 
+    com.docker.desktop.address=npipe://\\.\pipe\docker_cli
+2026-10-11T01:13:23.781+02:00  INFO 39124 --- [registration-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Creating container for image: testcontainers/ryuk:0.14.0
+2026-10-11T01:13:24.102+02:00  INFO 39124 --- [registration-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Container testcontainers/ryuk:0.14.0 is starting: a33e6511ce852b6dea6afdc69db3c4b79a747988a1e21fa9823fa2595751278d
+2026-10-11T01:13:24.537+02:00  INFO 39124 --- [registration-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Container testcontainers/ryuk:0.14.0 started in PT0.7561394S
+2026-10-11T01:13:24.543+02:00  INFO 39124 --- [registration-backend] [           main] o.t.utility.RyukResourceReaper           : Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2026-10-11T01:13:24.544+02:00  INFO 39124 --- [registration-backend] [           main] org.testcontainers.DockerClientFactory   : Checking the system...
+2026-10-11T01:13:24.544+02:00  INFO 39124 --- [registration-backend] [           main] org.testcontainers.DockerClientFactory   : ?? Docker server version should be at least 1.6.0
+2026-10-11T01:13:24.545+02:00  INFO 39124 --- [registration-backend] [           main] tc.postgres:16.15-alpine                 : Creating container for image: postgres:16.15-alpine
+2026-10-11T01:13:24.671+02:00  INFO 39124 --- [registration-backend] [           main] tc.postgres:16.15-alpine                 : Container postgres:16.15-alpine is starting: 054e0bf386e3cd448403d2dcc0fc8dcbed965d192ba9d513ec803556e28b3e3b
+2026-10-11T01:13:26.735+02:00  INFO 39124 --- [registration-backend] [           main] tc.postgres:16.15-alpine                 : Container postgres:16.15-alpine started in PT2.1904454S
+2026-10-11T01:13:26.736+02:00  INFO 39124 --- [registration-backend] [           main] tc.postgres:16.15-alpine                 : Container is started (JDBC URL: jdbc:postgresql://localhost:54147/test?loggerLevel=OFF)
+2026-10-11T01:13:26.737+02:00  INFO 39124 --- [registration-backend] [           main] tc.axllent/mailpit:v1.31.1               : Creating container for image: axllent/mailpit:v1.31.1
+2026-10-11T01:13:26.851+02:00  INFO 39124 --- [registration-backend] [           main] tc.axllent/mailpit:v1.31.1               : Container axllent/mailpit:v1.31.1 is starting: b96f817694db4016abbb044358bb99124a5547f8a24188cc7c0ff8a5b631a44f
+2026-10-11T01:13:27.138+02:00  INFO 39124 --- [registration-backend] [           main] o.t.c.wait.strategy.HttpWaitStrategy     : /quizzical_clarke: Waiting for 60 seconds for URL: http://localhost:54149/api/v1/info (where port 54149 maps to container port 8025)
+2026-10-11T01:13:27.732+02:00  INFO 39124 --- [registration-backend] [           main] tc.axllent/mailpit:v1.31.1               : Container axllent/mailpit:v1.31.1 started in PT0.9947797S
+2026-10-11T01:13:27.747+02:00  INFO 39124 --- [registration-backend] [           main] .r.p.JpaRegistrationStoreIntegrationTest : Starting JpaRegistrationStoreIntegrationTest using Java 21.0.10 with PID 39124 (started by sense in E:\13 - Lab Projects\01_Runs\_____SECOND______ROUND_____\01_kyuhi_single-agent_sdd_v003\02_output\backend)
+2026-10-11T01:13:27.749+02:00  INFO 39124 --- [registration-backend] [           main] .r.p.JpaRegistrationStoreIntegrationTest : No active profile set, falling back to 1 default profile: "default"
+2026-10-11T01:13:28.681+02:00  INFO 39124 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-11T01:13:28.765+02:00  INFO 39124 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 70 ms. Found 1 JPA repository interface.
+2026-10-11T01:13:29.900+02:00  INFO 39124 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-10-11T01:13:30.230+02:00  INFO 39124 --- [registration-backend] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@6690629e
+2026-10-11T01:13:30.233+02:00  INFO 39124 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-10-11T01:13:30.271+02:00  INFO 39124 --- [registration-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:54147/test?loggerLevel=OFF (PostgreSQL 16.15)
+2026-10-11T01:13:30.350+02:00  INFO 39124 --- [registration-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2026-10-11T01:13:30.354+02:00  INFO 39124 --- [registration-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.022s)
+2026-10-11T01:13:30.375+02:00  INFO 39124 --- [registration-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2026-10-11T01:13:30.437+02:00  INFO 39124 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-10-11T01:13:30.459+02:00  INFO 39124 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "1 - create registration tables"
+2026-10-11T01:13:30.510+02:00  INFO 39124 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 1 migration to schema "public", now at version v1 (execution time 00:00.030s)
+2026-10-11T01:13:30.661+02:00  INFO 39124 --- [registration-backend] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-10-11T01:13:30.741+02:00  INFO 39124 --- [registration-backend] [           main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.5.Final
+2026-10-11T01:13:31.405+02:00  INFO 39124 --- [registration-backend] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-11T01:13:31.553+02:00  INFO 39124 --- [registration-backend] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:54147/test?loggerLevel=OFF]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 16.15
+	Default catalog/schema: test/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-10-11T01:13:32.760+02:00  INFO 39124 --- [registration-backend] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-11T01:13:32.820+02:00  INFO 39124 --- [registration-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-11T01:13:32.916+02:00  INFO 39124 --- [registration-backend] [           main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-10-11T01:13:33.725+02:00  INFO 39124 --- [registration-backend] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name organizers
+2026-10-11T01:13:34.586+02:00  INFO 39124 --- [registration-backend] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-10-11T01:13:34.656+02:00  INFO 39124 --- [registration-backend] [           main] .r.p.JpaRegistrationStoreIntegrationTest : Started JpaRegistrationStoreIntegrationTest in 12.591 seconds (process running for 15.145)
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (C:\Users\sense\.m2\repository\net\bytebuddy\byte-buddy-agent\1.18.11\byte-buddy-agent-1.18.11.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+2026-10-11T01:13:35.140+02:00  WARN 39124 --- [registration-backend] [           main] org.hibernate.orm.jdbc.error             : HHH000247: ErrorCode: 0, SQLState: 23514
+2026-10-11T01:13:35.140+02:00  WARN 39124 --- [registration-backend] [           main] org.hibernate.orm.jdbc.error             : ERROR: new row for relation "registration" violates check constraint "ck_registration_fields"
+  Detail: Failing row contains (1, 67b696e1-2ad1-4038-b6c5-0a19bb27b4fd, STUDENT, A, B, x-3bdf982a-fd95-4a24-b587-9bcc33eff4c4@example.si, x-3bdf982a-fd95-4a24-b587-9bcc33eff4c4@example.si, IJS, null, null, null, 2026-10-11 01:13:35.065199+02).
+2026-10-11T01:13:35.908+02:00  WARN 39124 --- [registration-backend] [           main] org.hibernate.orm.jdbc.error             : HHH000247: ErrorCode: 0, SQLState: 23505
+2026-10-11T01:13:35.908+02:00  WARN 39124 --- [registration-backend] [           main] org.hibernate.orm.jdbc.error             : ERROR: duplicate key value violates unique constraint "uq_registration_email_normalized"
+  Detail: Key (email_normalized)=(dup-2bcfe6dd-659c-4971-9f54-fdb30cb579cf@example.si) already exists.
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 14.29 s -- in si.konferenca.registration.persistence.JpaRegistrationStoreIntegrationTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 23, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  23.436 s
+[INFO] Finished at: 2026-10-11T01:13:36+02:00
+[INFO] ------------------------------------------------------------------------

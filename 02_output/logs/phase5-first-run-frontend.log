@@ -1,0 +1,9 @@
+
+ RUN  v5.0.3 E:/13 - Lab Projects/01_Runs/_____SECOND______ROUND_____/01_kyuhi_single-agent_sdd_v003/02_output/frontend
+
+
+ Test Files  6 passed (6)
+      Tests  59 passed (59)
+   Start at  01:12:42
+   Duration  1.56s (environment 54%, tests 22%, setup 9%, transform 8%, import 7%, worker 1%)
+

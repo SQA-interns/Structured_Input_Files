@@ -5,7 +5,7 @@
 Updated at every gate and before any stop, so a fresh session can resume from here.
 
 - Workflow: spec-driven, acceptance tests first (`general/phases.md`)
-- Current phase: 5 (unit tests)
-- Last gate result: phase 4 passed: 98/98 frozen tests (backend 81, frontend 12, e2e 5 against the compose stack), checks clean; D-15 resolved by D-17
-- Next step: write unit, integration and ArchUnit tests per layer, record the first full run before fixing, make the full suite pass
+- Current phase: 6 (verify)
+- Last gate result: phase 5 passed: first run 240 passed / 4 failed (test defects, fixed); gate run backend 196, frontend 59, e2e 5, all passing
+- Next step: run verify-release: DoD evidence, coverage, mutation, scanners, runtime demonstration, manifest and secret checks
 - Waiting for the human on: nothing
