@@ -172,3 +172,12 @@
 - Options: see D-18.
 - Human response: "D-18 change to vitest 4.1.x to be able to run it" (2026-10-10T23:55:22Z).
 - Resolution: D-18 resolved with option 2. The frontend uses `vitest` 4.1.10 instead of 5.0.3 (4.1.10 is the version `@stryker-mutator/vitest-runner` 10.0.0 is built against). `@vitest/coverage-v8` must carry the same version as `vitest` (peer dependency), so it moves from 5.0.3 to 4.1.10 as part of this approval. The approval replaces these two `tech-stack.md` entries for this run; `tech-stack.md` itself is not edited. All frontend tests, coverage and the mutation run are repeated on 4.1.10.
+
+## D-20: Vitest 4.1.11 instead of 4.1.10 within the approved 4.1.x
+- Timestamp: 2026-10-10T23:56:45Z
+- Phase: 6
+- Type: non-blocking
+- Trigger: after D-19, `npm audit` reported a moderate advisory for `vitest`/`@vitest/mocker` 4.1.10 (path traversal via redirect mock, affected `>=2.1.0 <4.1.11`). The human approved "vitest 4.1.x" (D-19).
+- Options: 1. Use 4.1.11 for `vitest` and `@vitest/coverage-v8`, the fixed patch release in the approved range (proposed default). 2. Keep 4.1.10 and accept the dev-only advisory.
+- Human response: none
+- Resolution: 1. `npm audit` back to the 2 moderate dev-only `qs` entries (D-06); `npm run check`, build and 59 tests pass. Pending review.
