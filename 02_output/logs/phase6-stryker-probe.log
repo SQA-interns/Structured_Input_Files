@@ -1,0 +1,1178 @@
+[32m01:26:42 (27652) INFO ProjectReader[39m Found 1 of 56 file(s) to be mutated.
+[32m01:26:42 (27652) INFO Instrumenter[39m Instrumented 1 source file(s) with 138 mutant(s)
+[32m01:26:43 (27652) INFO ConcurrencyTokenProvider[39m Creating 31 test runner process(es).
+[32m01:26:45 (27652) INFO DryRunExecutor[39m Starting initial test run (vitest test runner with "off" coverage analysis). This may take a while.
+[32m01:26:53 (27652) INFO DryRunExecutor[39m Initial test run succeeded. Ran 48 tests in 7 seconds (net 1889.5425000000005 ms, overhead 5912.4574999999995 ms).
+
+All tests
+  src
+    components/components.test.tsx
+      ✘ Captcha emits the test token when ticked and null when unticked (covered 0)
+      ✘ Captcha renders the Google widget once loaded, resets it and reports expiry (covered 0)
+      ✘ Captcha renders immediately when the library is already present and adds no second script (covered 0)
+      ✘ Confirmation says when no activity was selected (covered 0)
+      ✓ RegistrationForm shows a general error for field errors it cannot place (killed 1)
+      ~ RegistrationForm explains rate limiting and allows deselecting options (covered 79)
+      ~ RegistrationForm marks invalid inputs (covered 27)
+      ✘ App shows a load error when the configuration is unavailable (covered 0)
+      ✘ App titles the page with the conference name (covered 0)
+    validation.test.ts
+      ✓ validation defines the fixed fields per type (killed 18)
+      ✓ validation accepts a valid form of each type (killed 6)
+      ~ validation reports required, too long and control characters per field (covered 88)
+      ✓ validation counts code points and allows exactly the limits (killed 1)
+      ~ validation checks the email format after trimming (covered 80)
+      ~ validation requires mandatory consents and the captcha token (covered 82)
+      ~ validation isValidEmail(ana@example.si) is true (covered 27)
+      ✓ validation isValidEmail(o'brien+x@sub.example.co) is true (killed 1)
+      ✓ validation isValidEmail(aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@x.si) is true (killed 1)
+      ~ validation isValidEmail(aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@x.si) is false (covered 25)
+      ~ validation isValidEmail(ana) is false (covered 12)
+      ~ validation isValidEmail(@example.si) is false (covered 12)
+      ~ validation isValidEmail(ana@) is false (covered 18)
+      ~ validation isValidEmail(a@b@example.si) is false (covered 15)
+      ✓ validation isValidEmail(ana..n@example.si) is false (killed 1)
+      ✓ validation isValidEmail(ana@-x.si) is false (killed 1)
+      ~ validation isValidEmail(ana@x-.si) is false (covered 27)
+      ~ validation isValidEmail(ana@x.s) is false (covered 27)
+      ~ validation isValidEmail(ana@x.s1) is false (covered 27)
+      ~ validation hasControlCharacter("plain Čšž") is false (covered 18)
+      ~ validation hasControlCharacter("tab\there") is true (covered 16)
+      ~ validation hasControlCharacter("\u001f") is true (covered 11)
+      ~ validation hasControlCharacter(" ") is false (covered 15)
+      ~ validation hasControlCharacter("~") is false (covered 15)
+      ~ validation hasControlCharacter("") is true (covered 19)
+      ~ validation hasControlCharacter("") is true (covered 19)
+      ~ validation hasControlCharacter(" ") is false (covered 18)
+  tests/acceptance
+    confirmation.test.tsx
+      ✓ US-004 registration confirmation AC-004-01 shows the confirmation only after the backend accepted the registration (killed 4)
+      ~ US-004 registration confirmation AC-004-02 keeps the values and shows a general error when the backend fails (covered 82)
+      ~ US-004 registration confirmation AC-004-02 shows a general error without details when the network fails (covered 82)
+    external-form.test.tsx
+      ✘ US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents (covered 0)
+      ~ US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields (covered 70)
+      ~ US-001 external participant form AC-001-12 rejects too long values and control characters before submission (covered 87)
+      ~ US-001 external participant form AC-001-12 shows the backend's field errors next to their fields (covered 82)
+      ~ US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration (covered 82)
+      ✘ US-001 external participant form AC-001-09 loads the Google reCAPTCHA widget with the configured site key outside test mode (covered 0)
+    student-form.test.tsx
+      ✓ US-002 student form AC-002-01 shows exactly the student fields, student options and unchecked consents (killed 3)
+      ✘ US-002 student form AC-002-04 does not offer options whose audience excludes students (covered 0)
+      ~ US-002 student form AC-002-03 requires the student fields before submission (covered 81)
+
+[Survived] BlockStatement
+src/validation.ts:61:76
+-     if (at <= 0 || at !== email.lastIndexOf("@") || at === email.length - 1) {
+-       return false;
+-     }
++     if (at <= 0 || at !== email.lastIndexOf("@") || at === email.length - 1) {}
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    validation isValidEmail(ana) is false
+    validation isValidEmail(@example.si) is false
+  and 2 more tests!
+
+
+[Survived] BooleanLiteral
+src/validation.ts:62:12
+-       return false;
++       return true;
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    validation isValidEmail(ana) is false
+    validation isValidEmail(@example.si) is false
+  and 2 more tests!
+
+
+[Survived] ArithmeticOperator
+src/validation.ts:61:58
+-     if (at <= 0 || at !== email.lastIndexOf("@") || at === email.length - 1) {
++     if (at <= 0 || at !== email.lastIndexOf("@") || at === email.length + 1) {
+Tests ran:
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+  and 21 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:61:51
+-     if (at <= 0 || at !== email.lastIndexOf("@") || at === email.length - 1) {
++     if (at <= 0 || at !== email.lastIndexOf("@") || false) {
+Tests ran:
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+  and 21 more tests!
+
+
+[Survived] EqualityOperator
+src/validation.ts:61:7
+-     if (at <= 0 || at !== email.lastIndexOf("@") || at === email.length - 1) {
++     if (at > 0 || at !== email.lastIndexOf("@") || at === email.length - 1) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 25 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:61:7
+-     if (at <= 0 || at !== email.lastIndexOf("@") || at === email.length - 1) {
++     if (false) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 25 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:61:7
+-     if (at <= 0 || at !== email.lastIndexOf("@") || at === email.length - 1) {
++     if (false || at === email.length - 1) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 25 more tests!
+
+
+[Survived] StringLiteral
+src/validation.ts:60:28
+-     const at = email.indexOf("@");
++     const at = email.indexOf("");
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 25 more tests!
+
+
+[Survived] EqualityOperator
+src/validation.ts:61:51
+-     if (at <= 0 || at !== email.lastIndexOf("@") || at === email.length - 1) {
++     if (at <= 0 || at !== email.lastIndexOf("@") || at !== email.length - 1) {
+Tests ran:
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+  and 21 more tests!
+
+
+[Survived] EqualityOperator
+src/validation.ts:61:18
+-     if (at <= 0 || at !== email.lastIndexOf("@") || at === email.length - 1) {
++     if (at <= 0 || at === email.lastIndexOf("@") || at === email.length - 1) {
+Tests ran:
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+  and 22 more tests!
+
+
+[Survived] LogicalOperator
+src/validation.ts:61:7
+-     if (at <= 0 || at !== email.lastIndexOf("@") || at === email.length - 1) {
++     if (at <= 0 && at !== email.lastIndexOf("@") || at === email.length - 1) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 25 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:61:7
+-     if (at <= 0 || at !== email.lastIndexOf("@") || at === email.length - 1) {
++     if (true) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 25 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:61:18
+-     if (at <= 0 || at !== email.lastIndexOf("@") || at === email.length - 1) {
++     if (at <= 0 || false || at === email.length - 1) {
+Tests ran:
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+  and 22 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:61:7
+-     if (at <= 0 || at !== email.lastIndexOf("@") || at === email.length - 1) {
++     if (false || at !== email.lastIndexOf("@") || at === email.length - 1) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 25 more tests!
+
+
+[Survived] EqualityOperator
+src/validation.ts:61:7
+-     if (at <= 0 || at !== email.lastIndexOf("@") || at === email.length - 1) {
++     if (at < 0 || at !== email.lastIndexOf("@") || at === email.length - 1) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 25 more tests!
+
+
+[Survived] StringLiteral
+src/validation.ts:61:43
+-     if (at <= 0 || at !== email.lastIndexOf("@") || at === email.length - 1) {
++     if (at <= 0 || at !== email.lastIndexOf("") || at === email.length - 1) {
+Tests ran:
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+  and 22 more tests!
+
+
+[Survived] BlockStatement
+src/validation.ts:59:54
+-   export function isValidEmail(email: string): boolean {
+-     const at = email.indexOf("@");
+-     if (at <= 0 || at !== email.lastIndexOf("@") || at === email.length - 1) {
+-       return false;
+-     }
+-     const local = email.slice(0, at);
+-     return local.length <= 64 && LOCAL_PART.test(local) && DOMAIN.test(email.slice(at + 1));
+-   }
++   export function isValidEmail(email: string): boolean {}
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 25 more tests!
+
+
+[Survived] LogicalOperator
+src/validation.ts:61:7
+-     if (at <= 0 || at !== email.lastIndexOf("@") || at === email.length - 1) {
++     if ((at <= 0 || at !== email.lastIndexOf("@")) && at === email.length - 1) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 25 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:65:10
+-     return local.length <= 64 && LOCAL_PART.test(local) && DOMAIN.test(email.slice(at + 1));
++     return true;
+Tests ran:
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+  and 20 more tests!
+
+
+[Survived] MethodExpression
+src/validation.ts:64:17
+-     const local = email.slice(0, at);
++     const local = email;
+Tests ran:
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+  and 20 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:65:10
+-     return local.length <= 64 && LOCAL_PART.test(local) && DOMAIN.test(email.slice(at + 1));
++     return false;
+Tests ran:
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+  and 20 more tests!
+
+
+[Survived] LogicalOperator
+src/validation.ts:65:10
+-     return local.length <= 64 && LOCAL_PART.test(local) && DOMAIN.test(email.slice(at + 1));
++     return local.length <= 64 || LOCAL_PART.test(local) && DOMAIN.test(email.slice(at + 1));
+Tests ran:
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+  and 20 more tests!
+
+
+[Survived] LogicalOperator
+src/validation.ts:65:10
+-     return local.length <= 64 && LOCAL_PART.test(local) && DOMAIN.test(email.slice(at + 1));
++     return local.length <= 64 && LOCAL_PART.test(local) || DOMAIN.test(email.slice(at + 1));
+Tests ran:
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+  and 20 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:65:10
+-     return local.length <= 64 && LOCAL_PART.test(local) && DOMAIN.test(email.slice(at + 1));
++     return true && DOMAIN.test(email.slice(at + 1));
+Tests ran:
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+  and 20 more tests!
+
+
+[Survived] EqualityOperator
+src/validation.ts:65:10
+-     return local.length <= 64 && LOCAL_PART.test(local) && DOMAIN.test(email.slice(at + 1));
++     return local.length < 64 && LOCAL_PART.test(local) && DOMAIN.test(email.slice(at + 1));
+Tests ran:
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+  and 20 more tests!
+
+
+[Survived] BlockStatement
+src/validation.ts:72:57
+-       if (code <= 0x1f || (code >= 0x7f && code <= 0x9f)) {
+-         return true;
+-       }
++       if (code <= 0x1f || (code >= 0x7f && code <= 0x9f)) {}
+Tests ran:
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    validation reports required, too long and control characters per field
+    validation hasControlCharacter("tab\there") is true
+  and 3 more tests!
+
+
+[Survived] BooleanLiteral
+src/validation.ts:73:14
+-         return true;
++         return false;
+Tests ran:
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    validation reports required, too long and control characters per field
+    validation hasControlCharacter("tab\there") is true
+  and 3 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:65:10
+-     return local.length <= 64 && LOCAL_PART.test(local) && DOMAIN.test(email.slice(at + 1));
++     return true && LOCAL_PART.test(local) && DOMAIN.test(email.slice(at + 1));
+Tests ran:
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+  and 20 more tests!
+
+
+[Survived] MethodExpression
+src/validation.ts:65:70
+-     return local.length <= 64 && LOCAL_PART.test(local) && DOMAIN.test(email.slice(at + 1));
++     return local.length <= 64 && LOCAL_PART.test(local) && DOMAIN.test(email);
+Tests ran:
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+  and 18 more tests!
+
+
+[Survived] EqualityOperator
+src/validation.ts:65:10
+-     return local.length <= 64 && LOCAL_PART.test(local) && DOMAIN.test(email.slice(at + 1));
++     return local.length > 64 && LOCAL_PART.test(local) && DOMAIN.test(email.slice(at + 1));
+Tests ran:
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+  and 20 more tests!
+
+
+[Survived] ArithmeticOperator
+src/validation.ts:65:82
+-     return local.length <= 64 && LOCAL_PART.test(local) && DOMAIN.test(email.slice(at + 1));
++     return local.length <= 64 && LOCAL_PART.test(local) && DOMAIN.test(email.slice(at - 1));
+Tests ran:
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+  and 18 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:72:42
+-       if (code <= 0x1f || (code >= 0x7f && code <= 0x9f)) {
++       if (code <= 0x1f || (code >= 0x7f && true)) {
+Tests ran:
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+  and 9 more tests!
+
+
+[Survived] BlockStatement
+src/validation.ts:69:61
+-   export function hasControlCharacter(value: string): boolean {
+-     for (const char of value) {
+-       const code = char.codePointAt(0) ?? 0;
+-       if (code <= 0x1f || (code >= 0x7f && code <= 0x9f)) {
+-         return true;
+-       }
+-     }
+-     return false;
+-   }
++   export function hasControlCharacter(value: string): boolean {}
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 20 more tests!
+
+
+[Survived] EqualityOperator
+src/validation.ts:72:42
+-       if (code <= 0x1f || (code >= 0x7f && code <= 0x9f)) {
++       if (code <= 0x1f || (code >= 0x7f && code < 0x9f)) {
+Tests ran:
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+  and 9 more tests!
+
+
+[Survived] EqualityOperator
+src/validation.ts:72:42
+-       if (code <= 0x1f || (code >= 0x7f && code <= 0x9f)) {
++       if (code <= 0x1f || (code >= 0x7f && code > 0x9f)) {
+Tests ran:
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+  and 9 more tests!
+
+
+[Survived] BlockStatement
+src/validation.ts:70:29
+-     for (const char of value) {
+-       const code = char.codePointAt(0) ?? 0;
+-       if (code <= 0x1f || (code >= 0x7f && code <= 0x9f)) {
+-         return true;
+-       }
+-     }
++     for (const char of value) {}
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 20 more tests!
+
+
+[Survived] LogicalOperator
+src/validation.ts:71:18
+-       const code = char.codePointAt(0) ?? 0;
++       const code = char.codePointAt(0) && 0;
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 20 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:72:9
+-       if (code <= 0x1f || (code >= 0x7f && code <= 0x9f)) {
++       if (true) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 20 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:72:9
+-       if (code <= 0x1f || (code >= 0x7f && code <= 0x9f)) {
++       if (false || (code >= 0x7f && code <= 0x9f)) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 20 more tests!
+
+
+[Survived] EqualityOperator
+src/validation.ts:72:9
+-       if (code <= 0x1f || (code >= 0x7f && code <= 0x9f)) {
++       if (code < 0x1f || (code >= 0x7f && code <= 0x9f)) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 20 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:72:9
+-       if (code <= 0x1f || (code >= 0x7f && code <= 0x9f)) {
++       if (false) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 20 more tests!
+
+
+[Survived] LogicalOperator
+src/validation.ts:72:9
+-       if (code <= 0x1f || (code >= 0x7f && code <= 0x9f)) {
++       if (code <= 0x1f && code >= 0x7f && code <= 0x9f) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 20 more tests!
+
+
+[Survived] EqualityOperator
+src/validation.ts:72:9
+-       if (code <= 0x1f || (code >= 0x7f && code <= 0x9f)) {
++       if (code > 0x1f || (code >= 0x7f && code <= 0x9f)) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 20 more tests!
+
+
+[Survived] BlockStatement
+src/validation.ts:84:34
+-     if ([...trimmed].length > max) {
+-       return MESSAGES.TOO_LONG;
+-     }
++     if ([...trimmed].length > max) {}
+Tests ran:
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    validation reports required, too long and control characters per field
+    validation counts code points and allows exactly the limits
+
+
+[Survived] ConditionalExpression
+src/validation.ts:72:26
+-       if (code <= 0x1f || (code >= 0x7f && code <= 0x9f)) {
++       if (code <= 0x1f || (false)) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 19 more tests!
+
+
+[Survived] MethodExpression
+src/validation.ts:80:19
+-     const trimmed = value.trim();
++     const trimmed = value;
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 13 more tests!
+
+
+[Survived] BooleanLiteral
+src/validation.ts:76:10
+-     return false;
++     return true;
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 16 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:81:7
+-     if (trimmed === "") {
++     if (true) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 13 more tests!
+
+
+[Survived] BlockStatement
+src/validation.ts:81:23
+-     if (trimmed === "") {
+-       return MESSAGES.REQUIRED;
+-     }
++     if (trimmed === "") {}
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    RegistrationForm marks invalid inputs
+    US-002 student form AC-002-03 requires the student fields before submission
+  and 1 more test!
+
+
+[Survived] BlockStatement
+src/validation.ts:87:37
+-     if (hasControlCharacter(trimmed)) {
+-       return MESSAGES.INVALID_CHARACTERS;
+-     }
++     if (hasControlCharacter(trimmed)) {}
+Tests ran:
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    validation reports required, too long and control characters per field
+
+
+[Survived] ConditionalExpression
+src/validation.ts:81:7
+-     if (trimmed === "") {
++     if (false) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 13 more tests!
+
+
+[Survived] BlockStatement
+src/validation.ts:79:63
+-   function checkText(value: string, max: number): string | null {
+-     const trimmed = value.trim();
+-     if (trimmed === "") {
+-       return MESSAGES.REQUIRED;
+-     }
+-     if ([...trimmed].length > max) {
+-       return MESSAGES.TOO_LONG;
+-     }
+-     if (hasControlCharacter(trimmed)) {
+-       return MESSAGES.INVALID_CHARACTERS;
+-     }
+-     return null;
+-   }
++   function checkText(value: string, max: number): string | null {}
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 13 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:84:7
+-     if ([...trimmed].length > max) {
++     if (false) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 12 more tests!
+
+
+[Survived] EqualityOperator
+src/validation.ts:84:7
+-     if ([...trimmed].length > max) {
++     if ([...trimmed].length >= max) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 12 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:84:7
+-     if ([...trimmed].length > max) {
++     if (true) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 12 more tests!
+
+
+[Survived] EqualityOperator
+src/validation.ts:81:7
+-     if (trimmed === "") {
++     if (trimmed !== "") {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 13 more tests!
+
+
+[Survived] StringLiteral
+src/validation.ts:81:19
+-     if (trimmed === "") {
++     if (trimmed === "Stryker was here!") {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 13 more tests!
+
+
+[Survived] EqualityOperator
+src/validation.ts:84:7
+-     if ([...trimmed].length > max) {
++     if ([...trimmed].length <= max) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 12 more tests!
+
+
+[Survived] ArrayDeclaration
+src/validation.ts:84:7
+-     if ([...trimmed].length > max) {
++     if ([].length > max) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 12 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:87:7
+-     if (hasControlCharacter(trimmed)) {
++     if (false) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 12 more tests!
+
+
+[Survived] BlockStatement
+src/validation.ts:105:71
+-       } else if (field.type === "email" && !isValidEmail(value.trim())) {
+-         errors[field.id] = MESSAGES.INVALID_EMAIL;
+-       }
++       } else if (field.type === "email" && !isValidEmail(value.trim())) {}
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    validation checks the email format after trimming
+
+
+[Survived] BlockStatement
+src/validation.ts:100:37
+-     for (const field of FIELDS[type]) {
+-       const value = values.text[field.id];
+-       const problem = checkText(value, field.type === "email" ? MAX_EMAIL : MAX_TEXT);
+-       if (problem) {
+-         errors[field.id] = problem;
+-       } else if (field.type === "email" && !isValidEmail(value.trim())) {
+-         errors[field.id] = MESSAGES.INVALID_EMAIL;
+-       }
+-     }
++     for (const field of FIELDS[type]) {}
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 13 more tests!
+
+
+[Survived] BlockStatement
+src/validation.ts:103:18
+-       if (problem) {
+-         errors[field.id] = problem;
+-       } else if (field.type === "email" && !isValidEmail(value.trim())) {
++       if (problem) {} else if (field.type === "email" && !isValidEmail(value.trim())) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    RegistrationForm marks invalid inputs
+  and 3 more tests!
+
+
+[Survived] BlockStatement
+src/validation.ts:98:27
+-   ): Record<string, string> {
+-     const errors: Record<string, string> = {};
+-     for (const field of FIELDS[type]) {
+-       const value = values.text[field.id];
+-       const problem = checkText(value, field.type === "email" ? MAX_EMAIL : MAX_TEXT);
+-       if (problem) {
+-         errors[field.id] = problem;
+-       } else if (field.type === "email" && !isValidEmail(value.trim())) {
+-         errors[field.id] = MESSAGES.INVALID_EMAIL;
+-       }
+-     }
+-     for (const consent of consents) {
+-       if (consent.mandatory && !values.consentIds.includes(consent.id)) {
+-         errors[`consents.${consent.id}`] = MESSAGES.CONSENT_REQUIRED;
+-       }
+-     }
+-     if (!values.captchaToken) {
+-       errors.captchaToken = MESSAGES.CAPTCHA_REQUIRED;
+-     }
+-     return errors;
+-   }
++   ): Record<string, string> {}
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 13 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:87:7
+-     if (hasControlCharacter(trimmed)) {
++     if (true) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 12 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:102:38
+-       const problem = checkText(value, field.type === "email" ? MAX_EMAIL : MAX_TEXT);
++       const problem = checkText(value, true ? MAX_EMAIL : MAX_TEXT);
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 13 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:102:38
+-       const problem = checkText(value, field.type === "email" ? MAX_EMAIL : MAX_TEXT);
++       const problem = checkText(value, false ? MAX_EMAIL : MAX_TEXT);
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 13 more tests!
+
+
+[Survived] EqualityOperator
+src/validation.ts:102:38
+-       const problem = checkText(value, field.type === "email" ? MAX_EMAIL : MAX_TEXT);
++       const problem = checkText(value, field.type !== "email" ? MAX_EMAIL : MAX_TEXT);
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 13 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:105:16
+-       } else if (field.type === "email" && !isValidEmail(value.trim())) {
++       } else if (false) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 12 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:103:9
+-       if (problem) {
++       if (true) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 13 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:103:9
+-       if (problem) {
++       if (false) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 13 more tests!
+
+
+[Survived] StringLiteral
+src/validation.ts:102:53
+-       const problem = checkText(value, field.type === "email" ? MAX_EMAIL : MAX_TEXT);
++       const problem = checkText(value, field.type === "" ? MAX_EMAIL : MAX_TEXT);
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 13 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:105:16
+-       } else if (field.type === "email" && !isValidEmail(value.trim())) {
++       } else if (true) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 12 more tests!
+
+
+[Survived] LogicalOperator
+src/validation.ts:105:16
+-       } else if (field.type === "email" && !isValidEmail(value.trim())) {
++       } else if (field.type === "email" || !isValidEmail(value.trim())) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 12 more tests!
+
+
+[Survived] StringLiteral
+src/validation.ts:111:14
+-         errors[`consents.${consent.id}`] = MESSAGES.CONSENT_REQUIRED;
++         errors[``] = MESSAGES.CONSENT_REQUIRED;
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    RegistrationForm marks invalid inputs
+    validation requires mandatory consents and the captcha token
+
+
+[Survived] BlockStatement
+src/validation.ts:114:29
+-     if (!values.captchaToken) {
+-       errors.captchaToken = MESSAGES.CAPTCHA_REQUIRED;
+-     }
++     if (!values.captchaToken) {}
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    RegistrationForm marks invalid inputs
+    validation requires mandatory consents and the captcha token
+
+
+[Survived] BlockStatement
+src/validation.ts:110:71
+-       if (consent.mandatory && !values.consentIds.includes(consent.id)) {
+-         errors[`consents.${consent.id}`] = MESSAGES.CONSENT_REQUIRED;
+-       }
++       if (consent.mandatory && !values.consentIds.includes(consent.id)) {}
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    RegistrationForm marks invalid inputs
+    validation requires mandatory consents and the captcha token
+
+
+[Survived] BlockStatement
+src/validation.ts:109:35
+-     for (const consent of consents) {
+-       if (consent.mandatory && !values.consentIds.includes(consent.id)) {
+-         errors[`consents.${consent.id}`] = MESSAGES.CONSENT_REQUIRED;
+-       }
+-     }
++     for (const consent of consents) {}
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 13 more tests!
+
+
+[Survived] BooleanLiteral
+src/validation.ts:105:42
+-       } else if (field.type === "email" && !isValidEmail(value.trim())) {
++       } else if (field.type === "email" && isValidEmail(value.trim())) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 12 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:105:16
+-       } else if (field.type === "email" && !isValidEmail(value.trim())) {
++       } else if (true && !isValidEmail(value.trim())) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 12 more tests!
+
+
+[Survived] StringLiteral
+src/validation.ts:105:31
+-       } else if (field.type === "email" && !isValidEmail(value.trim())) {
++       } else if (field.type === "" && !isValidEmail(value.trim())) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 12 more tests!
+
+
+[Survived] MethodExpression
+src/validation.ts:105:56
+-       } else if (field.type === "email" && !isValidEmail(value.trim())) {
++       } else if (field.type === "email" && !isValidEmail(value)) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 12 more tests!
+
+
+[Survived] EqualityOperator
+src/validation.ts:105:16
+-       } else if (field.type === "email" && !isValidEmail(value.trim())) {
++       } else if (field.type !== "email" && !isValidEmail(value.trim())) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 12 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:110:9
+-       if (consent.mandatory && !values.consentIds.includes(consent.id)) {
++       if (true) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 13 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:110:9
+-       if (consent.mandatory && !values.consentIds.includes(consent.id)) {
++       if (false) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 13 more tests!
+
+
+[Survived] LogicalOperator
+src/validation.ts:110:9
+-       if (consent.mandatory && !values.consentIds.includes(consent.id)) {
++       if (consent.mandatory || !values.consentIds.includes(consent.id)) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 13 more tests!
+
+
+[Survived] BooleanLiteral
+src/validation.ts:110:30
+-       if (consent.mandatory && !values.consentIds.includes(consent.id)) {
++       if (consent.mandatory && values.consentIds.includes(consent.id)) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 13 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:114:7
+-     if (!values.captchaToken) {
++     if (true) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 13 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:114:7
+-     if (!values.captchaToken) {
++     if (false) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 13 more tests!
+
+
+[Survived] BooleanLiteral
+src/validation.ts:114:7
+-     if (!values.captchaToken) {
++     if (values.captchaToken) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 13 more tests!
+
+
+[Survived] StringLiteral
+src/validation.ts:33:49
+-     { id: "firstName", label: "First name", type: "text" },
++     { id: "firstName", label: "First name", type: "" },
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/validation.ts:34:47
+-     { id: "lastName", label: "Last name", type: "text" },
++     { id: "lastName", label: "Last name", type: "" },
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/validation.ts:40:90
+-     EXTERNAL: [...COMMON, { id: "organization", label: "Organization / institution", type: "text" }],
++     EXTERNAL: [...COMMON, { id: "organization", label: "Organization / institution", type: "" }],
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/validation.ts:43:65
+-       { id: "studyInstitution", label: "Study institution", type: "text" },
++       { id: "studyInstitution", label: "Study institution", type: "" },
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/validation.ts:44:61
+-       { id: "studyProgramme", label: "Study programme", type: "text" },
++       { id: "studyProgramme", label: "Study programme", type: "" },
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/validation.ts:45:51
+-       { id: "studentId", label: "Student ID", type: "text" },
++       { id: "studentId", label: "Student ID", type: "" },
+Ran all tests for this mutant.
+
+[Survived] Regex
+src/validation.ts:57:16
+-   const DOMAIN = /^([A-Za-z0-9]([A-Za-z0-9-]*[A-Za-z0-9])?\.)+[A-Za-z]{2,}$/;
++   const DOMAIN = /^([A-Za-z0-9]([A-Za-z0-9-]*[A-Za-z0-9])?\.)+[A-Za-z]{2,}/;
+Ran all tests for this mutant.
+
+Ran 4.38 tests per mutant on average.
+---------------|------------------|----------|-----------|------------|----------|----------|
+               | % Mutation score |          |           |            |          |          |
+File           |  total | covered | # killed | # timeout | # survived | # no cov | # errors |
+---------------|--------|---------|----------|-----------|------------|----------|----------|
+All files      |  29.71 |   29.71 |       37 |         4 |         97 |        0 |        0 |
+ validation.ts |  29.71 |   29.71 |       37 |         4 |         97 |        0 |        0 |
+---------------|--------|---------|----------|-----------|------------|----------|----------|
+[32m01:27:37 (27652) INFO MutationTestExecutor[39m Done in 55 seconds.

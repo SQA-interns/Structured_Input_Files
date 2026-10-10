@@ -1,0 +1,4313 @@
+[32m01:21:48 (20100) INFO ProjectReader[39m Found 6 of 56 file(s) to be mutated.
+[32m01:21:48 (20100) INFO Instrumenter[39m Instrumented 6 source file(s) with 438 mutant(s)
+[32m01:21:48 (20100) INFO ConcurrencyTokenProvider[39m Creating 31 test runner process(es).
+[32m01:21:49 (20100) INFO BroadcastReporter[39m Detected that current console does not support the "progress" reporter, downgrading to "progress-append-only" reporter
+[32m01:21:50 (20100) INFO DryRunExecutor[39m Starting initial test run (vitest test runner with "perTest" coverage analysis). This may take a while.
+[32m01:21:58 (20100) INFO DryRunExecutor[39m Initial test run succeeded. Ran 59 tests in 7 seconds (net 1671.736399999996 ms, overhead 5708.263600000004 ms).
+Mutation testing 2% (elapsed: <1m, remaining: ~7m) 15/438 tested (15 survived, 0 timed out)
+Mutation testing 5% (elapsed: <1m, remaining: ~5m) 53/438 tested (53 survived, 0 timed out)
+Mutation testing 17% (elapsed: <1m, remaining: ~2m) 98/438 tested (98 survived, 0 timed out)
+Mutation testing 24% (elapsed: <1m, remaining: ~2m) 148/438 tested (148 survived, 0 timed out)
+Mutation testing 36% (elapsed: <1m, remaining: ~1m) 198/438 tested (198 survived, 0 timed out)
+Mutation testing 41% (elapsed: ~1m, remaining: ~1m) 241/438 tested (241 survived, 0 timed out)
+Mutation testing 52% (elapsed: ~1m, remaining: ~1m) 276/438 tested (276 survived, 0 timed out)
+Mutation testing 56% (elapsed: ~1m, remaining: ~1m) 299/438 tested (293 survived, 6 timed out)
+Mutation testing 61% (elapsed: ~1m, remaining: <1m) 322/438 tested (306 survived, 16 timed out)
+Mutation testing 69% (elapsed: ~1m, remaining: <1m) 356/438 tested (322 survived, 28 timed out)
+Mutation testing 86% (elapsed: ~1m, remaining: <1m) 404/438 tested (326 survived, 34 timed out)
+Mutation testing 97% (elapsed: ~2m, remaining: <1m) 431/438 tested (329 survived, 39 timed out)
+
+All tests
+  src
+    components/components.test.tsx
+      ~ Captcha emits the test token when ticked and null when unticked (covered 24)
+      ✓ Captcha renders the Google widget once loaded, resets it and reports expiry (killed 2)
+      ~ Captcha renders immediately when the library is already present and adds no second script (covered 39)
+      ~ Confirmation says when no activity was selected (covered 4)
+      ✓ RegistrationForm shows a general error for field errors it cannot place (killed 12)
+      ✓ RegistrationForm explains rate limiting and allows deselecting options (killed 4)
+      ✓ RegistrationForm marks invalid inputs (killed 2)
+      ✓ App shows a load error when the configuration is unavailable (killed 1)
+      ~ App titles the page with the conference name (covered 52)
+    api.test.ts
+      ~ api loads the form configuration (covered 8)
+      ~ api fails when the configuration cannot be loaded (covered 10)
+      ~ api posts JSON and returns the accepted registration (covered 14)
+      ~ api returns field errors of a 400 response (covered 26)
+      ~ api returns field errors of a 409 response (covered 28)
+      ~ api treats 400 {"fieldErrors":[]} as a failure (covered 25)
+      ~ api treats 400 {"message":"no list"} as a failure (covered 26)
+      ~ api treats 400 "not json" as a failure (covered 27)
+      ~ api treats 429 {"fieldErrors":[{"field":"x","code":"y","message":"z"}]} as a failure (covered 20)
+      ~ api treats 500 {} as a failure (covered 20)
+      ~ api turns network errors into a failure (covered 11)
+    validation.test.ts
+      ✓ validation defines the fixed fields per type (killed 11)
+      ✓ validation accepts a valid form of each type (killed 3)
+      ~ validation reports required, too long and control characters per field (covered 88)
+      ✓ validation counts code points and allows exactly the limits (killed 1)
+      ~ validation checks the email format after trimming (covered 80)
+      ~ validation requires mandatory consents and the captcha token (covered 82)
+      ~ validation isValidEmail(ana@example.si) is true (covered 27)
+      ✓ validation isValidEmail(o'brien+x@sub.example.co) is true (killed 1)
+      ✓ validation isValidEmail(aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@x.si) is true (killed 1)
+      ~ validation isValidEmail(aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@x.si) is false (covered 25)
+      ~ validation isValidEmail(ana) is false (covered 12)
+      ~ validation isValidEmail(@example.si) is false (covered 12)
+      ~ validation isValidEmail(ana@) is false (covered 18)
+      ~ validation isValidEmail(a@b@example.si) is false (covered 15)
+      ✓ validation isValidEmail(ana..n@example.si) is false (killed 1)
+      ✓ validation isValidEmail(ana@-x.si) is false (killed 1)
+      ~ validation isValidEmail(ana@x-.si) is false (covered 27)
+      ~ validation isValidEmail(ana@x.s) is false (covered 27)
+      ~ validation isValidEmail(ana@x.s1) is false (covered 27)
+      ~ validation hasControlCharacter("plain Čšž") is false (covered 18)
+      ~ validation hasControlCharacter("tab\there") is true (covered 16)
+      ~ validation hasControlCharacter("\u001f") is true (covered 11)
+      ~ validation hasControlCharacter(" ") is false (covered 15)
+      ~ validation hasControlCharacter("~") is false (covered 15)
+      ~ validation hasControlCharacter("") is true (covered 19)
+      ~ validation hasControlCharacter("") is true (covered 19)
+      ~ validation hasControlCharacter(" ") is false (covered 18)
+  tests/acceptance
+    confirmation.test.tsx
+      ✓ US-004 registration confirmation AC-004-01 shows the confirmation only after the backend accepted the registration (killed 10)
+      ~ US-004 registration confirmation AC-004-02 keeps the values and shows a general error when the backend fails (covered 254)
+      ~ US-004 registration confirmation AC-004-02 shows a general error without details when the network fails (covered 245)
+    external-form.test.tsx
+      ✓ US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents (killed 6)
+      ✓ US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields (killed 2)
+      ~ US-001 external participant form AC-001-12 rejects too long values and control characters before submission (covered 218)
+      ✓ US-001 external participant form AC-001-12 shows the backend's field errors next to their fields (killed 2)
+      ~ US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration (covered 246)
+      ~ US-001 external participant form AC-001-09 loads the Google reCAPTCHA widget with the configured site key outside test mode (covered 124)
+    student-form.test.tsx
+      ✓ US-002 student form AC-002-01 shows exactly the student fields, student options and unchecked consents (killed 5)
+      ~ US-002 student form AC-002-04 does not offer options whose audience excludes students (covered 111)
+      ✓ US-002 student form AC-002-03 requires the student fields before submission (killed 1)
+
+[Survived] BlockStatement
+src/components/Captcha.tsx:46:26
+-       const render = () => {
+-         if (container.current && window.grecaptcha && widgetId.current === null) {
+-           widgetId.current = window.grecaptcha.render(container.current, {
+-             sitekey: siteKey,
+-             callback: (token) => onToken(token),
+-             "expired-callback": () => onToken(null),
+-           });
+-         }
+-       };
++       const render = () => {};
+Tests ran:
+    Captcha renders the Google widget once loaded, resets it and reports expiry
+    Captcha renders immediately when the library is already present and adds no second script
+
+
+[Survived] ConditionalExpression
+src/components/Captcha.tsx:47:11
+-         if (container.current && window.grecaptcha && widgetId.current === null) {
++         if (true) {
+Tests ran:
+    Captcha renders the Google widget once loaded, resets it and reports expiry
+    Captcha renders immediately when the library is already present and adds no second script
+
+
+[Survived] ConditionalExpression
+src/components/Captcha.tsx:47:11
+-         if (container.current && window.grecaptcha && widgetId.current === null) {
++         if (false) {
+Tests ran:
+    Captcha renders the Google widget once loaded, resets it and reports expiry
+    Captcha renders immediately when the library is already present and adds no second script
+
+
+[Survived] LogicalOperator
+src/components/Captcha.tsx:47:11
+-         if (container.current && window.grecaptcha && widgetId.current === null) {
++         if (container.current && window.grecaptcha || widgetId.current === null) {
+Tests ran:
+    Captcha renders the Google widget once loaded, resets it and reports expiry
+    Captcha renders immediately when the library is already present and adds no second script
+
+
+[Survived] ConditionalExpression
+src/components/Captcha.tsx:47:53
+-         if (container.current && window.grecaptcha && widgetId.current === null) {
++         if (container.current && window.grecaptcha && true) {
+Tests ran:
+    Captcha renders the Google widget once loaded, resets it and reports expiry
+    Captcha renders immediately when the library is already present and adds no second script
+
+
+[Survived] ConditionalExpression
+src/components/Captcha.tsx:47:11
+-         if (container.current && window.grecaptcha && widgetId.current === null) {
++         if (true && widgetId.current === null) {
+Tests ran:
+    Captcha renders the Google widget once loaded, resets it and reports expiry
+    Captcha renders immediately when the library is already present and adds no second script
+
+
+[Survived] LogicalOperator
+src/components/Captcha.tsx:47:11
+-         if (container.current && window.grecaptcha && widgetId.current === null) {
++         if (container.current || window.grecaptcha && widgetId.current === null) {
+Tests ran:
+    Captcha renders the Google widget once loaded, resets it and reports expiry
+    Captcha renders immediately when the library is already present and adds no second script
+
+
+[Survived] BlockStatement
+src/components/Captcha.tsx:47:80
+-         if (container.current && window.grecaptcha && widgetId.current === null) {
+-           widgetId.current = window.grecaptcha.render(container.current, {
+-             sitekey: siteKey,
+-             callback: (token) => onToken(token),
+-             "expired-callback": () => onToken(null),
+-           });
+-         }
++         if (container.current && window.grecaptcha && widgetId.current === null) {}
+Tests ran:
+    Captcha renders the Google widget once loaded, resets it and reports expiry
+    Captcha renders immediately when the library is already present and adds no second script
+
+
+[Survived] EqualityOperator
+src/components/Captcha.tsx:47:53
+-         if (container.current && window.grecaptcha && widgetId.current === null) {
++         if (container.current && window.grecaptcha && widgetId.current !== null) {
+Tests ran:
+    Captcha renders the Google widget once loaded, resets it and reports expiry
+    Captcha renders immediately when the library is already present and adds no second script
+
+
+[Survived] ObjectLiteral
+src/components/Captcha.tsx:48:72
+-           widgetId.current = window.grecaptcha.render(container.current, {
+-             sitekey: siteKey,
+-             callback: (token) => onToken(token),
+-             "expired-callback": () => onToken(null),
+-           });
++           widgetId.current = window.grecaptcha.render(container.current, {});
+Tests ran:
+    Captcha renders the Google widget once loaded, resets it and reports expiry
+    Captcha renders immediately when the library is already present and adds no second script
+
+
+[Survived] ArrowFunction
+src/components/Captcha.tsx:50:21
+-             callback: (token) => onToken(token),
++             callback: () => undefined,
+Tests ran:
+    Captcha renders the Google widget once loaded, resets it and reports expiry
+    Captcha renders immediately when the library is already present and adds no second script
+
+
+[Survived] BlockStatement
+src/components/Captcha.tsx:37:89
+-   export default function Captcha({ testMode, siteKey, resetKey, error, onToken }: Props) {
+-     const container = useRef<HTMLDivElement>(null);
+-     const widgetId = useRef<number | null>(null);
+-     const [checked, setChecked] = useState(false);
+-     useEffect(() => {
+-       if (testMode) {
+-         return;
+-       }
+-       const render = () => {
+-         if (container.current && window.grecaptcha && widgetId.current === null) {
+-           widgetId.current = window.grecaptcha.render(container.current, {
+-             sitekey: siteKey,
+-             callback: (token) => onToken(token),
+-             "expired-callback": () => onToken(null),
+-           });
+-         }
+-       };
+-       if (window.grecaptcha) {
+-         render();
+-         return;
+-       }
+-       window[ONLOAD] = render;
+-       if (!document.querySelector(`script[src^="${SCRIPT_URL}"]`)) {
+-         const script = document.createElement("script");
+-         script.src = `${SCRIPT_URL}?onload=${ONLOAD}&render=explicit`;
+-         script.async = true;
+-         script.defer = true;
+-         document.head.appendChild(script);
+-       }
+-     }, [testMode, siteKey, onToken]);
+-     useEffect(() => {
+-       if (!testMode && resetKey > 0 && window.grecaptcha && widgetId.current !== null) {
+-         window.grecaptcha.reset(widgetId.current);
+-         onToken(null);
+-       }
+-     }, [resetKey, testMode, onToken]);
+-     const describedBy = error ? "captchaToken-error" : undefined;
+-     return (
+-       <div className="captcha">
+-         {testMode ? (
+-           <label>
+-             <input
+-               type="checkbox"
+-               checked={checked}
+-               aria-describedby={describedBy}
+-               onChange={(event) => {
+-                 setChecked(event.target.checked);
+-                 onToken(event.target.checked ? TEST_MODE_TOKEN : null);
+-               }}
+-             />{" "}
+-             I am not a robot (test mode)
+-           </label>
+-         ) : (
+-           <div ref={container} data-sitekey={siteKey} aria-describedby={describedBy} />
+-         )}
+-         {error && (
+-           <p id="captchaToken-error" role="alert" className="field-error">
+-             {error}
+-           </p>
+-         )}
+-       </div>
+-     );
+-   }
++   export default function Captcha({ testMode, siteKey, resetKey, error, onToken }: Props) {}
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 15 more tests!
+
+
+[Survived] BlockStatement
+src/components/Captcha.tsx:55:28
+-       if (window.grecaptcha) {
+-         render();
+-         return;
+-       }
++       if (window.grecaptcha) {}
+Tests ran:
+    Captcha renders immediately when the library is already present and adds no second script
+
+
+[Survived] ArrowFunction
+src/components/Captcha.tsx:51:31
+-             "expired-callback": () => onToken(null),
++             "expired-callback": () => undefined,
+Tests ran:
+    Captcha renders the Google widget once loaded, resets it and reports expiry
+    Captcha renders immediately when the library is already present and adds no second script
+
+
+[Survived] CallExpression
+src/components/Captcha.tsx:56:7
+-         render();
++         ;
+Tests ran:
+    Captcha renders immediately when the library is already present and adds no second script
+
+
+[Survived] ConditionalExpression
+src/components/Captcha.tsx:43:9
+-       if (testMode) {
++       if (false) {
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 15 more tests!
+
+
+[Survived] BlockStatement
+src/components/Captcha.tsx:42:19
+-     useEffect(() => {
+-       if (testMode) {
+-         return;
+-       }
+-       const render = () => {
+-         if (container.current && window.grecaptcha && widgetId.current === null) {
+-           widgetId.current = window.grecaptcha.render(container.current, {
+-             sitekey: siteKey,
+-             callback: (token) => onToken(token),
+-             "expired-callback": () => onToken(null),
+-           });
+-         }
+-       };
+-       if (window.grecaptcha) {
+-         render();
+-         return;
+-       }
+-       window[ONLOAD] = render;
+-       if (!document.querySelector(`script[src^="${SCRIPT_URL}"]`)) {
+-         const script = document.createElement("script");
+-         script.src = `${SCRIPT_URL}?onload=${ONLOAD}&render=explicit`;
+-         script.async = true;
+-         script.defer = true;
+-         document.head.appendChild(script);
+-       }
+-     }, [testMode, siteKey, onToken]);
++     useEffect(() => {}, [testMode, siteKey, onToken]);
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 15 more tests!
+
+
+[Survived] ConditionalExpression
+src/components/Captcha.tsx:55:9
+-       if (window.grecaptcha) {
++       if (true) {
+Tests ran:
+    US-001 external participant form AC-001-09 loads the Google reCAPTCHA widget with the configured site key outside test mode
+    Captcha renders the Google widget once loaded, resets it and reports expiry
+    Captcha renders immediately when the library is already present and adds no second script
+
+
+[Survived] ConditionalExpression
+src/components/Captcha.tsx:55:9
+-       if (window.grecaptcha) {
++       if (false) {
+Tests ran:
+    US-001 external participant form AC-001-09 loads the Google reCAPTCHA widget with the configured site key outside test mode
+    Captcha renders the Google widget once loaded, resets it and reports expiry
+    Captcha renders immediately when the library is already present and adds no second script
+
+
+[Survived] ConditionalExpression
+src/components/Captcha.tsx:60:9
+-       if (!document.querySelector(`script[src^="${SCRIPT_URL}"]`)) {
++       if (true) {
+Tests ran:
+    US-001 external participant form AC-001-09 loads the Google reCAPTCHA widget with the configured site key outside test mode
+    Captcha renders the Google widget once loaded, resets it and reports expiry
+
+
+[Survived] BooleanLiteral
+src/components/Captcha.tsx:40:42
+-     const [checked, setChecked] = useState(false);
++     const [checked, setChecked] = useState(true);
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 15 more tests!
+
+
+[Survived] CallExpression
+src/components/Captcha.tsx:65:7
+-         document.head.appendChild(script);
++         ;
+Tests ran:
+    US-001 external participant form AC-001-09 loads the Google reCAPTCHA widget with the configured site key outside test mode
+    Captcha renders the Google widget once loaded, resets it and reports expiry
+
+
+[Survived] StringLiteral
+src/components/Captcha.tsx:60:33
+-       if (!document.querySelector(`script[src^="${SCRIPT_URL}"]`)) {
++       if (!document.querySelector(``)) {
+Tests ran:
+    US-001 external participant form AC-001-09 loads the Google reCAPTCHA widget with the configured site key outside test mode
+    Captcha renders the Google widget once loaded, resets it and reports expiry
+
+
+[Survived] ConditionalExpression
+src/components/Captcha.tsx:43:9
+-       if (testMode) {
++       if (true) {
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 15 more tests!
+
+
+[Survived] StringLiteral
+src/components/Captcha.tsx:62:20
+-         script.src = `${SCRIPT_URL}?onload=${ONLOAD}&render=explicit`;
++         script.src = ``;
+Tests ran:
+    US-001 external participant form AC-001-09 loads the Google reCAPTCHA widget with the configured site key outside test mode
+    Captcha renders the Google widget once loaded, resets it and reports expiry
+
+
+[Survived] BlockStatement
+src/components/Captcha.tsx:43:19
+-       if (testMode) {
+-         return;
+-       }
++       if (testMode) {}
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 12 more tests!
+
+
+[Survived] BooleanLiteral
+src/components/Captcha.tsx:64:22
+-         script.defer = true;
++         script.defer = false;
+Tests ran:
+    US-001 external participant form AC-001-09 loads the Google reCAPTCHA widget with the configured site key outside test mode
+    Captcha renders the Google widget once loaded, resets it and reports expiry
+
+
+[Survived] BooleanLiteral
+src/components/Captcha.tsx:60:9
+-       if (!document.querySelector(`script[src^="${SCRIPT_URL}"]`)) {
++       if (document.querySelector(`script[src^="${SCRIPT_URL}"]`)) {
+Tests ran:
+    US-001 external participant form AC-001-09 loads the Google reCAPTCHA widget with the configured site key outside test mode
+    Captcha renders the Google widget once loaded, resets it and reports expiry
+
+
+[Survived] StringLiteral
+src/components/Captcha.tsx:61:45
+-         const script = document.createElement("script");
++         const script = document.createElement("");
+Tests ran:
+    US-001 external participant form AC-001-09 loads the Google reCAPTCHA widget with the configured site key outside test mode
+    Captcha renders the Google widget once loaded, resets it and reports expiry
+
+
+[Survived] BooleanLiteral
+src/components/Captcha.tsx:63:22
+-         script.async = true;
++         script.async = false;
+Tests ran:
+    US-001 external participant form AC-001-09 loads the Google reCAPTCHA widget with the configured site key outside test mode
+    Captcha renders the Google widget once loaded, resets it and reports expiry
+
+
+[Survived] ConditionalExpression
+src/components/Captcha.tsx:60:9
+-       if (!document.querySelector(`script[src^="${SCRIPT_URL}"]`)) {
++       if (false) {
+Tests ran:
+    US-001 external participant form AC-001-09 loads the Google reCAPTCHA widget with the configured site key outside test mode
+    Captcha renders the Google widget once loaded, resets it and reports expiry
+
+
+[Survived] BlockStatement
+src/components/Captcha.tsx:60:66
+-       if (!document.querySelector(`script[src^="${SCRIPT_URL}"]`)) {
+-         const script = document.createElement("script");
+-         script.src = `${SCRIPT_URL}?onload=${ONLOAD}&render=explicit`;
+-         script.async = true;
+-         script.defer = true;
+-         document.head.appendChild(script);
+-       }
++       if (!document.querySelector(`script[src^="${SCRIPT_URL}"]`)) {}
+Tests ran:
+    US-001 external participant form AC-001-09 loads the Google reCAPTCHA widget with the configured site key outside test mode
+    Captcha renders the Google widget once loaded, resets it and reports expiry
+
+
+[Survived] ConditionalExpression
+src/components/Captcha.tsx:70:59
+-       if (!testMode && resetKey > 0 && window.grecaptcha && widgetId.current !== null) {
++       if (!testMode && resetKey > 0 && window.grecaptcha && true) {
+Tests ran:
+    Captcha renders the Google widget once loaded, resets it and reports expiry
+
+
+[Survived] EqualityOperator
+src/components/Captcha.tsx:70:22
+-       if (!testMode && resetKey > 0 && window.grecaptcha && widgetId.current !== null) {
++       if (!testMode && resetKey >= 0 && window.grecaptcha && widgetId.current !== null) {
+Tests ran:
+    US-001 external participant form AC-001-09 loads the Google reCAPTCHA widget with the configured site key outside test mode
+    Captcha renders the Google widget once loaded, resets it and reports expiry
+    Captcha renders immediately when the library is already present and adds no second script
+
+
+[Survived] CallExpression
+src/components/Captcha.tsx:72:7
+-         onToken(null);
++         ;
+Tests ran:
+    Captcha renders the Google widget once loaded, resets it and reports expiry
+
+
+[Survived] CallExpression
+src/components/Captcha.tsx:71:7
+-         window.grecaptcha.reset(widgetId.current);
++         ;
+Tests ran:
+    Captcha renders the Google widget once loaded, resets it and reports expiry
+
+
+[Survived] ConditionalExpression
+src/components/Captcha.tsx:70:22
+-       if (!testMode && resetKey > 0 && window.grecaptcha && widgetId.current !== null) {
++       if (!testMode && true && window.grecaptcha && widgetId.current !== null) {
+Tests ran:
+    US-001 external participant form AC-001-09 loads the Google reCAPTCHA widget with the configured site key outside test mode
+    Captcha renders the Google widget once loaded, resets it and reports expiry
+    Captcha renders immediately when the library is already present and adds no second script
+
+
+[Survived] BlockStatement
+src/components/Captcha.tsx:70:86
+-       if (!testMode && resetKey > 0 && window.grecaptcha && widgetId.current !== null) {
+-         window.grecaptcha.reset(widgetId.current);
+-         onToken(null);
+-       }
++       if (!testMode && resetKey > 0 && window.grecaptcha && widgetId.current !== null) {}
+Tests ran:
+    Captcha renders the Google widget once loaded, resets it and reports expiry
+
+
+[Survived] EqualityOperator
+src/components/Captcha.tsx:70:59
+-       if (!testMode && resetKey > 0 && window.grecaptcha && widgetId.current !== null) {
++       if (!testMode && resetKey > 0 && window.grecaptcha && widgetId.current === null) {
+Tests ran:
+    Captcha renders the Google widget once loaded, resets it and reports expiry
+
+
+[Survived] EqualityOperator
+src/components/Captcha.tsx:70:22
+-       if (!testMode && resetKey > 0 && window.grecaptcha && widgetId.current !== null) {
++       if (!testMode && resetKey <= 0 && window.grecaptcha && widgetId.current !== null) {
+Tests ran:
+    US-001 external participant form AC-001-09 loads the Google reCAPTCHA widget with the configured site key outside test mode
+    Captcha renders the Google widget once loaded, resets it and reports expiry
+    Captcha renders immediately when the library is already present and adds no second script
+
+
+[Survived] ConditionalExpression
+src/components/Captcha.tsx:70:9
+-       if (!testMode && resetKey > 0 && window.grecaptcha && widgetId.current !== null) {
++       if (true) {
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 15 more tests!
+
+
+[Survived] ArrayDeclaration
+src/components/Captcha.tsx:67:6
+-     }, [testMode, siteKey, onToken]);
++     }, []);
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 15 more tests!
+
+
+[Survived] LogicalOperator
+src/components/Captcha.tsx:70:9
+-       if (!testMode && resetKey > 0 && window.grecaptcha && widgetId.current !== null) {
++       if (!testMode && resetKey > 0 || window.grecaptcha && widgetId.current !== null) {
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 15 more tests!
+
+
+[Survived] ConditionalExpression
+src/components/Captcha.tsx:70:9
+-       if (!testMode && resetKey > 0 && window.grecaptcha && widgetId.current !== null) {
++       if (false) {
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 15 more tests!
+
+
+[Survived] StringLiteral
+src/components/Captcha.tsx:76:31
+-     const describedBy = error ? "captchaToken-error" : undefined;
++     const describedBy = error ? "" : undefined;
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    Captcha renders immediately when the library is already present and adds no second script
+    RegistrationForm marks invalid inputs
+
+
+[Survived] BooleanLiteral
+src/components/Captcha.tsx:70:9
+-       if (!testMode && resetKey > 0 && window.grecaptcha && widgetId.current !== null) {
++       if (testMode && resetKey > 0 && window.grecaptcha && widgetId.current !== null) {
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 15 more tests!
+
+
+[Survived] ConditionalExpression
+src/components/Captcha.tsx:70:9
+-       if (!testMode && resetKey > 0 && window.grecaptcha && widgetId.current !== null) {
++       if (true && window.grecaptcha && widgetId.current !== null) {
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 15 more tests!
+
+
+[Survived] BlockStatement
+src/components/Captcha.tsx:69:19
+-     useEffect(() => {
+-       if (!testMode && resetKey > 0 && window.grecaptcha && widgetId.current !== null) {
+-         window.grecaptcha.reset(widgetId.current);
+-         onToken(null);
+-       }
+-     }, [resetKey, testMode, onToken]);
++     useEffect(() => {}, [resetKey, testMode, onToken]);
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 15 more tests!
+
+
+[Survived] LogicalOperator
+src/components/Captcha.tsx:70:9
+-       if (!testMode && resetKey > 0 && window.grecaptcha && widgetId.current !== null) {
++       if (!testMode && resetKey > 0 && window.grecaptcha || widgetId.current !== null) {
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 15 more tests!
+
+
+[Survived] ConditionalExpression
+src/components/Captcha.tsx:70:9
+-       if (!testMode && resetKey > 0 && window.grecaptcha && widgetId.current !== null) {
++       if (true && widgetId.current !== null) {
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 15 more tests!
+
+
+[Survived] ArrayDeclaration
+src/components/Captcha.tsx:74:6
+-     }, [resetKey, testMode, onToken]);
++     }, []);
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 15 more tests!
+
+
+[Survived] CallExpression
+src/components/Captcha.tsx:86:15
+-                 setChecked(event.target.checked);
++                 ;
+Tests ran:
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+  and 7 more tests!
+
+
+[Survived] BlockStatement
+src/components/Captcha.tsx:85:34
+-               onChange={(event) => {
+-                 setChecked(event.target.checked);
+-                 onToken(event.target.checked ? TEST_MODE_TOKEN : null);
+-               }}
++               onChange={(event) => {}}
+Tests ran:
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+  and 7 more tests!
+
+
+[Survived] LogicalOperator
+src/components/Captcha.tsx:70:9
+-       if (!testMode && resetKey > 0 && window.grecaptcha && widgetId.current !== null) {
++       if (!testMode || resetKey > 0 && window.grecaptcha && widgetId.current !== null) {
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 15 more tests!
+
+
+[Survived] StringLiteral
+src/components/Captcha.tsx:89:14
+-             />{" "}
++             />{""}
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 12 more tests!
+
+
+[Survived] ConditionalExpression
+src/components/Captcha.tsx:95:8
+-         {error && (
+-           <p id="captchaToken-error" role="alert" className="field-error">
+-             {error}
+-           </p>
+-         )}
++         {false}
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 15 more tests!
+
+
+[Survived] ConditionalExpression
+src/components/Captcha.tsx:95:8
+-         {error && (
+-           <p id="captchaToken-error" role="alert" className="field-error">
+-             {error}
+-           </p>
+-         )}
++         {true}
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 15 more tests!
+
+
+[Survived] LogicalOperator
+src/components/Captcha.tsx:95:8
+-         {error && (
+-           <p id="captchaToken-error" role="alert" className="field-error">
+-             {error}
+-           </p>
+-         )}
++         {error || <p id="captchaToken-error" role="alert" className="field-error">
++             {error}
++           </p>}
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 15 more tests!
+
+
+[Survived] CallExpression
+src/components/Captcha.tsx:87:15
+-                 onToken(event.target.checked ? TEST_MODE_TOKEN : null);
++                 ;
+Tests ran:
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+  and 7 more tests!
+
+
+[Survived] ArrowFunction
+src/components/Confirmation.tsx:20:37
+-             {registration.options.map((option) => (
+-               <li key={option.id}>{option.name}</li>
+-             ))}
++             {registration.options.map(() => undefined)}
+Tests ran:
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+    US-004 registration confirmation AC-004-01 shows the confirmation only after the backend accepted the registration
+
+
+[Survived] EqualityOperator
+src/components/Confirmation.tsx:16:8
+-         {registration.options.length === 0 ? (
++         {registration.options.length !== 0 ? (
+Tests ran:
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+    US-004 registration confirmation AC-004-01 shows the confirmation only after the backend accepted the registration
+    Confirmation says when no activity was selected
+
+
+[Survived] BlockStatement
+src/components/Confirmation.tsx:8:63
+-   export default function Confirmation({ registration }: Props) {
+-     return (
+-       <section role="status" className="confirmation">
+-         <h2>Registration received</h2>
+-         <p>Reference: {registration.reference}</p>
+-         <p>
+-           {registration.firstName} {registration.lastName}
+-         </p>
+-         {registration.options.length === 0 ? (
+-           <p>No activities selected</p>
+-         ) : (
+-           <ul>
+-             {registration.options.map((option) => (
+-               <li key={option.id}>{option.name}</li>
+-             ))}
+-           </ul>
+-         )}
+-       </section>
+-     );
+-   }
++   export default function Confirmation({ registration }: Props) {}
+Tests ran:
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+    US-004 registration confirmation AC-004-01 shows the confirmation only after the backend accepted the registration
+    Confirmation says when no activity was selected
+
+
+[Survived] ConditionalExpression
+src/components/Confirmation.tsx:16:8
+-         {registration.options.length === 0 ? (
++         {false ? (
+Tests ran:
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+    US-004 registration confirmation AC-004-01 shows the confirmation only after the backend accepted the registration
+    Confirmation says when no activity was selected
+
+
+[Survived] ConditionalExpression
+src/components/Confirmation.tsx:16:8
+-         {registration.options.length === 0 ? (
++         {true ? (
+Tests ran:
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+    US-004 registration confirmation AC-004-01 shows the confirmation only after the backend accepted the registration
+    Confirmation says when no activity was selected
+
+
+[Survived] MethodExpression
+src/components/RegistrationForm.tsx:55:26
+-       on ? [...list, id] : list.filter((x) => x !== id);
++       on ? [...list, id] : list;
+Tests ran:
+    RegistrationForm explains rate limiting and allows deselecting options
+
+
+[Survived] ArrowFunction
+src/components/RegistrationForm.tsx:55:38
+-       on ? [...list, id] : list.filter((x) => x !== id);
++       on ? [...list, id] : list.filter(() => undefined);
+Tests ran:
+    RegistrationForm explains rate limiting and allows deselecting options
+
+
+[Survived] EqualityOperator
+src/components/RegistrationForm.tsx:55:45
+-       on ? [...list, id] : list.filter((x) => x !== id);
++       on ? [...list, id] : list.filter((x) => x === id);
+Tests ran:
+    RegistrationForm explains rate limiting and allows deselecting options
+
+
+[Survived] ConditionalExpression
+src/components/RegistrationForm.tsx:55:45
+-       on ? [...list, id] : list.filter((x) => x !== id);
++       on ? [...list, id] : list.filter((x) => true);
+Tests ran:
+    RegistrationForm explains rate limiting and allows deselecting options
+
+
+[Survived] ConditionalExpression
+src/components/RegistrationForm.tsx:55:45
+-       on ? [...list, id] : list.filter((x) => x !== id);
++       on ? [...list, id] : list.filter((x) => false);
+Tests ran:
+    RegistrationForm explains rate limiting and allows deselecting options
+
+
+[Survived] BlockStatement
+src/components/RegistrationForm.tsx:40:79
+-   export default function RegistrationForm({ config, type, onAccepted }: Props) {
+-     const [text, setText] = useState<Record<TextField, string>>(EMPTY_TEXT);
+-     const [optionIds, setOptionIds] = useState<string[]>([]);
+-     const [consentIds, setConsentIds] = useState<string[]>([]);
+-     const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+-     const [errors, setErrors] = useState<Record<string, string>>({});
+-     const [generalError, setGeneralError] = useState<string | null>(null);
+-     const [submitting, setSubmitting] = useState(false);
+-     const [captchaReset, setCaptchaReset] = useState(0);
+-     const onToken = useCallback((token: string | null) => setCaptchaToken(token), []);
+-     const fields = FIELDS[type];
+-     const options = config.options.filter((o) => o.audience.includes(type));
+-     const toggle = (list: string[], id: string, on: boolean) =>
+-       on ? [...list, id] : list.filter((x) => x !== id);
+-     async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+-       event.preventDefault();
+-       setGeneralError(null);
+-       const values: FormValues = { text, consentIds, captchaToken };
+-       const found = validate(values, type, config.consents);
+-       setErrors(found);
+-       if (Object.keys(found).length > 0 || !captchaToken) {
+-         return;
+-       }
+-       const body: RegistrationRequest = {
+-         type,
+-         ...Object.fromEntries(fields.map((f) => [f.id, text[f.id]])),
+-         firstName: text.firstName,
+-         lastName: text.lastName,
+-         email: text.email,
+-         optionIds: options.filter((o) => optionIds.includes(o.id)).map((o) => o.id),
+-         consentIds: config.consents.filter((c) => consentIds.includes(c.id)).map((c) => c.id),
+-         captchaToken,
+-       };
+-       setSubmitting(true);
+-       const result = await submitRegistration(body);
+-       setSubmitting(false);
+-       if (result.kind === "accepted") {
+-         onAccepted(result.registration);
+-         return;
+-       }
+-       setCaptchaReset((n) => n + 1);
+-       if (result.kind === "rejected") {
+-         const shown = new Set<string>([
+-           ...fields.map((f) => f.id),
+-           "optionIds",
+-           "captchaToken",
+-           ...config.consents.map((c) => `consents.${c.id}`),
+-         ]);
+-         const backendErrors: Record<string, string> = {};
+-         for (const error of result.fieldErrors) {
+-           backendErrors[error.field] = error.message;
+-         }
+-         setErrors(backendErrors);
+-         if (result.fieldErrors.some((e) => !shown.has(e.field))) {
+-           setGeneralError(GENERAL_ERROR);
+-         }
+-         return;
+-       }
+-       setGeneralError(result.status === 429 ? TOO_MANY_REQUESTS : GENERAL_ERROR);
+-     }
+-     const errorText = (id: string) =>
+-       errors[id] ? (
+-         <p id={`${id}-error`} role="alert" className="field-error">
+-           {errors[id]}
+-         </p>
+-       ) : null;
+-     return (
+-       <form aria-label="Registration form" noValidate onSubmit={handleSubmit}>
+-         {fields.map((field) => (
+-           <div className="field" key={field.id}>
+-             <label htmlFor={field.id}>{field.label}</label>
+-             <input
+-               id={field.id}
+-               name={field.id}
+-               type={field.type}
+-               autoComplete={field.type === "email" ? "email" : "off"}
+-               value={text[field.id]}
+-               aria-invalid={errors[field.id] ? true : undefined}
+-               aria-describedby={errors[field.id] ? `${field.id}-error` : undefined}
+-               onChange={(event) => setText({ ...text, [field.id]: event.target.value })}
+-             />
+-             {errorText(field.id)}
+-           </div>
+-         ))}
+-         {CATEGORIES.map(({ category, legend }) => {
+-           const inCategory = options.filter((o) => o.category === category);
+-           if (inCategory.length === 0) {
+-             return null;
+-           }
+-           return (
+-             <fieldset key={category}>
+-               <legend>{legend}</legend>
+-               {inCategory.map((option) => (
+-                 <label key={option.id} className="choice">
+-                   <input
+-                     type="checkbox"
+-                     value={option.id}
+-                     checked={optionIds.includes(option.id)}
+-                     onChange={(event) =>
+-                       setOptionIds(toggle(optionIds, option.id, event.target.checked))
+-                     }
+-                   />{" "}
+-                   {option.name}
+-                 </label>
+-               ))}
+-             </fieldset>
+-           );
+-         })}
+-         {errorText("optionIds")}
+-         <fieldset>
+-           <legend>Consents</legend>
+-           {config.consents.map((consent) => {
+-             const id = `consents.${consent.id}`;
+-             return (
+-               <div key={consent.id}>
+-                 <label className="choice">
+-                   <input
+-                     type="checkbox"
+-                     value={consent.id}
+-                     checked={consentIds.includes(consent.id)}
+-                     aria-describedby={errors[id] ? `${id}-error` : undefined}
+-                     onChange={(event) =>
+-                       setConsentIds(toggle(consentIds, consent.id, event.target.checked))
+-                     }
+-                   />{" "}
+-                   {consent.text}
+-                 </label>
+-                 {errorText(id)}
+-               </div>
+-             );
+-           })}
+-         </fieldset>
+-         <Captcha
+-           testMode={config.recaptcha.testMode}
+-           siteKey={config.recaptcha.siteKey}
+-           resetKey={captchaReset}
+-           error={errors.captchaToken}
+-           onToken={onToken}
+-         />
+-         {generalError && (
+-           <div id="form-error" role="alert" className="form-error">
+-             {generalError}
+-           </div>
+-         )}
+-         <button type="submit" disabled={submitting}>
+-           Register
+-         </button>
+-       </form>
+-     );
+-   }
++   export default function RegistrationForm({ config, type, onAccepted }: Props) {}
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 12 more tests!
+
+
+[Survived] ArrowFunction
+src/components/RegistrationForm.tsx:52:41
+-     const options = config.options.filter((o) => o.audience.includes(type));
++     const options = config.options.filter(() => undefined);
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 12 more tests!
+
+
+[Survived] ArrayDeclaration
+src/components/RegistrationForm.tsx:42:56
+-     const [optionIds, setOptionIds] = useState<string[]>([]);
++     const [optionIds, setOptionIds] = useState<string[]>(["Stryker was here"]);
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 12 more tests!
+
+
+[Survived] ArrayDeclaration
+src/components/RegistrationForm.tsx:55:10
+-       on ? [...list, id] : list.filter((x) => x !== id);
++       on ? [] : list.filter((x) => x !== id);
+Tests ran:
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+  and 6 more tests!
+
+
+[Survived] ArrowFunction
+src/components/RegistrationForm.tsx:54:18
+-     const toggle = (list: string[], id: string, on: boolean) =>
+-       on ? [...list, id] : list.filter((x) => x !== id);
++     const toggle = () => undefined;
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 12 more tests!
+
+
+[Survived] MethodExpression
+src/components/RegistrationForm.tsx:52:19
+-     const options = config.options.filter((o) => o.audience.includes(type));
++     const options = config.options;
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 12 more tests!
+
+
+[Survived] ArrayDeclaration
+src/components/RegistrationForm.tsx:43:58
+-     const [consentIds, setConsentIds] = useState<string[]>([]);
++     const [consentIds, setConsentIds] = useState<string[]>(["Stryker was here"]);
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 12 more tests!
+
+
+[Survived] BooleanLiteral
+src/components/RegistrationForm.tsx:47:48
+-     const [submitting, setSubmitting] = useState(false);
++     const [submitting, setSubmitting] = useState(true);
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 12 more tests!
+
+
+[Survived] ArrowFunction
+src/components/RegistrationForm.tsx:49:31
+-     const onToken = useCallback((token: string | null) => setCaptchaToken(token), []);
++     const onToken = useCallback(() => undefined, []);
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 12 more tests!
+
+
+[Survived] ArrowFunction
+src/components/RegistrationForm.tsx:68:40
+-         ...Object.fromEntries(fields.map((f) => [f.id, text[f.id]])),
++         ...Object.fromEntries(fields.map(() => undefined)),
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+    US-004 registration confirmation AC-004-01 shows the confirmation only after the backend accepted the registration
+  and 4 more tests!
+
+
+[Survived] ArrayDeclaration
+src/components/RegistrationForm.tsx:49:81
+-     const onToken = useCallback((token: string | null) => setCaptchaToken(token), []);
++     const onToken = useCallback((token: string | null) => setCaptchaToken(token), ["Stryker was here"]);
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 12 more tests!
+
+
+[Survived] LogicalOperator
+src/components/RegistrationForm.tsx:63:9
+-       if (Object.keys(found).length > 0 || !captchaToken) {
++       if (Object.keys(found).length > 0 && !captchaToken) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 8 more tests!
+
+
+[Survived] ArrowFunction
+src/components/RegistrationForm.tsx:72:33
+-         optionIds: options.filter((o) => optionIds.includes(o.id)).map((o) => o.id),
++         optionIds: options.filter(() => undefined).map((o) => o.id),
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+    US-004 registration confirmation AC-004-01 shows the confirmation only after the backend accepted the registration
+  and 4 more tests!
+
+
+[Survived] ArrayDeclaration
+src/components/RegistrationForm.tsx:68:47
+-         ...Object.fromEntries(fields.map((f) => [f.id, text[f.id]])),
++         ...Object.fromEntries(fields.map((f) => [])),
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+    US-004 registration confirmation AC-004-01 shows the confirmation only after the backend accepted the registration
+  and 4 more tests!
+
+
+[Survived] ConditionalExpression
+src/components/RegistrationForm.tsx:63:9
+-       if (Object.keys(found).length > 0 || !captchaToken) {
++       if (true) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 8 more tests!
+
+
+[Survived] ConditionalExpression
+src/components/RegistrationForm.tsx:63:9
+-       if (Object.keys(found).length > 0 || !captchaToken) {
++       if (false) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 8 more tests!
+
+
+[Survived] BooleanLiteral
+src/components/RegistrationForm.tsx:63:42
+-       if (Object.keys(found).length > 0 || !captchaToken) {
++       if (Object.keys(found).length > 0 || captchaToken) {
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+    US-004 registration confirmation AC-004-01 shows the confirmation only after the backend accepted the registration
+  and 4 more tests!
+
+
+[Survived] ObjectLiteral
+src/components/RegistrationForm.tsx:66:39
+-       const body: RegistrationRequest = {
+-         type,
+-         ...Object.fromEntries(fields.map((f) => [f.id, text[f.id]])),
+-         firstName: text.firstName,
+-         lastName: text.lastName,
+-         email: text.email,
+-         optionIds: options.filter((o) => optionIds.includes(o.id)).map((o) => o.id),
+-         consentIds: config.consents.filter((c) => consentIds.includes(c.id)).map((c) => c.id),
+-         captchaToken,
+-       };
++       const body: RegistrationRequest = {};
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+    US-004 registration confirmation AC-004-01 shows the confirmation only after the backend accepted the registration
+  and 4 more tests!
+
+
+[Survived] ArrowFunction
+src/components/RegistrationForm.tsx:72:70
+-         optionIds: options.filter((o) => optionIds.includes(o.id)).map((o) => o.id),
++         optionIds: options.filter((o) => optionIds.includes(o.id)).map(() => undefined),
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+    US-004 registration confirmation AC-004-01 shows the confirmation only after the backend accepted the registration
+  and 4 more tests!
+
+
+[Survived] BlockStatement
+src/components/RegistrationForm.tsx:63:57
+-       if (Object.keys(found).length > 0 || !captchaToken) {
+-         return;
+-       }
++       if (Object.keys(found).length > 0 || !captchaToken) {}
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-002 student form AC-002-03 requires the student fields before submission
+  and 1 more test!
+
+
+[Survived] EqualityOperator
+src/components/RegistrationForm.tsx:63:9
+-       if (Object.keys(found).length > 0 || !captchaToken) {
++       if (Object.keys(found).length <= 0 || !captchaToken) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 8 more tests!
+
+
+[Survived] EqualityOperator
+src/components/RegistrationForm.tsx:63:9
+-       if (Object.keys(found).length > 0 || !captchaToken) {
++       if (Object.keys(found).length >= 0 || !captchaToken) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 8 more tests!
+
+
+[Survived] MethodExpression
+src/components/RegistrationForm.tsx:72:18
+-         optionIds: options.filter((o) => optionIds.includes(o.id)).map((o) => o.id),
++         optionIds: options.map((o) => o.id),
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+    US-004 registration confirmation AC-004-01 shows the confirmation only after the backend accepted the registration
+  and 4 more tests!
+
+
+[Survived] CallExpression
+src/components/RegistrationForm.tsx:58:5
+-       event.preventDefault();
++       ;
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 8 more tests!
+
+
+[Survived] BlockStatement
+src/components/RegistrationForm.tsx:57:66
+-     async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+-       event.preventDefault();
+-       setGeneralError(null);
+-       const values: FormValues = { text, consentIds, captchaToken };
+-       const found = validate(values, type, config.consents);
+-       setErrors(found);
+-       if (Object.keys(found).length > 0 || !captchaToken) {
+-         return;
+-       }
+-       const body: RegistrationRequest = {
+-         type,
+-         ...Object.fromEntries(fields.map((f) => [f.id, text[f.id]])),
+-         firstName: text.firstName,
+-         lastName: text.lastName,
+-         email: text.email,
+-         optionIds: options.filter((o) => optionIds.includes(o.id)).map((o) => o.id),
+-         consentIds: config.consents.filter((c) => consentIds.includes(c.id)).map((c) => c.id),
+-         captchaToken,
+-       };
+-       setSubmitting(true);
+-       const result = await submitRegistration(body);
+-       setSubmitting(false);
+-       if (result.kind === "accepted") {
+-         onAccepted(result.registration);
+-         return;
+-       }
+-       setCaptchaReset((n) => n + 1);
+-       if (result.kind === "rejected") {
+-         const shown = new Set<string>([
+-           ...fields.map((f) => f.id),
+-           "optionIds",
+-           "captchaToken",
+-           ...config.consents.map((c) => `consents.${c.id}`),
+-         ]);
+-         const backendErrors: Record<string, string> = {};
+-         for (const error of result.fieldErrors) {
+-           backendErrors[error.field] = error.message;
+-         }
+-         setErrors(backendErrors);
+-         if (result.fieldErrors.some((e) => !shown.has(e.field))) {
+-           setGeneralError(GENERAL_ERROR);
+-         }
+-         return;
+-       }
+-       setGeneralError(result.status === 429 ? TOO_MANY_REQUESTS : GENERAL_ERROR);
+-     }
++     async function handleSubmit(event: FormEvent<HTMLFormElement>) {}
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 8 more tests!
+
+
+[Survived] CallExpression
+src/components/RegistrationForm.tsx:62:5
+-       setErrors(found);
++       ;
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 8 more tests!
+
+
+[Survived] MethodExpression
+src/components/RegistrationForm.tsx:73:19
+-         consentIds: config.consents.filter((c) => consentIds.includes(c.id)).map((c) => c.id),
++         consentIds: config.consents.map((c) => c.id),
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+    US-004 registration confirmation AC-004-01 shows the confirmation only after the backend accepted the registration
+  and 4 more tests!
+
+
+[Survived] BooleanLiteral
+src/components/RegistrationForm.tsx:76:19
+-       setSubmitting(true);
++       setSubmitting(false);
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+    US-004 registration confirmation AC-004-01 shows the confirmation only after the backend accepted the registration
+  and 4 more tests!
+
+
+[Survived] ObjectLiteral
+src/components/RegistrationForm.tsx:60:32
+-       const values: FormValues = { text, consentIds, captchaToken };
++       const values: FormValues = {};
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 8 more tests!
+
+
+[Survived] BlockStatement
+src/components/RegistrationForm.tsx:79:37
+-       if (result.kind === "accepted") {
+-         onAccepted(result.registration);
+-         return;
+-       }
++       if (result.kind === "accepted") {}
+Tests ran:
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+    US-004 registration confirmation AC-004-01 shows the confirmation only after the backend accepted the registration
+
+
+[Survived] ConditionalExpression
+src/components/RegistrationForm.tsx:79:9
+-       if (result.kind === "accepted") {
++       if (true) {
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+    US-004 registration confirmation AC-004-01 shows the confirmation only after the backend accepted the registration
+  and 4 more tests!
+
+
+[Survived] CallExpression
+src/components/RegistrationForm.tsx:59:5
+-       setGeneralError(null);
++       ;
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 8 more tests!
+
+
+[Survived] ConditionalExpression
+src/components/RegistrationForm.tsx:79:9
+-       if (result.kind === "accepted") {
++       if (false) {
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+    US-004 registration confirmation AC-004-01 shows the confirmation only after the backend accepted the registration
+  and 4 more tests!
+
+
+[Survived] EqualityOperator
+src/components/RegistrationForm.tsx:79:9
+-       if (result.kind === "accepted") {
++       if (result.kind !== "accepted") {
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+    US-004 registration confirmation AC-004-01 shows the confirmation only after the backend accepted the registration
+  and 4 more tests!
+
+
+[Survived] ArrowFunction
+src/components/RegistrationForm.tsx:73:42
+-         consentIds: config.consents.filter((c) => consentIds.includes(c.id)).map((c) => c.id),
++         consentIds: config.consents.filter(() => undefined).map((c) => c.id),
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+    US-004 registration confirmation AC-004-01 shows the confirmation only after the backend accepted the registration
+  and 4 more tests!
+
+
+[Survived] BooleanLiteral
+src/components/RegistrationForm.tsx:78:19
+-       setSubmitting(false);
++       setSubmitting(true);
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+    US-004 registration confirmation AC-004-01 shows the confirmation only after the backend accepted the registration
+  and 4 more tests!
+
+
+[Survived] ConditionalExpression
+src/components/RegistrationForm.tsx:63:9
+-       if (Object.keys(found).length > 0 || !captchaToken) {
++       if (false || !captchaToken) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 8 more tests!
+
+
+[Survived] BlockStatement
+src/components/RegistrationForm.tsx:84:37
+-       if (result.kind === "rejected") {
+-         const shown = new Set<string>([
+-           ...fields.map((f) => f.id),
+-           "optionIds",
+-           "captchaToken",
+-           ...config.consents.map((c) => `consents.${c.id}`),
+-         ]);
+-         const backendErrors: Record<string, string> = {};
+-         for (const error of result.fieldErrors) {
+-           backendErrors[error.field] = error.message;
+-         }
+-         setErrors(backendErrors);
+-         if (result.fieldErrors.some((e) => !shown.has(e.field))) {
+-           setGeneralError(GENERAL_ERROR);
+-         }
+-         return;
+-       }
++       if (result.kind === "rejected") {}
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    RegistrationForm shows a general error for field errors it cannot place
+
+
+[Survived] CallExpression
+src/components/RegistrationForm.tsx:97:9
+-           setGeneralError(GENERAL_ERROR);
++           ;
+Tests ran:
+    RegistrationForm shows a general error for field errors it cannot place
+
+
+[Survived] CallExpression
+src/components/RegistrationForm.tsx:80:7
+-         onAccepted(result.registration);
++         ;
+Tests ran:
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+    US-004 registration confirmation AC-004-01 shows the confirmation only after the backend accepted the registration
+
+
+[Survived] StringLiteral
+src/components/RegistrationForm.tsx:87:9
+-           "optionIds",
++           "",
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    RegistrationForm shows a general error for field errors it cannot place
+
+
+[Survived] StringLiteral
+src/components/RegistrationForm.tsx:79:25
+-       if (result.kind === "accepted") {
++       if (result.kind === "") {
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+    US-004 registration confirmation AC-004-01 shows the confirmation only after the backend accepted the registration
+  and 4 more tests!
+
+
+[Survived] StringLiteral
+src/components/RegistrationForm.tsx:89:39
+-           ...config.consents.map((c) => `consents.${c.id}`),
++           ...config.consents.map((c) => ``),
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    RegistrationForm shows a general error for field errors it cannot place
+
+
+[Survived] BlockStatement
+src/components/RegistrationForm.tsx:96:64
+-         if (result.fieldErrors.some((e) => !shown.has(e.field))) {
+-           setGeneralError(GENERAL_ERROR);
+-         }
++         if (result.fieldErrors.some((e) => !shown.has(e.field))) {}
+Tests ran:
+    RegistrationForm shows a general error for field errors it cannot place
+
+
+[Survived] ArrowFunction
+src/components/RegistrationForm.tsx:89:32
+-           ...config.consents.map((c) => `consents.${c.id}`),
++           ...config.consents.map(() => undefined),
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    RegistrationForm shows a general error for field errors it cannot place
+
+
+[Survived] ArrowFunction
+src/components/RegistrationForm.tsx:73:80
+-         consentIds: config.consents.filter((c) => consentIds.includes(c.id)).map((c) => c.id),
++         consentIds: config.consents.filter((c) => consentIds.includes(c.id)).map(() => undefined),
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+    US-004 registration confirmation AC-004-01 shows the confirmation only after the backend accepted the registration
+  and 4 more tests!
+
+
+[Survived] ArrayDeclaration
+src/components/RegistrationForm.tsx:85:37
+-         const shown = new Set<string>([
+-           ...fields.map((f) => f.id),
+-           "optionIds",
+-           "captchaToken",
+-           ...config.consents.map((c) => `consents.${c.id}`),
+-         ]);
++         const shown = new Set<string>([]);
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    RegistrationForm shows a general error for field errors it cannot place
+
+
+[Survived] ArrowFunction
+src/components/RegistrationForm.tsx:83:21
+-       setCaptchaReset((n) => n + 1);
++       setCaptchaReset(() => undefined);
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-004 registration confirmation AC-004-02 keeps the values and shows a general error when the backend fails
+    US-004 registration confirmation AC-004-02 shows a general error without details when the network fails
+  and 2 more tests!
+
+
+[Survived] ArrowFunction
+src/components/RegistrationForm.tsx:86:23
+-           ...fields.map((f) => f.id),
++           ...fields.map(() => undefined),
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    RegistrationForm shows a general error for field errors it cannot place
+
+
+[Survived] ConditionalExpression
+src/components/RegistrationForm.tsx:84:9
+-       if (result.kind === "rejected") {
++       if (true) {
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-004 registration confirmation AC-004-02 keeps the values and shows a general error when the backend fails
+    US-004 registration confirmation AC-004-02 shows a general error without details when the network fails
+  and 2 more tests!
+
+
+[Survived] StringLiteral
+src/components/RegistrationForm.tsx:88:9
+-           "captchaToken",
++           "",
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    RegistrationForm shows a general error for field errors it cannot place
+
+
+[Survived] StringLiteral
+src/components/RegistrationForm.tsx:84:25
+-       if (result.kind === "rejected") {
++       if (result.kind === "") {
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-004 registration confirmation AC-004-02 keeps the values and shows a general error when the backend fails
+    US-004 registration confirmation AC-004-02 shows a general error without details when the network fails
+  and 2 more tests!
+
+
+[Survived] ArrowFunction
+src/components/RegistrationForm.tsx:96:35
+-         if (result.fieldErrors.some((e) => !shown.has(e.field))) {
++         if (result.fieldErrors.some(() => undefined)) {
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    RegistrationForm shows a general error for field errors it cannot place
+
+
+[Survived] CallExpression
+src/components/RegistrationForm.tsx:95:7
+-         setErrors(backendErrors);
++         ;
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    RegistrationForm shows a general error for field errors it cannot place
+
+
+[Survived] ConditionalExpression
+src/components/RegistrationForm.tsx:96:11
+-         if (result.fieldErrors.some((e) => !shown.has(e.field))) {
++         if (true) {
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    RegistrationForm shows a general error for field errors it cannot place
+
+
+[Survived] BlockStatement
+src/components/RegistrationForm.tsx:92:47
+-         for (const error of result.fieldErrors) {
+-           backendErrors[error.field] = error.message;
+-         }
++         for (const error of result.fieldErrors) {}
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    RegistrationForm shows a general error for field errors it cannot place
+
+
+[Survived] ConditionalExpression
+src/components/RegistrationForm.tsx:84:9
+-       if (result.kind === "rejected") {
++       if (false) {
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-004 registration confirmation AC-004-02 keeps the values and shows a general error when the backend fails
+    US-004 registration confirmation AC-004-02 shows a general error without details when the network fails
+  and 2 more tests!
+
+
+[Survived] ConditionalExpression
+src/components/RegistrationForm.tsx:101:21
+-       setGeneralError(result.status === 429 ? TOO_MANY_REQUESTS : GENERAL_ERROR);
++       setGeneralError(false ? TOO_MANY_REQUESTS : GENERAL_ERROR);
+Tests ran:
+    US-004 registration confirmation AC-004-02 keeps the values and shows a general error when the backend fails
+    US-004 registration confirmation AC-004-02 shows a general error without details when the network fails
+    RegistrationForm explains rate limiting and allows deselecting options
+
+
+[Survived] MethodExpression
+src/components/RegistrationForm.tsx:96:11
+-         if (result.fieldErrors.some((e) => !shown.has(e.field))) {
++         if (result.fieldErrors.every(e => !shown.has(e.field))) {
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    RegistrationForm shows a general error for field errors it cannot place
+
+
+[Survived] ConditionalExpression
+src/components/RegistrationForm.tsx:96:11
+-         if (result.fieldErrors.some((e) => !shown.has(e.field))) {
++         if (false) {
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    RegistrationForm shows a general error for field errors it cannot place
+
+
+[Survived] EqualityOperator
+src/components/RegistrationForm.tsx:101:21
+-       setGeneralError(result.status === 429 ? TOO_MANY_REQUESTS : GENERAL_ERROR);
++       setGeneralError(result.status !== 429 ? TOO_MANY_REQUESTS : GENERAL_ERROR);
+Tests ran:
+    US-004 registration confirmation AC-004-02 keeps the values and shows a general error when the backend fails
+    US-004 registration confirmation AC-004-02 shows a general error without details when the network fails
+    RegistrationForm explains rate limiting and allows deselecting options
+
+
+[Survived] EqualityOperator
+src/components/RegistrationForm.tsx:84:9
+-       if (result.kind === "rejected") {
++       if (result.kind !== "rejected") {
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-004 registration confirmation AC-004-02 keeps the values and shows a general error when the backend fails
+    US-004 registration confirmation AC-004-02 shows a general error without details when the network fails
+  and 2 more tests!
+
+
+[Survived] BooleanLiteral
+src/components/RegistrationForm.tsx:96:42
+-         if (result.fieldErrors.some((e) => !shown.has(e.field))) {
++         if (result.fieldErrors.some((e) => shown.has(e.field))) {
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    RegistrationForm shows a general error for field errors it cannot place
+
+
+[Survived] ArithmeticOperator
+src/components/RegistrationForm.tsx:83:28
+-       setCaptchaReset((n) => n + 1);
++       setCaptchaReset((n) => n - 1);
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-004 registration confirmation AC-004-02 keeps the values and shows a general error when the backend fails
+    US-004 registration confirmation AC-004-02 shows a general error without details when the network fails
+  and 2 more tests!
+
+
+[Survived] ConditionalExpression
+src/components/RegistrationForm.tsx:101:21
+-       setGeneralError(result.status === 429 ? TOO_MANY_REQUESTS : GENERAL_ERROR);
++       setGeneralError(true ? TOO_MANY_REQUESTS : GENERAL_ERROR);
+Tests ran:
+    US-004 registration confirmation AC-004-02 keeps the values and shows a general error when the backend fails
+    US-004 registration confirmation AC-004-02 shows a general error without details when the network fails
+    RegistrationForm explains rate limiting and allows deselecting options
+
+
+[Survived] BlockStatement
+src/components/RegistrationForm.tsx:132:38
+-           if (inCategory.length === 0) {
+-             return null;
+-           }
++           if (inCategory.length === 0) {}
+Tests ran:
+    RegistrationForm shows a general error for field errors it cannot place
+    RegistrationForm explains rate limiting and allows deselecting options
+    RegistrationForm marks invalid inputs
+
+
+[Survived] StringLiteral
+src/components/RegistrationForm.tsx:123:50
+-               aria-describedby={errors[field.id] ? `${field.id}-error` : undefined}
++               aria-describedby={errors[field.id] ? `` : undefined}
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 2 more tests!
+
+
+[Survived] StringLiteral
+src/components/RegistrationForm.tsx:106:14
+-         <p id={`${id}-error`} role="alert" className="field-error">
++         <p id={``} role="alert" className="field-error">
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 2 more tests!
+
+
+[Survived] ConditionalExpression
+src/components/RegistrationForm.tsx:120:27
+-               autoComplete={field.type === "email" ? "email" : "off"}
++               autoComplete={true ? "email" : "off"}
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 12 more tests!
+
+
+[Survived] ConditionalExpression
+src/components/RegistrationForm.tsx:120:27
+-               autoComplete={field.type === "email" ? "email" : "off"}
++               autoComplete={false ? "email" : "off"}
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 12 more tests!
+
+
+[Survived] StringLiteral
+src/components/RegistrationForm.tsx:120:42
+-               autoComplete={field.type === "email" ? "email" : "off"}
++               autoComplete={field.type === "" ? "email" : "off"}
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 12 more tests!
+
+
+[Survived] StringLiteral
+src/components/RegistrationForm.tsx:120:62
+-               autoComplete={field.type === "email" ? "email" : "off"}
++               autoComplete={field.type === "email" ? "email" : ""}
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 12 more tests!
+
+
+[Survived] BlockStatement
+src/components/RegistrationForm.tsx:130:49
+-         {CATEGORIES.map(({ category, legend }) => {
+-           const inCategory = options.filter((o) => o.category === category);
+-           if (inCategory.length === 0) {
+-             return null;
+-           }
+-           return (
+-             <fieldset key={category}>
+-               <legend>{legend}</legend>
+-               {inCategory.map((option) => (
+-                 <label key={option.id} className="choice">
+-                   <input
+-                     type="checkbox"
+-                     value={option.id}
+-                     checked={optionIds.includes(option.id)}
+-                     onChange={(event) =>
+-                       setOptionIds(toggle(optionIds, option.id, event.target.checked))
+-                     }
+-                   />{" "}
+-                   {option.name}
+-                 </label>
+-               ))}
+-             </fieldset>
+-           );
+-         })}
++         {CATEGORIES.map(({ category, legend }) => {})}
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 12 more tests!
+
+
+[Survived] BooleanLiteral
+src/components/RegistrationForm.tsx:122:46
+-               aria-invalid={errors[field.id] ? true : undefined}
++               aria-invalid={errors[field.id] ? false : undefined}
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 2 more tests!
+
+
+[Survived] ArrowFunction
+src/components/RegistrationForm.tsx:131:43
+-           const inCategory = options.filter((o) => o.category === category);
++           const inCategory = options.filter(() => undefined);
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 12 more tests!
+
+
+[Survived] StringLiteral
+src/components/RegistrationForm.tsx:167:50
+-                     aria-describedby={errors[id] ? `${id}-error` : undefined}
++                     aria-describedby={errors[id] ? `` : undefined}
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    RegistrationForm marks invalid inputs
+
+
+[Survived] EqualityOperator
+src/components/RegistrationForm.tsx:131:50
+-           const inCategory = options.filter((o) => o.category === category);
++           const inCategory = options.filter((o) => o.category !== category);
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 12 more tests!
+
+
+[Survived] ConditionalExpression
+src/components/RegistrationForm.tsx:131:50
+-           const inCategory = options.filter((o) => o.category === category);
++           const inCategory = options.filter((o) => false);
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 12 more tests!
+
+
+[Survived] ArrowFunction
+src/components/RegistrationForm.tsx:104:21
+-     const errorText = (id: string) =>
+-       errors[id] ? (
+-         <p id={`${id}-error`} role="alert" className="field-error">
+-           {errors[id]}
+-         </p>
+-       ) : null;
++     const errorText = () => undefined;
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 12 more tests!
+
+
+[Survived] ArrowFunction
+src/components/RegistrationForm.tsx:113:19
+-         {fields.map((field) => (
+-           <div className="field" key={field.id}>
+-             <label htmlFor={field.id}>{field.label}</label>
+-             <input
+-               id={field.id}
+-               name={field.id}
+-               type={field.type}
+-               autoComplete={field.type === "email" ? "email" : "off"}
+-               value={text[field.id]}
+-               aria-invalid={errors[field.id] ? true : undefined}
+-               aria-describedby={errors[field.id] ? `${field.id}-error` : undefined}
+-               onChange={(event) => setText({ ...text, [field.id]: event.target.value })}
+-             />
+-             {errorText(field.id)}
+-           </div>
+-         ))}
++         {fields.map(() => undefined)}
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 12 more tests!
+
+
+[Survived] ArrowFunction
+src/components/RegistrationForm.tsx:138:29
+-               {inCategory.map((option) => (
+-                 <label key={option.id} className="choice">
+-                   <input
+-                     type="checkbox"
+-                     value={option.id}
+-                     checked={optionIds.includes(option.id)}
+-                     onChange={(event) =>
+-                       setOptionIds(toggle(optionIds, option.id, event.target.checked))
+-                     }
+-                   />{" "}
+-                   {option.name}
+-                 </label>
+-               ))}
++               {inCategory.map(() => undefined)}
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 12 more tests!
+
+
+[Survived] MethodExpression
+src/components/RegistrationForm.tsx:131:28
+-           const inCategory = options.filter((o) => o.category === category);
++           const inCategory = options;
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 12 more tests!
+
+
+[Survived] ObjectLiteral
+src/components/RegistrationForm.tsx:124:42
+-               onChange={(event) => setText({ ...text, [field.id]: event.target.value })}
++               onChange={(event) => setText({})}
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 7 more tests!
+
+
+[Survived] StringLiteral
+src/components/RegistrationForm.tsx:120:52
+-               autoComplete={field.type === "email" ? "email" : "off"}
++               autoComplete={field.type === "email" ? "" : "off"}
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 12 more tests!
+
+
+[Survived] ConditionalExpression
+src/components/RegistrationForm.tsx:132:13
+-           if (inCategory.length === 0) {
++           if (false) {
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 12 more tests!
+
+
+[Survived] EqualityOperator
+src/components/RegistrationForm.tsx:120:27
+-               autoComplete={field.type === "email" ? "email" : "off"}
++               autoComplete={field.type !== "email" ? "email" : "off"}
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 12 more tests!
+
+
+[Survived] ArrowFunction
+src/components/RegistrationForm.tsx:144:29
+-                     onChange={(event) =>
+-                       setOptionIds(toggle(optionIds, option.id, event.target.checked))
++                     onChange={() => undefined
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 12 more tests!
+
+
+[Survived] ArrowFunction
+src/components/RegistrationForm.tsx:124:23
+-               onChange={(event) => setText({ ...text, [field.id]: event.target.value })}
++               onChange={() => undefined}
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 12 more tests!
+
+
+[Survived] StringLiteral
+src/components/RegistrationForm.tsx:154:18
+-         {errorText("optionIds")}
++         {errorText("")}
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 12 more tests!
+
+
+[Survived] ConditionalExpression
+src/components/RegistrationForm.tsx:132:13
+-           if (inCategory.length === 0) {
++           if (true) {
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 12 more tests!
+
+
+[Survived] StringLiteral
+src/components/RegistrationForm.tsx:159:22
+-             const id = `consents.${consent.id}`;
++             const id = ``;
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 12 more tests!
+
+
+[Survived] ConditionalExpression
+src/components/RegistrationForm.tsx:131:50
+-           const inCategory = options.filter((o) => o.category === category);
++           const inCategory = options.filter((o) => true);
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 12 more tests!
+
+
+[Survived] EqualityOperator
+src/components/RegistrationForm.tsx:132:13
+-           if (inCategory.length === 0) {
++           if (inCategory.length !== 0) {
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 12 more tests!
+
+
+[Survived] StringLiteral
+src/components/RegistrationForm.tsx:171:20
+-                   />{" "}
++                   />{""}
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 12 more tests!
+
+
+[Survived] BlockStatement
+src/components/RegistrationForm.tsx:158:43
+-           {config.consents.map((consent) => {
+-             const id = `consents.${consent.id}`;
+-             return (
+-               <div key={consent.id}>
+-                 <label className="choice">
+-                   <input
+-                     type="checkbox"
+-                     value={consent.id}
+-                     checked={consentIds.includes(consent.id)}
+-                     aria-describedby={errors[id] ? `${id}-error` : undefined}
+-                     onChange={(event) =>
+-                       setConsentIds(toggle(consentIds, consent.id, event.target.checked))
+-                     }
+-                   />{" "}
+-                   {consent.text}
+-                 </label>
+-                 {errorText(id)}
+-               </div>
+-             );
+-           })}
++           {config.consents.map((consent) => {})}
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 12 more tests!
+
+
+[Survived] StringLiteral
+src/components/RegistrationForm.tsx:147:20
+-                   />{" "}
++                   />{""}
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 12 more tests!
+
+
+[Survived] ArrowFunction
+src/components/RegistrationForm.tsx:168:29
+-                     onChange={(event) =>
+-                       setConsentIds(toggle(consentIds, consent.id, event.target.checked))
++                     onChange={() => undefined
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 12 more tests!
+
+
+[Survived] ConditionalExpression
+src/components/RegistrationForm.tsx:188:8
+-         {generalError && (
+-           <div id="form-error" role="alert" className="form-error">
+-             {generalError}
+-           </div>
+-         )}
++         {true}
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 12 more tests!
+
+
+[Survived] LogicalOperator
+src/components/RegistrationForm.tsx:188:8
+-         {generalError && (
+-           <div id="form-error" role="alert" className="form-error">
+-             {generalError}
+-           </div>
+-         )}
++         {generalError || <div id="form-error" role="alert" className="form-error">
++             {generalError}
++           </div>}
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 12 more tests!
+
+
+[Survived] ConditionalExpression
+src/components/RegistrationForm.tsx:188:8
+-         {generalError && (
+-           <div id="form-error" role="alert" className="form-error">
+-             {generalError}
+-           </div>
+-         )}
++         {false}
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 12 more tests!
+
+
+[Survived] StringLiteral
+src/components/RegistrationForm.tsx:26:10
+-     email: "",
++     email: "Stryker was here!",
+Ran all tests for this mutant.
+
+[Survived] BlockStatement
+src/api.ts:62:21
+-     if (!response.ok) {
+-       throw new Error(`form configuration unavailable (${response.status})`);
+-     }
++     if (!response.ok) {}
+Tests ran:
+    App shows a load error when the configuration is unavailable
+    api fails when the configuration cannot be loaded
+
+
+[Survived] StringLiteral
+src/api.ts:63:21
+-       throw new Error(`form configuration unavailable (${response.status})`);
++       throw new Error(``);
+Tests ran:
+    App shows a load error when the configuration is unavailable
+    api fails when the configuration cannot be loaded
+
+
+[Survived] BlockStatement
+src/api.ts:77:11
+-     } catch {
+-       return { kind: "failed", status: 0 };
+-     }
++     } catch {}
+Tests ran:
+    US-004 registration confirmation AC-004-02 shows a general error without details when the network fails
+    api turns network errors into a failure
+
+
+[Survived] ObjectLiteral
+src/api.ts:78:12
+-       return { kind: "failed", status: 0 };
++       return {};
+Tests ran:
+    US-004 registration confirmation AC-004-02 shows a general error without details when the network fails
+    api turns network errors into a failure
+
+
+[Survived] ObjectLiteral
+src/api.ts:74:16
+-         headers: { "Content-Type": "application/json", Accept: "application/json" },
++         headers: {},
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+    US-004 registration confirmation AC-004-01 shows the confirmation only after the backend accepted the registration
+  and 13 more tests!
+
+
+[Survived] BlockStatement
+src/api.ts:69:92
+-   export async function submitRegistration(body: RegistrationRequest): Promise<SubmitResult> {
+-     let response: Response;
+-     try {
+-       response = await fetch("/api/registrations", {
+-         method: "POST",
+-         headers: { "Content-Type": "application/json", Accept: "application/json" },
+-         body: JSON.stringify(body),
+-       });
+-     } catch {
+-       return { kind: "failed", status: 0 };
+-     }
+-     if (response.status === 201) {
+-       return { kind: "accepted", registration: (await response.json()) as RegistrationAccepted };
+-     }
+-     if (response.status === 400 || response.status === 409) {
+-       const fieldErrors = await readFieldErrors(response);
+-       if (fieldErrors.length > 0) {
+-         return { kind: "rejected", status: response.status, fieldErrors };
+-       }
+-     }
+-     return { kind: "failed", status: response.status };
+-   }
++   export async function submitRegistration(body: RegistrationRequest): Promise<SubmitResult> {}
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+    US-004 registration confirmation AC-004-01 shows the confirmation only after the backend accepted the registration
+  and 13 more tests!
+
+
+[Survived] ObjectLiteral
+src/api.ts:72:50
+-       response = await fetch("/api/registrations", {
+-         method: "POST",
+-         headers: { "Content-Type": "application/json", Accept: "application/json" },
+-         body: JSON.stringify(body),
+-       });
++       response = await fetch("/api/registrations", {});
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+    US-004 registration confirmation AC-004-01 shows the confirmation only after the backend accepted the registration
+  and 13 more tests!
+
+
+[Survived] StringLiteral
+src/api.ts:74:34
+-         headers: { "Content-Type": "application/json", Accept: "application/json" },
++         headers: { "Content-Type": "", Accept: "application/json" },
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+    US-004 registration confirmation AC-004-01 shows the confirmation only after the backend accepted the registration
+  and 13 more tests!
+
+
+[Survived] StringLiteral
+src/api.ts:72:28
+-       response = await fetch("/api/registrations", {
++       response = await fetch("", {
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+    US-004 registration confirmation AC-004-01 shows the confirmation only after the backend accepted the registration
+  and 13 more tests!
+
+
+[Survived] StringLiteral
+src/api.ts:78:20
+-       return { kind: "failed", status: 0 };
++       return { kind: "", status: 0 };
+Tests ran:
+    US-004 registration confirmation AC-004-02 shows a general error without details when the network fails
+    api turns network errors into a failure
+
+
+[Survived] StringLiteral
+src/api.ts:73:15
+-         method: "POST",
++         method: "",
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+    US-004 registration confirmation AC-004-01 shows the confirmation only after the backend accepted the registration
+  and 13 more tests!
+
+
+[Survived] BlockStatement
+src/api.ts:71:7
+-     try {
+-       response = await fetch("/api/registrations", {
+-         method: "POST",
+-         headers: { "Content-Type": "application/json", Accept: "application/json" },
+-         body: JSON.stringify(body),
+-       });
+-     } catch {
++     try {} catch {
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+    US-004 registration confirmation AC-004-01 shows the confirmation only after the backend accepted the registration
+  and 13 more tests!
+
+
+[Survived] StringLiteral
+src/api.ts:74:62
+-         headers: { "Content-Type": "application/json", Accept: "application/json" },
++         headers: { "Content-Type": "application/json", Accept: "" },
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+    US-004 registration confirmation AC-004-01 shows the confirmation only after the backend accepted the registration
+  and 13 more tests!
+
+
+[Survived] StringLiteral
+src/api.ts:61:32
+-     const response = await fetch("/api/form-config", { headers: { Accept: "application/json" } });
++     const response = await fetch("", { headers: { Accept: "application/json" } });
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 13 more tests!
+
+
+[Survived] ConditionalExpression
+src/api.ts:62:7
+-     if (!response.ok) {
++     if (false) {
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 13 more tests!
+
+
+[Survived] BlockStatement
+src/api.ts:80:32
+-     if (response.status === 201) {
+-       return { kind: "accepted", registration: (await response.json()) as RegistrationAccepted };
+-     }
++     if (response.status === 201) {}
+Tests ran:
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+    US-004 registration confirmation AC-004-01 shows the confirmation only after the backend accepted the registration
+    api posts JSON and returns the accepted registration
+
+
+[Survived] BooleanLiteral
+src/api.ts:62:7
+-     if (!response.ok) {
++     if (response.ok) {
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 13 more tests!
+
+
+[Survived] ObjectLiteral
+src/api.ts:61:63
+-     const response = await fetch("/api/form-config", { headers: { Accept: "application/json" } });
++     const response = await fetch("/api/form-config", { headers: {} });
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 13 more tests!
+
+
+[Survived] ConditionalExpression
+src/api.ts:62:7
+-     if (!response.ok) {
++     if (true) {
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 13 more tests!
+
+
+[Survived] StringLiteral
+src/api.ts:61:73
+-     const response = await fetch("/api/form-config", { headers: { Accept: "application/json" } });
++     const response = await fetch("/api/form-config", { headers: { Accept: "" } });
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 13 more tests!
+
+
+[Survived] BlockStatement
+src/api.ts:60:62
+-   export async function fetchFormConfig(): Promise<FormConfig> {
+-     const response = await fetch("/api/form-config", { headers: { Accept: "application/json" } });
+-     if (!response.ok) {
+-       throw new Error(`form configuration unavailable (${response.status})`);
+-     }
+-     return (await response.json()) as FormConfig;
+-   }
++   export async function fetchFormConfig(): Promise<FormConfig> {}
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 13 more tests!
+
+
+[Survived] ObjectLiteral
+src/api.ts:61:52
+-     const response = await fetch("/api/form-config", { headers: { Accept: "application/json" } });
++     const response = await fetch("/api/form-config", {});
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 13 more tests!
+
+
+[Survived] ObjectLiteral
+src/api.ts:81:12
+-       return { kind: "accepted", registration: (await response.json()) as RegistrationAccepted };
++       return {};
+Tests ran:
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+    US-004 registration confirmation AC-004-01 shows the confirmation only after the backend accepted the registration
+    api posts JSON and returns the accepted registration
+
+
+[Survived] StringLiteral
+src/api.ts:81:20
+-       return { kind: "accepted", registration: (await response.json()) as RegistrationAccepted };
++       return { kind: "", registration: (await response.json()) as RegistrationAccepted };
+Tests ran:
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+    US-004 registration confirmation AC-004-01 shows the confirmation only after the backend accepted the registration
+    api posts JSON and returns the accepted registration
+
+
+[Survived] ConditionalExpression
+src/api.ts:80:7
+-     if (response.status === 201) {
++     if (false) {
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+    US-004 registration confirmation AC-004-01 shows the confirmation only after the backend accepted the registration
+  and 11 more tests!
+
+
+[Survived] ArrayDeclaration
+src/api.ts:95:65
+-       return Array.isArray(body.fieldErrors) ? body.fieldErrors : [];
++       return Array.isArray(body.fieldErrors) ? body.fieldErrors : ["Stryker was here"];
+Tests ran:
+    api treats 400 {"message":"no list"} as a failure
+
+
+[Survived] ArrayDeclaration
+src/api.ts:97:12
+-       return [];
++       return ["Stryker was here"];
+Tests ran:
+    api treats 400 "not json" as a failure
+
+
+[Survived] BlockStatement
+src/api.ts:96:11
+-     } catch {
+-       return [];
+-     }
++     } catch {}
+Tests ran:
+    api treats 400 "not json" as a failure
+
+
+[Survived] ConditionalExpression
+src/api.ts:83:7
+-     if (response.status === 400 || response.status === 409) {
++     if (false) {
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-004 registration confirmation AC-004-02 keeps the values and shows a general error when the backend fails
+    RegistrationForm shows a general error for field errors it cannot place
+  and 8 more tests!
+
+
+[Survived] ConditionalExpression
+src/api.ts:80:7
+-     if (response.status === 201) {
++     if (true) {
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+    US-004 registration confirmation AC-004-01 shows the confirmation only after the backend accepted the registration
+  and 11 more tests!
+
+
+[Survived] EqualityOperator
+src/api.ts:80:7
+-     if (response.status === 201) {
++     if (response.status !== 201) {
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+    US-004 registration confirmation AC-004-01 shows the confirmation only after the backend accepted the registration
+  and 11 more tests!
+
+
+[Survived] LogicalOperator
+src/api.ts:83:7
+-     if (response.status === 400 || response.status === 409) {
++     if (response.status === 400 && response.status === 409) {
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-004 registration confirmation AC-004-02 keeps the values and shows a general error when the backend fails
+    RegistrationForm shows a general error for field errors it cannot place
+  and 8 more tests!
+
+
+[Survived] BlockStatement
+src/api.ts:85:33
+-       if (fieldErrors.length > 0) {
+-         return { kind: "rejected", status: response.status, fieldErrors };
+-       }
++       if (fieldErrors.length > 0) {}
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    RegistrationForm shows a general error for field errors it cannot place
+    api returns field errors of a 400 response
+  and 1 more test!
+
+
+[Survived] BlockStatement
+src/api.ts:83:59
+-     if (response.status === 400 || response.status === 409) {
+-       const fieldErrors = await readFieldErrors(response);
+-       if (fieldErrors.length > 0) {
+-         return { kind: "rejected", status: response.status, fieldErrors };
+-       }
+-     }
++     if (response.status === 400 || response.status === 409) {}
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    RegistrationForm shows a general error for field errors it cannot place
+    api returns field errors of a 400 response
+  and 4 more tests!
+
+
+[Survived] ConditionalExpression
+src/api.ts:83:7
+-     if (response.status === 400 || response.status === 409) {
++     if (false || response.status === 409) {
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-004 registration confirmation AC-004-02 keeps the values and shows a general error when the backend fails
+    RegistrationForm shows a general error for field errors it cannot place
+  and 8 more tests!
+
+
+[Survived] ConditionalExpression
+src/api.ts:83:34
+-     if (response.status === 400 || response.status === 409) {
++     if (response.status === 400 || false) {
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-004 registration confirmation AC-004-02 keeps the values and shows a general error when the backend fails
+    RegistrationForm explains rate limiting and allows deselecting options
+  and 3 more tests!
+
+
+[Survived] EqualityOperator
+src/api.ts:83:34
+-     if (response.status === 400 || response.status === 409) {
++     if (response.status === 400 || response.status !== 409) {
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-004 registration confirmation AC-004-02 keeps the values and shows a general error when the backend fails
+    RegistrationForm explains rate limiting and allows deselecting options
+  and 3 more tests!
+
+
+[Survived] StringLiteral
+src/api.ts:86:22
+-         return { kind: "rejected", status: response.status, fieldErrors };
++         return { kind: "", status: response.status, fieldErrors };
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    RegistrationForm shows a general error for field errors it cannot place
+    api returns field errors of a 400 response
+  and 1 more test!
+
+
+[Survived] EqualityOperator
+src/api.ts:83:7
+-     if (response.status === 400 || response.status === 409) {
++     if (response.status !== 400 || response.status === 409) {
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-004 registration confirmation AC-004-02 keeps the values and shows a general error when the backend fails
+    RegistrationForm shows a general error for field errors it cannot place
+  and 8 more tests!
+
+
+[Survived] ConditionalExpression
+src/api.ts:85:9
+-       if (fieldErrors.length > 0) {
++       if (true) {
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    RegistrationForm shows a general error for field errors it cannot place
+    api returns field errors of a 400 response
+  and 4 more tests!
+
+
+[Survived] ObjectLiteral
+src/api.ts:86:14
+-         return { kind: "rejected", status: response.status, fieldErrors };
++         return {};
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    RegistrationForm shows a general error for field errors it cannot place
+    api returns field errors of a 400 response
+  and 1 more test!
+
+
+[Survived] ConditionalExpression
+src/api.ts:83:7
+-     if (response.status === 400 || response.status === 409) {
++     if (true) {
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-004 registration confirmation AC-004-02 keeps the values and shows a general error when the backend fails
+    RegistrationForm shows a general error for field errors it cannot place
+  and 8 more tests!
+
+
+[Survived] ConditionalExpression
+src/api.ts:85:9
+-       if (fieldErrors.length > 0) {
++       if (false) {
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    RegistrationForm shows a general error for field errors it cannot place
+    api returns field errors of a 400 response
+  and 4 more tests!
+
+
+[Survived] StringLiteral
+src/api.ts:89:18
+-     return { kind: "failed", status: response.status };
++     return { kind: "", status: response.status };
+Tests ran:
+    US-004 registration confirmation AC-004-02 keeps the values and shows a general error when the backend fails
+    RegistrationForm explains rate limiting and allows deselecting options
+    api treats 400 {"fieldErrors":[]} as a failure
+  and 4 more tests!
+
+
+[Survived] ObjectLiteral
+src/api.ts:89:10
+-     return { kind: "failed", status: response.status };
++     return {};
+Tests ran:
+    US-004 registration confirmation AC-004-02 keeps the values and shows a general error when the backend fails
+    RegistrationForm explains rate limiting and allows deselecting options
+    api treats 400 {"fieldErrors":[]} as a failure
+  and 4 more tests!
+
+
+[Survived] EqualityOperator
+src/api.ts:85:9
+-       if (fieldErrors.length > 0) {
++       if (fieldErrors.length >= 0) {
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    RegistrationForm shows a general error for field errors it cannot place
+    api returns field errors of a 400 response
+  and 4 more tests!
+
+
+[Survived] EqualityOperator
+src/api.ts:85:9
+-       if (fieldErrors.length > 0) {
++       if (fieldErrors.length <= 0) {
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    RegistrationForm shows a general error for field errors it cannot place
+    api returns field errors of a 400 response
+  and 4 more tests!
+
+
+[Survived] BlockStatement
+src/api.ts:93:7
+-     try {
+-       const body = (await response.json()) as { fieldErrors?: FieldError[] };
+-       return Array.isArray(body.fieldErrors) ? body.fieldErrors : [];
+-     } catch {
++     try {} catch {
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    RegistrationForm shows a general error for field errors it cannot place
+    api returns field errors of a 400 response
+  and 4 more tests!
+
+
+[Survived] BlockStatement
+src/api.ts:92:75
+-   async function readFieldErrors(response: Response): Promise<FieldError[]> {
+-     try {
+-       const body = (await response.json()) as { fieldErrors?: FieldError[] };
+-       return Array.isArray(body.fieldErrors) ? body.fieldErrors : [];
+-     } catch {
+-       return [];
+-     }
+-   }
++   async function readFieldErrors(response: Response): Promise<FieldError[]> {}
+Tests ran:
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    RegistrationForm shows a general error for field errors it cannot place
+    api returns field errors of a 400 response
+  and 4 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.tsx:29:20
+-         .catch(() => active && setLoadFailed(true));
++         .catch(() => false);
+Tests ran:
+    App shows a load error when the configuration is unavailable
+
+
+[Survived] ConditionalExpression
+src/App.tsx:29:20
+-         .catch(() => active && setLoadFailed(true));
++         .catch(() => true);
+Tests ran:
+    App shows a load error when the configuration is unavailable
+
+
+[Survived] LogicalOperator
+src/App.tsx:29:20
+-         .catch(() => active && setLoadFailed(true));
++         .catch(() => active || setLoadFailed(true));
+Tests ran:
+    App shows a load error when the configuration is unavailable
+
+
+[Survived] BooleanLiteral
+src/App.tsx:29:44
+-         .catch(() => active && setLoadFailed(true));
++         .catch(() => active && setLoadFailed(false));
+Tests ran:
+    App shows a load error when the configuration is unavailable
+
+
+[Survived] BlockStatement
+src/App.tsx:25:19
+-     useEffect(() => {
+-       let active = true;
+-       fetchFormConfig()
+-         .then((loaded) => active && setConfig(loaded))
+-         .catch(() => active && setLoadFailed(true));
+-       return () => {
+-         active = false;
+-       };
+-     }, []);
++     useEffect(() => {}, []);
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 11 more tests!
+
+
+[Survived] BlockStatement
+src/App.tsx:30:18
+-       return () => {
+-         active = false;
+-       };
++       return () => {};
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 11 more tests!
+
+
+[Survived] BooleanLiteral
+src/App.tsx:31:16
+-         active = false;
++         active = true;
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 11 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.tsx:40:8
+-         {loadFailed && (
+-           <div role="alert" className="form-error">
+-             {LOAD_ERROR}
+-           </div>
+-         )}
++         {false}
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 11 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.tsx:45:8
+-         {!config && !loadFailed && <p>Loading…</p>}
++         {false}
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 11 more tests!
+
+
+[Survived] LogicalOperator
+src/App.tsx:40:8
+-         {loadFailed && (
+-           <div role="alert" className="form-error">
+-             {LOAD_ERROR}
+-           </div>
+-         )}
++         {loadFailed || <div role="alert" className="form-error">
++             {LOAD_ERROR}
++           </div>}
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 11 more tests!
+
+
+[Survived] StringLiteral
+src/App.tsx:35:26
+-     const title = config ? `${config.conferenceName} – registration` : "Conference registration";
++     const title = config ? `` : "Conference registration";
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 10 more tests!
+
+
+[Survived] BooleanLiteral
+src/App.tsx:26:18
+-       let active = true;
++       let active = false;
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 11 more tests!
+
+
+[Survived] StringLiteral
+src/App.tsx:35:70
+-     const title = config ? `${config.conferenceName} – registration` : "Conference registration";
++     const title = config ? `${config.conferenceName} – registration` : "";
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 11 more tests!
+
+
+[Survived] ArrowFunction
+src/App.tsx:28:13
+-         .then((loaded) => active && setConfig(loaded))
++         .then(() => undefined)
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 11 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.tsx:40:8
+-         {loadFailed && (
+-           <div role="alert" className="form-error">
+-             {LOAD_ERROR}
+-           </div>
+-         )}
++         {true}
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 11 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.tsx:28:25
+-         .then((loaded) => active && setConfig(loaded))
++         .then((loaded) => false)
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 10 more tests!
+
+
+[Survived] BlockStatement
+src/App.tsx:19:31
+-   export default function App() {
+-     const [config, setConfig] = useState<FormConfig | null>(null);
+-     const [loadFailed, setLoadFailed] = useState(false);
+-     const [type, setType] = useState<RegistrationType | null>(null);
+-     const [accepted, setAccepted] = useState<RegistrationAccepted | null>(null);
+-     useEffect(() => {
+-       let active = true;
+-       fetchFormConfig()
+-         .then((loaded) => active && setConfig(loaded))
+-         .catch(() => active && setLoadFailed(true));
+-       return () => {
+-         active = false;
+-       };
+-     }, []);
+-     const title = config ? `${config.conferenceName} – registration` : "Conference registration";
+-     return (
+-       <main>
+-         <h1>{title}</h1>
+-         {loadFailed && (
+-           <div role="alert" className="form-error">
+-             {LOAD_ERROR}
+-           </div>
+-         )}
+-         {!config && !loadFailed && <p>Loading…</p>}
+-         {config && accepted && <Confirmation registration={accepted} />}
+-         {config && !accepted && (
+-           <>
+-             <div role="radiogroup" aria-labelledby="type-label" className="type-choice">
+-               <span id="type-label">Registration type</span>
+-               {TYPES.map((t) => (
+-                 <label key={t.value} className="choice">
+-                   <input
+-                     type="radio"
+-                     name="type"
+-                     value={t.value}
+-                     checked={type === t.value}
+-                     onChange={() => setType(t.value)}
+-                   />{" "}
+-                   {t.label}
+-                 </label>
+-               ))}
+-             </div>
+-             {type && (
+-               <RegistrationForm key={type} config={config} type={type} onAccepted={setAccepted} />
+-             )}
+-           </>
+-         )}
+-       </main>
+-     );
+-   }
++   export default function App() {}
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 11 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.tsx:45:8
+-         {!config && !loadFailed && <p>Loading…</p>}
++         {true && <p>Loading…</p>}
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 11 more tests!
+
+
+[Survived] BooleanLiteral
+src/App.tsx:21:48
+-     const [loadFailed, setLoadFailed] = useState(false);
++     const [loadFailed, setLoadFailed] = useState(true);
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 11 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.tsx:28:25
+-         .then((loaded) => active && setConfig(loaded))
++         .then((loaded) => true)
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 10 more tests!
+
+
+[Survived] ArrayDeclaration
+src/App.tsx:33:6
+-     }, []);
++     }, ["Stryker was here"]);
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 11 more tests!
+
+
+[Survived] BooleanLiteral
+src/App.tsx:45:8
+-         {!config && !loadFailed && <p>Loading…</p>}
++         {config && !loadFailed && <p>Loading…</p>}
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 11 more tests!
+
+
+[Survived] ArrowFunction
+src/App.tsx:29:14
+-         .catch(() => active && setLoadFailed(true));
++         .catch(() => undefined);
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 11 more tests!
+
+
+[Survived] LogicalOperator
+src/App.tsx:28:25
+-         .then((loaded) => active && setConfig(loaded))
++         .then((loaded) => active || setConfig(loaded))
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 10 more tests!
+
+
+[Survived] BooleanLiteral
+src/App.tsx:45:19
+-         {!config && !loadFailed && <p>Loading…</p>}
++         {!config && loadFailed && <p>Loading…</p>}
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 11 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.tsx:45:8
+-         {!config && !loadFailed && <p>Loading…</p>}
++         {true}
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 11 more tests!
+
+
+[Survived] LogicalOperator
+src/App.tsx:45:8
+-         {!config && !loadFailed && <p>Loading…</p>}
++         {!config && !loadFailed || <p>Loading…</p>}
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 11 more tests!
+
+
+[Survived] LogicalOperator
+src/App.tsx:45:8
+-         {!config && !loadFailed && <p>Loading…</p>}
++         {!config || !loadFailed && <p>Loading…</p>}
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 11 more tests!
+
+
+[Survived] LogicalOperator
+src/App.tsx:46:8
+-         {config && accepted && <Confirmation registration={accepted} />}
++         {config && accepted || <Confirmation registration={accepted} />}
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 11 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.tsx:47:8
+-         {config && !accepted && (
+-           <>
+-             <div role="radiogroup" aria-labelledby="type-label" className="type-choice">
+-               <span id="type-label">Registration type</span>
+-               {TYPES.map((t) => (
+-                 <label key={t.value} className="choice">
+-                   <input
+-                     type="radio"
+-                     name="type"
+-                     value={t.value}
+-                     checked={type === t.value}
+-                     onChange={() => setType(t.value)}
+-                   />{" "}
+-                   {t.label}
+-                 </label>
+-               ))}
+-             </div>
+-             {type && (
+-               <RegistrationForm key={type} config={config} type={type} onAccepted={setAccepted} />
+-             )}
+-           </>
+-         )}
++         {true}
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 11 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.tsx:46:8
+-         {config && accepted && <Confirmation registration={accepted} />}
++         {true}
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 11 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.tsx:46:8
+-         {config && accepted && <Confirmation registration={accepted} />}
++         {true && <Confirmation registration={accepted} />}
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 11 more tests!
+
+
+[Survived] LogicalOperator
+src/App.tsx:46:8
+-         {config && accepted && <Confirmation registration={accepted} />}
++         {config || accepted && <Confirmation registration={accepted} />}
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 11 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.tsx:46:8
+-         {config && accepted && <Confirmation registration={accepted} />}
++         {false}
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 11 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.tsx:47:8
+-         {config && !accepted && (
+-           <>
+-             <div role="radiogroup" aria-labelledby="type-label" className="type-choice">
+-               <span id="type-label">Registration type</span>
+-               {TYPES.map((t) => (
+-                 <label key={t.value} className="choice">
+-                   <input
+-                     type="radio"
+-                     name="type"
+-                     value={t.value}
+-                     checked={type === t.value}
+-                     onChange={() => setType(t.value)}
+-                   />{" "}
+-                   {t.label}
+-                 </label>
+-               ))}
+-             </div>
+-             {type && (
+-               <RegistrationForm key={type} config={config} type={type} onAccepted={setAccepted} />
+-             )}
+-           </>
+-         )}
++         {false}
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 11 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.tsx:47:8
+-         {config && !accepted && (
++         {true && (
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 11 more tests!
+
+
+[Survived] LogicalOperator
+src/App.tsx:47:8
+-         {config && !accepted && (
++         {config || !accepted && (
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 11 more tests!
+
+
+[Survived] LogicalOperator
+src/App.tsx:47:8
+-         {config && !accepted && (
+-           <>
+-             <div role="radiogroup" aria-labelledby="type-label" className="type-choice">
+-               <span id="type-label">Registration type</span>
+-               {TYPES.map((t) => (
+-                 <label key={t.value} className="choice">
+-                   <input
+-                     type="radio"
+-                     name="type"
+-                     value={t.value}
+-                     checked={type === t.value}
+-                     onChange={() => setType(t.value)}
+-                   />{" "}
+-                   {t.label}
+-                 </label>
+-               ))}
+-             </div>
+-             {type && (
+-               <RegistrationForm key={type} config={config} type={type} onAccepted={setAccepted} />
+-             )}
+-           </>
+-         )}
++         {config && !accepted || <>
++             <div role="radiogroup" aria-labelledby="type-label" className="type-choice">
++               <span id="type-label">Registration type</span>
++               {TYPES.map(t => <label key={t.value} className="choice">
++                   <input type="radio" name="type" value={t.value} checked={type === t.value} onChange={() => setType(t.value)} />{" "}
++                   {t.label}
++                 </label>)}
++             </div>
++             {type && <RegistrationForm key={type} config={config} type={type} onAccepted={setAccepted} />}
++           </>}
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 11 more tests!
+
+
+[Survived] ArrowFunction
+src/App.tsx:58:29
+-                     onChange={() => setType(t.value)}
++                     onChange={() => undefined}
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 10 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.tsx:57:28
+-                     checked={type === t.value}
++                     checked={false}
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 10 more tests!
+
+
+[Survived] ArrowFunction
+src/App.tsx:51:24
+-               {TYPES.map((t) => (
+-                 <label key={t.value} className="choice">
+-                   <input
+-                     type="radio"
+-                     name="type"
+-                     value={t.value}
+-                     checked={type === t.value}
+-                     onChange={() => setType(t.value)}
+-                   />{" "}
+-                   {t.label}
+-                 </label>
+-               ))}
++               {TYPES.map(() => undefined)}
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 10 more tests!
+
+
+[Survived] BooleanLiteral
+src/App.tsx:47:18
+-         {config && !accepted && (
++         {config && accepted && (
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 10 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.tsx:57:28
+-                     checked={type === t.value}
++                     checked={true}
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 10 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.tsx:64:12
+-             {type && (
+-               <RegistrationForm key={type} config={config} type={type} onAccepted={setAccepted} />
+-             )}
++             {true}
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 10 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.tsx:64:12
+-             {type && (
+-               <RegistrationForm key={type} config={config} type={type} onAccepted={setAccepted} />
+-             )}
++             {false}
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 10 more tests!
+
+
+[Survived] EqualityOperator
+src/App.tsx:57:28
+-                     checked={type === t.value}
++                     checked={type !== t.value}
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 10 more tests!
+
+
+[Survived] StringLiteral
+src/App.tsx:59:20
+-                   />{" "}
++                   />{""}
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 10 more tests!
+
+
+[Survived] LogicalOperator
+src/App.tsx:64:12
+-             {type && (
+-               <RegistrationForm key={type} config={config} type={type} onAccepted={setAccepted} />
+-             )}
++             {type || <RegistrationForm key={type} config={config} type={type} onAccepted={setAccepted} />}
+Tests ran:
+    US-001 external participant form AC-001-01 shows exactly the external fields, grouped options and unchecked consents
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+  and 10 more tests!
+
+
+[Survived] BooleanLiteral
+src/validation.ts:62:12
+-       return false;
++       return true;
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    validation isValidEmail(ana) is false
+    validation isValidEmail(@example.si) is false
+  and 2 more tests!
+
+
+[Survived] BlockStatement
+src/validation.ts:61:76
+-     if (at <= 0 || at !== email.lastIndexOf("@") || at === email.length - 1) {
+-       return false;
+-     }
++     if (at <= 0 || at !== email.lastIndexOf("@") || at === email.length - 1) {}
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    validation isValidEmail(ana) is false
+    validation isValidEmail(@example.si) is false
+  and 2 more tests!
+
+
+[Survived] BlockStatement
+src/validation.ts:59:54
+-   export function isValidEmail(email: string): boolean {
+-     const at = email.indexOf("@");
+-     if (at <= 0 || at !== email.lastIndexOf("@") || at === email.length - 1) {
+-       return false;
+-     }
+-     const local = email.slice(0, at);
+-     return local.length <= 64 && LOCAL_PART.test(local) && DOMAIN.test(email.slice(at + 1));
+-   }
++   export function isValidEmail(email: string): boolean {}
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 25 more tests!
+
+
+[Survived] StringLiteral
+src/validation.ts:60:28
+-     const at = email.indexOf("@");
++     const at = email.indexOf("");
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 25 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:61:7
+-     if (at <= 0 || at !== email.lastIndexOf("@") || at === email.length - 1) {
++     if (false || at === email.length - 1) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 25 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:61:7
+-     if (at <= 0 || at !== email.lastIndexOf("@") || at === email.length - 1) {
++     if (true) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 25 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:61:7
+-     if (at <= 0 || at !== email.lastIndexOf("@") || at === email.length - 1) {
++     if (false) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 25 more tests!
+
+
+[Survived] EqualityOperator
+src/validation.ts:61:7
+-     if (at <= 0 || at !== email.lastIndexOf("@") || at === email.length - 1) {
++     if (at < 0 || at !== email.lastIndexOf("@") || at === email.length - 1) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 25 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:61:7
+-     if (at <= 0 || at !== email.lastIndexOf("@") || at === email.length - 1) {
++     if (false || at !== email.lastIndexOf("@") || at === email.length - 1) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 25 more tests!
+
+
+[Survived] EqualityOperator
+src/validation.ts:61:18
+-     if (at <= 0 || at !== email.lastIndexOf("@") || at === email.length - 1) {
++     if (at <= 0 || at === email.lastIndexOf("@") || at === email.length - 1) {
+Tests ran:
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+  and 22 more tests!
+
+
+[Survived] LogicalOperator
+src/validation.ts:61:7
+-     if (at <= 0 || at !== email.lastIndexOf("@") || at === email.length - 1) {
++     if ((at <= 0 || at !== email.lastIndexOf("@")) && at === email.length - 1) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 25 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:61:18
+-     if (at <= 0 || at !== email.lastIndexOf("@") || at === email.length - 1) {
++     if (at <= 0 || false || at === email.length - 1) {
+Tests ran:
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+  and 22 more tests!
+
+
+[Survived] EqualityOperator
+src/validation.ts:65:10
+-     return local.length <= 64 && LOCAL_PART.test(local) && DOMAIN.test(email.slice(at + 1));
++     return local.length < 64 && LOCAL_PART.test(local) && DOMAIN.test(email.slice(at + 1));
+Tests ran:
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+  and 20 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:65:10
+-     return local.length <= 64 && LOCAL_PART.test(local) && DOMAIN.test(email.slice(at + 1));
++     return false;
+Tests ran:
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+  and 20 more tests!
+
+
+[Survived] ArithmeticOperator
+src/validation.ts:65:82
+-     return local.length <= 64 && LOCAL_PART.test(local) && DOMAIN.test(email.slice(at + 1));
++     return local.length <= 64 && LOCAL_PART.test(local) && DOMAIN.test(email.slice(at - 1));
+Tests ran:
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+  and 18 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:65:10
+-     return local.length <= 64 && LOCAL_PART.test(local) && DOMAIN.test(email.slice(at + 1));
++     return true;
+Tests ran:
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+  and 20 more tests!
+
+
+[Survived] LogicalOperator
+src/validation.ts:65:10
+-     return local.length <= 64 && LOCAL_PART.test(local) && DOMAIN.test(email.slice(at + 1));
++     return local.length <= 64 && LOCAL_PART.test(local) || DOMAIN.test(email.slice(at + 1));
+Tests ran:
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+  and 20 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:65:10
+-     return local.length <= 64 && LOCAL_PART.test(local) && DOMAIN.test(email.slice(at + 1));
++     return true && LOCAL_PART.test(local) && DOMAIN.test(email.slice(at + 1));
+Tests ran:
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+  and 20 more tests!
+
+
+[Survived] BlockStatement
+src/validation.ts:69:61
+-   export function hasControlCharacter(value: string): boolean {
+-     for (const char of value) {
+-       const code = char.codePointAt(0) ?? 0;
+-       if (code <= 0x1f || (code >= 0x7f && code <= 0x9f)) {
+-         return true;
+-       }
+-     }
+-     return false;
+-   }
++   export function hasControlCharacter(value: string): boolean {}
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 20 more tests!
+
+
+[Survived] BlockStatement
+src/validation.ts:70:29
+-     for (const char of value) {
+-       const code = char.codePointAt(0) ?? 0;
+-       if (code <= 0x1f || (code >= 0x7f && code <= 0x9f)) {
+-         return true;
+-       }
+-     }
++     for (const char of value) {}
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 20 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:72:9
+-       if (code <= 0x1f || (code >= 0x7f && code <= 0x9f)) {
++       if (false) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 20 more tests!
+
+
+[Survived] LogicalOperator
+src/validation.ts:71:18
+-       const code = char.codePointAt(0) ?? 0;
++       const code = char.codePointAt(0) && 0;
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 20 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:72:9
+-       if (code <= 0x1f || (code >= 0x7f && code <= 0x9f)) {
++       if (false || (code >= 0x7f && code <= 0x9f)) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 20 more tests!
+
+
+[Survived] EqualityOperator
+src/validation.ts:72:42
+-       if (code <= 0x1f || (code >= 0x7f && code <= 0x9f)) {
++       if (code <= 0x1f || (code >= 0x7f && code < 0x9f)) {
+Tests ran:
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+  and 9 more tests!
+
+
+[Survived] BlockStatement
+src/validation.ts:72:57
+-       if (code <= 0x1f || (code >= 0x7f && code <= 0x9f)) {
+-         return true;
+-       }
++       if (code <= 0x1f || (code >= 0x7f && code <= 0x9f)) {}
+Tests ran:
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    validation reports required, too long and control characters per field
+    validation hasControlCharacter("tab\there") is true
+  and 3 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:72:42
+-       if (code <= 0x1f || (code >= 0x7f && code <= 0x9f)) {
++       if (code <= 0x1f || (code >= 0x7f && true)) {
+Tests ran:
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+  and 9 more tests!
+
+
+[Survived] BooleanLiteral
+src/validation.ts:73:14
+-         return true;
++         return false;
+Tests ran:
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    validation reports required, too long and control characters per field
+    validation hasControlCharacter("tab\there") is true
+  and 3 more tests!
+
+
+[Survived] LogicalOperator
+src/validation.ts:72:9
+-       if (code <= 0x1f || (code >= 0x7f && code <= 0x9f)) {
++       if (code <= 0x1f && code >= 0x7f && code <= 0x9f) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 20 more tests!
+
+
+[Survived] LogicalOperator
+src/validation.ts:72:26
+-       if (code <= 0x1f || (code >= 0x7f && code <= 0x9f)) {
++       if (code <= 0x1f || (code >= 0x7f || code <= 0x9f)) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 19 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:72:26
+-       if (code <= 0x1f || (code >= 0x7f && code <= 0x9f)) {
++       if (code <= 0x1f || (false)) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 19 more tests!
+
+
+[Survived] EqualityOperator
+src/validation.ts:72:26
+-       if (code <= 0x1f || (code >= 0x7f && code <= 0x9f)) {
++       if (code <= 0x1f || (code < 0x7f && code <= 0x9f)) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 19 more tests!
+
+
+[Survived] BlockStatement
+src/validation.ts:84:34
+-     if ([...trimmed].length > max) {
+-       return MESSAGES.TOO_LONG;
+-     }
++     if ([...trimmed].length > max) {}
+Tests ran:
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    validation reports required, too long and control characters per field
+    validation counts code points and allows exactly the limits
+
+
+[Survived] BlockStatement
+src/validation.ts:87:37
+-     if (hasControlCharacter(trimmed)) {
+-       return MESSAGES.INVALID_CHARACTERS;
+-     }
++     if (hasControlCharacter(trimmed)) {}
+Tests ran:
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    validation reports required, too long and control characters per field
+
+
+[Survived] EqualityOperator
+src/validation.ts:72:42
+-       if (code <= 0x1f || (code >= 0x7f && code <= 0x9f)) {
++       if (code <= 0x1f || (code >= 0x7f && code > 0x9f)) {
+Tests ran:
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+    US-001 external participant form AC-001-09 sends the test-mode reCAPTCHA token with the registration
+  and 9 more tests!
+
+
+[Survived] BlockStatement
+src/validation.ts:79:63
+-   function checkText(value: string, max: number): string | null {
+-     const trimmed = value.trim();
+-     if (trimmed === "") {
+-       return MESSAGES.REQUIRED;
+-     }
+-     if ([...trimmed].length > max) {
+-       return MESSAGES.TOO_LONG;
+-     }
+-     if (hasControlCharacter(trimmed)) {
+-       return MESSAGES.INVALID_CHARACTERS;
+-     }
+-     return null;
+-   }
++   function checkText(value: string, max: number): string | null {}
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 13 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:81:7
+-     if (trimmed === "") {
++     if (true) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 13 more tests!
+
+
+[Survived] MethodExpression
+src/validation.ts:80:19
+-     const trimmed = value.trim();
++     const trimmed = value;
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 13 more tests!
+
+
+[Survived] EqualityOperator
+src/validation.ts:81:7
+-     if (trimmed === "") {
++     if (trimmed !== "") {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 13 more tests!
+
+
+[Survived] ArrayDeclaration
+src/validation.ts:84:7
+-     if ([...trimmed].length > max) {
++     if ([].length > max) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 12 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:87:7
+-     if (hasControlCharacter(trimmed)) {
++     if (true) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 12 more tests!
+
+
+[Survived] EqualityOperator
+src/validation.ts:84:7
+-     if ([...trimmed].length > max) {
++     if ([...trimmed].length >= max) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 12 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:84:7
+-     if ([...trimmed].length > max) {
++     if (false) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 12 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:87:7
+-     if (hasControlCharacter(trimmed)) {
++     if (false) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 12 more tests!
+
+
+[Survived] StringLiteral
+src/validation.ts:102:53
+-       const problem = checkText(value, field.type === "email" ? MAX_EMAIL : MAX_TEXT);
++       const problem = checkText(value, field.type === "" ? MAX_EMAIL : MAX_TEXT);
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 13 more tests!
+
+
+[Survived] BlockStatement
+src/validation.ts:105:71
+-       } else if (field.type === "email" && !isValidEmail(value.trim())) {
+-         errors[field.id] = MESSAGES.INVALID_EMAIL;
+-       }
++       } else if (field.type === "email" && !isValidEmail(value.trim())) {}
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    validation checks the email format after trimming
+
+
+[Survived] BlockStatement
+src/validation.ts:103:18
+-       if (problem) {
+-         errors[field.id] = problem;
+-       } else if (field.type === "email" && !isValidEmail(value.trim())) {
++       if (problem) {} else if (field.type === "email" && !isValidEmail(value.trim())) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-002 student form AC-002-03 requires the student fields before submission
+  and 3 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:103:9
+-       if (problem) {
++       if (false) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 13 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:105:16
+-       } else if (field.type === "email" && !isValidEmail(value.trim())) {
++       } else if (true && !isValidEmail(value.trim())) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 12 more tests!
+
+
+[Survived] BooleanLiteral
+src/validation.ts:105:42
+-       } else if (field.type === "email" && !isValidEmail(value.trim())) {
++       } else if (field.type === "email" && isValidEmail(value.trim())) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 12 more tests!
+
+
+[Survived] BlockStatement
+src/validation.ts:114:29
+-     if (!values.captchaToken) {
+-       errors.captchaToken = MESSAGES.CAPTCHA_REQUIRED;
+-     }
++     if (!values.captchaToken) {}
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    RegistrationForm marks invalid inputs
+    validation requires mandatory consents and the captcha token
+
+
+[Survived] StringLiteral
+src/validation.ts:111:14
+-         errors[`consents.${consent.id}`] = MESSAGES.CONSENT_REQUIRED;
++         errors[``] = MESSAGES.CONSENT_REQUIRED;
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    RegistrationForm marks invalid inputs
+    validation requires mandatory consents and the captcha token
+
+
+[Survived] MethodExpression
+src/validation.ts:105:56
+-       } else if (field.type === "email" && !isValidEmail(value.trim())) {
++       } else if (field.type === "email" && !isValidEmail(value)) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 12 more tests!
+
+
+[Survived] BlockStatement
+src/validation.ts:110:71
+-       if (consent.mandatory && !values.consentIds.includes(consent.id)) {
+-         errors[`consents.${consent.id}`] = MESSAGES.CONSENT_REQUIRED;
+-       }
++       if (consent.mandatory && !values.consentIds.includes(consent.id)) {}
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    RegistrationForm marks invalid inputs
+    validation requires mandatory consents and the captcha token
+
+
+[Survived] ConditionalExpression
+src/validation.ts:110:9
+-       if (consent.mandatory && !values.consentIds.includes(consent.id)) {
++       if (false) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 13 more tests!
+
+
+[Survived] BlockStatement
+src/validation.ts:109:35
+-     for (const consent of consents) {
+-       if (consent.mandatory && !values.consentIds.includes(consent.id)) {
+-         errors[`consents.${consent.id}`] = MESSAGES.CONSENT_REQUIRED;
+-       }
+-     }
++     for (const consent of consents) {}
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 13 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:110:9
+-       if (consent.mandatory && !values.consentIds.includes(consent.id)) {
++       if (true) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 13 more tests!
+
+
+[Survived] BooleanLiteral
+src/validation.ts:110:30
+-       if (consent.mandatory && !values.consentIds.includes(consent.id)) {
++       if (consent.mandatory && values.consentIds.includes(consent.id)) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 13 more tests!
+
+
+[Survived] LogicalOperator
+src/validation.ts:110:9
+-       if (consent.mandatory && !values.consentIds.includes(consent.id)) {
++       if (consent.mandatory || !values.consentIds.includes(consent.id)) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 13 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:114:7
+-     if (!values.captchaToken) {
++     if (true) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 13 more tests!
+
+
+[Survived] ConditionalExpression
+src/validation.ts:114:7
+-     if (!values.captchaToken) {
++     if (false) {
+Tests ran:
+    US-001 external participant form AC-001-12 validates before submission and shows errors next to the fields
+    US-001 external participant form AC-001-12 rejects too long values and control characters before submission
+    US-001 external participant form AC-001-12 shows the backend's field errors next to their fields
+  and 13 more tests!
+
+
+[Survived] StringLiteral
+src/validation.ts:40:90
+-     EXTERNAL: [...COMMON, { id: "organization", label: "Organization / institution", type: "text" }],
++     EXTERNAL: [...COMMON, { id: "organization", label: "Organization / institution", type: "" }],
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/validation.ts:43:65
+-       { id: "studyInstitution", label: "Study institution", type: "text" },
++       { id: "studyInstitution", label: "Study institution", type: "" },
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/validation.ts:45:51
+-       { id: "studentId", label: "Student ID", type: "text" },
++       { id: "studentId", label: "Student ID", type: "" },
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/validation.ts:44:61
+-       { id: "studyProgramme", label: "Study programme", type: "text" },
++       { id: "studyProgramme", label: "Study programme", type: "" },
+Ran all tests for this mutant.
+
+[Survived] Regex
+src/validation.ts:57:16
+-   const DOMAIN = /^([A-Za-z0-9]([A-Za-z0-9-]*[A-Za-z0-9])?\.)+[A-Za-z]{2,}$/;
++   const DOMAIN = /^([A-Za-z0-9]([A-Za-z0-9-]*[A-Za-z0-9])?\.)+[A-Za-z]{2,}/;
+Ran all tests for this mutant.
+
+Ran 2.24 tests per mutant on average.
+-----------------------|------------------|----------|-----------|------------|----------|----------|
+                       | % Mutation score |          |           |            |          |          |
+File                   |  total | covered | # killed | # timeout | # survived | # no cov | # errors |
+-----------------------|--------|---------|----------|-----------|------------|----------|----------|
+All files              |  24.20 |   24.20 |       66 |        40 |        332 |        0 |        0 |
+ components            |  12.82 |   12.82 |       22 |         3 |        170 |        0 |        0 |
+  Captcha.tsx          |   4.84 |    4.84 |        3 |         0 |         59 |        0 |        0 |
+  Confirmation.tsx     |   0.00 |    0.00 |        0 |         0 |          5 |        0 |        0 |
+  RegistrationForm.tsx |  17.19 |   17.19 |       19 |         3 |        106 |        0 |        0 |
+ api.ts                |   0.00 |    0.00 |        0 |         0 |         49 |        0 |        0 |
+ App.tsx               |  14.29 |   14.29 |        7 |         1 |         48 |        0 |        0 |
+ validation.ts         |  52.90 |   52.90 |       37 |        36 |         65 |        0 |        0 |
+-----------------------|--------|---------|----------|-----------|------------|----------|----------|
+[32m01:23:59 (20100) INFO JsonReporter[39m Your report can be found at: file:///E:/13%20-%20Lab%20Projects/01_Runs/_____SECOND______ROUND_____/01_kyuhi_single-agent_sdd_v003/02_output/frontend/reports/mutation/mutation.json
+[32m01:23:59 (20100) INFO HtmlReporter[39m Your report can be found at: file:///E:/13%20-%20Lab%20Projects/01_Runs/_____SECOND______ROUND_____/01_kyuhi_single-agent_sdd_v003/02_output/frontend/reports/mutation/mutation.html
+[32m01:23:59 (20100) INFO MutationTestExecutor[39m Done in 2 minutes and 11 seconds.

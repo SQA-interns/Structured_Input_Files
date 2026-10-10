@@ -1,0 +1,195 @@
+
+=== 1. Start the stack (build, wait for health checks)
+ Container konferenca-registration-backend-1 Healthy 
+ Container konferenca-registration-backend-1 Running 
+ Container konferenca-registration-frontend-1 Healthy 
+ Container konferenca-registration-frontend-1 Running 
+ Container konferenca-registration-mailpit-1 Healthy 
+ Container konferenca-registration-mailpit-1 Running 
+ Container konferenca-registration-postgres-1 Healthy 
+ Container konferenca-registration-postgres-1 Running 
+ Image konferenca-registration-backend Built 
+ Image konferenca-registration-frontend Built 
+SERVICE    IMAGE                                                                     STATUS
+backend    sha256:609402796f34b601db8c62eb04d5921a7978a03a2f18cff46e62825a4243fc33   Up About a minute (healthy)
+frontend   sha256:089b4ab85a0cf6fbc4f01e9e7db0677cf8b89966706b3d146853a31ee906c76c   Up About a minute (healthy)
+mailpit    axllent/mailpit:v1.31.1                                                   Up About a minute (healthy)
+postgres   postgres:16.15-alpine                                                     Up About a minute (healthy)
+
+=== 2. Health and readiness (NFR-04, ES-09)
+readiness: {"status":"UP"}
+liveness:  {"status":"UP"}
+actuator env exposed? status 401
+
+=== 3. Processes run as non-root (SB-11)
+backend:  uid=10001(app) gid=10001 groups=10001
+frontend: uid=101(nginx) gid=101(nginx) groups=101(nginx)
+
+=== 4. Security headers (SB-10)
+Content-Security-Policy: default-src 'self'; script-src 'self' https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/; frame-src https://www.google.com/recaptcha/ https://recaptcha.google.com/recaptcha/; connect-src 'self'; img-src 'self' data:; style-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+Referrer-Policy: no-referrer
+X-Content-Type-Options: nosniff
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+X-Frame-Options: DENY
+Content-Security-Policy: default-src 'none'; frame-ancestors 'none'
+
+=== 5. Form configuration through the frontend origin (AR-01)
+{"conferenceName":"Konferenca 2026","options":[{"id":"ws-ai","name":"Delavnica: umetna inteligenca v praksi","category":"WORKSHOP","audience":["EXTERNAL","STUDENT"]},{"id":"ws-security","name":"Delavnica: varnost spletnih aplikacij","category":"WORKSHOP","audience":["EXTERNAL","STUDENT"]},{"id":"ev-gala","name":"Gala večerja","category":"EVENT","audience":["EXTERNAL"]},{"id":"ev-student-night","n
+
+=== 6. External registration (DoD-P01, NFR-01)
+{"reference":"10cfc85a-1a91-4939-aca9-de92d4764689","submittedAt":"2026-10-10T23:33:37.365Z","type":"EXTERNAL","firstName":"Čedomir Šime","lastName":"Žagar","options":[{"id":"ws-ai","name":"Delavnica: umetna inteligenca v praksi","category":"WORKSHOP"},{"id":"ev-gala","name":"Gala večerja","category":"EVENT"},{"id":"meal-lunch","name":"Kosilo","category":"MEAL"}]}
+status 201
+
+=== 7. Student registration (DoD-P01)
+{"reference":"cdf3e5f6-2857-47b3-b9d7-b659a05d5ff4","submittedAt":"2026-10-10T23:33:37.653Z","type":"STUDENT","firstName":"Luka","lastName":"Kranjc","options":[{"id":"ev-student-night","name":"Študentski večer","category":"EVENT"}]}
+status 201
+
+=== 8. Rejections: bad captcha token, duplicate email
+{"status":400,"error":"CAPTCHA_FAILED","message":"The anti-robot check failed. Please try again.","fieldErrors":[{"field":"captchaToken","code":"CAPTCHA_FAILED","message":"The anti-robot check failed. Please try again."}]}  status 400
+{"status":409,"error":"DUPLICATE_EMAIL","message":"A registration with this email already exists.","fieldErrors":[{"field":"email","code":"DUPLICATE_EMAIL","message":"A registration with this email already exists."}]}  status 409
+
+=== 9. Storage: database row and JSON copy (DoD-P02, BR-07)
+-- PostgreSQL rows
+10cfc85a-1a91-4939-aca9-de92d4764689|EXTERNAL|Čedomir Šime|Žagar|Univerza v Ljubljani – FRI
+cdf3e5f6-2857-47b3-b9d7-b659a05d5ff4|STUDENT|Luka|Kranjc|Univerza v Mariboru
+-- options and consents
+EXTERNAL|ws-ai|Delavnica: umetna inteligenca v praksi
+EXTERNAL|ev-gala|Gala večerja
+EXTERNAL|meal-lunch|Kosilo
+STUDENT|ev-student-night|Študentski večer
+EXTERNAL|data-processing|2026-10-10 23:33:37.365+00
+STUDENT|data-processing|2026-10-10 23:33:37.653+00
+STUDENT|photos|2026-10-10 23:33:37.653+00
+-- JSON copies
+-rw------- 1 app 10001 829 Oct 10 23:33 /data/json-copies/registration-10cfc85a-1a91-4939-aca9-de92d4764689.json
+-rw------- 1 app 10001 858 Oct 10 23:33 /data/json-copies/registration-cdf3e5f6-2857-47b3-b9d7-b659a05d5ff4.json
+{
+  "schemaVersion" : 1,
+  "reference" : "10cfc85a-1a91-4939-aca9-de92d4764689",
+  "submittedAt" : "2026-10-10T23:33:37.365Z",
+  "type" : "EXTERNAL",
+  "participant" : {
+    "firstName" : "Čedomir Šime",
+    "lastName" : "Žagar",
+    "email" : "demo-ext-1791675211@example.si",
+    "organization" : "Univerza v Ljubljani – FRI"
+  },
+  "options" : [ {
+    "id" : "ws-ai",
+    "name" : "Delavnica: umetna inteligenca v praksi",
+    "category" : "WORKSHOP"
+  }, {
+    "id" : "ev-gala",
+    "name" : "Gala večerja",
+    "category" : "EVENT"
+  }, {
+    "id" : "meal-lunch",
+    "name" : "Kosilo",
+    "category" : "MEAL"
+  } ],
+  "consents" : [ {
+    "id" : "data-processing",
+    "text" : "I agree that the personal data I entered is processed for organising the conference.",
+    "givenAt" : "2026-10-10T23:33:37.365Z"
+  } ]
+}
+=== 10. Emails in Mailpit (DoD-P03)
+to=<ORGANIZER_EMAILS> | subject=Konferenca 2026 – new registration 10cfc85a-1a91-4939-aca9-de92d4764689 | attachments=1
+to=demo-ext-1791675211@example.si | subject=Konferenca 2026 – registration confirmed (10cfc85a-1a91-4939-aca9-de92d4764689) | attachments=0
+to=<ORGANIZER_EMAILS> | subject=Konferenca 2026 – new registration cdf3e5f6-2857-47b3-b9d7-b659a05d5ff4 | attachments=1
+to=demo-stu-1791675211@example.si | subject=Konferenca 2026 – registration confirmed (cdf3e5f6-2857-47b3-b9d7-b659a05d5ff4) | attachments=0
+attachment: registration-10cfc85a-1a91-4939-aca9-de92d4764689.json (application/json)
+--- organizer email text ---
+New registration 10cfc85a-1a91-4939-aca9-de92d4764689 submitted at 2026-10-10T23:33:37.365Z.
+
+Type: External participant
+First name: Čedomir Šime
+Last name: Žagar
+Email: demo-ext-1791675211@example.si
+Organization / institution: Univerza v Ljubljani – FRI
+Workshops: Delavnica: umetna inteligenca v praksi
+Events: Gala večerja
+Meals: Kosilo
+Other activities: -
+Consents:
+- data-processing given at 2026-10-10T23:33:37.365Z
+
+The registration as accepted is attached as JSON.
+
+attachment is byte-identical to the JSON copy
+
+=== 11. Excel export (DoD-P04, US-008)
+without credentials: status 401
+wrong password:      status 401
+organizer:           HTTP/1.1 200 
+Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+Cache-Control: no-store
+Content-Disposition: attachment; filename="registrations.xlsx"
+workbook opened: 9 parts, sheet rows 10 (header + 9)
+header: Reference | Submitted at | Type | First name | Last name | Email | Organization / institution | Study institution | Study programme | Student ID | Workshops | Events | Meals | Other activities | Consents
+row: 10cfc85a-1a91-4939-aca9-de92d4764689 | 2026-10-10T23:33:37.365Z | EXTERNAL | Čedomir Šime | Žagar | demo-ext-1791675211@example.si | Univerza v Ljubljani – FRI |  |  |  | Delavnica: umetna inteligenca v praksi | Gala večerja | Kosilo |  | data-processing (2026-10-10T23:33:37.365Z)
+row: cdf3e5f6-2857-47b3-b9d7-b659a05d5ff4 | 2026-10-10T23:33:37.653Z | STUDENT | Luka | Kranjc | demo-stu-1791675211@example.si |  | Univerza v Mariboru | Računalništvo in informatika | E1234567 |  | Študentski večer |  |  | data-processing (2026-10-10T23:33:37.653Z); photos (2026-10-10T23:33:37.653Z)
+
+=== 12. Recreate every container: docker compose down, then up (NFR-02)
+containers removed: 5
+ Container konferenca-registration-backend-1 Healthy 
+ Container konferenca-registration-frontend-1 Healthy 
+ Container konferenca-registration-mailpit-1 Healthy 
+ Container konferenca-registration-postgres-1 Healthy 
+-- PostgreSQL rows
+10cfc85a-1a91-4939-aca9-de92d4764689|EXTERNAL|Čedomir Šime|Žagar|Univerza v Ljubljani – FRI
+cdf3e5f6-2857-47b3-b9d7-b659a05d5ff4|STUDENT|Luka|Kranjc|Univerza v Mariboru
+-- options and consents
+EXTERNAL|ws-ai|Delavnica: umetna inteligenca v praksi
+EXTERNAL|ev-gala|Gala večerja
+EXTERNAL|meal-lunch|Kosilo
+STUDENT|ev-student-night|Študentski večer
+EXTERNAL|data-processing|2026-10-10 23:33:37.365+00
+STUDENT|data-processing|2026-10-10 23:33:37.653+00
+STUDENT|photos|2026-10-10 23:33:37.653+00
+-- JSON copies
+-rw------- 1 app 10001 829 Oct 10 23:33 /data/json-copies/registration-10cfc85a-1a91-4939-aca9-de92d4764689.json
+-rw------- 1 app 10001 858 Oct 10 23:33 /data/json-copies/registration-cdf3e5f6-2857-47b3-b9d7-b659a05d5ff4.json
+{
+  "schemaVersion" : 1,
+  "reference" : "10cfc85a-1a91-4939-aca9-de92d4764689",
+  "submittedAt" : "2026-10-10T23:33:37.365Z",
+  "type" : "EXTERNAL",
+  "participant" : {
+    "firstName" : "Čedomir Šime",
+    "lastName" : "Žagar",
+    "email" : "demo-ext-1791675211@example.si",
+    "organization" : "Univerza v Ljubljani – FRI"
+  },
+  "options" : [ {
+    "id" : "ws-ai",
+    "name" : "Delavnica: umetna inteligenca v praksi",
+    "category" : "WORKSHOP"
+  }, {
+    "id" : "ev-gala",
+    "name" : "Gala večerja",
+    "category" : "EVENT"
+  }, {
+    "id" : "meal-lunch",
+    "name" : "Kosilo",
+    "category" : "MEAL"
+  } ],
+  "consents" : [ {
+    "id" : "data-processing",
+    "text" : "I agree that the personal data I entered is processed for organising the conference.",
+    "givenAt" : "2026-10-10T23:33:37.365Z"
+  } ]
+}without credentials: status 401
+wrong password:      status 401
+organizer:           HTTP/1.1 200 
+Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+Cache-Control: no-store
+Content-Disposition: attachment; filename="registrations.xlsx"
+workbook opened: 9 parts, sheet rows 10 (header + 9)
+header: Reference | Submitted at | Type | First name | Last name | Email | Organization / institution | Study institution | Study programme | Student ID | Workshops | Events | Meals | Other activities | Consents
+row: 10cfc85a-1a91-4939-aca9-de92d4764689 | 2026-10-10T23:33:37.365Z | EXTERNAL | Čedomir Šime | Žagar | demo-ext-1791675211@example.si | Univerza v Ljubljani – FRI |  |  |  | Delavnica: umetna inteligenca v praksi | Gala večerja | Kosilo |  | data-processing (2026-10-10T23:33:37.365Z)
+row: cdf3e5f6-2857-47b3-b9d7-b659a05d5ff4 | 2026-10-10T23:33:37.653Z | STUDENT | Luka | Kranjc | demo-stu-1791675211@example.si |  | Univerza v Mariboru | Računalništvo in informatika | E1234567 |  | Študentski večer |  |  | data-processing (2026-10-10T23:33:37.653Z); photos (2026-10-10T23:33:37.653Z)
+
+=== done

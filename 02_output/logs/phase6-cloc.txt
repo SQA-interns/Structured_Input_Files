@@ -1,0 +1,4 @@
+backend production: files=57 code=2296
+backend test: files=33 code=3241
+frontend production: files=9 code=607
+frontend test (unit, acceptance, e2e): files=12 code=998
