@@ -10,6 +10,8 @@ import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.nio.file.StandardOpenOption;
 import java.util.UUID;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import si.konferenca.registration.application.JsonCopyStore;
 import si.konferenca.registration.domain.AcceptedRegistration;
 
@@ -18,6 +20,8 @@ import si.konferenca.registration.domain.AcceptedRegistration;
  * atomic rename; an existing copy is never overwritten (BR-07).
  */
 public class FileJsonCopyStore implements JsonCopyStore {
+
+  private static final Logger LOG = LoggerFactory.getLogger(FileJsonCopyStore.class);
 
   private final Path directory;
 
@@ -33,15 +37,18 @@ public class FileJsonCopyStore implements JsonCopyStore {
     try {
       Files.createDirectories(directory);
       if (Files.exists(target)) {
-        throw new FileAlreadyExistsException(target.getFileName().toString());
+        throw new FileAlreadyExistsException("registration-" + registration.reference());
       }
       temp = Files.createTempFile(directory, ".registration-", ".tmp");
-      try (FileChannel channel = FileChannel.open(temp, StandardOpenOption.WRITE)) {
+      FileChannel channel = FileChannel.open(temp, StandardOpenOption.WRITE);
+      try {
         ByteBuffer buffer = ByteBuffer.wrap(content);
         while (buffer.hasRemaining()) {
           channel.write(buffer);
         }
         channel.force(true);
+      } finally {
+        channel.close();
       }
       Files.move(temp, target, StandardCopyOption.ATOMIC_MOVE);
       return content;
@@ -67,7 +74,7 @@ public class FileJsonCopyStore implements JsonCopyStore {
     try {
       Files.deleteIfExists(path);
     } catch (IOException e) {
-      // nothing more can be done; the copy is orphaned and harmless
+      LOG.warn("JSON copy file {} could not be deleted", String.valueOf(path.getFileName()));
     }
   }
 }
