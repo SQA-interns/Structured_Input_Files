@@ -55,3 +55,12 @@
 - Options: 1. Accept as Medium for dev tooling and re-check in phase 6 (proposed default). 2. Override qs (adds an unlisted dependency pin).
 - Human response: none
 - Resolution: 1, pending review.
+
+## D-07: Human answers to D-01 and D-04
+- Timestamp: 2026-10-10T22:19:40Z
+- Phase: 0
+- Type: blocking
+- Trigger: follow-up to D-01 and D-04 (records are append-only).
+- Options: see D-01 and D-04.
+- Human response: D-01: "go with option version 29.8.1"; D-04: "mark it as false positive" (2026-10-10T22:19:40Z).
+- Resolution: D-01 resolved with option 1 (Docker Engine 29.8.1 accepted for this run). D-04 resolved with option 1 (CVE-2025-7962 on angus-activation classified Low, false positive; suppressed for that jar only in `backend/dependency-check-suppressions.xml`). D-05's suppression is added to the same file.
