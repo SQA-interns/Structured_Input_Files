@@ -11,6 +11,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.mail.javamail.JavaMailSender;
 import si.konferenca.registration.application.CaptchaVerifier;
+import si.konferenca.registration.application.ExportService;
 import si.konferenca.registration.application.FormConfigService;
 import si.konferenca.registration.application.JsonCopyStore;
 import si.konferenca.registration.application.Notifier;
@@ -23,6 +24,7 @@ import si.konferenca.registration.infrastructure.GoogleRecaptchaVerifier;
 import si.konferenca.registration.infrastructure.InvalidOptionsException;
 import si.konferenca.registration.infrastructure.MailNotifier;
 import si.konferenca.registration.infrastructure.OptionCatalogLoader;
+import si.konferenca.registration.infrastructure.PoiWorkbookWriter;
 import si.konferenca.registration.infrastructure.TestModeCaptchaVerifier;
 import si.konferenca.registration.persistence.FileJsonCopyStore;
 
@@ -108,5 +110,10 @@ public class ApplicationConfig {
             properties.mail().sender(),
             properties.conferenceName(),
             properties.organizer().emails()));
+  }
+
+  @Bean
+  public ExportService exportService(RegistrationStore store) {
+    return new ExportService(store, new PoiWorkbookWriter());
   }
 }
