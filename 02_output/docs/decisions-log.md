@@ -136,3 +136,12 @@
 - Options: 1. The human approves replacing that line with a check of the first four bytes, `assertThat(java.util.Arrays.copyOf(response.body(), 4)).isNotEqualTo(new byte[] {'P', 'K', 3, 4})`, and the agent updates the manifest hash in a separate commit (proposed default). 2. Leave the test unchanged; AC-008-03 stays red and the phase 4 gate cannot pass.
 - Human response: none
 - Resolution: pending
+
+## D-16: SpotBugs EI_EXPOSE_REP and EI_EXPOSE_REP2 excluded
+- Timestamp: 2026-10-10T23:02:29Z
+- Phase: 4
+- Type: non-blocking
+- Trigger: `spotbugs:check` (threshold Medium, effort Max) reported 29 EI_EXPOSE_REP/EI_EXPOSE_REP2 matches: record components of type `List` in response DTOs and value records (most already copied with `List.copyOf`) and constructor-injected collaborators (ports, Spring beans). None exposes mutable internal state; Low per `severity-scale.md` (theoretical / false positive).
+- Options: 1. Exclude the two patterns in `backend/spotbugs-exclude.xml`, keep every other detector at threshold Medium (proposed default). 2. Wrap every list and collaborator in defensive copies to silence the detector.
+- Human response: none
+- Resolution: 1, pending review.

@@ -128,7 +128,7 @@ Actuator exposes only `health` with liveness and readiness groups (`management.e
 
 | Component | Build | Test | Check | Run |
 |---|---|---|---|---|
-| backend | `./mvnw -B -DskipTests package` | `./mvnw -B verify` | `./mvnw -B spotless:check pmd:check pmd:cpd-check spotbugs:check` | `./mvnw spring-boot:run` (with local settings) or `docker compose up backend` |
+| backend | `./mvnw -B -DskipTests package` | `./mvnw -B verify` | `./mvnw -B spotless:check compile pmd:check pmd:cpd-check spotbugs:check` | `./mvnw spring-boot:run` (with local settings) or `docker compose up backend` |
 | frontend | `npm run build` | `npm test` (unit/component/acceptance), `npm run test:e2e` (against the local stack) | `npm run check` | `npm run dev` or `docker compose up frontend` |
 
 ## 12. Tests (planned, detailed in `03_test-strategy.md`)
