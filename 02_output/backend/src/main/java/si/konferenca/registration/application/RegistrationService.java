@@ -70,9 +70,21 @@ public class RegistrationService {
                 .map(o -> new SelectedOption(o.id(), o.name(), o.category()))
                 .toList(),
             valid.consents().stream().map(c -> new GivenConsent(c.id(), c.text(), now)).toList());
-    recorder.record(accepted);
+    byte[] jsonCopy = recorder.record(accepted);
     notifyParticipant(accepted);
+    notifyOrganizers(accepted, jsonCopy);
     return accepted;
+  }
+
+  private void notifyOrganizers(AcceptedRegistration accepted, byte[] jsonCopy) {
+    try {
+      notifier.sendOrganizerNotification(accepted, jsonCopy);
+    } catch (RuntimeException e) {
+      LOG.warn(
+          "Organizer notification for registration {} failed: {}",
+          accepted.reference(),
+          e.getClass().getSimpleName());
+    }
   }
 
   /** A failed email never undoes the stored registration (D-10); logged without personal data. */

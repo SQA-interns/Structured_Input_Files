@@ -7,4 +7,7 @@ public interface Notifier {
 
   /** Plain-text confirmation to the participant (US-006). */
   void sendParticipantConfirmation(AcceptedRegistration registration);
+
+  /** Registration data with the JSON copy attached, to every organizer (US-007). */
+  void sendOrganizerNotification(AcceptedRegistration registration, byte[] jsonCopy);
 }

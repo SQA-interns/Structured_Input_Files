@@ -3,6 +3,7 @@ package si.konferenca.registration.infrastructure;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import java.util.List;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import si.konferenca.registration.application.Notifier;
@@ -32,18 +33,43 @@ public class MailNotifier implements Notifier {
         MailTexts.participantConfirmation(registration, settings.conferenceName()));
   }
 
-  private void send(List<String> to, String subject, String text) {
+  @Override
+  public void sendOrganizerNotification(AcceptedRegistration registration, byte[] jsonCopy) {
+    String reference = registration.reference().toString();
     try {
       MimeMessage message = sender.createMimeMessage();
-      MimeMessageHelper helper = new MimeMessageHelper(message, false, "UTF-8");
-      helper.setFrom(settings.sender());
-      helper.setTo(to.toArray(String[]::new));
-      helper.setSubject(subject);
-      helper.setText(text, false);
+      MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
+      fill(
+          helper,
+          settings.organizerEmails(),
+          settings.conferenceName() + " – new registration " + reference,
+          MailTexts.organizerNotification(registration));
+      helper.addAttachment(
+          "registration-" + reference + ".json",
+          new ByteArrayResource(jsonCopy),
+          "application/json");
       sender.send(message);
     } catch (MessagingException e) {
       throw new IllegalStateException("email could not be composed", e);
     }
+  }
+
+  private void send(List<String> to, String subject, String text) {
+    try {
+      MimeMessage message = sender.createMimeMessage();
+      fill(new MimeMessageHelper(message, false, "UTF-8"), to, subject, text);
+      sender.send(message);
+    } catch (MessagingException e) {
+      throw new IllegalStateException("email could not be composed", e);
+    }
+  }
+
+  private void fill(MimeMessageHelper helper, List<String> to, String subject, String text)
+      throws MessagingException {
+    helper.setFrom(settings.sender());
+    helper.setTo(to.toArray(String[]::new));
+    helper.setSubject(subject);
+    helper.setText(text, false);
   }
 
   /** Mail configuration; values come from configuration, never from participants. */
