@@ -1,0 +1,16 @@
+{
+  "options": [
+    { "id": "ws-ai", "name": "Delavnica: umetna inteligenca v praksi", "category": "WORKSHOP", "active": true },
+    { "id": "ws-security", "name": "Delavnica: varnost spletnih aplikacij", "category": "WORKSHOP", "active": true },
+    { "id": "ev-gala", "name": "Gala večerja", "category": "EVENT", "active": true, "audience": ["EXTERNAL"] },
+    { "id": "ev-student-night", "name": "Študentski večer", "category": "EVENT", "active": true, "audience": ["STUDENT"] },
+    { "id": "meal-lunch", "name": "Kosilo", "category": "MEAL", "active": true },
+    { "id": "meal-vegetarian", "name": "Vegetarijansko kosilo", "category": "MEAL", "active": true },
+    { "id": "other-tour", "name": "Ogled Ljubljane", "category": "OTHER", "active": true },
+    { "id": "other-boat", "name": "Vožnja z ladjico po Ljubljanici", "category": "OTHER", "active": false }
+  ],
+  "consents": [
+    { "id": "data-processing", "text": "I agree that the personal data I entered is processed for organising the conference.", "mandatory": true },
+    { "id": "photos", "text": "I agree to be photographed at the conference.", "mandatory": false }
+  ]
+}
