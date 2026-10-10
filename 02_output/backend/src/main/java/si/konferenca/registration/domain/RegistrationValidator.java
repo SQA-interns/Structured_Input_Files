@@ -41,11 +41,19 @@ public final class RegistrationValidator {
     String lastName = text("lastName", form.lastName(), errors);
     String email = email(form.email(), errors);
     String organization = null;
+    String studyInstitution = null;
+    String studyProgramme = null;
+    String studentId = null;
     if (type.isPresent() && type.get() == RegistrationType.EXTERNAL) {
       organization = text("organization", form.organization(), errors);
       notAllowed("studyInstitution", form.studyInstitution(), errors);
       notAllowed("studyProgramme", form.studyProgramme(), errors);
       notAllowed("studentId", form.studentId(), errors);
+    } else if (type.isPresent()) {
+      notAllowed("organization", form.organization(), errors);
+      studyInstitution = text("studyInstitution", form.studyInstitution(), errors);
+      studyProgramme = text("studyProgramme", form.studyProgramme(), errors);
+      studentId = text("studentId", form.studentId(), errors);
     }
     List<ConferenceOption> options = options(form.optionIds(), type, errors);
     List<Consent> consents = consents(form.consentIds(), errors);
@@ -58,7 +66,7 @@ public final class RegistrationValidator {
     return new ValidRegistration(
         type.get(),
         new AcceptedRegistration.Participant(
-            firstName, lastName, email, organization, null, null, null),
+            firstName, lastName, email, organization, studyInstitution, studyProgramme, studentId),
         options,
         consents);
   }
