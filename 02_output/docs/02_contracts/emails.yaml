@@ -1,0 +1,47 @@
+# Contract: backend -> SMTP server (emails). Spec section 6. SR-05, SR-07, D-10.
+# All messages: MIME text/plain; charset=UTF-8, From = app.mail.sender. Sent only after the
+# registration and its JSON copy are stored; a send failure never changes the accepted registration.
+# No header contains participant input except the participant address as recipient (participant mail).
+messages:
+  participantConfirmation:
+    story: US-006
+    to: ["<participant email>"]
+    subject: "<app.conference-name> – registration confirmed (<reference>)"
+    contentType: text/plain; charset=UTF-8
+    body:
+      - "Dear <firstName> <lastName>,"
+      - "your registration for <app.conference-name> has been received."
+      - "Reference: <reference>"
+      - "Registration type: External participant | Student"
+      - "Selected activities:"
+      - "- <option name> (<category label>)   # one line per option, or '- none'"
+    attachments: []
+  organizerNotification:
+    story: US-007
+    to: ["<each address in app.organizer.emails>"]
+    subject: "<app.conference-name> – new registration <reference>"
+    contentType: text/plain; charset=UTF-8
+    body:
+      - "New registration <reference> submitted at <submittedAt, ISO-8601 UTC>."
+      - "Type: External participant | Student"
+      - "First name: <firstName>"
+      - "Last name: <lastName>"
+      - "Email: <email>"
+      - "Organization / institution: <organization>              # external only"
+      - "Study institution: <studyInstitution>                    # student only"
+      - "Study programme: <studyProgramme>                        # student only"
+      - "Student ID: <studentId>                                  # student only"
+      - "Workshops: <names, comma separated, or '-'>"
+      - "Events: <names or '-'>"
+      - "Meals: <names or '-'>"
+      - "Other activities: <names or '-'>"
+      - "Consents: <consent id> given at <givenAt>                # one line per consent"
+    attachments:
+      - filename: "registration-<reference>.json"
+        contentType: application/json
+        content: "byte-identical to the JSON copy (registration-copy.schema.json)"
+categoryLabels:
+  WORKSHOP: Workshop
+  EVENT: Event
+  MEAL: Meal
+  OTHER: Other activity
