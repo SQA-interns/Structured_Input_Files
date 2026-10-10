@@ -87,7 +87,7 @@ class StudentRegistrationAcceptanceTest extends AcceptanceTestBase {
             .valueStream()
             .filter(o -> "ev-gala".equals(o.path("id").asString()))
             .findFirst()
-            .orElseThrow();
+            .orElseThrow(() -> new AssertionError("option ev-gala is not offered"));
 
     assertThat(gala.path("audience").valueStream().map(JsonNode::asString))
         .containsExactly("EXTERNAL");
