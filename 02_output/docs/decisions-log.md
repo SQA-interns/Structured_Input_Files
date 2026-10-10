@@ -145,3 +145,12 @@
 - Options: 1. Exclude the two patterns in `backend/spotbugs-exclude.xml`, keep every other detector at threshold Medium (proposed default). 2. Wrap every list and collaborator in defensive copies to silence the detector.
 - Human response: none
 - Resolution: 1, pending review.
+
+## D-17: Human answer to D-15
+- Timestamp: 2026-10-10T23:05:00Z
+- Phase: 4
+- Type: blocking
+- Trigger: follow-up to D-15 (records are append-only).
+- Options: see D-15.
+- Human response: "D-15 1, you can replace the line" (2026-10-10T23:05:00Z).
+- Resolution: D-15 resolved with option 1. The line in `assertRefused` was replaced with the first-four-bytes check (formatted over two lines by google-java-format) and the manifest hash of `RegistrationExportAcceptanceTest.java` updated in its own commit.
