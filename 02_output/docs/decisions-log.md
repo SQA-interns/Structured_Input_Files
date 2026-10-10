@@ -127,3 +127,12 @@
 - Options: 1. Every text field is at most 200 characters (email at most 254) after trimming; any control character (Unicode category Cc, including CR and LF) in a field is rejected with a field error; emails are plain text so markup is shown literally (proposed default). 2. Accept any length and strip control characters silently.
 - Human response: none
 - Resolution: 1, pending review.
+
+## D-15: Frozen test AC-008-03 cannot pass with any implementation
+- Timestamp: 2026-10-10T22:56:19Z
+- Phase: 4
+- Type: blocking
+- Trigger: `backend/src/test/java/si/konferenca/registration/acceptance/RegistrationExportAcceptanceTest.java` (listed in `docs/03_acceptance-manifest.sha256`), helper `assertRefused`: `assertThat(response.body()).doesNotContain(new byte[] {'P', 'K', 3, 4})`. On a byte array AssertJ's `doesNotContain` fails when the body contains *any* of the bytes 'P', 'K', 3 or 4, not the ZIP signature as a sequence. `ac_008_03_plainHttpFromRemoteClientIsRefused` also asserts the body contains `HTTPS_REQUIRED`, which contains 'P', so the test contradicts itself. The implementation answers 403 with `{"error":"HTTPS_REQUIRED",...}` (no workbook), as AC-008-03 requires. The 401 cases pass only because their bodies happen to contain no 'P' or 'K'.
+- Options: 1. The human approves replacing that line with a check of the first four bytes, `assertThat(java.util.Arrays.copyOf(response.body(), 4)).isNotEqualTo(new byte[] {'P', 'K', 3, 4})`, and the agent updates the manifest hash in a separate commit (proposed default). 2. Leave the test unchanged; AC-008-03 stays red and the phase 4 gate cannot pass.
+- Human response: none
+- Resolution: pending
