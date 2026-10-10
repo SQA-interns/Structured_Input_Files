@@ -154,3 +154,12 @@
 - Options: see D-15.
 - Human response: "D-15 1, you can replace the line" (2026-10-10T23:05:00Z).
 - Resolution: D-15 resolved with option 1. The line in `assertRefused` was replaced with the first-four-bytes check (formatted over two lines by google-java-format) and the manifest hash of `RegistrationExportAcceptanceTest.java` updated in its own commit.
+
+## D-18: Frontend mutation score cannot be measured with the pinned Stryker and Vitest
+- Timestamp: 2026-10-10T23:53:52Z
+- Phase: 6
+- Type: blocking
+- Trigger: `npx stryker run` (`@stryker-mutator/core` and `vitest-runner` 10.0.0, `vitest` 5.0.3, all pinned in `tech-stack.md`) reports 24.2 % (66 killed, 40 timed out, 332 survived of 438; `logs/phase6-stryker.log`, `frontend/reports/mutation/mutation.json`) although line coverage is 100 % and the tests clearly detect many of the "surviving" mutants (e.g. `code < 0x7f` in `hasControlCharacter`, asserted by `validation.test.ts`). A probe with `--coverageAnalysis off` on `src/validation.ts` gives the same picture (29.7 %, `logs/phase6-stryker-probe.log`): only mutants evaluated at import time are killed. The runner 10.0.0 (latest on npm) is built against Vitest 4.1 and activates runtime mutants in a `beforeAll` hook of its setup file, which does not take effect under Vitest 5.0.3. The figure is a tool artefact, not a measurement.
+- Options: 1. Record the frontend mutation score as not obtainable with the pinned tools (`null` with this reason in `run-log.json`, the invalid raw result kept in the logs), keep every pin, and list it as a known limitation; the threshold is "record only" (proposed default). 2. The human approves a tool change for mutation only (e.g. Vitest 4.1.x for the Stryker run), which changes `tech-stack.md` entries.
+- Human response: none
+- Resolution: pending
