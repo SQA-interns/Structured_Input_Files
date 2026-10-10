@@ -1,0 +1,58 @@
+:root {
+  font-family: system-ui, sans-serif;
+  color: #1d2733;
+  background: #f6f7f9;
+}
+
+main {
+  max-width: 40rem;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+form,
+.confirmation,
+.type-choice {
+  background: #fff;
+  border: 1px solid #d5dbe3;
+  border-radius: 6px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.type-choice span {
+  font-weight: 600;
+  margin-right: 1rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.75rem;
+}
+
+.field input {
+  padding: 0.4rem;
+  font-size: 1rem;
+}
+
+fieldset {
+  border: 1px solid #d5dbe3;
+  margin: 0 0 0.75rem;
+}
+
+.choice {
+  display: block;
+  margin: 0.25rem 0;
+}
+
+.field-error,
+.form-error {
+  color: #b00020;
+  margin: 0.25rem 0;
+}
+
+button {
+  font-size: 1rem;
+  padding: 0.5rem 1.5rem;
+}
