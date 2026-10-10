@@ -1,0 +1,17 @@
+{
+  "options": [
+    { "id": "ws-ai", "name": "Delavnica: umetna inteligenca", "category": "WORKSHOP", "active": true },
+    { "id": "ws-old", "name": "Stara delavnica", "category": "WORKSHOP", "active": false },
+    { "id": "ev-gala", "name": "Gala večerja", "category": "EVENT", "active": true, "audience": ["EXTERNAL"] },
+    { "id": "ev-student-night", "name": "Študentski večer", "category": "EVENT", "active": true, "audience": ["STUDENT"] },
+    { "id": "ev-closed", "name": "Zaprt dogodek", "category": "EVENT", "active": false },
+    { "id": "meal-lunch", "name": "Kosilo", "category": "MEAL", "active": true, "audience": ["EXTERNAL", "STUDENT"] },
+    { "id": "meal-dinner", "name": "Večerja", "category": "MEAL", "active": false },
+    { "id": "other-tour", "name": "Ogled Ljubljane", "category": "OTHER", "active": true },
+    { "id": "other-boat", "name": "Vožnja z ladjico", "category": "OTHER", "active": false }
+  ],
+  "consents": [
+    { "id": "data-processing", "text": "Strinjam se z obdelavo osebnih podatkov za organizacijo konference.", "mandatory": true },
+    { "id": "photos", "text": "Strinjam se s fotografiranjem na dogodku.", "mandatory": false }
+  ]
+}
