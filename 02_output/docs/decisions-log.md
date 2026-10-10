@@ -64,3 +64,66 @@
 - Options: see D-01 and D-04.
 - Human response: D-01: "go with option version 29.8.1"; D-04: "mark it as false positive" (2026-10-10T22:19:40Z).
 - Resolution: D-01 resolved with option 1 (Docker Engine 29.8.1 accepted for this run). D-04 resolved with option 1 (CVE-2025-7962 on angus-activation classified Low, false positive; suppressed for that jar only in `backend/dependency-check-suppressions.xml`). D-05's suppression is added to the same file.
+
+## D-08: OQ-01 option availability for students
+- Timestamp: 2026-10-10T22:20:53Z
+- Phase: 1
+- Type: non-blocking
+- Trigger: `scope.md` OQ-01 unanswered; US-002 speaks of "the activities available to students", which suggests some options may be restricted.
+- Options: 1. Every option in the configuration carries an audience list (external, student); omitted means both. The backend offers and accepts only options whose audience includes the registration type (proposed default). 2. All active options are available to every participant.
+- Human response: none
+- Resolution: 1, pending review. Without restrictions in the configuration it behaves like option 2.
+
+## D-09: OQ-02 mandatory consents and wording
+- Timestamp: 2026-10-10T22:20:53Z
+- Phase: 1
+- Type: non-blocking
+- Trigger: OQ-02 unanswered; BR-05 and SB-14 require explicit, never-preselected consents.
+- Options: 1. Consents are defined in the same configuration as the options (identifier, wording, mandatory flag). The shipped configuration has one mandatory consent: processing of the entered personal data for organising the conference. Each given consent is stored with its timestamp (proposed default). 2. Hard-code one consent.
+- Human response: none
+- Resolution: 1, pending review; the wording must be approved by the product owner before production (listed in release notes).
+
+## D-10: OQ-03 storage succeeds but an email fails
+- Timestamp: 2026-10-10T22:20:53Z
+- Phase: 1
+- Type: non-blocking
+- Trigger: OQ-03 unanswered; `scope.md` priority 1 says storage comes before any notification.
+- Options: 1. Emails are sent only after the database row and JSON copy are written; an email failure does not change the accepted registration or the success response; the failure is logged without personal data, and the registration stays available in the export and the JSON copy (proposed default). 2. Fail the request when an email fails.
+- Human response: none
+- Resolution: 1, pending review.
+
+## D-11: OQ-04 options per category
+- Timestamp: 2026-10-10T22:20:53Z
+- Phase: 1
+- Type: non-blocking
+- Trigger: OQ-04 unanswered.
+- Options: 1. Any number of active options per category, each option at most once; a repeated identifier is rejected (proposed default). 2. At most one option per category.
+- Human response: none
+- Resolution: 1, pending review.
+
+## D-12: OQ-05 second registration with the same email
+- Timestamp: 2026-10-10T22:20:53Z
+- Phase: 1
+- Type: non-blocking
+- Trigger: OQ-05 unanswered.
+- Options: 1. Reject a second registration with the same email (compared case-insensitively after trimming) with a field error on email; nothing is stored or sent (proposed default; conservative, prevents duplicates and mail flooding). 2. Allow duplicates.
+- Human response: none
+- Resolution: 1, pending review.
+
+## D-13: OQ-06 retention of registrations and JSON copies
+- Timestamp: 2026-10-10T22:20:53Z
+- Phase: 1
+- Type: non-blocking
+- Trigger: OQ-06 unanswered; SB-13 needs a stated retention period.
+- Options: 1. Keep registrations and JSON copies until the organizers delete them after the conference, at most 12 months after the conference; deletion is a manual operator task because deletion features are out of scope (proposed default). 2. Implement automatic deletion.
+- Human response: none
+- Resolution: 1, pending review; listed in the release notes.
+
+## D-14: Field length limits and control characters
+- Timestamp: 2026-10-10T22:20:59Z
+- Phase: 1
+- Type: non-blocking
+- Trigger: BR-02/BR-03 give no maximum length; SR-05 requires that input cannot inject email headers or markup; SB-01 requires server-side validation.
+- Options: 1. Every text field is at most 200 characters (email at most 254) after trimming; any control character (Unicode category Cc, including CR and LF) in a field is rejected with a field error; emails are plain text so markup is shown literally (proposed default). 2. Accept any length and strip control characters silently.
+- Human response: none
+- Resolution: 1, pending review.
