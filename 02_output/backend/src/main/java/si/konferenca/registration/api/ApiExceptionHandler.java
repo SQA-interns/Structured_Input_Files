@@ -52,6 +52,12 @@ public class ApiExceptionHandler {
 
   @ExceptionHandler(HttpMessageNotReadableException.class)
   public ResponseEntity<ApiError> unreadable(HttpMessageNotReadableException e) {
+    for (Throwable t = e; t != null; t = t.getCause()) {
+      if (t instanceof PayloadTooLargeException) {
+        return error(
+            HttpStatus.CONTENT_TOO_LARGE, "PAYLOAD_TOO_LARGE", "The request body is too large.");
+      }
+    }
     return error(HttpStatus.BAD_REQUEST, "VALIDATION_FAILED", "The request body is not valid.");
   }
 

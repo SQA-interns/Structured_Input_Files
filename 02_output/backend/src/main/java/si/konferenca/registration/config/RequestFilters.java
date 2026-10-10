@@ -9,6 +9,15 @@ final class RequestFilters {
   private RequestFilters() {}
 
   static List<Filter> create(AppProperties properties) {
-    return List.of();
+    AppProperties.RateLimits limits = properties.rateLimit();
+    return List.of(
+        new RateLimitFilter(
+            new FixedWindowRateLimiter(
+                limits.registration().maxRequests(),
+                limits.registration().window(),
+                System::nanoTime),
+            new FixedWindowRateLimiter(
+                limits.export().maxRequests(), limits.export().window(), System::nanoTime)),
+        new RequestSizeFilter(properties.request().maxBodyBytes()));
   }
 }
