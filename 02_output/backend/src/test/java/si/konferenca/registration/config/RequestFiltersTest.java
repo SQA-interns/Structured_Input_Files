@@ -48,6 +48,21 @@ class RequestFiltersTest {
     assertThat(limiter.acquire("k0")).isPositive();
   }
 
+  @Test
+  void cleanupKeepsWindowsThatHaveNotExpired() {
+    FixedWindowRateLimiter limiter = limiter(1);
+    clock.set(Duration.ofSeconds(40).toNanos());
+    limiter.acquire("active");
+    for (int i = 0; i <= 10_000; i++) {
+      limiter.acquire("other" + i);
+    }
+    clock.set(Duration.ofSeconds(70).toNanos());
+
+    limiter.acquire("trigger-cleanup");
+
+    assertThat(limiter.acquire("active")).isEqualTo(30);
+  }
+
   private static MockHttpServletResponse run(
       jakarta.servlet.Filter filter, MockHttpServletRequest request) throws Exception {
     MockHttpServletResponse response = new MockHttpServletResponse();
