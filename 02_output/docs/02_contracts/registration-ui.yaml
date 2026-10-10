@@ -42,6 +42,7 @@ page:
       error: "<p id='captchaToken-error' role='alert'>"
     submit: { role: button, name: Register }
     generalError: "<div role='alert' id='form-error'>"   # non-field errors; no internal details
+    backendFieldErrors: each fieldErrors entry of a 400/409 response is shown in the error element of its field with the message text from the response
   confirmation:
     role: status
     heading: Registration received   # h2
