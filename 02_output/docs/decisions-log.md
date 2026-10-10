@@ -163,3 +163,12 @@
 - Options: 1. Record the frontend mutation score as not obtainable with the pinned tools (`null` with this reason in `run-log.json`, the invalid raw result kept in the logs), keep every pin, and list it as a known limitation; the threshold is "record only" (proposed default). 2. The human approves a tool change for mutation only (e.g. Vitest 4.1.x for the Stryker run), which changes `tech-stack.md` entries.
 - Human response: none
 - Resolution: pending
+
+## D-19: Human answer to D-18
+- Timestamp: 2026-10-10T23:55:22Z
+- Phase: 6
+- Type: blocking
+- Trigger: follow-up to D-18 (records are append-only).
+- Options: see D-18.
+- Human response: "D-18 change to vitest 4.1.x to be able to run it" (2026-10-10T23:55:22Z).
+- Resolution: D-18 resolved with option 2. The frontend uses `vitest` 4.1.10 instead of 5.0.3 (4.1.10 is the version `@stryker-mutator/vitest-runner` 10.0.0 is built against). `@vitest/coverage-v8` must carry the same version as `vitest` (peer dependency), so it moves from 5.0.3 to 4.1.10 as part of this approval. The approval replaces these two `tech-stack.md` entries for this run; `tech-stack.md` itself is not edited. All frontend tests, coverage and the mutation run are repeated on 4.1.10.
