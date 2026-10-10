@@ -1,0 +1,1396 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< si.konferenca:registration-backend >-----------------
+[INFO] Building registration-backend 0.1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- jacoco:0.8.12:prepare-agent (prepare-agent) @ registration-backend ---
+[INFO] argLine set to "-javaagent:C:\\Users\\sense\\.m2\\repository\\org\\jacoco\\org.jacoco.agent\\0.8.12\\org.jacoco.agent-0.8.12-runtime.jar=destfile=E:\\13 - Lab Projects\\01_Runs\\_____SECOND______ROUND_____\\01_kyuhi_single-agent_sdd_v003\\02_output\\backend\\target\\jacoco.exec"
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ registration-backend ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ registration-backend ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ registration-backend ---
+[INFO] Copying 1 resource from src\test\resources to target\test-classes
+[INFO] 
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ registration-backend ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ registration-backend ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running si.konferenca.registration.acceptance.ConferenceOptionsAcceptanceTest
+00:44:52.531 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.konferenca.registration.acceptance.ConferenceOptionsAcceptanceTest]: ConferenceOptionsAcceptanceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+00:44:52.722 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration si.konferenca.registration.RegistrationApplication for test class si.konferenca.registration.acceptance.ConferenceOptionsAcceptanceTest
+00:44:52.858 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.konferenca.registration.acceptance.ConferenceOptionsAcceptanceTest]: ConferenceOptionsAcceptanceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+00:44:52.858 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.konferenca.registration.acceptance.support.AcceptanceTestBase]: AcceptanceTestBase does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+00:44:52.859 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.konferenca.registration.acceptance.support.AcceptanceSupport]: AcceptanceSupport does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+00:44:52.861 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration si.konferenca.registration.RegistrationApplication for test class si.konferenca.registration.acceptance.ConferenceOptionsAcceptanceTest
+00:44:53.172 [main] INFO org.testcontainers.images.PullPolicy -- Image pull policy will be performed by: DefaultPullPolicy()
+00:44:53.172 [main] INFO org.testcontainers.utility.ImageNameSubstitutor -- Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+00:44:53.281 [main] INFO org.testcontainers.DockerClientFactory -- Testcontainers version: 2.0.5
+00:44:53.669 [main] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+00:44:54.145 [main] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+00:44:54.146 [main] INFO org.testcontainers.DockerClientFactory -- Docker host IP address is localhost
+00:44:54.168 [main] INFO org.testcontainers.DockerClientFactory -- Connected to docker: 
+  Server Version: 29.8.1
+  API Version: 1.56
+  Operating System: Docker Desktop
+  Total Memory: 40065 MB
+  Labels: 
+    com.docker.desktop.address=npipe://\\.\pipe\docker_cli
+00:44:54.270 [main] INFO tc.testcontainers/ryuk:0.14.0 -- Creating container for image: testcontainers/ryuk:0.14.0
+00:44:54.583 [main] INFO tc.testcontainers/ryuk:0.14.0 -- Container testcontainers/ryuk:0.14.0 is starting: c4572c13b9373d26aaebc03209830111e0fc44710f9dcd5be24dc7554620e3e8
+00:44:55.000 [main] INFO tc.testcontainers/ryuk:0.14.0 -- Container testcontainers/ryuk:0.14.0 started in PT0.7302639S
+00:44:55.005 [main] INFO org.testcontainers.utility.RyukResourceReaper -- Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+00:44:55.005 [main] INFO org.testcontainers.DockerClientFactory -- Checking the system...
+00:44:55.006 [main] INFO org.testcontainers.DockerClientFactory -- ?? Docker server version should be at least 1.6.0
+00:44:55.006 [main] INFO tc.postgres:16.15-alpine -- Creating container for image: postgres:16.15-alpine
+00:44:55.133 [main] INFO tc.postgres:16.15-alpine -- Container postgres:16.15-alpine is starting: c2fe6cee95b9ad070244feda5af6acd5d919ca7ecdc648ba378bea3b455cf1f6
+00:44:57.169 [main] INFO tc.postgres:16.15-alpine -- Container postgres:16.15-alpine started in PT2.1625309S
+00:44:57.169 [main] INFO tc.postgres:16.15-alpine -- Container is started (JDBC URL: jdbc:postgresql://localhost:51956/test?loggerLevel=OFF)
+00:44:57.170 [main] INFO tc.axllent/mailpit:v1.31.1 -- Creating container for image: axllent/mailpit:v1.31.1
+00:44:57.282 [main] INFO tc.axllent/mailpit:v1.31.1 -- Container axllent/mailpit:v1.31.1 is starting: 97b59958c68ee9a77fc76dfe605c32e5c0a45c5ee311e139aa84bd0d46903b40
+00:44:57.531 [main] INFO org.testcontainers.containers.wait.strategy.HttpWaitStrategy -- /silly_yonath: Waiting for 60 seconds for URL: http://localhost:51958/api/v1/info (where port 51958 maps to container port 8025)
+00:44:58.132 [main] INFO tc.axllent/mailpit:v1.31.1 -- Container axllent/mailpit:v1.31.1 started in PT0.9618604S
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-10-11T00:44:58.493+02:00  INFO 31464 --- [registration-backend] [           main] s.k.r.a.ConferenceOptionsAcceptanceTest  : Starting ConferenceOptionsAcceptanceTest using Java 21.0.10 with PID 31464 (started by sense in E:\13 - Lab Projects\01_Runs\_____SECOND______ROUND_____\01_kyuhi_single-agent_sdd_v003\02_output\backend)
+2026-10-11T00:44:58.495+02:00  INFO 31464 --- [registration-backend] [           main] s.k.r.a.ConferenceOptionsAcceptanceTest  : No active profile set, falling back to 1 default profile: "default"
+2026-10-11T00:44:59.466+02:00  INFO 31464 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-11T00:44:59.499+02:00  INFO 31464 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 22 ms. Found 0 JPA repository interfaces.
+2026-10-11T00:45:00.470+02:00  INFO 31464 --- [registration-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-10-11T00:45:00.486+02:00  INFO 31464 --- [registration-backend] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-11T00:45:00.487+02:00  INFO 31464 --- [registration-backend] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.26]
+2026-10-11T00:45:00.568+02:00  INFO 31464 --- [registration-backend] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 2044 ms
+2026-10-11T00:45:01.011+02:00  INFO 31464 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-10-11T00:45:01.184+02:00  INFO 31464 --- [registration-backend] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4b51cb8f
+2026-10-11T00:45:01.186+02:00  INFO 31464 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-10-11T00:45:01.212+02:00  INFO 31464 --- [registration-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:51956/test?loggerLevel=OFF (PostgreSQL 16.15)
+2026-10-11T00:45:01.272+02:00  INFO 31464 --- [registration-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2026-10-11T00:45:01.274+02:00  INFO 31464 --- [registration-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 0 migrations (execution time 00:00.010s)
+2026-10-11T00:45:01.275+02:00  WARN 31464 --- [registration-backend] [           main] o.f.core.internal.command.DbValidate     : No migrations found. Are your locations set up correctly?
+2026-10-11T00:45:01.292+02:00  INFO 31464 --- [registration-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2026-10-11T00:45:01.348+02:00  INFO 31464 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-10-11T00:45:01.352+02:00  INFO 31464 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-10-11T00:45:01.479+02:00  INFO 31464 --- [registration-backend] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-10-11T00:45:01.545+02:00  INFO 31464 --- [registration-backend] [           main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.5.Final
+2026-10-11T00:45:02.071+02:00  INFO 31464 --- [registration-backend] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-11T00:45:02.189+02:00  INFO 31464 --- [registration-backend] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:51956/test?loggerLevel=OFF]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 16.15
+	Default catalog/schema: test/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-10-11T00:45:02.657+02:00  INFO 31464 --- [registration-backend] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-11T00:45:02.702+02:00  INFO 31464 --- [registration-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-11T00:45:03.134+02:00  INFO 31464 --- [registration-backend] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name organizers
+2026-10-11T00:45:03.743+02:00  INFO 31464 --- [registration-backend] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-10-11T00:45:03.808+02:00  INFO 31464 --- [registration-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 51971 (http) with context path '/'
+2026-10-11T00:45:03.815+02:00  INFO 31464 --- [registration-backend] [           main] s.k.r.a.ConferenceOptionsAcceptanceTest  : Started ConferenceOptionsAcceptanceTest in 5.605 seconds (process running for 12.94)
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (C:\Users\sense\.m2\repository\net\bytebuddy\byte-buddy-agent\1.18.11\byte-buddy-agent-1.18.11.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+2026-10-11T00:45:04.382+02:00  INFO 31464 --- [registration-backend] [o-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-11T00:45:04.382+02:00  INFO 31464 --- [registration-backend] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-11T00:45:04.383+02:00  INFO 31464 --- [registration-backend] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-10-11T00:45:04.577+02:00  INFO 31464 --- [registration-backend] [           main] o.a.maven.surefire.booter.ForkedBooter   : Starting ForkedBooter v3.5.6 using Java 21.0.10 with PID 31464 (started by sense in E:\13 - Lab Projects\01_Runs\_____SECOND______ROUND_____\01_kyuhi_single-agent_sdd_v003\02_output\backend)
+2026-10-11T00:45:04.577+02:00  INFO 31464 --- [registration-backend] [           main] o.a.maven.surefire.booter.ForkedBooter   : No active profile set, falling back to 1 default profile: "default"
+2026-10-11T00:45:04.727+02:00  INFO 31464 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-11T00:45:04.734+02:00  INFO 31464 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 5 ms. Found 0 JPA repository interfaces.
+2026-10-11T00:45:04.818+02:00  INFO 31464 --- [registration-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-10-11T00:45:04.818+02:00  INFO 31464 --- [registration-backend] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-11T00:45:04.819+02:00  INFO 31464 --- [registration-backend] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.26]
+2026-10-11T00:45:04.865+02:00  INFO 31464 --- [registration-backend] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 286 ms
+2026-10-11T00:45:04.917+02:00  INFO 31464 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2026-10-11T00:45:04.929+02:00  INFO 31464 --- [registration-backend] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection org.postgresql.jdbc.PgConnection@77b87d90
+2026-10-11T00:45:04.930+02:00  INFO 31464 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2026-10-11T00:45:04.931+02:00  INFO 31464 --- [registration-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:51956/test?loggerLevel=OFF (PostgreSQL 16.15)
+2026-10-11T00:45:04.954+02:00  INFO 31464 --- [registration-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 0 migrations (execution time 00:00.006s)
+2026-10-11T00:45:04.954+02:00  WARN 31464 --- [registration-backend] [           main] o.f.core.internal.command.DbValidate     : No migrations found. Are your locations set up correctly?
+2026-10-11T00:45:04.978+02:00  INFO 31464 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-10-11T00:45:04.979+02:00  INFO 31464 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-10-11T00:45:04.995+02:00  INFO 31464 --- [registration-backend] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-10-11T00:45:05.024+02:00  INFO 31464 --- [registration-backend] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-11T00:45:05.034+02:00  INFO 31464 --- [registration-backend] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:51956/test?loggerLevel=OFF]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 16.15
+	Default catalog/schema: test/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-10-11T00:45:05.053+02:00  INFO 31464 --- [registration-backend] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-11T00:45:05.071+02:00  INFO 31464 --- [registration-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-11T00:45:05.347+02:00  INFO 31464 --- [registration-backend] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name organizers
+2026-10-11T00:45:05.436+02:00  INFO 31464 --- [registration-backend] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-10-11T00:45:05.448+02:00  INFO 31464 --- [registration-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 51983 (http) with context path '/'
+2026-10-11T00:45:05.451+02:00  INFO 31464 --- [registration-backend] [           main] o.a.maven.surefire.booter.ForkedBooter   : Started ForkedBooter in 0.887 seconds (process running for 14.576)
+2026-10-11T00:45:05.456+02:00  INFO 31464 --- [registration-backend] [o-auto-2-exec-1] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-11T00:45:05.456+02:00  INFO 31464 --- [registration-backend] [o-auto-2-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-11T00:45:05.457+02:00  INFO 31464 --- [registration-backend] [o-auto-2-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-10-11T00:45:05.472+02:00  INFO 31464 --- [registration-backend] [           main] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-10-11T00:45:05.481+02:00  INFO 31464 --- [registration-backend] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-10-11T00:45:05.486+02:00  INFO 31464 --- [registration-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-10-11T00:45:05.488+02:00  INFO 31464 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2026-10-11T00:45:05.491+02:00  INFO 31464 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2026-10-11T00:45:05.492+02:00  INFO 31464 --- [registration-backend] [           main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2026-10-11T00:45:05.494+02:00  INFO 31464 --- [registration-backend] [           main] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Destroying Spring FrameworkServlet 'dispatcherServlet'
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-10-11T00:45:05.517+02:00  INFO 31464 --- [registration-backend] [           main] o.a.maven.surefire.booter.ForkedBooter   : Starting ForkedBooter v3.5.6 using Java 21.0.10 with PID 31464 (started by sense in E:\13 - Lab Projects\01_Runs\_____SECOND______ROUND_____\01_kyuhi_single-agent_sdd_v003\02_output\backend)
+2026-10-11T00:45:05.517+02:00  INFO 31464 --- [registration-backend] [           main] o.a.maven.surefire.booter.ForkedBooter   : No active profile set, falling back to 1 default profile: "default"
+2026-10-11T00:45:05.651+02:00  INFO 31464 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-11T00:45:05.657+02:00  INFO 31464 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 0 JPA repository interfaces.
+2026-10-11T00:45:05.718+02:00  INFO 31464 --- [registration-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-10-11T00:45:05.719+02:00  INFO 31464 --- [registration-backend] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-11T00:45:05.719+02:00  INFO 31464 --- [registration-backend] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.26]
+2026-10-11T00:45:05.761+02:00  INFO 31464 --- [registration-backend] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 243 ms
+2026-10-11T00:45:05.802+02:00  INFO 31464 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2026-10-11T00:45:05.815+02:00  INFO 31464 --- [registration-backend] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection org.postgresql.jdbc.PgConnection@59f278fe
+2026-10-11T00:45:05.815+02:00  INFO 31464 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2026-10-11T00:45:05.817+02:00  INFO 31464 --- [registration-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:51956/test?loggerLevel=OFF (PostgreSQL 16.15)
+2026-10-11T00:45:05.839+02:00  INFO 31464 --- [registration-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 0 migrations (execution time 00:00.006s)
+2026-10-11T00:45:05.839+02:00  WARN 31464 --- [registration-backend] [           main] o.f.core.internal.command.DbValidate     : No migrations found. Are your locations set up correctly?
+2026-10-11T00:45:05.862+02:00  INFO 31464 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-10-11T00:45:05.863+02:00  INFO 31464 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-10-11T00:45:05.879+02:00  INFO 31464 --- [registration-backend] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-10-11T00:45:05.899+02:00  INFO 31464 --- [registration-backend] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-11T00:45:05.907+02:00  INFO 31464 --- [registration-backend] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:51956/test?loggerLevel=OFF]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 16.15
+	Default catalog/schema: test/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-10-11T00:45:05.927+02:00  INFO 31464 --- [registration-backend] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-11T00:45:05.944+02:00  INFO 31464 --- [registration-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-11T00:45:06.218+02:00  INFO 31464 --- [registration-backend] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name organizers
+2026-10-11T00:45:06.294+02:00  INFO 31464 --- [registration-backend] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-10-11T00:45:06.304+02:00  INFO 31464 --- [registration-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 51996 (http) with context path '/'
+2026-10-11T00:45:06.306+02:00  INFO 31464 --- [registration-backend] [           main] o.a.maven.surefire.booter.ForkedBooter   : Started ForkedBooter in 0.803 seconds (process running for 15.432)
+2026-10-11T00:45:06.312+02:00  INFO 31464 --- [registration-backend] [o-auto-3-exec-1] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-11T00:45:06.312+02:00  INFO 31464 --- [registration-backend] [o-auto-3-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-11T00:45:06.313+02:00  INFO 31464 --- [registration-backend] [o-auto-3-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-10-11T00:45:06.356+02:00  INFO 31464 --- [registration-backend] [           main] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-10-11T00:45:06.364+02:00  INFO 31464 --- [registration-backend] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-10-11T00:45:06.367+02:00  INFO 31464 --- [registration-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-10-11T00:45:06.368+02:00  INFO 31464 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2026-10-11T00:45:06.370+02:00  INFO 31464 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2026-10-11T00:45:06.370+02:00  INFO 31464 --- [registration-backend] [           main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2026-10-11T00:45:06.370+02:00  INFO 31464 --- [registration-backend] [           main] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Destroying Spring FrameworkServlet 'dispatcherServlet'
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-10-11T00:45:06.445+02:00  INFO 31464 --- [registration-backend] [           main] o.a.maven.surefire.booter.ForkedBooter   : Starting ForkedBooter v3.5.6 using Java 21.0.10 with PID 31464 (started by sense in E:\13 - Lab Projects\01_Runs\_____SECOND______ROUND_____\01_kyuhi_single-agent_sdd_v003\02_output\backend)
+2026-10-11T00:45:06.445+02:00  INFO 31464 --- [registration-backend] [           main] o.a.maven.surefire.booter.ForkedBooter   : No active profile set, falling back to 1 default profile: "default"
+2026-10-11T00:45:06.556+02:00  INFO 31464 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-11T00:45:06.562+02:00  INFO 31464 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 0 JPA repository interfaces.
+2026-10-11T00:45:06.631+02:00  INFO 31464 --- [registration-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-10-11T00:45:06.632+02:00  INFO 31464 --- [registration-backend] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-11T00:45:06.632+02:00  INFO 31464 --- [registration-backend] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.26]
+2026-10-11T00:45:06.676+02:00  INFO 31464 --- [registration-backend] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 230 ms
+2026-10-11T00:45:06.719+02:00  INFO 31464 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2026-10-11T00:45:06.732+02:00  INFO 31464 --- [registration-backend] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-4 - Added connection org.postgresql.jdbc.PgConnection@61716ddf
+2026-10-11T00:45:06.732+02:00  INFO 31464 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2026-10-11T00:45:06.734+02:00  INFO 31464 --- [registration-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:51956/test?loggerLevel=OFF (PostgreSQL 16.15)
+2026-10-11T00:45:06.754+02:00  INFO 31464 --- [registration-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 0 migrations (execution time 00:00.005s)
+2026-10-11T00:45:06.754+02:00  WARN 31464 --- [registration-backend] [           main] o.f.core.internal.command.DbValidate     : No migrations found. Are your locations set up correctly?
+2026-10-11T00:45:06.775+02:00  INFO 31464 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-10-11T00:45:06.775+02:00  INFO 31464 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-10-11T00:45:06.789+02:00  INFO 31464 --- [registration-backend] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-10-11T00:45:06.811+02:00  INFO 31464 --- [registration-backend] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-11T00:45:06.820+02:00  INFO 31464 --- [registration-backend] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:51956/test?loggerLevel=OFF]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 16.15
+	Default catalog/schema: test/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-10-11T00:45:06.836+02:00  INFO 31464 --- [registration-backend] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-11T00:45:06.852+02:00  INFO 31464 --- [registration-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-11T00:45:06.859+02:00  WARN 31464 --- [registration-backend] [           main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'formConfigController' defined in file [E:\13 - Lab Projects\01_Runs\_____SECOND______ROUND_____\01_kyuhi_single-agent_sdd_v003\02_output\backend\target\classes\si\konferenca\registration\api\FormConfigController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'formConfigService' defined in class path resource [si/konferenca/registration/config/ApplicationConfig.class]: Unsatisfied dependency expressed through method 'formConfigService' parameter 0: Error creating bean with name 'optionCatalog' defined in class path resource [si/konferenca/registration/config/ApplicationConfig.class]: Failed to instantiate [si.konferenca.registration.domain.OptionCatalog]: Factory method 'optionCatalog' threw exception with message: Invalid conference options configuration: file:C:\Users\sense\AppData\Local\Temp\conference-options-invalid2243953149889800540.json: option 'ws-dup' is defined more than once
+2026-10-11T00:45:06.859+02:00  INFO 31464 --- [registration-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-10-11T00:45:06.860+02:00  INFO 31464 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
+2026-10-11T00:45:06.873+02:00  INFO 31464 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.
+2026-10-11T00:45:06.873+02:00  INFO 31464 --- [registration-backend] [           main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2026-10-11T00:45:06.878+02:00  INFO 31464 --- [registration-backend] [           main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-10-11T00:45:06.895+02:00 ERROR 31464 --- [registration-backend] [           main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'formConfigController' defined in file [E:\13 - Lab Projects\01_Runs\_____SECOND______ROUND_____\01_kyuhi_single-agent_sdd_v003\02_output\backend\target\classes\si\konferenca\registration\api\FormConfigController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'formConfigService' defined in class path resource [si/konferenca/registration/config/ApplicationConfig.class]: Unsatisfied dependency expressed through method 'formConfigService' parameter 0: Error creating bean with name 'optionCatalog' defined in class path resource [si/konferenca/registration/config/ApplicationConfig.class]: Failed to instantiate [si.konferenca.registration.domain.OptionCatalog]: Factory method 'optionCatalog' threw exception with message: Invalid conference options configuration: file:C:\Users\sense\AppData\Local\Temp\conference-options-invalid2243953149889800540.json: option 'ws-dup' is defined more than once
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1380) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1219) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:565) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:196) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1225) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1191) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1121) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:994) ~[spring-context-7.0.9.jar:7.0.9]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:621) ~[spring-context-7.0.9.jar:7.0.9]
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143) ~[spring-boot-web-server-4.1.1.jar:4.1.1]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756) ~[spring-boot-4.1.1.jar:4.1.1]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445) ~[spring-boot-4.1.1.jar:4.1.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321) ~[spring-boot-4.1.1.jar:4.1.1]
+	at org.springframework.boot.builder.SpringApplicationBuilder.run(SpringApplicationBuilder.java:154) ~[spring-boot-4.1.1.jar:4.1.1]
+	at si.konferenca.registration.acceptance.ConferenceOptionsAcceptanceTest.start(ConferenceOptionsAcceptanceTest.java:187) ~[test-classes/:na]
+	at si.konferenca.registration.acceptance.ConferenceOptionsAcceptanceTest.lambda$ac_003_03_invalidConfigurationStopsTheBackend$1(ConferenceOptionsAcceptanceTest.java:139) ~[test-classes/:na]
+	at org.assertj.core.api.ThrowableAssert.catchThrowable(ThrowableAssert.java:66) ~[assertj-core-3.27.7.jar:na]
+	at org.assertj.core.api.AssertionsForClassTypes.catchThrowable(AssertionsForClassTypes.java:908) ~[assertj-core-3.27.7.jar:na]
+	at org.assertj.core.api.Assertions.catchThrowable(Assertions.java:1476) ~[assertj-core-3.27.7.jar:na]
+	at org.assertj.core.api.Assertions.assertThatThrownBy(Assertions.java:1319) ~[assertj-core-3.27.7.jar:na]
+	at si.konferenca.registration.acceptance.ConferenceOptionsAcceptanceTest.ac_003_03_invalidConfigurationStopsTheBackend(ConferenceOptionsAcceptanceTest.java:139) ~[test-classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:701) ~[junit-platform-commons-6.0.3.jar:6.0.3]
+	at org.junit.platform.commons.support.ReflectionSupport.invokeMethod(ReflectionSupport.java:502) ~[junit-platform-commons-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.support.MethodReflectionUtils.invoke(MethodReflectionUtils.java:45) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:61) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:124) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:163) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:148) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestTemplateMethod(TimeoutExtension.java:94) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:123) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:105) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:99) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:66) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:47) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:39) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:104) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:98) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invokeVoid(InterceptingExecutableInvoker.java:71) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$0(TestMethodTestDescriptor.java:219) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:215) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:157) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:70) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$2(NodeTestTask.java:176) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$1(NodeTestTask.java:166) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:138) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$0(NodeTestTask.java:164) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:163) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:116) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:36) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask$DefaultDynamicTestExecutor.execute(NodeTestTask.java:268) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask$DefaultDynamicTestExecutor.execute(NodeTestTask.java:246) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.descriptor.TemplateExecutor.execute(TemplateExecutor.java:96) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.descriptor.TemplateExecutor.lambda$executeForProvider$1(TemplateExecutor.java:59) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at java.base/java.util.Optional.ifPresent(Optional.java:178) ~[na:na]
+	at org.junit.jupiter.engine.descriptor.TemplateExecutor.lambda$executeForProvider$0(TemplateExecutor.java:59) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197) ~[na:na]
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:762) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197) ~[na:na]
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276) ~[na:na]
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197) ~[na:na]
+	at java.base/java.util.AbstractList$RandomAccessSpliterator.forEachRemaining(AbstractList.java:722) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596) ~[na:na]
+	at org.junit.jupiter.engine.descriptor.TemplateExecutor.executeForProvider(TemplateExecutor.java:57) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.descriptor.TemplateExecutor.execute(TemplateExecutor.java:46) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.descriptor.TestTemplateTestDescriptor.execute(TestTemplateTestDescriptor.java:112) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.descriptor.TestTemplateTestDescriptor.execute(TestTemplateTestDescriptor.java:40) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$2(NodeTestTask.java:176) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$1(NodeTestTask.java:166) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:138) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$0(NodeTestTask.java:164) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:163) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:116) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) ~[na:na]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:42) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$2(NodeTestTask.java:180) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$1(NodeTestTask.java:166) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:138) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$0(NodeTestTask.java:164) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:163) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:116) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) ~[na:na]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:42) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$2(NodeTestTask.java:180) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$1(NodeTestTask.java:166) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:138) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$0(NodeTestTask.java:164) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:163) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:116) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:36) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:52) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:58) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.executeEngine(EngineExecutionOrchestrator.java:246) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.failOrExecuteEngine(EngineExecutionOrchestrator.java:218) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:179) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:108) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:66) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:157) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:65) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:125) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:114) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:58) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.InterceptingLauncher.lambda$execute$2(InterceptingLauncher.java:57) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.ClasspathAlignmentCheckingLauncherInterceptor.intercept(ClasspathAlignmentCheckingLauncherInterceptor.java:25) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.InterceptingLauncher.execute(InterceptingLauncher.java:56) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:58) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.apache.maven.surefire.api.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:125) ~[surefire-api-3.5.6.jar:3.5.6]
+	at org.apache.maven.surefire.junitplatform.LauncherAdapter.executeWithCancellationToken(LauncherAdapter.java:68) ~[surefire-junit-platform-3.5.6.jar:3.5.6]
+	at org.apache.maven.surefire.junitplatform.LauncherAdapter.execute(LauncherAdapter.java:54) ~[surefire-junit-platform-3.5.6.jar:3.5.6]
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:203) ~[surefire-junit-platform-3.5.6.jar:3.5.6]
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:168) ~[surefire-junit-platform-3.5.6.jar:3.5.6]
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:136) ~[surefire-junit-platform-3.5.6.jar:3.5.6]
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385) ~[surefire-booter-3.5.6.jar:3.5.6]
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162) ~[surefire-booter-3.5.6.jar:3.5.6]
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507) ~[surefire-booter-3.5.6.jar:3.5.6]
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495) ~[surefire-booter-3.5.6.jar:3.5.6]
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'formConfigService' defined in class path resource [si/konferenca/registration/config/ApplicationConfig.class]: Unsatisfied dependency expressed through method 'formConfigService' parameter 0: Error creating bean with name 'optionCatalog' defined in class path resource [si/konferenca/registration/config/ApplicationConfig.class]: Failed to instantiate [si.konferenca.registration.domain.OptionCatalog]: Factory method 'optionCatalog' threw exception with message: Invalid conference options configuration: file:C:\Users\sense\AppData\Local\Temp\conference-options-invalid2243953149889800540.json: option 'ws-dup' is defined more than once
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:546) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1360) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1192) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:565) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:229) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1769) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1658) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:912) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791) ~[spring-beans-7.0.9.jar:7.0.9]
+	... 163 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'optionCatalog' defined in class path resource [si/konferenca/registration/config/ApplicationConfig.class]: Failed to instantiate [si.konferenca.registration.domain.OptionCatalog]: Factory method 'optionCatalog' threw exception with message: Invalid conference options configuration: file:C:\Users\sense\AppData\Local\Temp\conference-options-invalid2243953149889800540.json: option 'ws-dup' is defined more than once
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:657) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:645) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1360) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1192) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:565) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:229) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1769) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1658) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:912) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791) ~[spring-beans-7.0.9.jar:7.0.9]
+	... 177 common frames omitted
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [si.konferenca.registration.domain.OptionCatalog]: Factory method 'optionCatalog' threw exception with message: Invalid conference options configuration: file:C:\Users\sense\AppData\Local\Temp\conference-options-invalid2243953149889800540.json: option 'ws-dup' is defined more than once
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:183) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiateWithFactoryMethod(SimpleInstantiationStrategy.java:72) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:152) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653) ~[spring-beans-7.0.9.jar:7.0.9]
+	... 191 common frames omitted
+Caused by: si.konferenca.registration.infrastructure.InvalidOptionsException: Invalid conference options configuration: file:C:\Users\sense\AppData\Local\Temp\conference-options-invalid2243953149889800540.json: option 'ws-dup' is defined more than once
+	at si.konferenca.registration.infrastructure.OptionCatalogLoader.readOptions(OptionCatalogLoader.java:60) ~[classes/:na]
+	at si.konferenca.registration.infrastructure.OptionCatalogLoader.load(OptionCatalogLoader.java:47) ~[classes/:na]
+	at si.konferenca.registration.config.ApplicationConfig.optionCatalog(ApplicationConfig.java:35) ~[classes/:na]
+	at si.konferenca.registration.config.ApplicationConfig$$SpringCGLIB$$0.CGLIB$optionCatalog$1(<generated>) ~[classes/:na]
+	at si.konferenca.registration.config.ApplicationConfig$$SpringCGLIB$$FastClass$$1.invoke(<generated>) ~[classes/:na]
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:258) ~[spring-core-7.0.9.jar:7.0.9]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:398) ~[spring-context-7.0.9.jar:7.0.9]
+	at si.konferenca.registration.config.ApplicationConfig$$SpringCGLIB$$0.optionCatalog(<generated>) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:155) ~[spring-beans-7.0.9.jar:7.0.9]
+	... 194 common frames omitted
+
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-10-11T00:45:06.927+02:00  INFO 31464 --- [registration-backend] [           main] o.a.maven.surefire.booter.ForkedBooter   : Starting ForkedBooter v3.5.6 using Java 21.0.10 with PID 31464 (started by sense in E:\13 - Lab Projects\01_Runs\_____SECOND______ROUND_____\01_kyuhi_single-agent_sdd_v003\02_output\backend)
+2026-10-11T00:45:06.927+02:00  INFO 31464 --- [registration-backend] [           main] o.a.maven.surefire.booter.ForkedBooter   : No active profile set, falling back to 1 default profile: "default"
+2026-10-11T00:45:07.031+02:00  INFO 31464 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-11T00:45:07.036+02:00  INFO 31464 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 0 JPA repository interfaces.
+2026-10-11T00:45:07.091+02:00  INFO 31464 --- [registration-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-10-11T00:45:07.092+02:00  INFO 31464 --- [registration-backend] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-11T00:45:07.092+02:00  INFO 31464 --- [registration-backend] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.26]
+2026-10-11T00:45:07.135+02:00  INFO 31464 --- [registration-backend] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 207 ms
+2026-10-11T00:45:07.180+02:00  INFO 31464 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Starting...
+2026-10-11T00:45:07.193+02:00  INFO 31464 --- [registration-backend] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-5 - Added connection org.postgresql.jdbc.PgConnection@3f4b24d0
+2026-10-11T00:45:07.193+02:00  INFO 31464 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Start completed.
+2026-10-11T00:45:07.194+02:00  INFO 31464 --- [registration-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:51956/test?loggerLevel=OFF (PostgreSQL 16.15)
+2026-10-11T00:45:07.214+02:00  INFO 31464 --- [registration-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 0 migrations (execution time 00:00.005s)
+2026-10-11T00:45:07.214+02:00  WARN 31464 --- [registration-backend] [           main] o.f.core.internal.command.DbValidate     : No migrations found. Are your locations set up correctly?
+2026-10-11T00:45:07.236+02:00  INFO 31464 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-10-11T00:45:07.236+02:00  INFO 31464 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-10-11T00:45:07.249+02:00  INFO 31464 --- [registration-backend] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-10-11T00:45:07.267+02:00  INFO 31464 --- [registration-backend] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-11T00:45:07.275+02:00  INFO 31464 --- [registration-backend] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:51956/test?loggerLevel=OFF]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 16.15
+	Default catalog/schema: test/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-10-11T00:45:07.290+02:00  INFO 31464 --- [registration-backend] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-11T00:45:07.306+02:00  INFO 31464 --- [registration-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-11T00:45:07.314+02:00  WARN 31464 --- [registration-backend] [           main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'formConfigController' defined in file [E:\13 - Lab Projects\01_Runs\_____SECOND______ROUND_____\01_kyuhi_single-agent_sdd_v003\02_output\backend\target\classes\si\konferenca\registration\api\FormConfigController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'formConfigService' defined in class path resource [si/konferenca/registration/config/ApplicationConfig.class]: Unsatisfied dependency expressed through method 'formConfigService' parameter 0: Error creating bean with name 'optionCatalog' defined in class path resource [si/konferenca/registration/config/ApplicationConfig.class]: Failed to instantiate [si.konferenca.registration.domain.OptionCatalog]: Factory method 'optionCatalog' threw exception with message: Invalid conference options configuration: file:C:\Users\sense\AppData\Local\Temp\conference-options-invalid11845472609015996775.json: option 'bad-category': unknown category 'PARTY' (WORKSHOP, EVENT, MEAL, OTHER)
+2026-10-11T00:45:07.314+02:00  INFO 31464 --- [registration-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-10-11T00:45:07.314+02:00  INFO 31464 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown initiated...
+2026-10-11T00:45:07.333+02:00  INFO 31464 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown completed.
+2026-10-11T00:45:07.333+02:00  INFO 31464 --- [registration-backend] [           main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2026-10-11T00:45:07.338+02:00  INFO 31464 --- [registration-backend] [           main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-10-11T00:45:07.339+02:00 ERROR 31464 --- [registration-backend] [           main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'formConfigController' defined in file [E:\13 - Lab Projects\01_Runs\_____SECOND______ROUND_____\01_kyuhi_single-agent_sdd_v003\02_output\backend\target\classes\si\konferenca\registration\api\FormConfigController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'formConfigService' defined in class path resource [si/konferenca/registration/config/ApplicationConfig.class]: Unsatisfied dependency expressed through method 'formConfigService' parameter 0: Error creating bean with name 'optionCatalog' defined in class path resource [si/konferenca/registration/config/ApplicationConfig.class]: Failed to instantiate [si.konferenca.registration.domain.OptionCatalog]: Factory method 'optionCatalog' threw exception with message: Invalid conference options configuration: file:C:\Users\sense\AppData\Local\Temp\conference-options-invalid11845472609015996775.json: option 'bad-category': unknown category 'PARTY' (WORKSHOP, EVENT, MEAL, OTHER)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1380) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1219) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:565) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:196) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1225) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1191) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1121) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:994) ~[spring-context-7.0.9.jar:7.0.9]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:621) ~[spring-context-7.0.9.jar:7.0.9]
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143) ~[spring-boot-web-server-4.1.1.jar:4.1.1]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756) ~[spring-boot-4.1.1.jar:4.1.1]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445) ~[spring-boot-4.1.1.jar:4.1.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321) ~[spring-boot-4.1.1.jar:4.1.1]
+	at org.springframework.boot.builder.SpringApplicationBuilder.run(SpringApplicationBuilder.java:154) ~[spring-boot-4.1.1.jar:4.1.1]
+	at si.konferenca.registration.acceptance.ConferenceOptionsAcceptanceTest.start(ConferenceOptionsAcceptanceTest.java:187) ~[test-classes/:na]
+	at si.konferenca.registration.acceptance.ConferenceOptionsAcceptanceTest.lambda$ac_003_03_invalidConfigurationStopsTheBackend$1(ConferenceOptionsAcceptanceTest.java:139) ~[test-classes/:na]
+	at org.assertj.core.api.ThrowableAssert.catchThrowable(ThrowableAssert.java:66) ~[assertj-core-3.27.7.jar:na]
+	at org.assertj.core.api.AssertionsForClassTypes.catchThrowable(AssertionsForClassTypes.java:908) ~[assertj-core-3.27.7.jar:na]
+	at org.assertj.core.api.Assertions.catchThrowable(Assertions.java:1476) ~[assertj-core-3.27.7.jar:na]
+	at org.assertj.core.api.Assertions.assertThatThrownBy(Assertions.java:1319) ~[assertj-core-3.27.7.jar:na]
+	at si.konferenca.registration.acceptance.ConferenceOptionsAcceptanceTest.ac_003_03_invalidConfigurationStopsTheBackend(ConferenceOptionsAcceptanceTest.java:139) ~[test-classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:701) ~[junit-platform-commons-6.0.3.jar:6.0.3]
+	at org.junit.platform.commons.support.ReflectionSupport.invokeMethod(ReflectionSupport.java:502) ~[junit-platform-commons-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.support.MethodReflectionUtils.invoke(MethodReflectionUtils.java:45) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:61) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:124) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:163) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:148) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestTemplateMethod(TimeoutExtension.java:94) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:123) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:105) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:99) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:66) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:47) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:39) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:104) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:98) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invokeVoid(InterceptingExecutableInvoker.java:71) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$0(TestMethodTestDescriptor.java:219) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:215) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:157) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:70) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$2(NodeTestTask.java:176) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$1(NodeTestTask.java:166) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:138) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$0(NodeTestTask.java:164) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:163) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:116) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:36) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask$DefaultDynamicTestExecutor.execute(NodeTestTask.java:268) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask$DefaultDynamicTestExecutor.execute(NodeTestTask.java:246) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.descriptor.TemplateExecutor.execute(TemplateExecutor.java:96) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.descriptor.TemplateExecutor.lambda$executeForProvider$1(TemplateExecutor.java:59) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at java.base/java.util.Optional.ifPresent(Optional.java:178) ~[na:na]
+	at org.junit.jupiter.engine.descriptor.TemplateExecutor.lambda$executeForProvider$0(TemplateExecutor.java:59) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197) ~[na:na]
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:762) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197) ~[na:na]
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276) ~[na:na]
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197) ~[na:na]
+	at java.base/java.util.AbstractList$RandomAccessSpliterator.forEachRemaining(AbstractList.java:722) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596) ~[na:na]
+	at org.junit.jupiter.engine.descriptor.TemplateExecutor.executeForProvider(TemplateExecutor.java:57) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.descriptor.TemplateExecutor.execute(TemplateExecutor.java:46) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.descriptor.TestTemplateTestDescriptor.execute(TestTemplateTestDescriptor.java:112) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.descriptor.TestTemplateTestDescriptor.execute(TestTemplateTestDescriptor.java:40) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$2(NodeTestTask.java:176) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$1(NodeTestTask.java:166) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:138) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$0(NodeTestTask.java:164) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:163) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:116) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) ~[na:na]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:42) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$2(NodeTestTask.java:180) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$1(NodeTestTask.java:166) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:138) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$0(NodeTestTask.java:164) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:163) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:116) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) ~[na:na]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:42) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$2(NodeTestTask.java:180) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$1(NodeTestTask.java:166) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:138) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$0(NodeTestTask.java:164) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:163) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:116) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:36) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:52) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:58) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.executeEngine(EngineExecutionOrchestrator.java:246) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.failOrExecuteEngine(EngineExecutionOrchestrator.java:218) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:179) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:108) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:66) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:157) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:65) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:125) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:114) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:58) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.InterceptingLauncher.lambda$execute$2(InterceptingLauncher.java:57) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.ClasspathAlignmentCheckingLauncherInterceptor.intercept(ClasspathAlignmentCheckingLauncherInterceptor.java:25) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.InterceptingLauncher.execute(InterceptingLauncher.java:56) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:58) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.apache.maven.surefire.api.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:125) ~[surefire-api-3.5.6.jar:3.5.6]
+	at org.apache.maven.surefire.junitplatform.LauncherAdapter.executeWithCancellationToken(LauncherAdapter.java:68) ~[surefire-junit-platform-3.5.6.jar:3.5.6]
+	at org.apache.maven.surefire.junitplatform.LauncherAdapter.execute(LauncherAdapter.java:54) ~[surefire-junit-platform-3.5.6.jar:3.5.6]
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:203) ~[surefire-junit-platform-3.5.6.jar:3.5.6]
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:168) ~[surefire-junit-platform-3.5.6.jar:3.5.6]
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:136) ~[surefire-junit-platform-3.5.6.jar:3.5.6]
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385) ~[surefire-booter-3.5.6.jar:3.5.6]
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162) ~[surefire-booter-3.5.6.jar:3.5.6]
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507) ~[surefire-booter-3.5.6.jar:3.5.6]
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495) ~[surefire-booter-3.5.6.jar:3.5.6]
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'formConfigService' defined in class path resource [si/konferenca/registration/config/ApplicationConfig.class]: Unsatisfied dependency expressed through method 'formConfigService' parameter 0: Error creating bean with name 'optionCatalog' defined in class path resource [si/konferenca/registration/config/ApplicationConfig.class]: Failed to instantiate [si.konferenca.registration.domain.OptionCatalog]: Factory method 'optionCatalog' threw exception with message: Invalid conference options configuration: file:C:\Users\sense\AppData\Local\Temp\conference-options-invalid11845472609015996775.json: option 'bad-category': unknown category 'PARTY' (WORKSHOP, EVENT, MEAL, OTHER)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:546) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1360) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1192) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:565) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:229) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1769) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1658) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:912) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791) ~[spring-beans-7.0.9.jar:7.0.9]
+	... 163 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'optionCatalog' defined in class path resource [si/konferenca/registration/config/ApplicationConfig.class]: Failed to instantiate [si.konferenca.registration.domain.OptionCatalog]: Factory method 'optionCatalog' threw exception with message: Invalid conference options configuration: file:C:\Users\sense\AppData\Local\Temp\conference-options-invalid11845472609015996775.json: option 'bad-category': unknown category 'PARTY' (WORKSHOP, EVENT, MEAL, OTHER)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:657) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:645) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1360) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1192) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:565) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:229) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1769) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1658) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:912) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791) ~[spring-beans-7.0.9.jar:7.0.9]
+	... 177 common frames omitted
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [si.konferenca.registration.domain.OptionCatalog]: Factory method 'optionCatalog' threw exception with message: Invalid conference options configuration: file:C:\Users\sense\AppData\Local\Temp\conference-options-invalid11845472609015996775.json: option 'bad-category': unknown category 'PARTY' (WORKSHOP, EVENT, MEAL, OTHER)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:183) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiateWithFactoryMethod(SimpleInstantiationStrategy.java:72) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:152) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653) ~[spring-beans-7.0.9.jar:7.0.9]
+	... 191 common frames omitted
+Caused by: si.konferenca.registration.infrastructure.InvalidOptionsException: Invalid conference options configuration: file:C:\Users\sense\AppData\Local\Temp\conference-options-invalid11845472609015996775.json: option 'bad-category': unknown category 'PARTY' (WORKSHOP, EVENT, MEAL, OTHER)
+	at si.konferenca.registration.infrastructure.OptionCatalogLoader.category(OptionCatalogLoader.java:138) ~[classes/:na]
+	at si.konferenca.registration.infrastructure.OptionCatalogLoader.readOptions(OptionCatalogLoader.java:64) ~[classes/:na]
+	at si.konferenca.registration.infrastructure.OptionCatalogLoader.load(OptionCatalogLoader.java:47) ~[classes/:na]
+	at si.konferenca.registration.config.ApplicationConfig.optionCatalog(ApplicationConfig.java:35) ~[classes/:na]
+	at si.konferenca.registration.config.ApplicationConfig$$SpringCGLIB$$0.CGLIB$optionCatalog$1(<generated>) ~[classes/:na]
+	at si.konferenca.registration.config.ApplicationConfig$$SpringCGLIB$$FastClass$$1.invoke(<generated>) ~[classes/:na]
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:258) ~[spring-core-7.0.9.jar:7.0.9]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:398) ~[spring-context-7.0.9.jar:7.0.9]
+	at si.konferenca.registration.config.ApplicationConfig$$SpringCGLIB$$0.optionCatalog(<generated>) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:155) ~[spring-beans-7.0.9.jar:7.0.9]
+	... 194 common frames omitted
+
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-10-11T00:45:07.362+02:00  INFO 31464 --- [registration-backend] [           main] o.a.maven.surefire.booter.ForkedBooter   : Starting ForkedBooter v3.5.6 using Java 21.0.10 with PID 31464 (started by sense in E:\13 - Lab Projects\01_Runs\_____SECOND______ROUND_____\01_kyuhi_single-agent_sdd_v003\02_output\backend)
+2026-10-11T00:45:07.362+02:00  INFO 31464 --- [registration-backend] [           main] o.a.maven.surefire.booter.ForkedBooter   : No active profile set, falling back to 1 default profile: "default"
+2026-10-11T00:45:07.465+02:00  INFO 31464 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-11T00:45:07.470+02:00  INFO 31464 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 0 JPA repository interfaces.
+2026-10-11T00:45:07.522+02:00  INFO 31464 --- [registration-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-10-11T00:45:07.523+02:00  INFO 31464 --- [registration-backend] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-11T00:45:07.523+02:00  INFO 31464 --- [registration-backend] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.26]
+2026-10-11T00:45:07.565+02:00  INFO 31464 --- [registration-backend] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 202 ms
+2026-10-11T00:45:07.602+02:00  INFO 31464 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Starting...
+2026-10-11T00:45:07.614+02:00  INFO 31464 --- [registration-backend] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-6 - Added connection org.postgresql.jdbc.PgConnection@68ab6d78
+2026-10-11T00:45:07.614+02:00  INFO 31464 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Start completed.
+2026-10-11T00:45:07.615+02:00  INFO 31464 --- [registration-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:51956/test?loggerLevel=OFF (PostgreSQL 16.15)
+2026-10-11T00:45:07.636+02:00  INFO 31464 --- [registration-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 0 migrations (execution time 00:00.006s)
+2026-10-11T00:45:07.636+02:00  WARN 31464 --- [registration-backend] [           main] o.f.core.internal.command.DbValidate     : No migrations found. Are your locations set up correctly?
+2026-10-11T00:45:07.657+02:00  INFO 31464 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-10-11T00:45:07.658+02:00  INFO 31464 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-10-11T00:45:07.672+02:00  INFO 31464 --- [registration-backend] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-10-11T00:45:07.688+02:00  INFO 31464 --- [registration-backend] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-11T00:45:07.697+02:00  INFO 31464 --- [registration-backend] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:51956/test?loggerLevel=OFF]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 16.15
+	Default catalog/schema: test/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-10-11T00:45:07.711+02:00  INFO 31464 --- [registration-backend] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-11T00:45:07.726+02:00  INFO 31464 --- [registration-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-11T00:45:07.732+02:00  WARN 31464 --- [registration-backend] [           main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'formConfigController' defined in file [E:\13 - Lab Projects\01_Runs\_____SECOND______ROUND_____\01_kyuhi_single-agent_sdd_v003\02_output\backend\target\classes\si\konferenca\registration\api\FormConfigController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'formConfigService' defined in class path resource [si/konferenca/registration/config/ApplicationConfig.class]: Unsatisfied dependency expressed through method 'formConfigService' parameter 0: Error creating bean with name 'optionCatalog' defined in class path resource [si/konferenca/registration/config/ApplicationConfig.class]: Failed to instantiate [si.konferenca.registration.domain.OptionCatalog]: Factory method 'optionCatalog' threw exception with message: Invalid conference options configuration: file:C:\Users\sense\AppData\Local\Temp\conference-options-invalid17265865205300692459.json: option 'bad-audience': unknown audience 'TEACHER' (EXTERNAL, STUDENT)
+2026-10-11T00:45:07.733+02:00  INFO 31464 --- [registration-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-10-11T00:45:07.733+02:00  INFO 31464 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown initiated...
+2026-10-11T00:45:07.755+02:00  INFO 31464 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown completed.
+2026-10-11T00:45:07.755+02:00  INFO 31464 --- [registration-backend] [           main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2026-10-11T00:45:07.760+02:00  INFO 31464 --- [registration-backend] [           main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-10-11T00:45:07.761+02:00 ERROR 31464 --- [registration-backend] [           main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'formConfigController' defined in file [E:\13 - Lab Projects\01_Runs\_____SECOND______ROUND_____\01_kyuhi_single-agent_sdd_v003\02_output\backend\target\classes\si\konferenca\registration\api\FormConfigController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'formConfigService' defined in class path resource [si/konferenca/registration/config/ApplicationConfig.class]: Unsatisfied dependency expressed through method 'formConfigService' parameter 0: Error creating bean with name 'optionCatalog' defined in class path resource [si/konferenca/registration/config/ApplicationConfig.class]: Failed to instantiate [si.konferenca.registration.domain.OptionCatalog]: Factory method 'optionCatalog' threw exception with message: Invalid conference options configuration: file:C:\Users\sense\AppData\Local\Temp\conference-options-invalid17265865205300692459.json: option 'bad-audience': unknown audience 'TEACHER' (EXTERNAL, STUDENT)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1380) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1219) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:565) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:196) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1225) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1191) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1121) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:994) ~[spring-context-7.0.9.jar:7.0.9]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:621) ~[spring-context-7.0.9.jar:7.0.9]
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143) ~[spring-boot-web-server-4.1.1.jar:4.1.1]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756) ~[spring-boot-4.1.1.jar:4.1.1]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445) ~[spring-boot-4.1.1.jar:4.1.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321) ~[spring-boot-4.1.1.jar:4.1.1]
+	at org.springframework.boot.builder.SpringApplicationBuilder.run(SpringApplicationBuilder.java:154) ~[spring-boot-4.1.1.jar:4.1.1]
+	at si.konferenca.registration.acceptance.ConferenceOptionsAcceptanceTest.start(ConferenceOptionsAcceptanceTest.java:187) ~[test-classes/:na]
+	at si.konferenca.registration.acceptance.ConferenceOptionsAcceptanceTest.lambda$ac_003_03_invalidConfigurationStopsTheBackend$1(ConferenceOptionsAcceptanceTest.java:139) ~[test-classes/:na]
+	at org.assertj.core.api.ThrowableAssert.catchThrowable(ThrowableAssert.java:66) ~[assertj-core-3.27.7.jar:na]
+	at org.assertj.core.api.AssertionsForClassTypes.catchThrowable(AssertionsForClassTypes.java:908) ~[assertj-core-3.27.7.jar:na]
+	at org.assertj.core.api.Assertions.catchThrowable(Assertions.java:1476) ~[assertj-core-3.27.7.jar:na]
+	at org.assertj.core.api.Assertions.assertThatThrownBy(Assertions.java:1319) ~[assertj-core-3.27.7.jar:na]
+	at si.konferenca.registration.acceptance.ConferenceOptionsAcceptanceTest.ac_003_03_invalidConfigurationStopsTheBackend(ConferenceOptionsAcceptanceTest.java:139) ~[test-classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:701) ~[junit-platform-commons-6.0.3.jar:6.0.3]
+	at org.junit.platform.commons.support.ReflectionSupport.invokeMethod(ReflectionSupport.java:502) ~[junit-platform-commons-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.support.MethodReflectionUtils.invoke(MethodReflectionUtils.java:45) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:61) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:124) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:163) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:148) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestTemplateMethod(TimeoutExtension.java:94) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:123) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:105) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:99) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:66) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:47) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:39) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:104) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:98) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invokeVoid(InterceptingExecutableInvoker.java:71) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$0(TestMethodTestDescriptor.java:219) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:215) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:157) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:70) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$2(NodeTestTask.java:176) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$1(NodeTestTask.java:166) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:138) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$0(NodeTestTask.java:164) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:163) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:116) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:36) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask$DefaultDynamicTestExecutor.execute(NodeTestTask.java:268) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask$DefaultDynamicTestExecutor.execute(NodeTestTask.java:246) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.descriptor.TemplateExecutor.execute(TemplateExecutor.java:96) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.descriptor.TemplateExecutor.lambda$executeForProvider$1(TemplateExecutor.java:59) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at java.base/java.util.Optional.ifPresent(Optional.java:178) ~[na:na]
+	at org.junit.jupiter.engine.descriptor.TemplateExecutor.lambda$executeForProvider$0(TemplateExecutor.java:59) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197) ~[na:na]
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:762) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197) ~[na:na]
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276) ~[na:na]
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197) ~[na:na]
+	at java.base/java.util.AbstractList$RandomAccessSpliterator.forEachRemaining(AbstractList.java:722) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596) ~[na:na]
+	at org.junit.jupiter.engine.descriptor.TemplateExecutor.executeForProvider(TemplateExecutor.java:57) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.descriptor.TemplateExecutor.execute(TemplateExecutor.java:46) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.descriptor.TestTemplateTestDescriptor.execute(TestTemplateTestDescriptor.java:112) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.descriptor.TestTemplateTestDescriptor.execute(TestTemplateTestDescriptor.java:40) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$2(NodeTestTask.java:176) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$1(NodeTestTask.java:166) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:138) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$0(NodeTestTask.java:164) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:163) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:116) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) ~[na:na]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:42) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$2(NodeTestTask.java:180) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$1(NodeTestTask.java:166) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:138) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$0(NodeTestTask.java:164) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:163) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:116) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) ~[na:na]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:42) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$2(NodeTestTask.java:180) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$1(NodeTestTask.java:166) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:138) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$0(NodeTestTask.java:164) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:163) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:116) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:36) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:52) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:58) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.executeEngine(EngineExecutionOrchestrator.java:246) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.failOrExecuteEngine(EngineExecutionOrchestrator.java:218) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:179) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:108) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:66) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:157) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:65) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:125) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:114) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:58) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.InterceptingLauncher.lambda$execute$2(InterceptingLauncher.java:57) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.ClasspathAlignmentCheckingLauncherInterceptor.intercept(ClasspathAlignmentCheckingLauncherInterceptor.java:25) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.InterceptingLauncher.execute(InterceptingLauncher.java:56) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:58) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.apache.maven.surefire.api.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:125) ~[surefire-api-3.5.6.jar:3.5.6]
+	at org.apache.maven.surefire.junitplatform.LauncherAdapter.executeWithCancellationToken(LauncherAdapter.java:68) ~[surefire-junit-platform-3.5.6.jar:3.5.6]
+	at org.apache.maven.surefire.junitplatform.LauncherAdapter.execute(LauncherAdapter.java:54) ~[surefire-junit-platform-3.5.6.jar:3.5.6]
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:203) ~[surefire-junit-platform-3.5.6.jar:3.5.6]
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:168) ~[surefire-junit-platform-3.5.6.jar:3.5.6]
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:136) ~[surefire-junit-platform-3.5.6.jar:3.5.6]
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385) ~[surefire-booter-3.5.6.jar:3.5.6]
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162) ~[surefire-booter-3.5.6.jar:3.5.6]
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507) ~[surefire-booter-3.5.6.jar:3.5.6]
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495) ~[surefire-booter-3.5.6.jar:3.5.6]
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'formConfigService' defined in class path resource [si/konferenca/registration/config/ApplicationConfig.class]: Unsatisfied dependency expressed through method 'formConfigService' parameter 0: Error creating bean with name 'optionCatalog' defined in class path resource [si/konferenca/registration/config/ApplicationConfig.class]: Failed to instantiate [si.konferenca.registration.domain.OptionCatalog]: Factory method 'optionCatalog' threw exception with message: Invalid conference options configuration: file:C:\Users\sense\AppData\Local\Temp\conference-options-invalid17265865205300692459.json: option 'bad-audience': unknown audience 'TEACHER' (EXTERNAL, STUDENT)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:546) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1360) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1192) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:565) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:229) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1769) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1658) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:912) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791) ~[spring-beans-7.0.9.jar:7.0.9]
+	... 163 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'optionCatalog' defined in class path resource [si/konferenca/registration/config/ApplicationConfig.class]: Failed to instantiate [si.konferenca.registration.domain.OptionCatalog]: Factory method 'optionCatalog' threw exception with message: Invalid conference options configuration: file:C:\Users\sense\AppData\Local\Temp\conference-options-invalid17265865205300692459.json: option 'bad-audience': unknown audience 'TEACHER' (EXTERNAL, STUDENT)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:657) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:645) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1360) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1192) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:565) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:229) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1769) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1658) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:912) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791) ~[spring-beans-7.0.9.jar:7.0.9]
+	... 177 common frames omitted
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [si.konferenca.registration.domain.OptionCatalog]: Factory method 'optionCatalog' threw exception with message: Invalid conference options configuration: file:C:\Users\sense\AppData\Local\Temp\conference-options-invalid17265865205300692459.json: option 'bad-audience': unknown audience 'TEACHER' (EXTERNAL, STUDENT)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:183) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiateWithFactoryMethod(SimpleInstantiationStrategy.java:72) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:152) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653) ~[spring-beans-7.0.9.jar:7.0.9]
+	... 191 common frames omitted
+Caused by: si.konferenca.registration.infrastructure.InvalidOptionsException: Invalid conference options configuration: file:C:\Users\sense\AppData\Local\Temp\conference-options-invalid17265865205300692459.json: option 'bad-audience': unknown audience 'TEACHER' (EXTERNAL, STUDENT)
+	at si.konferenca.registration.infrastructure.OptionCatalogLoader.audience(OptionCatalogLoader.java:157) ~[classes/:na]
+	at si.konferenca.registration.infrastructure.OptionCatalogLoader.readOptions(OptionCatalogLoader.java:70) ~[classes/:na]
+	at si.konferenca.registration.infrastructure.OptionCatalogLoader.load(OptionCatalogLoader.java:47) ~[classes/:na]
+	at si.konferenca.registration.config.ApplicationConfig.optionCatalog(ApplicationConfig.java:35) ~[classes/:na]
+	at si.konferenca.registration.config.ApplicationConfig$$SpringCGLIB$$0.CGLIB$optionCatalog$1(<generated>) ~[classes/:na]
+	at si.konferenca.registration.config.ApplicationConfig$$SpringCGLIB$$FastClass$$1.invoke(<generated>) ~[classes/:na]
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:258) ~[spring-core-7.0.9.jar:7.0.9]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:398) ~[spring-context-7.0.9.jar:7.0.9]
+	at si.konferenca.registration.config.ApplicationConfig$$SpringCGLIB$$0.optionCatalog(<generated>) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:155) ~[spring-beans-7.0.9.jar:7.0.9]
+	... 194 common frames omitted
+
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-10-11T00:45:07.782+02:00  INFO 31464 --- [registration-backend] [           main] o.a.maven.surefire.booter.ForkedBooter   : Starting ForkedBooter v3.5.6 using Java 21.0.10 with PID 31464 (started by sense in E:\13 - Lab Projects\01_Runs\_____SECOND______ROUND_____\01_kyuhi_single-agent_sdd_v003\02_output\backend)
+2026-10-11T00:45:07.783+02:00  INFO 31464 --- [registration-backend] [           main] o.a.maven.surefire.booter.ForkedBooter   : No active profile set, falling back to 1 default profile: "default"
+2026-10-11T00:45:07.876+02:00  INFO 31464 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-11T00:45:07.881+02:00  INFO 31464 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 0 JPA repository interfaces.
+2026-10-11T00:45:07.945+02:00  INFO 31464 --- [registration-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-10-11T00:45:07.946+02:00  INFO 31464 --- [registration-backend] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-11T00:45:07.946+02:00  INFO 31464 --- [registration-backend] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.26]
+2026-10-11T00:45:07.988+02:00  INFO 31464 --- [registration-backend] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 205 ms
+2026-10-11T00:45:08.022+02:00  INFO 31464 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Starting...
+2026-10-11T00:45:08.034+02:00  INFO 31464 --- [registration-backend] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-7 - Added connection org.postgresql.jdbc.PgConnection@26030341
+2026-10-11T00:45:08.035+02:00  INFO 31464 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Start completed.
+2026-10-11T00:45:08.036+02:00  INFO 31464 --- [registration-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:51956/test?loggerLevel=OFF (PostgreSQL 16.15)
+2026-10-11T00:45:08.055+02:00  INFO 31464 --- [registration-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 0 migrations (execution time 00:00.005s)
+2026-10-11T00:45:08.055+02:00  WARN 31464 --- [registration-backend] [           main] o.f.core.internal.command.DbValidate     : No migrations found. Are your locations set up correctly?
+2026-10-11T00:45:08.076+02:00  INFO 31464 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-10-11T00:45:08.077+02:00  INFO 31464 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-10-11T00:45:08.090+02:00  INFO 31464 --- [registration-backend] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-10-11T00:45:08.106+02:00  INFO 31464 --- [registration-backend] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-11T00:45:08.115+02:00  INFO 31464 --- [registration-backend] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:51956/test?loggerLevel=OFF]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 16.15
+	Default catalog/schema: test/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-10-11T00:45:08.129+02:00  INFO 31464 --- [registration-backend] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-11T00:45:08.145+02:00  INFO 31464 --- [registration-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-11T00:45:08.152+02:00  WARN 31464 --- [registration-backend] [           main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'formConfigController' defined in file [E:\13 - Lab Projects\01_Runs\_____SECOND______ROUND_____\01_kyuhi_single-agent_sdd_v003\02_output\backend\target\classes\si\konferenca\registration\api\FormConfigController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'formConfigService' defined in class path resource [si/konferenca/registration/config/ApplicationConfig.class]: Unsatisfied dependency expressed through method 'formConfigService' parameter 0: Error creating bean with name 'optionCatalog' defined in class path resource [si/konferenca/registration/config/ApplicationConfig.class]: Failed to instantiate [si.konferenca.registration.domain.OptionCatalog]: Factory method 'optionCatalog' threw exception with message: Invalid conference options configuration: file:C:\Users\sense\AppData\Local\Temp\conference-options-invalid10467670448740443893.json: option 'no-name': 'name' is missing or empty
+2026-10-11T00:45:08.152+02:00  INFO 31464 --- [registration-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-10-11T00:45:08.152+02:00  INFO 31464 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Shutdown initiated...
+2026-10-11T00:45:08.175+02:00  INFO 31464 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Shutdown completed.
+2026-10-11T00:45:08.175+02:00  INFO 31464 --- [registration-backend] [           main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2026-10-11T00:45:08.180+02:00  INFO 31464 --- [registration-backend] [           main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-10-11T00:45:08.181+02:00 ERROR 31464 --- [registration-backend] [           main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'formConfigController' defined in file [E:\13 - Lab Projects\01_Runs\_____SECOND______ROUND_____\01_kyuhi_single-agent_sdd_v003\02_output\backend\target\classes\si\konferenca\registration\api\FormConfigController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'formConfigService' defined in class path resource [si/konferenca/registration/config/ApplicationConfig.class]: Unsatisfied dependency expressed through method 'formConfigService' parameter 0: Error creating bean with name 'optionCatalog' defined in class path resource [si/konferenca/registration/config/ApplicationConfig.class]: Failed to instantiate [si.konferenca.registration.domain.OptionCatalog]: Factory method 'optionCatalog' threw exception with message: Invalid conference options configuration: file:C:\Users\sense\AppData\Local\Temp\conference-options-invalid10467670448740443893.json: option 'no-name': 'name' is missing or empty
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1380) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1219) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:565) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:196) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1225) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1191) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1121) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:994) ~[spring-context-7.0.9.jar:7.0.9]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:621) ~[spring-context-7.0.9.jar:7.0.9]
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143) ~[spring-boot-web-server-4.1.1.jar:4.1.1]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756) ~[spring-boot-4.1.1.jar:4.1.1]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445) ~[spring-boot-4.1.1.jar:4.1.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321) ~[spring-boot-4.1.1.jar:4.1.1]
+	at org.springframework.boot.builder.SpringApplicationBuilder.run(SpringApplicationBuilder.java:154) ~[spring-boot-4.1.1.jar:4.1.1]
+	at si.konferenca.registration.acceptance.ConferenceOptionsAcceptanceTest.start(ConferenceOptionsAcceptanceTest.java:187) ~[test-classes/:na]
+	at si.konferenca.registration.acceptance.ConferenceOptionsAcceptanceTest.lambda$ac_003_03_invalidConfigurationStopsTheBackend$1(ConferenceOptionsAcceptanceTest.java:139) ~[test-classes/:na]
+	at org.assertj.core.api.ThrowableAssert.catchThrowable(ThrowableAssert.java:66) ~[assertj-core-3.27.7.jar:na]
+	at org.assertj.core.api.AssertionsForClassTypes.catchThrowable(AssertionsForClassTypes.java:908) ~[assertj-core-3.27.7.jar:na]
+	at org.assertj.core.api.Assertions.catchThrowable(Assertions.java:1476) ~[assertj-core-3.27.7.jar:na]
+	at org.assertj.core.api.Assertions.assertThatThrownBy(Assertions.java:1319) ~[assertj-core-3.27.7.jar:na]
+	at si.konferenca.registration.acceptance.ConferenceOptionsAcceptanceTest.ac_003_03_invalidConfigurationStopsTheBackend(ConferenceOptionsAcceptanceTest.java:139) ~[test-classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:701) ~[junit-platform-commons-6.0.3.jar:6.0.3]
+	at org.junit.platform.commons.support.ReflectionSupport.invokeMethod(ReflectionSupport.java:502) ~[junit-platform-commons-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.support.MethodReflectionUtils.invoke(MethodReflectionUtils.java:45) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:61) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:124) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:163) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:148) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestTemplateMethod(TimeoutExtension.java:94) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:123) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:105) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:99) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:66) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:47) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:39) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:104) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:98) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invokeVoid(InterceptingExecutableInvoker.java:71) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$0(TestMethodTestDescriptor.java:219) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:215) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:157) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:70) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$2(NodeTestTask.java:176) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$1(NodeTestTask.java:166) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:138) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$0(NodeTestTask.java:164) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:163) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:116) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:36) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask$DefaultDynamicTestExecutor.execute(NodeTestTask.java:268) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask$DefaultDynamicTestExecutor.execute(NodeTestTask.java:246) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.descriptor.TemplateExecutor.execute(TemplateExecutor.java:96) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.descriptor.TemplateExecutor.lambda$executeForProvider$1(TemplateExecutor.java:59) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at java.base/java.util.Optional.ifPresent(Optional.java:178) ~[na:na]
+	at org.junit.jupiter.engine.descriptor.TemplateExecutor.lambda$executeForProvider$0(TemplateExecutor.java:59) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197) ~[na:na]
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:762) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197) ~[na:na]
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276) ~[na:na]
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197) ~[na:na]
+	at java.base/java.util.AbstractList$RandomAccessSpliterator.forEachRemaining(AbstractList.java:722) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596) ~[na:na]
+	at org.junit.jupiter.engine.descriptor.TemplateExecutor.executeForProvider(TemplateExecutor.java:57) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.descriptor.TemplateExecutor.execute(TemplateExecutor.java:46) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.descriptor.TestTemplateTestDescriptor.execute(TestTemplateTestDescriptor.java:112) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.jupiter.engine.descriptor.TestTemplateTestDescriptor.execute(TestTemplateTestDescriptor.java:40) ~[junit-jupiter-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$2(NodeTestTask.java:176) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$1(NodeTestTask.java:166) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:138) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$0(NodeTestTask.java:164) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:163) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:116) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) ~[na:na]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:42) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$2(NodeTestTask.java:180) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$1(NodeTestTask.java:166) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:138) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$0(NodeTestTask.java:164) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:163) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:116) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) ~[na:na]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:42) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$2(NodeTestTask.java:180) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$1(NodeTestTask.java:166) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:138) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$0(NodeTestTask.java:164) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:163) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:116) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:36) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:52) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:58) ~[junit-platform-engine-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.executeEngine(EngineExecutionOrchestrator.java:246) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.failOrExecuteEngine(EngineExecutionOrchestrator.java:218) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:179) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:108) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:66) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:157) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:65) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:125) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:114) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:58) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.InterceptingLauncher.lambda$execute$2(InterceptingLauncher.java:57) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.ClasspathAlignmentCheckingLauncherInterceptor.intercept(ClasspathAlignmentCheckingLauncherInterceptor.java:25) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.InterceptingLauncher.execute(InterceptingLauncher.java:56) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:58) ~[junit-platform-launcher-6.0.3.jar:6.0.3]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.apache.maven.surefire.api.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:125) ~[surefire-api-3.5.6.jar:3.5.6]
+	at org.apache.maven.surefire.junitplatform.LauncherAdapter.executeWithCancellationToken(LauncherAdapter.java:68) ~[surefire-junit-platform-3.5.6.jar:3.5.6]
+	at org.apache.maven.surefire.junitplatform.LauncherAdapter.execute(LauncherAdapter.java:54) ~[surefire-junit-platform-3.5.6.jar:3.5.6]
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:203) ~[surefire-junit-platform-3.5.6.jar:3.5.6]
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:168) ~[surefire-junit-platform-3.5.6.jar:3.5.6]
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:136) ~[surefire-junit-platform-3.5.6.jar:3.5.6]
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385) ~[surefire-booter-3.5.6.jar:3.5.6]
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162) ~[surefire-booter-3.5.6.jar:3.5.6]
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507) ~[surefire-booter-3.5.6.jar:3.5.6]
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495) ~[surefire-booter-3.5.6.jar:3.5.6]
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'formConfigService' defined in class path resource [si/konferenca/registration/config/ApplicationConfig.class]: Unsatisfied dependency expressed through method 'formConfigService' parameter 0: Error creating bean with name 'optionCatalog' defined in class path resource [si/konferenca/registration/config/ApplicationConfig.class]: Failed to instantiate [si.konferenca.registration.domain.OptionCatalog]: Factory method 'optionCatalog' threw exception with message: Invalid conference options configuration: file:C:\Users\sense\AppData\Local\Temp\conference-options-invalid10467670448740443893.json: option 'no-name': 'name' is missing or empty
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:546) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1360) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1192) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:565) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:229) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1769) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1658) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:912) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791) ~[spring-beans-7.0.9.jar:7.0.9]
+	... 163 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'optionCatalog' defined in class path resource [si/konferenca/registration/config/ApplicationConfig.class]: Failed to instantiate [si.konferenca.registration.domain.OptionCatalog]: Factory method 'optionCatalog' threw exception with message: Invalid conference options configuration: file:C:\Users\sense\AppData\Local\Temp\conference-options-invalid10467670448740443893.json: option 'no-name': 'name' is missing or empty
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:657) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:645) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1360) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1192) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:565) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:229) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1769) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1658) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:912) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791) ~[spring-beans-7.0.9.jar:7.0.9]
+	... 177 common frames omitted
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [si.konferenca.registration.domain.OptionCatalog]: Factory method 'optionCatalog' threw exception with message: Invalid conference options configuration: file:C:\Users\sense\AppData\Local\Temp\conference-options-invalid10467670448740443893.json: option 'no-name': 'name' is missing or empty
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:183) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiateWithFactoryMethod(SimpleInstantiationStrategy.java:72) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:152) ~[spring-beans-7.0.9.jar:7.0.9]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653) ~[spring-beans-7.0.9.jar:7.0.9]
+	... 191 common frames omitted
+Caused by: si.konferenca.registration.infrastructure.InvalidOptionsException: Invalid conference options configuration: file:C:\Users\sense\AppData\Local\Temp\conference-options-invalid10467670448740443893.json: option 'no-name': 'name' is missing or empty
+	at si.konferenca.registration.infrastructure.OptionCatalogLoader.text(OptionCatalogLoader.java:124) ~[classes/:na]
+	at si.konferenca.registration.infrastructure.OptionCatalogLoader.readOptions(OptionCatalogLoader.java:63) ~[classes/:na]
+	at si.konferenca.registration.infrastructure.OptionCatalogLoader.load(OptionCatalogLoader.java:47) ~[classes/:na]
+	at si.konferenca.registration.config.ApplicationConfig.optionCatalog(ApplicationConfig.java:35) ~[classes/:na]
+	at si.konferenca.registration.config.ApplicationConfig$$SpringCGLIB$$0.CGLIB$optionCatalog$1(<generated>) ~[classes/:na]
+	at si.konferenca.registration.config.ApplicationConfig$$SpringCGLIB$$FastClass$$1.invoke(<generated>) ~[classes/:na]
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:258) ~[spring-core-7.0.9.jar:7.0.9]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:398) ~[spring-context-7.0.9.jar:7.0.9]
+	at si.konferenca.registration.config.ApplicationConfig$$SpringCGLIB$$0.optionCatalog(<generated>) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:155) ~[spring-beans-7.0.9.jar:7.0.9]
+	... 194 common frames omitted
+
+[ERROR] Tests run: 6, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 15.92 s <<< FAILURE! -- in si.konferenca.registration.acceptance.ConferenceOptionsAcceptanceTest
+[ERROR] si.konferenca.registration.acceptance.ConferenceOptionsAcceptanceTest.ac_003_02_changedConfigurationFileChangesOfferedOptionsAfterRestart -- Time elapsed: 1.822 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[{"status":404,"error":"NOT_FOUND","message":"Not found.","fieldErrors":[]}] 
+expected: 201
+ but was: 404
+	at si.konferenca.registration.acceptance.ConferenceOptionsAcceptanceTest.ac_003_02_changedConfigurationFileChangesOfferedOptionsAfterRestart(ConferenceOptionsAcceptanceTest.java:95)
+
+[INFO] Running si.konferenca.registration.acceptance.RegistrationExportAcceptanceTest
+2026-10-11T00:45:08.190+02:00  INFO 31464 --- [registration-backend] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [si.konferenca.registration.acceptance.RegistrationExportAcceptanceTest]: RegistrationExportAcceptanceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-11T00:45:08.191+02:00  INFO 31464 --- [registration-backend] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration si.konferenca.registration.RegistrationApplication for test class si.konferenca.registration.acceptance.RegistrationExportAcceptanceTest
+2026-10-11T00:45:08.191+02:00  INFO 31464 --- [registration-backend] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [si.konferenca.registration.acceptance.RegistrationExportAcceptanceTest]: RegistrationExportAcceptanceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-11T00:45:08.192+02:00  INFO 31464 --- [registration-backend] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [si.konferenca.registration.acceptance.support.AcceptanceTestBase]: AcceptanceTestBase does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-11T00:45:08.192+02:00  INFO 31464 --- [registration-backend] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [si.konferenca.registration.acceptance.support.AcceptanceSupport]: AcceptanceSupport does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-11T00:45:08.193+02:00  INFO 31464 --- [registration-backend] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration si.konferenca.registration.RegistrationApplication for test class si.konferenca.registration.acceptance.RegistrationExportAcceptanceTest
+[ERROR] Tests run: 6, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 1.063 s <<< FAILURE! -- in si.konferenca.registration.acceptance.RegistrationExportAcceptanceTest
+[ERROR] si.konferenca.registration.acceptance.RegistrationExportAcceptanceTest.ac_008_03_plainHttpFromRemoteClientIsRefused -- Time elapsed: 0.256 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: 403
+ but was: 404
+	at si.konferenca.registration.acceptance.RegistrationExportAcceptanceTest.assertRefused(RegistrationExportAcceptanceTest.java:137)
+	at si.konferenca.registration.acceptance.RegistrationExportAcceptanceTest.ac_008_03_plainHttpFromRemoteClientIsRefused(RegistrationExportAcceptanceTest.java:112)
+
+[ERROR] si.konferenca.registration.acceptance.RegistrationExportAcceptanceTest.ac_008_01_organizerDownloadsWorkbookWithOneRowPerRegistration -- Time elapsed: 0.009 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[{"status":404,"error":"NOT_FOUND","message":"Not found.","fieldErrors":[]}] 
+expected: 201
+ but was: 404
+	at si.konferenca.registration.acceptance.support.AcceptanceSupport.registerAccepted(AcceptanceSupport.java:92)
+	at si.konferenca.registration.acceptance.RegistrationExportAcceptanceTest.ac_008_01_organizerDownloadsWorkbookWithOneRowPerRegistration(RegistrationExportAcceptanceTest.java:37)
+
+[ERROR] si.konferenca.registration.acceptance.RegistrationExportAcceptanceTest.ac_008_05_exportContainsOnlyRegistrationData -- Time elapsed: 0.012 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[{"status":404,"error":"NOT_FOUND","message":"Not found.","fieldErrors":[]}] 
+expected: 201
+ but was: 404
+	at si.konferenca.registration.acceptance.support.AcceptanceSupport.registerAccepted(AcceptanceSupport.java:92)
+	at si.konferenca.registration.acceptance.RegistrationExportAcceptanceTest.ac_008_05_exportContainsOnlyRegistrationData(RegistrationExportAcceptanceTest.java:120)
+
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Failures: 
+[ERROR]   ConferenceOptionsAcceptanceTest.ac_003_02_changedConfigurationFileChangesOfferedOptionsAfterRestart:95 [{"status":404,"error":"NOT_FOUND","message":"Not found.","fieldErrors":[]}] 
+expected: 201
+ but was: 404
+[ERROR]   RegistrationExportAcceptanceTest.ac_008_01_organizerDownloadsWorkbookWithOneRowPerRegistration:37->AcceptanceSupport.registerAccepted:92 [{"status":404,"error":"NOT_FOUND","message":"Not found.","fieldErrors":[]}] 
+expected: 201
+ but was: 404
+[ERROR]   RegistrationExportAcceptanceTest.ac_008_03_plainHttpFromRemoteClientIsRefused:112->assertRefused:137 
+expected: 403
+ but was: 404
+[ERROR]   RegistrationExportAcceptanceTest.ac_008_05_exportContainsOnlyRegistrationData:120->AcceptanceSupport.registerAccepted:92 [{"status":404,"error":"NOT_FOUND","message":"Not found.","fieldErrors":[]}] 
+expected: 201
+ but was: 404
+[INFO] 
+[ERROR] Tests run: 12, Failures: 4, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  21.152 s
+[INFO] Finished at: 2026-10-11T00:45:10+02:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.5.6:test (default-test) on project registration-backend: There are test failures.
+[ERROR] 
+[ERROR] See E:\13 - Lab Projects\01_Runs\_____SECOND______ROUND_____\01_kyuhi_single-agent_sdd_v003\02_output\backend\target\surefire-reports for the individual test results.
+[ERROR] See dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

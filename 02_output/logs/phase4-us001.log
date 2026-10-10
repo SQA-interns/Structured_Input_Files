@@ -1,0 +1,197 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< si.konferenca:registration-backend >-----------------
+[INFO] Building registration-backend 0.1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- jacoco:0.8.12:prepare-agent (prepare-agent) @ registration-backend ---
+[INFO] argLine set to "-javaagent:C:\\Users\\sense\\.m2\\repository\\org\\jacoco\\org.jacoco.agent\\0.8.12\\org.jacoco.agent-0.8.12-runtime.jar=destfile=E:\\13 - Lab Projects\\01_Runs\\_____SECOND______ROUND_____\\01_kyuhi_single-agent_sdd_v003\\02_output\\backend\\target\\jacoco.exec"
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ registration-backend ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 2 resources from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ registration-backend ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ registration-backend ---
+[INFO] Copying 1 resource from src\test\resources to target\test-classes
+[INFO] 
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ registration-backend ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ registration-backend ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running si.konferenca.registration.acceptance.ExternalRegistrationAcceptanceTest
+00:49:24.294 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.konferenca.registration.acceptance.ExternalRegistrationAcceptanceTest]: ExternalRegistrationAcceptanceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+00:49:24.486 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration si.konferenca.registration.RegistrationApplication for test class si.konferenca.registration.acceptance.ExternalRegistrationAcceptanceTest
+00:49:24.598 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.konferenca.registration.acceptance.ExternalRegistrationAcceptanceTest]: ExternalRegistrationAcceptanceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+00:49:24.599 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.konferenca.registration.acceptance.support.AcceptanceTestBase]: AcceptanceTestBase does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+00:49:24.599 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.konferenca.registration.acceptance.support.AcceptanceSupport]: AcceptanceSupport does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+00:49:24.602 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration si.konferenca.registration.RegistrationApplication for test class si.konferenca.registration.acceptance.ExternalRegistrationAcceptanceTest
+00:49:24.924 [main] INFO org.testcontainers.images.PullPolicy -- Image pull policy will be performed by: DefaultPullPolicy()
+00:49:24.927 [main] INFO org.testcontainers.utility.ImageNameSubstitutor -- Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+00:49:25.021 [main] INFO org.testcontainers.DockerClientFactory -- Testcontainers version: 2.0.5
+00:49:25.416 [main] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+00:49:25.889 [main] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+00:49:25.891 [main] INFO org.testcontainers.DockerClientFactory -- Docker host IP address is localhost
+00:49:25.911 [main] INFO org.testcontainers.DockerClientFactory -- Connected to docker: 
+  Server Version: 29.8.1
+  API Version: 1.56
+  Operating System: Docker Desktop
+  Total Memory: 40065 MB
+  Labels: 
+    com.docker.desktop.address=npipe://\\.\pipe\docker_cli
+00:49:26.008 [main] INFO tc.testcontainers/ryuk:0.14.0 -- Creating container for image: testcontainers/ryuk:0.14.0
+00:49:26.305 [main] INFO tc.testcontainers/ryuk:0.14.0 -- Container testcontainers/ryuk:0.14.0 is starting: 94c7e08ff3a24fe7ac2d20682191e72d03a4c594833e4d52b863b7e804fd3920
+00:49:26.680 [main] INFO tc.testcontainers/ryuk:0.14.0 -- Container testcontainers/ryuk:0.14.0 started in PT0.6714274S
+00:49:26.685 [main] INFO org.testcontainers.utility.RyukResourceReaper -- Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+00:49:26.685 [main] INFO org.testcontainers.DockerClientFactory -- Checking the system...
+00:49:26.686 [main] INFO org.testcontainers.DockerClientFactory -- ?? Docker server version should be at least 1.6.0
+00:49:26.686 [main] INFO tc.postgres:16.15-alpine -- Creating container for image: postgres:16.15-alpine
+00:49:26.806 [main] INFO tc.postgres:16.15-alpine -- Container postgres:16.15-alpine is starting: 3d779477b1508d0cb516ef4e8fd02c6d469e894bbe90ced882898484dcef281d
+00:49:28.836 [main] INFO tc.postgres:16.15-alpine -- Container postgres:16.15-alpine started in PT2.1498087S
+00:49:28.837 [main] INFO tc.postgres:16.15-alpine -- Container is started (JDBC URL: jdbc:postgresql://localhost:58909/test?loggerLevel=OFF)
+00:49:28.838 [main] INFO tc.axllent/mailpit:v1.31.1 -- Creating container for image: axllent/mailpit:v1.31.1
+00:49:28.948 [main] INFO tc.axllent/mailpit:v1.31.1 -- Container axllent/mailpit:v1.31.1 is starting: c84f922000200034d2e0d55b3ba3edba4ea01f6f420539f14ee63137c9ae27f9
+00:49:29.209 [main] INFO org.testcontainers.containers.wait.strategy.HttpWaitStrategy -- /cool_hawking: Waiting for 60 seconds for URL: http://localhost:58911/api/v1/info (where port 58911 maps to container port 8025)
+00:49:29.400 [main] INFO tc.axllent/mailpit:v1.31.1 -- Container axllent/mailpit:v1.31.1 started in PT0.5626707S
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-10-11T00:49:29.775+02:00  INFO 44700 --- [registration-backend] [           main] k.r.a.ExternalRegistrationAcceptanceTest : Starting ExternalRegistrationAcceptanceTest using Java 21.0.10 with PID 44700 (started by sense in E:\13 - Lab Projects\01_Runs\_____SECOND______ROUND_____\01_kyuhi_single-agent_sdd_v003\02_output\backend)
+2026-10-11T00:49:29.775+02:00  INFO 44700 --- [registration-backend] [           main] k.r.a.ExternalRegistrationAcceptanceTest : No active profile set, falling back to 1 default profile: "default"
+2026-10-11T00:49:30.694+02:00  INFO 44700 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-11T00:49:30.763+02:00  INFO 44700 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 58 ms. Found 1 JPA repository interface.
+2026-10-11T00:49:31.706+02:00  INFO 44700 --- [registration-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-10-11T00:49:31.726+02:00  INFO 44700 --- [registration-backend] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-11T00:49:31.726+02:00  INFO 44700 --- [registration-backend] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.26]
+2026-10-11T00:49:31.796+02:00  INFO 44700 --- [registration-backend] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1996 ms
+2026-10-11T00:49:32.235+02:00  INFO 44700 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-10-11T00:49:32.418+02:00  INFO 44700 --- [registration-backend] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@5e6545be
+2026-10-11T00:49:32.420+02:00  INFO 44700 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-10-11T00:49:32.448+02:00  INFO 44700 --- [registration-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:58909/test?loggerLevel=OFF (PostgreSQL 16.15)
+2026-10-11T00:49:32.514+02:00  INFO 44700 --- [registration-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2026-10-11T00:49:32.518+02:00  INFO 44700 --- [registration-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.020s)
+2026-10-11T00:49:32.536+02:00  INFO 44700 --- [registration-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2026-10-11T00:49:32.602+02:00  INFO 44700 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-10-11T00:49:32.616+02:00  INFO 44700 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "1 - create registration tables"
+2026-10-11T00:49:32.664+02:00  INFO 44700 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 1 migration to schema "public", now at version v1 (execution time 00:00.028s)
+2026-10-11T00:49:32.777+02:00  INFO 44700 --- [registration-backend] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-10-11T00:49:32.842+02:00  INFO 44700 --- [registration-backend] [           main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.5.Final
+2026-10-11T00:49:33.358+02:00  INFO 44700 --- [registration-backend] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-11T00:49:33.480+02:00  INFO 44700 --- [registration-backend] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:58909/test?loggerLevel=OFF]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 16.15
+	Default catalog/schema: test/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-10-11T00:49:34.561+02:00  INFO 44700 --- [registration-backend] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-11T00:49:34.613+02:00  INFO 44700 --- [registration-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-11T00:49:34.742+02:00  INFO 44700 --- [registration-backend] [           main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-10-11T00:49:35.311+02:00  INFO 44700 --- [registration-backend] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name organizers
+2026-10-11T00:49:35.892+02:00  INFO 44700 --- [registration-backend] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-10-11T00:49:35.963+02:00  INFO 44700 --- [registration-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 58924 (http) with context path '/'
+2026-10-11T00:49:35.970+02:00  INFO 44700 --- [registration-backend] [           main] k.r.a.ExternalRegistrationAcceptanceTest : Started ExternalRegistrationAcceptanceTest in 6.489 seconds (process running for 13.331)
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (C:\Users\sense\.m2\repository\net\bytebuddy\byte-buddy-agent\1.18.11\byte-buddy-agent-1.18.11.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+2026-10-11T00:49:36.458+02:00  INFO 44700 --- [registration-backend] [o-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-11T00:49:36.459+02:00  INFO 44700 --- [registration-backend] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-11T00:49:36.460+02:00  INFO 44700 --- [registration-backend] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+[ERROR] Tests run: 40, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 37.40 s <<< FAILURE! -- in si.konferenca.registration.acceptance.ExternalRegistrationAcceptanceTest
+[ERROR] si.konferenca.registration.acceptance.ExternalRegistrationAcceptanceTest.ac_001_06_slovenianCharactersSurviveEveryStore -- Time elapsed: 20.20 s <<< FAILURE!
+java.lang.AssertionError: expected 1 message(s) to ac-001-06-f11c48c5@example.si but found 0
+	at si.konferenca.registration.acceptance.support.Mailpit.awaitMessagesTo(Mailpit.java:56)
+	at si.konferenca.registration.acceptance.support.Mailpit.awaitSingleMessageTo(Mailpit.java:60)
+	at si.konferenca.registration.acceptance.ExternalRegistrationAcceptanceTest.ac_001_06_slovenianCharactersSurviveEveryStore(ExternalRegistrationAcceptanceTest.java:153)
+
+[ERROR] si.konferenca.registration.acceptance.ExternalRegistrationAcceptanceTest.ac_001_02_validExternalRegistrationIsAcceptedAndExported -- Time elapsed: 0.523 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: 200
+ but was: 404
+	at si.konferenca.registration.acceptance.support.AcceptanceSupport.exportRows(AcceptanceSupport.java:130)
+	at si.konferenca.registration.acceptance.ExternalRegistrationAcceptanceTest.ac_001_02_validExternalRegistrationIsAcceptedAndExported(ExternalRegistrationAcceptanceTest.java:50)
+
+[INFO] Running si.konferenca.registration.acceptance.RegistrationConfirmationAcceptanceTest
+2026-10-11T00:50:01.389+02:00  INFO 44700 --- [registration-backend] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [si.konferenca.registration.acceptance.RegistrationConfirmationAcceptanceTest]: RegistrationConfirmationAcceptanceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-11T00:50:01.390+02:00  INFO 44700 --- [registration-backend] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration si.konferenca.registration.RegistrationApplication for test class si.konferenca.registration.acceptance.RegistrationConfirmationAcceptanceTest
+2026-10-11T00:50:01.390+02:00  INFO 44700 --- [registration-backend] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [si.konferenca.registration.acceptance.RegistrationConfirmationAcceptanceTest]: RegistrationConfirmationAcceptanceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-11T00:50:01.392+02:00  INFO 44700 --- [registration-backend] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [si.konferenca.registration.acceptance.support.AcceptanceTestBase]: AcceptanceTestBase does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-11T00:50:01.392+02:00  INFO 44700 --- [registration-backend] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [si.konferenca.registration.acceptance.support.AcceptanceSupport]: AcceptanceSupport does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-11T00:50:01.393+02:00  INFO 44700 --- [registration-backend] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration si.konferenca.registration.RegistrationApplication for test class si.konferenca.registration.acceptance.RegistrationConfirmationAcceptanceTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.043 s -- in si.konferenca.registration.acceptance.RegistrationConfirmationAcceptanceTest
+[INFO] Running si.konferenca.registration.acceptance.RegistrationStorageAcceptanceTest
+2026-10-11T00:50:01.433+02:00  INFO 44700 --- [registration-backend] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [si.konferenca.registration.acceptance.RegistrationStorageAcceptanceTest]: RegistrationStorageAcceptanceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-11T00:50:01.434+02:00  INFO 44700 --- [registration-backend] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration si.konferenca.registration.RegistrationApplication for test class si.konferenca.registration.acceptance.RegistrationStorageAcceptanceTest
+2026-10-11T00:50:01.435+02:00  INFO 44700 --- [registration-backend] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [si.konferenca.registration.acceptance.RegistrationStorageAcceptanceTest]: RegistrationStorageAcceptanceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-11T00:50:01.436+02:00  INFO 44700 --- [registration-backend] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [si.konferenca.registration.acceptance.support.AcceptanceTestBase]: AcceptanceTestBase does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-11T00:50:01.436+02:00  INFO 44700 --- [registration-backend] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [si.konferenca.registration.acceptance.support.AcceptanceSupport]: AcceptanceSupport does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-11T00:50:01.436+02:00  INFO 44700 --- [registration-backend] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration si.konferenca.registration.RegistrationApplication for test class si.konferenca.registration.acceptance.RegistrationStorageAcceptanceTest
+2026-10-11T00:50:01.460+02:00 ERROR 44700 --- [registration-backend] [o-auto-1-exec-7] s.k.r.api.ApiExceptionHandler            : Request failed, error id 62523448-843a-4aff-996c-9e87d378e0e1: java.io.UncheckedIOException <- java.nio.file.FileAlreadyExistsException
+2026-10-11T00:50:04.500+02:00  WARN 44700 --- [registration-backend] [o-auto-1-exec-8] org.hibernate.orm.jdbc.error             : HHH000247: ErrorCode: 0, SQLState: 23514
+2026-10-11T00:50:04.500+02:00  WARN 44700 --- [registration-backend] [o-auto-1-exec-8] org.hibernate.orm.jdbc.error             : ERROR: new row for relation "registration" violates check constraint "ck_registration_fields"
+  Detail: Failing row contains (9, dc4d92c2-75d8-4a8a-b2ba-94968c732cb7, STUDENT, Luka, Kranjc, ac-005-01-56bf755f@example.si, ac-005-01-56bf755f@example.si, null, null, null, null, 2026-10-11 00:50:04.493+02).
+2026-10-11T00:50:04.508+02:00 ERROR 44700 --- [registration-backend] [o-auto-1-exec-8] s.k.r.api.ApiExceptionHandler            : Request failed, error id 264fd74f-2a42-49b3-a488-ab43c28ba824: org.springframework.dao.DataIntegrityViolationException <- org.hibernate.exception.ConstraintViolationException <- org.postgresql.util.PSQLException
+[ERROR] Tests run: 2, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 3.079 s <<< FAILURE! -- in si.konferenca.registration.acceptance.RegistrationStorageAcceptanceTest
+[ERROR] si.konferenca.registration.acceptance.RegistrationStorageAcceptanceTest.ac_005_01_databaseRowAndJsonCopyExistWhenSuccessIsReturned -- Time elapsed: 0.026 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[{"status":500,"error":"INTERNAL_ERROR","message":"The request could not be processed. Please try again later.","fieldErrors":[]}] 
+expected: 201
+ but was: 500
+	at si.konferenca.registration.acceptance.support.AcceptanceSupport.registerAccepted(AcceptanceSupport.java:92)
+	at si.konferenca.registration.acceptance.RegistrationStorageAcceptanceTest.ac_005_01_databaseRowAndJsonCopyExistWhenSuccessIsReturned(RegistrationStorageAcceptanceTest.java:29)
+
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Failures: 
+[ERROR]   ExternalRegistrationAcceptanceTest.ac_001_02_validExternalRegistrationIsAcceptedAndExported:50->AcceptanceSupport.exportRows:130 
+expected: 200
+ but was: 404
+[ERROR]   ExternalRegistrationAcceptanceTest.ac_001_06_slovenianCharactersSurviveEveryStore:153 expected 1 message(s) to ac-001-06-f11c48c5@example.si but found 0
+[ERROR]   RegistrationStorageAcceptanceTest.ac_005_01_databaseRowAndJsonCopyExistWhenSuccessIsReturned:29->AcceptanceSupport.registerAccepted:92 [{"status":500,"error":"INTERNAL_ERROR","message":"The request could not be processed. Please try again later.","fieldErrors":[]}] 
+expected: 201
+ but was: 500
+[INFO] 
+[ERROR] Tests run: 44, Failures: 3, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  45.008 s
+[INFO] Finished at: 2026-10-11T00:50:05+02:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.5.6:test (default-test) on project registration-backend: There are test failures.
+[ERROR] 
+[ERROR] See E:\13 - Lab Projects\01_Runs\_____SECOND______ROUND_____\01_kyuhi_single-agent_sdd_v003\02_output\backend\target\surefire-reports for the individual test results.
+[ERROR] See dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
