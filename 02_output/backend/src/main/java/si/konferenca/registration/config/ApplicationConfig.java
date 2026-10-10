@@ -2,15 +2,20 @@ package si.konferenca.registration.config;
 
 import java.io.IOException;
 import java.io.UncheckedIOException;
+import java.nio.file.Path;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import si.konferenca.registration.application.FormConfigService;
+import si.konferenca.registration.application.JsonCopyStore;
+import si.konferenca.registration.application.RegistrationRecorder;
+import si.konferenca.registration.application.RegistrationStore;
 import si.konferenca.registration.domain.OptionCatalog;
 import si.konferenca.registration.infrastructure.InvalidOptionsException;
 import si.konferenca.registration.infrastructure.OptionCatalogLoader;
+import si.konferenca.registration.persistence.FileJsonCopyStore;
 
 /** Composition root: wires application services and adapters from configuration. */
 @Configuration
@@ -46,5 +51,15 @@ public class ApplicationConfig {
             properties.conferenceName(),
             properties.recaptcha().siteKey(),
             properties.recaptcha().testMode()));
+  }
+
+  @Bean
+  public JsonCopyStore jsonCopyStore(AppProperties properties) {
+    return new FileJsonCopyStore(Path.of(properties.jsonCopy().directory()));
+  }
+
+  @Bean
+  public RegistrationRecorder registrationRecorder(RegistrationStore store, JsonCopyStore copies) {
+    return new RegistrationRecorder(store, copies);
   }
 }
