@@ -27,6 +27,10 @@ The paths or packages whose code is mutated, the same in every run of this proje
 
 | Component | Paths or packages | Exclusions and reason |
 |---|---|---|
+| backend | `si.konferenca.registration.**` (all production code under the root package, including validation, security, persistence, business-rule, mail and export code) | The `@SpringBootApplication` entry-point class (no logic); generated code. Nothing else may be excluded. |
+| frontend | `src/**/*.{ts,tsx,js,jsx,vue}` (all production source of the frontend) | Test files, type-declaration files (`*.d.ts`), the bootstrap file that only mounts the app, generated code. Nothing else may be excluded. |
+
+The scope is all production code of both components, so mutation scores are on the same basis in every run. It is the root package and the source folder, not a list of sub-packages, because the agent chooses the sub-packages in phase 2. Each component's full automated suite runs against it (`measurement-scope.md`, "Mutation score").
 
 ## Additional done criteria
 

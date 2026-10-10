@@ -8,12 +8,12 @@ The only file a human fills before starting the agent; the agent checks everythi
 - Effort: medium
 - Template version: 1.3
 - Run label: kyuhi_single-agent_sdd_v003
-- Run ID:
-- Starting commit:
 - Operator: kyuhi
 - Machine: kyuhiPC
 - Plan: PRO
 - Permission mode: auto
+- Run ID:
+- Starting commit:
 
 | Line | What to write |
 |---|---|
