@@ -5,6 +5,7 @@ import {
   type RegistrationAccepted,
   type RegistrationType,
 } from "./api";
+import Confirmation from "./components/Confirmation";
 import RegistrationForm from "./components/RegistrationForm";
 import "./App.css";
 
@@ -42,6 +43,7 @@ export default function App() {
         </div>
       )}
       {!config && !loadFailed && <p>Loading…</p>}
+      {config && accepted && <Confirmation registration={accepted} />}
       {config && !accepted && (
         <>
           <div role="radiogroup" aria-labelledby="type-label" className="type-choice">
