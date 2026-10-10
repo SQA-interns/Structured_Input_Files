@@ -136,6 +136,7 @@ class RegistrationExportAcceptanceTest extends AcceptanceTestBase {
   private static void assertRefused(HttpResponse<byte[]> response, int status) {
     assertThat(response.statusCode()).isEqualTo(status);
     assertThat(response.headers().firstValue("Content-Type").orElse("")).doesNotContain(XLSX);
-    assertThat(response.body()).doesNotContain(new byte[] {'P', 'K', 3, 4});
+    assertThat(java.util.Arrays.copyOf(response.body(), 4))
+        .isNotEqualTo(new byte[] {'P', 'K', 3, 4});
   }
 }
