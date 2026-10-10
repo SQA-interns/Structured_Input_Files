@@ -3,18 +3,24 @@ package si.konferenca.registration.config;
 import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.nio.file.Path;
+import java.time.Clock;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
+import si.konferenca.registration.application.CaptchaVerifier;
 import si.konferenca.registration.application.FormConfigService;
 import si.konferenca.registration.application.JsonCopyStore;
 import si.konferenca.registration.application.RegistrationRecorder;
+import si.konferenca.registration.application.RegistrationService;
 import si.konferenca.registration.application.RegistrationStore;
 import si.konferenca.registration.domain.OptionCatalog;
+import si.konferenca.registration.domain.RegistrationValidator;
+import si.konferenca.registration.infrastructure.GoogleRecaptchaVerifier;
 import si.konferenca.registration.infrastructure.InvalidOptionsException;
 import si.konferenca.registration.infrastructure.OptionCatalogLoader;
+import si.konferenca.registration.infrastructure.TestModeCaptchaVerifier;
 import si.konferenca.registration.persistence.FileJsonCopyStore;
 
 /** Composition root: wires application services and adapters from configuration. */
@@ -61,5 +67,32 @@ public class ApplicationConfig {
   @Bean
   public RegistrationRecorder registrationRecorder(RegistrationStore store, JsonCopyStore copies) {
     return new RegistrationRecorder(store, copies);
+  }
+
+  @Bean
+  public Clock clock() {
+    return Clock.systemUTC();
+  }
+
+  /** Test mode only when configured (SR-02); otherwise the production verification. */
+  @Bean
+  public CaptchaVerifier captchaVerifier(AppProperties properties) {
+    AppProperties.Recaptcha recaptcha = properties.recaptcha();
+    if (recaptcha.testMode()) {
+      return new TestModeCaptchaVerifier();
+    }
+    return new GoogleRecaptchaVerifier(
+        recaptcha.verifyUrl(), recaptcha.secretKey() == null ? "" : recaptcha.secretKey());
+  }
+
+  @Bean
+  public RegistrationService registrationService(
+      OptionCatalog catalog,
+      CaptchaVerifier captcha,
+      RegistrationStore store,
+      RegistrationRecorder recorder,
+      Clock clock) {
+    return new RegistrationService(
+        new RegistrationValidator(catalog), captcha, store, recorder, clock);
   }
 }
