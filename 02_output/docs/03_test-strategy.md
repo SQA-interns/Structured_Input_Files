@@ -50,6 +50,70 @@ Self-check before the freeze (skill step 5): every helper returns what the asser
 
 Frozen: 102 tests (backend 93, frontend acceptance 7, e2e 2) for 35 AC; manifest `docs/03_acceptance-manifest.sha256`.
 
+After the freeze, D-12 / D-13 (human-approved) restructured the property registration of four frozen classes without changing any assertion; the manifest was regenerated in its own commit.
+
 ## First complete run (before any fix)
+
+Phase 5 start, 2026-10-11, on the phase 4 code (logs `phase5-first-run-*.log`): backend 93 passed / 0 failed (acceptance), frontend 7 / 0 (acceptance), e2e 2 / 0 against the compose stack. Nothing to classify.
+
+## Phase 5 results
+
+Tests at the end of phase 5 (`phase5-final-backend.log`, Vitest, `phase5-final-e2e.log`):
+
+| Component | unit | integration | architecture | acceptance | e2e | Failed |
+|---|---|---|---|---|---|---|
+| backend | 87 | 3 | 6 | 93 | – | 0 |
+| frontend | 18 | – | – | 7 | 2 | 0 |
+
+Defect found while writing phase 5 tests (implementation defect, code fixed in commit `fix: give stored option and consent rows value equality`): `JpaRegistrationStore.findAll` fetch-joins options and consents; the embeddable rows had identity equality, so a registration with three options was read back with its consent three times (visible in the export's Consents cell). No frozen test covered it. The defect in a non-frozen test fixed in the same phase: none.
+
+### Coverage (measured once in phase 5, before the survivor tests)
+
+Scope: production code as in "Measurement exclusions". Backend JaCoCo 0.8.12 (`target/jacoco.exec` deleted before each level), frontend Vitest 4.1.11 v8 provider.
+
+| Component | Level | Line | Branch |
+|---|---|---|---|
+| backend | unit (85 tests incl. architecture) | 70.2 % (576/820) | 88.2 % (216/245) |
+| backend | nonUnit (93 acceptance) | 91.2 % (748/820) | 76.7 % (188/245) |
+| backend | all (178) | 96.7 % (793/820) | 94.3 % (231/245) |
+| frontend | unit (16) | 80.0 % (112/140) | 72.0 % (72/100) |
+| frontend | nonUnit (7 acceptance; e2e not instrumented) | 84.3 % (118/140) | 77.0 % (77/100) |
+| frontend | all (23) | 89.3 % (125/140) | 93.0 % (93/100) |
+
+After the survivor tests and the fix, backend all: 99.0 % line (823/831), 93.1 % branch (243/261).
+
+### Mutation score (one full run per component)
+
+| Component | Tool | Scope | Tests | Mutants | Killed (incl. timeout) | No coverage | Survived | score | scoreCovered |
+|---|---|---|---|---|---|---|---|---|---|
+| backend | PIT 1.30.0 + junit5 plugin 1.2.3, default mutators | `si.konferenca.registration.*` minus `RegistrationApplication` | full suite: unit, architecture, acceptance (178) | 307 | 282 | 13 | 12 | 91.9 % | 95.9 % (282/294) |
+| frontend | Stryker 10.0.0, vitest runner | `src/**/*.{ts,tsx,js,jsx}` minus tests, `*.d.ts`, `main.tsx`, `test-setup.ts` | Vitest suite (23); e2e excluded, D-15 | 354 | 275 (267 + 8) | 20 | 58 (+1 runtime error) | 77.7 % | 82.6 % |
+
+Sanity check before each full run: PIT on `RegistrationValidator` with the domain tests killed 100 %; Stryker on `validation.ts` 96.6 % — both tools activate mutants.
+
+### Surviving and uncovered mutants in validation, security, persistence and business-rule code
+
+Backend: all production code is in that scope, so every survivor and uncovered mutant is classified.
+
+| Mutant(s) | Classification |
+|---|---|
+| `FixedWindowRateLimiter` eviction predicate (4: boundary, negation, true, subtraction) | killed by new test `SurvivingMutantsApiTest.limiterEvictsExactlyTheWindowsThatExpired` |
+| `MailRegistrationNotifier.close` shutdown removed | killed by `MailRegistrationNotifierTest.closeStopsTheBackgroundExecutor` |
+| `ApiExceptionHandler.rootCauseType` (3), `mediaType`, `method`, `notFound`, `unexpected` null returns (4, no coverage) | killed by `SurvivingMutantsApiTest.handlersAnswerWithTheErrorShape` and `rootCauseTypeFollowsTheCauseChain` |
+| `ErrorResponse.of` null return | killed by `handlersAnswerWithTheErrorShape` |
+| `SecurityConfig.cors` (4, no coverage) | killed by `CorsConfigTest` |
+| `SecurityConfig` access-denied handler (no coverage) | killed by `PersistenceAndSecurityIntegrationTest.authenticatedOrganizerIsDeniedEverythingButTheExport` |
+| `RecaptchaHttpVerifier` interrupt flag (no coverage) | killed by `CaptchaVerifierTest.interruptedCallIsUnavailableAndKeepsTheInterruptFlag` |
+| `RequestLimitFilter` cached stream `isFinished`/`isReady` (3, no coverage) | killed by `SurvivingMutantsApiTest.cachedBodyStreamReportsReadinessAndEnd` |
+| `ConsentRow.consentText`, `ConsentRow.givenAt`, `OptionRow.optionId` getters | killed by `PersistenceAndSecurityIntegrationTest.storedRegistrationReadsBackUnchanged` (which also exposed the defect above) |
+
+Frontend: the validation code is `validation.ts`.
+
+| Mutant | Classification |
+|---|---|
+| `CAPTCHA_REQUIRED` text emptied | killed by `validation.test.ts` "uses the contract wording for the captcha error" |
+| email regex without `$` | killed by "rejects text after a valid address" |
+
+The other frontend survivors are in presentation code (labels, loading text, the reCAPTCHA loader only reachable with Google's script, request headers); the score is recorded only (`quality-requirements.md`). They are reviewed as possible findings in phase 6. Because code and tests changed after the runs, both components are re-measured once in phase 6.
 
 ## Final run (phase 6)

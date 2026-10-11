@@ -127,3 +127,12 @@
 - Options: 1. exclude EI_EXPOSE_REP2 for `domain.RegistrationService` only (`backend/spotbugs-exclude.xml`), classify Low, false positive (default); 2. remove the injection.
 - Human response: none
 - Resolution: option 1
+
+## D-15: frontend mutation run without the end-to-end tests
+- Timestamp: 2026-10-11T10:09:30Z
+- Phase: 5
+- Type: non-blocking
+- Trigger: `measurement-scope.md` asks for the full automated suite. The two Playwright tests run against the docker compose stack built from a production bundle; Stryker mutates source in a sandbox and cannot rebuild and redeploy the frontend image per mutant.
+- Options: 1. run Stryker with the full Vitest suite (unit and acceptance, 23 tests) over all production source (`src/**` minus tests, `*.d.ts`, `main.tsx`, `test-setup.ts`); record that e2e is not part of the run (default); 2. no frontend mutation score.
+- Human response: none
+- Resolution: option 1. The backend run uses its full suite (unit, architecture and acceptance).
