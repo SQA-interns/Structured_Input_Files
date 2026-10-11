@@ -1,0 +1,19 @@
+{
+  "options": [
+    { "id": "ws-ai", "name": "Workshop: AI in practice", "category": "WORKSHOP", "active": true },
+    { "id": "ws-security", "name": "Workshop: Secure web development", "category": "WORKSHOP", "active": true },
+    { "id": "ev-reception", "name": "Welcome reception", "category": "EVENT", "active": true },
+    { "id": "ev-gala", "name": "Gala dinner", "category": "EVENT", "active": true, "availableTo": ["EXTERNAL"] },
+    { "id": "meal-lunch-day1", "name": "Lunch, day 1", "category": "MEAL", "active": true },
+    { "id": "meal-lunch-day2", "name": "Lunch, day 2", "category": "MEAL", "active": true },
+    { "id": "other-city-tour", "name": "Ljubljana city tour", "category": "OTHER", "active": true },
+    { "id": "other-hackathon", "name": "Student hackathon", "category": "OTHER", "active": true, "availableTo": ["STUDENT"] }
+  ],
+  "consents": [
+    {
+      "id": "privacy",
+      "text": "I agree that my personal data is processed for organizing the conference and that it is shared with the conference organizers.",
+      "mandatory": true
+    }
+  ]
+}
