@@ -123,7 +123,7 @@ The frontend renders the Google widget only in `recaptcha` mode, with the site k
 
 ## 10. Rate and size limits (SR-03, SB-06)
 
-`api.RequestLimitFilter` before Spring Security: per client address (after remote-IP resolution) and per endpoint group (form configuration, registration, export), a fixed one-minute window counter in memory with the configured limit; above it → 429 with `Retry-After`. Request bodies on `/api/**` above `APP_MAX_REQUEST_BYTES` → 413 (checked by `Content-Length` and by counting the stream). Old windows are evicted. The export limit also limits failed logins (PA-04 evidence).
+`api.RequestLimitFilter` before Spring Security: per client address (after remote-IP resolution) and per endpoint group (form configuration, registration, export), a fixed one-minute window counter in memory with the configured limit (the window starts at the client's first request in that group, not at a clock minute); above it → 429 with `Retry-After`. Request bodies on `/api/**` above `APP_MAX_REQUEST_BYTES` → 413 (checked by `Content-Length` and by counting the stream). Old windows are evicted. The export limit also limits failed logins (PA-04 evidence).
 
 ## 11. Security headers, CORS, errors (SB-07, SB-10, ES-07)
 
