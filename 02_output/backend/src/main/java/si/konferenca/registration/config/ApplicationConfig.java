@@ -12,10 +12,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.mail.javamail.JavaMailSender;
 import si.konferenca.registration.adapter.captcha.TestModeCaptchaVerifier;
 import si.konferenca.registration.adapter.catalog.JsonFileConferenceCatalog;
+import si.konferenca.registration.adapter.export.ExcelRegistrationExporter;
 import si.konferenca.registration.adapter.jsoncopy.FileJsonCopyStore;
 import si.konferenca.registration.adapter.mail.MailRegistrationNotifier;
 import si.konferenca.registration.domain.CaptchaVerifier;
 import si.konferenca.registration.domain.ConferenceCatalog;
+import si.konferenca.registration.domain.ExportService;
 import si.konferenca.registration.domain.FormSettings;
 import si.konferenca.registration.domain.JsonCopyStore;
 import si.konferenca.registration.domain.RegistrationNotifier;
@@ -64,6 +66,11 @@ public class ApplicationConfig {
         jsonCopies,
         notifier,
         Clock.systemUTC());
+  }
+
+  @Bean
+  ExportService exportService(RegistrationStore store) {
+    return new ExportService(store, new ExcelRegistrationExporter());
   }
 
   @Bean(destroyMethod = "close")
