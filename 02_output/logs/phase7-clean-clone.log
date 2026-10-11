@@ -1,0 +1,25 @@
+Clean clone: git -c core.longpaths=true clone <repo> <dir>; cp .env; README steps.
+First attempt without core.longpaths failed at checkout (Windows path length) and is not counted.
+## clean clone at 4d8d057 in <clone dir>
+### backend build
+exit=0
+### backend check
+exit=0
+### backend test
+[INFO] Tests run: 189, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS
+### frontend npm ci
+added 443 packages in 12s
+### frontend build/test/check
+build=0
+      Tests  27 passed (27)
+check=0
+### compose up
+up=0
+backend Up 21 seconds (healthy)
+frontend Up 10 seconds (healthy)
+mailpit Up 27 seconds (healthy)
+postgres Up 27 seconds (healthy)
+### e2e
+  2 passed (2.6s)
+down=0

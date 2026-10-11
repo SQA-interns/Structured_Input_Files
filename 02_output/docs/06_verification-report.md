@@ -17,8 +17,8 @@ Verified on 2026-10-11 at the commit that adds this report. Raw outputs are in `
 | DoD-05 | Pass | No open Critical or High finding (findings table). |
 | DoD-06 | Pass | Runtime demonstration below (`phase6-runtime-demo.log`). |
 | DoD-07 | Pass | Traceability table: every AC has at least one test and one commit. |
-| DoD-08 | Checked in phase 7 | The READMEs are written in phase 7 and followed from a clean clone there. |
-| DoD-09 | Checked in phase 7 | `docs/release-notes.md`, phase 7. |
+| DoD-08 | Pass | Phase 7: fresh clone (with `core.longpaths` on Windows), every README command followed: backend build, check and 189 tests; frontend `npm ci`, build, 27 tests, check; compose stack healthy; e2e 2/2 (`logs/phase7-clean-clone.log`). |
+| DoD-09 | Pass | `docs/release-notes.md` lists six manual tests (reCAPTCHA with real keys, SMTP delivery, TLS/redirect/routing, export over the proxy, production configuration, workbook in Excel). |
 | DoD-10 | Pass | Decisions D-01 … D-15 each have a resolution or are pending review (D-05 … D-10). The 36 hashes in `00_input-manifest.sha256` match. |
 | DoD-11 | Pass | Phase 3 commits added only tests, test resources, the test-only dependency (D-11) and docs; the freeze commit adds only the manifest, and every file it lists was committed earlier in phase 3. Each user story has at least one `feat` commit naming it (traceability). Commits over the size guide: US-003 (567 lines) and US-008 (with its log), with no reason stated in the message (F-12). Every manifest hash matches. |
 | DoD-P01 | Pass | Demo: one external and one student registration through `http://127.0.0.1:8081/api`, both HTTP 201. |
