@@ -5,7 +5,8 @@
 server {
   listen 80;
   server_name register.example.org;
-  return 301 https://$host$request_uri;
+  # Fixed host: the client-supplied Host header is never used (SR-08, F-01).
+  return 301 https://register.example.org$request_uri;
 }
 
 server {
