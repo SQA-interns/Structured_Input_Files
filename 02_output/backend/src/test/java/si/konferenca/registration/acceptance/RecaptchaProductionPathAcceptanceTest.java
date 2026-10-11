@@ -20,14 +20,15 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
-import si.konferenca.registration.acceptance.support.AcceptanceTestBase;
+import si.konferenca.registration.acceptance.support.AcceptanceTestSupport;
 import si.konferenca.registration.acceptance.support.Api;
+import si.konferenca.registration.acceptance.support.TestEnvironment;
 
 /**
  * SR-01, DoD-P05: the production reCAPTCHA code path (test mode off) against a mocked verification
  * endpoint (contract recaptcha.md).
  */
-class RecaptchaProductionPathAcceptanceTest extends AcceptanceTestBase {
+class RecaptchaProductionPathAcceptanceTest extends AcceptanceTestSupport {
 
   private static final String SECRET = "mock-recaptcha-secret";
   private static final List<Map<String, String>> VERIFY_REQUESTS = new CopyOnWriteArrayList<>();
@@ -35,12 +36,14 @@ class RecaptchaProductionPathAcceptanceTest extends AcceptanceTestBase {
 
   @DynamicPropertySource
   static void productionCaptcha(DynamicPropertyRegistry registry) {
-    registry.add("app.recaptcha.test-mode", () -> "false");
-    registry.add("app.recaptcha.site-key", () -> "mock-recaptcha-site-key");
-    registry.add("app.recaptcha.secret-key", () -> SECRET);
-    registry.add(
+    Map<String, String> p = TestEnvironment.baseProperties(CONFERENCE_CONFIG, JSON_COPY_DIR);
+    p.put("app.recaptcha.test-mode", "false");
+    p.put("app.recaptcha.site-key", "mock-recaptcha-site-key");
+    p.put("app.recaptcha.secret-key", SECRET);
+    p.put(
         "app.recaptcha.verify-url",
-        () -> "http://127.0.0.1:" + VERIFIER.getAddress().getPort() + "/recaptcha/api/siteverify");
+        "http://127.0.0.1:" + VERIFIER.getAddress().getPort() + "/recaptcha/api/siteverify");
+    p.forEach((key, value) -> registry.add(key, () -> value));
   }
 
   /** Answers success for "good-token", HTTP 500 for "error-token", success=false otherwise. */

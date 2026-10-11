@@ -12,18 +12,19 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
-import si.konferenca.registration.acceptance.support.AcceptanceTestBase;
+import si.konferenca.registration.acceptance.support.AcceptanceTestSupport;
 import si.konferenca.registration.acceptance.support.Api;
 import si.konferenca.registration.acceptance.support.TestEnvironment;
 
 /** US-005: a registration is accepted only when its JSON copy was written (AR-05). */
-class JsonCopyFailureAcceptanceTest extends AcceptanceTestBase {
+class JsonCopyFailureAcceptanceTest extends AcceptanceTestSupport {
 
   private static final Path OWN_JSON_DIR = TestEnvironment.newTempDir("json-copies-failing-");
 
   @DynamicPropertySource
   static void ownJsonCopyDir(DynamicPropertyRegistry registry) {
-    registry.add("app.json-copy-dir", OWN_JSON_DIR::toString);
+    Map<String, String> p = TestEnvironment.baseProperties(CONFERENCE_CONFIG, OWN_JSON_DIR);
+    p.forEach((key, value) -> registry.add(key, () -> value));
   }
 
   @Test

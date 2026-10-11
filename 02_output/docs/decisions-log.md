@@ -109,3 +109,12 @@
 - Options: 1. (proposed) fix the harness only, no assertion changes: move the helpers of `AcceptanceTestBase` into a new `support/AcceptanceTestSupport` without property registration; `AcceptanceTestBase` extends it and keeps the default registration; the four classes extend `AcceptanceTestSupport` and register `TestEnvironment.baseProperties(...)` with their changed keys applied to the map. Then regenerate `docs/03_acceptance-manifest.sha256` in its own commit. Prototype verified locally: AC-005-03, AC-005-01/02/04 and AC-006-03 pass. 2. keep the tests frozen as they are and accept that AC-005-03, SR-03 and SR-01/DoD-P05 have no passing automated test (findings in phase 6).
 - Human response: none yet
 - Resolution: pending (waiting for the human)
+
+## D-13: follow-up to D-12, harness fix approved
+- Timestamp: 2026-10-11T09:47:26Z
+- Phase: 4
+- Type: blocking
+- Trigger: human answer to D-12.
+- Options: see D-12.
+- Human response: "1, go ahead with the harness fix" (2026-10-11T09:47:26Z)
+- Resolution: D-12 option 1 applied: `AcceptanceTestSupport` added; four classes register their properties from `TestEnvironment.baseProperties` with their changes; no assertion changed; manifest regenerated in its own commit.

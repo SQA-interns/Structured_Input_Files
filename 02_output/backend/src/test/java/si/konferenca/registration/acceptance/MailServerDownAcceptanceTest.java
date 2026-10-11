@@ -10,18 +10,20 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
-import si.konferenca.registration.acceptance.support.AcceptanceTestBase;
+import si.konferenca.registration.acceptance.support.AcceptanceTestSupport;
 import si.konferenca.registration.acceptance.support.TestEnvironment;
 
 /** US-006: a failing mail server does not lose or reject a registration (D-07). */
-class MailServerDownAcceptanceTest extends AcceptanceTestBase {
+class MailServerDownAcceptanceTest extends AcceptanceTestSupport {
 
   private static final int CLOSED_PORT = TestEnvironment.unusedPort();
 
   @DynamicPropertySource
   static void unreachableMailServer(DynamicPropertyRegistry registry) {
-    registry.add("spring.mail.host", () -> "127.0.0.1");
-    registry.add("spring.mail.port", () -> String.valueOf(CLOSED_PORT));
+    Map<String, String> p = TestEnvironment.baseProperties(CONFERENCE_CONFIG, JSON_COPY_DIR);
+    p.put("spring.mail.host", "127.0.0.1");
+    p.put("spring.mail.port", String.valueOf(CLOSED_PORT));
+    p.forEach((key, value) -> registry.add(key, () -> value));
   }
 
   @Test
