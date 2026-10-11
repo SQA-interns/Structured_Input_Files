@@ -117,3 +117,5 @@ Frontend: the validation code is `validation.ts`.
 The other frontend survivors are in presentation code (labels, loading text, the reCAPTCHA loader only reachable with Google's script, request headers); the score is recorded only (`quality-requirements.md`). They are reviewed as possible findings in phase 6. Because code and tests changed after the runs, both components are re-measured once in phase 6.
 
 ## Final run (phase 6)
+
+Final run after the last fix (2026-10-11): backend 189 passed (87 unit, 6 architecture, 3 integration, 93 acceptance), frontend 27 passed (20 unit, 7 acceptance), e2e 2 passed; 0 failed, 0 skipped. Coverage and mutation re-measured once (both components changed after phase 5): backend PIT 320/320 (100 %), frontend Stryker 85.9 % (304/354); details in `docs/06_verification-report.md`.
