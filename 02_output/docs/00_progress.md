@@ -5,7 +5,7 @@
 Updated at every gate and before any stop, so a fresh session can resume from here.
 
 - Workflow: spec-driven, acceptance tests first (`general/phases.md`)
-- Current phase: 1 (requirements)
-- Last gate result: phase 0 passed 2026-10-11 (all preflight checks pass, both skeletons build, pins match, tools run, input manifest written; decisions D-01..D-04 non-blocking)
-- Next step: write `docs/01_acceptance-criteria.md`; decision records for OQ-01..OQ-06
+- Current phase: 2 (design)
+- Last gate result: phase 1 passed (35 AC for 8 stories; OQ-01..OQ-06 → D-05..D-10 pending review)
+- Next step: write docs/02_specification.md and docs/02_contracts/
 - Waiting for the human on: nothing
