@@ -2,49 +2,91 @@
 
 > Written in: phase 7 · Source: `run-log.json` · Agent: writes
 
-Write the tables from `run-log.json`; no estimates. The summary answers three questions: what did the run cost in agent time and money, what did it deliver, and what held it back. Cost and token rows are filled by the post-run session (`metrics.md` section 2); until then write "pending".
+Figures from `run-log.json`; no estimates. Cost, tokens and commit statistics come from the post-run session (`metrics.md` section 2) and are "pending" here.
 
 ## Run
 
-<!-- run id, model, effort, template version, start and end commit -->
+| Item | Value |
+|---|---|
+| Run id | `kyuhi-single-agent-sdd-v004-opus-5-5-t1.4-20261011T0903Z-4af9` |
+| Model / effort | claude-opus-5-5 / medium |
+| Template version | 1.4 |
+| Start | 2026-10-11T09:03:37Z, commit `d2f7e14` |
+| End | written by `stat.mjs phase 7 end` (`end`, `finalCommit` in `run-log.json`) |
 
 ## Time (human waiting excluded)
 
-<!-- one row per phase: wall minutes, minutes waiting for the human with the decision or cause, agent minutes. Total row. Goal: low agent time. State every wait over one hour and what caused it. -->
+Minutes from the clock tool's phase boundaries.
 
 | Phase | Wall | Waiting for the human | Agent time |
 |---|---|---|---|
+| 0 Preflight and bootstrap | 6.8 | 0 | 6.8 |
+| 1 Requirements | 1.5 | 0 | 1.5 |
+| 2 Design | 4.8 | 0 | 4.8 |
+| 3 Test design | 15.3 | 0 | 15.3 |
+| 4 Build | 25.6 | 4.0 (D-12, frozen test harness) | 21.6 |
+| 5 Unit tests | 21.9 | 0 | 21.9 |
+| 6 Verify | 19.3 | 0 | 19.3 |
+| 7 Release | closed by `phase 7 end` | 0 | see `run-log.json` |
+| Total phases 0–6 | 95.2 | 4.0 | 91.2 |
+
+No wait over one hour.
 
 ## Outcome
 
-<!-- tests: first and final run (all levels), findings as found and open at the end (Critical, High, Medium, Low), frozen tests and changes to them. Goal: final run all green, no open Critical or High. -->
+- Tests: first complete run (phase 5 start) 102 passed, 0 failed (100 acceptance, 2 e2e). Final run 218 passed, 0 failed: unit 107, integration 3, architecture 6, acceptance 100, e2e 2.
+- Acceptance criteria: 35; frozen tests: 102. One frozen-test change, approved by the human: D-12/D-13 (harness property registration, no assertion changed).
+- Findings as found: Critical 0, High 1 (pre-approved false positive), Medium 7, Low 4. Open at the end: Critical 0, High 0, Medium 0.
 
 ## Quality measures
 
-<!-- per component: production and test lines, line and branch coverage per level, mutation score WITH its scope (tool, packages, number of mutants), duplication, complexity. Goal: high coverage and mutation score; always say what the number covers. -->
+| Component | Production / test lines (cloc) | Line coverage unit / nonUnit / all | Branch coverage unit / nonUnit / all | Mutation score (scope, tool, mutants) | Duplication |
+|---|---|---|---|---|---|
+| backend | 1,922 / 3,022 | 73.2 / 91.6 / 99.0 % | 86.2 / 75.1 / 93.1 % | 100 % (all production code except the entry point; PIT 1.30.0 with the full suite; 320/320) — phase 5: 91.9 % (282/307) | CPD: none |
+| frontend | 533 / 757 | 87.9 / 84.3 / 90.0 % | 81.0 / 77.0 / 96.0 % | 85.9 % (all `src` production code; Stryker 10.0.0 with the Vitest suite, e2e excluded per D-15; 304/354) — phase 5: 77.7 % (275/354) | jscpd 1.45 % |
+
+Complexity: not measured (no complexity tool in `tech-stack.md`).
 
 ## Fix loops
 
-<!-- one row per loop: finding, category, needs a human (yes/no), minutes, change. Goal: few, short, no human needed; note any loop that a template rule could have prevented. -->
-
 | Loop | Finding | Category | Needs human | Minutes | Change |
 |---|---|---|---|---|---|
+| 1 | F-01 | security-config | no | 2 | fixed host in the production HTTPS redirect example |
+| 2 | F-09 | test-gap | no | 0.3 | frontend tests for the unavailable form and the general error |
 
 ## Commits
 
-<!-- from `commitSummary` once the post-run step has run, otherwise "pending": count, median and largest size, shares over the size guide, mixed concerns, bursts, cost and minutes between commits. Goal: small finished steps, none over the guide, none mixed, no bursts. -->
+Pending (post-run `commitSummary`).
 
 ## Decisions and human interventions
 
-<!-- counts of blocking and non-blocking decisions by category; one row per human intervention with cause and minutes. Goal: few blocking decisions; list every decision that a pre-approved answer in the inputs could have avoided. -->
+| Category | Blocking | Non-blocking |
+|---|---|---|
+| environment | 0 | 1 (D-01) |
+| dependency | 0 | 2 (D-02, D-11) |
+| security-finding | 0 | 3 (D-03, D-04, D-14) |
+| requirement | 0 | 6 (D-05 … D-10, pending review) |
+| frozen-test | 2 (D-12 and its follow-up D-13) | 0 |
+| other | 0 | 1 (D-15) |
+
+| Intervention | Cause | Minutes |
+|---|---|---|
+| D-12: frozen acceptance harness ignores per-class property overrides | decision | 4.0 |
+
+Decisions an input could have avoided: D-11 (`@types/node` missing from `tech-stack.md`); D-12 would have been avoided by running a per-class override probe in the phase 3 self-check.
 
 ## Divergences
 
-<!-- every departure from the rules, phases or stack, from `divergences[]`; "none" if none. Goal: none. -->
+| Phase | Rule | Divergence |
+|---|---|---|
+| 0 | working-rules.md, commits | commit `f6d37e6` (backend skeleton) also contains two docs files (staged by `git add --renormalize`) |
+| 4 | working-rules.md, commit size | commit `1a73cc9` (US-003) has 567 changed lines without a stated reason |
 
 ## What held the run back
 
-<!-- at most three items, each one sentence with its evidence: the largest causes of agent time and of cost (phase, tool class, waits, repeated fixes). -->
+1. Phase 4 build was the largest phase (25.6 min wall), including the 4-minute wait for D-12, a frozen-harness defect that the phase 3 self-check did not detect (subclass `@DynamicPropertySource` overrides lose to the base class).
+2. Phase 5 (21.9 min) and phase 6 (19.3 min) were dominated by full backend suites with Testcontainers (about 1.5 min each) run per coverage level, plus one PIT run per phase (about 5 min each).
+3. Shell quoting and Windows path issues (heredocs with apostrophes, Git Bash path rewriting for Docker, Windows `curl` and `MAX_PATH` on the clean clone) cost several repeated commands.
 
 ## Not measured by the agent
 
