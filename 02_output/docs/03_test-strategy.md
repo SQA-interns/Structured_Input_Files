@@ -99,3 +99,34 @@ No implementation defect and no frozen-test problem was found by the first run.
 Backend 196 passed, 0 failed (acceptance 81, architecture 7, integration 3, unit 105); frontend 59 passed (acceptance 12, unit/component 47); e2e 5 passed (`logs/phase5-gate-*.log`, `logs/phase5-first-run-e2e.log`).
 
 ## Final run (phase 6)
+
+On the final code (after F-01, F-07, F-08, F-10 and the Vitest 4.1.11 change):
+
+| Suite | Level | Passed | Failed |
+|---|---|---|---|
+| backend (`./mvnw -B verify`, `logs/phase6-final-backend.log`) | acceptance | 81 | 0 |
+| backend | architecture | 7 | 0 |
+| backend | integration | 3 | 0 |
+| backend | unit | 106 | 0 |
+| frontend (`npx vitest run`, `logs/phase6-final-frontend.log`) | acceptance | 12 | 0 |
+| frontend | unit / component | 49 | 0 |
+| e2e (`npx playwright test` against the rebuilt compose stack, `logs/phase6-final-e2e.log`) | e2e | 5 | 0 |
+| **total** | | **263** | **0** |
+
+The e2e run preceded the frontend test-only change of F-10 (no production code changed afterwards).
+
+| Measure | Component | unit | nonUnit | all | Tool |
+|---|---|---|---|---|---|
+| Line coverage | backend | 74.9 % (746/996) | 90.7 % (903/996) | 97.7 % (973/996) | JaCoCo 0.8.12 |
+| Branch coverage | backend | 86.7 % (274/316) | 69.0 % (218/316) | 93.0 % (294/316) | JaCoCo 0.8.12 |
+| Line coverage | frontend | 97.6 % (166/170) | 92.4 % (157/170) | 100 % (170/170) | Vitest 4.1.11 v8 |
+| Branch coverage | frontend | 92.6 % (112/121) | 81.0 % (98/121) | 97.5 % (118/121) | Vitest 4.1.11 v8 |
+
+Frontend non-unit coverage covers the Vitest acceptance tests; the Playwright e2e tests are not instrumented.
+
+| Mutation | score | scoreCovered | killed | total | covered | tests | tool |
+|---|---|---|---|---|---|---|---|
+| backend | 95.4 % | 98.2 % | 374 | 392 | 381 | all 197 JUnit tests | PIT 1.30.0 |
+| frontend | 84.7 % | 84.7 % | 371 | 438 | 438 | all 61 Vitest tests (no e2e) | Stryker 10.0.0 + Vitest 4.1.11 |
+
+Code size (cloc 2.10 image, reports 1.98): backend production 2296, test 3241; frontend production 607, test 998 lines of code (`logs/phase6-cloc.txt`). Duplication: PMD CPD (backend) and jscpd (frontend) report 0 clones.

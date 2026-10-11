@@ -1,0 +1,20 @@
+{"KILLED":372,"SURVIVED":7,"TIMED_OUT":2,"NO_COVERAGE":11}
+total 392 killed(incl. timed out) 374 covered 381 score 95.4% scoreCovered 98.2%
+SURVIVED domain.RegistrationValidator.checked:114 replaced return value with &quot;&quot; for si/konferenca/registration/domain/RegistrationValidator::checked
+SURVIVED domain.RegistrationValidator.email:97 replaced return value with &quot;&quot; for si/konferenca/registration/domain/RegistrationValidator::email
+SURVIVED config.RequestSizeFilter$LimitedStream.isFinished:93 replaced boolean return with false for si/konferenca/registration/config/RequestSizeFilter$LimitedStream::isFinished
+SURVIVED config.RequestSizeFilter$LimitedStream.isReady:98 replaced boolean return with true for si/konferenca/registration/config/RequestSizeFilter$LimitedStream::isReady
+NO_COVERAGE config.RequestSizeFilter$LimitedStream.setReadListener:103 removed call to jakarta/servlet/ServletInputStream::setReadListener
+SURVIVED config.FixedWindowRateLimiter.lambda$acquire$0:32 changed conditional boundary
+NO_COVERAGE config.ApplicationConfig.captchaVerifier:87 replaced return value with null for si/konferenca/registration/config/ApplicationConfig::captchaVerifier
+NO_COVERAGE infrastructure.GoogleRecaptchaVerifier.verify:65 removed call to java/lang/Thread::interrupt
+NO_COVERAGE infrastructure.GoogleRecaptchaVerifier.verify:66 replaced boolean return with true for si/konferenca/registration/infrastructure/GoogleRecaptchaVerifier::verify
+NO_COVERAGE config.SecurityConfig.securityFilterChain:77 negated conditional
+NO_COVERAGE config.SecurityConfig.securityFilterChain:79 removed call to org/springframework/web/cors/CorsConfiguration::setAllowedOrigins
+NO_COVERAGE config.SecurityConfig.securityFilterChain:80 removed call to org/springframework/web/cors/CorsConfiguration::setAllowedMethods
+NO_COVERAGE config.SecurityConfig.securityFilterChain:81 removed call to org/springframework/web/cors/CorsConfiguration::setAllowedHeaders
+NO_COVERAGE config.SecurityConfig.securityFilterChain:82 removed call to org/springframework/web/cors/CorsConfiguration::setAllowCredentials
+NO_COVERAGE config.SecurityConfig.securityFilterChain:84 removed call to org/springframework/web/cors/UrlBasedCorsConfigurationSource::registerCorsConfiguration
+SURVIVED persistence.FileJsonCopyStore.write:49 removed call to java/nio/channels/FileChannel::force
+SURVIVED persistence.FileJsonCopyStore.write:51 removed call to java/nio/channels/FileChannel::close
+NO_COVERAGE config.JsonAccessDeniedHandler.handle:18 removed call to si/konferenca/registration/config/ErrorResponseWriter::write

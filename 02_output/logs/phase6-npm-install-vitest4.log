@@ -1,0 +1,21 @@
+npm warn ERESOLVE overriding peer dependency
+npm warn While resolving: registration-frontend@0.1.0
+npm warn Found: @vitest/coverage-v8@4.1.10
+npm warn node_modules/@vitest/coverage-v8
+npm warn   dev @vitest/coverage-v8@"4.1.11" from the root project
+npm warn   1 more (vitest)
+npm warn
+npm warn Could not resolve dependency:
+npm warn peerOptional @vitest/coverage-v8@"4.1.10" from vitest@4.1.10
+npm warn node_modules/vitest
+npm warn   dev vitest@"4.1.11" from the root project
+npm warn   2 more (@stryker-mutator/vitest-runner, @vitest/coverage-v8)
+
+changed 9 packages, and audited 442 packages in 3s
+
+2 moderate severity vulnerabilities
+
+To address all issues, run:
+  npm audit fix
+
+Run `npm audit` for details.
