@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Run Comparison</title>
+<style>
+__STYLE__
+</style></head><body>
+<main>
+<header>
+  <h1 id="title"></h1>
+  <p class="sub" id="subtitle"></p>
+</header>
+
+<section>
+  <h2>How to read this report</h2>
+  <div class="panel">
+    <p><span class="dir lower">↓</span><b>Lower is better.</b> <span class="dir higher">↑</span><b>Higher is better.</b> <span class="dir target">=</span><b>Should equal the target shown</b> (for example zero). Attributes without an arrow give context only. In the table the best value of each row is shaded.</p>
+    <p>Under every attribute you find <b>what we are trying to achieve</b>. The numbers are computed the same way for every run, from its session transcript where one exists on this machine and from its <code>run-log.json</code> otherwise.</p>
+    <p><b>Human waiting is excluded everywhere.</b> Agent time is wall time minus every wait for a human. A wait over one hour also makes the prompt cache expire, so the next call rewrites the whole context; that rebuild is a cost of the wait and is removed from the cost shown. The raw numbers are in the table too, so nothing is hidden.</p>
+    <p class="note">Marks after a value: <span class="mark">†</span> estimated, <span class="mark">‡</span> taken from a run summary or another file (hover for the source). “–” means the run did not record it.</p>
+  </div>
+</section>
+
+<section><div class="kpis" id="kpis"></div></section>
+
+<section>
+  <h2>All attributes</h2>
+  <div class="panel scroll"><table id="overview"></table></div>
+</section>
+
+<section>
+  <h2>Time and cost at a glance</h2>
+  <div class="grid2">
+    <div class="panel"><h3>Agent time (minutes) ↓</h3><div class="legend"><span><i style="background:var(--k-model)"></i>Model time</span><span><i style="background:var(--k-tool)"></i>Tool time</span><span><i style="background:var(--k-other)"></i>Other / not split</span></div><div id="chTime"></div>
+      <p class="note">Model and tool time need the transcript. Without it the whole bar is agent time.</p></div>
+    <div class="panel"><h3>Cost excl. waits ($) ↓</h3><div class="legend"><span><i style="background:var(--k-cr)"></i>Cache read</span><span><i style="background:var(--k-cw)"></i>Cache write</span><span><i style="background:var(--k-out)"></i>Output</span><span><i style="background:var(--k-rebuild)"></i>Rebuild caused by waits (removed, shown for reference)</span></div><div id="chCost"></div></div>
+  </div>
+  <div class="grid2">
+    <div class="panel"><h3>Cost against agent time (closer to the bottom left is better)</h3><div id="chScatter"></div>
+      <p class="note">Colour is the series. Runs differ in person, machine and template, so read position as a hint, not a ranking.</p></div>
+    <div class="panel"><h3>Average context per call by phase (k tokens) ↓</h3><div class="legend" id="lgRuns"></div><div id="chCtx"></div>
+      <p class="note">Every call re-reads the whole context at cache-read price, so the late phases cost the most per call. Only runs with a transcript.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Agent minutes per phase</h2>
+  <div class="panel scroll"><table id="phases"></table>
+    <p class="note">Goal: low overhead phases (0, 1, 2, 7). Phases 4 to 6 hold the real work, so more time there can mean more testing, not waste.</p></div>
+</section>
+
+<section id="secCommits" hidden>
+  <h2>Commits</h2>
+  <div class="panel"><h3>Changed lines per commit (dashed line: size guide of 400)</h3>
+    <div class="legend"><span><i style="background:var(--k-model)"></i>one concern</span><span><i style="background:var(--k-tool)"></i>mixes concerns</span><span><i style="background:var(--warn)"></i>over the size guide</span></div>
+    <div id="chCommits"></div>
+    <p class="note">Hover a bar for subject, cost and minutes since the previous commit. Small steady steps are the goal: no commit above the guide, no mixing of code, tests, documents and build changes, and no bursts of several commits within a minute.</p></div>
+  <div class="panel scroll"><table id="commitTable"></table></div>
+</section>
+
+<section>
+  <h2>Environment</h2>
+  <div class="panel scroll"><table id="env"></table>
+    <p class="note">Why it matters: harness version, effort, permission mode and machine all change cost and speed. Operator, machine, plan and permission mode come from run-config.md; the rest is read from the transcripts and the host at the end of the run.</p></div>
+</section>
+
+<section>
+  <h2>Trust in the measurement</h2>
+  <div class="panel scroll"><table id="checks"></table>
+    <p class="note">The cost check compares our calculation from the transcript with the cost the harness recorded itself (the usage panel's number). Within 1.5 % the numbers can be trusted.</p></div>
+</section>
+
+<section>
+  <h2>Waits that were excluded</h2>
+  <div class="panel scroll"><table id="waits"></table></div>
+</section>
+
+<section>
+  <h2>Where the data comes from, and what to keep in mind</h2>
+  <div class="panel scroll"><table id="sources"></table></div>
+  <ul class="note" id="excluded" style="padding-left:20px;margin:0"></ul>
+</section>
+</main>
+
+<script>
+const D=__DATA__;
+const $=id=>document.getElementById(id);
+const R=D.runs, C=D.catalog.metrics, G=D.catalog.groups;
+const seriesList=[...new Set(R.map(r=>r.series))];
+const col=r=>"var(--s-"+((seriesList.indexOf(r.series)%8)+1)+")";
+$("title").textContent=D.title; $("subtitle").textContent=D.subtitle+" Built "+D.built+".";
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmt=(u,v)=>{if(v==null)return "–";
+ switch(u){case"min":return v>=100?Math.round(v).toLocaleString("en-US"):(Math.round(v*10)/10)+"";
+  case"min2":return v.toFixed(2);case"usd":return "$"+v.toFixed(2);case"usd3":return "$"+v.toFixed(3);
+  case"pct":return (Math.round(v*10)/10)+" %";case"k":return Math.round(v)+"k";case"ratio":return v.toFixed(2);
+  default:return Math.round(v).toLocaleString("en-US")}};
+const arrow={lower:"↓",higher:"↑",target:"=",info:"i"};
+const val=(r,id)=>r.metrics[id]||{v:null};
+const MARK={e:["†","estimated"],o:["‡","from another file"]};
+
+// --- key figures
+const hl=C.filter(m=>m.headline);
+$("kpis").innerHTML=hl.map(m=>{const vs=R.map(r=>({r,v:val(r,m.id).v})).filter(x=>x.v!=null);
+ if(!vs.length)return "";if(R.length===1)return `<div class="kpi"><b>${fmt(m.unit,vs[0].v)}</b><span>${m.label} ${arrow[m.dir]}</span></div>`;const best=vs.reduce((a,b)=>b.v<a.v?b:a);const worst=vs.reduce((a,b)=>b.v>a.v?b:a);
+ return `<div class="kpi"><b>${fmt(m.unit,best.v)} to ${fmt(m.unit,worst.v)}</b><span>${m.label} ${arrow[m.dir]}, ${vs.length} runs. Lowest: ${esc(best.r.label)}</span></div>`}).join("")+
+ (R.length===1?"":`<div class="kpi"><b>${R.length} runs</b><span>${R.filter(r=>r.sources.usage==="transcript").length} measured from a transcript, ${R.filter(r=>r.sources.usage!=="transcript").length} from logs and summaries</span></div>`)+
+ `<div class="kpi"><b>${Math.round(R.reduce((s,r)=>s+val(r,"humanWaitMin").v,0)/60)} h</b><span>of waiting for humans removed from the comparison</span></div>`;
+
+// --- table
+let h=`<tr><th class="l">Attribute and what we want</th>${R.map(r=>`<th><span class="runtag" style="background:${col(r)}"></span>${esc(r.label)}<br><span style="font-weight:400;text-transform:none;letter-spacing:0">${esc(r.template)}</span></th>`).join("")}</tr>`;
+for(const g of G){h+=`<tr class="grp"><td colspan="${R.length+1}">${g.label}</td></tr>`;
+ for(const m of C.filter(x=>x.group===g.id)){
+  const vals=R.map(r=>val(r,m.id).v), nn=vals.filter(v=>v!=null);
+  let best=null; if(nn.length>1&&(m.dir==="lower"))best=Math.min(...nn); if(nn.length>1&&m.dir==="higher")best=Math.max(...nn);
+  const tgt=m.dir==="target"?m.target:null;
+  const goal=(m.dir==="target"?`Target ${m.target}. `:m.dir==="lower"?"Lower is better. ":m.dir==="higher"?"Higher is better. ":"")+m.goal;
+  h+=`<tr><td class="attr" title="${esc(m.how)}"><span class="dir ${m.dir}">${arrow[m.dir]}</span><b>${m.label}</b><small>${esc(goal)}</small></td>`+R.map((r,i)=>{
+   const x=val(r,m.id),v=x.v;const cls=v==null?"miss":((best!=null&&v===best)||(tgt!=null&&v===tgt))?"best":"";
+   const mk=x.src&&MARK[x.src]?`<span class="mark" title="${esc(MARK[x.src][1]+(x.note?": "+x.note:""))}">${MARK[x.src][0]}</span>`:(x.note?`<span class="mark" title="${esc(x.note)}">*</span>`:"");
+   return `<td class="${cls}">${fmt(m.unit,v)}${v!=null?mk:""}</td>`}).join("")+"</tr>"}}
+$("overview").innerHTML=h;
+
+// --- svg helpers
+const svg=(w,hh,b)=>`<svg viewBox="0 0 ${w} ${hh}" role="img">${b}</svg>`;
+const niceMax=v=>{const p=Math.pow(10,Math.floor(Math.log10(v||1)));const m=v/p;return (m<=1?1:m<=2?2:m<=2.5?2.5:m<=5?5:10)*p};
+
+// time stacked
+(function(){const W=560,L=96,Rm=70,T=8,bh=24,gap=12,H=T+R.length*(bh+gap)+24;const mx=niceMax(Math.max(...R.map(r=>val(r,"agentMin").v)));
+ const x=v=>L+(W-L-Rm)*v/mx;let b="";
+ for(let t=0;t<=mx+1e-9;t+=mx/4)b+=`<line class="grid" x1="${x(t)}" x2="${x(t)}" y1="${T}" y2="${H-20}"/><text x="${x(t)}" y="${H-5}" text-anchor="middle">${Math.round(t)}</text>`;
+ R.forEach((r,i)=>{const y=T+i*(bh+gap),a=val(r,"agentMin").v,mo=val(r,"modelMin").v,to=val(r,"toolMin").v;
+  b+=`<text x="${L-8}" y="${y+bh/2+4}" text-anchor="end">${esc(r.label)}</text>`;
+  const segs=mo!=null&&to!=null?[[mo,"var(--k-model)"],[to,"var(--k-tool)"],[Math.max(0,a-mo-to),"var(--k-other)"]]:[[a,"var(--k-other)"]];
+  let c=0;segs.forEach(([v,cl])=>{if(v<=0)return;b+=`<rect x="${x(c)}" y="${y}" width="${Math.max(0,x(c+v)-x(c)-1)}" height="${bh}" fill="${cl}"/>`;
+   if(x(c+v)-x(c)>26)b+=`<text x="${(x(c)+x(c+v))/2}" y="${y+bh/2+4}" text-anchor="middle" style="fill:#fff;font-weight:600">${Math.round(v)}</text>`;c+=v});
+  b+=`<text class="val" x="${x(a)+6}" y="${y+bh/2+4}">${Math.round(a)}</text>`});
+ $("chTime").innerHTML=svg(W,H,b)})();
+
+// cost stacked (token parts priced at the list prices of the report: input 4, output 20, cache read 0.2, cache write 8 per MTok)
+(function(){const rs=R.filter(r=>r.tokens&&val(r,"costLogged").v!=null);const W=560,L=96,Rm=70,T=8,bh=24,gap=12,H=T+rs.length*(bh+gap)+24;
+ const mx=niceMax(Math.max(...rs.map(r=>val(r,"costLogged").v)));const x=v=>L+(W-L-Rm)*v/mx;let b="";
+ for(let t=0;t<=mx+1e-9;t+=mx/4)b+=`<line class="grid" x1="${x(t)}" x2="${x(t)}" y1="${T}" y2="${H-20}"/><text x="${x(t)}" y="${H-5}" text-anchor="middle">$${Math.round(t)}</text>`;
+ rs.forEach((r,i)=>{const y=T+i*(bh+gap),t=r.tokens,logged=val(r,"costLogged").v,excl=val(r,"costExcl").v,rebuild=Math.max(0,logged-excl);
+  let cr=(t.cr||0)*0.2/1e6,cw=(t.cw||0)*8/1e6,out=(t.out||0)*20/1e6,inp=(t.inp||0)*4/1e6;
+  const sum=cr+cw+out+inp,k=sum?logged/sum:1;cr*=k;cw*=k;out*=k;inp*=k;
+  cw=Math.max(0,cw-rebuild);
+  b+=`<text x="${L-8}" y="${y+bh/2+4}" text-anchor="end">${esc(r.label)}</text>`;
+  let c=0;[[cr,"var(--k-cr)"],[cw,"var(--k-cw)"],[out+inp,"var(--k-out)"],[rebuild,"var(--k-rebuild)"]].forEach(([v,cl])=>{if(v<=0)return;b+=`<rect x="${x(c)}" y="${y}" width="${Math.max(0,x(c+v)-x(c)-1)}" height="${bh}" fill="${cl}"/>`;
+   if(x(c+v)-x(c)>30)b+=`<text x="${(x(c)+x(c+v))/2}" y="${y+bh/2+4}" text-anchor="middle" style="fill:#fff;font-weight:600">${v.toFixed(1)}</text>`;c+=v});
+  b+=`<text class="val" x="${x(c)+6}" y="${y+bh/2+4}">$${excl.toFixed(2)}${rebuild>0.05?" (+"+rebuild.toFixed(1)+")":""}</text>`});
+ $("chCost").innerHTML=svg(W,H,b)})();
+
+// scatter
+(function(){const rs=R.filter(r=>val(r,"costExcl").v!=null);const W=560,H=300,L=46,Rm=16,T=14,B=38;
+ const mxX=niceMax(Math.max(...rs.map(r=>val(r,"agentMin").v))),mxY=niceMax(Math.max(...rs.map(r=>val(r,"costExcl").v)));
+ const x=v=>L+(W-L-Rm)*v/mxX,y=v=>T+(H-T-B)*(1-v/mxY);let b="";
+ for(let t=0;t<=mxY+1e-9;t+=mxY/4)b+=`<line class="grid" x1="${L}" x2="${W-Rm}" y1="${y(t)}" y2="${y(t)}"/><text x="${L-6}" y="${y(t)+4}" text-anchor="end">$${Math.round(t)}</text>`;
+ for(let t=0;t<=mxX+1e-9;t+=mxX/4)b+=`<text x="${x(t)}" y="${H-18}" text-anchor="middle">${Math.round(t)}</text>`;
+ b+=`<text x="${(L+W-Rm)/2}" y="${H-3}" text-anchor="middle">agent minutes</text>`;
+ rs.forEach(r=>{const cx=x(val(r,"agentMin").v),cy=y(val(r,"costExcl").v);b+=`<circle cx="${cx}" cy="${cy}" r="6" fill="${col(r)}"><title>${esc(r.label)}: ${fmt("min",val(r,"agentMin").v)} min, ${fmt("usd",val(r,"costExcl").v)}</title></circle><text x="${cx+9}" y="${cy+4}">${esc(r.label)}</text>`});
+ $("chScatter").innerHTML=svg(W,H,b)})();
+
+// context by phase
+(function(){const rs=R.filter(r=>r.phases.some(p=>p.avgContextK!=null));$("lgRuns").innerHTML=rs.map(r=>`<span><i style="background:${col(r)}"></i>${esc(r.label)}</span>`).join("");
+ const W=560,H=250,L=40,Rm=14,T=10,B=28,mx=600;const x=i=>L+(W-L-Rm)*i/7,y=v=>T+(H-T-B)*(1-v/mx);let b="";
+ [0,150,300,450,600].forEach(t=>b+=`<line class="grid" x1="${L}" x2="${W-Rm}" y1="${y(t)}" y2="${y(t)}"/><text x="${L-6}" y="${y(t)+4}" text-anchor="end">${t}</text>`);
+ for(let i=0;i<8;i++)b+=`<text x="${x(i)}" y="${H-8}" text-anchor="middle">P${i}</text>`;
+ b+=`<line x1="${L}" x2="${W-Rm}" y1="${y(150)}" y2="${y(150)}" stroke="var(--warn)" stroke-dasharray="4 4"/>`;
+ rs.forEach((r,j)=>{const pts=r.phases.filter(p=>p.avgContextK!=null);b+=`<polyline points="${pts.map(p=>x(p.phase)+","+y(p.avgContextK)).join(" ")}" fill="none" stroke="${col(r)}" stroke-width="2" ${j%2?'stroke-dasharray="5 3"':''}/>`;
+  pts.forEach(p=>b+=`<circle cx="${x(p.phase)}" cy="${y(p.avgContextK)}" r="2.5" fill="${col(r)}"><title>${esc(r.label)} P${p.phase}: ${p.avgContextK}k</title></circle>`)});
+ $("chCtx").innerHTML=svg(W,H,b)})();
+
+// phases table
+(function(){const names=["0 Preflight","1 Requirements","2 Design","3 Test design","4 Build","5 Unit tests","6 Verify","7 Release"];
+ const mx=Math.max(...R.flatMap(r=>r.phases.map(p=>p.agentMin||0)));
+ let h=`<tr><th class="l">Phase</th>${R.map(r=>`<th>${esc(r.label)}</th>`).join("")}</tr>`;
+ names.forEach((n,i)=>{const overhead=[0,1,2,7].includes(i);h+=`<tr><td>${n}${overhead?' <span class="tag">overhead</span>':""}</td>${R.map(r=>{const p=r.phases.find(q=>q.phase===i);return p?`<td>${Math.round(p.agentMin)}<span class="bar" style="width:${Math.round(40*p.agentMin/mx)}px;background:${col(r)}"></span></td>`:"<td class=\"miss\">–</td>"}).join("")}</tr>`});
+ h+=`<tr><td><b>Agent time</b></td>${R.map(r=>`<td><b>${Math.round(val(r,"agentMin").v)}</b></td>`).join("")}</tr>`;
+ $("phases").innerHTML=h})();
+
+// commits (single run)
+(function(){const r=R[0],cs=r.commits;if(!D.single||!cs||!cs.length)return;$("secCommits").hidden=false;
+ const W=1040,H=230,L=40,Rm=8,T=14,B=26,mx=Math.max(450,niceMax(Math.min(1200,Math.max(...cs.map(c=>c.lines)))));const y=v=>T+(H-T-B)*(1-Math.min(v,mx)/mx),bw=(W-L-Rm)/cs.length;let b="";
+ [0,mx/4,mx/2,mx*3/4,mx].forEach(t=>b+=`<line class="grid" x1="${L}" x2="${W-Rm}" y1="${y(t)}" y2="${y(t)}"/><text x="${L-6}" y="${y(t)+4}" text-anchor="end">${Math.round(t)}</text>`);
+ b+=`<line x1="${L}" x2="${W-Rm}" y1="${y(400)}" y2="${y(400)}" stroke="var(--warn)" stroke-dasharray="5 4"/>`;
+ cs.forEach((c,i)=>{const x=L+i*bw,col=c.oversize?"var(--warn)":c.mixed?"var(--k-tool)":"var(--k-model)";
+  b+=`<rect x="${x+0.5}" y="${y(c.lines)}" width="${Math.max(1,bw-1.5)}" height="${y(0)-y(c.lines)}" fill="${col}"><title>${esc(c.hash+" "+c.subject)} | ${c.lines} lines, ${c.files} files | $${c.costUsdSincePrev} | ${c.activeMinutesSincePrev} min since previous</title></rect>`});
+ $("chCommits").innerHTML=svg(W,H,b);
+ const flags=c=>[c.oversize?"over guide":"",c.mixed?"mixed":"",c.burst?"burst":"",c.messageOk?"":"message"].filter(Boolean).join(", ")||"–";
+ $("commitTable").innerHTML=`<tr><th class="l">#</th><th class="l">Commit</th><th>Phase</th><th class="l">Concerns (changed lines)</th><th>Files</th><th>Lines</th><th>Minutes since previous</th><th>Cost since previous</th><th class="l">Flags</th><th class="l">Subject</th></tr>`+cs.map((c,i)=>`<tr><td>${i+1}</td><td class="l"><code>${c.hash}</code></td><td>${c.phase??"–"}</td><td class="l">${esc(Object.entries(c.categories).map(([k,v])=>k+" "+v).join(", ")||"–")}</td><td>${c.files}</td><td>${c.lines}</td><td>${c.activeMinutesSincePrev}</td><td>$${c.costUsdSincePrev.toFixed(2)}</td><td class="l">${flags(c)}</td><td class="l">${esc(c.subject)}</td></tr>`).join("")})();
+
+// environment
+(function(){const val=(r,f)=>{try{const v=f(r.environment||{});return v==null||v===""||(Array.isArray(v)&&!v.length)?"–":(Array.isArray(v)?v.join(", "):String(v))}catch(e){return "–"}};
+ const rows=[["Operator",e=>e.operator],["Machine",e=>e.machine],["Plan",e=>e.plan],["Permission mode (configured)",e=>e.permissionMode],["Harness",e=>e.harness&&(e.harness.name+" "+(e.harness.versions||[]).join(", "))],["Entry point",e=>e.harness&&e.harness.entrypoints],["Models",e=>e.models],["Effort",e=>e.effort],["Permission modes seen in the session",e=>e.permissionModes],["Operating system (at the start)",e=>e.os&&(e.os.platform+" "+e.os.release+" "+e.os.arch)],["Time zone",e=>e.timezone],["Node",e=>e.tools&&e.tools.node],["Docker",e=>e.tools&&e.tools.docker],["Java",e=>e.tools&&e.tools.java],["Python",e=>e.tools&&e.tools.python],["Measured on",e=>e.postRunHost&&(e.postRunHost.platform+", "+e.postRunHost.cpus+" cores, "+e.postRunHost.memoryGb+" GB")]];
+ $("env").innerHTML=`<tr><th class="l"></th>${R.map(r=>`<th>${esc(r.label)}</th>`).join("")}</tr>`+rows.map(([n,f])=>`<tr><td>${n}</td>${R.map(r=>`<td class="l">${esc(val(r,f))}</td>`).join("")}</tr>`).join("")})();
+
+// trust checks
+(function(){const g=(r,id)=>val(r,id).v;
+ const rows=[["Cost from the transcript",r=>r.check?"$"+r.check.transcriptCostUsd.toFixed(2):"–"],["Cost recorded by the harness",r=>r.check?"$"+r.check.panelCostUsd.toFixed(2):"–"],["Difference",r=>r.check?(r.check.diffUsd>=0?"+":"")+"$"+r.check.diffUsd.toFixed(2)+" ("+r.check.diffPct+" %)":"–"],["Verdict",r=>r.check?r.check.verdict:"no cost-state record, not checked"],
+  ["Sub-agents",r=>r.subagents?(r.subagents.used?r.subagents.used+" call(s), "+r.subagents.transcripts+" transcript(s), $"+r.subagents.costUsd.toFixed(2):"none used"):"–"],
+  ["Phase timestamps from the clock tool",r=>r.phaseChecks&&(r.phaseChecks.viaHelper+r.phaseChecks.manual)?r.phaseChecks.viaHelper+" of "+(r.phaseChecks.viaHelper+r.phaseChecks.manual)+" boundaries":"–"],
+  ["Phase timestamp issues",r=>r.phaseChecks?(r.phaseChecks.issues.length?r.phaseChecks.issues.join("; "):"none"):"–"],
+  ["Idle time missing from the log",r=>g(r,"unrecordedIdleMin")==null?"–":g(r,"unrecordedIdleMin")+" min"]];
+ $("checks").innerHTML=`<tr><th class="l"></th>${R.map(r=>`<th>${esc(r.label)}</th>`).join("")}</tr>`+rows.map(([n,f])=>`<tr><td>${n}</td>${R.map(r=>`<td class="l">${esc(f(r))}</td>`).join("")}</tr>`).join("")})();
+
+// waits
+(function(){let rows=[];R.forEach(r=>{const w=r.longWaits||[];w.forEach(x=>rows.push([r.label,Math.round(x.min)+" min",x.source,x.reason||""]));});
+ const rb=[];R.forEach(r=>(r.rebuilds||[]).filter(b=>b.causedByWait).forEach(b=>rb.push([r.label,"phase "+b.phase,Math.round(b.tokens/1000)+"k tokens","$"+b.extraCostUsd.toFixed(2)])));
+ let h=`<tr><th class="l">Run</th><th class="l">Wait over 1 hour</th><th class="l">Found in</th><th class="l">What it waited for</th></tr>`+(rows.length?rows.map(r=>"<tr>"+r.map(c=>`<td class="l">${esc(c)}</td>`).join("")+"</tr>").join(""):`<tr><td class="l" colspan="4">none</td></tr>`);
+ if(rb.length)h+=`<tr class="grp"><td colspan="4">Cache rebuilds measured in transcripts (removed from the cost shown)</td></tr>`+rb.map(r=>"<tr>"+r.map(c=>`<td class="l">${esc(c)}</td>`).join("")+"</tr>").join("");
+ $("waits").innerHTML=h})();
+
+// sources
+(function(){$("sources").innerHTML=`<tr><th class="l">Run</th><th class="l">Time from</th><th class="l">Usage from</th><th class="l">Notes</th></tr>`+R.map(r=>`<tr><td class="l"><span class="runtag" style="background:${col(r)}"></span>${esc(r.label)}</td><td class="l">${esc(r.sources.time)}</td><td class="l">${esc(r.sources.usage)}</td><td class="l">${[...r.flags.map(f=>`<div class="flag">${esc(f)}</div>`),...r.notes.map(n=>`<div>${esc(n)}</div>`)].join("")||"–"}</td></tr>`).join("");
+ $("excluded").innerHTML=D.excluded.map(e=>`<li>Not included: ${esc(e)}</li>`).join("")})();
+</script>
+</body></html>
