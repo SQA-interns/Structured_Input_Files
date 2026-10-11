@@ -17,7 +17,7 @@ Online registration for a conference. External participants and students fill in
 
 ## Quick start (local)
 
-Prerequisites: Docker Engine 29.8.1 with Compose 5.5.1, JDK 21 (Temurin 21.0.10), Git Bash or another POSIX shell on Windows.
+Prerequisites: Docker Engine 29.8.1 with Compose 5.5.1, JDK 21 (Temurin 21.0.10), Git Bash or another POSIX shell on Windows. On Windows with a long checkout path, clone with `git -c core.longpaths=true clone …`.
 
 1. Copy `01_input/01_project/00_setup/secrets.env.example` to `.env` in the repository root and fill `POSTGRES_PASSWORD`, `ORGANIZER_USERNAME`, `ORGANIZER_PASSWORD` (at least 16 characters) and `ORGANIZER_EMAILS`. reCAPTCHA keys are not needed locally (test mode).
 2. Build the backend jar, then start the stack from `02_output`:
