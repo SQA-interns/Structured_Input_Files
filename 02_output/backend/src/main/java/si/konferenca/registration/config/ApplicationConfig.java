@@ -10,6 +10,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.mail.javamail.JavaMailSender;
+import si.konferenca.registration.adapter.captcha.RecaptchaHttpVerifier;
 import si.konferenca.registration.adapter.captcha.TestModeCaptchaVerifier;
 import si.konferenca.registration.adapter.catalog.JsonFileConferenceCatalog;
 import si.konferenca.registration.adapter.export.ExcelRegistrationExporter;
@@ -43,8 +44,12 @@ public class ApplicationConfig {
   }
 
   @Bean
-  CaptchaVerifier captchaVerifier() {
-    return new TestModeCaptchaVerifier();
+  CaptchaVerifier captchaVerifier(AppProperties props) {
+    StartupSafetyChecks.verify(props);
+    AppProperties.Recaptcha r = props.recaptcha();
+    return r.testMode()
+        ? new TestModeCaptchaVerifier()
+        : new RecaptchaHttpVerifier(r.verifyUrl(), r.secretKey());
   }
 
   @Bean
