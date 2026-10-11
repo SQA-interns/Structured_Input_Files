@@ -118,3 +118,12 @@
 - Options: see D-12.
 - Human response: "1, go ahead with the harness fix" (2026-10-11T09:47:26Z)
 - Resolution: D-12 option 1 applied: `AcceptanceTestSupport` added; four classes register their properties from `TestEnvironment.baseProperties` with their changes; no assertion changed; manifest regenerated in its own commit.
+
+## D-14: SpotBugs EI_EXPOSE_REP2 on RegistrationService collaborators
+- Timestamp: 2026-10-11T09:54:08Z
+- Phase: 4
+- Type: non-blocking
+- Trigger: SpotBugs (Medium) reports EI_EXPOSE_REP2 for storing the injected `JsonCopyStore` in `RegistrationService`. The field holds a shared service, not internal state; copying it is not meaningful. The other 22 EI_EXPOSE_REP findings were fixed with defensive copies.
+- Options: 1. exclude EI_EXPOSE_REP2 for `domain.RegistrationService` only (`backend/spotbugs-exclude.xml`), classify Low, false positive (default); 2. remove the injection.
+- Human response: none
+- Resolution: option 1

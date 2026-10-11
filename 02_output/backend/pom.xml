@@ -246,6 +246,7 @@
             <version>${spotbugs-plugin.version}</version>
             <configuration>
               <effort>Max</effort>
+              <excludeFilterFile>spotbugs-exclude.xml</excludeFilterFile>
             </configuration>
             <executions>
               <execution>

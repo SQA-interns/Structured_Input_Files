@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- D-14: injected collaborators are shared services, not internal state. -->
+<FindBugsFilter>
+  <Match>
+    <Class name="si.konferenca.registration.domain.RegistrationService"/>
+    <Bug pattern="EI_EXPOSE_REP2"/>
+  </Match>
+</FindBugsFilter>
