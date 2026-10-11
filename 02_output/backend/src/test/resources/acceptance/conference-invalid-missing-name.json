@@ -1,0 +1,8 @@
+{
+  "options": [
+    { "id": "ws-ai", "category": "WORKSHOP", "active": true }
+  ],
+  "consents": [
+    { "id": "privacy", "text": "I agree that my personal data is processed for organizing the conference.", "mandatory": true }
+  ]
+}

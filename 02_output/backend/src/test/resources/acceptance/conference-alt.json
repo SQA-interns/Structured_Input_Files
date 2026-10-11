@@ -1,0 +1,11 @@
+{
+  "options": [
+    { "id": "ws-ai", "name": "Workshop: AI v praksi", "category": "WORKSHOP", "active": false },
+    { "id": "ws-old", "name": "Workshop: Retired topic", "category": "WORKSHOP", "active": true },
+    { "id": "ws-new", "name": "Delavnica: Nova tema", "category": "WORKSHOP", "active": true },
+    { "id": "meal-lunch", "name": "Kosilo", "category": "MEAL", "active": true }
+  ],
+  "consents": [
+    { "id": "privacy", "text": "I agree that my personal data is processed for organizing the conference.", "mandatory": true }
+  ]
+}
