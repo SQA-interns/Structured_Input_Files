@@ -51,7 +51,7 @@ __STYLE__
 <section id="secCommits" hidden>
   <h2>Commits</h2>
   <div class="panel"><h3>Changed lines per commit (dashed line: size guide of 400)</h3>
-    <div class="legend"><span><i style="background:var(--k-model)"></i>one concern</span><span><i style="background:var(--k-tool)"></i>mixes concerns</span><span><i style="background:var(--warn)"></i>over the size guide</span></div>
+    <div class="legend"><span><i style="background:var(--k-model)"></i>one concern</span><span><i style="background:var(--k-mixed)"></i>mixes concerns</span><span><i style="background:var(--warn)"></i>over the size guide</span></div>
     <div id="chCommits"></div>
     <p class="note">Hover a bar for subject, cost and minutes since the previous commit. Small steady steps are the goal: no commit above the guide, no mixing of code, tests, documents and build changes, and no bursts of several commits within a minute.</p></div>
   <div class="panel scroll"><table id="commitTable"></table></div>
@@ -89,6 +89,10 @@ const seriesList=[...new Set(R.map(r=>r.series))];
 const col=r=>"var(--s-"+((seriesList.indexOf(r.series)%8)+1)+")";
 $("title").textContent=D.title; $("subtitle").textContent=D.subtitle+" Built "+D.built+".";
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const rlab=r=>`<span class="rl" title="${esc(r.label)}">${esc(r.label)}</span>`;
+const sl=(s,n)=>{s=String(s);return s.length>n?s.slice(0,n-1)+"…":s};
+const leftM=rs=>Math.min(210,Math.max(96,Math.round(7*Math.max(...rs.map(r=>sl(r.label,30).length))+16)));
+const lab=(r,x,y,anchor)=>`<text x="${x}" y="${y}" text-anchor="${anchor||"end"}"><title>${esc(r.label)}</title>${esc(sl(r.label,30))}</text>`;
 const fmt=(u,v)=>{if(v==null)return "–";
  switch(u){case"min":return v>=100?Math.round(v).toLocaleString("en-US"):(Math.round(v*10)/10)+"";
   case"min2":return v.toFixed(2);case"usd":return "$"+v.toFixed(2);case"usd3":return "$"+v.toFixed(3);
@@ -107,7 +111,7 @@ $("kpis").innerHTML=hl.map(m=>{const vs=R.map(r=>({r,v:val(r,m.id).v})).filter(x
  `<div class="kpi"><b>${Math.round(R.reduce((s,r)=>s+val(r,"humanWaitMin").v,0)/60)} h</b><span>of waiting for humans removed from the comparison</span></div>`;
 
 // --- table
-let h=`<tr><th class="l">Attribute and what we want</th>${R.map(r=>`<th><span class="runtag" style="background:${col(r)}"></span>${esc(r.label)}<br><span style="font-weight:400;text-transform:none;letter-spacing:0">${esc(r.template)}</span></th>`).join("")}</tr>`;
+let h=`<tr><th class="l">Attribute and what we want</th>${R.map(r=>`<th><span class="runtag" style="background:${col(r)}"></span>${rlab(r)}<br><span style="font-weight:400;text-transform:none;letter-spacing:0">${esc(r.template)}</span></th>`).join("")}</tr>`;
 for(const g of G){h+=`<tr class="grp"><td colspan="${R.length+1}">${g.label}</td></tr>`;
  for(const m of C.filter(x=>x.group===g.id)){
   const vals=R.map(r=>val(r,m.id).v), nn=vals.filter(v=>v!=null);
@@ -125,11 +129,11 @@ const svg=(w,hh,b)=>`<svg viewBox="0 0 ${w} ${hh}" role="img">${b}</svg>`;
 const niceMax=v=>{const p=Math.pow(10,Math.floor(Math.log10(v||1)));const m=v/p;return (m<=1?1:m<=2?2:m<=2.5?2.5:m<=5?5:10)*p};
 
 // time stacked
-(function(){const W=560,L=96,Rm=70,T=8,bh=24,gap=12,H=T+R.length*(bh+gap)+24;const mx=niceMax(Math.max(...R.map(r=>val(r,"agentMin").v)));
+(function(){const W=560,L=leftM(R),Rm=70,T=8,bh=24,gap=12,H=T+R.length*(bh+gap)+24;const mx=niceMax(Math.max(...R.map(r=>val(r,"agentMin").v)));
  const x=v=>L+(W-L-Rm)*v/mx;let b="";
  for(let t=0;t<=mx+1e-9;t+=mx/4)b+=`<line class="grid" x1="${x(t)}" x2="${x(t)}" y1="${T}" y2="${H-20}"/><text x="${x(t)}" y="${H-5}" text-anchor="middle">${Math.round(t)}</text>`;
  R.forEach((r,i)=>{const y=T+i*(bh+gap),a=val(r,"agentMin").v,mo=val(r,"modelMin").v,to=val(r,"toolMin").v;
-  b+=`<text x="${L-8}" y="${y+bh/2+4}" text-anchor="end">${esc(r.label)}</text>`;
+  b+=lab(r,L-8,y+bh/2+4);
   const segs=mo!=null&&to!=null?[[mo,"var(--k-model)"],[to,"var(--k-tool)"],[Math.max(0,a-mo-to),"var(--k-other)"]]:[[a,"var(--k-other)"]];
   let c=0;segs.forEach(([v,cl])=>{if(v<=0)return;b+=`<rect x="${x(c)}" y="${y}" width="${Math.max(0,x(c+v)-x(c)-1)}" height="${bh}" fill="${cl}"/>`;
    if(x(c+v)-x(c)>26)b+=`<text x="${(x(c)+x(c+v))/2}" y="${y+bh/2+4}" text-anchor="middle" style="fill:#fff;font-weight:600">${Math.round(v)}</text>`;c+=v});
@@ -137,14 +141,14 @@ const niceMax=v=>{const p=Math.pow(10,Math.floor(Math.log10(v||1)));const m=v/p;
  $("chTime").innerHTML=svg(W,H,b)})();
 
 // cost stacked (token parts priced at the list prices of the report: input 4, output 20, cache read 0.2, cache write 8 per MTok)
-(function(){const rs=R.filter(r=>r.tokens&&val(r,"costLogged").v!=null);const W=560,L=96,Rm=70,T=8,bh=24,gap=12,H=T+rs.length*(bh+gap)+24;
+(function(){const rs=R.filter(r=>r.tokens&&val(r,"costLogged").v!=null);const W=560,L=leftM(rs),Rm=70,T=8,bh=24,gap=12,H=T+rs.length*(bh+gap)+24;
  const mx=niceMax(Math.max(...rs.map(r=>val(r,"costLogged").v)));const x=v=>L+(W-L-Rm)*v/mx;let b="";
  for(let t=0;t<=mx+1e-9;t+=mx/4)b+=`<line class="grid" x1="${x(t)}" x2="${x(t)}" y1="${T}" y2="${H-20}"/><text x="${x(t)}" y="${H-5}" text-anchor="middle">$${Math.round(t)}</text>`;
  rs.forEach((r,i)=>{const y=T+i*(bh+gap),t=r.tokens,logged=val(r,"costLogged").v,excl=val(r,"costExcl").v,rebuild=Math.max(0,logged-excl);
   let cr=(t.cr||0)*0.2/1e6,cw=(t.cw||0)*8/1e6,out=(t.out||0)*20/1e6,inp=(t.inp||0)*4/1e6;
   const sum=cr+cw+out+inp,k=sum?logged/sum:1;cr*=k;cw*=k;out*=k;inp*=k;
   cw=Math.max(0,cw-rebuild);
-  b+=`<text x="${L-8}" y="${y+bh/2+4}" text-anchor="end">${esc(r.label)}</text>`;
+  b+=lab(r,L-8,y+bh/2+4);
   let c=0;[[cr,"var(--k-cr)"],[cw,"var(--k-cw)"],[out+inp,"var(--k-out)"],[rebuild,"var(--k-rebuild)"]].forEach(([v,cl])=>{if(v<=0)return;b+=`<rect x="${x(c)}" y="${y}" width="${Math.max(0,x(c+v)-x(c)-1)}" height="${bh}" fill="${cl}"/>`;
    if(x(c+v)-x(c)>30)b+=`<text x="${(x(c)+x(c+v))/2}" y="${y+bh/2+4}" text-anchor="middle" style="fill:#fff;font-weight:600">${v.toFixed(1)}</text>`;c+=v});
   b+=`<text class="val" x="${x(c)+6}" y="${y+bh/2+4}">$${excl.toFixed(2)}${rebuild>0.05?" (+"+rebuild.toFixed(1)+")":""}</text>`});
@@ -157,11 +161,11 @@ const niceMax=v=>{const p=Math.pow(10,Math.floor(Math.log10(v||1)));const m=v/p;
  for(let t=0;t<=mxY+1e-9;t+=mxY/4)b+=`<line class="grid" x1="${L}" x2="${W-Rm}" y1="${y(t)}" y2="${y(t)}"/><text x="${L-6}" y="${y(t)+4}" text-anchor="end">$${Math.round(t)}</text>`;
  for(let t=0;t<=mxX+1e-9;t+=mxX/4)b+=`<text x="${x(t)}" y="${H-18}" text-anchor="middle">${Math.round(t)}</text>`;
  b+=`<text x="${(L+W-Rm)/2}" y="${H-3}" text-anchor="middle">agent minutes</text>`;
- rs.forEach(r=>{const cx=x(val(r,"agentMin").v),cy=y(val(r,"costExcl").v);b+=`<circle cx="${cx}" cy="${cy}" r="6" fill="${col(r)}"><title>${esc(r.label)}: ${fmt("min",val(r,"agentMin").v)} min, ${fmt("usd",val(r,"costExcl").v)}</title></circle><text x="${cx+9}" y="${cy+4}">${esc(r.label)}</text>`});
+ rs.forEach(r=>{const cx=x(val(r,"agentMin").v),cy=y(val(r,"costExcl").v);b+=`<circle cx="${cx}" cy="${cy}" r="6" fill="${col(r)}"><title>${esc(r.label)}: ${fmt("min",val(r,"agentMin").v)} min, ${fmt("usd",val(r,"costExcl").v)}</title></circle>${lab(r,cx>(W-L)*0.6+L?cx-9:cx+9,cy+4,cx>(W-L)*0.6+L?"end":"start")}`});
  $("chScatter").innerHTML=svg(W,H,b)})();
 
 // context by phase
-(function(){const rs=R.filter(r=>r.phases.some(p=>p.avgContextK!=null));$("lgRuns").innerHTML=rs.map(r=>`<span><i style="background:${col(r)}"></i>${esc(r.label)}</span>`).join("");
+(function(){const rs=R.filter(r=>r.phases.some(p=>p.avgContextK!=null));$("lgRuns").innerHTML=rs.map(r=>`<span title="${esc(r.label)}"><i style="background:${col(r)}"></i>${esc(sl(r.label,40))}</span>`).join("");
  const W=560,H=250,L=40,Rm=14,T=10,B=28,mx=600;const x=i=>L+(W-L-Rm)*i/7,y=v=>T+(H-T-B)*(1-v/mx);let b="";
  [0,150,300,450,600].forEach(t=>b+=`<line class="grid" x1="${L}" x2="${W-Rm}" y1="${y(t)}" y2="${y(t)}"/><text x="${L-6}" y="${y(t)+4}" text-anchor="end">${t}</text>`);
  for(let i=0;i<8;i++)b+=`<text x="${x(i)}" y="${H-8}" text-anchor="middle">P${i}</text>`;
@@ -173,7 +177,7 @@ const niceMax=v=>{const p=Math.pow(10,Math.floor(Math.log10(v||1)));const m=v/p;
 // phases table
 (function(){const names=["0 Preflight","1 Requirements","2 Design","3 Test design","4 Build","5 Unit tests","6 Verify","7 Release"];
  const mx=Math.max(...R.flatMap(r=>r.phases.map(p=>p.agentMin||0)));
- let h=`<tr><th class="l">Phase</th>${R.map(r=>`<th>${esc(r.label)}</th>`).join("")}</tr>`;
+ let h=`<tr><th class="l">Phase</th>${R.map(r=>`<th>${rlab(r)}</th>`).join("")}</tr>`;
  names.forEach((n,i)=>{const overhead=[0,1,2,7].includes(i);h+=`<tr><td>${n}${overhead?' <span class="tag">overhead</span>':""}</td>${R.map(r=>{const p=r.phases.find(q=>q.phase===i);return p?`<td>${Math.round(p.agentMin)}<span class="bar" style="width:${Math.round(40*p.agentMin/mx)}px;background:${col(r)}"></span></td>`:"<td class=\"miss\">–</td>"}).join("")}</tr>`});
  h+=`<tr><td><b>Agent time</b></td>${R.map(r=>`<td><b>${Math.round(val(r,"agentMin").v)}</b></td>`).join("")}</tr>`;
  $("phases").innerHTML=h})();
@@ -183,7 +187,7 @@ const niceMax=v=>{const p=Math.pow(10,Math.floor(Math.log10(v||1)));const m=v/p;
  const W=1040,H=230,L=40,Rm=8,T=14,B=26,mx=Math.max(450,niceMax(Math.min(1200,Math.max(...cs.map(c=>c.lines)))));const y=v=>T+(H-T-B)*(1-Math.min(v,mx)/mx),bw=(W-L-Rm)/cs.length;let b="";
  [0,mx/4,mx/2,mx*3/4,mx].forEach(t=>b+=`<line class="grid" x1="${L}" x2="${W-Rm}" y1="${y(t)}" y2="${y(t)}"/><text x="${L-6}" y="${y(t)+4}" text-anchor="end">${Math.round(t)}</text>`);
  b+=`<line x1="${L}" x2="${W-Rm}" y1="${y(400)}" y2="${y(400)}" stroke="var(--warn)" stroke-dasharray="5 4"/>`;
- cs.forEach((c,i)=>{const x=L+i*bw,col=c.oversize?"var(--warn)":c.mixed?"var(--k-tool)":"var(--k-model)";
+ cs.forEach((c,i)=>{const x=L+i*bw,col=c.oversize?"var(--warn)":c.mixed?"var(--k-mixed)":"var(--k-model)";
   b+=`<rect x="${x+0.5}" y="${y(c.lines)}" width="${Math.max(1,bw-1.5)}" height="${y(0)-y(c.lines)}" fill="${col}"><title>${esc(c.hash+" "+c.subject)} | ${c.lines} lines, ${c.files} files | $${c.costUsdSincePrev} | ${c.activeMinutesSincePrev} min since previous</title></rect>`});
  $("chCommits").innerHTML=svg(W,H,b);
  const flags=c=>[c.oversize?"over guide":"",c.mixed?"mixed":"",c.burst?"burst":"",c.messageOk?"":"message"].filter(Boolean).join(", ")||"–";
@@ -192,16 +196,16 @@ const niceMax=v=>{const p=Math.pow(10,Math.floor(Math.log10(v||1)));const m=v/p;
 // environment
 (function(){const val=(r,f)=>{try{const v=f(r.environment||{});return v==null||v===""||(Array.isArray(v)&&!v.length)?"–":(Array.isArray(v)?v.join(", "):String(v))}catch(e){return "–"}};
  const rows=[["Operator",e=>e.operator],["Machine",e=>e.machine],["Plan",e=>e.plan],["Permission mode (configured)",e=>e.permissionMode],["Harness",e=>e.harness&&(e.harness.name+" "+(e.harness.versions||[]).join(", "))],["Entry point",e=>e.harness&&e.harness.entrypoints],["Models",e=>e.models],["Effort",e=>e.effort],["Permission modes seen in the session",e=>e.permissionModes],["Operating system (at the start)",e=>e.os&&(e.os.platform+" "+e.os.release+" "+e.os.arch)],["Time zone",e=>e.timezone],["Node",e=>e.tools&&e.tools.node],["Docker",e=>e.tools&&e.tools.docker],["Java",e=>e.tools&&e.tools.java],["Python",e=>e.tools&&e.tools.python],["Measured on",e=>e.postRunHost&&(e.postRunHost.platform+", "+e.postRunHost.cpus+" cores, "+e.postRunHost.memoryGb+" GB")]];
- $("env").innerHTML=`<tr><th class="l"></th>${R.map(r=>`<th>${esc(r.label)}</th>`).join("")}</tr>`+rows.map(([n,f])=>`<tr><td>${n}</td>${R.map(r=>`<td class="l">${esc(val(r,f))}</td>`).join("")}</tr>`).join("")})();
+ $("env").innerHTML=`<tr><th class="l"></th>${R.map(r=>`<th>${rlab(r)}</th>`).join("")}</tr>`+rows.map(([n,f])=>`<tr><td>${n}</td>${R.map(r=>`<td class="l">${esc(val(r,f))}</td>`).join("")}</tr>`).join("")})();
 
 // trust checks
 (function(){const g=(r,id)=>val(r,id).v;
- const rows=[["Cost from the transcript",r=>r.check?"$"+r.check.transcriptCostUsd.toFixed(2):"–"],["Cost recorded by the harness",r=>r.check?"$"+r.check.panelCostUsd.toFixed(2):"–"],["Difference",r=>r.check?(r.check.diffUsd>=0?"+":"")+"$"+r.check.diffUsd.toFixed(2)+" ("+r.check.diffPct+" %)":"–"],["Verdict",r=>r.check?r.check.verdict:"no cost-state record, not checked"],
+ const rows=[["Cost from the transcript",r=>r.check?"$"+r.check.transcriptCostUsd.toFixed(2):(r.transcriptCostUsd!=null?"$"+r.transcriptCostUsd.toFixed(2)+" (not cross-checked)":"not available")],["Cost recorded by the harness",r=>r.check?"$"+r.check.panelCostUsd.toFixed(2)+(r.panel&&/usage[.]md/.test(r.panel.source||"")?" (entered by hand from the usage panel)":""):"not recorded"],["Difference",r=>r.check?(r.check.diffUsd>=0?"+":"")+"$"+r.check.diffUsd.toFixed(2)+" ("+r.check.diffPct+" %)":"not checked"],["Verdict",r=>r.check?r.check.verdict:"not checked: the transcript has no cost-state record and usage.md has no panel values. Copy the usage panel numbers into usage.md and run the post-run step again."],
   ["Sub-agents",r=>r.subagents?(r.subagents.used?r.subagents.used+" call(s), "+r.subagents.transcripts+" transcript(s), $"+r.subagents.costUsd.toFixed(2):"none used"):"–"],
   ["Phase timestamps from the clock tool",r=>r.phaseChecks&&(r.phaseChecks.viaHelper+r.phaseChecks.manual)?r.phaseChecks.viaHelper+" of "+(r.phaseChecks.viaHelper+r.phaseChecks.manual)+" boundaries":"–"],
   ["Phase timestamp issues",r=>r.phaseChecks?(r.phaseChecks.issues.length?r.phaseChecks.issues.join("; "):"none"):"–"],
   ["Idle time missing from the log",r=>g(r,"unrecordedIdleMin")==null?"–":g(r,"unrecordedIdleMin")+" min"]];
- $("checks").innerHTML=`<tr><th class="l"></th>${R.map(r=>`<th>${esc(r.label)}</th>`).join("")}</tr>`+rows.map(([n,f])=>`<tr><td>${n}</td>${R.map(r=>`<td class="l">${esc(f(r))}</td>`).join("")}</tr>`).join("")})();
+ $("checks").innerHTML=`<tr><th class="l"></th>${R.map(r=>`<th>${rlab(r)}</th>`).join("")}</tr>`+rows.map(([n,f])=>`<tr><td>${n}</td>${R.map(r=>`<td class="l">${esc(f(r))}</td>`).join("")}</tr>`).join("")})();
 
 // waits
 (function(){let rows=[];R.forEach(r=>{const w=r.longWaits||[];w.forEach(x=>rows.push([r.label,Math.round(x.min)+" min",x.source,x.reason||""]));});

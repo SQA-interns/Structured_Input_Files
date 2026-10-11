@@ -46,7 +46,7 @@ Read AGENTS.md and start.
 Anything the agent decides on its own (for example a scanner false positive rated Medium) needs no answer.
 
 ## 4. After the run
-1. In the **finished session** type `/cost` once (the plan limits are then saved in the transcript).
+1. In the **finished session**, before you close it, copy these numbers from the **Usage panel** (the harness's own figures) into the empty cells of the panel table in `03_statistics/usage.md`: *Cost shown*, *API time*, *Session wall time*, *Tokens shown per model* (input, output, cache read, cache write), *Share of usage at over 150k context* and *Plan limits used*. The transcript of a local session does not always contain these numbers, and without them the cost is not cross-checked. If you type `/cost` and it works, the tool reads the numbers from the transcript and you can skip this.
 2. Open a **new session in the same folder** and send exactly:
 
    ```
@@ -55,7 +55,7 @@ Anything the agent decides on its own (for example a scanner false positive rate
 
    This measures the run, backs up the transcript to `03_statistics/data/`, writes the report and everything else it generates to `03_statistics/results/`, and fills the empty cells of `usage.md`.
 3. Add the number of **approval prompts** to `03_statistics/usage.md` (the only cell it cannot fill).
-4. Open `03_statistics/results/run-report.html`. In "Trust in the measurement" the cost difference should say `ok` and the phase timestamps should come from the clock tool. If not, write down what you see.
+4. Open `03_statistics/results/run-report.html`. In "Trust in the measurement" the cost difference should say `ok` (it says "not checked" when no panel numbers were entered: fill them in and send the post-run prompt again) and the phase timestamps should come from the clock tool. If not, write down what you see.
 5. Commit the statistics: `git add -A`, `git commit -m "statistics <label>"`. `git status` must not list `.env`. Push the branch if you use a remote.
 6. Hand in the run folder, or its branch and the commit SHAs from steps 1.7 and 4.5, plus a note on anything unusual (a repeated run, a usage limit, a manual change).
 

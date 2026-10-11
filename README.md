@@ -2,7 +2,7 @@
 
 > Owner: Team lead · Agent: read-only
 
-Template version: **1.4** (1.3 plus: coverage and mutation measured in phase 5 and run once on final code, pre-approved findings, acceptance-test self-check, nginx Host and rate-limit requirements; vitest 4.1.11 pin. 1.3 was 1.2 plus richer statistics: clock tool and unique run id, waits and agent time, deviations, environment, commits with cost, measurement scope, transcript backup, post-run report). Increase it whenever a file in section 2 changes; each run records it in `run-config.md`.
+Template version: **1.4** (1.3 plus: coverage and mutation measured in phase 5 and run once on final code, pre-approved findings, acceptance-test self-check, nginx Host and rate-limit requirements; vitest 4.1.11 pin; report fixes: short run name in charts, distinct commit colour, cost check from panel numbers entered in usage.md. 1.3 was 1.2 plus richer statistics: clock tool and unique run id, waits and agent time, deviations, environment, commits with cost, measurement scope, transcript backup, post-run report). Increase it whenever a file in section 2 changes; each run records it in `run-config.md`.
 
 Humans start here; agents start at `AGENTS.md`. To execute a run, follow `Run_Guide.md`.
 

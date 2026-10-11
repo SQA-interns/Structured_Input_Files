@@ -3,25 +3,25 @@
   --bg:#f6f7f9;--surface:#ffffff;--fg:#1b2430;--muted:#5b6675;--line:#dde2e9;
   --accent:#2f6fb0;--warn:#b4531a;--good:#2a7d5f;--best:rgba(42,125,95,.13);
   --s-1:#2f6fb0;--s-2:#d9822b;--s-3:#2a9d8f;--s-4:#7b5ea7;--s-5:#c2477f;--s-6:#7a8b2e;--s-7:#8a8f98;--s-8:#b4531a;
-  --k-model:#2f6fb0;--k-tool:#d9822b;--k-other:#b9c0cb;--k-cr:#2f6fb0;--k-cw:#7b5ea7;--k-out:#d9822b;--k-rebuild:#b4531a;
+  --k-model:#2f6fb0;--k-mixed:#7b5ea7;--k-tool:#d9822b;--k-other:#b9c0cb;--k-cr:#2f6fb0;--k-cw:#7b5ea7;--k-out:#d9822b;--k-rebuild:#b4531a;
   --font:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--mono:ui-monospace,"Cascadia Mono",Consolas,monospace;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --bg:#12171e;--surface:#1a212b;--fg:#e6eaf0;--muted:#9aa5b4;--line:#2b3441;--accent:#6aa6e6;--warn:#e89a60;--good:#5cc7a0;--best:rgba(92,199,160,.16);
   --s-1:#6aa6e6;--s-2:#eba04f;--s-3:#4dc2b3;--s-4:#a58bd4;--s-5:#e07aa8;--s-6:#b3c45a;--s-7:#98a0ac;--s-8:#e89a60;
-  --k-model:#6aa6e6;--k-tool:#eba04f;--k-other:#4a5565;--k-cr:#6aa6e6;--k-cw:#a58bd4;--k-out:#eba04f;--k-rebuild:#e89a60;color-scheme:dark}}
+  --k-model:#6aa6e6;--k-mixed:#b79bea;--k-tool:#eba04f;--k-other:#4a5565;--k-cr:#6aa6e6;--k-cw:#a58bd4;--k-out:#eba04f;--k-rebuild:#e89a60;color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#12171e;--surface:#1a212b;--fg:#e6eaf0;--muted:#9aa5b4;--line:#2b3441;--accent:#6aa6e6;--warn:#e89a60;--good:#5cc7a0;--best:rgba(92,199,160,.16);
   --s-1:#6aa6e6;--s-2:#eba04f;--s-3:#4dc2b3;--s-4:#a58bd4;--s-5:#e07aa8;--s-6:#b3c45a;--s-7:#98a0ac;--s-8:#e89a60;
-  --k-model:#6aa6e6;--k-tool:#eba04f;--k-other:#4a5565;--k-cr:#6aa6e6;--k-cw:#a58bd4;--k-out:#eba04f;--k-rebuild:#e89a60;color-scheme:dark}
+  --k-model:#6aa6e6;--k-mixed:#b79bea;--k-tool:#eba04f;--k-other:#4a5565;--k-cr:#6aa6e6;--k-cw:#a58bd4;--k-out:#eba04f;--k-rebuild:#e89a60;color-scheme:dark}
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--fg);font:15px/1.55 var(--font);margin:0;padding-inline:16px;padding-block:28px 64px}
 main{max-width:1180px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
-h1{font-size:28px;line-height:1.15;margin:0 0 6px;text-wrap:balance}
+h1{overflow-wrap:anywhere;font-size:28px;line-height:1.15;margin:0 0 6px;text-wrap:balance}
 h2{font-size:20px;margin:0 0 4px;text-wrap:balance}
 h3{font-size:13px;margin:0 0 8px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
 p{margin:0 0 10px;max-width:75ch}
-.sub{color:var(--muted);max-width:80ch}
+.sub{overflow-wrap:anywhere;color:var(--muted);max-width:80ch}
 section{display:flex;flex-direction:column;gap:14px;min-width:0}
 .panel{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px;min-width:0}
 .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
@@ -35,6 +35,7 @@ table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums;font
 th,td{padding:7px 10px;border-bottom:1px solid var(--line);text-align:right;vertical-align:top}
 th:first-child,td:first-child{text-align:left}
 th{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:600;white-space:nowrap}
+th .rl{display:inline-block;max-width:12rem;overflow:hidden;text-overflow:ellipsis;vertical-align:bottom}
 td.l,th.l{text-align:left}
 tr.grp td{background:color-mix(in srgb,var(--accent) 8%,transparent);font-weight:700;font-size:12.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
 td.attr{min-width:290px;max-width:360px}
@@ -46,6 +47,7 @@ td.miss{color:var(--muted)}
 .dir.lower,.dir.higher{color:var(--accent);border-color:var(--accent)}
 .dir.target{color:var(--good);border-color:var(--good)}
 .mark{color:var(--warn);font-size:11px;vertical-align:super;margin-left:2px;cursor:help}
+.legend span{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px;color:var(--muted);margin-bottom:8px}
 .legend i{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:6px;vertical-align:-1px}
 svg{display:block;width:100%;height:auto;overflow:visible}

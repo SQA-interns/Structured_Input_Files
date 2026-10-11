@@ -63,20 +63,20 @@ function backupTranscripts(dataDir, files) {
   return { files: done, megabytes: r1(bytes / 1048576) };
 }
 
-const modelRow = (m, u) => `${m}: input ${u.inputTokens.toLocaleString("en-US")}, output ${u.outputTokens.toLocaleString("en-US")}, cache read ${u.cacheReadTokens.toLocaleString("en-US")}, cache write ${u.cacheWriteTokens.toLocaleString("en-US")} ($${u.costUsd.toFixed(2)})`;
+const modelRow = (m, u) => `${m}: input ${u.inputTokens.toLocaleString("en-US")}, output ${u.outputTokens.toLocaleString("en-US")}, cache read ${u.cacheReadTokens.toLocaleString("en-US")}, cache write ${u.cacheWriteTokens.toLocaleString("en-US")}${u.costUsd != null ? ` ($${u.costUsd.toFixed(2)})` : ""}`;
 
 function usagePanelMd(r, log) {
   const p = r.panel, u = r.usage;
   const L = [`# Usage panel (generated)`, ``, `> Written by \`tools/build-report.mjs\` · Source: ${p ? p.source : "none"} · Run: ${log.runId}`, ``];
-  if (!p) return L.concat(["No `cost-state` record in the transcript, so there is no panel to reproduce.", ""]).join("\n");
+  if (!p) return L.concat(["No `cost-state` record in the transcript and no panel values in `usage.md`, so there is no panel to reproduce and the cost is not cross-checked. Copy Cost shown, API time, Session wall time and the tokens from the usage panel into `usage.md`, then run the post-run step again.", ""]).join("\n");
   L.push(`| Item | Value |`, `|---|---|`,
     `| Cost shown | $${p.costUsd.toFixed(2)} |`,
-    `| API time | ${fmtMin(p.apiMin)} (without retries ${fmtMin(p.apiMinWithoutRetries)}) |`,
-    `| Tool time (panel) | ${fmtMin(p.toolMin)} |`,
+    `| API time | ${fmtMin(p.apiMin)}${p.apiMinWithoutRetries != null ? ` (without retries ${fmtMin(p.apiMinWithoutRetries)})` : ""} |`,
+    ...(p.toolMin != null ? [`| Tool time (panel) | ${fmtMin(p.toolMin)} |`] : []),
     `| Session wall time | ${fmtMin(p.sessionWallMin)}${p.sessions > 1 ? ` (${p.sessions} sessions)` : ""} |`,
-    `| Lines added / removed | ${p.linesAdded.toLocaleString("en-US")} / ${p.linesRemoved.toLocaleString("en-US")} |`,
+    ...(p.linesAdded != null ? [`| Lines added / removed | ${p.linesAdded.toLocaleString("en-US")} / ${p.linesRemoved.toLocaleString("en-US")} |`] : []),
     `| Cost from the transcript | $${u.costUsd.toFixed(2)}${u.check.afterRunCalls ? ` + $${u.check.afterRunCostUsd.toFixed(2)} for ${u.check.afterRunCalls} call(s) after the run's end` : ""} (difference ${u.check.diffUsd >= 0 ? "+" : ""}$${u.check.diffUsd.toFixed(2)}, ${u.check.diffPct} %, ${u.check.verdict}) |`);
-  if (p.plan) L.push(`| Plan limits used (session, week) | ${p.plan.sessionPctUsed ?? "?"} %, ${p.plan.weekPctUsed ?? "?"} % (read in the session at ${p.plan.capturedAt}) |`, `| Share of usage at over 150k context (panel text) | ${p.plan.pctUsageOver150k ?? "?"} % |`);
+  if (p.plan) L.push(`| Plan limits used (session, week) | ${p.plan.sessionPctUsed ?? "?"} %, ${p.plan.weekPctUsed ?? "?"} %${p.plan.capturedAt ? ` (read in the session at ${p.plan.capturedAt})` : ""} |`, `| Share of usage at over 150k context (panel text) | ${p.plan.pctUsageOver150k ?? "?"} % |`);
   L.push(`| Approval prompts | not recorded in transcripts: a human adds it to \`usage.md\` |`, ``, `## Tokens per model`, ``, ...Object.entries(p.modelUsage).map(([m, x]) => `- ${modelRow(m, x)}`), ``);
   if (p.plan?.raw) L.push(`## Raw panel text (from the session)`, ``, "```text", p.plan.raw, "```", ``);
   return L.join("\n");
@@ -149,8 +149,8 @@ if (runDir) {
     console.log(why ? "note: transcript.md not written: " + why : "transcript.md written");
   }
   outPath = path.resolve(flag("--out") || path.join(resultsDir, "run-report.html"));
-  config = { title: "Run report: " + (log.runId || "run"), subtitle: `Template ${log.templateVersion || "?"}, ${log.model || "model ?"}, effort ${log.effort || "?"}. Human waiting and everything it caused is excluded from every figure that is compared.`,
-    rebuildBaselineCacheWriteTokens: 550000, runs: [{ label: log.runId || "this run", series: "run", template: String(log.templateVersion || ""), statsDir }], excluded: [], single: true };
+  config = { title: "Run report: " + (log.runLabel || log.runId || "run"), subtitle: `Run ID ${log.runId || "?"} · Template ${log.templateVersion || "?"}, ${log.model || "model ?"}, effort ${log.effort || "?"}. Human waiting and everything it caused is excluded from every figure that is compared.`,
+    rebuildBaselineCacheWriteTokens: 550000, runs: [{ label: log.runLabel || log.runId || "this run", series: "run", template: String(log.templateVersion || ""), statsDir }], excluded: [], single: true };
 } else {
   const configPath = path.resolve(positional[0] || path.join(here, "runs.config.json"));
   config = readJson(configPath);
@@ -334,7 +334,7 @@ function gather(run) {
   return { label: run.label, series: run.series, template: run.template, start: log.start, end: log.end, wallMin: T.wallMin, metrics: m, phases, sources, flags: run.flags || [], notes,
     longWaits: T.longWaits.map((w) => ({ min: w.min, reason: w.reason || null, source: w.source, cause: w.cause || null })), rebuilds: U?.cacheRebuilds || [], toolTime: U?.toolTimeByCategory || null,
     tokens: U ? { out: U.outputTokens, cr: U.cacheReadTokens, cw: U.cacheWriteTokens, inp: U.inputTokens } : null,
-    environment, check: U?.check || null, panel: a.panel ? { costUsd: a.panel.costUsd, apiMin: a.panel.apiMin, sessionWallMin: a.panel.sessionWallMin, linesAdded: a.panel.linesAdded, linesRemoved: a.panel.linesRemoved, plan: a.panel.plan ? { sessionPctUsed: a.panel.plan.sessionPctUsed, weekPctUsed: a.panel.plan.weekPctUsed } : null } : null,
+    environment, check: U?.check || null, transcriptCostUsd: U && U.costUsd != null ? U.costUsd : null, panel: a.panel ? { source: a.panel.source, costUsd: a.panel.costUsd, apiMin: a.panel.apiMin, sessionWallMin: a.panel.sessionWallMin, linesAdded: a.panel.linesAdded, linesRemoved: a.panel.linesRemoved, plan: a.panel.plan ? { sessionPctUsed: a.panel.plan.sessionPctUsed, weekPctUsed: a.panel.plan.weekPctUsed } : null } : null,
     phaseChecks: pcx ? { viaHelper: pcx.viaHelper, manual: pcx.manual, issues: pcx.issues } : null, subagents: U?.subagents || null,
     commitSummary: cs || null, commits: config.single ? (a.commits || null) : null };
 }

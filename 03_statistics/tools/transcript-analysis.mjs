@@ -148,6 +148,28 @@ function readPanel(costStates, rows) {
     source: "cost-state record in the transcript (Claude Code's own accounting)" };
 }
 
+// ---- the usage panel values a human typed into usage.md (the harness panel of the desktop app or /cost); used only when the transcript has no cost-state record
+export function readManualPanel(usageMdPath) {
+  if (!usageMdPath || !fs.existsSync(usageMdPath)) return null;
+  const lines = fs.readFileSync(usageMdPath, "utf8").split("\n");
+  const cell = (label) => { const l = lines.find((x) => x.startsWith("| " + label + " |")); if (!l) return ""; const v = l.slice(label.length + 4).replace(/[|][ \r]*$/, "").trim(); return v && !/transcript cost-state|^not /i.test(v) ? v : ""; };
+  const num = (s) => { const m = String(s || "").match(/([0-9][0-9.,]*)[ ]*([kKmM])?/); if (!m) return null; const v = Number(m[1].replace(/,/g, "")); return Number.isFinite(v) ? v * ({ k: 1e3, m: 1e6 }[(m[2] || "").toLowerCase()] || 1) : null; };
+  const dur = (s) => { const h = /([0-9]+(?:[.][0-9]+)?)[ ]*h/.exec(s), m = /([0-9]+(?:[.][0-9]+)?)[ ]*min/.exec(s), x = /([0-9]+(?:[.][0-9]+)?)[ ]*s([^a-z]|$)/.exec(s); return h || m || x ? (h ? +h[1] * 60 : 0) + (m ? +m[1] : 0) + (x ? +x[1] / 60 : 0) : null; };
+  const cost = /[$][ ]*([0-9][0-9.,]*)/.exec(cell("Cost shown"));
+  if (!cost) return null;
+  const costUsd = Number(cost[1].replace(/,/g, ""));
+  if (!Number.isFinite(costUsd)) return null;
+  const tok = cell("Tokens shown per model (input, output, cache read, cache write)"), modelUsage = {};
+  const mm = /^([A-Za-z0-9._-]+)[^:]*:[ ]*(.*)$/.exec(tok);
+  const NUM = "([0-9][0-9.,]*[ ]*[kKmM]?)";
+  if (mm) { const g = (word) => { const x = new RegExp(word + "[ ]+" + NUM, "i").exec(mm[2]); return x ? num(x[1]) : null; };
+    modelUsage[mm[1]] = { inputTokens: g("input") || 0, outputTokens: g("output") || 0, thinkingTokens: 0, cacheReadTokens: g("cache read") || 0, cacheWriteTokens: g("cache write") || 0, costUsd }; }
+  const pl = /([0-9]+)[ ]*%[ ]*,[ ]*([0-9]+)[ ]*%/.exec(cell("Plan limits used (session, week)")), over = /([0-9]+)[ ]*%/.exec(cell("Share of usage at over 150k context"));
+  return { sessions: 1, costUsd, apiMin: dur(cell("API time")), apiMinWithoutRetries: null, toolMin: null, sessionWallMin: dur(cell("Session wall time")), linesAdded: null, linesRemoved: null, modelUsage,
+    plan: pl || over ? { capturedAt: null, sessionPctUsed: pl ? +pl[1] : null, weekPctUsed: pl ? +pl[2] : null, pctUsageOver150k: over ? +over[1] : null, raw: null } : null,
+    source: "usage panel values entered by the human in usage.md (rounded as the panel shows them)" };
+}
+
 // ---- git: size, concern, message and the work between commits
 const IGNORED_FOR_SIZE = [/(^|\/)03_statistics\//i, /(^|\/)(logs?|node_modules|target|dist|build|coverage|reports?|\.git)\//i, /(package-lock\.json|pnpm-lock\.yaml|yarn\.lock|\.lock|gradle\.lockfile)$/i, /\.(log|min\.js|min\.css|map)$/i];
 function categoryOfFile(p) {
@@ -429,7 +451,8 @@ export function analyse({ logPath, usageMdPath, transcriptPaths, transcriptPath,
   if (subagentsUsed && !files.sub.length) notes.push(`${subagentsUsed} Agent/Task tool call(s) but no sub-agent transcript found: their cost may be missing (see the panel cross-check)`);
 
   // ---- panel (the harness's own numbers) and the cross-check against our calculation
-  const panel = readPanel(costStates, rows);
+  let panel = readPanel(costStates, rows);
+  if (!panel) { panel = readManualPanel(usageMdPath); if (panel) notes.push("no cost-state record in the transcript: the cross-check uses the panel values entered in usage.md"); }
   if (panel) {
     const expected = usage.costUsd + after.costUsd;
     const diff = r2(panel.costUsd - expected), dp = expected ? r1((100 * diff) / expected) : null;
@@ -439,7 +462,7 @@ export function analyse({ logPath, usageMdPath, transcriptPaths, transcriptPath,
       verdict: dp != null && Math.abs(dp) <= o.crossCheckTolerancePct ? "ok" : "check: sub-agents, resumed sessions, activity after the run, or a missing price" };
     if (after.calls) notes.push(`${after.calls} model call(s) after the run's end (the session went on) cost $${r2(after.costUsd)}: not part of the run, but included in the harness's session total`);
     if (usage.check.verdict !== "ok") notes.push("cost differs from the harness's own total by " + dp + " %: " + usage.check.verdict);
-  } else notes.push("no cost-state record in the transcript: the panel cross-check is not possible");
+  } else notes.push("no cost-state record in the transcript and no panel values in usage.md: the panel cross-check is not possible (copy Cost shown, API time, Session wall time and the tokens from the usage panel into usage.md and run the post-run step again)");
 
   // ---- environment: what the harness knows about itself
   const asst = rows.filter((x) => x.type === "assistant");
