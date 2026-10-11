@@ -37,7 +37,7 @@ ArchUnit rules (DoD-04), in `src/test/java/.../architecture/ArchitectureTest.jav
 
 ## 3. Configuration (ES-01, AR-04)
 
-Environment variables (Spring relaxed binding). "—" = no default; the application refuses to start without it.
+Environment variables (Spring relaxed binding: `APP_X_Y` is the property `app.x-y`; `ORGANIZER_USERNAME`, `ORGANIZER_PASSWORD`, `ORGANIZER_EMAILS` map to `app.organizer.username`, `app.organizer.password`, `app.organizer.emails`, and `RECAPTCHA_SITE_KEY`, `RECAPTCHA_SECRET_KEY` to `app.recaptcha.site-key`, `app.recaptcha.secret-key`). "—" = no default; the application refuses to start without it.
 
 | Setting | Variable | Default | Notes |
 |---|---|---|---|
@@ -48,7 +48,7 @@ Environment variables (Spring relaxed binding). "—" = no default; the applicat
 | Sender address | `APP_MAIL_FROM` | `registration@konferenca.si` | |
 | Organizer recipients | `ORGANIZER_EMAILS` | — | comma separated, each validated at startup. |
 | Conference name | `APP_CONFERENCE_NAME` | `Conference` | shown in emails and on the page. |
-| Conference configuration file | `APP_CONFERENCE_CONFIG_FILE` | classpath `conference-options.json` | production refuses the classpath default (`environments.md`: default allowed local/test only). |
+| Conference configuration file | `APP_CONFERENCE_CONFIG_FILE` (property `app.conference.config-file`, a file-system path) | classpath `conference-options.json` | production refuses the classpath default (`environments.md`: default allowed local/test only). |
 | JSON copy directory | `APP_JSON_COPY_DIR` | `data/json-copies` | created at startup if missing; on a named volume in compose. |
 | reCAPTCHA test mode | `APP_RECAPTCHA_TEST_MODE` | `false` | SR-02. |
 | reCAPTCHA keys | `RECAPTCHA_SITE_KEY`, `RECAPTCHA_SECRET_KEY` | empty | required unless test mode. |
@@ -108,7 +108,7 @@ After commit, one plain-text message to every address in `ORGANIZER_EMAILS`, lis
 
 ## 8. Excel export (US-008, BR-08, SR-06, SR-07)
 
-`GET /api/export` returns `registrations.xlsx` (`application/vnd.openxmlformats-officedocument.spreadsheetml.sheet`, `Content-Disposition: attachment`) generated with Apache POI. Sheet `Registrations`, header row, one row per registration ordered by registration time. Columns: Registration ID, Registered at (UTC ISO-8601), Type, First name, Last name, Email, Organization / institution, Study institution, Study programme, Student ID, Workshops, Events, Meals, Other activities (option names, `; ` separated), Consents (`id at time`). All values written as string cells, so no cell is evaluated as a formula (SB-05).
+`GET /api/export` returns `registrations.xlsx` (`application/vnd.openxmlformats-officedocument.spreadsheetml.sheet`, `Content-Disposition: attachment`) generated with Apache POI. Sheet `Registrations`, header row, one row per registration ordered by registration time. Columns: Registration ID, Registered at (UTC ISO-8601), Type (`External participant` or `Student`), First name, Last name, Email, Organization / institution, Study institution, Study programme, Student ID, Workshops, Events, Meals, Other activities (option names, `; ` separated), Consents (`<id> (<UTC ISO-8601 time>)`, `; ` separated). Fields that do not apply to the type are empty cells. All values written as string cells, so no cell is evaluated as a formula (SB-05).
 
 Access (SB-02, SB-03, SR-06): Spring Security HTTP Basic, single in-memory organizer with the BCrypt hash of `ORGANIZER_PASSWORD`; stateless, no session, no CSRF token needed (no cookies). Before authentication a filter refuses (403, no body data) any `/api/export` request that is not secure, unless the client address is loopback or HTTPS-only is off. Tomcat's remote-IP handling (`server.forward-headers-strategy=native`) trusts `X-Forwarded-For`/`X-Forwarded-Proto` only from internal proxy addresses (Tomcat default), so the production proxy's HTTPS is recognised and a client cannot fake it directly.
 
