@@ -1,0 +1,36 @@
+# Production reverse proxy example (environments.md "production"; SB-04, SR-06, SR-08).
+# Replace register.example.org and the certificate paths; the frontend and backend containers
+# publish 127.0.0.1:8081 and 127.0.0.1:8080 on the host.
+
+server {
+  listen 80;
+  server_name register.example.org;
+  return 301 https://$host$request_uri;
+}
+
+server {
+  listen 443 ssl;
+  http2 on;
+  server_name register.example.org;
+  server_tokens off;
+
+  ssl_certificate /etc/letsencrypt/live/register.example.org/fullchain.pem;
+  ssl_certificate_key /etc/letsencrypt/live/register.example.org/privkey.pem;
+  ssl_protocols TLSv1.2 TLSv1.3;
+  add_header Strict-Transport-Security "max-age=31536000" always;
+
+  location / {
+    proxy_pass http://127.0.0.1:8081;
+    proxy_set_header Host frontend;
+  }
+
+  location /api/ {
+    client_max_body_size 16k;
+    proxy_pass http://127.0.0.1:8080;
+    # SR-08: fixed upstream host, never the client's Host header.
+    proxy_set_header Host backend;
+    # Replace (not append) so a client cannot fake its address or scheme.
+    proxy_set_header X-Forwarded-For $remote_addr;
+    proxy_set_header X-Forwarded-Proto https;
+  }
+}
