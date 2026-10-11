@@ -106,4 +106,18 @@ describe("RegistrationForm", () => {
       "Too many attempts. Please wait a minute and try again.",
     );
   });
+
+  it("uses an email input and shows the general error for a 400 without field errors", async () => {
+    stubPost(400, { message: "x", fieldErrors: [] });
+    render(<RegistrationForm config={config} onAccepted={vi.fn()} />);
+    expect(screen.getByLabelText("Email")).toHaveAttribute("type", "email");
+    expect(screen.getByLabelText("First name")).toHaveAttribute("type", "text");
+    fill();
+    await waitFor(() => expect(screen.getByRole("button", { name: "Register" })).toBeEnabled());
+    fireEvent.click(screen.getByRole("button", { name: "Register" }));
+
+    expect(await screen.findByRole("alert")).toHaveTextContent(
+      "Registration could not be completed. Please try again later.",
+    );
+  });
 });
