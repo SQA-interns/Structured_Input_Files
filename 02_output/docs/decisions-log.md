@@ -91,3 +91,12 @@
 - Options: 1. keep until the operator deletes them; no automatic deletion in this release; release notes require the operator to delete the database rows and JSON copies no later than 12 months after the conference (default); 2. implement automatic deletion.
 - Human response: none
 - Resolution: pending review (option 1; deletion features are not in scope)
+
+## D-11: add @types/node 24.13.0 (dev only)
+- Timestamp: 2026-10-11T09:31:01Z
+- Phase: 3
+- Type: non-blocking
+- Trigger: `tsc --noEmit` fails on the Playwright config and end-to-end helpers (`process`, `Buffer`, `node:zlib`), because Node type definitions are not in `tech-stack.md`.
+- Options: 1. add `@types/node` 24.13.0 (exact, matches the Node 24.13.0 pin, MIT, dev dependency, not in the bundle) and enable it in `tsconfig.json` (default); 2. exclude end-to-end files from type checking.
+- Human response: none
+- Resolution: option 1 (tech-stack.md rule for unlisted dev tooling); scanned in phase 6 like any other dependency
