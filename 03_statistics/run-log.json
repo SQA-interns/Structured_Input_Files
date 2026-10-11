@@ -1,0 +1,547 @@
+{
+  "schemaVersion": 2,
+  "runId": "kyuhi-single-agent-sdd-v003-opus-5-5-t1.3-20261010T2210Z-7c3c",
+  "runLabel": "kyuhi_single-agent_sdd_v003",
+  "model": "claude-opus-5-5",
+  "effort": "medium",
+  "templateVersion": "1.3",
+  "transcript": "C:\\Users\\sense\\.claude\\projects\\E--13---Lab-Projects-01-Runs------SECOND------ROUND------01-kyuhi-single-agent-sdd-v003\\eb9d4e82-0f3e-4663-bde1-0182c73b85b3.jsonl",
+  "transcripts": [
+    "C:\\Users\\sense\\.claude\\projects\\E--13---Lab-Projects-01-Runs------SECOND------ROUND------01-kyuhi-single-agent-sdd-v003\\eb9d4e82-0f3e-4663-bde1-0182c73b85b3.jsonl"
+  ],
+  "transcriptBackup": [],
+  "startCommit": "af81ef5b8d55f684976df193dc7e65e46da168af",
+  "finalCommit": "a6af556ee45381328daa152bab3ef569edb217d4",
+  "start": "2026-10-10T22:10:56Z",
+  "end": "2026-10-11T00:33:33Z",
+  "phases": [
+    {
+      "phase": 0,
+      "name": "preflight-and-bootstrap",
+      "start": "2026-10-10T22:10:57Z",
+      "end": "2026-10-10T22:20:40Z"
+    },
+    {
+      "phase": 1,
+      "name": "requirements",
+      "start": "2026-10-10T22:20:40Z",
+      "end": "2026-10-10T22:21:36Z"
+    },
+    {
+      "phase": 2,
+      "name": "design",
+      "start": "2026-10-10T22:21:36Z",
+      "end": "2026-10-10T22:27:09Z"
+    },
+    {
+      "phase": 3,
+      "name": "test-design",
+      "start": "2026-10-10T22:27:09Z",
+      "end": "2026-10-10T22:40:21Z"
+    },
+    {
+      "phase": 4,
+      "name": "build",
+      "start": "2026-10-10T22:40:21Z",
+      "end": "2026-10-10T23:06:59Z"
+    },
+    {
+      "phase": 5,
+      "name": "unit-tests",
+      "start": "2026-10-10T23:06:59Z",
+      "end": "2026-10-10T23:15:38Z"
+    },
+    {
+      "phase": 6,
+      "name": "verify",
+      "start": "2026-10-10T23:15:38Z",
+      "end": "2026-10-11T00:24:49Z"
+    },
+    {
+      "phase": 7,
+      "name": "release",
+      "start": "2026-10-11T00:24:49Z",
+      "end": "2026-10-11T00:33:33Z"
+    }
+  ],
+  "firstTestRun": {
+    "passed": 240,
+    "failed": 4,
+    "byLevel": {
+      "unit": {
+        "passed": 135,
+        "failed": 1
+      },
+      "integration": {
+        "passed": 0,
+        "failed": 3
+      },
+      "acceptance": {
+        "passed": 93,
+        "failed": 0
+      },
+      "architecture": {
+        "passed": 7,
+        "failed": 0
+      },
+      "e2e": {
+        "passed": 5,
+        "failed": 0
+      }
+    },
+    "classification": "4 defects in non-frozen tests (CSV quote character; non-web Spring context); 0 implementation defects"
+  },
+  "finalTestRun": {
+    "passed": 263,
+    "failed": 0,
+    "byLevel": {
+      "unit": {
+        "passed": 155,
+        "failed": 0
+      },
+      "integration": {
+        "passed": 3,
+        "failed": 0
+      },
+      "acceptance": {
+        "passed": 93,
+        "failed": 0
+      },
+      "architecture": {
+        "passed": 7,
+        "failed": 0
+      },
+      "e2e": {
+        "passed": 5,
+        "failed": 0
+      }
+    }
+  },
+  "acceptanceCriteria": {
+    "total": 35,
+    "frozenTests": 98,
+    "frozenTestChanges": [
+      {
+        "decisionId": "D-15",
+        "reason": "assertRefused used AssertJ byte-array doesNotContain (any byte) instead of a sequence check; contradicted the HTTPS_REQUIRED body assertion"
+      }
+    ],
+    "frozenTestsNote": "backend acceptance 81 (JUnit incl. parameterised cases), frontend acceptance 12 (Vitest), e2e 5 (Playwright); 26 frozen files"
+  },
+  "findings": {
+    "critical": 0,
+    "high": 0,
+    "medium": 4,
+    "low": 8
+  },
+  "openAtEnd": {
+    "critical": 0,
+    "high": 0,
+    "medium": 0
+  },
+  "fixLoops": [
+    {
+      "loop": 1,
+      "findings": [
+        "F-01"
+      ],
+      "category": "security-config",
+      "needsHuman": false,
+      "change": "nginx no longer forwards the client Host header",
+      "start": "2026-10-10T23:28:00Z",
+      "end": "2026-10-10T23:30:42Z"
+    },
+    {
+      "loop": 2,
+      "findings": [
+        "F-07",
+        "F-08"
+      ],
+      "category": "security-config",
+      "needsHuman": false,
+      "change": "rate limit for every public /api request; test for rate-limiter cleanup",
+      "start": "2026-10-10T23:38:00Z",
+      "end": "2026-10-10T23:50:00Z"
+    },
+    {
+      "loop": 3,
+      "findings": [
+        "F-06"
+      ],
+      "category": "tooling",
+      "needsHuman": true,
+      "change": "Vitest 4.1.11 instead of 5.0.3 (D-18..D-20) so Stryker activates mutants",
+      "start": "2026-10-10T23:55:07Z",
+      "end": "2026-10-11T00:12:00Z"
+    },
+    {
+      "loop": 4,
+      "findings": [
+        "F-10"
+      ],
+      "category": "test-gap",
+      "needsHuman": false,
+      "change": "email TLD test cases",
+      "start": "2026-10-11T00:19:00Z",
+      "end": "2026-10-11T00:23:02Z"
+    },
+    {
+      "loop": 5,
+      "findings": [
+        "F-03"
+      ],
+      "category": "process",
+      "needsHuman": false,
+      "change": "redacted .env value from runtime demo log before commit",
+      "start": "2026-10-10T23:34:00Z",
+      "end": "2026-10-10T23:35:30Z"
+    }
+  ],
+  "decisions": [
+    {
+      "id": "D-01",
+      "type": "blocking",
+      "phase": 0,
+      "category": "environment",
+      "start": "2026-10-10T22:18:29Z",
+      "end": "2026-10-10T22:20:07Z"
+    },
+    {
+      "id": "D-02",
+      "type": "non-blocking",
+      "phase": 0,
+      "category": "environment",
+      "start": "2026-10-10T22:18:29Z",
+      "end": "2026-10-10T22:18:29Z"
+    },
+    {
+      "id": "D-03",
+      "type": "non-blocking",
+      "phase": 0,
+      "category": "dependency",
+      "start": "2026-10-10T22:18:29Z",
+      "end": "2026-10-10T22:18:29Z"
+    },
+    {
+      "id": "D-04",
+      "type": "blocking",
+      "phase": 0,
+      "category": "security-finding",
+      "start": "2026-10-10T22:18:29Z",
+      "end": "2026-10-10T22:20:07Z"
+    },
+    {
+      "id": "D-05",
+      "type": "non-blocking",
+      "phase": 0,
+      "category": "security-finding",
+      "start": "2026-10-10T22:18:29Z",
+      "end": "2026-10-10T22:18:29Z"
+    },
+    {
+      "id": "D-06",
+      "type": "non-blocking",
+      "phase": 0,
+      "category": "security-finding",
+      "start": "2026-10-10T22:18:29Z",
+      "end": "2026-10-10T22:18:29Z"
+    },
+    {
+      "id": "D-07",
+      "type": "blocking",
+      "phase": 0,
+      "category": "other",
+      "start": "2026-10-10T22:20:07Z",
+      "end": "2026-10-10T22:20:07Z"
+    },
+    {
+      "id": "D-08",
+      "type": "non-blocking",
+      "phase": 1,
+      "category": "requirement",
+      "start": "2026-10-10T22:21:35Z",
+      "end": "2026-10-10T22:21:35Z"
+    },
+    {
+      "id": "D-09",
+      "type": "non-blocking",
+      "phase": 1,
+      "category": "requirement",
+      "start": "2026-10-10T22:21:35Z",
+      "end": "2026-10-10T22:21:35Z"
+    },
+    {
+      "id": "D-10",
+      "type": "non-blocking",
+      "phase": 1,
+      "category": "requirement",
+      "start": "2026-10-10T22:21:35Z",
+      "end": "2026-10-10T22:21:35Z"
+    },
+    {
+      "id": "D-11",
+      "type": "non-blocking",
+      "phase": 1,
+      "category": "requirement",
+      "start": "2026-10-10T22:21:35Z",
+      "end": "2026-10-10T22:21:35Z"
+    },
+    {
+      "id": "D-12",
+      "type": "non-blocking",
+      "phase": 1,
+      "category": "requirement",
+      "start": "2026-10-10T22:21:35Z",
+      "end": "2026-10-10T22:21:35Z"
+    },
+    {
+      "id": "D-13",
+      "type": "non-blocking",
+      "phase": 1,
+      "category": "requirement",
+      "start": "2026-10-10T22:21:35Z",
+      "end": "2026-10-10T22:21:35Z"
+    },
+    {
+      "id": "D-14",
+      "type": "non-blocking",
+      "phase": 1,
+      "category": "requirement",
+      "start": "2026-10-10T22:21:35Z",
+      "end": "2026-10-10T22:21:35Z"
+    },
+    {
+      "id": "D-15",
+      "type": "blocking",
+      "phase": 4,
+      "category": "frozen-test",
+      "start": "2026-10-10T22:56:19Z",
+      "end": "2026-10-10T23:05:00Z"
+    },
+    {
+      "id": "D-16",
+      "type": "non-blocking",
+      "phase": 4,
+      "category": "other",
+      "start": "2026-10-10T23:02:29Z",
+      "end": "2026-10-10T23:02:29Z"
+    },
+    {
+      "id": "D-17",
+      "type": "blocking",
+      "phase": 4,
+      "category": "frozen-test",
+      "start": "2026-10-10T23:05:00Z",
+      "end": "2026-10-10T23:05:00Z"
+    },
+    {
+      "id": "D-18",
+      "type": "blocking",
+      "phase": 6,
+      "category": "other",
+      "start": "2026-10-10T23:53:52Z",
+      "end": "2026-10-10T23:55:22Z"
+    },
+    {
+      "id": "D-19",
+      "type": "blocking",
+      "phase": 6,
+      "category": "dependency",
+      "start": "2026-10-10T23:55:22Z",
+      "end": "2026-10-10T23:55:22Z"
+    },
+    {
+      "id": "D-20",
+      "type": "non-blocking",
+      "phase": 6,
+      "category": "dependency",
+      "start": "2026-10-10T23:56:45Z",
+      "end": "2026-10-10T23:56:45Z"
+    }
+  ],
+  "humanInterventions": [
+    {
+      "start": "2026-10-10T22:18:30Z",
+      "end": "2026-10-10T22:19:40Z",
+      "phase": 0,
+      "cause": "decision",
+      "decisionId": "D-01",
+      "reason": "Phase 0: D-01 Docker version, D-04 CVE classification"
+    },
+    {
+      "start": "2026-10-10T23:02:41Z",
+      "end": "2026-10-10T23:04:40Z",
+      "phase": 4,
+      "cause": "decision",
+      "decisionId": "D-15",
+      "reason": "Phase 4 gate: frozen test AC-008-03 defect"
+    },
+    {
+      "start": "2026-10-10T23:54:10Z",
+      "end": "2026-10-10T23:55:07Z",
+      "phase": 6,
+      "cause": "decision",
+      "decisionId": "D-18",
+      "reason": "Phase 6: frontend mutation tooling (D-18)"
+    }
+  ],
+  "divergences": [
+    {
+      "phase": 0,
+      "ref": "tech-stack.md docker",
+      "divergence": "Docker Engine 29.8.1 used instead of pinned 29.8.0 (human-approved, D-01/D-07)"
+    },
+    {
+      "phase": 4,
+      "ref": "working-rules.md Commits (size guide)",
+      "divergence": "Commit feat US-003 (21 files) and commit feat US-005 (675 lines) exceed the size guide without a stated reason in the message"
+    },
+    {
+      "phase": 6,
+      "ref": "tech-stack.md vitest, @vitest/coverage-v8",
+      "divergence": "vitest and @vitest/coverage-v8 4.1.11 used instead of 5.0.3 (human-approved 4.1.x, D-18/D-19/D-20) so that Stryker can measure frontend mutation"
+    }
+  ],
+  "codeMetrics": {
+    "components": [
+      {
+        "name": "backend",
+        "productionLoc": 2296,
+        "testLoc": 3241,
+        "lineCoverage": {
+          "unit": 74.9,
+          "nonUnit": 90.7,
+          "all": 97.7
+        },
+        "branchCoverage": {
+          "unit": 86.7,
+          "nonUnit": 69,
+          "all": 93
+        },
+        "mutation": {
+          "score": 95.4,
+          "scoreCovered": 98.2,
+          "killed": 374,
+          "total": 392,
+          "covered": 381,
+          "scope": "si.konferenca.registration.** minus RegistrationApplication",
+          "tests": "full JUnit suite (unit, integration, architecture, acceptance)",
+          "tool": "PIT 1.30.0 + pitest-junit5-plugin 1.2.3",
+          "excluded": [
+            "RegistrationApplication (entry point)"
+          ]
+        }
+      },
+      {
+        "name": "frontend",
+        "productionLoc": 607,
+        "testLoc": 998,
+        "lineCoverage": {
+          "unit": 97.6,
+          "nonUnit": 92.4,
+          "all": 100
+        },
+        "branchCoverage": {
+          "unit": 92.6,
+          "nonUnit": 81,
+          "all": 97.5
+        },
+        "mutation": {
+          "score": 84.7,
+          "scoreCovered": 84.7,
+          "killed": 371,
+          "total": 438,
+          "covered": 438,
+          "scope": "src/**/*.{ts,tsx} minus tests, *.d.ts, main.tsx, setupTests.ts",
+          "tests": "all Vitest tests (unit, component, acceptance); Playwright e2e not runnable under Stryker",
+          "tool": "Stryker 10.0.0 + vitest-runner 10.0.0 with Vitest 4.1.11 (D-19)",
+          "excluded": [
+            "src/main.tsx",
+            "src/setupTests.ts",
+            "src/**/*.d.ts"
+          ]
+        }
+      }
+    ],
+    "complexity": null,
+    "complexityReason": "no complexity tool is listed in tech-stack.md",
+    "duplicationPct": 0
+  },
+  "commits": [],
+  "commitSummary": null,
+  "time": {
+    "wallMin": null,
+    "agentMin": null,
+    "humanWaitMin": null,
+    "betweenPhasesMin": null,
+    "modelMin": null,
+    "toolMin": null,
+    "humanReplyMin": null,
+    "waitsOver60Min": null,
+    "byPhase": [],
+    "idleGaps": [],
+    "longWaits": [],
+    "unrecordedIdleMin": null,
+    "phaseChecks": null
+  },
+  "usage": {
+    "inputTokens": null,
+    "outputTokens": null,
+    "thinkingTokens": null,
+    "cacheReadTokens": null,
+    "cacheWriteTokens": null,
+    "modelCalls": null,
+    "toolCalls": {
+      "total": null,
+      "errors": null,
+      "byTool": {}
+    },
+    "costUsd": null,
+    "costUsdExclWaits": null,
+    "priceTableDate": null,
+    "unpricedModels": [],
+    "models": {},
+    "cacheRebuilds": [],
+    "byPhase": [],
+    "context": {
+      "peakTokens": null,
+      "avgTokens": null,
+      "pctCallsOver150k": null
+    },
+    "toolTimeByCategory": {},
+    "panel": null,
+    "subagents": {
+      "used": null,
+      "transcripts": null,
+      "modelCalls": null,
+      "costUsd": null,
+      "outputTokens": null
+    },
+    "check": null
+  },
+  "environment": {
+    "operator": "kyuhi",
+    "machine": "kyuhiPC",
+    "plan": "PRO",
+    "permissionMode": "auto",
+    "os": {
+      "platform": "win32",
+      "release": "10.0.26200",
+      "arch": "x64"
+    },
+    "shell": "C:\\Program Files\\Git\\bin\\bash.exe",
+    "timezone": "Europe/Ljubljana",
+    "utcOffsetMin": 120,
+    "tools": {
+      "node": "v24.13.0",
+      "npm": "11.6.2",
+      "git": "git version 2.53.0.windows.1",
+      "docker": "Docker version 29.8.1, build 4a63305",
+      "java": "openjdk version \"21.0.10\" 2026-01-20 LTS\r",
+      "maven": null,
+      "python": "Python 3.13.15"
+    },
+    "capturedAt": "2026-10-10T22:10:57Z"
+  },
+  "measuredAt": null
+}
