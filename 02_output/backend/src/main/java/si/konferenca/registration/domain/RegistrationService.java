@@ -14,6 +14,7 @@ public class RegistrationService {
   private final CaptchaVerifier captcha;
   private final RegistrationStore store;
   private final JsonCopyStore jsonCopies;
+  private final RegistrationNotifier notifier;
   private final Clock clock;
 
   public RegistrationService(
@@ -21,11 +22,13 @@ public class RegistrationService {
       CaptchaVerifier captcha,
       RegistrationStore store,
       JsonCopyStore jsonCopies,
+      RegistrationNotifier notifier,
       Clock clock) {
     this.validator = validator;
     this.captcha = captcha;
     this.store = store;
     this.jsonCopies = jsonCopies;
+    this.notifier = notifier;
     this.clock = clock;
   }
 
@@ -46,6 +49,7 @@ public class RegistrationService {
       }
       throw new StorageFailedException(e);
     }
+    notifier.registrationAccepted(registration, copy.get());
     return registration;
   }
 }
