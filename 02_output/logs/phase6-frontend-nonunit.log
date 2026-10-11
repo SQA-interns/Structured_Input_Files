@@ -1,0 +1,18 @@
+
+ RUN  v4.1.11 E:/13 - Lab Projects/01_Runs/_____SECOND______ROUND_____/02_kyuhi_single-agent_sdd_v004/02_output/frontend
+      Coverage enabled with v8
+
+
+ Test Files  3 passed (3)
+      Tests  7 passed (7)
+   Start at  12:29:52
+   Duration  1.91s (transform 466ms, setup 386ms, import 775ms, tests 1.04s, environment 1.71s)
+
+ % Coverage report from v8
+
+=============================== Coverage summary ===============================
+Statements   : 83.87% ( 130/155 )
+Branches     : 77% ( 77/100 )
+Functions    : 79.59% ( 39/49 )
+Lines        : 84.28% ( 118/140 )
+================================================================================

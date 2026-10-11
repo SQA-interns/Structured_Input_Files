@@ -1,0 +1,557 @@
+[33m12:30:02 (50404) WARN ProjectReader[39m Glob pattern "!src/**/*.d.ts" did not exclude any files.
+[32m12:30:02 (50404) INFO ProjectReader[39m Found 7 of 88 file(s) to be mutated.
+[32m12:30:02 (50404) INFO Instrumenter[39m Instrumented 7 source file(s) with 354 mutant(s)
+[32m12:30:02 (50404) INFO ConcurrencyTokenProvider[39m Creating 4 test runner process(es).
+[32m12:30:03 (50404) INFO BroadcastReporter[39m Detected that current console does not support the "progress" reporter, downgrading to "progress-append-only" reporter
+[32m12:30:04 (50404) INFO DryRunExecutor[39m Starting initial test run (vitest test runner with "perTest" coverage analysis). This may take a while.
+[32m12:30:12 (50404) INFO DryRunExecutor[39m Initial test run succeeded. Ran 27 tests in 7 seconds (net 1246.1019000000028 ms, overhead 6168.898099999997 ms).
+Mutation testing 2% (elapsed: <1m, remaining: ~5m) 26/354 tested (5 survived, 0 timed out)
+Mutation testing 6% (elapsed: <1m, remaining: ~4m) 49/354 tested (9 survived, 0 timed out)
+Mutation testing 10% (elapsed: <1m, remaining: ~4m) 71/354 tested (11 survived, 0 timed out)
+Mutation testing 13% (elapsed: <1m, remaining: ~4m) 87/354 tested (14 survived, 0 timed out)
+Mutation testing 20% (elapsed: <1m, remaining: ~3m) 113/354 tested (15 survived, 0 timed out)
+Mutation testing 28% (elapsed: ~1m, remaining: ~2m) 133/354 tested (16 survived, 0 timed out)
+Mutation testing 30% (elapsed: ~1m, remaining: ~2m) 137/354 tested (18 survived, 0 timed out)
+Mutation testing 31% (elapsed: ~1m, remaining: ~2m) 140/354 tested (19 survived, 2 timed out)
+Mutation testing 34% (elapsed: ~1m, remaining: ~2m) 155/354 tested (20 survived, 4 timed out)
+Mutation testing 37% (elapsed: ~1m, remaining: ~2m) 167/354 tested (23 survived, 5 timed out)
+Mutation testing 42% (elapsed: ~1m, remaining: ~2m) 184/354 tested (27 survived, 7 timed out)
+Mutation testing 45% (elapsed: ~2m, remaining: ~2m) 202/354 tested (30 survived, 7 timed out)
+Mutation testing 50% (elapsed: ~2m, remaining: ~2m) 230/354 tested (31 survived, 7 timed out)
+Mutation testing 56% (elapsed: ~2m, remaining: ~1m) 245/354 tested (32 survived, 7 timed out)
+Mutation testing 61% (elapsed: ~2m, remaining: ~1m) 256/354 tested (32 survived, 8 timed out)
+Mutation testing 67% (elapsed: ~2m, remaining: ~1m) 271/354 tested (33 survived, 9 timed out)
+Mutation testing 72% (elapsed: ~2m, remaining: ~1m) 291/354 tested (33 survived, 10 timed out)
+Mutation testing 77% (elapsed: ~3m, remaining: <1m) 306/354 tested (33 survived, 10 timed out)
+Mutation testing 82% (elapsed: ~3m, remaining: <1m) 317/354 tested (34 survived, 10 timed out)
+Mutation testing 86% (elapsed: ~3m, remaining: <1m) 326/354 tested (34 survived, 10 timed out)
+Mutation testing 95% (elapsed: ~3m, remaining: <1m) 344/354 tested (34 survived, 10 timed out)
+
+All tests
+  src
+    api.test.ts
+      ~ api loads the form configuration from the relative API path (covered 8)
+      ~ api fails when the configuration is unavailable (covered 10)
+      ✓ api posts JSON and maps 201 to accepted (killed 3)
+      ✓ api maps 400 field errors, 429 and other failures (killed 15)
+    App.test.tsx
+      ✓ App shows the loading text, then the unavailable alert when the configuration fails (killed 20)
+    RegistrationForm.test.tsx
+      ✓ RegistrationForm renders the reCAPTCHA container and sends the widget token (killed 17)
+      ✓ RegistrationForm unchecks options the new type cannot select (killed 19)
+      ✓ RegistrationForm maps option, captcha and consent errors and sends unknown fields to the general error (killed 20)
+      ✓ RegistrationForm shows the rate-limit message on 429 (killed 5)
+      ✓ RegistrationForm uses an email input and shows the general error for a 400 without field errors (killed 9)
+    validation.test.ts
+      ✓ validate accepts a complete external form (killed 14)
+      ✓ validate requires every field of the type after trimming, and only those (killed 15)
+      ✓ validate rejects email ana (killed 4)
+      ~ validate rejects email ana@x (covered 25)
+      ✓ validate rejects email a b@x.si (killed 1)
+      ~ validate rejects email ana@x .si (covered 25)
+      ~ validate rejects email @x.si (covered 25)
+      ~ validate accepts a trimmed valid email and ignores optional consents (covered 24)
+      ✓ validate rejects text after a valid address (killed 1)
+      ✓ validate uses the contract wording for the captcha error (killed 1)
+  tests/acceptance
+    confirmation.acceptance.test.tsx
+      ✓ US-004 confirmation AC-004-01: shows the confirmation only after the backend accepted the registration (killed 85)
+      ✓ US-004 confirmation AC-004-02: shows server field errors next to the fields, keeps values, no confirmation (killed 21)
+      ✓ US-004 confirmation AC-004-03: validates required fields, email and consent before sending anything (killed 12)
+      ✓ US-004 confirmation AC-004-04: a network failure shows a general error and no confirmation (killed 7)
+      ~ US-004 confirmation AC-004-04: a server error shows a general error without technical details (covered 211)
+    externalForm.acceptance.test.tsx
+      ✓ US-001 external participant form AC-001-08: shows the external fields, active options by category and unchecked consents (killed 14)
+    studentForm.acceptance.test.tsx
+      ✓ US-002 student form AC-002-07: shows the student fields and only options available to students, unchecked (killed 11)
+
+[Survived] ObjectLiteral
+src/api.ts:60:63
+-     const response = await fetch("/api/form-config", { headers: { Accept: "application/json" } });
++     const response = await fetch("/api/form-config", { headers: {} });
+Tests ran:
+    US-004 confirmation AC-004-01: shows the confirmation only after the backend accepted the registration
+    US-004 confirmation AC-004-02: shows server field errors next to the fields, keeps values, no confirmation
+    US-004 confirmation AC-004-03: validates required fields, email and consent before sending anything
+  and 7 more tests!
+
+
+[Survived] ObjectLiteral
+src/api.ts:60:52
+-     const response = await fetch("/api/form-config", { headers: { Accept: "application/json" } });
++     const response = await fetch("/api/form-config", {});
+Tests ran:
+    US-004 confirmation AC-004-01: shows the confirmation only after the backend accepted the registration
+    US-004 confirmation AC-004-02: shows server field errors next to the fields, keeps values, no confirmation
+    US-004 confirmation AC-004-03: validates required fields, email and consent before sending anything
+  and 7 more tests!
+
+
+[Survived] BlockStatement
+src/api.ts:61:21
+-     if (!response.ok) {
+-       throw new Error("form configuration unavailable");
+-     }
++     if (!response.ok) {}
+Tests ran:
+    App shows the loading text, then the unavailable alert when the configuration fails
+    api fails when the configuration is unavailable
+
+
+[Survived] StringLiteral
+src/api.ts:60:73
+-     const response = await fetch("/api/form-config", { headers: { Accept: "application/json" } });
++     const response = await fetch("/api/form-config", { headers: { Accept: "" } });
+Tests ran:
+    US-004 confirmation AC-004-01: shows the confirmation only after the backend accepted the registration
+    US-004 confirmation AC-004-02: shows server field errors next to the fields, keeps values, no confirmation
+    US-004 confirmation AC-004-03: validates required fields, email and consent before sending anything
+  and 7 more tests!
+
+
+[Survived] StringLiteral
+src/api.ts:62:21
+-       throw new Error("form configuration unavailable");
++       throw new Error("");
+Tests ran:
+    App shows the loading text, then the unavailable alert when the configuration fails
+    api fails when the configuration is unavailable
+
+
+[Survived] ConditionalExpression
+src/api.ts:61:7
+-     if (!response.ok) {
++     if (false) {
+Tests ran:
+    US-004 confirmation AC-004-01: shows the confirmation only after the backend accepted the registration
+    US-004 confirmation AC-004-02: shows server field errors next to the fields, keeps values, no confirmation
+    US-004 confirmation AC-004-03: validates required fields, email and consent before sending anything
+  and 7 more tests!
+
+
+[Survived] ObjectLiteral
+src/api.ts:72:16
+-         headers: { "Content-Type": "application/json", Accept: "application/json" },
++         headers: {},
+Tests ran:
+    US-004 confirmation AC-004-01: shows the confirmation only after the backend accepted the registration
+    US-004 confirmation AC-004-02: shows server field errors next to the fields, keeps values, no confirmation
+    US-004 confirmation AC-004-04: a network failure shows a general error and no confirmation
+  and 7 more tests!
+
+
+[Survived] StringLiteral
+src/api.ts:72:34
+-         headers: { "Content-Type": "application/json", Accept: "application/json" },
++         headers: { "Content-Type": "", Accept: "application/json" },
+Tests ran:
+    US-004 confirmation AC-004-01: shows the confirmation only after the backend accepted the registration
+    US-004 confirmation AC-004-02: shows server field errors next to the fields, keeps values, no confirmation
+    US-004 confirmation AC-004-04: a network failure shows a general error and no confirmation
+  and 7 more tests!
+
+
+[Survived] StringLiteral
+src/api.ts:72:62
+-         headers: { "Content-Type": "application/json", Accept: "application/json" },
++         headers: { "Content-Type": "application/json", Accept: "" },
+Tests ran:
+    US-004 confirmation AC-004-01: shows the confirmation only after the backend accepted the registration
+    US-004 confirmation AC-004-02: shows server field errors next to the fields, keeps values, no confirmation
+    US-004 confirmation AC-004-04: a network failure shows a general error and no confirmation
+  and 7 more tests!
+
+
+[Survived] ConditionalExpression
+src/api.ts:84:7
+-     if (response.status === 400) {
++     if (true) {
+Tests ran:
+    US-004 confirmation AC-004-02: shows server field errors next to the fields, keeps values, no confirmation
+    US-004 confirmation AC-004-04: a server error shows a general error without technical details
+    RegistrationForm maps option, captcha and consent errors and sends unknown fields to the general error
+  and 2 more tests!
+
+
+[Survived] BlockStatement
+src/api.ts:88:13
+-       } catch {
+-         return { kind: "failed" };
+-       }
++       } catch {}
+Tests ran:
+    api maps 400 field errors, 429 and other failures
+
+
+[Survived] BlockStatement
+src/App.tsx:18:18
+-       return () => {
+-         active = false;
+-       };
++       return () => {};
+Tests ran:
+    US-004 confirmation AC-004-01: shows the confirmation only after the backend accepted the registration
+    US-004 confirmation AC-004-02: shows server field errors next to the fields, keeps values, no confirmation
+    US-004 confirmation AC-004-03: validates required fields, email and consent before sending anything
+  and 5 more tests!
+
+
+[Survived] BooleanLiteral
+src/App.tsx:19:16
+-         active = false;
++         active = true;
+Tests ran:
+    US-004 confirmation AC-004-01: shows the confirmation only after the backend accepted the registration
+    US-004 confirmation AC-004-02: shows server field errors next to the fields, keeps values, no confirmation
+    US-004 confirmation AC-004-03: validates required fields, email and consent before sending anything
+  and 5 more tests!
+
+
+[Survived] ArrayDeclaration
+src/App.tsx:21:6
+-     }, []);
++     }, ["Stryker was here"]);
+Tests ran:
+    US-004 confirmation AC-004-01: shows the confirmation only after the backend accepted the registration
+    US-004 confirmation AC-004-02: shows server field errors next to the fields, keeps values, no confirmation
+    US-004 confirmation AC-004-03: validates required fields, email and consent before sending anything
+  and 5 more tests!
+
+
+[Survived] ConditionalExpression
+src/Confirmation.tsx:12:8
+-         {registration.options.length === 0 ? (
++         {false ? (
+Tests ran:
+    US-004 confirmation AC-004-01: shows the confirmation only after the backend accepted the registration
+
+
+[NoCoverage] StringLiteral
+src/fields.tsx:20:29
+-           type={props.type ?? "text"}
++           type={props.type ?? ""}
+
+[Survived] BooleanLiteral
+src/fields.tsx:52:37
+-           aria-invalid={props.error ? true : undefined}
++           aria-invalid={props.error ? false : undefined}
+Tests ran:
+    US-004 confirmation AC-004-03: validates required fields, email and consent before sending anything
+    RegistrationForm maps option, captcha and consent errors and sends unknown fields to the general error
+
+
+[NoCoverage] BlockStatement
+src/recaptcha.ts:20:38
+-   function load(): Promise<Grecaptcha> {
+-     loading ??= new Promise((resolve) => {
+-       window.onRecaptchaLoad = () => resolve(window.grecaptcha as Grecaptcha);
+-       const script = document.createElement("script");
+-       script.src = SCRIPT;
+-       script.async = true;
+-       document.head.appendChild(script);
+-     });
+-     return loading;
+-   }
++   function load(): Promise<Grecaptcha> {}
+
+[NoCoverage] AssignmentOperator
+src/recaptcha.ts:21:3
+-     loading ??= new Promise((resolve) => {
+-       window.onRecaptchaLoad = () => resolve(window.grecaptcha as Grecaptcha);
+-       const script = document.createElement("script");
+-       script.src = SCRIPT;
+-       script.async = true;
+-       document.head.appendChild(script);
+-     });
++     loading &&= new Promise(resolve => {
++     window.onRecaptchaLoad = () => resolve(window.grecaptcha as Grecaptcha);
++     const script = document.createElement("script");
++     script.src = SCRIPT;
++     script.async = true;
++     document.head.appendChild(script);
++   });
+
+[NoCoverage] BlockStatement
+src/recaptcha.ts:21:40
+-     loading ??= new Promise((resolve) => {
+-       window.onRecaptchaLoad = () => resolve(window.grecaptcha as Grecaptcha);
+-       const script = document.createElement("script");
+-       script.src = SCRIPT;
+-       script.async = true;
+-       document.head.appendChild(script);
+-     });
++     loading ??= new Promise((resolve) => {});
+
+[NoCoverage] ArrowFunction
+src/recaptcha.ts:22:30
+-       window.onRecaptchaLoad = () => resolve(window.grecaptcha as Grecaptcha);
++       window.onRecaptchaLoad = () => undefined;
+
+[NoCoverage] StringLiteral
+src/recaptcha.ts:23:43
+-       const script = document.createElement("script");
++       const script = document.createElement("");
+
+[NoCoverage] BooleanLiteral
+src/recaptcha.ts:25:20
+-       script.async = true;
++       script.async = false;
+
+[NoCoverage] CallExpression
+src/recaptcha.ts:26:5
+-       document.head.appendChild(script);
++       ;
+
+[NoCoverage] BlockStatement
+src/recaptcha.ts:39:27
+-   ): Promise<CaptchaWidget> {
+-     const grecaptcha = await load();
+-     const id = grecaptcha.render(container, { sitekey: siteKey });
+-     return {
+-       token: () => grecaptcha.getResponse(id),
+-       reset: () => grecaptcha.reset(id),
+-     };
+-   }
++   ): Promise<CaptchaWidget> {}
+
+[NoCoverage] ObjectLiteral
+src/recaptcha.ts:41:43
+-     const id = grecaptcha.render(container, { sitekey: siteKey });
++     const id = grecaptcha.render(container, {});
+
+[NoCoverage] ObjectLiteral
+src/recaptcha.ts:42:10
+-     return {
+-       token: () => grecaptcha.getResponse(id),
+-       reset: () => grecaptcha.reset(id),
+-     };
++     return {};
+
+[NoCoverage] ArrowFunction
+src/recaptcha.ts:43:12
+-       token: () => grecaptcha.getResponse(id),
++       token: () => undefined,
+
+[NoCoverage] ArrowFunction
+src/recaptcha.ts:44:12
+-       reset: () => grecaptcha.reset(id),
++       reset: () => undefined,
+
+[Survived] StringLiteral
+src/recaptcha.ts:16:16
+-   const SCRIPT = "https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoad&render=explicit";
++   const SCRIPT = "";
+Ran all tests for this mutant.
+
+[NoCoverage] CallExpression
+src/RegistrationForm.tsx:73:10
+-       else next.delete(id);
++       else ;
+
+[NoCoverage] StringLiteral
+src/RegistrationForm.tsx:96:39
+-         body[field] = (values[field] ?? "").trim();
++         body[field] = (values[field] ?? "Stryker was here!").trim();
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:53:9
+-       if (!testMode && captchaBox.current) {
++       if (true) {
+Tests ran:
+    US-004 confirmation AC-004-01: shows the confirmation only after the backend accepted the registration
+    US-004 confirmation AC-004-02: shows server field errors next to the fields, keeps values, no confirmation
+    US-004 confirmation AC-004-03: validates required fields, email and consent before sending anything
+  and 9 more tests!
+
+
+[Survived] LogicalOperator
+src/RegistrationForm.tsx:53:9
+-       if (!testMode && captchaBox.current) {
++       if (!testMode || captchaBox.current) {
+Tests ran:
+    US-004 confirmation AC-004-01: shows the confirmation only after the backend accepted the registration
+    US-004 confirmation AC-004-02: shows server field errors next to the fields, keeps values, no confirmation
+    US-004 confirmation AC-004-03: validates required fields, email and consent before sending anything
+  and 9 more tests!
+
+
+[Survived] ArrowFunction
+src/RegistrationForm.tsx:56:16
+-           .catch(() => setGeneral(GENERAL_ERROR));
++           .catch(() => undefined);
+Tests ran:
+    RegistrationForm renders the reCAPTCHA container and sends the widget token
+    RegistrationForm unchecks options the new type cannot select
+    RegistrationForm maps option, captcha and consent errors and sends unknown fields to the general error
+  and 2 more tests!
+
+
+[Survived] ArrayDeclaration
+src/RegistrationForm.tsx:58:6
+-     }, [testMode, config.captcha.siteKey]);
++     }, []);
+Tests ran:
+    US-004 confirmation AC-004-01: shows the confirmation only after the backend accepted the registration
+    US-004 confirmation AC-004-02: shows server field errors next to the fields, keeps values, no confirmation
+    US-004 confirmation AC-004-03: validates required fields, email and consent before sending anything
+  and 9 more tests!
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:72:9
+-       if (on) next.add(id);
++       if (true) next.add(id);
+Tests ran:
+    US-004 confirmation AC-004-01: shows the confirmation only after the backend accepted the registration
+    US-004 confirmation AC-004-02: shows server field errors next to the fields, keeps values, no confirmation
+    US-004 confirmation AC-004-03: validates required fields, email and consent before sending anything
+  and 7 more tests!
+
+
+[Survived] CallExpression
+src/RegistrationForm.tsx:78:5
+-       event.preventDefault();
++       ;
+Tests ran:
+    US-004 confirmation AC-004-01: shows the confirmation only after the backend accepted the registration
+    US-004 confirmation AC-004-02: shows server field errors next to the fields, keeps values, no confirmation
+    US-004 confirmation AC-004-03: validates required fields, email and consent before sending anything
+  and 6 more tests!
+
+
+[Survived] CallExpression
+src/RegistrationForm.tsx:79:5
+-       setGeneral(null);
++       ;
+Tests ran:
+    US-004 confirmation AC-004-01: shows the confirmation only after the backend accepted the registration
+    US-004 confirmation AC-004-02: shows server field errors next to the fields, keeps values, no confirmation
+    US-004 confirmation AC-004-03: validates required fields, email and consent before sending anything
+  and 6 more tests!
+
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:88:18
+-         firstName: "",
++         firstName: "Stryker was here!",
+Tests ran:
+    US-004 confirmation AC-004-01: shows the confirmation only after the backend accepted the registration
+    US-004 confirmation AC-004-02: shows server field errors next to the fields, keeps values, no confirmation
+    US-004 confirmation AC-004-04: a network failure shows a general error and no confirmation
+  and 5 more tests!
+
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:89:17
+-         lastName: "",
++         lastName: "Stryker was here!",
+Tests ran:
+    US-004 confirmation AC-004-01: shows the confirmation only after the backend accepted the registration
+    US-004 confirmation AC-004-02: shows server field errors next to the fields, keeps values, no confirmation
+    US-004 confirmation AC-004-04: a network failure shows a general error and no confirmation
+  and 5 more tests!
+
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:90:14
+-         email: "",
++         email: "Stryker was here!",
+Tests ran:
+    US-004 confirmation AC-004-01: shows the confirmation only after the backend accepted the registration
+    US-004 confirmation AC-004-02: shows server field errors next to the fields, keeps values, no confirmation
+    US-004 confirmation AC-004-04: a network failure shows a general error and no confirmation
+  and 5 more tests!
+
+
+[Survived] MethodExpression
+src/RegistrationForm.tsx:96:21
+-         body[field] = (values[field] ?? "").trim();
++         body[field] = values[field] ?? "";
+Tests ran:
+    US-004 confirmation AC-004-01: shows the confirmation only after the backend accepted the registration
+    US-004 confirmation AC-004-02: shows server field errors next to the fields, keeps values, no confirmation
+    US-004 confirmation AC-004-04: a network failure shows a general error and no confirmation
+  and 5 more tests!
+
+
+[Survived] BooleanLiteral
+src/RegistrationForm.tsx:98:19
+-       setSubmitting(true);
++       setSubmitting(false);
+Tests ran:
+    US-004 confirmation AC-004-01: shows the confirmation only after the backend accepted the registration
+    US-004 confirmation AC-004-02: shows server field errors next to the fields, keeps values, no confirmation
+    US-004 confirmation AC-004-04: a network failure shows a general error and no confirmation
+  and 5 more tests!
+
+
+[Survived] BooleanLiteral
+src/RegistrationForm.tsx:100:19
+-       setSubmitting(false);
++       setSubmitting(true);
+Tests ran:
+    US-004 confirmation AC-004-01: shows the confirmation only after the backend accepted the registration
+    US-004 confirmation AC-004-02: shows server field errors next to the fields, keeps values, no confirmation
+    US-004 confirmation AC-004-04: a network failure shows a general error and no confirmation
+  and 5 more tests!
+
+
+[Survived] BooleanLiteral
+src/RegistrationForm.tsx:109:22
+-         let unmapped = false;
++         let unmapped = true;
+Tests ran:
+    US-004 confirmation AC-004-02: shows server field errors next to the fields, keeps values, no confirmation
+    RegistrationForm maps option, captcha and consent errors and sends unknown fields to the general error
+    RegistrationForm uses an email input and shows the general error for a 400 without field errors
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:115:11
+-         if (unmapped || result.fieldErrors.length === 0) setGeneral(GENERAL_ERROR);
++         if (true) setGeneral(GENERAL_ERROR);
+Tests ran:
+    US-004 confirmation AC-004-02: shows server field errors next to the fields, keeps values, no confirmation
+    RegistrationForm maps option, captcha and consent errors and sends unknown fields to the general error
+    RegistrationForm uses an email input and shows the general error for a 400 without field errors
+
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:139:35
+-             value={values[field] ?? ""}
++             value={values[field] ?? "Stryker was here!"}
+Tests ran:
+    US-004 confirmation AC-004-01: shows the confirmation only after the backend accepted the registration
+    US-004 confirmation AC-004-02: shows server field errors next to the fields, keeps values, no confirmation
+    US-004 confirmation AC-004-03: validates required fields, email and consent before sending anything
+  and 9 more tests!
+
+
+[Survived] LogicalOperator
+src/RegistrationForm.tsx:189:8
+-         {errors.captchaToken && <p className="error">{errors.captchaToken}</p>}
++         {errors.captchaToken || <p className="error">{errors.captchaToken}</p>}
+Tests ran:
+    US-004 confirmation AC-004-01: shows the confirmation only after the backend accepted the registration
+    US-004 confirmation AC-004-02: shows server field errors next to the fields, keeps values, no confirmation
+    US-004 confirmation AC-004-03: validates required fields, email and consent before sending anything
+  and 9 more tests!
+
+
+Ran 2.84 tests per mutant on average.
+----------------------|------------------|----------|-----------|------------|----------|----------|
+                      | % Mutation score |          |           |            |          |          |
+File                  |  total | covered | # killed | # timeout | # survived | # no cov | # errors |
+----------------------|--------|---------|----------|-----------|------------|----------|----------|
+All files             |  86.12 |   89.94 |      294 |        10 |         34 |       15 |        1 |
+ api.ts               |  76.60 |   76.60 |       36 |         0 |         11 |        0 |        0 |
+ App.tsx              |  93.18 |   93.18 |       41 |         0 |          3 |        0 |        0 |
+ Confirmation.tsx     |  80.00 |   80.00 |        4 |         0 |          1 |        0 |        0 |
+ fields.tsx           |  88.89 |   94.12 |       16 |         0 |          1 |        1 |        0 |
+ recaptcha.ts         |   0.00 |    0.00 |        0 |         0 |          1 |       12 |        0 |
+ RegistrationForm.tsx |  88.69 |   89.76 |      139 |        10 |         17 |        2 |        1 |
+ validation.ts        | 100.00 |  100.00 |       58 |         0 |          0 |        0 |        0 |
+----------------------|--------|---------|----------|-----------|------------|----------|----------|
+[32m12:33:47 (50404) INFO JsonReporter[39m Your report can be found at: file:///E:/13%20-%20Lab%20Projects/01_Runs/_____SECOND______ROUND_____/02_kyuhi_single-agent_sdd_v004/02_output/frontend/reports/mutation/mutation.json
+[32m12:33:48 (50404) INFO HtmlReporter[39m Your report can be found at: file:///E:/13%20-%20Lab%20Projects/01_Runs/_____SECOND______ROUND_____/02_kyuhi_single-agent_sdd_v004/02_output/frontend/reports/mutation/mutation.html
+[32m12:33:48 (50404) INFO MutationTestExecutor[39m Done in 3 minutes and 47 seconds.

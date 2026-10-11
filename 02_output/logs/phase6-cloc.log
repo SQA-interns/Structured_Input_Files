@@ -1,0 +1,12 @@
+== backend-prod
+52,SUM,327,150,1922
+== backend-test
+39,SUM,477,58,3022
+== frontend-prod
+10,SUM,57,8,533
+== frontend-test
+7,SUM,63,0,487
+== frontend-test (tests/ + playwright.config.ts)
+8,SUM,56,10,489
+== frontend-test (src/*.test.*)
+4,SUM,34,0,268

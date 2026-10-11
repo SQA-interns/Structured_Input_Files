@@ -1,0 +1,85 @@
+
+### Containers and health (NFR-04)
+backend: Up 25 seconds (healthy)
+frontend: Up 14 seconds (healthy)
+mailpit: Up 30 seconds (healthy)
+postgres: Up 30 seconds (healthy)
+readiness: {"status":"UP"}
+liveness:  {"status":"UP"}
+frontend:  HTTP 200
+
+### Frontend security headers (SB-10)
+Server: nginx
+Content-Security-Policy: default-src 'self'; script-src 'self' https://www.google.com/recaptcha/ https://www.gstatic.com
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+Referrer-Policy: same-origin
+
+### Form configuration through the frontend proxy (AR-01)
+{"conferenceName":"Konferenca 2026","captcha":{"mode":"test","siteKey":""},"consents":[{"id":"privacy","text":"I agree that my personal data is processed for organizing the conference and that it is shared with the conference organizers.","mandatory":true}],"options":[{"id":"ws-ai","name":"Workshop:
+
+### DoD-P01: external registration through http://127.0.0.1:8081/api
+{"id":"bf5f1085-49ad-4a61-b3a7-4340eff49837","type":"EXTERNAL","firstName":"Špela","lastName":"Žnidaršič demo-1791714323","options":[{"id":"ws-ai","name":"Workshop: AI in practice","category":"WORKSHOP"},{"id":"meal-lunch-day1","name":"Lunch, day 1","category":"MEAL"}]} HTTP 201
+
+### DoD-P01: student registration
+{"id":"c86139e1-f200-4cf5-805c-5fa88263bcd8","type":"STUDENT","firstName":"Črt","lastName":"Čeh demo-1791714323","options":[{"id":"other-hackathon","name":"Student hackathon","category":"OTHER"}]} HTTP 201
+
+### Rejected submission (missing consent) stores nothing
+{"message":"The registration was not accepted.","fieldErrors":[{"field":"consents.privacy","message":"This consent is required."}]} HTTP 400
+rows with 'Rejected demo-1791714323': 0
+
+### DoD-P02: rows in PostgreSQL
+bf5f1085-49ad-4a61-b3a7-4340eff49837|EXTERNAL|Špela|Žnidaršič demo-1791714323|Institut Jožef Stefan
+c86139e1-f200-4cf5-805c-5fa88263bcd8|STUDENT|Črt|Čeh demo-1791714323|Univerza v Mariboru
+bf5f1085-49ad-4a61-b3a7-4340eff49837|meal-lunch-day1|Lunch, day 1
+bf5f1085-49ad-4a61-b3a7-4340eff49837|ws-ai|Workshop: AI in practice
+c86139e1-f200-4cf5-805c-5fa88263bcd8|other-hackathon|Student hackathon
+bf5f1085-49ad-4a61-b3a7-4340eff49837|privacy|t
+c86139e1-f200-4cf5-805c-5fa88263bcd8|privacy|t
+
+### DoD-P02: JSON copies on the volume
+-rw------- 1 app app 794 Oct 11 10:25 /data/json-copies/bf5f1085-49ad-4a61-b3a7-4340eff49837.json
+-rw------- 1 app app 764 Oct 11 10:25 /data/json-copies/c86139e1-f200-4cf5-805c-5fa88263bcd8.json
+{
+  "schemaVersion" : 1,
+  "id" : "bf5f1085-49ad-4a61-b3a7-4340eff49837",
+  "type" : "EXTERNAL",
+  "registeredAt" : "2026-10-11T10:25:23.998075578Z",
+  "participant" : {
+    "firstName" : "Špela",
+    "lastName" : "Žnidaršič demo-1791714323",
+    "email" : "spela.demo-1791714323@example.test",
+    "organization" : "Institut Jožef Stefan"
+  },
+  "options" : [ {
+
+### DoD-P03: Mailpit messages (subject, recipients, attachments)
+- New registration – Konferenca 2026 | to: <organizer from .env> | attachments: 1
+- Registration confirmation – Konferenca 2026 | to: crt.demo-1791714323@example.test | attachments: 0
+- New registration – Konferenca 2026 | to: <organizer from .env> | attachments: 1
+- Registration confirmation – Konferenca 2026 | to: spela.demo-1791714323@example.test | attachments: 0
+
+### DoD-P04: export with organizer credentials
+HTTP 200 application/vnd.openxmlformats-officedocument.spreadsheetml.sheet 4946 bytes
+Registration ID
+Čeh demo-1791714323
+Žnidaršič demo-1791714323
+      356  2026-10-11 10:25   xl/workbook.xml
+      564  2026-10-11 10:25   xl/_rels/workbook.xml.rels
+     6363  2026-10-11 10:25   xl/worksheets/sheet1.xml
+
+### DoD-P04: export without credentials and with wrong credentials
+no credentials: HTTP 401
+wrong password: HTTP 401
+via frontend proxy, no credentials: HTTP 401
+
+### NFR-02: docker compose down, then up; data still present
+rows after recreate: 2
+/data/json-copies/bf5f1085-49ad-4a61-b3a7-4340eff49837.json
+/data/json-copies/c86139e1-f200-4cf5-805c-5fa88263bcd8.json
+
+### SB-07/ES-07: backend log has no personal data from this demo
+log lines with demo personal data: 0
+
+### SB-11: processes run as non-root
+backend uid: 100  frontend uid: 101
