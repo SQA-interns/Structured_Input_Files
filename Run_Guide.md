@@ -38,9 +38,10 @@ Read AGENTS.md and start.
 | Phase | The agent asks about | Answer |
 |---|---|---|
 | 0 | Host JDK, Node or npm differs from the pins | Approve the installed versions. |
-| 0 | `vitest` or `jscpd` has Critical or High vulnerabilities | Move to the fixed versions the agent proposes (`vitest` and `@vitest/coverage-v8` 5.0.3, `jscpd` 5.4.0). No question if `tech-stack.md` already has them. |
+| 0 | `vitest` or `jscpd` has Critical or High vulnerabilities | Move to the fixed versions the agent proposes (`jscpd` 5.4.0). `vitest` and `@vitest/coverage-v8` stay on 4.1.11: 5.x does not work with Stryker (see phase 6). No question if `tech-stack.md` already has them. |
 | 0 | CVE-2025-7962 (High) on `angus-activation` | False positive (Low): the CVE is in the mail library before 2.0.4, the shipped `angus-mail` is 2.0.5. Suppress it for that one artifact only. |
 | 6 | Semgrep "basic authentication" (High) on the organizer endpoint | Lower to Low and accept: HTTP Basic is required by `architecture.md` and `security-requirements.md`, over HTTPS or localhost only, password only as a BCrypt hash, failed logins rate limited. |
+| 6 | Stryker reports an implausibly low frontend score (about 25 %) or the agent says mutants are not activated | Approve `vitest` and `@vitest/coverage-v8` 4.1.x, the same version for both; `@stryker-mutator/vitest-runner` 10.0.0 does not work with Vitest 5. No question if `tech-stack.md` has 4.1.11. |
 
 Anything the agent decides on its own (for example a scanner false positive rated Medium) needs no answer.
 
