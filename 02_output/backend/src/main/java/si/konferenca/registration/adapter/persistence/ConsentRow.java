@@ -3,6 +3,7 @@ package si.konferenca.registration.adapter.persistence;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import java.time.Instant;
+import java.util.Objects;
 
 /** Row of registration_consent. */
 @Embeddable
@@ -35,5 +36,18 @@ public class ConsentRow {
 
   Instant givenAt() {
     return givenAt;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    return o instanceof ConsentRow other
+        && Objects.equals(consentId, other.consentId)
+        && Objects.equals(consentText, other.consentText)
+        && Objects.equals(givenAt, other.givenAt);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(consentId, consentText, givenAt);
   }
 }

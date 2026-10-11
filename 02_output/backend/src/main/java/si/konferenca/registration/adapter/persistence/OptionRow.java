@@ -2,6 +2,7 @@ package si.konferenca.registration.adapter.persistence;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
+import java.util.Objects;
 
 /** Row of registration_option. */
 @Embeddable
@@ -34,5 +35,18 @@ public class OptionRow {
 
   String category() {
     return category;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    return o instanceof OptionRow other
+        && Objects.equals(optionId, other.optionId)
+        && Objects.equals(optionName, other.optionName)
+        && Objects.equals(category, other.category);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(optionId, optionName, category);
   }
 }
