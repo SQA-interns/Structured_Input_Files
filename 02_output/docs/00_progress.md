@@ -5,7 +5,7 @@
 Updated at every gate and before any stop, so a fresh session can resume from here.
 
 - Workflow: spec-driven, acceptance tests first (`general/phases.md`)
-- Current phase: 6 (verify)
-- Last gate result: phase 6 in progress: final runs green (backend 197, frontend 59, e2e 5), scans clean, runtime demo passed; findings F-01, F-07, F-08 fixed; final PIT run in progress
-- Next step: finish 06_verification-report.md with the final PIT figures and the D-18 answer, then the phase 6 gate
-- Waiting for the human on: D-18
+- Current phase: 7 (release)
+- Last gate result: phase 6 passed: final run 263/0, manifests match, no secret leak, 0 open Critical/High/Medium, every DoD item has evidence (DoD-08, DoD-09 in phase 7)
+- Next step: write root and component READMEs, release notes, run-summary; verify READMEs from a clean clone
+- Waiting for the human on: nothing
