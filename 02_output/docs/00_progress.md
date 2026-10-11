@@ -5,7 +5,7 @@
 Updated at every gate and before any stop, so a fresh session can resume from here.
 
 - Workflow: spec-driven, acceptance tests first (`general/phases.md`)
-- Current phase: 7 (release)
-- Last gate result: phase 6 passed (DoD evidence in 06_verification-report.md; no open Critical/High; manifests match; no secret leak; coverage and mutation re-measured once)
-- Next step: root and component READMEs, release notes, clean-clone check, run-summary
-- Waiting for the human on: nothing
+- Current phase: done (phase 7 closed)
+- Last gate result: phase 7 passed (READMEs followed from a clean clone, release notes with 6 manual tests, every decision resolved or pending review: D-05..D-10)
+- Next step: human post-run steps (Run_Guide section 4): /cost, build-report session, statistics commit
+- Waiting for the human on: review of pending decisions D-05..D-10 (non-blocking)
