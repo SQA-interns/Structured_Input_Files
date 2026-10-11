@@ -79,7 +79,7 @@ public class ApiExceptionHandler {
         .body(ErrorResponse.of("The request could not be processed."));
   }
 
-  private static String rootCauseType(Throwable e) {
+  static String rootCauseType(Throwable e) {
     Throwable t = e;
     while (t.getCause() != null && t.getCause() != t) {
       t = t.getCause();

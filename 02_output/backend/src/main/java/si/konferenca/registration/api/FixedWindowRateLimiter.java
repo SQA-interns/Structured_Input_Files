@@ -40,5 +40,10 @@ public final class FixedWindowRateLimiter {
     return Math.max(1, (w.start() + WINDOW_MILLIS - now + 999) / 1000);
   }
 
+  /** Number of clients currently tracked (memory bound check). */
+  int trackedKeys() {
+    return windows.size();
+  }
+
   private record Window(long start, int count) {}
 }

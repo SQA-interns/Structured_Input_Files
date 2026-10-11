@@ -92,7 +92,7 @@ public class SecurityConfig {
   }
 
   /** CORS only when an origin is configured (local only, checked at startup). */
-  private static UrlBasedCorsConfigurationSource cors(String origin) {
+  static UrlBasedCorsConfigurationSource cors(String origin) {
     UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
     if (origin != null && !origin.isBlank()) {
       CorsConfiguration c = new CorsConfiguration();
