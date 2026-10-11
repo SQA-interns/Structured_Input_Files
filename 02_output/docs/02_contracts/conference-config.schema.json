@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konferenca.si/schemas/conference-config-1.json",
+  "title": "Conference configuration (options and consents)",
+  "description": "File named by APP_CONFERENCE_CONFIG_FILE, read once at startup (AR-04, specification section 3). Ids must also be unique within options and within consents; violations stop the start (AC-003-03).",
+  "type": "object",
+  "required": ["options", "consents"],
+  "additionalProperties": false,
+  "properties": {
+    "options": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "category", "active"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{0,63}$" },
+          "name": { "type": "string", "minLength": 1, "maxLength": 200 },
+          "category": { "enum": ["WORKSHOP", "EVENT", "MEAL", "OTHER"] },
+          "active": { "type": "boolean" },
+          "availableTo": {
+            "type": "array",
+            "items": { "enum": ["EXTERNAL", "STUDENT"] },
+            "minItems": 1,
+            "uniqueItems": true,
+            "default": ["EXTERNAL", "STUDENT"]
+          }
+        }
+      }
+    },
+    "consents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "text", "mandatory"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{0,63}$" },
+          "text": { "type": "string", "minLength": 1, "maxLength": 1000 },
+          "mandatory": { "type": "boolean" }
+        }
+      }
+    }
+  }
+}
