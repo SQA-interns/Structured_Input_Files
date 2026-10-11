@@ -1,0 +1,253 @@
+
+ RUN  v4.1.11 E:/13 - Lab Projects/01_Runs/_____SECOND______ROUND_____/02_kyuhi_single-agent_sdd_v004/02_output/frontend
+
+ ❯ tests/acceptance/studentForm.acceptance.test.tsx (1 test | 1 failed) 1029ms
+     × AC-002-07: shows the student fields and only options available to students, unchecked 1027ms
+ ❯ tests/acceptance/externalForm.acceptance.test.tsx (1 test | 1 failed) 1031ms
+     × AC-001-08: shows the external fields, active options by category and unchecked consents 1028ms
+ ❯ tests/acceptance/confirmation.acceptance.test.tsx (5 tests | 5 failed) 5078ms
+     × AC-004-01: shows the confirmation only after the backend accepted the registration 1028ms
+     × AC-004-02: shows server field errors next to the fields, keeps values, no confirmation 1017ms
+     × AC-004-03: validates required fields, email and consent before sending anything 1015ms
+     × AC-004-04: a network failure shows a general error and no confirmation 1009ms
+     × AC-004-04: a server error shows a general error without technical details 1006ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 7 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/acceptance/confirmation.acceptance.test.tsx > US-004 confirmation > AC-004-01: shows the confirmation only after the backend accepted the registration
+TestingLibraryElementError: Unable to find role="heading" and name `/Konferenca 2026/`
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<h1>[39m
+      [0mConference registration[0m
+    [36m</h1>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<h1>[39m
+      [0mConference registration[0m
+    [36m</h1>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ renderLoaded tests/acceptance/ui.ts:12:16
+     10| export async function renderLoaded() {
+     11|   render(createElement(App));
+     12|   await screen.findByRole("heading", { level: 1, name: /Konferenca 202…
+       |                ^
+     13| }
+     14|
+ ❯ tests/acceptance/confirmation.acceptance.test.tsx:23:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/7]⎯
+
+ FAIL  tests/acceptance/confirmation.acceptance.test.tsx > US-004 confirmation > AC-004-02: shows server field errors next to the fields, keeps values, no confirmation
+TestingLibraryElementError: Unable to find role="heading" and name `/Konferenca 2026/`
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<h1>[39m
+      [0mConference registration[0m
+    [36m</h1>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<h1>[39m
+      [0mConference registration[0m
+    [36m</h1>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ renderLoaded tests/acceptance/ui.ts:12:16
+     10| export async function renderLoaded() {
+     11|   render(createElement(App));
+     12|   await screen.findByRole("heading", { level: 1, name: /Konferenca 202…
+       |                ^
+     13| }
+     14|
+ ❯ tests/acceptance/confirmation.acceptance.test.tsx:66:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/7]⎯
+
+ FAIL  tests/acceptance/confirmation.acceptance.test.tsx > US-004 confirmation > AC-004-03: validates required fields, email and consent before sending anything
+TestingLibraryElementError: Unable to find role="heading" and name `/Konferenca 2026/`
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<h1>[39m
+      [0mConference registration[0m
+    [36m</h1>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<h1>[39m
+      [0mConference registration[0m
+    [36m</h1>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ renderLoaded tests/acceptance/ui.ts:12:16
+     10| export async function renderLoaded() {
+     11|   render(createElement(App));
+     12|   await screen.findByRole("heading", { level: 1, name: /Konferenca 202…
+       |                ^
+     13| }
+     14|
+ ❯ tests/acceptance/confirmation.acceptance.test.tsx:88:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/7]⎯
+
+ FAIL  tests/acceptance/confirmation.acceptance.test.tsx > US-004 confirmation > AC-004-04: a network failure shows a general error and no confirmation
+TestingLibraryElementError: Unable to find role="heading" and name `/Konferenca 2026/`
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<h1>[39m
+      [0mConference registration[0m
+    [36m</h1>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<h1>[39m
+      [0mConference registration[0m
+    [36m</h1>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ renderLoaded tests/acceptance/ui.ts:12:16
+     10| export async function renderLoaded() {
+     11|   render(createElement(App));
+     12|   await screen.findByRole("heading", { level: 1, name: /Konferenca 202…
+       |                ^
+     13| }
+     14|
+ ❯ tests/acceptance/confirmation.acceptance.test.tsx:119:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/7]⎯
+
+ FAIL  tests/acceptance/confirmation.acceptance.test.tsx > US-004 confirmation > AC-004-04: a server error shows a general error without technical details
+TestingLibraryElementError: Unable to find role="heading" and name `/Konferenca 2026/`
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<h1>[39m
+      [0mConference registration[0m
+    [36m</h1>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<h1>[39m
+      [0mConference registration[0m
+    [36m</h1>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ renderLoaded tests/acceptance/ui.ts:12:16
+     10| export async function renderLoaded() {
+     11|   render(createElement(App));
+     12|   await screen.findByRole("heading", { level: 1, name: /Konferenca 202…
+       |                ^
+     13| }
+     14|
+ ❯ tests/acceptance/confirmation.acceptance.test.tsx:134:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/7]⎯
+
+ FAIL  tests/acceptance/externalForm.acceptance.test.tsx > US-001 external participant form > AC-001-08: shows the external fields, active options by category and unchecked consents
+TestingLibraryElementError: Unable to find role="heading" and name `/Konferenca 2026/`
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<h1>[39m
+      [0mConference registration[0m
+    [36m</h1>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<h1>[39m
+      [0mConference registration[0m
+    [36m</h1>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ renderLoaded tests/acceptance/ui.ts:12:16
+     10| export async function renderLoaded() {
+     11|   render(createElement(App));
+     12|   await screen.findByRole("heading", { level: 1, name: /Konferenca 202…
+       |                ^
+     13| }
+     14|
+ ❯ tests/acceptance/externalForm.acceptance.test.tsx:14:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/7]⎯
+
+ FAIL  tests/acceptance/studentForm.acceptance.test.tsx > US-002 student form > AC-002-07: shows the student fields and only options available to students, unchecked
+TestingLibraryElementError: Unable to find role="heading" and name `/Konferenca 2026/`
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<h1>[39m
+      [0mConference registration[0m
+    [36m</h1>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<h1>[39m
+      [0mConference registration[0m
+    [36m</h1>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ renderLoaded tests/acceptance/ui.ts:12:16
+     10| export async function renderLoaded() {
+     11|   render(createElement(App));
+     12|   await screen.findByRole("heading", { level: 1, name: /Konferenca 202…
+       |                ^
+     13| }
+     14|
+ ❯ tests/acceptance/studentForm.acceptance.test.tsx:14:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/7]⎯
+
+
+ Test Files  3 failed (3)
+      Tests  7 failed (7)
+   Start at  11:31:44
+   Duration  6.07s (transform 201ms, setup 345ms, import 445ms, tests 7.14s, environment 1.59s)
+

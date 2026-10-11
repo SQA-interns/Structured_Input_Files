@@ -28,6 +28,28 @@ Decided before any test was written (`measurement-scope.md`).
 
 No generated code exists in either component. Nothing else is excluded.
 
+## Phase 3 run against the bootstrap skeleton (before the freeze)
+
+Run on 2026-10-11 against the phase 0 skeletons (no production behaviour). Logs: `out/logs/phase3-backend-acceptance-run.log`, `phase3-frontend-acceptance-run.log`, `phase3-e2e-run.log`.
+
+| Suite | Tests | Failed | Passed | Reason for the failures |
+|---|---|---|---|---|
+| backend acceptance (`./mvnw verify`) | 93 | 90 | 3 | Every `/api` request answers 401 from the default Spring Security configuration because no endpoint exists (84); invalid configurations and unsafe production settings do not stop the start because no checks exist (6). No build, container or harness errors. |
+| frontend acceptance (`npx vitest run`) | 7 | 7 | 0 | The skeleton page has no conference heading, form or confirmation. |
+| e2e (`npx playwright test` against the Vite dev server, `E2E_BASE_URL=http://127.0.0.1:5173`; the compose stack does not exist yet) | 2 | 2 | 0 | The registration-type radios and fields do not exist. |
+
+Tests that pass only because the bootstrap already provides the behaviour:
+
+| Test | Why it passes on the skeleton |
+|---|---|
+| `HttpHardeningAcceptanceTest.nfr_04_healthAndReadinessAreReported` | Spring Boot Actuator in the skeleton already exposes liveness and readiness. |
+| `ConferenceOptionsAcceptanceTest.ac_003_03_validConfigurationStarts` | control case: a valid configuration starts (the skeleton starts with any configuration). |
+| `ProductionStartupAcceptanceTest.sr_02_completeProductionConfigurationStarts` | control case: a complete production configuration starts. |
+
+Self-check before the freeze (skill step 5): every helper returns what the assertions expect (JDBC timestamps only checked for presence; Mailpit lists read leniently for empty Cc/Bcc; JSON numbers read as Integer); the workbook text reader of the end-to-end test was checked against a workbook written by Apache POI 5.5.1 with Slovenian text; each rejection test also checks that neither the unique email nor the unique last name reached the database or a JSON copy; startup-refusal tests have a control that must start with the same settings.
+
+Frozen: 102 tests (backend 93, frontend acceptance 7, e2e 2) for 35 AC; manifest `docs/03_acceptance-manifest.sha256`.
+
 ## First complete run (before any fix)
 
 ## Final run (phase 6)

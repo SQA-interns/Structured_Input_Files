@@ -1,0 +1,55 @@
+
+Running 2 tests using 1 worker
+
+  x  1 [chromium] › tests\e2e\registration.e2e.spec.ts:6:1 › AC-004-01 / NFR-01: a student with Slovenian characters registers end to end (1.0m)
+  x  2 [chromium] › tests\e2e\registration.e2e.spec.ts:68:1 › AC-001-01 / AC-004-01: an external participant registers end to end (5.2s)
+
+
+  1) [chromium] › tests\e2e\registration.e2e.spec.ts:6:1 › AC-004-01 / NFR-01: a student with Slovenian characters registers end to end 
+
+    Test timeout of 60000ms exceeded.
+
+    Error: locator.check: Test timeout of 60000ms exceeded.
+    Call log:
+      - waiting for getByRole('radio', { name: 'Student' })
+
+
+      16 |   await page.goto("/");
+      17 |   await expect(page.getByRole("heading", { level: 1 })).toContainText("Conference registration");
+    > 18 |   await page.getByRole("radio", { name: "Student" }).check();
+         |                                                      ^
+      19 |   await page.getByLabel("First name").fill(firstName);
+      20 |   await page.getByLabel("Last name").fill(lastName);
+      21 |   await page.getByLabel("Email").fill(email);
+        at E:\13 - Lab Projects\01_Runs\_____SECOND______ROUND_____\02_kyuhi_single-agent_sdd_v004\02_output\frontend\tests\e2e\registration.e2e.spec.ts:18:54
+
+    Error Context: test-results\registration.e2e-AC-004-01-a9f95-acters-registers-end-to-end-chromium\error-context.md
+
+  2) [chromium] › tests\e2e\registration.e2e.spec.ts:68:1 › AC-001-01 / AC-004-01: an external participant registers end to end 
+
+    Error: expect(locator).toBeChecked() failed
+
+    Locator: getByRole('radio', { name: 'External participant' })
+    Expected: checked
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeChecked" getByRole('radio', { name: 'External participant' }) with timeout 5000ms
+      - waiting for getByRole('radio', { name: 'External participant' })
+
+
+      75 |
+      76 |   await page.goto("/");
+    > 77 |   await expect(page.getByRole("radio", { name: "External participant" })).toBeChecked();
+         |                                                                           ^
+      78 |   await page.getByLabel("First name").fill("Ana");
+      79 |   await page.getByLabel("Last name").fill(lastName);
+      80 |   await page.getByLabel("Email").fill(email);
+        at E:\13 - Lab Projects\01_Runs\_____SECOND______ROUND_____\02_kyuhi_single-agent_sdd_v004\02_output\frontend\tests\e2e\registration.e2e.spec.ts:77:75
+
+    Error Context: test-results\registration.e2e-AC-001-01-4ebf4-cipant-registers-end-to-end-chromium\error-context.md
+
+  2 failed
+    [chromium] › tests\e2e\registration.e2e.spec.ts:6:1 › AC-004-01 / NFR-01: a student with Slovenian characters registers end to end 
+    [chromium] › tests\e2e\registration.e2e.spec.ts:68:1 › AC-001-01 / AC-004-01: an external participant registers end to end 
