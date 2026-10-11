@@ -83,7 +83,7 @@ Applied in this order; all field errors of one request are returned together.
 1. Unknown JSON properties → 400 (`spring.jackson.deserialization.fail-on-unknown-properties=true`); `type` must be `EXTERNAL` or `STUDENT`.
 2. Every string is trimmed (BR-02); required fields of the type must be non-empty after trimming; fields of the other type must be absent or empty (fixed fields, BR-01 — field error "not allowed for this registration type").
 3. Lengths: names ≤ 100, email ≤ 254, organization / study institution / study programme ≤ 200, student ID ≤ 50. Any Unicode letter is allowed (BR-03, NFR-01).
-4. Email: `^[^\s@]+@[^\s@]+\.[^\s@]+$` and parseable by `jakarta.mail.internet.InternetAddress(strict)`; this also excludes line breaks (SR-05).
+4. Email: at most 254 characters, `local@domain.tld` without whitespace (so no line breaks, SR-05) and without the address syntax characters `<>()[]\,;:"` in any part. A domain regex: the domain package does not depend on Jakarta Mail (section 2, rule 1).
 5. Options: each id must exist, be active and be available to the type; duplicates are rejected (BR-04, SR-04, D-05, D-08). Field `optionIds`.
 6. Consents: every mandatory consent id must be in `consentIds`; unknown ids are rejected. Field `consents.<id>` (BR-05).
 7. Captcha: `captchaToken` must be present and verified (SR-01). Field `captchaToken`. Verification runs only when steps 1–6 passed, so invalid input costs no call to Google.
