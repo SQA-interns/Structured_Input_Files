@@ -1,0 +1,257 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< si.konferenca:registration-backend >-----------------
+[INFO] Building registration-backend 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- jacoco:0.8.12:prepare-agent (prepare-agent) @ registration-backend ---
+[INFO] Skipping JaCoCo execution because property jacoco.skip is set.
+[INFO] argLine set to empty
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ registration-backend ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 2 resources from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ registration-backend ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ registration-backend ---
+[INFO] Copying 5 resources from src\test\resources to target\test-classes
+[INFO] 
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ registration-backend ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ registration-backend ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running si.konferenca.registration.acceptance.JsonCopyFailureAcceptanceTest
+11:42:32.998 [main] INFO org.testcontainers.images.PullPolicy -- Image pull policy will be performed by: DefaultPullPolicy()
+11:42:33.002 [main] INFO org.testcontainers.utility.ImageNameSubstitutor -- Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+11:42:33.048 [main] INFO org.testcontainers.DockerClientFactory -- Testcontainers version: 2.0.5
+11:42:33.251 [main] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+11:42:33.669 [main] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+11:42:33.670 [main] INFO org.testcontainers.DockerClientFactory -- Docker host IP address is localhost
+11:42:33.688 [main] INFO org.testcontainers.DockerClientFactory -- Connected to docker: 
+  Server Version: 29.8.1
+  API Version: 1.56
+  Operating System: Docker Desktop
+  Total Memory: 40065 MB
+  Labels: 
+    com.docker.desktop.address=npipe://\\.\pipe\docker_cli
+11:42:33.781 [main] INFO tc.testcontainers/ryuk:0.14.0 -- Creating container for image: testcontainers/ryuk:0.14.0
+11:42:34.056 [main] INFO tc.testcontainers/ryuk:0.14.0 -- Container testcontainers/ryuk:0.14.0 is starting: 9e5a8e582a1c57a9b67aa076437425687494c1380898330602278d692aed31ab
+11:42:34.398 [main] INFO tc.testcontainers/ryuk:0.14.0 -- Container testcontainers/ryuk:0.14.0 started in PT0.6167326S
+11:42:34.404 [main] INFO org.testcontainers.utility.RyukResourceReaper -- Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+11:42:34.404 [main] INFO org.testcontainers.DockerClientFactory -- Checking the system...
+11:42:34.405 [main] INFO org.testcontainers.DockerClientFactory -- ?? Docker server version should be at least 1.6.0
+11:42:34.406 [main] INFO tc.postgres:16.15-alpine -- Creating container for image: postgres:16.15-alpine
+11:42:34.532 [main] INFO tc.postgres:16.15-alpine -- Container postgres:16.15-alpine is starting: 6fd6c3cd989e223c58b1b2fa9cde21375cde36f04f41020057fe13f1d790dbff
+11:42:36.570 [main] INFO tc.postgres:16.15-alpine -- Container postgres:16.15-alpine started in PT2.1639784S
+11:42:36.571 [main] INFO tc.postgres:16.15-alpine -- Container is started (JDBC URL: jdbc:postgresql://localhost:49286/test?loggerLevel=OFF)
+11:42:36.571 [main] INFO tc.axllent/mailpit:v1.31.1 -- Creating container for image: axllent/mailpit:v1.31.1
+11:42:36.689 [main] INFO tc.axllent/mailpit:v1.31.1 -- Container axllent/mailpit:v1.31.1 is starting: 4271b58e2b388eaa6d792545cbdb0e8303c2ac9506bac4726e19a7541df6e58d
+11:42:36.966 [main] INFO org.testcontainers.containers.wait.strategy.HttpWaitStrategy -- /eager_babbage: Waiting for 60 seconds for URL: http://localhost:49288/api/v1/messages (where port 49288 maps to container port 8025)
+11:42:36.976 [main] INFO tc.axllent/mailpit:v1.31.1 -- Container axllent/mailpit:v1.31.1 started in PT0.4046344S
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-10-11T11:42:37.391+02:00  INFO 28400 --- [registration-backend] [           main] s.k.r.a.JsonCopyFailureAcceptanceTest    : Starting JsonCopyFailureAcceptanceTest using Java 21.0.10 with PID 28400 (started by sense in E:\13 - Lab Projects\01_Runs\_____SECOND______ROUND_____\02_kyuhi_single-agent_sdd_v004\02_output\backend)
+2026-10-11T11:42:37.392+02:00  INFO 28400 --- [registration-backend] [           main] s.k.r.a.JsonCopyFailureAcceptanceTest    : No active profile set, falling back to 1 default profile: "default"
+2026-10-11T11:42:38.376+02:00  INFO 28400 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-11T11:42:38.405+02:00  INFO 28400 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 20 ms. Found 0 JPA repository interfaces.
+2026-10-11T11:42:39.558+02:00  INFO 28400 --- [registration-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-10-11T11:42:39.575+02:00  INFO 28400 --- [registration-backend] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-11T11:42:39.576+02:00  INFO 28400 --- [registration-backend] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.26]
+2026-10-11T11:42:39.681+02:00  INFO 28400 --- [registration-backend] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 2266 ms
+2026-10-11T11:42:40.204+02:00  INFO 28400 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-10-11T11:42:40.381+02:00  INFO 28400 --- [registration-backend] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@408b2ae2
+2026-10-11T11:42:40.382+02:00  INFO 28400 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-10-11T11:42:40.401+02:00  INFO 28400 --- [registration-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:49286/test?loggerLevel=OFF (PostgreSQL 16.15)
+2026-10-11T11:42:40.457+02:00  INFO 28400 --- [registration-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2026-10-11T11:42:40.461+02:00  INFO 28400 --- [registration-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.016s)
+2026-10-11T11:42:40.480+02:00  INFO 28400 --- [registration-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2026-10-11T11:42:40.533+02:00  INFO 28400 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-10-11T11:42:40.548+02:00  INFO 28400 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "1 - registration schema"
+2026-10-11T11:42:40.595+02:00  INFO 28400 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 1 migration to schema "public", now at version v1 (execution time 00:00.024s)
+2026-10-11T11:42:40.699+02:00  INFO 28400 --- [registration-backend] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-10-11T11:42:40.763+02:00  INFO 28400 --- [registration-backend] [           main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.5.Final
+2026-10-11T11:42:41.196+02:00  INFO 28400 --- [registration-backend] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-11T11:42:41.269+02:00  INFO 28400 --- [registration-backend] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:49286/test?loggerLevel=OFF]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 16.15
+	Default catalog/schema: test/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-10-11T11:42:42.027+02:00  INFO 28400 --- [registration-backend] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-11T11:42:42.071+02:00  INFO 28400 --- [registration-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-11T11:42:42.281+02:00  WARN 28400 --- [registration-backend] [           main] .s.a.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: e9de12a0-4c07-4eb8-9038-fe97fc55dcd2
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-10-11T11:42:42.293+02:00  INFO 28400 --- [registration-backend] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-10-11T11:42:43.106+02:00  INFO 28400 --- [registration-backend] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-10-11T11:42:43.182+02:00  INFO 28400 --- [registration-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 64642 (http) with context path '/'
+2026-10-11T11:42:43.191+02:00  INFO 28400 --- [registration-backend] [           main] s.k.r.a.JsonCopyFailureAcceptanceTest    : Started JsonCopyFailureAcceptanceTest in 6.11 seconds (process running for 11.233)
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (C:\Users\sense\.m2\repository\net\bytebuddy\byte-buddy-agent\1.18.11\byte-buddy-agent-1.18.11.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+2026-10-11T11:42:43.726+02:00  INFO 28400 --- [registration-backend] [o-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-11T11:42:43.727+02:00  INFO 28400 --- [registration-backend] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-11T11:42:43.727+02:00  INFO 28400 --- [registration-backend] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2026-10-11T11:42:43.890+02:00 ERROR 28400 --- [registration-backend] [o-auto-1-exec-1] s.k.r.api.ApiExceptionHandler            : Registration could not be stored: FileAlreadyExistsException
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 11.33 s -- in si.konferenca.registration.acceptance.JsonCopyFailureAcceptanceTest
+[INFO] Running si.konferenca.registration.acceptance.MailServerDownAcceptanceTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-10-11T11:42:44.042+02:00  INFO 28400 --- [registration-backend] [           main] s.k.r.a.MailServerDownAcceptanceTest     : Starting MailServerDownAcceptanceTest using Java 21.0.10 with PID 28400 (started by sense in E:\13 - Lab Projects\01_Runs\_____SECOND______ROUND_____\02_kyuhi_single-agent_sdd_v004\02_output\backend)
+2026-10-11T11:42:44.042+02:00  INFO 28400 --- [registration-backend] [           main] s.k.r.a.MailServerDownAcceptanceTest     : No active profile set, falling back to 1 default profile: "default"
+2026-10-11T11:42:44.232+02:00  INFO 28400 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-11T11:42:44.242+02:00  INFO 28400 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 0 JPA repository interfaces.
+2026-10-11T11:42:44.332+02:00  INFO 28400 --- [registration-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-10-11T11:42:44.333+02:00  INFO 28400 --- [registration-backend] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-11T11:42:44.333+02:00  INFO 28400 --- [registration-backend] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.26]
+2026-10-11T11:42:44.396+02:00  INFO 28400 --- [registration-backend] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 352 ms
+2026-10-11T11:42:44.463+02:00  INFO 28400 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2026-10-11T11:42:44.476+02:00  INFO 28400 --- [registration-backend] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection org.postgresql.jdbc.PgConnection@797ec046
+2026-10-11T11:42:44.477+02:00  INFO 28400 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2026-10-11T11:42:44.479+02:00  INFO 28400 --- [registration-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:49286/test?loggerLevel=OFF (PostgreSQL 16.15)
+2026-10-11T11:42:44.507+02:00  INFO 28400 --- [registration-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.010s)
+2026-10-11T11:42:44.530+02:00  INFO 28400 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 1
+2026-10-11T11:42:44.531+02:00  INFO 28400 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-10-11T11:42:44.550+02:00  INFO 28400 --- [registration-backend] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-10-11T11:42:44.571+02:00  INFO 28400 --- [registration-backend] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-11T11:42:44.580+02:00  INFO 28400 --- [registration-backend] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:49286/test?loggerLevel=OFF]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 16.15
+	Default catalog/schema: test/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-10-11T11:42:44.627+02:00  INFO 28400 --- [registration-backend] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-11T11:42:44.645+02:00  INFO 28400 --- [registration-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-11T11:42:44.696+02:00  WARN 28400 --- [registration-backend] [           main] .s.a.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 08600fd6-52b3-4504-a1fc-eac6b7fa44d2
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-10-11T11:42:44.697+02:00  INFO 28400 --- [registration-backend] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-10-11T11:42:44.807+02:00  INFO 28400 --- [registration-backend] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-10-11T11:42:44.823+02:00  INFO 28400 --- [registration-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 64654 (http) with context path '/'
+2026-10-11T11:42:44.826+02:00  INFO 28400 --- [registration-backend] [           main] s.k.r.a.MailServerDownAcceptanceTest     : Started MailServerDownAcceptanceTest in 0.807 seconds (process running for 12.867)
+2026-10-11T11:42:44.837+02:00  INFO 28400 --- [registration-backend] [o-auto-2-exec-1] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-11T11:42:44.838+02:00  INFO 28400 --- [registration-backend] [o-auto-2-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-11T11:42:44.839+02:00  INFO 28400 --- [registration-backend] [o-auto-2-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.904 s -- in si.konferenca.registration.acceptance.MailServerDownAcceptanceTest
+[INFO] Running si.konferenca.registration.acceptance.RegistrationStorageAcceptanceTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-10-11T11:42:44.941+02:00  INFO 28400 --- [registration-backend] [           main] .k.r.a.RegistrationStorageAcceptanceTest : Starting RegistrationStorageAcceptanceTest using Java 21.0.10 with PID 28400 (started by sense in E:\13 - Lab Projects\01_Runs\_____SECOND______ROUND_____\02_kyuhi_single-agent_sdd_v004\02_output\backend)
+2026-10-11T11:42:44.942+02:00  INFO 28400 --- [registration-backend] [           main] .k.r.a.RegistrationStorageAcceptanceTest : No active profile set, falling back to 1 default profile: "default"
+2026-10-11T11:42:45.107+02:00  INFO 28400 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-11T11:42:45.117+02:00  INFO 28400 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 0 JPA repository interfaces.
+2026-10-11T11:42:45.195+02:00  INFO 28400 --- [registration-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-10-11T11:42:45.196+02:00  INFO 28400 --- [registration-backend] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-11T11:42:45.196+02:00  INFO 28400 --- [registration-backend] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.26]
+2026-10-11T11:42:45.256+02:00  INFO 28400 --- [registration-backend] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 313 ms
+2026-10-11T11:42:45.309+02:00  INFO 28400 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2026-10-11T11:42:45.325+02:00  INFO 28400 --- [registration-backend] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection org.postgresql.jdbc.PgConnection@88d92e5
+2026-10-11T11:42:45.326+02:00  INFO 28400 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2026-10-11T11:42:45.327+02:00  INFO 28400 --- [registration-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:49286/test?loggerLevel=OFF (PostgreSQL 16.15)
+2026-10-11T11:42:45.351+02:00  INFO 28400 --- [registration-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.007s)
+2026-10-11T11:42:45.374+02:00  INFO 28400 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 1
+2026-10-11T11:42:45.374+02:00  INFO 28400 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-10-11T11:42:45.393+02:00  INFO 28400 --- [registration-backend] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-10-11T11:42:45.417+02:00  INFO 28400 --- [registration-backend] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-11T11:42:45.426+02:00  INFO 28400 --- [registration-backend] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:49286/test?loggerLevel=OFF]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 16.15
+	Default catalog/schema: test/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-10-11T11:42:45.469+02:00  INFO 28400 --- [registration-backend] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-11T11:42:45.486+02:00  INFO 28400 --- [registration-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-11T11:42:45.529+02:00  WARN 28400 --- [registration-backend] [           main] .s.a.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 195a8230-9e8e-4be6-b40e-dc3217399197
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-10-11T11:42:45.530+02:00  INFO 28400 --- [registration-backend] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-10-11T11:42:45.630+02:00  INFO 28400 --- [registration-backend] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-10-11T11:42:45.642+02:00  INFO 28400 --- [registration-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 64667 (http) with context path '/'
+2026-10-11T11:42:45.646+02:00  INFO 28400 --- [registration-backend] [           main] .k.r.a.RegistrationStorageAcceptanceTest : Started RegistrationStorageAcceptanceTest in 0.725 seconds (process running for 13.687)
+2026-10-11T11:42:45.654+02:00  INFO 28400 --- [registration-backend] [o-auto-3-exec-1] o.a.c.c.C.[Tomcat-2].[localhost].[/]     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-11T11:42:45.654+02:00  INFO 28400 --- [registration-backend] [o-auto-3-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-11T11:42:45.654+02:00  INFO 28400 --- [registration-backend] [o-auto-3-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.993 s -- in si.konferenca.registration.acceptance.RegistrationStorageAcceptanceTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jar:3.5.1:jar (default-jar) @ registration-backend ---
+[INFO] Building jar: E:\13 - Lab Projects\01_Runs\_____SECOND______ROUND_____\02_kyuhi_single-agent_sdd_v004\02_output\backend\target\registration-backend-1.0.0.jar
+[INFO] 
+[INFO] --- spring-boot:4.1.1:repackage (repackage) @ registration-backend ---
+[INFO] Replacing main artifact E:\13 - Lab Projects\01_Runs\_____SECOND______ROUND_____\02_kyuhi_single-agent_sdd_v004\02_output\backend\target\registration-backend-1.0.0.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to E:\13 - Lab Projects\01_Runs\_____SECOND______ROUND_____\02_kyuhi_single-agent_sdd_v004\02_output\backend\target\registration-backend-1.0.0.jar.original
+[INFO] 
+[INFO] --- jacoco:0.8.12:report (report) @ registration-backend ---
+[INFO] Skipping JaCoCo execution because property jacoco.skip is set.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  17.826 s
+[INFO] Finished at: 2026-10-11T11:42:47+02:00
+[INFO] ------------------------------------------------------------------------

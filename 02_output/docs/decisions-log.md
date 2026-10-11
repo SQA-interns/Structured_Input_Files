@@ -100,3 +100,12 @@
 - Options: 1. add `@types/node` 24.13.0 (exact, matches the Node 24.13.0 pin, MIT, dev dependency, not in the bundle) and enable it in `tsconfig.json` (default); 2. exclude end-to-end files from type checking.
 - Human response: none
 - Resolution: option 1 (tech-stack.md rule for unlisted dev tooling); scanned in phase 6 like any other dependency
+
+## D-12: frozen acceptance harness ignores per-class property overrides
+- Timestamp: 2026-10-11T09:43:14Z
+- Phase: 4
+- Type: blocking
+- Trigger: `JsonCopyFailureAcceptanceTest` (AC-005-03) got 201 although the implementation rolls back when the JSON copy fails. The copy was written to the base class's directory, not the subclass's. Probes (uncommitted, removed) showed that with Spring Boot 4.1.1 / Spring Framework 7.0.9 the `@DynamicPropertySource` of `AcceptanceTestBase` wins over a subclass's `@DynamicPropertySource` for the same key, whatever the method name. So four frozen classes cannot apply their settings: `JsonCopyFailureAcceptanceTest` (`app.json-copy-dir`), `MailServerDownAcceptanceTest` (`spring.mail.host/port`), `RateLimitAcceptanceTest` (`app.rate-limit.*`), `RecaptchaProductionPathAcceptanceTest` (`app.recaptcha.*`). A correct implementation cannot make AC-005-03, the SR-03 rate-limit tests or the SR-01/DoD-P05 production-captcha tests pass; AC-006-03 would pass without exercising a mail failure.
+- Options: 1. (proposed) fix the harness only, no assertion changes: move the helpers of `AcceptanceTestBase` into a new `support/AcceptanceTestSupport` without property registration; `AcceptanceTestBase` extends it and keeps the default registration; the four classes extend `AcceptanceTestSupport` and register `TestEnvironment.baseProperties(...)` with their changed keys applied to the map. Then regenerate `docs/03_acceptance-manifest.sha256` in its own commit. Prototype verified locally: AC-005-03, AC-005-01/02/04 and AC-006-03 pass. 2. keep the tests frozen as they are and accept that AC-005-03, SR-03 and SR-01/DoD-P05 have no passing automated test (findings in phase 6).
+- Human response: none yet
+- Resolution: pending (waiting for the human)
