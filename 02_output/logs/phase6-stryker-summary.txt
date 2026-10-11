@@ -1,0 +1,2 @@
+{"Killed":360,"Survived":67,"Timeout":11}
+{"src/api.ts":4,"src/App.tsx":8,"src/components/Captcha.tsx":18,"src/components/RegistrationForm.tsx":31,"src/validation.ts":6}

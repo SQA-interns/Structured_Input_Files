@@ -107,6 +107,8 @@ describe("validation", () => {
     ["ana@x-.si", false],
     ["ana@x.s", false],
     ["ana@x.s1", false],
+    ["ana@example.si1", false],
+    ["ana@example.si-x", false],
   ])("isValidEmail(%s) is %s", (email, expected) => {
     expect(isValidEmail(email)).toBe(expected);
   });
