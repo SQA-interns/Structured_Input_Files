@@ -1,6 +1,8 @@
 package si.konferenca.registration.config;
 
 import jakarta.servlet.http.HttpServletResponse;
+import java.time.Clock;
+import java.util.List;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -14,8 +16,12 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import org.springframework.security.web.header.writers.ReferrerPolicyHeaderWriter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import si.konferenca.registration.api.ErrorWriter;
+import si.konferenca.registration.api.FixedWindowRateLimiter;
 import si.konferenca.registration.api.OrganizerTransportGuard;
+import si.konferenca.registration.api.RequestLimitFilter;
 
 /**
  * Access rules (SB-02, SB-03, SR-06): public form endpoints and health, organizer-only export with
@@ -47,6 +53,8 @@ public class SecurityConfig {
                     (request, response, e) ->
                         ErrorWriter.write(
                             response, HttpServletResponse.SC_FORBIDDEN, "Access denied.")))
+        .cors(c -> c.configurationSource(cors(props.cors().allowedOrigin())))
+        .addFilterBefore(requestLimits(props), BasicAuthenticationFilter.class)
         .addFilterBefore(
             new OrganizerTransportGuard(props.organizer().httpsOnly()),
             BasicAuthenticationFilter.class)
@@ -70,6 +78,30 @@ public class SecurityConfig {
                     .anyRequest()
                     .denyAll());
     return http.build();
+  }
+
+  private static RequestLimitFilter requestLimits(AppProperties props) {
+    AppProperties.RateLimit r = props.rateLimit();
+    return new RequestLimitFilter(
+        new FixedWindowRateLimiter(Clock.systemUTC()),
+        new RequestLimitFilter.Limits(
+            r.registrationPerMinute(),
+            r.formConfigPerMinute(),
+            r.exportPerMinute(),
+            props.maxRequestBytes()));
+  }
+
+  /** CORS only when an origin is configured (local only, checked at startup). */
+  private static UrlBasedCorsConfigurationSource cors(String origin) {
+    UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+    if (origin != null && !origin.isBlank()) {
+      CorsConfiguration c = new CorsConfiguration();
+      c.setAllowedOrigins(List.of(origin.strip()));
+      c.setAllowedMethods(List.of("GET", "POST"));
+      c.setAllowedHeaders(List.of("Content-Type", "Authorization"));
+      source.registerCorsConfiguration("/api/**", c);
+    }
+    return source;
   }
 
   @Bean
