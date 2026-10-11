@@ -1,0 +1,55 @@
+
+=== stop the stack started from the working copy
+
+=== clean clone (core.longpaths for this clone only: the scratch path is long)
+$ git -c core.longpaths=true clone -q --branch kyuhi/single-agent/sdd/v003 E:/13 - Lab Projects/01_Runs/_____SECOND______ROUND_____/01_kyuhi_single-agent_sdd_v003 C:/Users/sense/AppData/Local/Temp/claude/E--13---Lab-Projects-01-Runs------SECOND------ROUND------01-kyuhi-single-agent-sdd-v003/eb9d4e82-0f3e-4663-bde1-0182c73b85b3/scratchpad/clone
+exit 0
+c819668 docs: write frontend README (ES-05, ES-06)
+changed or untracked files after clone: 0
+
+=== backend README: build, check, test
+$ ./mvnw -B -q -DskipTests package
+exit 0
+jar bytes 80247227
+$ ./mvnw -B -q spotless:check compile pmd:check pmd:cpd-check spotbugs:check
+exit 0
+$ ./mvnw -B verify
+exit 0
+[INFO] Tests run: 197, Failures: 0, Errors: 0, Skipped: 0
+
+=== frontend README: install, check, test, build
+$ npm ci
+exit 0
+$ npm run check
+exit 0
+$ npm test
+exit 0
+      Tests  61 passed (61)
+$ npm run build
+exit 0
+
+=== root README: quick start
+$ docker compose --env-file ../.env up -d --build --wait
+exit 0
+backend Up 16 seconds (healthy)
+frontend Up 6 seconds (healthy)
+mailpit Up 22 seconds (healthy)
+postgres Up 22 seconds (healthy)
+form:      200
+mailpit:   200
+export:    401 (no credentials)
+readiness: {"status":"UP"}
+
+=== frontend README: end-to-end tests
+$ npm run test:e2e
+exit 0
+  5 passed (4.0s)
+
+=== root README: restart the backend after an options change
+$ docker compose --env-file E:/13 - Lab Projects/01_Runs/_____SECOND______ROUND_____/01_kyuhi_single-agent_sdd_v003/.env restart backend
+ Container konferenca-registration-backend-1 Restarting 
+ Container konferenca-registration-backend-1 Started 
+exit 0
+form-config after restart: 200
+
+=== done
