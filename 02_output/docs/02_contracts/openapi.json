@@ -1,0 +1,196 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Conference registration API",
+    "version": "1.0.0",
+    "description": "Contract between frontend/organizer and backend (architecture.md, Interfaces). Specification section 4."
+  },
+  "servers": [{ "url": "/" }],
+  "paths": {
+    "/api/form-config": {
+      "get": {
+        "operationId": "getFormConfig",
+        "summary": "Form configuration: conference name, captcha settings, consents and active options",
+        "responses": {
+          "200": {
+            "description": "Configuration",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/FormConfig" } } }
+          },
+          "429": { "$ref": "#/components/responses/TooManyRequests" }
+        }
+      }
+    },
+    "/api/registrations": {
+      "post": {
+        "operationId": "createRegistration",
+        "summary": "Submit a registration",
+        "requestBody": {
+          "required": true,
+          "content": { "application/json": { "schema": { "$ref": "#/components/schemas/RegistrationRequest" } } }
+        },
+        "responses": {
+          "201": {
+            "description": "Accepted: stored in the database and as JSON copy",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/RegistrationResponse" } } }
+          },
+          "400": { "$ref": "#/components/responses/ValidationError" },
+          "413": { "$ref": "#/components/responses/Error" },
+          "415": { "$ref": "#/components/responses/Error" },
+          "429": { "$ref": "#/components/responses/TooManyRequests" },
+          "500": { "$ref": "#/components/responses/Error" },
+          "503": { "$ref": "#/components/responses/Error" }
+        }
+      }
+    },
+    "/api/export": {
+      "get": {
+        "operationId": "exportRegistrations",
+        "summary": "Excel workbook of all registrations (organizer only)",
+        "security": [{ "organizerBasic": [] }],
+        "responses": {
+          "200": {
+            "description": "Workbook",
+            "headers": {
+              "Content-Disposition": {
+                "schema": { "type": "string", "const": "attachment; filename=\"registrations.xlsx\"" }
+              }
+            },
+            "content": {
+              "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": {
+                "schema": { "type": "string", "contentMediaType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/Error" },
+          "403": { "$ref": "#/components/responses/Error" },
+          "429": { "$ref": "#/components/responses/TooManyRequests" }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "organizerBasic": { "type": "http", "scheme": "basic" }
+    },
+    "responses": {
+      "Error": {
+        "description": "Error without internal details",
+        "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ErrorResponse" } } }
+      },
+      "ValidationError": {
+        "description": "Rejected input; fieldErrors names every offending field",
+        "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ErrorResponse" } } }
+      },
+      "TooManyRequests": {
+        "description": "Rate limit exceeded",
+        "headers": { "Retry-After": { "schema": { "type": "integer" } } },
+        "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ErrorResponse" } } }
+      }
+    },
+    "schemas": {
+      "RegistrationType": { "type": "string", "enum": ["EXTERNAL", "STUDENT"] },
+      "Category": { "type": "string", "enum": ["WORKSHOP", "EVENT", "MEAL", "OTHER"] },
+      "Option": {
+        "type": "object",
+        "required": ["id", "name", "category", "availableTo"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{0,63}$" },
+          "name": { "type": "string" },
+          "category": { "$ref": "#/components/schemas/Category" },
+          "availableTo": { "type": "array", "items": { "$ref": "#/components/schemas/RegistrationType" }, "minItems": 1, "uniqueItems": true }
+        }
+      },
+      "Consent": {
+        "type": "object",
+        "required": ["id", "text", "mandatory"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{0,63}$" },
+          "text": { "type": "string" },
+          "mandatory": { "type": "boolean" }
+        }
+      },
+      "FormConfig": {
+        "type": "object",
+        "required": ["conferenceName", "captcha", "consents", "options"],
+        "additionalProperties": false,
+        "properties": {
+          "conferenceName": { "type": "string" },
+          "captcha": {
+            "type": "object",
+            "required": ["mode", "siteKey"],
+            "additionalProperties": false,
+            "properties": {
+              "mode": { "type": "string", "enum": ["test", "recaptcha"] },
+              "siteKey": { "type": "string", "description": "Empty in test mode" }
+            }
+          },
+          "consents": { "type": "array", "items": { "$ref": "#/components/schemas/Consent" } },
+          "options": { "type": "array", "description": "Active options only", "items": { "$ref": "#/components/schemas/Option" } }
+        }
+      },
+      "RegistrationRequest": {
+        "type": "object",
+        "required": ["type", "firstName", "lastName", "email", "optionIds", "consentIds", "captchaToken"],
+        "additionalProperties": false,
+        "properties": {
+          "type": { "$ref": "#/components/schemas/RegistrationType" },
+          "firstName": { "type": "string", "maxLength": 100 },
+          "lastName": { "type": "string", "maxLength": 100 },
+          "email": { "type": "string", "maxLength": 254 },
+          "organization": { "type": ["string", "null"], "maxLength": 200, "description": "EXTERNAL only (required); must be absent or empty for STUDENT" },
+          "studyInstitution": { "type": ["string", "null"], "maxLength": 200, "description": "STUDENT only (required)" },
+          "studyProgramme": { "type": ["string", "null"], "maxLength": 200, "description": "STUDENT only (required)" },
+          "studentId": { "type": ["string", "null"], "maxLength": 50, "description": "STUDENT only (required)" },
+          "optionIds": { "type": "array", "items": { "type": "string" } },
+          "consentIds": { "type": "array", "description": "Ids of the consents the participant gave", "items": { "type": "string" } },
+          "captchaToken": { "type": "string" }
+        }
+      },
+      "SelectedOption": {
+        "type": "object",
+        "required": ["id", "name", "category"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "category": { "$ref": "#/components/schemas/Category" }
+        }
+      },
+      "RegistrationResponse": {
+        "type": "object",
+        "required": ["id", "type", "firstName", "lastName", "options"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "format": "uuid" },
+          "type": { "$ref": "#/components/schemas/RegistrationType" },
+          "firstName": { "type": "string" },
+          "lastName": { "type": "string" },
+          "options": { "type": "array", "items": { "$ref": "#/components/schemas/SelectedOption" } }
+        }
+      },
+      "FieldError": {
+        "type": "object",
+        "required": ["field", "message"],
+        "additionalProperties": false,
+        "properties": {
+          "field": {
+            "type": "string",
+            "description": "type, firstName, lastName, email, organization, studyInstitution, studyProgramme, studentId, optionIds, consents.<id>, captchaToken, or body"
+          },
+          "message": { "type": "string" }
+        }
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "required": ["message", "fieldErrors"],
+        "additionalProperties": false,
+        "properties": {
+          "message": { "type": "string" },
+          "fieldErrors": { "type": "array", "items": { "$ref": "#/components/schemas/FieldError" } }
+        }
+      }
+    }
+  }
+}
