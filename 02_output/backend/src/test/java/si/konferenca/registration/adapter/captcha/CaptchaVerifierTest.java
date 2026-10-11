@@ -89,4 +89,16 @@ class CaptchaVerifierTest {
             () -> new RecaptchaHttpVerifier("http://127.0.0.1:1/verify", "s").verify("t", null))
         .isInstanceOf(CaptchaUnavailableException.class);
   }
+
+  @Test
+  void interruptedCallIsUnavailableAndKeepsTheInterruptFlag() throws Exception {
+    RecaptchaHttpVerifier v = new RecaptchaHttpVerifier(serve(200, "{\"success\": true}"), "s");
+    Thread.currentThread().interrupt();
+    try {
+      assertThatThrownBy(() -> v.verify("t", null)).isInstanceOf(CaptchaUnavailableException.class);
+      assertThat(Thread.currentThread().isInterrupted()).isTrue();
+    } finally {
+      Thread.interrupted();
+    }
+  }
 }

@@ -1,0 +1,177 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< si.konferenca:registration-backend >-----------------
+[INFO] Building registration-backend 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- jacoco:0.8.12:prepare-agent (prepare-agent) @ registration-backend ---
+[INFO] Skipping JaCoCo execution because property jacoco.skip is set.
+[INFO] argLine set to empty
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ registration-backend ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 2 resources from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ registration-backend ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 49 source files with javac [debug parameters release 21] to target\classes
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ registration-backend ---
+[INFO] Copying 5 resources from src\test\resources to target\test-classes
+[INFO] 
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ registration-backend ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 34 source files with javac [debug parameters release 21] to target\test-classes
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ registration-backend ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running si.konferenca.registration.adapter.captcha.CaptchaVerifierTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.689 s -- in si.konferenca.registration.adapter.captcha.CaptchaVerifierTest
+[INFO] Running si.konferenca.registration.adapter.mail.MailRegistrationNotifierTest
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (C:\Users\sense\.m2\repository\net\bytebuddy\byte-buddy-agent\1.18.11\byte-buddy-agent-1.18.11.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+12:15:59.642 [pool-5-thread-1] WARN si.konferenca.registration.adapter.mail.MailRegistrationNotifier -- Could not send participant email for registration 66666666-7777-8888-9999-000000000000
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.225 s -- in si.konferenca.registration.adapter.mail.MailRegistrationNotifierTest
+[INFO] Running si.konferenca.registration.api.SurvivingMutantsApiTest
+12:15:59.701 [main] ERROR si.konferenca.registration.api.ApiExceptionHandler -- Unexpected error: IllegalStateException
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.122 s -- in si.konferenca.registration.api.SurvivingMutantsApiTest
+[INFO] Running si.konferenca.registration.config.CorsConfigTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.031 s -- in si.konferenca.registration.config.CorsConfigTest
+[INFO] Running si.konferenca.registration.integration.PersistenceAndSecurityIntegrationTest
+12:16:00.087 [main] INFO org.testcontainers.images.PullPolicy -- Image pull policy will be performed by: DefaultPullPolicy()
+12:16:00.089 [main] INFO org.testcontainers.utility.ImageNameSubstitutor -- Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+12:16:00.101 [main] INFO org.testcontainers.DockerClientFactory -- Testcontainers version: 2.0.5
+12:16:00.290 [main] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+12:16:00.619 [main] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+12:16:00.620 [main] INFO org.testcontainers.DockerClientFactory -- Docker host IP address is localhost
+12:16:00.641 [main] INFO org.testcontainers.DockerClientFactory -- Connected to docker: 
+  Server Version: 29.8.1
+  API Version: 1.56
+  Operating System: Docker Desktop
+  Total Memory: 40065 MB
+  Labels: 
+    com.docker.desktop.address=npipe://\\.\pipe\docker_cli
+12:16:00.748 [main] INFO tc.testcontainers/ryuk:0.14.0 -- Creating container for image: testcontainers/ryuk:0.14.0
+12:16:01.031 [main] INFO tc.testcontainers/ryuk:0.14.0 -- Container testcontainers/ryuk:0.14.0 is starting: 6d513e02e3237846124a4f0678f602266da0f1d9caaf86b6d7afd15c2803ea8f
+12:16:01.392 [main] INFO tc.testcontainers/ryuk:0.14.0 -- Container testcontainers/ryuk:0.14.0 started in PT0.6438869S
+12:16:01.396 [main] INFO org.testcontainers.utility.RyukResourceReaper -- Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+12:16:01.396 [main] INFO org.testcontainers.DockerClientFactory -- Checking the system...
+12:16:01.397 [main] INFO org.testcontainers.DockerClientFactory -- ?? Docker server version should be at least 1.6.0
+12:16:01.397 [main] INFO tc.postgres:16.15-alpine -- Creating container for image: postgres:16.15-alpine
+12:16:01.544 [main] INFO tc.postgres:16.15-alpine -- Container postgres:16.15-alpine is starting: 19d070691a5819c37faf069bb36d2b12849a523b2f9e793bd77f2d062dc52392
+12:16:03.612 [main] INFO tc.postgres:16.15-alpine -- Container postgres:16.15-alpine started in PT2.2142706S
+12:16:03.612 [main] INFO tc.postgres:16.15-alpine -- Container is started (JDBC URL: jdbc:postgresql://localhost:49581/test?loggerLevel=OFF)
+12:16:03.613 [main] INFO tc.axllent/mailpit:v1.31.1 -- Creating container for image: axllent/mailpit:v1.31.1
+12:16:03.733 [main] INFO tc.axllent/mailpit:v1.31.1 -- Container axllent/mailpit:v1.31.1 is starting: 30336ca7c5dc4fc769eea09efa2967d997c4b8a2a27f8838beada96e167910c6
+12:16:04.017 [main] INFO org.testcontainers.containers.wait.strategy.HttpWaitStrategy -- /pedantic_antonelli: Waiting for 60 seconds for URL: http://localhost:49583/api/v1/messages (where port 49583 maps to container port 8025)
+12:16:04.027 [main] INFO tc.axllent/mailpit:v1.31.1 -- Container axllent/mailpit:v1.31.1 started in PT0.4137931S
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-10-11T12:16:04.350+02:00  INFO 25912 --- [registration-backend] [           main] .i.PersistenceAndSecurityIntegrationTest : Starting PersistenceAndSecurityIntegrationTest using Java 21.0.10 with PID 25912 (started by sense in E:\13 - Lab Projects\01_Runs\_____SECOND______ROUND_____\02_kyuhi_single-agent_sdd_v004\02_output\backend)
+2026-10-11T12:16:04.352+02:00  INFO 25912 --- [registration-backend] [           main] .i.PersistenceAndSecurityIntegrationTest : No active profile set, falling back to 1 default profile: "default"
+2026-10-11T12:16:05.033+02:00  INFO 25912 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-11T12:16:05.074+02:00  INFO 25912 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 30 ms. Found 0 JPA repository interfaces.
+2026-10-11T12:16:05.979+02:00  INFO 25912 --- [registration-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-10-11T12:16:05.992+02:00  INFO 25912 --- [registration-backend] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-11T12:16:05.993+02:00  INFO 25912 --- [registration-backend] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.26]
+2026-10-11T12:16:06.063+02:00  INFO 25912 --- [registration-backend] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1690 ms
+2026-10-11T12:16:06.695+02:00  INFO 25912 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-10-11T12:16:06.833+02:00  INFO 25912 --- [registration-backend] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@475454ae
+2026-10-11T12:16:06.834+02:00  INFO 25912 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-10-11T12:16:06.856+02:00  INFO 25912 --- [registration-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:49581/test?loggerLevel=OFF (PostgreSQL 16.15)
+2026-10-11T12:16:06.910+02:00  INFO 25912 --- [registration-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2026-10-11T12:16:06.913+02:00  INFO 25912 --- [registration-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.014s)
+2026-10-11T12:16:06.928+02:00  INFO 25912 --- [registration-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2026-10-11T12:16:06.976+02:00  INFO 25912 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-10-11T12:16:06.987+02:00  INFO 25912 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "1 - registration schema"
+2026-10-11T12:16:07.030+02:00  INFO 25912 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 1 migration to schema "public", now at version v1 (execution time 00:00.023s)
+2026-10-11T12:16:07.127+02:00  INFO 25912 --- [registration-backend] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-10-11T12:16:07.200+02:00  INFO 25912 --- [registration-backend] [           main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.5.Final
+2026-10-11T12:16:07.462+02:00  INFO 25912 --- [registration-backend] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-11T12:16:07.537+02:00  INFO 25912 --- [registration-backend] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:49581/test?loggerLevel=OFF]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 16.15
+	Default catalog/schema: test/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-10-11T12:16:08.192+02:00  INFO 25912 --- [registration-backend] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-11T12:16:08.234+02:00  INFO 25912 --- [registration-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-11T12:16:08.531+02:00  INFO 25912 --- [registration-backend] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name organizer
+2026-10-11T12:16:09.073+02:00  INFO 25912 --- [registration-backend] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-10-11T12:16:09.188+02:00  INFO 25912 --- [registration-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 49595 (http) with context path '/'
+2026-10-11T12:16:09.198+02:00  INFO 25912 --- [registration-backend] [           main] .i.PersistenceAndSecurityIntegrationTest : Started PersistenceAndSecurityIntegrationTest in 5.123 seconds (process running for 12.216)
+2026-10-11T12:16:09.354+02:00  INFO 25912 --- [registration-backend] [o-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-11T12:16:09.354+02:00  INFO 25912 --- [registration-backend] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-11T12:16:09.355+02:00  INFO 25912 --- [registration-backend] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+[ERROR] Tests run: 3, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 10.19 s <<< FAILURE! -- in si.konferenca.registration.integration.PersistenceAndSecurityIntegrationTest
+[ERROR] si.konferenca.registration.integration.PersistenceAndSecurityIntegrationTest.storedRegistrationReadsBackUnchanged -- Time elapsed: 0.464 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+Expecting actual:
+  [Registration[id=11111111-2222-3333-4444-555555555555, type=EXTERNAL, registeredAt=2026-10-11T08:30:00Z, participant=Participant[firstName=?rt, lastName=Žagar, email=crt@example.si, organization=IJS, studyInstitution=null, studyProgramme=null, studentId=null], options=[SelectedOption[id=dinner, name=Ve?erja, category=MEAL], SelectedOption[id=lunch, name=Kosilo, category=MEAL], SelectedOption[id=ws, name=Delavnica, category=WORKSHOP]], consents=[GivenConsent[id=privacy, text=Privacy text, givenAt=2026-10-11T08:30:00Z], GivenConsent[id=privacy, text=Privacy text, givenAt=2026-10-11T08:30:00Z], GivenConsent[id=privacy, text=Privacy text, givenAt=2026-10-11T08:30:00Z]]]]
+to contain exactly (and in same order):
+  [Registration[id=11111111-2222-3333-4444-555555555555, type=EXTERNAL, registeredAt=2026-10-11T08:30:00Z, participant=Participant[firstName=?rt, lastName=Žagar, email=crt@example.si, organization=IJS, studyInstitution=null, studyProgramme=null, studentId=null], options=[SelectedOption[id=ws, name=Delavnica, category=WORKSHOP], SelectedOption[id=lunch, name=Kosilo, category=MEAL], SelectedOption[id=dinner, name=Ve?erja, category=MEAL]], consents=[GivenConsent[id=privacy, text=Privacy text, givenAt=2026-10-11T08:30:00Z]]]]
+but some elements were not found:
+  [Registration[id=11111111-2222-3333-4444-555555555555, type=EXTERNAL, registeredAt=2026-10-11T08:30:00Z, participant=Participant[firstName=?rt, lastName=Žagar, email=crt@example.si, organization=IJS, studyInstitution=null, studyProgramme=null, studentId=null], options=[SelectedOption[id=ws, name=Delavnica, category=WORKSHOP], SelectedOption[id=lunch, name=Kosilo, category=MEAL], SelectedOption[id=dinner, name=Ve?erja, category=MEAL]], consents=[GivenConsent[id=privacy, text=Privacy text, givenAt=2026-10-11T08:30:00Z]]]]
+and others were not expected:
+  [Registration[id=11111111-2222-3333-4444-555555555555, type=EXTERNAL, registeredAt=2026-10-11T08:30:00Z, participant=Participant[firstName=?rt, lastName=Žagar, email=crt@example.si, organization=IJS, studyInstitution=null, studyProgramme=null, studentId=null], options=[SelectedOption[id=dinner, name=Ve?erja, category=MEAL], SelectedOption[id=lunch, name=Kosilo, category=MEAL], SelectedOption[id=ws, name=Delavnica, category=WORKSHOP]], consents=[GivenConsent[id=privacy, text=Privacy text, givenAt=2026-10-11T08:30:00Z], GivenConsent[id=privacy, text=Privacy text, givenAt=2026-10-11T08:30:00Z], GivenConsent[id=privacy, text=Privacy text, givenAt=2026-10-11T08:30:00Z]]]]
+
+	at si.konferenca.registration.integration.PersistenceAndSecurityIntegrationTest.storedRegistrationReadsBackUnchanged(PersistenceAndSecurityIntegrationTest.java:25)
+
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Failures: 
+[ERROR]   PersistenceAndSecurityIntegrationTest.storedRegistrationReadsBackUnchanged:25 
+Expecting actual:
+  [Registration[id=11111111-2222-3333-4444-555555555555, type=EXTERNAL, registeredAt=2026-10-11T08:30:00Z, participant=Participant[firstName=?rt, lastName=Žagar, email=crt@example.si, organization=IJS, studyInstitution=null, studyProgramme=null, studentId=null], options=[SelectedOption[id=dinner, name=Ve?erja, category=MEAL], SelectedOption[id=lunch, name=Kosilo, category=MEAL], SelectedOption[id=ws, name=Delavnica, category=WORKSHOP]], consents=[GivenConsent[id=privacy, text=Privacy text, givenAt=2026-10-11T08:30:00Z], GivenConsent[id=privacy, text=Privacy text, givenAt=2026-10-11T08:30:00Z], GivenConsent[id=privacy, text=Privacy text, givenAt=2026-10-11T08:30:00Z]]]]
+to contain exactly (and in same order):
+  [Registration[id=11111111-2222-3333-4444-555555555555, type=EXTERNAL, registeredAt=2026-10-11T08:30:00Z, participant=Participant[firstName=?rt, lastName=Žagar, email=crt@example.si, organization=IJS, studyInstitution=null, studyProgramme=null, studentId=null], options=[SelectedOption[id=ws, name=Delavnica, category=WORKSHOP], SelectedOption[id=lunch, name=Kosilo, category=MEAL], SelectedOption[id=dinner, name=Ve?erja, category=MEAL]], consents=[GivenConsent[id=privacy, text=Privacy text, givenAt=2026-10-11T08:30:00Z]]]]
+but some elements were not found:
+  [Registration[id=11111111-2222-3333-4444-555555555555, type=EXTERNAL, registeredAt=2026-10-11T08:30:00Z, participant=Participant[firstName=?rt, lastName=Žagar, email=crt@example.si, organization=IJS, studyInstitution=null, studyProgramme=null, studentId=null], options=[SelectedOption[id=ws, name=Delavnica, category=WORKSHOP], SelectedOption[id=lunch, name=Kosilo, category=MEAL], SelectedOption[id=dinner, name=Ve?erja, category=MEAL]], consents=[GivenConsent[id=privacy, text=Privacy text, givenAt=2026-10-11T08:30:00Z]]]]
+and others were not expected:
+  [Registration[id=11111111-2222-3333-4444-555555555555, type=EXTERNAL, registeredAt=2026-10-11T08:30:00Z, participant=Participant[firstName=?rt, lastName=Žagar, email=crt@example.si, organization=IJS, studyInstitution=null, studyProgramme=null, studentId=null], options=[SelectedOption[id=dinner, name=Ve?erja, category=MEAL], SelectedOption[id=lunch, name=Kosilo, category=MEAL], SelectedOption[id=ws, name=Delavnica, category=WORKSHOP]], consents=[GivenConsent[id=privacy, text=Privacy text, givenAt=2026-10-11T08:30:00Z], GivenConsent[id=privacy, text=Privacy text, givenAt=2026-10-11T08:30:00Z], GivenConsent[id=privacy, text=Privacy text, givenAt=2026-10-11T08:30:00Z]]]]
+
+[INFO] 
+[ERROR] Tests run: 20, Failures: 1, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  19.615 s
+[INFO] Finished at: 2026-10-11T12:16:10+02:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.5.6:test (default-test) on project registration-backend: There are test failures.
+[ERROR] 
+[ERROR] See E:\13 - Lab Projects\01_Runs\_____SECOND______ROUND_____\02_kyuhi_single-agent_sdd_v004\02_output\backend\target\surefire-reports for the individual test results.
+[ERROR] See dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

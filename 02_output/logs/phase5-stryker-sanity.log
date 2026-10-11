@@ -1,0 +1,55 @@
+[32m12:08:09 (11568) INFO ProjectReader[39m Found 1 of 87 file(s) to be mutated.
+[32m12:08:09 (11568) INFO Instrumenter[39m Instrumented 1 source file(s) with 58 mutant(s)
+[32m12:08:09 (11568) INFO ConcurrencyTokenProvider[39m Creating 4 test runner process(es).
+[32m12:08:11 (11568) INFO DryRunExecutor[39m Starting initial test run (vitest test runner with "perTest" coverage analysis). This may take a while.
+[32m12:08:17 (11568) INFO DryRunExecutor[39m Initial test run succeeded. Ran 19 tests in 5 seconds (net 1140.667299999999 ms, overhead 4544.332700000001 ms).
+
+All tests
+  src
+    RegistrationForm.test.tsx
+      ✓ RegistrationForm renders the reCAPTCHA container and sends the widget token (killed 2)
+      ✘ RegistrationForm unchecks options the new type cannot select (covered 0)
+      ~ RegistrationForm maps option, captcha and consent errors and sends unknown fields to the general error (covered 24)
+      ~ RegistrationForm shows the rate-limit message on 429 (covered 24)
+    validation.test.ts
+      ✓ validate accepts a complete external form (killed 6)
+      ✓ validate requires every field of the type after trimming, and only those (killed 9)
+      ✓ validate rejects email ana (killed 4)
+      ~ validate rejects email ana@x (covered 25)
+      ✓ validate rejects email a b@x.si (killed 1)
+      ~ validate rejects email ana@x .si (covered 25)
+      ~ validate rejects email @x.si (covered 25)
+      ~ validate accepts a trimmed valid email and ignores optional consents (covered 24)
+  tests/acceptance
+    confirmation.acceptance.test.tsx
+      ✓ US-004 confirmation AC-004-01: shows the confirmation only after the backend accepted the registration (killed 22)
+      ~ US-004 confirmation AC-004-02: shows server field errors next to the fields, keeps values, no confirmation (covered 24)
+      ✓ US-004 confirmation AC-004-03: validates required fields, email and consent before sending anything (killed 9)
+      ~ US-004 confirmation AC-004-04: a network failure shows a general error and no confirmation (covered 24)
+      ~ US-004 confirmation AC-004-04: a server error shows a general error without technical details (covered 24)
+    externalForm.acceptance.test.tsx
+      ✘ US-001 external participant form AC-001-08: shows the external fields, active options by category and unchecked consents (covered 0)
+    studentForm.acceptance.test.tsx
+      ✓ US-002 student form AC-002-07: shows the student fields and only options available to students, unchecked (killed 3)
+
+[Survived] StringLiteral
+src/validation.ts:16:33
+-   export const CAPTCHA_REQUIRED = "Please confirm that you are not a robot.";
++   export const CAPTCHA_REQUIRED = "";
+Ran all tests for this mutant.
+
+[Survived] Regex
+src/validation.ts:18:15
+-   const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
++   const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+/;
+Ran all tests for this mutant.
+
+Ran 3.21 tests per mutant on average.
+---------------|------------------|----------|-----------|------------|----------|----------|
+               | % Mutation score |          |           |            |          |          |
+File           |  total | covered | # killed | # timeout | # survived | # no cov | # errors |
+---------------|--------|---------|----------|-----------|------------|----------|----------|
+All files      |  96.55 |   96.55 |       56 |         0 |          2 |        0 |        0 |
+ validation.ts |  96.55 |   96.55 |       56 |         0 |          2 |        0 |        0 |
+---------------|--------|---------|----------|-----------|------------|----------|----------|
+[32m12:08:51 (11568) INFO MutationTestExecutor[39m Done in 43 seconds.

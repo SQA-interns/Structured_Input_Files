@@ -126,4 +126,13 @@ class MailRegistrationNotifierTest {
         .doesNotContain("Organization");
     verify(sender, times(0)).send(any(MimeMessage.class));
   }
+
+  @Test
+  void closeStopsTheBackgroundExecutor() throws Exception {
+    create().close();
+
+    org.assertj.core.api.Assertions.assertThatThrownBy(
+            () -> notifier.registrationAccepted(Fixtures.student(), new byte[0]))
+        .isInstanceOf(java.util.concurrent.RejectedExecutionException.class);
+  }
 }

@@ -61,4 +61,20 @@ describe("validate", () => {
       ),
     ).toEqual({});
   });
+
+  it("rejects text after a valid address", () => {
+    expect(
+      validate(
+        "EXTERNAL",
+        { ...external, email: "ana@x.si x" },
+        consents,
+        new Set(["privacy"]),
+        "t",
+      ),
+    ).toEqual({ email: INVALID_EMAIL });
+  });
+
+  it("uses the contract wording for the captcha error", () => {
+    expect(CAPTCHA_REQUIRED).toBe("Please confirm that you are not a robot.");
+  });
 });
