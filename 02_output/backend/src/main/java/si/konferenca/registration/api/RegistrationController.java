@@ -1,6 +1,8 @@
 package si.konferenca.registration.api;
 
 import jakarta.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 import org.springframework.http.HttpStatus;
@@ -65,7 +67,15 @@ public class RegistrationController {
       String studentId,
       List<String> optionIds,
       List<String> consentIds,
-      String captchaToken) {}
+      String captchaToken) {
+
+    public RegistrationRequest {
+      optionIds =
+          optionIds == null ? null : Collections.unmodifiableList(new ArrayList<>(optionIds));
+      consentIds =
+          consentIds == null ? null : Collections.unmodifiableList(new ArrayList<>(consentIds));
+    }
+  }
 
   /** Response body (openapi.json RegistrationResponse). */
   public record RegistrationResponse(
@@ -73,7 +83,12 @@ public class RegistrationController {
       RegistrationType type,
       String firstName,
       String lastName,
-      List<SelectedOptionDto> options) {}
+      List<SelectedOptionDto> options) {
+
+    public RegistrationResponse {
+      options = List.copyOf(options);
+    }
+  }
 
   /** A selected option in the response. */
   public record SelectedOptionDto(String id, String name, OptionCategory category) {}

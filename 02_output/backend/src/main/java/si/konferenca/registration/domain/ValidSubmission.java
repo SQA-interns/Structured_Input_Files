@@ -12,6 +12,11 @@ public record ValidSubmission(
     List<ConsentDefinition> consents,
     String captchaToken) {
 
+  public ValidSubmission {
+    options = List.copyOf(options);
+    consents = List.copyOf(consents);
+  }
+
   /** The accepted registration; consents are given at the registration time. */
   public Registration accept(UUID id, Instant at) {
     return new Registration(

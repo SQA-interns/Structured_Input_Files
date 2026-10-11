@@ -5,6 +5,10 @@ import java.util.List;
 /** The one error body shape of the API (openapi.json ErrorResponse). */
 public record ErrorResponse(String message, List<FieldErrorDto> fieldErrors) {
 
+  public ErrorResponse {
+    fieldErrors = List.copyOf(fieldErrors);
+  }
+
   /** One offending field. */
   public record FieldErrorDto(String field, String message) {}
 

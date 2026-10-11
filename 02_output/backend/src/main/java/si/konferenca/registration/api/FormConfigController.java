@@ -42,7 +42,13 @@ public class FormConfigController {
 
   /** Response body (openapi.json FormConfig). */
   public record FormConfig(
-      String conferenceName, Captcha captcha, List<ConsentDto> consents, List<OptionDto> options) {}
+      String conferenceName, Captcha captcha, List<ConsentDto> consents, List<OptionDto> options) {
+
+    public FormConfig {
+      consents = List.copyOf(consents);
+      options = List.copyOf(options);
+    }
+  }
 
   /** Captcha mode and site key. */
   public record Captcha(String mode, String siteKey) {}
@@ -52,5 +58,10 @@ public class FormConfigController {
 
   /** An active option as shown on the form. */
   public record OptionDto(
-      String id, String name, OptionCategory category, List<RegistrationType> availableTo) {}
+      String id, String name, OptionCategory category, List<RegistrationType> availableTo) {
+
+    public OptionDto {
+      availableTo = List.copyOf(availableTo);
+    }
+  }
 }
