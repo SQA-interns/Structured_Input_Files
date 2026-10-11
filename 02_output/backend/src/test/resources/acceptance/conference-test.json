@@ -1,0 +1,14 @@
+{
+  "options": [
+    { "id": "ws-ai", "name": "Workshop: AI v praksi", "category": "WORKSHOP", "active": true },
+    { "id": "ws-cloud", "name": "Workshop: Cloud security", "category": "WORKSHOP", "active": true, "availableTo": ["EXTERNAL"] },
+    { "id": "ws-old", "name": "Workshop: Retired topic", "category": "WORKSHOP", "active": false },
+    { "id": "ev-dinner", "name": "Gala večerja", "category": "EVENT", "active": true },
+    { "id": "meal-lunch", "name": "Kosilo", "category": "MEAL", "active": true },
+    { "id": "other-tour", "name": "Ogled Ljubljane", "category": "OTHER", "active": true, "availableTo": ["EXTERNAL", "STUDENT"] }
+  ],
+  "consents": [
+    { "id": "privacy", "text": "I agree that my personal data is processed for organizing the conference.", "mandatory": true },
+    { "id": "photo", "text": "I agree to be photographed at the conference.", "mandatory": false }
+  ]
+}

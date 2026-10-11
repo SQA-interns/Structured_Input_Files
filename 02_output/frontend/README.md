@@ -8,9 +8,9 @@ React + Vite registration form; talks to the backend only through `/api` (AR-01)
 
 Run from `02_output/frontend` after `npm ci`.
 
-| Purpose | Command |
-|---|---|
-| build | `npm run build` |
-| test | `npm test` |
-| check (format, lint, type check) | `npm run check` |
-| run | `npm run dev` (proxies `/api` to `http://127.0.0.1:8080`) |
+| Purpose                          | Command                                                   |
+| -------------------------------- | --------------------------------------------------------- |
+| build                            | `npm run build`                                           |
+| test                             | `npm test`                                                |
+| check (format, lint, type check) | `npm run check`                                           |
+| run                              | `npm run dev` (proxies `/api` to `http://127.0.0.1:8080`) |
