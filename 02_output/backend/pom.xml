@@ -205,6 +205,9 @@
           <!-- OSS Index needs credentials not listed in secrets.env.example (D-02) -->
           <ossindexAnalyzerEnabled>false</ossindexAnalyzerEnabled>
           <failBuildOnCVSS>7</failBuildOnCVSS>
+          <suppressionFiles>
+            <suppressionFile>dependency-check-suppressions.xml</suppressionFile>
+          </suppressionFiles>
           <formats>
             <format>HTML</format>
             <format>JSON</format>
