@@ -236,3 +236,12 @@
 - Options: as in D-25.
 - Human response: "do proposed for d25" (2026-10-12T20:01:29Z)
 - Resolution: D-25 option 1. F-06 lowered from High to Low and accepted: HTTP Basic over HTTPS only (SR-06), BCrypt hash, rate limited, stateless, read-only export.
+
+## D-27: Follow-up to D-16, Redocly CLI was not scanned
+- Timestamp: 2026-10-12T20:02:56Z
+- Phase: 7
+- Type: non-blocking
+- Trigger: D-16 said `@redocly/cli` 2.62.1 would be scanned in phase 6; it was run once through `npx` in phase 2 to validate `openapi.yaml`, is not a dependency of any component and was not part of the Dependency-Check or `npm audit` scans.
+- Options: 1. Record the gap; the tool never touches shipped code or runtime (chosen). 2. Scan it now in a scratch project.
+- Human response: none
+- Resolution: option 1; pending review
