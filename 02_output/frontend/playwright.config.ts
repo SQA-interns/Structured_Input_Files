@@ -13,6 +13,8 @@ export default defineConfig({
   use: {
     baseURL: process.env.E2E_BASE_URL ?? "http://127.0.0.1:8080",
     trace: "off",
+    actionTimeout: 15_000,
+    navigationTimeout: 15_000,
   },
   projects: [{ name: "chromium", use: { ...devices["Desktop Chrome"] } }],
 });
