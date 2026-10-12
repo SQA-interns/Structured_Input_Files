@@ -82,3 +82,57 @@
 - Options: as in D-05.
 - Human response: "i agree with d01, d04 and d05" (2026-10-12T15:43:48Z)
 - Resolution: D-05 option 1. Lowered to Low; suppressed for `org.eclipse.angus:angus-activation` only in `backend/dependency-check-suppressions.xml`.
+
+## D-10: OQ-01 options per registration type
+- Timestamp: 2026-10-12T15:46:06Z
+- Phase: 1
+- Type: non-blocking
+- Trigger: `scope.md` OQ-01 unanswered; US-002 speaks of "activities available to students".
+- Options: 1. Every option is configured with the registration types that may select it (default: both); a form shows only options open to its type, and the backend rejects any other like an inactive option (proposed, conservative: rejects rather than accepts). 2. All active options are open to both types.
+- Human response: none
+- Resolution: option 1; pending review
+
+## D-11: OQ-02 mandatory consents
+- Timestamp: 2026-10-12T15:46:06Z
+- Phase: 1
+- Type: non-blocking
+- Trigger: OQ-02 unanswered; BR-05, SB-14 and the consent row in `security-requirements.md` need at least one consent.
+- Options: 1. One mandatory consent on both forms: processing of the entered personal data for organising the conference, including the emails to the participant and organizers; checkbox unchecked by default; the wording comes from configuration so it can be corrected without code; stored with its timestamp (proposed). 2. Additional optional consents (for example photos, newsletter): not chosen, no requirement names them.
+- Human response: none
+- Resolution: option 1; pending review (wording must be approved by the organizer)
+
+## D-12: OQ-03 email failure after storage
+- Timestamp: 2026-10-12T15:46:06Z
+- Phase: 1
+- Type: non-blocking
+- Trigger: OQ-03 unanswered; `scope.md` priority 1 says storage comes before notification.
+- Options: 1. The registration stays accepted and the participant sees the confirmation; each failed email is logged without personal data (registration id and email kind only); no automatic retry (proposed: never loses or duplicates a registration). 2. Report failure to the participant (invites duplicate submissions of an already stored registration).
+- Human response: none
+- Resolution: option 1; pending review
+
+## D-13: OQ-04 options per category
+- Timestamp: 2026-10-12T15:46:06Z
+- Phase: 1
+- Type: non-blocking
+- Trigger: OQ-04 unanswered.
+- Options: 1. Any number of distinct active options per category, including none; the same option id twice in one registration is rejected (proposed: adds no limit the requirements do not state). 2. At most one option per category.
+- Human response: none
+- Resolution: option 1; pending review
+
+## D-14: OQ-05 second registration with the same email
+- Timestamp: 2026-10-12T15:46:06Z
+- Phase: 1
+- Type: non-blocking
+- Trigger: OQ-05 unanswered.
+- Options: 1. Reject a registration whose email (trimmed, case-insensitive) is already registered, of either type, with a field error on the email; nothing is stored or sent (proposed, conservative: no duplicate records, no repeated emails to one address). 2. Allow duplicates.
+- Human response: none
+- Resolution: option 1; pending review
+
+## D-15: OQ-06 retention of registrations and JSON copies
+- Timestamp: 2026-10-12T15:46:06Z
+- Phase: 1
+- Type: non-blocking
+- Trigger: OQ-06 unanswered; SB-13 needs a retention period per personal-data item.
+- Options: 1. All registration data and JSON copies are kept until 12 months after the conference and then deleted by the organizer; the system offers no deletion feature (out of scope) and the release notes list the deletion as a manual task (proposed). 2. Keep indefinitely (fails SB-13).
+- Human response: none
+- Resolution: option 1; pending review
