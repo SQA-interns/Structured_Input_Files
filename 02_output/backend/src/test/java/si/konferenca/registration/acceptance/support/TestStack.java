@@ -28,7 +28,9 @@ public final class TestStack {
       new PostgreSQLContainer("postgres:16.15-alpine")
           .withDatabaseName("registration")
           .withUsername("registration")
-          .withPassword("acceptance-db-pass");
+          .withPassword("acceptance-db-pass")
+          // Every cached test context keeps its own connection pool.
+          .withCommand("postgres", "-c", "max_connections=300", "-c", "fsync=off");
 
   @SuppressWarnings("resource")
   public static final GenericContainer<?> MAILPIT =
@@ -67,6 +69,8 @@ public final class TestStack {
     settings.put("spring.datasource.url", POSTGRES.getJdbcUrl());
     settings.put("spring.datasource.username", POSTGRES.getUsername());
     settings.put("spring.datasource.password", POSTGRES.getPassword());
+    settings.put("spring.datasource.hikari.maximum-pool-size", "4");
+    settings.put("spring.datasource.hikari.minimum-idle", "1");
     settings.put("SMTP_HOST", MAILPIT.getHost());
     settings.put("SMTP_PORT", MAILPIT.getMappedPort(1025));
     settings.put("SMTP_STARTTLS", "false");
