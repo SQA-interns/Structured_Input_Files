@@ -18,6 +18,8 @@ import si.konferenca.registration.config.AppProperties;
 import si.konferenca.registration.domain.GivenConsent;
 import si.konferenca.registration.domain.Registration;
 import si.konferenca.registration.domain.SelectedOption;
+import tools.jackson.core.util.DefaultIndenter;
+import tools.jackson.core.util.DefaultPrettyPrinter;
 import tools.jackson.databind.json.JsonMapper;
 
 /**
@@ -30,6 +32,10 @@ public class JsonCopyStore {
   private static final Logger LOG = LoggerFactory.getLogger(JsonCopyStore.class);
   private static final JsonMapper JSON = JsonMapper.builder().build();
 
+  /** Two-space indentation and LF line ends on every operating system. */
+  private static final DefaultPrettyPrinter PRETTY =
+      new DefaultPrettyPrinter().withObjectIndenter(new DefaultIndenter("  ", "\n"));
+
   private final Path directory;
 
   public JsonCopyStore(AppProperties properties) {
@@ -38,7 +44,7 @@ public class JsonCopyStore {
 
   /** Writes the copy and returns its bytes; throws when the file cannot be written. */
   public byte[] write(Registration registration) {
-    byte[] content = JSON.writerWithDefaultPrettyPrinter().writeValueAsBytes(toMap(registration));
+    byte[] content = JSON.writer().with(PRETTY).writeValueAsBytes(toMap(registration));
     Path target = file(registration.getId());
     Path temporary = directory.resolve(registration.getId() + ".json.tmp");
     try {

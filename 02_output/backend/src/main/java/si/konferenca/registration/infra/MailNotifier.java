@@ -1,9 +1,13 @@
 package si.konferenca.registration.infra;
 
+import jakarta.activation.DataHandler;
+import jakarta.mail.MessagingException;
+import jakarta.mail.Part;
 import jakarta.mail.internet.InternetAddress;
+import jakarta.mail.internet.MimeBodyPart;
+import jakarta.mail.util.ByteArrayDataSource;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
-import org.springframework.core.io.ByteArrayResource;
 import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -87,16 +91,24 @@ public class MailNotifier {
               helper.setTo(new InternetAddress(organizer, true));
               helper.setSubject("New registration " + registration.getId());
               helper.setText(text, false);
-              helper.addAttachment(
-                  "registration-" + registration.getId() + ".json",
-                  new ByteArrayResource(jsonCopy),
-                  "application/json");
+              helper.getMimeMultipart().addBodyPart(jsonAttachment(registration, jsonCopy));
             });
       } catch (MailException e) {
         failed++;
       }
     }
     return failed;
+  }
+
+  /** Base64 keeps the attachment byte-identical to the stored copy (AC-007-02). */
+  static MimeBodyPart jsonAttachment(Registration registration, byte[] jsonCopy)
+      throws MessagingException {
+    MimeBodyPart part = new MimeBodyPart();
+    part.setDataHandler(new DataHandler(new ByteArrayDataSource(jsonCopy, "application/json")));
+    part.setFileName("registration-" + registration.getId() + ".json");
+    part.setDisposition(Part.ATTACHMENT);
+    part.setHeader("Content-Transfer-Encoding", "base64");
+    return part;
   }
 
   String organizerText(Registration registration) {
