@@ -4,12 +4,25 @@
 
 ## Test levels as executed
 
+| Level | Component | Location | Runner | Written from | Frozen |
+|---|---|---|---|---|---|
+| Acceptance | backend | `backend/src/test/java/si/konferenca/registration/acceptance/`, `backend/src/test/resources/acceptance/` | JUnit 6 via `./mvnw test`; MockMvc through the HTTP API; PostgreSQL and Mailpit via Testcontainers; reCAPTCHA test mode, and a local stub `siteverify` endpoint for the production verifier (DoD-P05) | `acceptance-criteria.md`, `02_contracts/openapi.json`, `database.sql`, `registration-copy.schema.json`, `emails.json`, `conference-config.schema.json`, `recaptcha.json` | yes |
+| Acceptance | frontend | `frontend/tests/acceptance/` | Vitest + Testing Library (jsdom), `fetch` stubbed per contract | `acceptance-criteria.md`, `02_contracts/ui-registration-form.json`, `openapi.json` | yes |
+| End-to-end | frontend + backend | `frontend/e2e/` (one file per scenario E2E-01 … E2E-05) | Playwright (Chromium) against `docker compose` in `02_output/`; checks PostgreSQL (`psql` in the container), JSON copies (`cat` in the backend container), Mailpit API and the export | `e2e-scenarios.md` | yes |
+| Architecture | backend | `backend/src/test/java/si/konferenca/registration/architecture/` | ArchUnit, `./mvnw test` | specification section 2 | no (written in phase 4 with the packages) |
+| Unit / integration | both | any other test path | JUnit / Vitest | implementation | no (phase 5) |
+
 ## Measurement exclusions
 
-<!-- Phase 3, before any test is written: production code left out of coverage and mutation, one row per path with the reason (generated code, application entry point, …). Rules and defaults: `general/quality/measurement-scope.md`. Not extended later without a decision record. -->
+Decided in phase 3 before any test was written (`general/quality/measurement-scope.md`, `project/02_design/quality-requirements.md` "Mutation scope").
 
 | Path | Reason |
 |---|---|
+| `backend/src/main/java/si/konferenca/registration/RegistrationApplication.java` | `@SpringBootApplication` entry point, no logic |
+| `frontend/src/main.tsx` | bootstrap file that only mounts the app |
+| `frontend/src/**/*.d.ts` | type declarations (none planned) |
+
+Test code (`backend/src/test/**`, `frontend/tests/**`, `frontend/e2e/**`, `*.test.ts(x)`) never counts. No generated code is planned.
 
 ## First complete run (before any fix)
 
