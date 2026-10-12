@@ -1,0 +1,13 @@
+{
+  "options": [
+    { "id": "ws-testing", "name": "Test automation workshop", "category": "WORKSHOP", "active": false },
+    { "id": "ws-security", "name": "Secure coding workshop", "category": "WORKSHOP", "availableTo": ["EXTERNAL"] },
+    { "id": "ws-ai", "name": "AI in testing workshop", "category": "WORKSHOP" },
+    { "id": "ev-opening", "name": "Opening reception", "category": "EVENT" },
+    { "id": "meal-lunch", "name": "Lunch", "category": "MEAL" },
+    { "id": "other-tour", "name": "City tour", "category": "OTHER" }
+  ],
+  "consents": [
+    { "id": "privacy", "text": "I agree that my personal data is processed for organizing the conference and that it is shared with the conference organizers.", "mandatory": true }
+  ]
+}

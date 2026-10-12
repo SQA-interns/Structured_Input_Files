@@ -1,0 +1,7 @@
+{
+  "options": [
+    { "id": "ws-testing", "name": "Test automation workshop", "category": "WORKSHOP" },
+    { "id": "spa-visit", "name": "Spa visit", "category": "WELLNESS" }
+  ],
+  "consents": [ { "id": "privacy", "text": "I agree that my personal data is processed for organizing the conference and that it is shared with the conference organizers.", "mandatory": true } ]
+}
