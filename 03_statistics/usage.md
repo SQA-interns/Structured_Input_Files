@@ -18,16 +18,25 @@ Run `/cost` once at the end of the session, before the post-run step: the plan l
 
 | Item | Value |
 |---|---|
-| API time | |
-| Session wall time | |
+| API time | 55m |
+| Session wall time | 119m |
 | Approval prompts | |
-| Cost shown | |
-| Tokens shown per model (input, output, cache read, cache write) | |
+| Cost shown | $29.57 |
+| Tokens shown per model (input, output, cache read, cache write) | Opus 5.5: 460 in / 4.1k out / 72.3M cache read / 949.5k cache write |
 | Share of usage at over 150k context | |
-| Plan limits used (session, week) | |
+| Plan limits used (session, week) | 73 % session, 47 % week (at 2026-10-12T20:25:04Z) |
 | Difference to `usage.costUsd` | |
 
 Raw panel text (filled from the session when `/cost` was run in it):
 
 ```text
+Claude Code usage report (2026-10-12T20:25:04.575Z)
+
+Plan limits:
+- session-0: 73% (resets 2026-10-12T23:50:00.344947+00:00)
+- weekly_all-1: 47% (resets 2026-10-14T01:00:00.344968+00:00)
+
+Session:
+- Opus 5.5: 460 in / 4.1k out / 72.3M cache read / 949.5k cache write
+- Cost: $29.57 | API 55m | Wall 119m
 ```

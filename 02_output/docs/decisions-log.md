@@ -254,3 +254,12 @@
 - Options: 1. Approve each proposed option. 2. Change individual decisions.
 - Human response: "chose proposed solutions for every one of them." (2026-10-12T20:18:59Z); the human also turned line 2 of `.env` into a comment, so `docker compose --env-file ../.env` now parses it (checked: exit 0).
 - Resolution: option 1 for all sixteen. D-11: the consent wording in the production option file still needs the organizer's text (manual test 5).
+
+## D-29: Human authorises the agent to fill 03_statistics/usage.md
+- Timestamp: 2026-10-12T20:30:37Z
+- Phase: after phase 7 (run ended)
+- Type: blocking
+- Trigger: the human asked the agent to fill `03_statistics/usage.md`, a section 1 file of `README.md` that `AGENTS.md` forbids the agent to modify (header: "Agent: reads prices only").
+- Options: 1. Human fills it. 2. Agent fills the panel cells from the `/cost` output the human pasted, leaving the cells without a source (approval prompts, share over 150k context, difference) empty.
+- Human response: "i allow youto fill usage with these values. edit usage.md" (2026-10-12T20:30:37Z)
+- Resolution: option 2. The price table is unchanged; the input manifest hash of `usage.md` no longer matches, as expected for this file after the run.

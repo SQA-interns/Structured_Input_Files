@@ -413,6 +413,14 @@
       "category": "requirement",
       "start": "2026-10-12T20:18:59Z",
       "end": "2026-10-12T20:18:59Z"
+    },
+    {
+      "id": "D-29",
+      "type": "blocking",
+      "phase": 7,
+      "category": "other",
+      "start": "2026-10-12T20:30:37Z",
+      "end": "2026-10-12T20:30:37Z"
     }
   ],
   "humanInterventions": [
@@ -458,6 +466,11 @@
       "phase": 6,
       "ref": "D-16",
       "divergence": "Redocly CLI, run once via npx in phase 2, was not scanned in phase 6 as D-16 stated (recorded in D-27)"
+    },
+    {
+      "phase": 7,
+      "ref": "AGENTS.md Never (section 1 files)",
+      "divergence": "the agent filled the usage-panel cells of 03_statistics/usage.md on the human's explicit instruction (D-29)"
     }
   ],
   "codeMetrics": {
