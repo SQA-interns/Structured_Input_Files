@@ -1,0 +1,327 @@
+BACKEND {'KILLED': 239, 'SURVIVED': 22, 'NO_COVERAGE': 85, 'TIMED_OUT': 1} score 69.2% (240/347) scoreCovered 91.6% (240/262)
+ no coverage by class: {'RateLimitFilter': 4, 'StartupGuards': 1, 'SecurityConfiguration': 15, 'GoogleCaptchaVerifier': 1, 'JpaRegistrationStore': 12, 'OrganizerHttpsFilter': 1, 'ApiExceptionHandler': 11, 'WebConfiguration': 9, 'RegistrationConfiguration': 8, 'FileRegistrationCopyWriter': 1, 'RequestSizeFilter$CachedBodyRequest$1': 2, 'JsonCopyDirHealthIndicator': 4, 'RegistrationOptionEmbeddable': 3, 'RegistrationEntity': 3, 'CoreConfiguration': 2, 'RegistrationController$RegistrationConfirmation': 2, 'RegistrationController': 1, 'OptionsController': 1, 'RegistrationController$RegistrationRequest': 1, 'ExportController': 1, 'SettingsController': 1, 'OptionsController$OptionResponse': 1}
+  SURVIVED RegistrationValidator 114 email | replaced return value with "" for si/konferenca/registration/domain/Registration
+  SURVIVED RegistrationValidator 165 hasControlCharacter | changed conditional boundary
+  SURVIVED RegistrationValidator 129 options | replaced return value with Collections.emptyList for si/konferenca/registration/
+  SURVIVED RegistrationValidator 100 text | replaced return value with "" for si/konferenca/registration/domain/Registration
+  SURVIVED RegistrationValidator 85 typed | replaced return value with "" for si/konferenca/registration/domain/Registration
+  SURVIVED MailNotifier 76 organizerMessage | removed call to org/springframework/mail/javamail/MimeMessageHelper::setFrom
+  SURVIVED MailNotifier 79 organizerMessage | removed call to org/springframework/mail/javamail/MimeMessageHelper::setText
+  SURVIVED MailNotifier 105 organizerText | removed call to si/konferenca/registration/infrastructure/mail/MailNotifier::lin
+  SURVIVED MailNotifier 109 organizerText | removed call to si/konferenca/registration/infrastructure/mail/MailNotifier::lin
+  SURVIVED OptionCatalogLoader 64 toCatalog | changed conditional boundary
+  SURVIVED OptionCatalogLoader 78 toCatalog | changed conditional boundary
+  SURVIVED OptionCatalogLoader 123 types | replaced return value with Collections.emptySet for si/konferenca/registration/c
+  SURVIVED RateLimitFilter 58 doFilterInternal | changed conditional boundary
+  SURVIVED RateLimitFilter 58 doFilterInternal | negated conditional
+  SURVIVED GoogleCaptchaVerifier 25 <init> | removed call to org/springframework/http/client/SimpleClientHttpRequestFactory::
+  SURVIVED GoogleCaptchaVerifier 26 <init> | removed call to org/springframework/http/client/SimpleClientHttpRequestFactory::
+  SURVIVED RequestSizeFilter 33 doFilterInternal | changed conditional boundary
+  SURVIVED RequestSizeFilter 37 doFilterInternal | changed conditional boundary
+  SURVIVED RequestSizeFilter 43 doFilterInternal | changed conditional boundary
+  SURVIVED FileRegistrationCopyWriter 66 ownerOnly | negated conditional
+  SURVIVED Problems 16 write | removed call to jakarta/servlet/http/HttpServletResponse::setCharacterEncoding
+  SURVIVED AppProperties 20 <init> | negated conditional
+FRONTEND {'NoCoverage': 13, 'Survived': 283, 'Killed': 60} score 16.9% (60/356) scoreCovered 17.5% (60/343)
+   NoCoverage RegistrationForm.tsx 41 OptionalChaining options.find(o => o.id === id).registrationTypes
+   NoCoverage RegistrationForm.tsx 41 ArrowFunction () => undefined
+   NoCoverage RegistrationForm.tsx 41 ConditionalExpression true
+   NoCoverage RegistrationForm.tsx 41 ConditionalExpression false
+   NoCoverage RegistrationForm.tsx 41 EqualityOperator o.id !== id
+   NoCoverage RegistrationForm.tsx 51 MethodExpression current
+   NoCoverage RegistrationForm.tsx 51 ArrowFunction () => undefined
+   NoCoverage RegistrationForm.tsx 51 ConditionalExpression true
+   NoCoverage RegistrationForm.tsx 51 ConditionalExpression false
+   NoCoverage RegistrationForm.tsx 51 EqualityOperator x === id
+   NoCoverage RegistrationForm.tsx 80 ArrowFunction () => undefined
+   NoCoverage RegistrationForm.tsx 80 ArithmeticOperator n - 1
+   NoCoverage RegistrationForm.tsx 107 StringLiteral ""
+   Survived RegistrationForm.tsx 24 StringLiteral ""
+   Survived RegistrationForm.tsx 27 BooleanLiteral true
+   Survived RegistrationForm.tsx 23 BlockStatement {}
+   Survived RegistrationForm.tsx 26 ArrayDeclaration ["Stryker was here"]
+   Survived RegistrationForm.tsx 28 StringLiteral "Stryker was here!"
+   Survived RegistrationForm.tsx 31 BooleanLiteral true
+   Survived RegistrationForm.tsx 30 ArrayDeclaration ["Stryker was here"]
+   Survived RegistrationForm.tsx 37 BlockStatement {}
+   Survived RegistrationForm.tsx 38 CallExpression ;
+   Survived RegistrationForm.tsx 39 ArrowFunction () => undefined
+   Survived RegistrationForm.tsx 40 MethodExpression current
+   Survived RegistrationForm.tsx 40 ArrowFunction () => undefined
+   Survived RegistrationForm.tsx 44 BooleanLiteral true
+   Survived RegistrationForm.tsx 45 CallExpression ;
+   Survived RegistrationForm.tsx 46 ArrayDeclaration ["Stryker was here"]
+   Survived RegistrationForm.tsx 32 BooleanLiteral true
+   Survived RegistrationForm.tsx 35 MethodExpression options
+   Survived RegistrationForm.tsx 35 ArrowFunction () => undefined
+   Survived RegistrationForm.tsx 49 BlockStatement {}
+   Survived RegistrationForm.tsx 50 ArrowFunction () => undefined
+   Survived RegistrationForm.tsx 51 ArrayDeclaration []
+   Survived RegistrationForm.tsx 55 BlockStatement {}
+   Survived RegistrationForm.tsx 57 ConditionalExpression true
+   Survived RegistrationForm.tsx 56 CallExpression ;
+   Survived RegistrationForm.tsx 57 ConditionalExpression false
+   Survived RegistrationForm.tsx 58 BooleanLiteral true
+   Survived RegistrationForm.tsx 59 ArrayDeclaration ["Stryker was here"]
+   Survived RegistrationForm.tsx 61 CallExpression ;
+   Survived RegistrationForm.tsx 62 ConditionalExpression true
+   Survived RegistrationForm.tsx 62 ConditionalExpression false
+   Survived RegistrationForm.tsx 62 EqualityOperator Object.keys(clientErrors).length >= 0
+   Survived RegistrationForm.tsx 73 BooleanLiteral false
+   Survived RegistrationForm.tsx 62 EqualityOperator Object.keys(clientErrors).length <= 0
+   Survived RegistrationForm.tsx 75 BooleanLiteral true
+   Survived RegistrationForm.tsx 76 ConditionalExpression true
+   Survived RegistrationForm.tsx 76 ConditionalExpression false
+   Survived RegistrationForm.tsx 77 CallExpression ;
+   Survived RegistrationForm.tsx 76 BlockStatement {}
+   Survived RegistrationForm.tsx 76 EqualityOperator result.kind !== "accepted"
+   Survived RegistrationForm.tsx 76 StringLiteral ""
+   Survived RegistrationForm.tsx 80 BooleanLiteral settings.recaptcha.testMode
+   Survived RegistrationForm.tsx 80 ConditionalExpression true
+   Survived RegistrationForm.tsx 81 ConditionalExpression true
+   Survived RegistrationForm.tsx 81 ConditionalExpression false
+   Survived RegistrationForm.tsx 80 ConditionalExpression false
+   Survived RegistrationForm.tsx 81 EqualityOperator result.kind !== "rejected"
+   Survived RegistrationForm.tsx 81 StringLiteral ""
+   Survived RegistrationForm.tsx 85 CallExpression ;
+   Survived RegistrationForm.tsx 81 BlockStatement {}
+   Survived RegistrationForm.tsx 83 ArrayDeclaration ["Stryker was here"]
+   Survived RegistrationForm.tsx 85 ConditionalExpression true
+   Survived RegistrationForm.tsx 85 ConditionalExpression false
+   Survived RegistrationForm.tsx 84 BlockStatement {}
+   Survived RegistrationForm.tsx 90 BlockStatement {}
+   Survived RegistrationForm.tsx 91 BooleanLiteral false
+   Survived RegistrationForm.tsx 88 CallExpression ;
+   Survived RegistrationForm.tsx 89 CallExpression ;
+   Survived RegistrationForm.tsx 96 StringLiteral ``
+   Survived RegistrationForm.tsx 106 ConditionalExpression true
+   Survived RegistrationForm.tsx 95 ArrowFunction () => undefined
+   Survived RegistrationForm.tsx 106 ConditionalExpression false
+   Survived RegistrationForm.tsx 106 EqualityOperator type !== "EXTERNAL"
+   Survived RegistrationForm.tsx 106 StringLiteral ""
+   Survived RegistrationForm.tsx 107 ArrowFunction () => undefined
+   Survived RegistrationForm.tsx 116 StringLiteral ""
+   Survived RegistrationForm.tsx 115 ConditionalExpression true
+   Survived RegistrationForm.tsx 115 ConditionalExpression false
+   Survived RegistrationForm.tsx 115 EqualityOperator type !== "STUDENT"
+   Survived RegistrationForm.tsx 115 StringLiteral ""
+   Survived RegistrationForm.tsx 116 ArrowFunction () => undefined
+   Survived RegistrationForm.tsx 122 ArrowFunction () => undefined
+   Survived RegistrationForm.tsx 128 StringLiteral ""
+   Survived RegistrationForm.tsx 128 LogicalOperator field.type && "text"
+   Survived RegistrationForm.tsx 130 BooleanLiteral false
+   Survived RegistrationForm.tsx 129 StringLiteral "Stryker was here!"
+   Survived RegistrationForm.tsx 129 LogicalOperator values[field.name] && ""
+   Survived RegistrationForm.tsx 133 ArrowFunction () => undefined
+   Survived RegistrationForm.tsx 132 ArrowFunction () => undefined
+   Survived RegistrationForm.tsx 133 ObjectLiteral {}
+   Survived RegistrationForm.tsx 137 StringLiteral ``
+   Survived RegistrationForm.tsx 136 ConditionalExpression true
+   Survived RegistrationForm.tsx 136 ConditionalExpression false
+   Survived RegistrationForm.tsx 136 LogicalOperator errors[field.name] || <p id={`${field.name}-error`
+   Survived RegistrationForm.tsx 144 BlockStatement {}
+   Survived RegistrationForm.tsx 145 MethodExpression available
+   Survived RegistrationForm.tsx 145 ArrowFunction () => undefined
+   Survived RegistrationForm.tsx 145 ConditionalExpression true
+   Survived RegistrationForm.tsx 145 ConditionalExpression false
+   Survived RegistrationForm.tsx 145 EqualityOperator o.category !== category
+   Survived RegistrationForm.tsx 152 ArrowFunction () => undefined
+   Survived RegistrationForm.tsx 157 ArrowFunction () => undefined
+   Survived RegistrationForm.tsx 146 ConditionalExpression true
+   Survived RegistrationForm.tsx 146 ConditionalExpression false
+   Survived RegistrationForm.tsx 146 EqualityOperator inCategory.length !== 0
+   Survived RegistrationForm.tsx 171 StringLiteral ""
+   Survived RegistrationForm.tsx 172 ArrowFunction () => undefined
+   Survived RegistrationForm.tsx 176 ConditionalExpression true
+   Survived RegistrationForm.tsx 176 ConditionalExpression false
+   Survived RegistrationForm.tsx 176 LogicalOperator errors.consentGiven || <p id="consentGiven-error" 
+   Survived RegistrationForm.tsx 190 StringLiteral ""
+   Survived RegistrationForm.tsx 192 ConditionalExpression true
+   Survived RegistrationForm.tsx 192 ConditionalExpression false
+   Survived RegistrationForm.tsx 192 LogicalOperator errors.recaptchaToken || <p id="recaptchaToken-err
+   Survived RegistrationForm.tsx 211 StringLiteral ""
+   Survived RegistrationForm.tsx 199 ArrowFunction () => undefined
+   Survived RegistrationForm.tsx 204 ConditionalExpression true
+   Survived RegistrationForm.tsx 204 ConditionalExpression false
+   Survived RegistrationForm.tsx 204 LogicalOperator failed || <p role="alert" className="error">
+     
+   Survived RegistrationForm.tsx 211 StringLiteral ""
+   Survived RegistrationForm.tsx 14 StringLiteral ""
+   Survived RegistrationForm.tsx 14 StringLiteral ""
+   Survived RegistrationForm.tsx 14 StringLiteral ""
+   Survived App.tsx 26 ArrowFunction () => undefined
+   Survived App.tsx 17 ObjectLiteral {}
+   Survived App.tsx 16 BlockStatement {}
+   Survived App.tsx 24 ArrayDeclaration []
+   Survived App.tsx 17 StringLiteral ""
+   Survived App.tsx 22 BlockStatement {}
+   Survived App.tsx 23 BooleanLiteral false
+   Survived App.tsx 29 ConditionalExpression true
+   Survived App.tsx 29 ConditionalExpression false
+   Survived App.tsx 29 LogicalOperator active || setLoad({
+  state: "error"
+})
+   Survived App.tsx 27 ConditionalExpression false
+   Survived App.tsx 27 ObjectLiteral {}
+   Survived App.tsx 27 ConditionalExpression true
+   Survived App.tsx 27 LogicalOperator active || setLoad({
+  state: "ready",
+  settings,
+
+   Survived App.tsx 27 StringLiteral ""
+   Survived App.tsx 29 ObjectLiteral {}
+   Survived App.tsx 29 ArrowFunction () => undefined
+   Survived App.tsx 29 StringLiteral ""
+   Survived App.tsx 31 BooleanLiteral true
+   Survived App.tsx 35 ConditionalExpression true
+   Survived App.tsx 30 BlockStatement {}
+   Survived App.tsx 33 ArrayDeclaration ["Stryker was here"]
+   Survived App.tsx 35 EqualityOperator load.state !== "loading"
+   Survived App.tsx 35 ConditionalExpression false
+   Survived App.tsx 35 StringLiteral ""
+   Survived App.tsx 36 BlockStatement {}
+   Survived App.tsx 36 ConditionalExpression false
+   Survived App.tsx 36 ConditionalExpression true
+   Survived App.tsx 36 EqualityOperator load.state !== "error"
+   Survived App.tsx 36 StringLiteral ""
+   Survived Confirmation.tsx 8 BlockStatement {}
+   Survived Confirmation.tsx 13 StringLiteral ``
+   Survived Confirmation.tsx 14 ConditionalExpression true
+   Survived Confirmation.tsx 14 ConditionalExpression false
+   Survived Confirmation.tsx 14 EqualityOperator selectedOptions.length <= 0
+   Survived Confirmation.tsx 14 EqualityOperator selectedOptions.length >= 0
+   Survived Confirmation.tsx 16 ArrowFunction () => undefined
+   Survived Recaptcha.tsx 36 ConditionalExpression false
+   Survived Recaptcha.tsx 35 BlockStatement {}
+   Survived Recaptcha.tsx 36 BlockStatement {}
+   Survived Recaptcha.tsx 36 ConditionalExpression true
+   Survived Recaptcha.tsx 41 ConditionalExpression true
+   Survived Recaptcha.tsx 41 ConditionalExpression false
+   Survived Recaptcha.tsx 41 EqualityOperator token !== TEST_MODE_TOKEN
+   Survived Recaptcha.tsx 43 StringLiteral "Stryker was here!"
+   Survived Recaptcha.tsx 58 BlockStatement {}
+   Survived Recaptcha.tsx 64 CallExpression ;
+   Survived Recaptcha.tsx 64 BlockStatement {}
+   Survived Recaptcha.tsx 67 ConditionalExpression true
+   Survived Recaptcha.tsx 65 BlockStatement {}
+   Survived Recaptcha.tsx 67 ConditionalExpression false
+   Survived Recaptcha.tsx 67 ConditionalExpression false
+   Survived Recaptcha.tsx 67 LogicalOperator (!container.current || !window.grecaptcha) && widg
+   Survived Recaptcha.tsx 67 LogicalOperator !container.current && !window.grecaptcha
+   Survived Recaptcha.tsx 68 BooleanLiteral window.grecaptcha
+   Survived Recaptcha.tsx 67 BooleanLiteral container.current
+   Survived Recaptcha.tsx 69 ConditionalExpression false
+   Survived Recaptcha.tsx 69 EqualityOperator widgetId.current === undefined
+   Survived Recaptcha.tsx 72 ObjectLiteral {}
+   Survived Recaptcha.tsx 74 ArrowFunction () => undefined
+   Survived Recaptcha.tsx 75 ArrowFunction () => undefined
+   Survived Recaptcha.tsx 75 StringLiteral "Stryker was here!"
+   Survived Recaptcha.tsx 76 ArrowFunction () => undefined
+   Survived Recaptcha.tsx 79 ConditionalExpression true
+   Survived Recaptcha.tsx 76 StringLiteral "Stryker was here!"
+   Survived Recaptcha.tsx 79 ConditionalExpression false
+   Survived Recaptcha.tsx 43 ArrowFunction () => undefined
+   Survived Recaptcha.tsx 79 BlockStatement {}
+   Survived Recaptcha.tsx 84 BooleanLiteral document.querySelector("script[data-recaptcha]")
+   Survived Recaptcha.tsx 80 CallExpression ;
+   Survived Recaptcha.tsx 84 ConditionalExpression false
+   Survived Recaptcha.tsx 84 ConditionalExpression true
+   Survived Recaptcha.tsx 84 StringLiteral ""
+   Survived Recaptcha.tsx 84 BlockStatement {}
+   Survived Recaptcha.tsx 85 StringLiteral ""
+   Survived Recaptcha.tsx 87 StringLiteral ""
+   Survived Recaptcha.tsx 88 BooleanLiteral false
+   Survived Recaptcha.tsx 90 StringLiteral ""
+   Survived Recaptcha.tsx 89 BooleanLiteral false
+   Survived Recaptcha.tsx 91 CallExpression ;
+   Survived Recaptcha.tsx 93 ArrayDeclaration []
+   Survived Recaptcha.tsx 95 BlockStatement {}
+   Survived Recaptcha.tsx 96 ConditionalExpression true
+   Survived Recaptcha.tsx 96 ConditionalExpression false
+   Survived Recaptcha.tsx 96 ConditionalExpression true
+   Survived Recaptcha.tsx 96 LogicalOperator resetKey > 0 && window.grecaptcha || widgetId.curr
+   Survived Recaptcha.tsx 96 LogicalOperator resetKey > 0 || window.grecaptcha
+   Survived Recaptcha.tsx 96 ConditionalExpression true
+   Survived Recaptcha.tsx 96 EqualityOperator resetKey <= 0
+   Survived Recaptcha.tsx 96 EqualityOperator resetKey >= 0
+   Survived Recaptcha.tsx 96 ConditionalExpression true
+   Survived Recaptcha.tsx 96 BlockStatement {}
+   Survived Recaptcha.tsx 96 EqualityOperator widgetId.current === undefined
+   Survived Recaptcha.tsx 97 CallExpression ;
+   Survived Recaptcha.tsx 100 ArrayDeclaration []
+   Survived Recaptcha.tsx 98 StringLiteral "Stryker was here!"
+   Survived api.ts 15 BlockStatement {}
+   Survived api.ts 16 ObjectLiteral {}
+   Survived api.ts 20 StringLiteral ``
+   Survived api.ts 17 ObjectLiteral {}
+   Survived api.ts 17 StringLiteral ""
+   Survived api.ts 19 BooleanLiteral response.ok
+   Survived api.ts 19 ConditionalExpression true
+   Survived api.ts 19 ConditionalExpression false
+   Survived api.ts 34 BlockStatement {}
+   Survived api.ts 24 BlockStatement {}
+   Survived api.ts 36 BlockStatement {}
+   Survived api.ts 37 StringLiteral ""
+   Survived api.ts 25 StringLiteral ""
+   Survived api.ts 28 BlockStatement {}
+   Survived api.ts 29 StringLiteral ""
+   Survived api.ts 37 ObjectLiteral {}
+   Survived api.ts 38 StringLiteral ""
+   Survived api.ts 45 BlockStatement {}
+   Survived api.ts 39 ObjectLiteral {}
+   Survived api.ts 46 ObjectLiteral {}
+   Survived api.ts 40 StringLiteral ""
+   Survived api.ts 41 StringLiteral ""
+   Survived api.ts 46 StringLiteral ""
+   Survived api.ts 48 BlockStatement {}
+   Survived api.ts 50 StringLiteral ""
+   Survived api.ts 49 ObjectLiteral {}
+   Survived api.ts 48 ConditionalExpression true
+   Survived api.ts 48 ConditionalExpression false
+   Survived api.ts 48 EqualityOperator response.status !== 201
+   Survived api.ts 54 ConditionalExpression true
+   Survived api.ts 54 ConditionalExpression false
+   Survived api.ts 54 ConditionalExpression false
+   Survived api.ts 54 LogicalOperator response.status === 400 && response.status === 409
+   Survived api.ts 54 EqualityOperator response.status !== 400
+   Survived api.ts 54 ConditionalExpression false
+   Survived api.ts 54 EqualityOperator response.status !== 409
+   Survived api.ts 54 BlockStatement {}
+   Survived api.ts 58 ConditionalExpression true
+   Survived api.ts 55 BlockStatement {}
+   Survived api.ts 58 ConditionalExpression false
+   Survived api.ts 58 LogicalOperator Array.isArray(problem.fieldErrors) || problem.fiel
+   Survived api.ts 59 ConditionalExpression true
+   Survived api.ts 59 EqualityOperator problem.fieldErrors.length >= 0
+   Survived api.ts 59 EqualityOperator problem.fieldErrors.length <= 0
+   Survived api.ts 67 ObjectLiteral {}
+   Survived api.ts 67 StringLiteral ""
+   Survived api.ts 60 BlockStatement {}
+   Survived api.ts 61 ObjectLiteral {}
+   Survived api.ts 61 StringLiteral ""
+   Survived validation.ts 50 StringLiteral "Stryker was here!"
+   Survived validation.ts 47 BlockStatement {}
+   Survived validation.ts 49 BlockStatement {}
+   Survived validation.ts 50 MethodExpression values[field.name] ?? ""
+   Survived validation.ts 50 LogicalOperator values[field.name] && ""
+   Survived validation.ts 51 ConditionalExpression true
+   Survived validation.ts 51 ConditionalExpression false
+   Survived validation.ts 51 EqualityOperator value !== ""
+   Survived validation.ts 51 StringLiteral "Stryker was here!"
+   Survived validation.ts 52 ConditionalExpression true
+   Survived validation.ts 52 ConditionalExpression false
+   Survived validation.ts 52 LogicalOperator field.name === "email" || !EMAIL.test(value)
+   Survived validation.ts 52 ConditionalExpression true
+   Survived validation.ts 52 EqualityOperator field.name !== "email"
+   Survived validation.ts 52 StringLiteral ""
+   Survived validation.ts 52 BooleanLiteral EMAIL.test(value)
+   Survived validation.ts 55 BooleanLiteral consentGiven
+   Survived validation.ts 55 ConditionalExpression true
+   Survived validation.ts 55 ConditionalExpression false
+   Survived validation.ts 56 ConditionalExpression true
+   Survived validation.ts 56 ConditionalExpression false
+   Survived validation.ts 56 EqualityOperator token !== ""
+   Survived validation.ts 56 StringLiteral "Stryker was here!"
+   Survived validation.ts 26 StringLiteral ""
+   Survived validation.ts 32 StringLiteral ""
+   Survived validation.ts 39 Regex /^[^\s@]+@[^\s@]+\.[^\s@]+/

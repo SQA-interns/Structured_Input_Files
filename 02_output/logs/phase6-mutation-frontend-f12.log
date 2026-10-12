@@ -1,0 +1,150 @@
+[32m21:37:01 (2539728) INFO ProjectReader[39m Found 2 of 42 file(s) to be mutated.
+[32m21:37:01 (2539728) INFO Instrumenter[39m Instrumented 2 source file(s) with 197 mutant(s)
+[32m21:37:02 (2539728) INFO ConcurrencyTokenProvider[39m Creating 4 test runner process(es).
+[32m21:37:02 (2539728) INFO DryRunExecutor[39m Starting initial test run (command test runner with "off" coverage analysis). This may take a while.
+[32m21:37:05 (2539728) INFO DryRunExecutor[39m Initial test run succeeded. Ran 1 tests in 3 seconds (net 3157 ms, overhead 1 ms).
+
+All tests
+  ✓ All tests (killed 53)
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:14:41
+-   const FORM_LEVEL_FIELDS = ["optionIds", "recaptchaToken", "body", "type"];
++   const FORM_LEVEL_FIELDS = ["optionIds", "", "body", "type"];
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:14:59
+-   const FORM_LEVEL_FIELDS = ["optionIds", "recaptchaToken", "body", "type"];
++   const FORM_LEVEL_FIELDS = ["optionIds", "recaptchaToken", "", "type"];
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:14:67
+-   const FORM_LEVEL_FIELDS = ["optionIds", "recaptchaToken", "body", "type"];
++   const FORM_LEVEL_FIELDS = ["optionIds", "recaptchaToken", "body", ""];
+
+[Survived] ArrayDeclaration
+src/RegistrationForm.tsx:26:54
+-     const [selected, setSelected] = useState<string[]>([]);
++     const [selected, setSelected] = useState<string[]>(["Stryker was here"]);
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:28:38
+-     const [token, setToken] = useState("");
++     const [token, setToken] = useState("Stryker was here!");
+
+[Survived] ArrayDeclaration
+src/RegistrationForm.tsx:30:58
+-     const [formErrors, setFormErrors] = useState<string[]>([]);
++     const [formErrors, setFormErrors] = useState<string[]>(["Stryker was here"]);
+
+[Survived] OptionalChaining
+src/RegistrationForm.tsx:41:9
+-           options.find((o) => o.id === id)?.registrationTypes.includes(next),
++           options.find(o => o.id === id).registrationTypes.includes(next),
+
+[Survived] CallExpression
+src/RegistrationForm.tsx:45:5
+-       setErrors({});
++       ;
+
+[Survived] ArrayDeclaration
+src/RegistrationForm.tsx:46:19
+-       setFormErrors([]);
++       setFormErrors(["Stryker was here"]);
+
+[Survived] MethodExpression
+src/RegistrationForm.tsx:51:36
+-         checked ? [...current, id] : current.filter((x) => x !== id),
++         checked ? [...current, id] : current,
+
+[Survived] CallExpression
+src/RegistrationForm.tsx:56:5
+-       event.preventDefault();
++       ;
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:57:9
+-       if (sending) return;
++       if (false) return;
+
+[Survived] ArrayDeclaration
+src/RegistrationForm.tsx:59:19
+-       setFormErrors([]);
++       setFormErrors(["Stryker was here"]);
+
+[Survived] BooleanLiteral
+src/RegistrationForm.tsx:75:16
+-       setSending(false);
++       setSending(true);
+
+[Survived] BooleanLiteral
+src/RegistrationForm.tsx:80:9
+-       if (!settings.recaptcha.testMode) setCaptchaReset((n) => n + 1);
++       if (settings.recaptcha.testMode) setCaptchaReset((n) => n + 1);
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:80:9
+-       if (!settings.recaptcha.testMode) setCaptchaReset((n) => n + 1);
++       if (true) setCaptchaReset((n) => n + 1);
+
+[Survived] ArrayDeclaration
+src/RegistrationForm.tsx:83:33
+-         const general: string[] = [];
++         const general: string[] = ["Stryker was here"];
+
+[Survived] ArrowFunction
+src/RegistrationForm.tsx:107:23
+-               onChange={() => chooseType("EXTERNAL")}
++               onChange={() => undefined}
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:107:40
+-               onChange={() => chooseType("EXTERNAL")}
++               onChange={() => chooseType("")}
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:115:22
+-               checked={type === "STUDENT"}
++               checked={false}
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:115:31
+-               checked={type === "STUDENT"}
++               checked={type === ""}
+
+[Survived] BooleanLiteral
+src/RegistrationForm.tsx:130:48
+-               aria-invalid={errors[field.name] ? true : undefined}
++               aria-invalid={errors[field.name] ? false : undefined}
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:190:32
+-             describedBy={errorId("recaptchaToken")}
++             describedBy={errorId("")}
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:192:10
+-           {errors.recaptchaToken && (
+-             <p id="recaptchaToken-error" role="alert" className="error">
+-               {errors.recaptchaToken}
+-             </p>
+-           )}
++           {true}
+
+[Survived] StringLiteral
+src/validation.ts:32:44
+-       { name: "email", label: "Email", type: "email" },
++       { name: "email", label: "Email", type: "" },
+
+Ran 0.40 tests per mutant on average.
+----------------------|------------------|----------|-----------|------------|----------|----------|
+                      | % Mutation score |          |           |            |          |          |
+File                  |  total | covered | # killed | # timeout | # survived | # no cov | # errors |
+----------------------|--------|---------|----------|-----------|------------|----------|----------|
+All files             |  87.31 |   87.31 |       53 |       119 |         25 |        0 |        0 |
+ RegistrationForm.tsx |  81.25 |   81.25 |       32 |        72 |         24 |        0 |        0 |
+ validation.ts        |  98.55 |   98.55 |       21 |        47 |          1 |        0 |        0 |
+----------------------|--------|---------|----------|-----------|------------|----------|----------|
+[32m21:45:06 (2539728) INFO JsonReporter[39m Your report can be found at: file:///home/tjan-kazar/storage/Work/lab/Structured_Input_Files/02_output/frontend/reports/mutation/mutation.json
+[32m21:45:06 (2539728) INFO HtmlReporter[39m Your report can be found at: file:///home/tjan-kazar/storage/Work/lab/Structured_Input_Files/02_output/frontend/reports/mutation/mutation.html
+[32m21:45:06 (2539728) INFO MutationTestExecutor[39m Done in 8 minutes and 5 seconds.

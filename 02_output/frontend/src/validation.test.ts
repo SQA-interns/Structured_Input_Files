@@ -29,7 +29,7 @@ describe("validate", () => {
     ).toEqual({});
   });
 
-  it.each(["ana", "ana@x", "@x.si", "a b@x.si"])(
+  it.each(["ana", "ana@x", "@x.si", "a b@x.si", "ana@x.si trailing"])(
     "rejects the email %s",
     (email) => {
       expect(validate("EXTERNAL", { ...external, email }, true, "tok")).toEqual(

@@ -1,0 +1,253 @@
+[32m21:22:42 (2499940) INFO ProjectReader[39m Found 7 of 41 file(s) to be mutated.
+[32m21:22:43 (2499940) INFO Instrumenter[39m Instrumented 7 source file(s) with 356 mutant(s)
+[32m21:22:43 (2499940) INFO ConcurrencyTokenProvider[39m Creating 4 test runner process(es).
+[32m21:22:44 (2499940) INFO DryRunExecutor[39m Starting initial test run (command test runner with "off" coverage analysis). This may take a while.
+[32m21:22:47 (2499940) INFO DryRunExecutor[39m Initial test run succeeded. Ran 1 tests in 2 seconds (net 2904 ms, overhead 1 ms).
+
+All tests
+  ✓ All tests (killed 145)
+
+[Survived] StringLiteral
+src/api.ts:17:24
+-       headers: { Accept: "application/json" },
++       headers: { Accept: "" },
+
+[Survived] ObjectLiteral
+src/api.ts:39:16
+-         headers: {
+-           "Content-Type": "application/json",
+-           Accept: "application/json",
+-         },
++         headers: {},
+
+[Survived] StringLiteral
+src/api.ts:40:25
+-           "Content-Type": "application/json",
++           "Content-Type": "",
+
+[Survived] StringLiteral
+src/api.ts:41:17
+-           Accept: "application/json",
++           Accept: "",
+
+[Survived] ConditionalExpression
+src/api.ts:54:7
+-     if (response.status === 400 || response.status === 409) {
++     if (true) {
+
+[Survived] LogicalOperator
+src/api.ts:58:9
+-           Array.isArray(problem.fieldErrors) &&
+-           problem.fieldErrors.length > 0
++           Array.isArray(problem.fieldErrors) || problem.fieldErrors.length > 0
+
+[Survived] ConditionalExpression
+src/api.ts:59:9
+-           problem.fieldErrors.length > 0
++           true
+
+[Survived] EqualityOperator
+src/api.ts:59:9
+-           problem.fieldErrors.length > 0
++           problem.fieldErrors.length >= 0
+
+[Survived] StringLiteral
+src/App.tsx:27:38
+-             active && setLoad({ state: "ready", settings, options }),
++             active && setLoad({ state: "", settings, options }),
+
+[Survived] BlockStatement
+src/App.tsx:30:18
+-       return () => {
+-         active = false;
+-       };
++       return () => {};
+
+[Survived] ArrayDeclaration
+src/App.tsx:33:6
+-     }, []);
++     }, ["Stryker was here"]);
+
+[Survived] ConditionalExpression
+src/Confirmation.tsx:14:8
+-         {selectedOptions.length > 0 ? (
++         {true ? (
+
+[Survived] LogicalOperator
+src/Recaptcha.tsx:67:9
+-           !container.current ||
+-           !window.grecaptcha ||
+-           widgetId.current !== undefined
++           (!container.current || !window.grecaptcha) && widgetId.current !== undefined
+
+[Survived] LogicalOperator
+src/Recaptcha.tsx:67:9
+-           !container.current ||
+-           !window.grecaptcha ||
++           !container.current && !window.grecaptcha ||
+
+[Survived] BooleanLiteral
+src/Recaptcha.tsx:89:22
+-         script.defer = true;
++         script.defer = false;
+
+[Survived] ArrayDeclaration
+src/Recaptcha.tsx:93:6
+-     }, [siteKey]);
++     }, []);
+
+[Survived] LogicalOperator
+src/Recaptcha.tsx:96:9
+-       if (resetKey > 0 && window.grecaptcha && widgetId.current !== undefined) {
++       if (resetKey > 0 && window.grecaptcha || widgetId.current !== undefined) {
+
+[Survived] LogicalOperator
+src/Recaptcha.tsx:96:9
+-       if (resetKey > 0 && window.grecaptcha && widgetId.current !== undefined) {
++       if (resetKey > 0 || window.grecaptcha && widgetId.current !== undefined) {
+
+[Survived] ConditionalExpression
+src/Recaptcha.tsx:96:9
+-       if (resetKey > 0 && window.grecaptcha && widgetId.current !== undefined) {
++       if (true && window.grecaptcha && widgetId.current !== undefined) {
+
+[Survived] EqualityOperator
+src/Recaptcha.tsx:96:9
+-       if (resetKey > 0 && window.grecaptcha && widgetId.current !== undefined) {
++       if (resetKey >= 0 && window.grecaptcha && widgetId.current !== undefined) {
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:14:59
+-   const FORM_LEVEL_FIELDS = ["optionIds", "recaptchaToken", "body", "type"];
++   const FORM_LEVEL_FIELDS = ["optionIds", "recaptchaToken", "", "type"];
+
+[Survived] ArrayDeclaration
+src/RegistrationForm.tsx:26:54
+-     const [selected, setSelected] = useState<string[]>([]);
++     const [selected, setSelected] = useState<string[]>(["Stryker was here"]);
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:28:38
+-     const [token, setToken] = useState("");
++     const [token, setToken] = useState("Stryker was here!");
+
+[Survived] ArrayDeclaration
+src/RegistrationForm.tsx:30:58
+-     const [formErrors, setFormErrors] = useState<string[]>([]);
++     const [formErrors, setFormErrors] = useState<string[]>(["Stryker was here"]);
+
+[Survived] BooleanLiteral
+src/RegistrationForm.tsx:31:40
+-     const [failed, setFailed] = useState(false);
++     const [failed, setFailed] = useState(true);
+
+[Survived] ArrowFunction
+src/RegistrationForm.tsx:41:22
+-           options.find((o) => o.id === id)?.registrationTypes.includes(next),
++           options.find(() => undefined)?.registrationTypes.includes(next),
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:41:29
+-           options.find((o) => o.id === id)?.registrationTypes.includes(next),
++           options.find((o) => true)?.registrationTypes.includes(next),
+
+[Survived] EqualityOperator
+src/RegistrationForm.tsx:41:29
+-           options.find((o) => o.id === id)?.registrationTypes.includes(next),
++           options.find((o) => o.id !== id)?.registrationTypes.includes(next),
+
+[Survived] ArrayDeclaration
+src/RegistrationForm.tsx:46:19
+-       setFormErrors([]);
++       setFormErrors(["Stryker was here"]);
+
+[Survived] MethodExpression
+src/RegistrationForm.tsx:51:36
+-         checked ? [...current, id] : current.filter((x) => x !== id),
++         checked ? [...current, id] : current,
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:51:58
+-         checked ? [...current, id] : current.filter((x) => x !== id),
++         checked ? [...current, id] : current.filter((x) => false),
+
+[Survived] EqualityOperator
+src/RegistrationForm.tsx:51:58
+-         checked ? [...current, id] : current.filter((x) => x !== id),
++         checked ? [...current, id] : current.filter((x) => x === id),
+
+[Survived] BooleanLiteral
+src/RegistrationForm.tsx:75:16
+-       setSending(false);
++       setSending(true);
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:80:9
+-       if (!settings.recaptcha.testMode) setCaptchaReset((n) => n + 1);
++       if (false) setCaptchaReset((n) => n + 1);
+
+[Survived] LogicalOperator
+src/RegistrationForm.tsx:128:19
+-               type={field.type ?? "text"}
++               type={field.type && "text"}
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:129:42
+-               value={values[field.name] ?? ""}
++               value={values[field.name] ?? "Stryker was here!"}
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:171:39
+-               aria-describedby={errorId("consentGiven")}
++               aria-describedby={errorId("")}
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:176:10
+-           {errors.consentGiven && (
+-             <p id="consentGiven-error" role="alert" className="error">
+-               {errors.consentGiven}
+-             </p>
+-           )}
++           {true}
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:176:10
+-           {errors.consentGiven && (
+-             <p id="consentGiven-error" role="alert" className="error">
+-               {errors.consentGiven}
+-             </p>
+-           )}
++           {false}
+
+[Survived] StringLiteral
+src/validation.ts:26:44
+-       { name: "email", label: "Email", type: "email" },
++       { name: "email", label: "Email", type: "" },
+
+[Survived] StringLiteral
+src/validation.ts:32:44
+-       { name: "email", label: "Email", type: "email" },
++       { name: "email", label: "Email", type: "" },
+
+[Survived] Regex
+src/validation.ts:39:15
+-   const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
++   const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+/;
+
+Ran 0.53 tests per mutant on average.
+----------------------|------------------|----------|-----------|------------|----------|----------|
+                      | % Mutation score |          |           |            |          |          |
+File                  |  total | covered | # killed | # timeout | # survived | # no cov | # errors |
+----------------------|--------|---------|----------|-----------|------------|----------|----------|
+All files             |  88.20 |   88.20 |      145 |       169 |         42 |        0 |        0 |
+ api.ts               |  83.67 |   83.67 |       23 |        18 |          8 |        0 |        0 |
+ App.tsx              |  90.00 |   90.00 |       22 |         5 |          3 |        0 |        0 |
+ Confirmation.tsx     |  85.71 |   85.71 |        1 |         5 |          1 |        0 |        0 |
+ Recaptcha.tsx        |  86.67 |   86.67 |       18 |        34 |          8 |        0 |        0 |
+ RegistrationForm.tsx |  85.16 |   85.16 |       28 |        81 |         19 |        0 |        0 |
+ types.ts             | 100.00 |  100.00 |       12 |         1 |          0 |        0 |        0 |
+ validation.ts        |  95.65 |   95.65 |       41 |        25 |          3 |        0 |        0 |
+----------------------|--------|---------|----------|-----------|------------|----------|----------|
+[32m21:36:15 (2499940) INFO JsonReporter[39m Your report can be found at: file:///home/tjan-kazar/storage/Work/lab/Structured_Input_Files/02_output/frontend/reports/mutation/mutation.json
+[32m21:36:15 (2499940) INFO HtmlReporter[39m Your report can be found at: file:///home/tjan-kazar/storage/Work/lab/Structured_Input_Files/02_output/frontend/reports/mutation/mutation.html
+[32m21:36:15 (2499940) INFO MutationTestExecutor[39m Done in 13 minutes and 33 seconds.
