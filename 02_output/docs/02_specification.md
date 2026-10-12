@@ -187,7 +187,9 @@ CORS: no cross-origin access by default; `registration.cors.allowed-origins` (en
 | reCAPTCHA test mode, keys, verify URL | `RECAPTCHA_TEST_MODE`, `RECAPTCHA_SITE_KEY`, `RECAPTCHA_SECRET_KEY`, `RECAPTCHA_VERIFY_URL` | `false`, empty, empty, Google URL |
 | Organizer login, HTTPS-only | `ORGANIZER_USERNAME`, `ORGANIZER_PASSWORD`, `ORGANIZER_HTTPS_ONLY` | none, none, `true` |
 | CORS origins | `REGISTRATION_CORS_ALLOWED_ORIGINS` | empty |
-| Rate limits, body limit | `REGISTRATION_RATE_LIMIT_*`, `REGISTRATION_MAX_BODY_BYTES` | 120 / 20 / 10 per minute, 16384 |
+| Rate limits, body limit | `REGISTRATION_RATE_LIMIT_FORM_CONFIG`, `REGISTRATION_RATE_LIMIT_REGISTRATIONS`, `REGISTRATION_RATE_LIMIT_EXPORT`, `REGISTRATION_MAX_BODY_BYTES` | 120 / 20 / 10 per minute, 16384 |
+
+The variable names in this table are the configuration contract: `application.properties` maps each one explicitly (`property=${NAME:default}`, or `${NAME}` where no default is allowed), so the same names work as environment variables and as Spring properties (tests set them as properties). The `prod` profile (`SPRING_PROFILES_ACTIVE=prod`) removes the local defaults marked "local/test". `server.forward-headers-strategy=native` is always on.
 
 ## 14. Deployment and local stack (NFR-02, NFR-04, ES-09, SB-11)
 
