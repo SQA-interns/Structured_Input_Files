@@ -1,0 +1,41 @@
+{
+  "contract": "emails",
+  "description": "SMTP messages sent by the backend after the registration is stored (specification section 6). All bodies are text/plain; charset=UTF-8. No user input appears in any header except the validated participant address in To.",
+  "transport": {
+    "settings": ["SMTP_HOST", "SMTP_PORT", "SMTP_STARTTLS", "SMTP_USERNAME", "SMTP_PASSWORD", "MAIL_FROM"],
+    "timeoutsMillis": { "connect": 5000, "read": 5000, "write": 5000 },
+    "onFailure": "log 'Email <kind> failed for registration <id>' without personal data; the registration stays accepted (OQ-03)"
+  },
+  "messages": [
+    {
+      "kind": "participant-confirmation",
+      "acceptance": ["AC-006-01", "AC-006-02", "AC-006-03"],
+      "from": "MAIL_FROM",
+      "to": ["<participant email>"],
+      "cc": [],
+      "bcc": [],
+      "subject": "Registration confirmed: <CONFERENCE_NAME>",
+      "contentType": "text/plain; charset=UTF-8",
+      "bodyContains": ["<CONFERENCE_NAME>", "<firstName> <lastName>", "<each selected option name>"],
+      "attachments": []
+    },
+    {
+      "kind": "organizer-notification",
+      "acceptance": ["AC-007-01", "AC-007-02"],
+      "from": "MAIL_FROM",
+      "to": ["<one address of ORGANIZER_EMAILS per message>"],
+      "cc": [],
+      "bcc": [],
+      "subject": "New registration <id>",
+      "contentType": "multipart/mixed; text part text/plain; charset=UTF-8",
+      "bodyContains": ["<id>", "<type>", "<every submitted field value>", "<each selected option name>", "<consent ids with time>", "<registeredAt>"],
+      "attachments": [
+        {
+          "fileName": "registration-<id>.json",
+          "contentType": "application/json",
+          "content": "byte-identical to <JSON_COPY_DIR>/<id>.json (registration-copy.schema.json)"
+        }
+      ]
+    }
+  ]
+}
