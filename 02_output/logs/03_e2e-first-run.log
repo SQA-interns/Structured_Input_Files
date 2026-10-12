@@ -1,0 +1,121 @@
+
+Running 5 tests using 1 worker
+
+  x  1 [chromium] › e2e\E2E-01-external-registration.spec.ts:16:1 › E2E-01 external participant registers (AC-001-01, AC-001-08, AC-004-01) (3.2s)
+  x  2 [chromium] › e2e\E2E-02-student-registration.spec.ts:15:1 › E2E-02 student registers (AC-002-01, AC-002-07, AC-004-01) (3.2s)
+  x  3 [chromium] › e2e\E2E-03-field-errors.spec.ts:12:1 › E2E-03 field errors are shown next to the fields (AC-004-02, AC-004-03) (3.2s)
+  x  4 [chromium] › e2e\E2E-04-slovenian-characters.spec.ts:16:1 › E2E-04 Slovenian characters survive the whole chain (AC-005-04, AC-008-03) (3.2s)
+  x  5 [chromium] › e2e\E2E-05-organizer-export.spec.ts:11:1 › E2E-05 organizer exports registrations (AC-008-01, AC-008-02) (3.2s)
+
+
+  1) [chromium] › e2e\E2E-01-external-registration.spec.ts:16:1 › E2E-01 external participant registers (AC-001-01, AC-001-08, AC-004-01) 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 200
+    Received: 502
+
+       at support\stack.ts:245
+
+      243 | export async function formConfig(page: Page): Promise<FormConfig> {
+      244 |   const response = await page.request.get("/api/form-config");
+    > 245 |   expect(response.status()).toBe(200);
+          |                             ^
+      246 |   return (await response.json()) as FormConfig;
+      247 | }
+      248 |
+        at formConfig (E:\13 - Lab Projects\01_Runs\_____SECOND______ROUND_____\04_kyuhi_single-agent_sdd_v006\02_output\frontend\e2e\support\stack.ts:245:29)
+        at E:\13 - Lab Projects\01_Runs\_____SECOND______ROUND_____\04_kyuhi_single-agent_sdd_v006\02_output\frontend\e2e\E2E-01-external-registration.spec.ts:20:18
+
+    Error Context: test-results\E2E-01-external-registrati-8839e-001-01-AC-001-08-AC-004-01--chromium\error-context.md
+
+  2) [chromium] › e2e\E2E-02-student-registration.spec.ts:15:1 › E2E-02 student registers (AC-002-01, AC-002-07, AC-004-01) 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 200
+    Received: 502
+
+       at support\stack.ts:245
+
+      243 | export async function formConfig(page: Page): Promise<FormConfig> {
+      244 |   const response = await page.request.get("/api/form-config");
+    > 245 |   expect(response.status()).toBe(200);
+          |                             ^
+      246 |   return (await response.json()) as FormConfig;
+      247 | }
+      248 |
+        at formConfig (E:\13 - Lab Projects\01_Runs\_____SECOND______ROUND_____\04_kyuhi_single-agent_sdd_v006\02_output\frontend\e2e\support\stack.ts:245:29)
+        at E:\13 - Lab Projects\01_Runs\_____SECOND______ROUND_____\04_kyuhi_single-agent_sdd_v006\02_output\frontend\e2e\E2E-02-student-registration.spec.ts:19:18
+
+    Error Context: test-results\E2E-02-student-registratio-6e3c9-002-01-AC-002-07-AC-004-01--chromium\error-context.md
+
+  3) [chromium] › e2e\E2E-03-field-errors.spec.ts:12:1 › E2E-03 field errors are shown next to the fields (AC-004-02, AC-004-03) 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 200
+    Received: 502
+
+       at support\stack.ts:245
+
+      243 | export async function formConfig(page: Page): Promise<FormConfig> {
+      244 |   const response = await page.request.get("/api/form-config");
+    > 245 |   expect(response.status()).toBe(200);
+          |                             ^
+      246 |   return (await response.json()) as FormConfig;
+      247 | }
+      248 |
+        at formConfig (E:\13 - Lab Projects\01_Runs\_____SECOND______ROUND_____\04_kyuhi_single-agent_sdd_v006\02_output\frontend\e2e\support\stack.ts:245:29)
+        at E:\13 - Lab Projects\01_Runs\_____SECOND______ROUND_____\04_kyuhi_single-agent_sdd_v006\02_output\frontend\e2e\E2E-03-field-errors.spec.ts:16:18
+
+    Error Context: test-results\E2E-03-field-errors-E2E-03-c2a29-fields-AC-004-02-AC-004-03--chromium\error-context.md
+
+  4) [chromium] › e2e\E2E-04-slovenian-characters.spec.ts:16:1 › E2E-04 Slovenian characters survive the whole chain (AC-005-04, AC-008-03) 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 200
+    Received: 502
+
+       at support\stack.ts:245
+
+      243 | export async function formConfig(page: Page): Promise<FormConfig> {
+      244 |   const response = await page.request.get("/api/form-config");
+    > 245 |   expect(response.status()).toBe(200);
+          |                             ^
+      246 |   return (await response.json()) as FormConfig;
+      247 | }
+      248 |
+        at formConfig (E:\13 - Lab Projects\01_Runs\_____SECOND______ROUND_____\04_kyuhi_single-agent_sdd_v006\02_output\frontend\e2e\support\stack.ts:245:29)
+        at E:\13 - Lab Projects\01_Runs\_____SECOND______ROUND_____\04_kyuhi_single-agent_sdd_v006\02_output\frontend\e2e\E2E-04-slovenian-characters.spec.ts:24:18
+
+    Error Context: test-results\E2E-04-slovenian-character-21bdb--chain-AC-005-04-AC-008-03--chromium\error-context.md
+
+  5) [chromium] › e2e\E2E-05-organizer-export.spec.ts:11:1 › E2E-05 organizer exports registrations (AC-008-01, AC-008-02) 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 200
+    Received: 502
+
+       at support\stack.ts:245
+
+      243 | export async function formConfig(page: Page): Promise<FormConfig> {
+      244 |   const response = await page.request.get("/api/form-config");
+    > 245 |   expect(response.status()).toBe(200);
+          |                             ^
+      246 |   return (await response.json()) as FormConfig;
+      247 | }
+      248 |
+        at formConfig (E:\13 - Lab Projects\01_Runs\_____SECOND______ROUND_____\04_kyuhi_single-agent_sdd_v006\02_output\frontend\e2e\support\stack.ts:245:29)
+        at E:\13 - Lab Projects\01_Runs\_____SECOND______ROUND_____\04_kyuhi_single-agent_sdd_v006\02_output\frontend\e2e\E2E-05-organizer-export.spec.ts:15:18
+
+    Error Context: test-results\E2E-05-organizer-export-E2-17b99-ations-AC-008-01-AC-008-02--chromium\error-context.md
+
+  5 failed
+    [chromium] › e2e\E2E-01-external-registration.spec.ts:16:1 › E2E-01 external participant registers (AC-001-01, AC-001-08, AC-004-01) 
+    [chromium] › e2e\E2E-02-student-registration.spec.ts:15:1 › E2E-02 student registers (AC-002-01, AC-002-07, AC-004-01) 
+    [chromium] › e2e\E2E-03-field-errors.spec.ts:12:1 › E2E-03 field errors are shown next to the fields (AC-004-02, AC-004-03) 
+    [chromium] › e2e\E2E-04-slovenian-characters.spec.ts:16:1 › E2E-04 Slovenian characters survive the whole chain (AC-005-04, AC-008-03) 
+    [chromium] › e2e\E2E-05-organizer-export.spec.ts:11:1 › E2E-05 organizer exports registrations (AC-008-01, AC-008-02) 

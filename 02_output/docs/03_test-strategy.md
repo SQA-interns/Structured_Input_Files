@@ -11,6 +11,18 @@
 | End-to-end | both | `frontend/e2e/` | Playwright (`npm run e2e`) | browser against `docker compose up` in `02_output/`, PostgreSQL via `docker compose exec`, Mailpit API, export over HTTP |
 | Unit, integration, architecture | both | other test paths | as above | written in phase 5 |
 
+### Phase 3 run (frozen tests against the bootstrap skeleton, before any production code)
+
+| Suite | Tests | Passed | Failed | Reason (one line per group) |
+|---|---|---|---|---|
+| backend acceptance (`./mvnw test`, log `out/logs/03_backend-acceptance-first-run.log`) | 84 | 0 | 84 | every request answers 401: the skeleton has only Spring Security defaults, no API (registration, form config, export); AC-003-03 fails on its control start (no form config served). One test (consents of AC-003-01) raised NoSuchElementException on the 401 body; it now asserts the status first (commit 19f93f0), so it fails on the assertion. |
+| frontend acceptance (`npm test`) | 10 | 0 | 10 | the skeleton renders an empty page: no "Registration type" radios, so every test fails at "Unable to find role radio" |
+| end-to-end (`npm run e2e`, log `out/logs/03_e2e-first-run.log`) | 5 | 0 | 5 | the stack starts (PostgreSQL, Mailpit, frontend healthy) but the skeleton backend provides no API and no database configuration, so `GET /api/form-config` through the frontend proxy answers 502 |
+
+No test passes on bootstrap code. Harness self-checks before the freeze: Testcontainers PostgreSQL and Mailpit start and the HTTP client reaches the app (401 answers); e2e helpers checked against the running stack (`psql` returns UTF-8 text unchanged, Mailpit search answers) and the xlsx reader parsed a POI-written workbook (2 rows, shared strings with Č, Š, Ž, & and < decoded).
+
+Assertion self-check (write-acceptance-tests step 5): timestamps are read with `getObject(..., OffsetDateTime.class)`; byte comparisons use whole-array equality; every rejection test checks status, field key, and absence of row, copy and email for a unique address; status and field-error contracts come from `02_contracts/openapi.json`; UI queries use only the accessible names of `02_contracts/ui.md`; e2e tests read option names and consents from `GET /api/form-config`, so they do not depend on the shipped configuration.
+
 ## Measurement exclusions
 
 <!-- Phase 3, before any test is written: production code left out of coverage and mutation, one row per path with the reason (generated code, application entry point, …). Rules and defaults: `general/quality/measurement-scope.md`. Not extended later without a decision record. -->
