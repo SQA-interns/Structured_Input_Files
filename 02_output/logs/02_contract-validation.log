@@ -2,3 +2,5 @@ database.sql: applied with psql -v ON_ERROR_STOP=1 to postgres:16.15-alpine: CRE
 conference-config.schema.json: JSON.parse ok, 4 $ref resolved, patterns compile
 registration-copy.schema.json: JSON.parse ok, 0 $ref resolved, patterns compile
 openapi.json: JSON.parse ok, OpenAPI 3.1.0, 3 operations, 18 $ref resolved, patterns compile
+emails.md: markdown tables consistent (3 tables), code fences balanced
+ui.md: markdown tables consistent (2 tables), code fences balanced
