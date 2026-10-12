@@ -1,0 +1,41 @@
+{
+  "contract": "anti-automation",
+  "description": "Google reCAPTCHA v2 between frontend, backend and Google (specification section 7, SR-01, SR-02).",
+  "frontend": {
+    "productionWidget": {
+      "script": "https://www.google.com/recaptcha/api.js?render=explicit",
+      "siteKeySource": "GET /api/form-config -> recaptcha.siteKey",
+      "tokenField": "recaptchaToken"
+    },
+    "testMode": {
+      "when": "GET /api/form-config -> recaptcha.testMode == true",
+      "control": "checkbox labelled 'I am not a robot (test mode)'",
+      "token": "test-pass"
+    }
+  },
+  "backend": {
+    "verifyRequest": {
+      "method": "POST",
+      "url": "RECAPTCHA_VERIFY_URL (default https://www.google.com/recaptcha/api/siteverify)",
+      "contentType": "application/x-www-form-urlencoded",
+      "fields": { "secret": "RECAPTCHA_SECRET_KEY", "response": "<recaptchaToken>", "remoteip": "<client ip>" },
+      "timeoutMillis": 5000
+    },
+    "verifyResponse": {
+      "contentType": "application/json",
+      "accepted": { "success": true },
+      "rejected": "success false or missing, any non-200 status, unparsable body, I/O error or timeout"
+    },
+    "testMode": {
+      "setting": "RECAPTCHA_TEST_MODE",
+      "default": false,
+      "accepted": "token equal to 'test-pass'",
+      "rejected": "any other token",
+      "networkCalls": "none"
+    },
+    "startupGuard": [
+      "refuse to start when RECAPTCHA_TEST_MODE=true and APP_ENVIRONMENT is not 'local' or 'test'",
+      "refuse to start when RECAPTCHA_TEST_MODE=false and RECAPTCHA_SITE_KEY or RECAPTCHA_SECRET_KEY is empty"
+    ]
+  }
+}
