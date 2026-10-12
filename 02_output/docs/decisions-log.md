@@ -227,3 +227,12 @@
 - Options: 1. Lower F-06 to Low and accept HTTP Basic as specified, with the controls above (proposed default). 2. Keep it High and replace HTTP Basic with another mechanism (form login with session, or OIDC, which is out of scope) before release.
 - Human response: none
 - Resolution: pending
+
+## D-26: Human approves D-25 (Basic auth finding lowered)
+- Timestamp: 2026-10-12T20:01:29Z
+- Phase: 6
+- Type: blocking
+- Trigger: follow-up to D-25 (F-06).
+- Options: as in D-25.
+- Human response: "do proposed for d25" (2026-10-12T20:01:29Z)
+- Resolution: D-25 option 1. F-06 lowered from High to Low and accepted: HTTP Basic over HTTPS only (SR-06), BCrypt hash, rate limited, stateless, read-only export.
