@@ -33,6 +33,22 @@ public final class MailpitClient {
     return list;
   }
 
+  /** Waits up to five seconds for messages to {@code address} that mention {@code text}. */
+  public List<JsonNode> awaitMessagesToMentioning(String address, String text) {
+    long deadline = System.nanoTime() + Duration.ofSeconds(5).toNanos();
+    List<JsonNode> list = new ArrayList<>();
+    while (list.isEmpty() && System.nanoTime() < deadline) {
+      JsonNode result =
+          getJson(
+              "/api/v1/search?limit=50&query=" + encode("to:\"" + address + "\" \"" + text + "\""));
+      result.path("messages").forEach(list::add);
+      if (list.isEmpty()) {
+        sleep(200);
+      }
+    }
+    return list;
+  }
+
   /** Waits up to five seconds until {@code condition} holds for the messages to {@code address}. */
   public List<JsonNode> awaitMessagesTo(String address, Predicate<List<JsonNode>> condition) {
     long deadline = System.nanoTime() + Duration.ofSeconds(5).toNanos();
