@@ -1,0 +1,553 @@
+[33m22:24:26 (37452) WARN ProjectReader[39m Glob pattern "!src/**/*.d.ts" did not exclude any files.
+[32m22:24:26 (37452) INFO ProjectReader[39m Found 9 of 81 file(s) to be mutated.
+[32m22:24:26 (37452) INFO Instrumenter[39m Instrumented 9 source file(s) with 411 mutant(s)
+[32m22:24:27 (37452) INFO ConcurrencyTokenProvider[39m Creating 2 test runner process(es).
+[32m22:24:28 (37452) INFO BroadcastReporter[39m Detected that current console does not support the "progress" reporter, downgrading to "progress-append-only" reporter
+[32m22:24:29 (37452) INFO DryRunExecutor[39m Starting initial test run (vitest test runner with "perTest" coverage analysis). This may take a while.
+[32m22:24:38 (37452) INFO DryRunExecutor[39m Initial test run succeeded. Ran 52 tests in 9 seconds (net 2391.705300000005 ms, overhead 7359.294699999995 ms).
+Mutation testing 0% (elapsed: <1m, remaining: ~28m) 3/411 tested (0 survived, 0 timed out)
+Mutation testing 4% (elapsed: <1m, remaining: ~7m) 20/411 tested (0 survived, 0 timed out)
+Mutation testing 5% (elapsed: <1m, remaining: ~8m) 33/411 tested (2 survived, 0 timed out)
+Mutation testing 5% (elapsed: <1m, remaining: ~10m) 46/411 tested (3 survived, 0 timed out)
+Mutation testing 7% (elapsed: <1m, remaining: ~9m) 53/411 tested (3 survived, 0 timed out)
+Mutation testing 9% (elapsed: ~1m, remaining: ~9m) 61/411 tested (5 survived, 0 timed out)
+Mutation testing 9% (elapsed: ~1m, remaining: ~10m) 66/411 tested (7 survived, 0 timed out)
+Mutation testing 10% (elapsed: ~1m, remaining: ~11m) 69/411 tested (8 survived, 0 timed out)
+Mutation testing 12% (elapsed: ~1m, remaining: ~10m) 75/411 tested (9 survived, 0 timed out)
+Mutation testing 13% (elapsed: ~1m, remaining: ~10m) 80/411 tested (10 survived, 0 timed out)
+Mutation testing 15% (elapsed: ~1m, remaining: ~9m) 86/411 tested (11 survived, 0 timed out)
+Mutation testing 16% (elapsed: ~2m, remaining: ~10m) 88/411 tested (13 survived, 0 timed out)
+Mutation testing 18% (elapsed: ~2m, remaining: ~9m) 98/411 tested (14 survived, 0 timed out)
+Mutation testing 20% (elapsed: ~2m, remaining: ~8m) 108/411 tested (14 survived, 0 timed out)
+Mutation testing 24% (elapsed: ~2m, remaining: ~7m) 120/411 tested (14 survived, 0 timed out)
+Mutation testing 27% (elapsed: ~2m, remaining: ~7m) 130/411 tested (15 survived, 0 timed out)
+Mutation testing 29% (elapsed: ~2m, remaining: ~6m) 136/411 tested (15 survived, 0 timed out)
+Mutation testing 29% (elapsed: ~3m, remaining: ~7m) 158/411 tested (17 survived, 0 timed out)
+Mutation testing 32% (elapsed: ~3m, remaining: ~6m) 172/411 tested (18 survived, 0 timed out)
+Mutation testing 36% (elapsed: ~3m, remaining: ~5m) 189/411 tested (18 survived, 0 timed out)
+Mutation testing 39% (elapsed: ~3m, remaining: ~5m) 197/411 tested (19 survived, 0 timed out)
+Mutation testing 42% (elapsed: ~3m, remaining: ~4m) 210/411 tested (21 survived, 0 timed out)
+Mutation testing 43% (elapsed: ~3m, remaining: ~4m) 216/411 tested (22 survived, 0 timed out)
+Mutation testing 45% (elapsed: ~4m, remaining: ~4m) 223/411 tested (23 survived, 0 timed out)
+Mutation testing 46% (elapsed: ~4m, remaining: ~4m) 232/411 tested (24 survived, 0 timed out)
+Mutation testing 47% (elapsed: ~4m, remaining: ~4m) 242/411 tested (25 survived, 0 timed out)
+Mutation testing 48% (elapsed: ~4m, remaining: ~4m) 254/411 tested (27 survived, 0 timed out)
+Mutation testing 51% (elapsed: ~4m, remaining: ~4m) 268/411 tested (28 survived, 0 timed out)
+Mutation testing 53% (elapsed: ~4m, remaining: ~4m) 278/411 tested (28 survived, 0 timed out)
+Mutation testing 57% (elapsed: ~5m, remaining: ~3m) 290/411 tested (29 survived, 0 timed out)
+Mutation testing 58% (elapsed: ~5m, remaining: ~3m) 292/411 tested (31 survived, 0 timed out)
+Mutation testing 60% (elapsed: ~5m, remaining: ~3m) 298/411 tested (35 survived, 0 timed out)
+Mutation testing 63% (elapsed: ~5m, remaining: ~3m) 312/411 tested (37 survived, 0 timed out)
+Mutation testing 67% (elapsed: ~5m, remaining: ~2m) 323/411 tested (37 survived, 0 timed out)
+Mutation testing 69% (elapsed: ~5m, remaining: ~2m) 332/411 tested (37 survived, 0 timed out)
+Mutation testing 71% (elapsed: ~6m, remaining: ~2m) 341/411 tested (37 survived, 0 timed out)
+Mutation testing 75% (elapsed: ~6m, remaining: ~1m) 351/411 tested (38 survived, 0 timed out)
+Mutation testing 78% (elapsed: ~6m, remaining: ~1m) 357/411 tested (38 survived, 0 timed out)
+Mutation testing 82% (elapsed: ~6m, remaining: ~1m) 367/411 tested (38 survived, 0 timed out)
+Mutation testing 86% (elapsed: ~6m, remaining: ~1m) 378/411 tested (39 survived, 0 timed out)
+Mutation testing 94% (elapsed: ~6m, remaining: <1m) 397/411 tested (39 survived, 0 timed out)
+Mutation testing 97% (elapsed: ~7m, remaining: <1m) 404/411 tested (39 survived, 0 timed out)
+
+All tests
+  src
+    api.test.ts
+      ✓ loadFormConfig returns the configuration from /api/form-config (killed 5)
+      ✓ loadFormConfig fails on a non-OK status (killed 3)
+      ✓ submitRegistration posts JSON and returns the created registration (killed 13)
+      ✓ submitRegistration returns field errors of a 400 answer (killed 5)
+      ✓ submitRegistration treats status 400 with body {"message":"malformed"} as failed (killed 3)
+      ✓ submitRegistration treats status 400 with body {"message":"m","fieldErrors":[]} as failed (killed 3)
+      ~ submitRegistration treats status 400 with body {"message":"m","fieldErrors":"x"} as failed (covered 21)
+      ✓ submitRegistration treats status 400 with body not json as failed (killed 2)
+      ~ submitRegistration treats status 201 with body not json as failed (covered 18)
+      ~ submitRegistration treats status 500 with body {"message":"internal"} as failed (covered 17)
+      ~ submitRegistration treats status 429 with body  as failed (covered 17)
+      ✓ submitRegistration treats a network error as failed (killed 2)
+    App.test.tsx
+      ✓ App shows a loading text, then the conference title (killed 25)
+      ✓ App shows a general message when the configuration cannot be loaded (killed 8)
+      ~ App ignores a late answer after unmounting (covered 53)
+      ~ App ignores a late failure after unmounting (covered 50)
+      ✓ Confirmation says when no options were selected (killed 3)
+      ~ RegistrationForm shows nothing but the type choice until a type is chosen (covered 19)
+      ✓ RegistrationForm sends trimmed fields of the type, available selected options and given consents (killed 34)
+      ✓ RegistrationForm does not send options the student type cannot select (killed 1)
+      ✓ RegistrationForm places type, consent-list and token errors and reports unknown fields generally (killed 20)
+      ✓ RegistrationForm does not show the general error when every field error is placed (killed 1)
+      ✓ RegistrationForm clears errors when the type changes (killed 3)
+      ✓ RegistrationForm disables the button while sending and ignores repeated submits (killed 7)
+      ~ RegistrationForm ignores a submit before a type is chosen (covered 27)
+    Recaptcha.test.tsx
+      ✓ Recaptcha in test mode toggles the test token with a labelled checkbox (killed 7)
+      ✓ Recaptcha in test mode shows its error next to the checkbox (killed 4)
+      ✓ Recaptcha in production mode renders the widget when the library is present and forwards tokens (killed 13)
+      ✓ Recaptcha in production mode loads the script once and renders when it has loaded (killed 16)
+      ✓ Recaptcha in production mode resets the widget and the token when the reset key changes (killed 17)
+      ✓ Recaptcha in production mode does not reset before the widget exists (killed 1)
+    validation.test.ts
+      ✓ validateFields accepts complete external values (killed 13)
+      ✓ validateFields requires every field of the type and ignores the other type (killed 9)
+      ~ validateFields rejects the email ana (covered 16)
+      ~ validateFields rejects the email ana@ (covered 16)
+      ~ validateFields rejects the email @example.org (covered 16)
+      ~ validateFields rejects the email ana@example (covered 16)
+      ✓ validateFields rejects the email a b@example.org (killed 1)
+      ~ validateFields rejects the email a@@b.org (covered 16)
+      ~ validateFields accepts an email with surrounding spaces (covered 15)
+      ✓ validateFields lists the fixed fields in display order (killed 2)
+      ~ availableOptions keeps only options available to the type (covered 3)
+  tests/acceptance
+    confirmation.acceptance.test.tsx
+      ✓ US-004 registration confirmation AC-004-01 accepted registration shows the confirmation with name and options and removes the form (killed 79)
+      ✓ US-004 registration confirmation AC-004-02 backend field errors are shown next to their fields and the values remain (killed 31)
+      ✓ US-004 registration confirmation AC-004-03 empty required field shows a field error and sends no request (killed 8)
+      ✓ US-004 registration confirmation AC-004-03 invalid email shows a field error and sends no request (killed 4)
+      ✓ US-004 registration confirmation AC-004-03 student form: empty student ID shows a field error and sends no request (killed 13)
+      ✓ US-004 registration confirmation AC-004-04 backend failure shows a general error without technical details (killed 2)
+      ~ US-004 registration confirmation AC-004-04 unreachable backend shows a general error without technical details (covered 226)
+    external-form.acceptance.test.tsx
+      ~ US-001 external participant form AC-001-08 shows exactly the external fields, grouped active options and unchecked consents (covered 152)
+    student-form.acceptance.test.tsx
+      ✓ US-002 student form AC-002-07 shows exactly the student fields and only student options, grouped, consents unchecked (killed 10)
+      ✓ US-002 student form AC-002-07 a group without student options is not shown (killed 2)
+
+[Survived] BlockStatement
+src/api.ts:27:11
+-     } catch {
+-       return { kind: "failed" };
+-     }
++     } catch {}
+Tests ran:
+    US-004 registration confirmation AC-004-04 unreachable backend shows a general error without technical details
+    submitRegistration treats a network error as failed
+
+
+[Survived] ConditionalExpression
+src/api.ts:34:9
+-       if (response.status === 400) {
++       if (true) {
+Tests ran:
+    RegistrationForm places type, consent-list and token errors and reports unknown fields generally
+    RegistrationForm does not show the general error when every field error is placed
+    RegistrationForm disables the button while sending and ignores repeated submits
+  and 9 more tests!
+
+
+[Survived] BlockStatement
+src/api.ts:40:11
+-     } catch {
+-       return { kind: "failed" };
+-     }
++     } catch {}
+Tests ran:
+    submitRegistration treats status 400 with body not json as failed
+    submitRegistration treats status 201 with body not json as failed
+
+
+[Survived] ConditionalExpression
+src/App.tsx:24:13
+-           if (active) {
++           if (true) {
+Tests ran:
+    App shows a loading text, then the conference title
+    App ignores a late answer after unmounting
+    US-004 registration confirmation AC-004-01 accepted registration shows the confirmation with name and options and removes the form
+  and 9 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.tsx:29:13
+-           if (active) {
++           if (true) {
+Tests ran:
+    App shows a general message when the configuration cannot be loaded
+    App ignores a late failure after unmounting
+
+
+[Survived] BlockStatement
+src/App.tsx:33:18
+-       return () => {
+-         active = false;
+-       };
++       return () => {};
+Tests ran:
+    App shows a loading text, then the conference title
+    App shows a general message when the configuration cannot be loaded
+    App ignores a late answer after unmounting
+  and 11 more tests!
+
+
+[Survived] BooleanLiteral
+src/App.tsx:34:16
+-         active = false;
++         active = true;
+Tests ran:
+    App shows a loading text, then the conference title
+    App shows a general message when the configuration cannot be loaded
+    App ignores a late answer after unmounting
+  and 11 more tests!
+
+
+[Survived] ArrayDeclaration
+src/App.tsx:36:6
+-     }, []);
++     }, ["Stryker was here"]);
+Tests ran:
+    App shows a loading text, then the conference title
+    App shows a general message when the configuration cannot be loaded
+    App ignores a late answer after unmounting
+  and 11 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.tsx:39:30
+-       state.kind === "form" || state.kind === "confirmed"
++       state.kind === "form" || false
+Tests ran:
+    App shows a loading text, then the conference title
+    App shows a general message when the configuration cannot be loaded
+    App ignores a late answer after unmounting
+  and 11 more tests!
+
+
+[Survived] StringLiteral
+src/App.tsx:39:45
+-       state.kind === "form" || state.kind === "confirmed"
++       state.kind === "form" || state.kind === ""
+Tests ran:
+    App shows a loading text, then the conference title
+    App shows a general message when the configuration cannot be loaded
+    App ignores a late answer after unmounting
+  and 11 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.tsx:46:8
+-         {state.kind === "loading" && <p>Loading…</p>}
++         {true && <p>Loading…</p>}
+Tests ran:
+    App shows a loading text, then the conference title
+    App shows a general message when the configuration cannot be loaded
+    App ignores a late answer after unmounting
+  and 11 more tests!
+
+
+[Survived] LogicalOperator
+src/App.tsx:47:8
+-         {state.kind === "error" && (
+-           <p role="alert" className="error general">
+-             {LOAD_ERROR}
+-           </p>
+-         )}
++         {state.kind === "error" || <p role="alert" className="error general">
++             {LOAD_ERROR}
++           </p>}
+Tests ran:
+    App shows a loading text, then the conference title
+    App shows a general message when the configuration cannot be loaded
+    App ignores a late answer after unmounting
+  and 11 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.tsx:47:8
+-         {state.kind === "error" && (
++         {true && (
+Tests ran:
+    App shows a loading text, then the conference title
+    App shows a general message when the configuration cannot be loaded
+    App ignores a late answer after unmounting
+  and 11 more tests!
+
+
+[Survived] EqualityOperator
+src/App.tsx:47:8
+-         {state.kind === "error" && (
++         {state.kind !== "error" && (
+Tests ran:
+    App shows a loading text, then the conference title
+    App shows a general message when the configuration cannot be loaded
+    App ignores a late answer after unmounting
+  and 11 more tests!
+
+
+[Survived] StringLiteral
+src/App.tsx:8:27
+-   export const LOAD_ERROR = "The registration form could not be loaded. Please try again later.";
++   export const LOAD_ERROR = "";
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/OptionGroups.tsx:38:47
+-                       aria-describedby={error ? "optionIds-error" : undefined}
++                       aria-describedby={error ? "" : undefined}
+Tests ran:
+    US-004 registration confirmation AC-004-02 backend field errors are shown next to their fields and the values remain
+
+
+[Survived] ConditionalExpression
+src/Recaptcha.tsx:44:11
+-         if (win.grecaptcha && container.current && widget.current === null) {
++         if (true && widget.current === null) {
+Tests ran:
+    Recaptcha in production mode renders the widget when the library is present and forwards tokens
+    Recaptcha in production mode loads the script once and renders when it has loaded
+    Recaptcha in production mode resets the widget and the token when the reset key changes
+
+
+[Survived] LogicalOperator
+src/Recaptcha.tsx:44:11
+-         if (win.grecaptcha && container.current && widget.current === null) {
++         if (win.grecaptcha || container.current && widget.current === null) {
+Tests ran:
+    Recaptcha in production mode renders the widget when the library is present and forwards tokens
+    Recaptcha in production mode loads the script once and renders when it has loaded
+    Recaptcha in production mode resets the widget and the token when the reset key changes
+
+
+[Survived] ArrayDeclaration
+src/Recaptcha.tsx:64:6
+-     }, [siteKey, testMode, onToken]);
++     }, []);
+Tests ran:
+    RegistrationForm sends trimmed fields of the type, available selected options and given consents
+    RegistrationForm does not send options the student type cannot select
+    RegistrationForm places type, consent-list and token errors and reports unknown fields generally
+  and 19 more tests!
+
+
+[NoCoverage] StringLiteral
+src/RegistrationForm.tsx:109:52
+-         request[field.name] = (values[field.name] ?? "").trim();
++         request[field.name] = (values[field.name] ?? "Stryker was here!").trim();
+
+[Survived] BooleanLiteral
+src/RegistrationForm.tsx:37:52
+-     const [generalError, setGeneralError] = useState(false);
++     const [generalError, setGeneralError] = useState(true);
+Tests ran:
+    App shows a loading text, then the conference title
+    RegistrationForm shows nothing but the type choice until a type is chosen
+    RegistrationForm sends trimmed fields of the type, available selected options and given consents
+  and 16 more tests!
+
+
+[Survived] ArrayDeclaration
+src/RegistrationForm.tsx:40:74
+-     const onToken = useCallback((value: string | null) => setToken(value), []);
++     const onToken = useCallback((value: string | null) => setToken(value), ["Stryker was here"]);
+Tests ran:
+    App shows a loading text, then the conference title
+    RegistrationForm shows nothing but the type choice until a type is chosen
+    RegistrationForm sends trimmed fields of the type, available selected options and given consents
+  and 16 more tests!
+
+
+[Survived] CallExpression
+src/RegistrationForm.tsx:59:5
+-       event.preventDefault();
++       ;
+Tests ran:
+    RegistrationForm sends trimmed fields of the type, available selected options and given consents
+    RegistrationForm does not send options the student type cannot select
+    RegistrationForm places type, consent-list and token errors and reports unknown fields generally
+  and 11 more tests!
+
+
+[Survived] BooleanLiteral
+src/RegistrationForm.tsx:63:21
+-       setGeneralError(false);
++       setGeneralError(true);
+Tests ran:
+    RegistrationForm sends trimmed fields of the type, available selected options and given consents
+    RegistrationForm does not send options the student type cannot select
+    RegistrationForm places type, consent-list and token errors and reports unknown fields generally
+  and 10 more tests!
+
+
+[Survived] CallExpression
+src/RegistrationForm.tsx:69:5
+-       setErrors({});
++       ;
+Tests ran:
+    RegistrationForm sends trimmed fields of the type, available selected options and given consents
+    RegistrationForm does not send options the student type cannot select
+    RegistrationForm places type, consent-list and token errors and reports unknown fields generally
+  and 6 more tests!
+
+
+[Survived] ArrowFunction
+src/RegistrationForm.tsx:77:17
+-       setResetKey((key) => key + 1);
++       setResetKey(() => undefined);
+Tests ran:
+    RegistrationForm places type, consent-list and token errors and reports unknown fields generally
+    RegistrationForm does not show the general error when every field error is placed
+    RegistrationForm disables the button while sending and ignores repeated submits
+  and 3 more tests!
+
+
+[Survived] ArithmeticOperator
+src/RegistrationForm.tsx:77:26
+-       setResetKey((key) => key + 1);
++       setResetKey((key) => key - 1);
+Tests ran:
+    RegistrationForm places type, consent-list and token errors and reports unknown fields generally
+    RegistrationForm does not show the general error when every field error is placed
+    RegistrationForm disables the button while sending and ignores repeated submits
+  and 3 more tests!
+
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:99:18
+-         firstName: "",
++         firstName: "Stryker was here!",
+Tests ran:
+    RegistrationForm sends trimmed fields of the type, available selected options and given consents
+    RegistrationForm does not send options the student type cannot select
+    RegistrationForm places type, consent-list and token errors and reports unknown fields generally
+  and 6 more tests!
+
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:100:17
+-         lastName: "",
++         lastName: "Stryker was here!",
+Tests ran:
+    RegistrationForm sends trimmed fields of the type, available selected options and given consents
+    RegistrationForm does not send options the student type cannot select
+    RegistrationForm places type, consent-list and token errors and reports unknown fields generally
+  and 6 more tests!
+
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:101:14
+-         email: "",
++         email: "Stryker was here!",
+Tests ran:
+    RegistrationForm sends trimmed fields of the type, available selected options and given consents
+    RegistrationForm does not send options the student type cannot select
+    RegistrationForm places type, consent-list and token errors and reports unknown fields generally
+  and 6 more tests!
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:134:24
+-                 checked={type === option.value}
++                 checked={false}
+Tests ran:
+    App shows a loading text, then the conference title
+    RegistrationForm shows nothing but the type choice until a type is chosen
+    RegistrationForm sends trimmed fields of the type, available selected options and given consents
+  and 16 more tests!
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:155:23
+-                   type={field.name === "email" ? "email" : "text"}
++                   type={true ? "email" : "text"}
+Tests ran:
+    RegistrationForm sends trimmed fields of the type, available selected options and given consents
+    RegistrationForm does not send options the student type cannot select
+    RegistrationForm places type, consent-list and token errors and reports unknown fields generally
+  and 13 more tests!
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:155:23
+-                   type={field.name === "email" ? "email" : "text"}
++                   type={false ? "email" : "text"}
+Tests ran:
+    RegistrationForm sends trimmed fields of the type, available selected options and given consents
+    RegistrationForm does not send options the student type cannot select
+    RegistrationForm places type, consent-list and token errors and reports unknown fields generally
+  and 13 more tests!
+
+
+[Survived] EqualityOperator
+src/RegistrationForm.tsx:155:23
+-                   type={field.name === "email" ? "email" : "text"}
++                   type={field.name !== "email" ? "email" : "text"}
+Tests ran:
+    RegistrationForm sends trimmed fields of the type, available selected options and given consents
+    RegistrationForm does not send options the student type cannot select
+    RegistrationForm places type, consent-list and token errors and reports unknown fields generally
+  and 13 more tests!
+
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:155:38
+-                   type={field.name === "email" ? "email" : "text"}
++                   type={field.name === "" ? "email" : "text"}
+Tests ran:
+    RegistrationForm sends trimmed fields of the type, available selected options and given consents
+    RegistrationForm does not send options the student type cannot select
+    RegistrationForm places type, consent-list and token errors and reports unknown fields generally
+  and 13 more tests!
+
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:155:48
+-                   type={field.name === "email" ? "email" : "text"}
++                   type={field.name === "email" ? "" : "text"}
+Tests ran:
+    RegistrationForm sends trimmed fields of the type, available selected options and given consents
+    RegistrationForm does not send options the student type cannot select
+    RegistrationForm places type, consent-list and token errors and reports unknown fields generally
+  and 13 more tests!
+
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:155:58
+-                   type={field.name === "email" ? "email" : "text"}
++                   type={field.name === "email" ? "email" : ""}
+Tests ran:
+    RegistrationForm sends trimmed fields of the type, available selected options and given consents
+    RegistrationForm does not send options the student type cannot select
+    RegistrationForm places type, consent-list and token errors and reports unknown fields generally
+  and 13 more tests!
+
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:156:46
+-                   value={values[field.name] ?? ""}
++                   value={values[field.name] ?? "Stryker was here!"}
+Tests ran:
+    RegistrationForm sends trimmed fields of the type, available selected options and given consents
+    RegistrationForm does not send options the student type cannot select
+    RegistrationForm places type, consent-list and token errors and reports unknown fields generally
+  and 13 more tests!
+
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:188:51
+-                         aria-invalid={errors[key] ? "true" : undefined}
++                         aria-invalid={errors[key] ? "" : undefined}
+Tests ran:
+    US-004 registration confirmation AC-004-02 backend field errors are shown next to their fields and the values remain
+
+
+[Survived] Regex
+src/validation.ts:8:15
+-   const EMAIL = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
++   const EMAIL = /^[^@\s]+@[^@\s]+\.[^@\s]+/;
+Ran all tests for this mutant.
+
+Ran 3.82 tests per mutant on average.
+----------------------|------------------|----------|-----------|------------|----------|----------|
+                      | % Mutation score |          |           |            |          |          |
+File                  |  total | covered | # killed | # timeout | # survived | # no cov | # errors |
+----------------------|--------|---------|----------|-----------|------------|----------|----------|
+All files             |  90.24 |   90.46 |      370 |         0 |         39 |        1 |        1 |
+ api.ts               |  93.48 |   93.48 |       43 |         0 |          3 |        0 |        0 |
+ App.tsx              |  79.66 |   79.66 |       47 |         0 |         12 |        0 |        0 |
+ Confirmation.tsx     | 100.00 |  100.00 |        6 |         0 |          0 |        0 |        0 |
+ OptionGroups.tsx     |  96.67 |   96.67 |       29 |         0 |          1 |        0 |        0 |
+ options.ts           | 100.00 |  100.00 |        3 |         0 |          0 |        0 |        0 |
+ Recaptcha.tsx        |  95.24 |   95.24 |       60 |         0 |          3 |        0 |        0 |
+ RegistrationForm.tsx |  85.61 |   86.23 |      119 |         0 |         19 |        1 |        1 |
+ validation.ts        |  98.44 |   98.44 |       63 |         0 |          1 |        0 |        0 |
+----------------------|--------|---------|----------|-----------|------------|----------|----------|
+[32m22:31:44 (37452) INFO JsonReporter[39m Your report can be found at: file:///E:/13%20-%20Lab%20Projects/01_Runs/_____SECOND______ROUND_____/03_kyuhi_single-agent_sdd_v005/02_output/frontend/reports/mutation/mutation.json
+[32m22:31:45 (37452) INFO HtmlReporter[39m Your report can be found at: file:///E:/13%20-%20Lab%20Projects/01_Runs/_____SECOND______ROUND_____/03_kyuhi_single-agent_sdd_v005/02_output/frontend/reports/mutation/mutation.html
+[32m22:31:45 (37452) INFO MutationTestExecutor[39m Done in 7 minutes and 19 seconds.

@@ -1,0 +1,64 @@
+[32m22:22:51 (2516) INFO ProjectReader[39m Found 1 of 81 file(s) to be mutated.
+[32m22:22:51 (2516) INFO Instrumenter[39m Instrumented 1 source file(s) with 64 mutant(s)
+[32m22:22:52 (2516) INFO ConcurrencyTokenProvider[39m Creating 2 test runner process(es).
+[32m22:22:54 (2516) INFO DryRunExecutor[39m Starting initial test run (vitest test runner with "perTest" coverage analysis). This may take a while.
+[32m22:23:02 (2516) INFO DryRunExecutor[39m Initial test run succeeded. Ran 34 tests in 8 seconds (net 2279.0867000000026 ms, overhead 5800.913299999997 ms).
+
+All tests
+  src
+    App.test.tsx
+      ✘ App shows a loading text, then the conference title (covered 0)
+      ✘ App shows a general message when the configuration cannot be loaded (covered 0)
+      ✘ App ignores a late answer after unmounting (covered 0)
+      ✘ App ignores a late failure after unmounting (covered 0)
+      ✘ Confirmation says when no options were selected (covered 0)
+      ✘ RegistrationForm shows nothing but the type choice until a type is chosen (covered 0)
+      ~ RegistrationForm sends trimmed fields of the type, available selected options and given consents (covered 15)
+      ✓ RegistrationForm does not send options the student type cannot select (killed 1)
+      ~ RegistrationForm places type, consent-list and token errors and reports unknown fields generally (covered 15)
+      ~ RegistrationForm does not show the general error when every field error is placed (covered 15)
+      ~ RegistrationForm clears errors when the type changes (covered 16)
+      ~ RegistrationForm disables the button while sending and ignores repeated submits (covered 15)
+      ✘ RegistrationForm ignores a submit before a type is chosen (covered 0)
+    validation.test.ts
+      ✓ validateFields accepts complete external values (killed 12)
+      ✓ validateFields requires every field of the type and ignores the other type (killed 9)
+      ✓ validateFields rejects the email ana (killed 1)
+      ~ validateFields rejects the email ana@ (covered 16)
+      ~ validateFields rejects the email @example.org (covered 16)
+      ~ validateFields rejects the email ana@example (covered 16)
+      ✓ validateFields rejects the email a b@example.org (killed 1)
+      ~ validateFields rejects the email a@@b.org (covered 16)
+      ~ validateFields accepts an email with surrounding spaces (covered 15)
+      ✓ validateFields lists the fixed fields in display order (killed 2)
+      ✘ availableOptions keeps only options available to the type (covered 0)
+  tests/acceptance
+    confirmation.acceptance.test.tsx
+      ✓ US-004 registration confirmation AC-004-01 accepted registration shows the confirmation with name and options and removes the form (killed 17)
+      ~ US-004 registration confirmation AC-004-02 backend field errors are shown next to their fields and the values remain (covered 15)
+      ✓ US-004 registration confirmation AC-004-03 empty required field shows a field error and sends no request (killed 6)
+      ✓ US-004 registration confirmation AC-004-03 invalid email shows a field error and sends no request (killed 4)
+      ✓ US-004 registration confirmation AC-004-03 student form: empty student ID shows a field error and sends no request (killed 10)
+      ~ US-004 registration confirmation AC-004-04 backend failure shows a general error without technical details (covered 15)
+      ~ US-004 registration confirmation AC-004-04 unreachable backend shows a general error without technical details (covered 15)
+    external-form.acceptance.test.tsx
+      ✘ US-001 external participant form AC-001-08 shows exactly the external fields, grouped active options and unchecked consents (covered 0)
+    student-form.acceptance.test.tsx
+      ✘ US-002 student form AC-002-07 shows exactly the student fields and only student options, grouped, consents unchecked (covered 0)
+      ✘ US-002 student form AC-002-07 a group without student options is not shown (covered 0)
+
+[Survived] Regex
+src/validation.ts:8:15
+-   const EMAIL = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
++   const EMAIL = /^[^@\s]+@[^@\s]+\.[^@\s]+/;
+Ran all tests for this mutant.
+
+Ran 4.03 tests per mutant on average.
+---------------|------------------|----------|-----------|------------|----------|----------|
+               | % Mutation score |          |           |            |          |          |
+File           |  total | covered | # killed | # timeout | # survived | # no cov | # errors |
+---------------|--------|---------|----------|-----------|------------|----------|----------|
+All files      |  98.44 |   98.44 |       63 |         0 |          1 |        0 |        0 |
+ validation.ts |  98.44 |   98.44 |       63 |         0 |          1 |        0 |        0 |
+---------------|--------|---------|----------|-----------|------------|----------|----------|
+[32m22:24:15 (2516) INFO MutationTestExecutor[39m Done in 1 minute and 23 seconds.

@@ -64,3 +64,20 @@ Coverage at this run (acceptance + architecture tests only): backend line 89.83 
 
 | Component | Level | Tests passed / failed | Line coverage | Branch coverage | Mutation score (scope) | Tools |
 |---|---|---|---|---|---|---|
+| backend | acceptance | 92 / 0 | — | — | — | JUnit 6, MockMvc, Testcontainers |
+| backend | integration | 5 / 0 | — | — | — | JUnit 6, MockMvc, Testcontainers |
+| backend | architecture | 6 / 0 | — | — | — | ArchUnit 1.3.2 |
+| backend | unit | 138 / 0 | 86.91 % (684/787) | 96.80 % (242/250) | — | JaCoCo 0.8.12 |
+| backend | non-unit | 103 / 0 | 90.98 % (716/787) | 74.40 % (186/250) | — | JaCoCo 0.8.12 |
+| backend | all levels | 241 / 0 | 99.24 % (781/787) | 98.80 % (247/250) | raw 91.44 %, adjusted 91.44 % (267 killed of 292; 24 survived, 1 no coverage; 0 equivalent); scope `si.konferenca.registration.*` minus `RegistrationApplication`; tests: all 241 JUnit tests (unit, integration, acceptance, architecture) | PIT 1.30.0 + junit5 plugin 1.2.3, default mutators |
+| frontend | acceptance | 10 / 0 | 84.07 % (132/157) | 70.64 % (77/109) | — | Vitest 4.1.11, v8 |
+| frontend | unit | 42 / 0 | 98.72 % (155/157) | 92.66 % (101/109) | — | Vitest 4.1.11, v8 |
+| frontend | non-unit | 10 / 0 | 84.07 % (132/157) | 70.64 % (77/109) | — | Vitest 4.1.11, v8 |
+| frontend | all levels | 52 / 0 | 100 % (157/157) | 99.08 % (108/109) | raw 90.24 % (370 killed of 410 valid mutants; 39 survived, 1 no coverage; 1 compile-error mutant not counted by the tool, 90.02 % if counted), adjusted 90.24 %, 0 equivalent; scope `src/**/*.{ts,tsx}` minus tests, `*.d.ts`, `main.tsx`; tests: all 52 Vitest tests | Stryker 10.0.0 + vitest-runner |
+| frontend + backend | end-to-end | 5 / 0 | — | — | — | Playwright 1.63.0 against docker compose |
+
+Code size (cloc 2.10 image, `out/logs/05_cloc.log`): backend production 1 770 lines (Java 1 675), test 3 543; frontend production 622 (TypeScript 572), test 1 369. Duplication: backend CPD (PMD 3.26.0, 100 tokens) no duplicates; frontend jscpd 5.4.0 0.00 %.
+
+Quality gate (`project/02_design/quality-requirements.md`: line ≥ 95 %, adjusted mutation ≥ 90 %): met by both components at the first full mutation run; 0 survivor rounds; no further tests added. Tests at the first mutation run: backend 241, frontend 52. The mutation runs exclude the 5 e2e tests (D-16). Logs: `05_pit-full.log`, `05_pit-mutations.xml`, `05_stryker-full.log`, `05_stryker-mutation.json`.
+
+Notable survivors (not equivalent, left because the gate is met): `SecurityConfiguration` builder code runs once when the Spring context starts, so PIT's in-process mutants of it are never re-executed by later tests; `RateLimitFilter` window-cleanup boundaries; `MailNotifier` attachment disposition; frontend `App` loading/unmount guards and `RegistrationForm` CSS class names.

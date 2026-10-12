@@ -1,0 +1,17 @@
+== backend-prod
+Java: files=42 code=1675
+Properties: files=1 code=51
+SQL: files=1 code=28
+JSON: files=1 code=16
+SUM: files=45 code=1770
+== backend-test
+Java: files=33 code=3494
+JSON: files=5 code=49
+SUM: files=38 code=3543
+== frontend-prod
+TypeScript: files=10 code=572
+CSS: files=1 code=50
+SUM: files=11 code=622
+== frontend-test
+TypeScript: files=15 code=1369
+SUM: files=15 code=1369
