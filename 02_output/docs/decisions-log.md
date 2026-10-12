@@ -136,3 +136,48 @@
 - Options: 1. All registration data and JSON copies are kept until 12 months after the conference and then deleted by the organizer; the system offers no deletion feature (out of scope) and the release notes list the deletion as a manual task (proposed). 2. Keep indefinitely (fails SB-13).
 - Human response: none
 - Resolution: option 1; pending review
+
+## D-16: Redocly CLI for OpenAPI validation
+- Timestamp: 2026-10-12T15:51:43Z
+- Phase: 2
+- Type: non-blocking
+- Trigger: the phase 2 gate needs the contracts validated with a parser; `tech-stack.md` lists no OpenAPI parser.
+- Options: 1. Run `@redocly/cli` 2.62.1 (MIT) through `npx`, dev-only, not added to any component; JSON schemas checked with the host's Python `jsonschema` (Draft 2020-12 meta-schema plus example documents) (chosen). 2. Add a validator dependency to a component.
+- Human response: none
+- Resolution: option 1; scanned in phase 6 like any other tool
+
+## D-17: User interface language is English
+- Timestamp: 2026-10-12T15:51:43Z
+- Phase: 2
+- Type: non-blocking
+- Trigger: no input states the UI or email language; participants may be Slovenian or international.
+- Options: 1. English for all UI text and emails, Unicode content unchanged (proposed). 2. Slovenian. 3. Both.
+- Human response: none
+- Resolution: option 1; pending review
+
+## D-18: Field length limits
+- Timestamp: 2026-10-12T15:51:43Z
+- Phase: 2
+- Type: non-blocking
+- Trigger: `business-rules.md` gives no maximum lengths; unbounded fields weaken SR-03 and the database schema.
+- Options: 1. Text fields at most 200 characters, email at most 254 (RFC 5321), consent wording at most 1000 (proposed). 2. No limits.
+- Human response: none
+- Resolution: option 1; pending review
+
+## D-19: Rate-limit and request-size defaults
+- Timestamp: 2026-10-12T15:51:43Z
+- Phase: 2
+- Type: non-blocking
+- Trigger: SR-03 and SB-06 require limits without values.
+- Options: 1. Per client IP and minute: 10 registrations, 120 reads of options/settings, 10 organizer requests (failed logins included); request body at most 16 KiB; all configurable (proposed). 2. Other values.
+- Human response: none
+- Resolution: option 1; pending review
+
+## D-20: Option changes take effect after a backend restart
+- Timestamp: 2026-10-12T15:51:43Z
+- Phase: 2
+- Type: non-blocking
+- Trigger: AR-04 leaves the mechanism to phase 2.
+- Options: 1. JSON file validated at startup; a change needs a restart, and an invalid file stops the startup (proposed, conservative: a broken file never goes live). 2. Reload while running.
+- Human response: none
+- Resolution: option 1; pending review
