@@ -223,6 +223,9 @@
             <param>XML</param>
           </outputFormats>
           <timestampedReports>false</timestampedReports>
+          <!-- Test contexts start containers per minion JVM; a long constant avoids false timeouts. -->
+          <threads>2</threads>
+          <timeoutConstant>60000</timeoutConstant>
         </configuration>
       </plugin>
       <plugin>
