@@ -51,7 +51,9 @@ class FormConfigAcceptanceTest extends DefaultContextAcceptanceTest {
 
   @Test
   void AC_003_01_formConfigurationListsTheConsentsUnticked() {
-    JsonNode config = json(get("/api/form-config").body());
+    HttpResponse<String> response = get("/api/form-config");
+    assertThat(response.statusCode()).as(response.body()).isEqualTo(200);
+    JsonNode config = json(response.body());
 
     JsonNode privacy =
         config
