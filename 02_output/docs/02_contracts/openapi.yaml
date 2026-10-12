@@ -1,0 +1,316 @@
+openapi: 3.1.0
+info:
+  title: Conference registration API
+  version: 1.0.0
+  description: |
+    Written in: phase 2 · Source: `docs/01_acceptance-criteria.md`, `project/02_design/*` · Agent: writes.
+    Public endpoints (options, settings, registrations) are anonymous and rate limited (SR-03).
+    The export is for the organizer role only (BR-08), via HTTP Basic over HTTPS (SR-06).
+    Every error body is `application/problem+json` without internal details (ES-07, SB-07).
+  license:
+    name: Proprietary
+    identifier: LicenseRef-Proprietary
+servers:
+  - url: /
+tags:
+  - name: registration
+    description: Public, anonymous registration endpoints.
+  - name: organizer
+    description: Organizer-only operations.
+security: []
+paths:
+  /api/options:
+    get:
+      tags: [registration]
+      operationId: listOptions
+      summary: Active conference options (AC-003-01)
+      responses:
+        "200":
+          description: Active options only, in configuration order.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Option"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+  /api/settings:
+    get:
+      tags: [registration]
+      operationId: getSettings
+      summary: Public form settings (consent wording, anti-automation mode and site key)
+      responses:
+        "200":
+          description: Settings the form needs; contains no secret (AR-07).
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Settings"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+  /api/registrations:
+    post:
+      tags: [registration]
+      operationId: createRegistration
+      summary: Submit a registration (US-001, US-002)
+      description: |
+        Success is returned only after the database row and the JSON copy are written (AR-05).
+        Emails are sent after storage; an email failure does not change the response (D-12).
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RegistrationRequest"
+      responses:
+        "201":
+          description: Registration accepted. Registrations are not readable through the API afterwards.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RegistrationConfirmation"
+        "400":
+          description: Validation failed, or the anti-automation token was missing or rejected.
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ValidationProblem"
+        "409":
+          description: The email is already registered (D-14); field error on `email`.
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ValidationProblem"
+        "413":
+          $ref: "#/components/responses/PayloadTooLarge"
+        "415":
+          description: Content type is not `application/json`.
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/Problem"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+        "500":
+          $ref: "#/components/responses/ServerError"
+  /api/organizer/export:
+    get:
+      tags: [organizer]
+      operationId: exportRegistrations
+      summary: Excel export of all registrations (US-008)
+      security:
+        - organizerBasic: []
+      responses:
+        "200":
+          description: Workbook with one sheet `Registrations`, one header row and one row per registration.
+          headers:
+            Content-Disposition:
+              description: '`attachment; filename="registrations.xlsx"`'
+              schema:
+                type: string
+          content:
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
+              schema:
+                type: string
+                contentMediaType: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+        "401":
+          description: Missing or wrong organizer credentials; no registration data.
+          headers:
+            WWW-Authenticate:
+              schema:
+                type: string
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/Problem"
+        "403":
+          description: Organizer access over plain HTTP while HTTPS-only access is on (SR-06).
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/Problem"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+components:
+  securitySchemes:
+    organizerBasic:
+      type: http
+      scheme: basic
+  responses:
+    TooManyRequests:
+      description: Rate limit exceeded (SR-03, SB-06).
+      headers:
+        Retry-After:
+          schema:
+            type: integer
+      content:
+        application/problem+json:
+          schema:
+            $ref: "#/components/schemas/Problem"
+    PayloadTooLarge:
+      description: Request body above the configured size limit (SR-03).
+      content:
+        application/problem+json:
+          schema:
+            $ref: "#/components/schemas/Problem"
+    ServerError:
+      description: Storage failed; nothing was stored and no email was sent (AC-005-03, AC-005-04).
+      content:
+        application/problem+json:
+          schema:
+            $ref: "#/components/schemas/Problem"
+  schemas:
+    RegistrationType:
+      type: string
+      enum: [EXTERNAL, STUDENT]
+    Category:
+      type: string
+      enum: [WORKSHOP, EVENT, MEAL, OTHER]
+    Option:
+      type: object
+      additionalProperties: false
+      required: [id, name, category, registrationTypes]
+      properties:
+        id:
+          type: string
+          pattern: "^[a-z0-9][a-z0-9-]{0,63}$"
+        name:
+          type: string
+        category:
+          $ref: "#/components/schemas/Category"
+        registrationTypes:
+          type: array
+          minItems: 1
+          uniqueItems: true
+          items:
+            $ref: "#/components/schemas/RegistrationType"
+    Settings:
+      type: object
+      additionalProperties: false
+      required: [conferenceName, consent, recaptcha]
+      properties:
+        conferenceName:
+          type: string
+        consent:
+          type: object
+          additionalProperties: false
+          required: [id, text]
+          properties:
+            id:
+              type: string
+            text:
+              type: string
+        recaptcha:
+          type: object
+          additionalProperties: false
+          required: [testMode, siteKey]
+          properties:
+            testMode:
+              type: boolean
+              description: When true the form shows a test checkbox that yields the test token instead of the Google widget.
+            siteKey:
+              type: string
+              description: Public site key; empty in test mode.
+    RegistrationRequest:
+      type: object
+      description: |
+        Text fields are trimmed on the server before validation (BR-02). Field rules (BR-01..BR-05):
+        every text field required and at most 200 characters after trimming, email at most 254 and in
+        `local@domain.tld` form; EXTERNAL requires `organization` and forbids the student fields;
+        STUDENT requires `studyInstitution`, `studyProgramme`, `studentId` and forbids `organization`.
+        `optionIds` holds distinct ids of active options open to the type (D-10, D-13), may be empty.
+        `consentGiven` must be true (BR-05). `recaptchaToken` is verified on the server (SR-01).
+      additionalProperties: false
+      required: [type, firstName, lastName, email, optionIds, consentGiven, recaptchaToken]
+      properties:
+        type:
+          $ref: "#/components/schemas/RegistrationType"
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+        organization:
+          type: [string, "null"]
+        studyInstitution:
+          type: [string, "null"]
+        studyProgramme:
+          type: [string, "null"]
+        studentId:
+          type: [string, "null"]
+        optionIds:
+          type: array
+          items:
+            type: string
+        consentGiven:
+          type: boolean
+        recaptchaToken:
+          type: string
+    SelectedOption:
+      type: object
+      additionalProperties: false
+      required: [id, name, category]
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        category:
+          $ref: "#/components/schemas/Category"
+    RegistrationConfirmation:
+      type: object
+      additionalProperties: false
+      required: [id, type, firstName, lastName, email, selectedOptions]
+      properties:
+        id:
+          type: string
+          format: uuid
+        type:
+          $ref: "#/components/schemas/RegistrationType"
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+        selectedOptions:
+          type: array
+          items:
+            $ref: "#/components/schemas/SelectedOption"
+    Problem:
+      type: object
+      required: [status, title]
+      properties:
+        type:
+          type: string
+        title:
+          type: string
+        status:
+          type: integer
+        detail:
+          type: string
+    FieldError:
+      type: object
+      additionalProperties: false
+      required: [field, message]
+      properties:
+        field:
+          type: string
+          description: |
+            Request property name (`firstName`, `email`, `organization`, `studyInstitution`,
+            `studyProgramme`, `studentId`, `optionIds`, `consentGiven`, `recaptchaToken`, `type`).
+        message:
+          type: string
+    ValidationProblem:
+      allOf:
+        - $ref: "#/components/schemas/Problem"
+        - type: object
+          required: [fieldErrors]
+          properties:
+            fieldErrors:
+              type: array
+              minItems: 1
+              items:
+                $ref: "#/components/schemas/FieldError"
