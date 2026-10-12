@@ -4,8 +4,8 @@
 
 Updated at every gate and before any stop, so a fresh session can resume from here.
 
-- Workflow:
-- Current phase:
-- Last gate result:
-- Next step:
-- Waiting for the human on: <decision ids, or "nothing">
+- Workflow: spec-driven, acceptance tests first (`general/phases.md`), single agent
+- Current phase: 1 (requirements)
+- Last gate result: phase 0 passed (preflight all pass; both skeletons build and check; input manifest written)
+- Next step: write `docs/01_requirements-check.md`
+- Waiting for the human on: nothing
