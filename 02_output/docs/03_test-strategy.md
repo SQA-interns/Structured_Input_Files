@@ -4,12 +4,24 @@
 
 ## Test levels as executed
 
+| Level | Component | Location | Runner | Interface used |
+|---|---|---|---|---|
+| Acceptance | backend | `backend/src/test/java/si/konferenca/registration/acceptance/` | JUnit 6 via `./mvnw test` | HTTP against the started app (random port), PostgreSQL (Testcontainers), Mailpit API (Testcontainers), JSON copy directory |
+| Acceptance | frontend | `frontend/tests/acceptance/` | Vitest + Testing Library (`npm test`) | rendered UI, `fetch` replaced by a stub that speaks the OpenAPI contract |
+| End-to-end | both | `frontend/e2e/` | Playwright (`npm run e2e`) | browser against `docker compose up` in `02_output/`, PostgreSQL via `docker compose exec`, Mailpit API, export over HTTP |
+| Unit, integration, architecture | both | other test paths | as above | written in phase 5 |
+
 ## Measurement exclusions
 
 <!-- Phase 3, before any test is written: production code left out of coverage and mutation, one row per path with the reason (generated code, application entry point, …). Rules and defaults: `general/quality/measurement-scope.md`. Not extended later without a decision record. -->
 
 | Path | Reason |
 |---|---|
+| `backend/src/main/java/si/konferenca/registration/RegistrationApplication.java` | application entry point (`@SpringBootApplication`, no logic); listed as the only backend exclusion in `quality-requirements.md` |
+| `frontend/src/main.tsx` | bootstrap file that only mounts the app; listed in `quality-requirements.md` |
+| `frontend/src/**/*.d.ts` | type declarations, no runtime code |
+
+Nothing else is excluded. Test code (`backend/src/test/**`, `frontend/tests/**`, `frontend/e2e/**`) never counts.
 
 ## First complete run (before any fix)
 
