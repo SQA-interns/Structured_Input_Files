@@ -1,0 +1,37 @@
+# Clean checkout 2026-10-12T20:48:14Z (git -c core.longpaths=true clone; the first attempt into the same deep temp folder hit the Windows 260-character path limit)
+cloned a24af3d, status: 0 changes
+## backend: ./mvnw -B -DskipTests package
+target/registration-backend-1.0.0.jar
+## backend: check
+clean
+## backend: test
+[INFO] Tests run: 241, Failures: 0, Errors: 0, Skipped: 0
+## frontend: npm ci, check, test, build
+check clean
+      Tests  52 passed (52)
+build ok
+## stack from the clone (README quick start 3)
+ Network registration_default Removed 
+ Container registration-frontend-1 Started 
+backend: Up 22 seconds (healthy)
+frontend: Up 11 seconds (healthy)
+mailpit: Up 27 seconds (healthy)
+postgres: Up 27 seconds (healthy)
+page: 200
+## e2e from the clone
+    Error: psql failed with status 1
+    > 81 |     throw new Error(`psql failed with status ${result.status}`);
+    Error: psql failed with status 1
+    > 81 |     throw new Error(`psql failed with status ${result.status}`);
+    Error: psql failed with status 1
+ Network registration_default Removed 
+## end 2026-10-12T20:51:27Z
+## e2e rerun: stack built from the clone, tests from the original checkout (same commit), whose root holds .env as README step 1 requires; the clone has no .env because secret values are not copied
+ Container registration-frontend-1 Started 
+backend: Up 22 seconds (healthy)
+frontend: Up 11 seconds (healthy)
+mailpit: Up 28 seconds (healthy)
+postgres: Up 28 seconds (healthy)
+  5 passed (9.0s)
+ Network registration_default Removed 
+## end 2026-10-12T20:52:20Z
