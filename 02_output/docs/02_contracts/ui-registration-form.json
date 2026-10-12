@@ -1,0 +1,68 @@
+{
+  "contract": "registration form UI",
+  "description": "Accessible names and structure that tests and users rely on (specification section 11). Roles follow WAI-ARIA; names are the visible labels.",
+  "page": { "heading": { "role": "heading", "level": 1, "name": "<conferenceName> registration" } },
+  "registrationType": {
+    "group": { "role": "radiogroup", "name": "Registration type" },
+    "choices": [
+      { "role": "radio", "name": "External participant", "value": "EXTERNAL" },
+      { "role": "radio", "name": "Student", "value": "STUDENT" }
+    ],
+    "initial": "none selected; no fields, options or consents shown"
+  },
+  "fields": {
+    "EXTERNAL": [
+      { "field": "firstName", "role": "textbox", "name": "First name" },
+      { "field": "lastName", "role": "textbox", "name": "Last name" },
+      { "field": "email", "role": "textbox", "name": "Email" },
+      { "field": "organization", "role": "textbox", "name": "Organization / institution" }
+    ],
+    "STUDENT": [
+      { "field": "firstName", "role": "textbox", "name": "First name" },
+      { "field": "lastName", "role": "textbox", "name": "Last name" },
+      { "field": "email", "role": "textbox", "name": "Email" },
+      { "field": "studyInstitution", "role": "textbox", "name": "Study institution" },
+      { "field": "studyProgramme", "role": "textbox", "name": "Study programme" },
+      { "field": "studentId", "role": "textbox", "name": "Student ID" }
+    ]
+  },
+  "options": {
+    "groups": [
+      { "category": "WORKSHOP", "role": "group", "name": "Workshops" },
+      { "category": "EVENT", "role": "group", "name": "Events" },
+      { "category": "MEAL", "role": "group", "name": "Meals" },
+      { "category": "OTHER", "role": "group", "name": "Other activities" }
+    ],
+    "item": { "role": "checkbox", "name": "<option name>", "checked": false },
+    "rules": "only options available to the chosen type; a group without options is not rendered",
+    "errorField": "optionIds"
+  },
+  "consents": {
+    "item": { "role": "checkbox", "name": "<consent text>", "checked": false },
+    "errorField": "consents.<id>"
+  },
+  "recaptcha": {
+    "testMode": { "role": "checkbox", "name": "I am not a robot (test mode)" },
+    "production": "Google reCAPTCHA v2 widget",
+    "errorField": "recaptchaToken"
+  },
+  "submit": { "role": "button", "name": "Register" },
+  "fieldError": {
+    "element": "p",
+    "id": "<field>-error",
+    "role": "alert",
+    "placement": "directly after the field or group it belongs to",
+    "input": { "aria-invalid": "true", "aria-describedby": "<field>-error" },
+    "clientMessages": { "required": "This field is required.", "email": "Enter a valid email address." }
+  },
+  "confirmation": {
+    "heading": { "role": "heading", "name": "Registration confirmed" },
+    "contains": ["<firstName> <lastName>", "<each selected option name>"],
+    "formRemoved": true
+  },
+  "generalError": {
+    "role": "alert",
+    "text": "The registration could not be completed. Please try again later.",
+    "loadErrorText": "The registration form could not be loaded. Please try again later."
+  }
+}
