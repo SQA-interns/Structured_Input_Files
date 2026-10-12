@@ -1,0 +1,60 @@
+ Image registration-backend:local Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 695B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 472B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/eclipse-temurin:21.0.10_7-jre-alpine
+#3 DONE 0.0s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 81B done
+#4 DONE 0.0s
+
+#5 [1/4] FROM docker.io/library/eclipse-temurin:21.0.10_7-jre-alpine@sha256:ad0cdd9782db550ca7dde6939a16fd850d04e683d37d3cff79d84a5848ba6a5a
+#5 resolve docker.io/library/eclipse-temurin:21.0.10_7-jre-alpine@sha256:ad0cdd9782db550ca7dde6939a16fd850d04e683d37d3cff79d84a5848ba6a5a 0.0s done
+#5 DONE 0.0s
+
+#6 [internal] load build context
+#6 transferring context: 80.24MB 3.5s done
+#6 DONE 3.5s
+
+#7 [2/4] RUN addgroup -S -g 10001 app  && adduser -S -D -H -u 10001 -G app app  && mkdir -p /app /data/json-copies  && chown app:app /data/json-copies
+#7 CACHED
+
+#8 [3/4] WORKDIR /app
+#8 CACHED
+
+#9 [4/4] COPY target/registration-backend-1.0.0.jar /app/app.jar
+#9 DONE 0.2s
+
+#10 exporting to image
+#10 exporting layers
+#10 exporting layers 2.0s done
+#10 exporting manifest sha256:96c479f847b85821169c8d3c821324b07cdd6a77491e1e4dafa6e60320cbdba4 0.0s done
+#10 exporting config sha256:55a64a2e8ce46d444923645d982ad4afb63a97ca192e893051052ee15fe3a760 0.0s done
+#10 exporting attestation manifest sha256:ece86d01deb6e383bbc5360fe66957e39c093f548bc787045b476a1f39f27ff8 0.0s done
+#10 exporting manifest list sha256:a5831abc004cb6a1173503af3d2e8b1893ed42de215e07b7a1f231f4de779eaa
+#10 exporting manifest list sha256:a5831abc004cb6a1173503af3d2e8b1893ed42de215e07b7a1f231f4de779eaa 0.0s done
+#10 naming to docker.io/library/registration-backend:local done
+#10 unpacking to docker.io/library/registration-backend:local
+#10 unpacking to docker.io/library/registration-backend:local 0.4s done
+#10 DONE 2.6s
+
+#11 resolving provenance for metadata file
+#11 DONE 0.0s
+ Image registration-backend:local Built 
+ Container registration-postgres-1 Running 
+ Container registration-mailpit-1 Running 
+ Container registration-backend-1 Recreate 
+ Container registration-backend-1 Recreated 
+ Container registration-postgres-1 Waiting 
+ Container registration-postgres-1 Healthy 
+ Container registration-backend-1 Starting 
+ Container registration-backend-1 Started 

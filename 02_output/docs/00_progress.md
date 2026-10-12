@@ -5,7 +5,7 @@
 Updated at every gate and before any stop, so a fresh session can resume from here.
 
 - Workflow: spec-driven, acceptance tests first (`general/phases.md`)
-- Current phase: 4 (build)
-- Last gate result: phase 3 gate passed — 107 frozen tests (92 backend acceptance, 10 frontend acceptance, 5 e2e), all failing for behavioural reasons; freeze commit made
-- Next step: implement story by story (US-003 config first, then US-001/002, US-005, US-006/007, US-008, frontend US-004)
+- Current phase: 5 (unit tests)
+- Last gate result: phase 4 gate passed — 107 frozen tests pass (92 backend acceptance, 10 frontend acceptance, 5 e2e), 6 architecture tests pass; spotless, PMD, CPD, SpotBugs, prettier, ESLint, tsc clean; commits for US-001..US-008
+- Next step: phase 5 — first full run with coverage, then unit tests area by area to 95 % line coverage, then one mutation run per component
 - Waiting for the human on: nothing
