@@ -73,3 +73,30 @@
 - Options: 1. classify Low (test-only, not shipped, no reachable attacker path); suppress for this artifact only; record as finding (proposed default); 2. keep them as Critical/High and stop the run; 3. change the Testcontainers version (tech-stack change).
 - Human response: "apply proposed default" (2026-10-12T19:15Z)
 - Resolution: 1 — Low (test-only, not shipped, no reachable attacker path); suppressed for `docker-java-transport-zerodep` only; recorded as a finding for phase 6.
+
+## D-09: Editorial defects in requirement inputs
+- Timestamp: 2026-10-12T19:17:00Z
+- Phase: 1
+- Type: non-blocking
+- Trigger: `project/01_requirements/scope.md` starts with a stray line that repeats the OQ answers before the `# Scope` heading; AC-006-03 cites `OQ-03, OQ-03`.
+- Options: 1. treat as editorial; the `## Open questions` table is authoritative; inputs unchanged (default).
+- Human response: none
+- Resolution: 1
+
+## D-10: Status for organizer export over plain HTTP from a non-local client (AC-008-04)
+- Timestamp: 2026-10-12T19:17:00Z
+- Phase: 1
+- Type: non-blocking
+- Trigger: AC-008-04 requires refusal but names no status.
+- Options: 1. HTTP 403 with a generic error body and no data, checked before credentials are evaluated (default, conservative); 2. redirect to HTTPS (may leak credentials on retry).
+- Human response: none
+- Resolution: pending review (option 1)
+
+## D-11: Error response when the JSON copy cannot be written (AC-005-03)
+- Timestamp: 2026-10-12T19:17:00Z
+- Phase: 1
+- Type: non-blocking
+- Trigger: AC-005-03 requires "an error (not 201)" without a status.
+- Options: 1. HTTP 500 with a generic message and no internals, database transaction rolled back (default); 2. HTTP 503.
+- Human response: none
+- Resolution: pending review (option 1)
