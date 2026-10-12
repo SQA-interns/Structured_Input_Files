@@ -1,0 +1,16 @@
+{
+  "id": "6f1c2b8e-3d4a-4c1e-9f0a-2b7d5e8c1a90",
+  "type": "STUDENT",
+  "submittedAt": "2026-10-12T15:00:00Z",
+  "firstName": "Špela",
+  "lastName": "Kožar",
+  "email": "spela.kozar@example.si",
+  "studyInstitution": "Univerza v Ljubljani",
+  "studyProgramme": "Računalništvo in informatika",
+  "studentId": "63210001",
+  "selectedOptions": [
+    { "id": "ws-testing", "name": "Workshop: Test automation", "category": "WORKSHOP" },
+    { "id": "other-career-fair", "name": "Career fair", "category": "OTHER" }
+  ],
+  "consent": { "id": "data-processing", "text": "I agree that the organizer processes the personal data entered in this form to organise the conference, including the confirmation and notification emails.", "givenAt": "2026-10-12T15:00:00Z" }
+}

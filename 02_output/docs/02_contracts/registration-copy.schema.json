@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konferenca.si/schemas/registration-copy.schema.json",
+  "title": "Raw JSON copy of an accepted registration",
+  "description": "Written in: phase 2 · Agent: writes. One UTF-8 file `<id>.json` per accepted registration in JSON_COPY_DIR (BR-07, AC-005-02); the organizer email attaches the same bytes (AC-007-02). Holds the registration exactly as accepted (trimmed values), without the anti-automation token or any internal field.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "type", "submittedAt", "firstName", "lastName", "email", "selectedOptions", "consent"],
+  "properties": {
+    "id": { "type": "string", "format": "uuid" },
+    "type": { "enum": ["EXTERNAL", "STUDENT"] },
+    "submittedAt": { "type": "string", "format": "date-time" },
+    "firstName": { "$ref": "#/$defs/text" },
+    "lastName": { "$ref": "#/$defs/text" },
+    "email": { "type": "string", "minLength": 3, "maxLength": 254 },
+    "organization": { "$ref": "#/$defs/text" },
+    "studyInstitution": { "$ref": "#/$defs/text" },
+    "studyProgramme": { "$ref": "#/$defs/text" },
+    "studentId": { "$ref": "#/$defs/text" },
+    "selectedOptions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "category"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "category": { "enum": ["WORKSHOP", "EVENT", "MEAL", "OTHER"] }
+        }
+      }
+    },
+    "consent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "text", "givenAt"],
+      "properties": {
+        "id": { "type": "string" },
+        "text": { "type": "string" },
+        "givenAt": { "type": "string", "format": "date-time" }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "type": { "const": "EXTERNAL" } } },
+      "then": { "required": ["organization"], "not": { "anyOf": [ { "required": ["studyInstitution"] }, { "required": ["studyProgramme"] }, { "required": ["studentId"] } ] } }
+    },
+    {
+      "if": { "properties": { "type": { "const": "STUDENT" } } },
+      "then": { "required": ["studyInstitution", "studyProgramme", "studentId"], "not": { "required": ["organization"] } }
+    }
+  ],
+  "$defs": {
+    "text": { "type": "string", "minLength": 1, "maxLength": 200 }
+  }
+}
