@@ -42,6 +42,20 @@ Self-check before the freeze (write-acceptance-tests step 5): Mailpit API shapes
 
 ## First complete run (before any fix)
 
+Phase 5 start, final phase 4 code, no unit tests yet (logs: `out/logs/05_backend-first-run.log`, `05_frontend-first-run.log`, `04_e2e-run.log`).
+
+| Component | Level | Passed | Failed |
+|---|---|---|---|
+| backend | acceptance | 92 | 0 |
+| backend | architecture | 6 | 0 |
+| frontend | acceptance | 10 | 0 |
+| frontend + backend | end-to-end | 5 | 0 |
+| total | | 113 | 0 |
+
+No failure to classify. Defects found earlier during phase 4 (before this run) and fixed in code: JSON attachment line endings on Linux (AC-007-02, commit "fix: keep JSON attachment byte-identical…").
+
+Coverage at this run (acceptance + architecture tests only): backend line 89.83 % (707/787), branch 72.80 % (JaCoCo 0.8.12); frontend line 84.07 % (132/157), branch 70.64 % (Vitest v8).
+
 ## Final run (phase 6)
 
 ## Test measures (phase 5, updated in phase 6 only for a component that changed)
