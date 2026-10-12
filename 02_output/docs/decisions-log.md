@@ -100,3 +100,12 @@
 - Options: 1. HTTP 500 with a generic message and no internals, database transaction rolled back (default); 2. HTTP 503.
 - Human response: none
 - Resolution: pending review (option 1)
+
+## D-12: Fields of the other registration type in a submission
+- Timestamp: 2026-10-12T19:21:27Z
+- Phase: 2
+- Type: non-blocking
+- Trigger: BR-01 fixes the fields per type; the inputs do not say what happens when, for example, an EXTERNAL submission also carries `studentId`.
+- Options: 1. reject with a field error on that field (default, conservative: nothing outside the type's fields is ever stored); 2. silently ignore the extra field.
+- Human response: none
+- Resolution: pending review (option 1)
