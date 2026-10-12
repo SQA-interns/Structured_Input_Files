@@ -1,0 +1,44 @@
+# Runtime demonstration 2026-10-12T19:28:28Z against the compose stack (scripts/compose.sh), via the frontend nginx at http://127.0.0.1:8080
+## health (NFR-04)
+backend running healthy
+db running healthy
+frontend running healthy
+mailpit running healthy
+## DoD-P01 external and student registration through /api
+external -> HTTP 201
+student  -> HTTP 201
+ids: 348b384d-206c-4d1c-b1c9-4cf39198b2db de8bf729-2743-4216-801d-761a62605dd5
+## DoD-P02 database rows and JSON copies
+348b384d-206c-4d1c-b1c9-4cf39198b2db|EXTERNAL|Zunanji|Šola Čšž|
+de8bf729-2743-4216-801d-761a62605dd5|STUDENT|Študent||Računalništvo
+348b384d-206c-4d1c-b1c9-4cf39198b2db|0|ws-testing
+348b384d-206c-4d1c-b1c9-4cf39198b2db|1|meal-lunch-1
+de8bf729-2743-4216-801d-761a62605dd5|0|other-career-fair
+-rw------- 1 app app 611 Oct 12 19:28 /data/registrations/348b384d-206c-4d1c-b1c9-4cf39198b2db.json
+-rw------- 1 app app 615 Oct 12 19:28 /data/registrations/de8bf729-2743-4216-801d-761a62605dd5.json
+## DoD-P03 Mailpit: participant and organizer emails
+   New registration – External participant – Conference | attachments: 1
+   Registration confirmation – Conference | attachments: 0
+   New registration – Student – Conference | attachments: 1
+   Registration confirmation – Conference | attachments: 0
+## DoD-P04 export with and without organizer access
+with credentials -> HTTP 200 application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+  workbook opens: sheets ['xl/worksheets/sheet1.xml'] | contains demo rows: True
+without credentials -> HTTP 401
+wrong password (Authorization header) -> HTTP 401
+## NFR-02 recreate every container: down, up, data still present
+ Network conference-registration_default Removing 
+ Network conference-registration_default Removed 
+ Container conference-registration-frontend-1 Started 
+frontend healthy after up
+2
+/data/registrations/348b384d-206c-4d1c-b1c9-4cf39198b2db.json
+/data/registrations/de8bf729-2743-4216-801d-761a62605dd5.json
+export after restart -> HTTP 200
+## health after restart
+backend running healthy
+db running healthy
+frontend running healthy
+mailpit running healthy
+## backend log check: no personal data or secrets
+  matches of demo names, emails or "password" in backend log: 0
