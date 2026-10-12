@@ -181,3 +181,12 @@
 - Options: 1. JSON file validated at startup; a change needs a restart, and an invalid file stops the startup (proposed, conservative: a broken file never goes live). 2. Reload while running.
 - Human response: none
 - Resolution: option 1; pending review
+
+## D-21: SpotBugs EI_EXPOSE_REP2 excluded for injected collaborators
+- Timestamp: 2026-10-12T16:23:07Z
+- Phase: 4
+- Type: non-blocking
+- Trigger: SpotBugs reports EI_EXPOSE_REP2 (Medium) for every constructor that stores an injected collaborator (ports, services, `TransactionTemplate`).
+- Options: 1. Exclude only EI_EXPOSE_REP2 in `application`, `infrastructure`, `web` and `config` (`backend/spotbugs-exclude.xml`); domain records stay fully checked (chosen). 2. Copy collaborators (not possible for shared beans). 3. Accept failing static analysis (breaks DoD-02).
+- Human response: none
+- Resolution: option 1; pending review

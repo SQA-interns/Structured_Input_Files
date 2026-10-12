@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- D-21: constructor-injected collaborators (services, ports, Spring templates) are shared on
+     purpose; EI_EXPOSE_REP2 on them is a false positive. Domain records stay fully checked. -->
+<FindBugsFilter>
+  <Match>
+    <Bug pattern="EI_EXPOSE_REP2"/>
+    <Or>
+      <Package name="si.konferenca.registration.application"/>
+      <Package name="~si\.konferenca\.registration\.infrastructure\..*"/>
+      <Package name="si.konferenca.registration.web"/>
+      <Package name="si.konferenca.registration.config"/>
+    </Or>
+  </Match>
+</FindBugsFilter>
