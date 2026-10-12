@@ -109,3 +109,12 @@
 - Options: 1. reject with a field error on that field (default, conservative: nothing outside the type's fields is ever stored); 2. silently ignore the extra field.
 - Human response: none
 - Resolution: pending review (option 1)
+
+## D-13: Deployment files written in phase 3 as end-to-end harness
+- Timestamp: 2026-10-12T19:31:50Z
+- Phase: 3
+- Type: non-blocking
+- Trigger: the phase 3 gate needs every end-to-end test to fail for a behavioural reason, which needs the local stack (`e2e-scenarios.md`: `docker compose up`); phase 0 created only the component skeletons.
+- Options: 1. write `docker-compose.yml`, both Dockerfiles and the frontend `nginx.conf` in phase 3 as harness, no application behaviour; the skeleton backend does not start (no datasource wiring yet) and the skeleton frontend is served, so E2E tests fail on missing behaviour (default); 2. leave the stack to phase 4 and accept connection errors in phase 3.
+- Human response: none
+- Resolution: 1

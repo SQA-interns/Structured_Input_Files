@@ -1,0 +1,71 @@
+# Local stack (environments.md "local"): docker compose --env-file ../.env up -d --build
+name: registration
+
+services:
+  postgres:
+    image: postgres:16.15-alpine
+    environment:
+      POSTGRES_DB: registration
+      POSTGRES_USER: registration
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
+      POSTGRES_INITDB_ARGS: --encoding=UTF8 --locale=C.UTF-8
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U registration -d registration"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  mailpit:
+    image: axllent/mailpit:v1.31.1
+    ports:
+      - "127.0.0.1:8025:8025"
+
+  backend:
+    build: ./backend
+    image: registration-backend:local
+    environment:
+      DB_URL: jdbc:postgresql://postgres:5432/registration
+      DB_USER: registration
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
+      SMTP_HOST: mailpit
+      SMTP_PORT: "1025"
+      SMTP_STARTTLS: "false"
+      MAIL_FROM: ${MAIL_FROM:-registration@konferenca.si}
+      CONFERENCE_NAME: ${CONFERENCE_NAME:-Conference}
+      JSON_COPY_DIR: /data/json-copies
+      APP_ENVIRONMENT: local
+      RECAPTCHA_TEST_MODE: "true"
+      RECAPTCHA_SITE_KEY: ${RECAPTCHA_SITE_KEY:-}
+      RECAPTCHA_SECRET_KEY: ${RECAPTCHA_SECRET_KEY:-}
+      ORGANIZER_USERNAME: ${ORGANIZER_USERNAME:?set ORGANIZER_USERNAME in .env}
+      ORGANIZER_PASSWORD: ${ORGANIZER_PASSWORD:?set ORGANIZER_PASSWORD in .env}
+      ORGANIZER_EMAILS: ${ORGANIZER_EMAILS:?set ORGANIZER_EMAILS in .env}
+      ORGANIZER_HTTPS_ONLY: "false"
+    volumes:
+      - json-copies:/data/json-copies
+    depends_on:
+      postgres:
+        condition: service_healthy
+      mailpit:
+        condition: service_started
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q -O /dev/null http://127.0.0.1:8080/actuator/health/readiness || exit 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+      start_period: 30s
+
+  frontend:
+    build: ./frontend
+    image: registration-frontend:local
+    ports:
+      - "127.0.0.1:8080:8080"
+    depends_on:
+      backend:
+        condition: service_healthy
+
+volumes:
+  pgdata:
+  json-copies:
