@@ -1,0 +1,61 @@
+:root {
+  font-family: system-ui, sans-serif;
+  color: #1b1b1b;
+  background: #fafafa;
+}
+
+main {
+  max-width: 40rem;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.types {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.types > span {
+  font-weight: 600;
+  width: 100%;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.field input {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+fieldset {
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+}
+
+.choice {
+  margin: 0.25rem 0;
+}
+
+.error {
+  color: #b00020;
+  margin: 0.25rem 0 0;
+}
+
+.general {
+  font-weight: 600;
+}
+
+button {
+  padding: 0.6rem 1.5rem;
+  font-size: 1rem;
+}
+
+.recaptcha {
+  margin-bottom: 1rem;
+}
