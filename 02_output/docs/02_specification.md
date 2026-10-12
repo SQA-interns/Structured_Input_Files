@@ -13,7 +13,7 @@ Contracts in `docs/02_contracts/`: `openapi.yaml` (REST), `conference-options.sc
 | database | `postgres` image | named volume `db-data` | |
 | mail catcher | `axllent/mailpit` (local and tests only) | SMTP 1025, API 8025 | |
 
-`02_output/docker-compose.yml` runs all four locally on `127.0.0.1` (frontend `127.0.0.1:8080`, Mailpit UI `127.0.0.1:8025`). The frontend nginx forwards `/api/` to the backend, so the browser uses one origin locally, as the external reverse proxy does in production (`environments.md`).
+`02_output/docker-compose.yml` (started with `02_output/scripts/compose.sh`, which exports only the needed keys from `.env`, D-22) runs all four locally on `127.0.0.1` (frontend `127.0.0.1:8080`, Mailpit UI `127.0.0.1:8025`). The frontend nginx forwards `/api/` to the backend, so the browser uses one origin locally, as the external reverse proxy does in production (`environments.md`).
 
 ## S2. Backend architecture (AR-02, AR-03)
 
@@ -22,7 +22,7 @@ Declared style: **layered with ports**. Root package `si.konferenca.registration
 | Package | Holds | May depend on |
 |---|---|---|
 | `domain` | registration model (`Registration`, `RegistrationType`, `Category`, `ConferenceOption`, `OptionCatalog`, `Consent`), validation rules and normalisation (BR-01..BR-05) | Java SE only (no Spring, JPA, servlet, mail, POI) |
-| `application` | use cases (`RegistrationService`, `ExportService`) and port interfaces (`RegistrationStore`, `RegistrationCopyWriter`, `Notifier`, `CaptchaVerifier`, `WorkbookWriter`) | `domain`, Spring transaction annotations |
+| `application` | use cases (`RegistrationService`, `ExportService`), port interfaces (`RegistrationStore`, `RegistrationCopyWriter`, `Notifier`, `CaptchaVerifier`, `WorkbookWriter`) and `FormSettings` (public form settings handed to `web`) | `domain`, Spring transaction annotations |
 | `web` | REST controllers, request/response DTOs, error mapping, rate-limit and size-limit filters | `application`, `domain` |
 | `infrastructure.persistence` | JPA entities, Spring Data repositories, `RegistrationStore` adapter | `application`, `domain` |
 | `infrastructure.jsoncopy` | `RegistrationCopyWriter` adapter (file system) | `application`, `domain` |
@@ -118,6 +118,7 @@ As in `anti-automation.md`. `CaptchaVerifier` has two adapters selected by `RECA
 | `POSTGRES_PASSWORD` | none (secret) | — | |
 | `MAIL_HOST`, `MAIL_PORT`, `MAIL_TLS` | `localhost`, `1025`, `false` | local, test | `prod` profile: no default for host and port, `MAIL_TLS` default `true` |
 | `SMTP_USERNAME`, `SMTP_PASSWORD` | empty (secret) | — | production only |
+| `MAIL_AUTH` | `false` (`prod` profile: `true`) | all | SMTP authentication with `SMTP_USERNAME`/`SMTP_PASSWORD` |
 | `MAIL_FROM` | `registration@konferenca.local` | all | |
 | `CONFERENCE_NAME` | `Conference` | all | |
 | `OPTIONS_LOCATION` | `classpath:conference-options.json` | local, test | S5 |
