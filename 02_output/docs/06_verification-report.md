@@ -17,8 +17,8 @@ Verified on 2026-10-12 at the HEAD of `kyuhi/single-agent/sdd/v005` after phase 
 | DoD-05 | met | No open Critical/High: Dependency-Check 0 open (49 suppressed per PA-01, PA-02, D-07, D-08), `npm audit --omit=dev` 0, Semgrep no ERROR, Gitleaks only false positives (F-01). |
 | DoD-06 | met | `06_runtime-demo.log`: stack built from HEAD with `docker compose`, all four containers healthy, the five core flows run through the browser (E2E-01…05), health/readiness UP, data present after `down`/`up`. |
 | DoD-07 | met | Traceability table below: all 35 AC have tests and a feature commit. |
-| DoD-08 | phase 7 | READMEs are written and clone-tested in phase 7 (release gate). |
-| DoD-09 | phase 7 | `docs/release-notes.md` written in phase 7. |
+| DoD-08 | met (phase 7) | `out/logs/07_clean-checkout.log`: fresh clone (with `core.longpaths`), backend package, check and 241 tests, frontend `npm ci`, check, 52 tests and build, `docker compose up --build` from the clone (all healthy, page 200) and the 5 e2e tests against that stack. |
+| DoD-09 | met (phase 7) | `docs/release-notes.md` "Must be tested manually by a human": reCAPTCHA with production keys, real mailbox delivery, TLS and proxy routing, production startup guard, workbook in Excel, browser and keyboard check, backups. |
 | DoD-10 | met | All 16 decisions have a resolution (D-10, D-11, D-12 pending review by design). Input manifest 38/38 match; no input file changed since the start commit. |
 | DoD-11 | met with one divergence | Phase 3 commits contain tests, test resources and the D-13 deployment harness only (no file under `src/main`); the freeze commit `2c15ad4` adds only the manifest, and every listed file was committed earlier. Every story has a feature commit naming its US/AC ids. One commit (`a43d21f`, US-003) exceeds the 400-line guide without a stated reason (F-08). Hashes match. |
 | DoD-P01 | met | E2E-01 and E2E-02 pass against the stack; 6 external and 3 student registrations stored during the demonstration. |
