@@ -55,3 +55,12 @@
 - Options: 1. add `@testing-library/dom` 10.4.2 (MIT, latest 10.x) as an exact dev dependency, scanned with the rest (default); 2. ask for a tech-stack change.
 - Human response: none
 - Resolution: 1 (tech-stack.md rule for unlisted dev-only tooling)
+
+## D-07: formatting defects in the requirement inputs
+- Timestamp: 2026-10-12T23:33:53Z
+- Phase: 1
+- Type: non-blocking
+- Trigger: `project/01_requirements/scope.md` begins with a stray line holding the OQ-06 … OQ-01 answers in reverse order before the `# Scope` heading; `acceptance-criteria.md` AC-006-03 cites `OQ-03, OQ-03`. The repeated text matches the "Open questions" table word for word; no answer conflicts.
+- Options: 1. treat the "Open questions" table and the criteria as authoritative, ignore the stray line and the duplicate reference, leave `01_input/` unchanged (default); 2. ask the product owner to fix the files.
+- Human response: none
+- Resolution: 1
