@@ -1,0 +1,25 @@
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+
+# Dependencies and build output
+node_modules/
+target/
+dist/
+coverage/
+reports/
+.stryker-tmp/
+test-results/
+playwright-report/
+blob-report/
+
+# IDE and OS files
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
+
+# Runtime data of the local stack
+02_output/data/
