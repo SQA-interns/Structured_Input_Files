@@ -118,3 +118,12 @@
 - Options: 1. write `docker-compose.yml`, both Dockerfiles and the frontend `nginx.conf` in phase 3 as harness, no application behaviour; the skeleton backend does not start (no datasource wiring yet) and the skeleton frontend is served, so E2E tests fail on missing behaviour (default); 2. leave the stack to phase 4 and accept connection errors in phase 3.
 - Human response: none
 - Resolution: 1
+
+## D-14: SpotBugs exposure warnings excluded for the backend
+- Timestamp: 2026-10-12T20:03:02Z
+- Phase: 4
+- Type: non-blocking
+- Trigger: SpotBugs 4.10.4.1 (effort Max, threshold Medium) reports 30 EI_EXPOSE_REP/EI_EXPOSE_REP2 warnings on records that carry lists (request, command, error body, configuration) and on Spring-injected collaborators held in final fields. No mutable state is shared with untrusted code; all lists come from Jackson, configuration binding or `List.copyOf`.
+- Options: 1. exclude the two exposure patterns in `backend/spotbugs-exclude.xml` and classify them Low (default); 2. add defensive copies to every record and constructor.
+- Human response: none
+- Resolution: 1 (the other finding, CT_CONSTRUCTOR_THROW in `StartupGuard`, was fixed in code)

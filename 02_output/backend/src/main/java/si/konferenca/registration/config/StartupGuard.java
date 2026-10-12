@@ -2,6 +2,7 @@ package si.konferenca.registration.config;
 
 import java.util.Set;
 import java.util.regex.Pattern;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Component;
 
 /**
@@ -9,13 +10,20 @@ import org.springframework.stereotype.Component;
  * local and test, missing reCAPTCHA keys, missing organizer settings.
  */
 @Component
-public class StartupGuard {
+public class StartupGuard implements InitializingBean {
 
   private static final Set<String> TEST_MODE_ENVIRONMENTS = Set.of("local", "test");
   private static final Pattern EMAIL = Pattern.compile("^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$");
 
-  /** Checks the settings once, when the application context is created. */
+  private final AppProperties properties;
+
   public StartupGuard(AppProperties properties) {
+    this.properties = properties;
+  }
+
+  /** Checks the settings once, when the application context is created. */
+  @Override
+  public void afterPropertiesSet() {
     check(properties);
   }
 

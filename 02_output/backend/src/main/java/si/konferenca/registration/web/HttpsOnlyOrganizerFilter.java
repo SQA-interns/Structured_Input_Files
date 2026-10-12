@@ -5,6 +5,9 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.util.regex.Pattern;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -17,6 +20,8 @@ import si.konferenca.registration.config.AppProperties;
 @Component
 @Order(FilterOrder.HTTPS_ONLY)
 public class HttpsOnlyOrganizerFilter extends OncePerRequestFilter {
+
+  private static final Pattern IP_LITERAL = Pattern.compile("[0-9a-fA-F:.]+");
 
   static final String MESSAGE = "The export is only available over HTTPS.";
 
@@ -43,12 +48,14 @@ public class HttpsOnlyOrganizerFilter extends OncePerRequestFilter {
   }
 
   static boolean isLoopback(String address) {
-    if (address == null) {
+    // Only IP literals are resolved, so no name lookup can happen here.
+    if (address == null || !IP_LITERAL.matcher(address).matches()) {
       return false;
     }
-    return address.startsWith("127.")
-        || "::1".equals(address)
-        || "0:0:0:0:0:0:0:1".equals(address)
-        || "[::1]".equals(address);
+    try {
+      return InetAddress.getByName(address).isLoopbackAddress();
+    } catch (UnknownHostException e) {
+      return false;
+    }
   }
 }
