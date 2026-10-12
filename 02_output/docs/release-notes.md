@@ -14,7 +14,7 @@ Version 0.1.0 of the conference registration system (run `kyuhi_single-agent_sdd
 - **US-008** Excel export for the organizer over HTTP Basic (HTTPS-only outside localhost, BCrypt-hashed password, rate limited).
 - Security controls: rate and request-size limits, security headers, non-root containers, problem responses without internals, logs without personal data.
 - Local stack: `docker-compose.yml` with health checks, started by `scripts/compose.sh`.
-- Verification: 177 automated tests (139 backend, 34 frontend, 4 end-to-end) pass; coverage (all levels) backend 95.2 % lines / 84.3 % branches, frontend 97.8 % / 90.0 %; mutation backend 72.6 % (unit and architecture tests, D-23), frontend 88.2 % (D-24). Details: `docs/06_verification-report.md`.
+- Verification: 183 automated tests (145 backend, 34 frontend, 4 end-to-end) pass; coverage (all levels) backend 95.2 % lines / 84.3 % branches, frontend 97.8 % / 90.0 %; mutation backend 72.6 % (unit and architecture tests, D-23), frontend 88.2 % (D-24). Details: `docs/06_verification-report.md`.
 
 ## Known limitations
 

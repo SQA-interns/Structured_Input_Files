@@ -1,0 +1,19 @@
+# Clean clone of dd12194, 2026-10-12T20:03:19Z
+## backend (README commands)
+build exit 0
+check exit 0
+test exit 0 [INFO] Tests run: 145, Failures: 0, Errors: 0, Skipped: 0
+## frontend (README commands)
+npm ci exit 0
+check exit 1
+test exit 0       Tests  34 passed (34)
+build exit 0
+## quick start
+up exit 0
+backend running healthy
+db running healthy
+frontend running healthy
+mailpit running healthy
+form: HTTP 200  mailpit: HTTP 200  export without credentials: HTTP 401
+## end-to-end (frontend README)
+e2e exit 0   4 passed (4.0s)

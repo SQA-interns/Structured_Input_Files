@@ -11,7 +11,7 @@ Verified on 2026-10-12 at commit range `e74fb75..HEAD`. Raw output is in `out/lo
 | Item | Result |
 |---|---|
 | Manifests (`00_input-manifest.sha256`, `03_acceptance-manifest.sha256`) | 35/35 and 31/31 hashes match (`logs/phase6-manifest-check.log`) |
-| Full suite | backend 139/139 (`./mvnw -B verify`), frontend 34/34 (`npx vitest run`), e2e 4/4 against the compose stack |
+| Full suite | backend 145/145 (`./mvnw -B verify`, final run from the clean clone, `logs/phase7-clean-clone.log`), frontend 34/34 (`npx vitest run`), e2e 4/4 against the compose stack |
 | Checks (ES-05) | backend `compile spotless:check pmd:check pmd:cpd-check spotbugs:check` clean; frontend `npm run check` (Prettier, ESLint, `tsc --noEmit`) clean |
 | Runtime demonstration | all flows pass (`logs/phase6-runtime-demo.log`) |
 | `.env` leak check | files: none listed; commit messages: `0` |
@@ -28,8 +28,8 @@ Verified on 2026-10-12 at commit range `e74fb75..HEAD`. Raw output is in `out/lo
 | DoD-05 | pass | no open Critical or High; F-06 lowered to Low with evidence and human approval (D-25, D-26) |
 | DoD-06 | pass | `logs/phase6-runtime-demo.log`: stack healthy, registrations, storage, emails, export, restart |
 | DoD-07 | pass | traceability table: 49/49 AC have tests and commits |
-| DoD-08 | phase 7 | READMEs are written and checked from a clean clone in phase 7 |
-| DoD-09 | phase 7 | release notes with the manual test list in phase 7 |
+| DoD-08 | pass (phase 7) | `logs/phase7-clean-clone.log`: build, check, test of both components, quick start and e2e from a fresh clone; first attempt found an unformatted `frontend/README.md` (fixed in `1ce3aed`) |
+| DoD-09 | pass (phase 7) | `docs/release-notes.md`, "Must be tested manually by a human" (7 items) |
 | DoD-10 | pass | input manifest 35/35 unchanged; every decision resolved or pending review (D-25 resolved by D-26) |
 | DoD-11 | pass with finding | phase 3 commits touch no production source; freeze commit `213da7a` holds only the manifest, every listed file committed earlier; each story has a `feat` commit naming its US/AC; 6 commits exceed the size guide (F-10) |
 | DoD-P01 | pass | demo: external and student registration → 201 |
@@ -46,7 +46,7 @@ Scope and counting per `general/quality/measurement-scope.md`; exclusions from `
 
 | Component | unit | integration | acceptance | architecture | e2e |
 |---|---|---|---|---|---|
-| backend (JUnit) | 75 | 7 | 52 | 5 | — |
+| backend (JUnit) | 81 | 7 | 52 | 5 | — |
 | frontend (Vitest / Playwright) | 21 | — | 13 | — | 4 |
 
 ### Coverage

@@ -64,3 +64,5 @@ Phase 5, 2026-10-12, all levels, before any fix (logs `out/logs/phase5-first-run
 No implementation defect and no frozen test was involved.
 
 ## Final run (phase 6)
+
+From a clean clone at the end of the run (`logs/phase7-clean-clone.log`): backend `./mvnw -B verify` 145 passed (81 unit, 7 integration, 52 acceptance, 5 architecture), frontend `npm test` 34 passed (21 unit, 13 acceptance), e2e 4 passed against the compose stack; 0 failed. Unit tests added after the first run: F-01 (backend, 6) and F-12 (frontend, 2).
