@@ -17,3 +17,4 @@ mailpit running healthy
 form: HTTP 200  mailpit: HTTP 200  export without credentials: HTTP 401
 ## end-to-end (frontend README)
 e2e exit 0   4 passed (4.0s)
+## re-check after 7ad1a3d: frontend check exit 0
