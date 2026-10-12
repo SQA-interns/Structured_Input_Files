@@ -1,0 +1,15 @@
+{
+  "options": [
+    { "id": "ws-testing", "name": "Workshop: Software testing", "category": "WORKSHOP" },
+    { "id": "ws-security", "name": "Workshop: Secure coding", "category": "WORKSHOP", "availableTo": ["EXTERNAL"] },
+    { "id": "ws-retired", "name": "Workshop: Retired topic", "category": "WORKSHOP", "active": false },
+    { "id": "ev-opening", "name": "Opening reception", "category": "EVENT", "active": true, "availableTo": ["EXTERNAL", "STUDENT"] },
+    { "id": "meal-lunch", "name": "Lunch", "category": "MEAL" },
+    { "id": "meal-dinner", "name": "Conference dinner", "category": "MEAL", "availableTo": ["EXTERNAL"] },
+    { "id": "oth-tour", "name": "City tour", "category": "OTHER" }
+  ],
+  "consents": [
+    { "id": "privacy", "text": "I agree that my personal data is processed for organizing the conference and that it is shared with the conference organizers.", "mandatory": true },
+    { "id": "photo", "text": "I agree to be photographed at the conference.", "mandatory": false }
+  ]
+}
