@@ -1,0 +1,44 @@
+:root {
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+  color: #1a1a1a;
+  background: #fff;
+}
+main {
+  max-width: 40rem;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+fieldset {
+  border: 1px solid #ccc;
+  margin: 1rem 0;
+  padding: 0.5rem 1rem;
+}
+legend h2 {
+  font-size: 1.1rem;
+  margin: 0;
+}
+.field {
+  margin: 0.75rem 0;
+}
+.field > label:not(.check) {
+  display: block;
+  font-weight: 600;
+}
+input[type="text"],
+input[type="email"] {
+  width: 100%;
+  padding: 0.4rem;
+  box-sizing: border-box;
+}
+.check {
+  display: block;
+}
+.error {
+  color: #b00020;
+  margin: 0.25rem 0;
+}
+button {
+  padding: 0.5rem 1.5rem;
+  font-size: 1rem;
+}

@@ -1,0 +1,9 @@
+
+ RUN  v5.0.3 /home/tjan-kazar/storage/Work/lab/Structured_Input_Files/02_output/frontend
+
+
+ Test Files  3 passed (3)
+      Tests  13 passed (13)
+   Start at  20:51:59
+   Duration  1.61s (tests 49%, environment 32%, setup 10%, transform 7%, import 1%, worker 1%)
+
