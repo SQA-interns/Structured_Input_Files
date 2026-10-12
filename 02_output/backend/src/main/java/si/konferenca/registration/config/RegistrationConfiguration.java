@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.transaction.support.TransactionTemplate;
 import si.konferenca.registration.application.CaptchaVerifier;
+import si.konferenca.registration.application.ExportService;
 import si.konferenca.registration.application.Notifier;
 import si.konferenca.registration.application.RegistrationCopyWriter;
 import si.konferenca.registration.application.RegistrationService;
@@ -15,6 +16,7 @@ import si.konferenca.registration.domain.OptionCatalog;
 import si.konferenca.registration.domain.RegistrationValidator;
 import si.konferenca.registration.infrastructure.captcha.GoogleCaptchaVerifier;
 import si.konferenca.registration.infrastructure.captcha.TestModeCaptchaVerifier;
+import si.konferenca.registration.infrastructure.export.PoiWorkbookWriter;
 import si.konferenca.registration.infrastructure.jsoncopy.FileRegistrationCopyWriter;
 import si.konferenca.registration.infrastructure.mail.MailNotifier;
 
@@ -58,5 +60,10 @@ public class RegistrationConfiguration {
             .map(String::strip)
             .filter(e -> !e.isEmpty())
             .toList());
+  }
+
+  @Bean
+  ExportService exportService(RegistrationStore store) {
+    return new ExportService(store, new PoiWorkbookWriter());
   }
 }
