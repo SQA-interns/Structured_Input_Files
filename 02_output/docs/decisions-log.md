@@ -100,3 +100,12 @@
 - Options: 1. send synchronously after the commit, before the 201 answer, with 5 s timeouts; plain text only; one organizer message per address (addresses not disclosed to each other) (default); 2. asynchronous sending, one message to all organizers.
 - Human response: none
 - Resolution: pending review (option 1, spec 8, contract emails.md)
+
+## D-12: add @types/node 24.19.2 (dev only)
+- Timestamp: 2026-10-12T23:58:03Z
+- Phase: 3
+- Type: non-blocking
+- Trigger: the end-to-end helpers (`frontend/e2e/support/stack.ts`) and the Vite/Vitest/Playwright configuration use Node APIs (`child_process`, `zlib`, `fs`); `tsc --noEmit` (the type check of ES-05) cannot check them without Node type declarations, which tech-stack.md does not list.
+- Options: 1. add `@types/node` 24.19.2 (MIT, matches Node 24.13.0) as an exact dev dependency, scanned in phase 6 (default); 2. exclude the e2e folder from the type check.
+- Human response: none
+- Resolution: 1 (tech-stack.md rule for unlisted dev-only tooling)
