@@ -22,6 +22,7 @@ public class RegistrationService {
   private final CaptchaVerifier captcha;
   private final RegistrationStore store;
   private final RegistrationCopyWriter copies;
+  private final Notifier notifier;
   private final TransactionTemplate transactions;
   private final Clock clock;
 
@@ -30,19 +31,21 @@ public class RegistrationService {
       CaptchaVerifier captcha,
       RegistrationStore store,
       RegistrationCopyWriter copies,
+      Notifier notifier,
       TransactionTemplate transactions,
       Clock clock) {
     this.validator = validator;
     this.captcha = captcha;
     this.store = store;
     this.copies = copies;
+    this.notifier = notifier;
     this.transactions = transactions;
     this.clock = clock;
   }
 
   /**
-   * Validates, verifies the token, then stores the row and the JSON copy in one transaction. The
-   * result is returned only when both are written (AR-05).
+   * Validates, verifies the token, then stores the row and the JSON copy in one transaction. Emails
+   * follow the commit; the result is returned only when both writes succeeded (AR-05).
    *
    * @throws ValidationException for invalid fields or a rejected token
    * @throws DuplicateEmailException if the email is already registered
@@ -73,6 +76,7 @@ public class RegistrationService {
         copies.delete(registration.id());
       }
     }
+    notifier.registrationAccepted(registration, copy);
     return new Accepted(registration, copy);
   }
 
