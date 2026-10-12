@@ -1,0 +1,229 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< si.konferenca:registration-backend >-----------------
+[INFO] Building registration-backend 0.1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- jacoco:0.8.12:prepare-agent (prepare-agent) @ registration-backend ---
+[INFO] argLine set to -javaagent:/home/tjan-kazar/.m2/repository/org/jacoco/org.jacoco.agent/0.8.12/org.jacoco.agent-0.8.12-runtime.jar=destfile=/home/tjan-kazar/storage/Work/lab/Structured_Input_Files/02_output/backend/target/jacoco.exec
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ registration-backend ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 0 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ registration-backend ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ registration-backend ---
+[INFO] Copying 1 resource from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ registration-backend ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 9 source files with javac [debug parameters release 21] to target/test-classes
+[INFO] /home/tjan-kazar/storage/Work/lab/Structured_Input_Files/02_output/backend/src/test/java/si/konferenca/registration/acceptance/US001ExternalRegistrationAcceptanceTest.java: Some input files use unchecked or unsafe operations.
+[INFO] /home/tjan-kazar/storage/Work/lab/Structured_Input_Files/02_output/backend/src/test/java/si/konferenca/registration/acceptance/US001ExternalRegistrationAcceptanceTest.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ registration-backend ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running si.konferenca.registration.acceptance.US002StudentRegistrationAcceptanceTest
+17:59:40.363 [main] INFO org.testcontainers.images.PullPolicy -- Image pull policy will be performed by: DefaultPullPolicy()
+17:59:40.372 [main] INFO org.testcontainers.utility.ImageNameSubstitutor -- Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+17:59:40.392 [main] INFO org.testcontainers.DockerClientFactory -- Testcontainers version: 2.0.5
+17:59:41.678 [main] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Found Docker environment with Docker accessed via Unix socket (/home/tjan-kazar/.docker/desktop/docker.sock)
+17:59:41.680 [main] INFO org.testcontainers.DockerClientFactory -- Docker host IP address is localhost
+17:59:41.704 [main] INFO org.testcontainers.DockerClientFactory -- Connected to docker: 
+  Server Version: 29.3.1
+  API Version: 1.54
+  Operating System: Docker Desktop
+  Total Memory: 31283 MB
+  Labels: 
+    com.docker.desktop.address=unix:///home/tjan-kazar/.docker/desktop/docker-cli.sock
+17:59:42.199 [main] INFO tc.testcontainers/ryuk:0.14.0 -- Creating container for image: testcontainers/ryuk:0.14.0
+17:59:42.433 [main] INFO tc.testcontainers/ryuk:0.14.0 -- Container testcontainers/ryuk:0.14.0 is starting: 8de4ccaf0259245fc6251f1311875814a13607bee7cce83eab490a84884a4fbf
+17:59:43.198 [main] INFO tc.testcontainers/ryuk:0.14.0 -- Container testcontainers/ryuk:0.14.0 started in PT0.998937243S
+17:59:43.206 [main] INFO org.testcontainers.utility.RyukResourceReaper -- Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+17:59:43.206 [main] INFO org.testcontainers.DockerClientFactory -- Checking the system...
+17:59:43.207 [main] INFO org.testcontainers.DockerClientFactory -- ✔︎ Docker server version should be at least 1.6.0
+17:59:43.207 [main] INFO tc.postgres:16.15-alpine -- Creating container for image: postgres:16.15-alpine
+17:59:43.329 [main] INFO tc.postgres:16.15-alpine -- Container postgres:16.15-alpine is starting: 4f929c02d35529e28870dcb8e4306ae4ea489a14a754b1045519b38ae4b4dce8
+17:59:45.377 [main] INFO tc.postgres:16.15-alpine -- Container postgres:16.15-alpine started in PT2.169082878S
+17:59:45.377 [main] INFO tc.postgres:16.15-alpine -- Container is started (JDBC URL: jdbc:postgresql://localhost:35463/test?loggerLevel=OFF)
+17:59:45.378 [main] INFO tc.axllent/mailpit:v1.31.1 -- Creating container for image: axllent/mailpit:v1.31.1
+17:59:45.486 [main] INFO tc.axllent/mailpit:v1.31.1 -- Container axllent/mailpit:v1.31.1 is starting: 5c274264727fa8c6bb2358a7d7f26f6622b839b8fd00ba15306fc031ccea5101
+17:59:45.946 [main] INFO org.testcontainers.containers.wait.strategy.HttpWaitStrategy -- /fervent_boyd: Waiting for 60 seconds for URL: http://localhost:38959/livez (where port 38959 maps to container port 8025)
+17:59:45.961 [main] INFO tc.axllent/mailpit:v1.31.1 -- Container axllent/mailpit:v1.31.1 started in PT0.582614282S
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-10-12T17:59:46.520+02:00  INFO 2384814 --- [registration-backend] [           main] a.US002StudentRegistrationAcceptanceTest : Starting US002StudentRegistrationAcceptanceTest using Java 21.0.12.1 with PID 2384814 (started by tjan-kazar in /home/tjan-kazar/storage/Work/lab/Structured_Input_Files/02_output/backend)
+2026-10-12T17:59:46.522+02:00  INFO 2384814 --- [registration-backend] [           main] a.US002StudentRegistrationAcceptanceTest : No active profile set, falling back to 1 default profile: "default"
+2026-10-12T17:59:47.672+02:00  INFO 2384814 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-12T17:59:47.710+02:00  INFO 2384814 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 25 ms. Found 0 JPA repository interfaces.
+2026-10-12T17:59:48.597+02:00  INFO 2384814 --- [registration-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-10-12T17:59:48.628+02:00  INFO 2384814 --- [registration-backend] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-12T17:59:48.629+02:00  INFO 2384814 --- [registration-backend] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.26]
+2026-10-12T17:59:48.680+02:00  INFO 2384814 --- [registration-backend] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 2130 ms
+2026-10-12T17:59:49.178+02:00  INFO 2384814 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-10-12T17:59:49.457+02:00  INFO 2384814 --- [registration-backend] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@26049ca2
+2026-10-12T17:59:49.459+02:00  INFO 2384814 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-10-12T17:59:49.501+02:00  INFO 2384814 --- [registration-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:35463/test?loggerLevel=OFF (PostgreSQL 16.15)
+2026-10-12T17:59:49.568+02:00  INFO 2384814 --- [registration-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2026-10-12T17:59:49.572+02:00  INFO 2384814 --- [registration-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 0 migrations (execution time 00:00.014s)
+2026-10-12T17:59:49.572+02:00  WARN 2384814 --- [registration-backend] [           main] o.f.core.internal.command.DbValidate     : No migrations found. Are your locations set up correctly?
+2026-10-12T17:59:49.595+02:00  INFO 2384814 --- [registration-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2026-10-12T17:59:49.666+02:00  INFO 2384814 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-10-12T17:59:49.672+02:00  INFO 2384814 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-10-12T17:59:49.821+02:00  INFO 2384814 --- [registration-backend] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-10-12T17:59:49.907+02:00  INFO 2384814 --- [registration-backend] [           main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.5.Final
+2026-10-12T17:59:50.561+02:00  INFO 2384814 --- [registration-backend] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-12T17:59:50.721+02:00  INFO 2384814 --- [registration-backend] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:35463/test?loggerLevel=OFF]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 16.15
+	Default catalog/schema: test/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-10-12T17:59:51.284+02:00  INFO 2384814 --- [registration-backend] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-12T17:59:51.294+02:00  INFO 2384814 --- [registration-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-12T17:59:51.362+02:00  WARN 2384814 --- [registration-backend] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-10-12T17:59:51.957+02:00  WARN 2384814 --- [registration-backend] [           main] .s.a.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 2a1eb99b-7e09-4921-96b8-e534d1219585
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-10-12T17:59:51.988+02:00  INFO 2384814 --- [registration-backend] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-10-12T17:59:52.227+02:00  INFO 2384814 --- [registration-backend] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-10-12T17:59:52.374+02:00  INFO 2384814 --- [registration-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 33463 (http) with context path '/'
+2026-10-12T17:59:52.388+02:00  INFO 2384814 --- [registration-backend] [           main] a.US002StudentRegistrationAcceptanceTest : Started US002StudentRegistrationAcceptanceTest in 6.367 seconds (process running for 14.107)
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (/home/tjan-kazar/.m2/repository/net/bytebuddy/byte-buddy-agent/1.18.11/byte-buddy-agent-1.18.11.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+2026-10-12T17:59:53.290+02:00  INFO 2384814 --- [registration-backend] [o-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-12T17:59:53.290+02:00  INFO 2384814 --- [registration-backend] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-12T17:59:53.292+02:00  INFO 2384814 --- [registration-backend] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+[ERROR] Tests run: 8, Failures: 8, Errors: 0, Skipped: 0, Time elapsed: 14.48 s <<< FAILURE! -- in si.konferenca.registration.acceptance.US002StudentRegistrationAcceptanceTest
+[ERROR] si.konferenca.registration.acceptance.US002StudentRegistrationAcceptanceTest.ac002_06_optionNotOpenToStudentsIsRejected -- Time elapsed: 1.094 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP 401 ] 
+expected: 400
+ but was: 401
+	at si.konferenca.registration.acceptance.US002StudentRegistrationAcceptanceTest.ac002_06_optionNotOpenToStudentsIsRejected(US002StudentRegistrationAcceptanceTest.java:68)
+
+[ERROR] si.konferenca.registration.acceptance.US002StudentRegistrationAcceptanceTest.ac002_03_validStudentRegistrationIsAccepted -- Time elapsed: 0.103 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP 401 ] 
+expected: 201
+ but was: 401
+	at si.konferenca.registration.acceptance.US002StudentRegistrationAcceptanceTest.ac002_03_validStudentRegistrationIsAccepted(US002StudentRegistrationAcceptanceTest.java:20)
+
+[ERROR] si.konferenca.registration.acceptance.US002StudentRegistrationAcceptanceTest.ac002_05_invalidEmailIsRejected -- Time elapsed: 0.085 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP 401 ] 
+expected: 400
+ but was: 401
+	at si.konferenca.registration.acceptance.US002StudentRegistrationAcceptanceTest.ac002_05_invalidEmailIsRejected(US002StudentRegistrationAcceptanceTest.java:55)
+
+[ERROR] si.konferenca.registration.acceptance.US002StudentRegistrationAcceptanceTest.ac002_04_studentFieldEmptyOrBlankIsRejected(String)[1] -- Time elapsed: 0.070 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[studyInstitution=: HTTP 401 ] 
+expected: 400
+ but was: 401
+	at si.konferenca.registration.acceptance.US002StudentRegistrationAcceptanceTest.ac002_04_studentFieldEmptyOrBlankIsRejected(US002StudentRegistrationAcceptanceTest.java:41)
+
+[ERROR] si.konferenca.registration.acceptance.US002StudentRegistrationAcceptanceTest.ac002_04_studentFieldEmptyOrBlankIsRejected(String)[2] -- Time elapsed: 0.055 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[studyProgramme=: HTTP 401 ] 
+expected: 400
+ but was: 401
+	at si.konferenca.registration.acceptance.US002StudentRegistrationAcceptanceTest.ac002_04_studentFieldEmptyOrBlankIsRejected(US002StudentRegistrationAcceptanceTest.java:41)
+
+[ERROR] si.konferenca.registration.acceptance.US002StudentRegistrationAcceptanceTest.ac002_04_studentFieldEmptyOrBlankIsRejected(String)[3] -- Time elapsed: 0.063 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[studentId=: HTTP 401 ] 
+expected: 400
+ but was: 401
+	at si.konferenca.registration.acceptance.US002StudentRegistrationAcceptanceTest.ac002_04_studentFieldEmptyOrBlankIsRejected(US002StudentRegistrationAcceptanceTest.java:41)
+
+[ERROR] si.konferenca.registration.acceptance.US002StudentRegistrationAcceptanceTest.ac002_08_rejectedTokenIsRejected -- Time elapsed: 0.055 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP 401 ] 
+expected: 400
+ but was: 401
+	at si.konferenca.registration.acceptance.US002StudentRegistrationAcceptanceTest.ac002_08_rejectedTokenIsRejected(US002StudentRegistrationAcceptanceTest.java:94)
+
+[ERROR] si.konferenca.registration.acceptance.US002StudentRegistrationAcceptanceTest.ac002_07_missingConsentIsRejected -- Time elapsed: 0.058 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[HTTP 401 ] 
+expected: 400
+ but was: 401
+	at si.konferenca.registration.acceptance.US002StudentRegistrationAcceptanceTest.ac002_07_missingConsentIsRejected(US002StudentRegistrationAcceptanceTest.java:81)
+
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Failures: 
+[ERROR]   US002StudentRegistrationAcceptanceTest.ac002_03_validStudentRegistrationIsAccepted:20 [HTTP 401 ] 
+expected: 201
+ but was: 401
+[ERROR]   US002StudentRegistrationAcceptanceTest.ac002_04_studentFieldEmptyOrBlankIsRejected:41 [studyInstitution=: HTTP 401 ] 
+expected: 400
+ but was: 401
+[ERROR]   US002StudentRegistrationAcceptanceTest.ac002_04_studentFieldEmptyOrBlankIsRejected:41 [studyProgramme=: HTTP 401 ] 
+expected: 400
+ but was: 401
+[ERROR]   US002StudentRegistrationAcceptanceTest.ac002_04_studentFieldEmptyOrBlankIsRejected:41 [studentId=: HTTP 401 ] 
+expected: 400
+ but was: 401
+[ERROR]   US002StudentRegistrationAcceptanceTest.ac002_05_invalidEmailIsRejected:55 [HTTP 401 ] 
+expected: 400
+ but was: 401
+[ERROR]   US002StudentRegistrationAcceptanceTest.ac002_06_optionNotOpenToStudentsIsRejected:68 [HTTP 401 ] 
+expected: 400
+ but was: 401
+[ERROR]   US002StudentRegistrationAcceptanceTest.ac002_07_missingConsentIsRejected:81 [HTTP 401 ] 
+expected: 400
+ but was: 401
+[ERROR]   US002StudentRegistrationAcceptanceTest.ac002_08_rejectedTokenIsRejected:94 [HTTP 401 ] 
+expected: 400
+ but was: 401
+[INFO] 
+[ERROR] Tests run: 8, Failures: 8, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  19.818 s
+[INFO] Finished at: 2026-10-12T17:59:54+02:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.5.6:test (default-test) on project registration-backend: There are test failures.
+[ERROR] 
+[ERROR] See /home/tjan-kazar/storage/Work/lab/Structured_Input_Files/02_output/backend/target/surefire-reports for the individual test results.
+[ERROR] See dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
