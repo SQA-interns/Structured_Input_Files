@@ -43,4 +43,24 @@ Recorded 2026-10-12 against the bootstrap skeleton (logs in `out/logs/phase3-*`)
 
 ## First complete run (before any fix)
 
+Phase 5, 2026-10-12, all levels, before any fix (logs `out/logs/phase5-first-run-*`). Backend `./mvnw -B verify`; frontend `npx vitest run`; e2e `npx playwright test` against the compose stack.
+
+| Level | Component | Passed | Failed |
+|---|---|---|---|
+| acceptance (frozen) | backend | 52 | 0 |
+| acceptance (frozen) | frontend | 13 | 0 |
+| e2e (frozen) | both | 4 | 0 |
+| architecture | backend | 5 | 0 |
+| integration | backend | 7 | 0 |
+| unit | backend | 65 | 2 |
+| unit | frontend | 19 | 0 |
+| total | | 165 | 2 |
+
+| Failing test | Class | Cause | Action |
+|---|---|---|---|
+| `OptionCatalogLoaderTest.rejectsInvalidOptionsNamingTheEntry` (error) | defect in a non-frozen test | `@CsvSource` uses `'` as quote character; the JSON and the expected messages contain `'` and `,`, so JUnit cannot parse the rows | rewritten with `@MethodSource`; production code unchanged |
+| `MailNotifierTest.sendsTheParticipantAndOneMessagePerOrganizer` (failure) | defect in a non-frozen test | Jakarta Mail writes `charset` into `Content-Type` only on `saveChanges()`, which the test never called; delivered mail is UTF-8 (AC-006-02 passes through Mailpit) | test calls `saveChanges()` before reading headers; production code unchanged |
+
+No implementation defect and no frozen test was involved.
+
 ## Final run (phase 6)
