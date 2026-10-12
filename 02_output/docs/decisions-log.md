@@ -190,3 +190,12 @@
 - Options: 1. Exclude only EI_EXPOSE_REP2 in `application`, `infrastructure`, `web` and `config` (`backend/spotbugs-exclude.xml`); domain records stay fully checked (chosen). 2. Copy collaborators (not possible for shared beans). 3. Accept failing static analysis (breaks DoD-02).
 - Human response: none
 - Resolution: option 1; pending review
+
+## D-22: Compose cannot parse the repository .env
+- Timestamp: 2026-10-12T18:55:19Z
+- Phase: 4
+- Type: non-blocking
+- Trigger: `docker compose --env-file ../.env` fails: line 2 of `.env` is free text, neither `KEY=value` nor a comment. The agent does not read or edit `.env`.
+- Options: 1. Start the stack with `02_output/scripts/compose.sh`, which exports only the keys compose needs with the `sed` method of `working-rules.md` (chosen; works with any `.env`). 2. Ask the human to turn line 2 into a comment (recommended anyway, so `--env-file` also works).
+- Human response: none
+- Resolution: option 1; pending review (human may also fix line 2)
