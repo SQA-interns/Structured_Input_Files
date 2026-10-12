@@ -24,6 +24,22 @@ Decided in phase 3 before any test was written (`general/quality/measurement-sco
 
 Test code (`backend/src/test/**`, `frontend/tests/**`, `frontend/e2e/**`, `*.test.ts(x)`) never counts. No generated code is planned.
 
+## Phase 3 run (frozen tests against the bootstrap skeleton)
+
+Run on 2026-10-12 against the phase 0 skeletons (logs: `out/logs/03_backend-acceptance-run.log`, `03_frontend-acceptance-run.log`, `03_e2e-run.log`). No test passes on bootstrap code; none fails with a build, configuration or harness error.
+
+| Component / level | Tests | Passed | Failed | Reason (behaviour missing) |
+|---|---|---|---|---|
+| backend acceptance | 92 | 0 | 92 | API not implemented: the skeleton's default security answers 401/403 instead of 200/201/400; the options configuration is not read, so invalid files do not stop startup (AC-003-03); no error body (AC-005-03) |
+| frontend acceptance | 10 | 0 | 10 | the skeleton page has no registration type choice, form, confirmation or error display |
+| end-to-end | 5 | 0 | 5 | the served skeleton page has no form (E2E-01, E2E-03, E2E-04); the skeleton backend does not start without its configuration wiring, so `/api` answers 502 (E2E-02, E2E-05) |
+
+Per story: US-001 29 backend + 3 production-verifier + 1 frontend + E2E-01; US-002 29 backend + 2 production-verifier + 2 frontend + E2E-02; US-003 6; US-004 7 frontend + E2E-03; US-005 6 + E2E-04; US-006 5; US-007 3; US-008 9 + E2E-05.
+
+Harness defects found and fixed before the freeze: PostgreSQL connection exhaustion by cached test contexts (pool size 4, `max_connections=300`); AC-005-03 passed on the skeleton for the wrong reason (any 403), so it also requires the contract's error body; E2E-02/E2E-05 assert the HTTP status before reading the body.
+
+Self-check before the freeze (write-acceptance-tests step 5): Mailpit API shapes verified against the pinned image (full message has `To`, `Cc`, `Bcc` arrays, `HTML`, `Text`, `Attachments[].PartID`; `/headers` map; `/part` returns raw bytes); timestamps read as `OffsetDateTime` (not `Timestamp`) and compared with 1 ms tolerance for the microsecond precision of `timestamptz`; byte arrays compared whole with `isEqualTo`; AC-003-03 first starts the same settings with a valid file so only the configuration differs; AC-008-04 has positive controls (HTTPS from remote and plain HTTP from localhost are served); no assertion contradicts another in the same test.
+
 ## First complete run (before any fix)
 
 ## Final run (phase 6)

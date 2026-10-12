@@ -1,0 +1,106 @@
+
+Running 5 tests using 1 worker
+
+  x  1 [chromium] › e2e\e2e-01-external-registration.spec.ts:15:1 › E2E-01 external participant registers (AC-001-01, AC-001-08, AC-004-01, AC-005-01, AC-005-02, AC-006-01, AC-007-01, AC-007-02) (15.1s)
+  x  2 [chromium] › e2e\e2e-02-student-registration.spec.ts:16:1 › E2E-02 student registers (AC-002-01, AC-002-07, AC-004-01) (4.1s)
+  x  3 [chromium] › e2e\e2e-03-field-errors.spec.ts:4:1 › E2E-03 field errors are shown next to the fields (AC-004-02, AC-004-03, NFR-03) (15.1s)
+  x  4 [chromium] › e2e\e2e-04-slovenian-characters.spec.ts:19:1 › E2E-04 Slovenian characters survive the whole chain (AC-005-04, AC-008-03, NFR-01) (15.1s)
+  x  5 [chromium] › e2e\e2e-05-organizer-export.spec.ts:6:1 › E2E-05 organizer exports registrations (AC-008-01, AC-008-02) (4.0s)
+
+
+  1) [chromium] › e2e\e2e-01-external-registration.spec.ts:15:1 › E2E-01 external participant registers (AC-001-01, AC-001-08, AC-004-01, AC-005-01, AC-005-02, AC-006-01, AC-007-01, AC-007-02) 
+
+    TimeoutError: locator.check: Timeout 15000ms exceeded.
+    Call log:
+      - waiting for getByRole('radio', { name: 'External participant' })
+
+
+      19 |
+      20 |   await page.goto("/");
+    > 21 |   await page.getByRole("radio", { name: "External participant" }).check();
+         |                                                                   ^
+      22 |   await page.getByRole("textbox", { name: "First name" }).fill("Ana");
+      23 |   await page.getByRole("textbox", { name: "Last name" }).fill("Novak");
+      24 |   await page.getByRole("textbox", { name: "Email" }).fill(email);
+        at E:\13 - Lab Projects\01_Runs\_____SECOND______ROUND_____\03_kyuhi_single-agent_sdd_v005\02_output\frontend\e2e\e2e-01-external-registration.spec.ts:21:67
+
+    Error Context: test-results\e2e-01-external-registrati-e1515-006-01-AC-007-01-AC-007-02--chromium\error-context.md
+
+  2) [chromium] › e2e\e2e-02-student-registration.spec.ts:16:1 › E2E-02 student registers (AC-002-01, AC-002-07, AC-004-01) 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 200
+    Received: 502
+
+      17 |   const email = uniqueEmail("e2e-student");
+      18 |   const configResponse = await request.get("/api/form-config");
+    > 19 |   expect(configResponse.status()).toBe(200);
+         |                                   ^
+      20 |   const config = (await configResponse.json()) as { options: Option[] };
+      21 |   const studentOptions = config.options.filter((o) => o.availableTo.includes("STUDENT"));
+      22 |   const externalOnly = config.options.filter((o) => !o.availableTo.includes("STUDENT"));
+        at E:\13 - Lab Projects\01_Runs\_____SECOND______ROUND_____\03_kyuhi_single-agent_sdd_v005\02_output\frontend\e2e\e2e-02-student-registration.spec.ts:19:35
+
+    Error Context: test-results\e2e-02-student-registratio-46705-002-01-AC-002-07-AC-004-01--chromium\error-context.md
+
+  3) [chromium] › e2e\e2e-03-field-errors.spec.ts:4:1 › E2E-03 field errors are shown next to the fields (AC-004-02, AC-004-03, NFR-03) 
+
+    TimeoutError: locator.check: Timeout 15000ms exceeded.
+    Call log:
+      - waiting for getByRole('radio', { name: 'External participant' })
+
+
+      14 |
+      15 |   await page.goto("/");
+    > 16 |   await page.getByRole("radio", { name: "External participant" }).check();
+         |                                                                   ^
+      17 |   await page.getByRole("textbox", { name: "Last name" }).fill("Novak");
+      18 |   await page.getByRole("textbox", { name: "Email" }).fill("not-an-email");
+      19 |   await page.getByRole("textbox", { name: "Organization / institution" }).fill("Institut E2E");
+        at E:\13 - Lab Projects\01_Runs\_____SECOND______ROUND_____\03_kyuhi_single-agent_sdd_v005\02_output\frontend\e2e\e2e-03-field-errors.spec.ts:16:67
+
+    Error Context: test-results\e2e-03-field-errors-E2E-03-cd491-AC-004-02-AC-004-03-NFR-03--chromium\error-context.md
+
+  4) [chromium] › e2e\e2e-04-slovenian-characters.spec.ts:19:1 › E2E-04 Slovenian characters survive the whole chain (AC-005-04, AC-008-03, NFR-01) 
+
+    TimeoutError: locator.check: Timeout 15000ms exceeded.
+    Call log:
+      - waiting for getByRole('radio', { name: 'External participant' })
+
+
+      24 |
+      25 |   await page.goto("/");
+    > 26 |   await page.getByRole("radio", { name: "External participant" }).check();
+         |                                                                   ^
+      27 |   await page.getByRole("textbox", { name: "First name" }).fill(FIRST);
+      28 |   await page.getByRole("textbox", { name: "Last name" }).fill(LAST);
+      29 |   await page.getByRole("textbox", { name: "Email" }).fill(email);
+        at E:\13 - Lab Projects\01_Runs\_____SECOND______ROUND_____\03_kyuhi_single-agent_sdd_v005\02_output\frontend\e2e\e2e-04-slovenian-characters.spec.ts:26:67
+
+    Error Context: test-results\e2e-04-slovenian-character-a1967-AC-005-04-AC-008-03-NFR-01--chromium\error-context.md
+
+  5) [chromium] › e2e\e2e-05-organizer-export.spec.ts:6:1 › E2E-05 organizer exports registrations (AC-008-01, AC-008-02) 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 200
+    Received: 502
+
+       9 |     headers: { Authorization: organizerAuthorization() },
+      10 |   });
+    > 11 |   expect(exported.status()).toBe(200);
+         |                             ^
+      12 |   const registrations = Number(sql("SELECT count(*) FROM registration")[0][0]);
+      13 |   const someEmails = sql("SELECT email FROM registration LIMIT 3").map((r) => r[0]);
+      14 |   expect(exported.headers()["content-type"]).toContain(XLSX);
+        at E:\13 - Lab Projects\01_Runs\_____SECOND______ROUND_____\03_kyuhi_single-agent_sdd_v005\02_output\frontend\e2e\e2e-05-organizer-export.spec.ts:11:29
+
+    Error Context: test-results\e2e-05-organizer-export-E2-6b426-ations-AC-008-01-AC-008-02--chromium\error-context.md
+
+  5 failed
+    [chromium] › e2e\e2e-01-external-registration.spec.ts:15:1 › E2E-01 external participant registers (AC-001-01, AC-001-08, AC-004-01, AC-005-01, AC-005-02, AC-006-01, AC-007-01, AC-007-02) 
+    [chromium] › e2e\e2e-02-student-registration.spec.ts:16:1 › E2E-02 student registers (AC-002-01, AC-002-07, AC-004-01) 
+    [chromium] › e2e\e2e-03-field-errors.spec.ts:4:1 › E2E-03 field errors are shown next to the fields (AC-004-02, AC-004-03, NFR-03) 
+    [chromium] › e2e\e2e-04-slovenian-characters.spec.ts:19:1 › E2E-04 Slovenian characters survive the whole chain (AC-005-04, AC-008-03, NFR-01) 
+    [chromium] › e2e\e2e-05-organizer-export.spec.ts:6:1 › E2E-05 organizer exports registrations (AC-008-01, AC-008-02) 
