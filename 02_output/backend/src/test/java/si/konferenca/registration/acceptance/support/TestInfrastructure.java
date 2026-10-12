@@ -64,6 +64,12 @@ public final class TestInfrastructure {
     p.put("SMTP_HOST", MAILPIT::getHost);
     p.put("SMTP_PORT", () -> MAILPIT.getMappedPort(1025));
     p.put("SMTP_STARTTLS", () -> "false");
+    // Spring's own names as well, so the context starts whatever the property mapping looks like.
+    p.put("spring.datasource.url", POSTGRES::getJdbcUrl);
+    p.put("spring.datasource.username", POSTGRES::getUsername);
+    p.put("spring.datasource.password", POSTGRES::getPassword);
+    p.put("spring.mail.host", MAILPIT::getHost);
+    p.put("spring.mail.port", () -> MAILPIT.getMappedPort(1025));
     p.put("REGISTRATION_CONFERENCE_NAME", () -> CONFERENCE_NAME);
     p.put("REGISTRATION_CONFERENCE_CONFIG", () -> DEFAULT_CONFIG);
     p.put("REGISTRATION_JSON_COPY_DIR", JSON_COPY_DIR::toString);
