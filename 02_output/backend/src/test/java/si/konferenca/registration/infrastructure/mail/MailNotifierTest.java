@@ -68,6 +68,18 @@ class MailNotifierTest {
     assertThat(to(messages.get(2))).containsExactly("o2@x.si");
     MimeMessage organizer = messages.get(1);
     assertThat(organizer.getSubject()).isEqualTo("New registration – Student – Conf 2026");
+    assertThat(organizer.getFrom()[0].toString()).isEqualTo("from@x.si");
+    String body = null;
+    for (int i = 0; i < ((Multipart) organizer.getContent()).getCount(); i++) {
+      Part part = ((Multipart) organizer.getContent()).getBodyPart(i);
+      if (part.getContent() instanceof Multipart related) {
+        body = String.valueOf(related.getBodyPart(0).getContent());
+      }
+    }
+    assertThat(body)
+        .isNotNull()
+        .contains("Registration ID: 22222222")
+        .contains("Last name: Kranjc");
     Multipart mixed = (Multipart) organizer.getContent();
     Part attachment = null;
     for (int i = 0; i < mixed.getCount(); i++) {
@@ -105,7 +117,9 @@ class MailNotifierTest {
     assertThat(external)
         .contains("Type: External participant\n")
         .contains("Submitted at: 2026-10-12T10:00:00Z\n")
+        .contains("Registration ID: 11111111-1111-1111-1111-111111111111\n")
         .contains("First name: Ana\n")
+        .contains("Last name: Novak\n")
         .contains("Email: ana@example.si\n")
         .contains("Organization / institution: Acme\n")
         .contains("Meals: Lunch\n")

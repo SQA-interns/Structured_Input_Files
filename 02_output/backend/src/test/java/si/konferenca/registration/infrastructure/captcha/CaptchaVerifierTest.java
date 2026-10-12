@@ -90,6 +90,28 @@ class CaptchaVerifierTest {
   }
 
   @Test
+  void liveModeGivesUpAfterTheReadTimeout() {
+    server.createContext(
+        "/slow",
+        exchange -> {
+          try {
+            Thread.sleep(7000);
+            exchange.sendResponseHeaders(200, -1);
+          } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+          }
+        });
+    GoogleCaptchaVerifier slow =
+        new GoogleCaptchaVerifier(
+            "http://127.0.0.1:" + server.getAddress().getPort() + "/slow", "s");
+
+    long start = System.nanoTime();
+    assertThat(slow.verify("t", "ip")).isFalse();
+    assertThat(java.time.Duration.ofNanos(System.nanoTime() - start))
+        .isLessThan(java.time.Duration.ofSeconds(6));
+  }
+
+  @Test
   void liveModeRejectsWhenTheServiceIsUnreachable() {
     GoogleCaptchaVerifier unreachable = new GoogleCaptchaVerifier("http://127.0.0.1:1/verify", "s");
 

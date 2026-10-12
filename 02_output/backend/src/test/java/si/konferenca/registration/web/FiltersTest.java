@@ -116,6 +116,18 @@ class FiltersTest {
   }
 
   @Test
+  void requestSizeAcceptsABodyOfExactlyTheLimit() throws Exception {
+    RequestSizeFilter filter = new RequestSizeFilter(10);
+    MockHttpServletRequest declared = request("POST", "/api/registrations", "1.1.1.1");
+    declared.setContent("1234567890".getBytes(StandardCharsets.UTF_8));
+
+    filter.doFilter(declared, new MockHttpServletResponse(), chain);
+    filter.doFilter(chunked("1234567890"), new MockHttpServletResponse(), chain);
+
+    assertThat(passed).hasSize(2);
+  }
+
+  @Test
   void requestSizePassesSmallBodiesAndReplaysAStreamedBody() throws Exception {
     RequestSizeFilter filter = new RequestSizeFilter(10);
     MockHttpServletRequest small = request("POST", "/api/registrations", "1.1.1.1");

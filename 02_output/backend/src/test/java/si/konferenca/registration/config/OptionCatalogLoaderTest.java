@@ -47,6 +47,44 @@ class OptionCatalogLoaderTest {
     assertThat(option.category()).isEqualTo(Category.WORKSHOP);
   }
 
+  @Test
+  void keepsExplicitRegistrationTypes() {
+    OptionCatalog catalog =
+        load(
+            file(
+                "{\"id\":\"s\",\"name\":\"S\",\"category\":\"OTHER\",\"active\":true,"
+                    + "\"registrationTypes\":[\"STUDENT\"]}"));
+
+    assertThat(catalog.find("s").orElseThrow().types()).containsExactly(RegistrationType.STUDENT);
+  }
+
+  @Test
+  void acceptsNamesAndConsentTextUpToTheirLimits() {
+    String name = "n".repeat(200);
+    String text = "t".repeat(1000);
+    OptionCatalog catalog =
+        load(
+            "{\"consent\":{\"id\":\"c\",\"text\":\""
+                + text
+                + "\"},\"options\":[{\"id\":\"x\",\"name\":\""
+                + name
+                + "\",\"category\":\"MEAL\",\"active\":true}]}");
+
+    assertThat(catalog.find("x").orElseThrow().name()).hasSize(200);
+    assertThat(catalog.consent().text()).hasSize(1000);
+    assertThatThrownBy(
+            () ->
+                load(
+                    file(
+                        "{\"id\":\"x\",\"name\":\""
+                            + name
+                            + "n\",\"category\":\"MEAL\",\"active\":true}")))
+        .hasMessageContaining("name must have");
+    assertThatThrownBy(
+            () -> load("{\"consent\":{\"id\":\"c\",\"text\":\"" + text + "t\"},\"options\":[]}"))
+        .hasMessageContaining("Consent text");
+  }
+
   static Stream<Arguments> invalidOptions() {
     return Stream.of(
         Arguments.of(

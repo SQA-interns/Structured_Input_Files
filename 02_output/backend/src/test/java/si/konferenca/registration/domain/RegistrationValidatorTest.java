@@ -168,6 +168,15 @@ class RegistrationValidatorTest {
   }
 
   @Test
+  void acceptsSpacesInsideText() {
+    Registration r = validator.validate(external("Ana Marija", "a@b.si", List.of()), ID, NOW);
+
+    assertThat(r.firstName()).isEqualTo("Ana Marija");
+    assertThat(errors(external("A\u001fB", "a@b.si", List.of())))
+        .containsExactly(new FieldError("firstName", RegistrationValidator.BAD_CHARACTERS));
+  }
+
+  @Test
   void enforcesTheLengthLimits() {
     String text200 = "x".repeat(200);
     assertThat(validator.validate(external(text200, "a@b.si", List.of()), ID, NOW).firstName())
