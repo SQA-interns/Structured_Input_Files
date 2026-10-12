@@ -24,12 +24,12 @@ Root package `si.konferenca.registration`. Layered by responsibility; dependenci
 
 | Package | Responsibility | May depend on (internal) |
 |---|---|---|
-| `web` | REST controllers, request/response DTOs, exception handler, request filters (rate limit, body size, HTTPS-only) | `service`, `conference`, `config` |
+| `web` | REST controllers, request/response DTOs, exception handler, request filters (rate limit, body size, HTTPS-only) | `service`, `conference`, `config`, `domain` (entity types for responses only, D-15) |
 | `security` | Spring Security configuration, organizer user (BCrypt), security headers, CORS | `config` |
 | `service` | use cases: register, export; business-rule validation | `domain`, `conference`, `infra`, `config` |
 | `infra` | adapters to the outside: JSON copy store, mail notifier, reCAPTCHA verifiers, Excel writer | `domain`, `conference`, `config` |
 | `domain` | JPA entities, repository, registration type | — |
-| `conference` | conference configuration model (options, consents), loader and startup validation | `config` |
+| `conference` | conference configuration model (options, consents), loader and startup validation | `config`, `domain` (`RegistrationType` only, D-15) |
 | `config` | typed `@ConfigurationProperties` and startup guards | — |
 
 Justification: one small API with three use cases; a layered split keeps web, business rules, persistence and external adapters separately testable and lets ArchUnit check the direction. ArchUnit rules (phase 3 tests, DoD-04): (a) the table above as a layered architecture; (b) `domain` and `config` depend on no other internal package; (c) no slice cycles over `si.konferenca.registration.(*)..` (AR-03); (d) controllers (`@RestController`) live only in `web`; (e) only `domain` declares `@Entity`; (f) `web` never uses `domain` repositories.

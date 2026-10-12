@@ -127,3 +127,12 @@
 - Options: 1. exclude the two exposure patterns in `backend/spotbugs-exclude.xml` and classify them Low (default); 2. add defensive copies to every record and constructor.
 - Human response: none
 - Resolution: 1 (the other finding, CT_CONSTRUCTOR_THROW in `StartupGuard`, was fixed in code)
+
+## D-15: Two additional allowed package dependencies in the backend architecture
+- Timestamp: 2026-10-12T20:04:03Z
+- Phase: 4
+- Type: non-blocking
+- Trigger: the layer table of `docs/02_specification.md` section 2 omitted two dependencies the build needs: `web` maps the stored `Registration` entity to the 201 response, and `conference` uses `domain.RegistrationType` for `availableTo`.
+- Options: 1. allow `web → domain` (entity types; repositories stay forbidden by rule f) and `conference → domain`, update the table, and check exactly that with ArchUnit (default); 2. add mapping types in `service` and a separate type enum in `conference`.
+- Human response: none
+- Resolution: 1
