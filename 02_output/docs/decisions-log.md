@@ -136,3 +136,12 @@
 - Options: 1. allow `web → domain` (entity types; repositories stay forbidden by rule f) and `conference → domain`, update the table, and check exactly that with ArchUnit (default); 2. add mapping types in `service` and a separate type enum in `conference`.
 - Human response: none
 - Resolution: 1
+
+## D-16: End-to-end tests are not part of the mutation runs
+- Timestamp: 2026-10-12T20:24:47Z
+- Phase: 5
+- Type: non-blocking
+- Trigger: `measurement-scope.md` asks for each component's full automated suite in the mutation run. The 5 end-to-end tests run in a browser against Docker images built from the code; PIT and Stryker mutate code in-process (bytecode in the test JVM, sources in a sandbox) and cannot rebuild and restart the images for every mutant.
+- Options: 1. mutation runs use every other level: backend unit, integration, acceptance and architecture tests (JUnit via PIT); frontend unit and acceptance tests (Vitest via Stryker); the e2e tests stay outside, recorded in `tests` of the mutation record (default); 2. rebuild the stack per mutant (infeasible: hours per mutant set).
+- Human response: none
+- Resolution: 1
