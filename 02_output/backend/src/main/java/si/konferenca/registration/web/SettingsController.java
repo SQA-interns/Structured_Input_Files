@@ -2,8 +2,7 @@ package si.konferenca.registration.web;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import si.konferenca.registration.config.AppProperties;
-import si.konferenca.registration.domain.OptionCatalog;
+import si.konferenca.registration.application.FormSettings;
 
 /** {@code GET /api/settings}: what the form needs; no secret (AR-07). */
 @RestController
@@ -18,15 +17,12 @@ class SettingsController {
 
   private final SettingsResponse settings;
 
-  SettingsController(AppProperties properties, OptionCatalog catalog) {
-    AppProperties.Recaptcha recaptcha = properties.recaptcha();
+  SettingsController(FormSettings settings) {
     this.settings =
         new SettingsResponse(
-            properties.conferenceName(),
-            new ConsentResponse(catalog.consent().id(), catalog.consent().text()),
-            new RecaptchaResponse(
-                recaptcha.testMode(),
-                recaptcha.testMode() || recaptcha.siteKey() == null ? "" : recaptcha.siteKey()));
+            settings.conferenceName(),
+            new ConsentResponse(settings.consent().id(), settings.consent().text()),
+            new RecaptchaResponse(settings.recaptchaTestMode(), settings.recaptchaSiteKey()));
   }
 
   @GetMapping("/api/settings")
