@@ -47,6 +47,6 @@ public class RegistrationService {
     for (ConsentDefinition consent : valid.consents()) {
       registration.addConsent(new GivenConsent(consent.id(), consent.text(), now));
     }
-    return store.save(registration);
+    return store.save(registration).registration();
   }
 }
