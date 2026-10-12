@@ -60,7 +60,7 @@ Scope and counting per `general/quality/measurement-scope.md`; exclusions from `
 | frontend | Vitest v8 | nonUnit (component acceptance; e2e not instrumented) | 75.5 % (105/139) | 65.6 % (59/90) |
 | frontend | Vitest v8 | all | **97.8 %** (136/139) | **90.0 %** (81/90) |
 
-Unit-level backend figures were measured before F-01 added tests. Raw: `logs/coverage/`, `logs/phase6-coverage-*.log`.
+Unit-level backend figures were measured before F-01 added tests. Raw: `logs/coverage-raw/`, `logs/phase6-coverage-*.log`.
 
 ### Mutation
 

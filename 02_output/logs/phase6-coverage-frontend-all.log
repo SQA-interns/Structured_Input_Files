@@ -1,0 +1,18 @@
+
+ RUN  v5.0.3 /home/tjan-kazar/storage/Work/lab/Structured_Input_Files/02_output/frontend
+      Coverage enabled with v8
+
+
+ Test Files  7 passed (7)
+      Tests  32 passed (32)
+   Start at  21:08:17
+   Duration  2.78s (environment 40%, tests 31%, setup 18%, transform 7%, worker 3%, import 2%)
+
+[34m % [39m[2mCoverage report from [22m[33mv8[39m
+
+=============================== Coverage summary ===============================
+Statements   : 94.83% ( 147/155 )
+Branches     : 90% ( 81/90 )
+Functions    : 88.88% ( 40/45 )
+Lines        : 97.84% ( 136/139 )
+================================================================================

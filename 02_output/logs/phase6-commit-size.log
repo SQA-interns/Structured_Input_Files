@@ -1,0 +1,6 @@
+d26873f files=6 lines=640 | build: add backend skeleton with Maven wrapper and pom (ES-04, ES-05)
+8aa888c files=15 lines=901 | test: add acceptance and e2e test harness (US-001..US-008)
+b6fb493 files=16 lines=597 | feat: load configurable options and serve options/settings (US-003, AC-003-01, AC-003-03)
+98eac54 files=10 lines=524 | feat: store registrations with atomic JSON copy (US-005, AC-005-01..04)
+de033ab files=10 lines=625 | feat: add registration form and confirmation (US-001, US-002, US-004)
+97dc216 files=5 lines=436 | test: add adapter unit tests for copy, captcha, export, mail
