@@ -1,3 +1,4 @@
 database.sql: applied with psql -v ON_ERROR_STOP=1 to postgres:16.15-alpine: CREATE TABLE x3, CREATE INDEX x1, exit 0 (2026-10-12T23:38:04Z)
 conference-config.schema.json: JSON.parse ok, 4 $ref resolved, patterns compile
 registration-copy.schema.json: JSON.parse ok, 0 $ref resolved, patterns compile
+openapi.json: JSON.parse ok, OpenAPI 3.1.0, 3 operations, 18 $ref resolved, patterns compile

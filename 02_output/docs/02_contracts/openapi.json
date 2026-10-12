@@ -1,0 +1,159 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Conference registration API",
+    "version": "1.0.0",
+    "description": "Contract between the frontend or the organizer and the backend (spec section 4). All error bodies use ErrorResponse. Every /api endpoint is rate limited per client (429) and request bodies are limited to 16 KiB (413)."
+  },
+  "servers": [{ "url": "/" }],
+  "paths": {
+    "/api/form-config": {
+      "get": {
+        "operationId": "getFormConfig",
+        "summary": "Form configuration: active options, consents, reCAPTCHA settings",
+        "responses": {
+          "200": {
+            "description": "Active options only, with the registration types each is available to",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/FormConfig" } } }
+          },
+          "429": { "$ref": "#/components/responses/TooManyRequests" }
+        }
+      }
+    },
+    "/api/registrations": {
+      "post": {
+        "operationId": "createRegistration",
+        "summary": "Submit a registration (public, protected by reCAPTCHA)",
+        "requestBody": {
+          "required": true,
+          "content": { "application/json": { "schema": { "$ref": "#/components/schemas/RegistrationRequest" } } }
+        },
+        "responses": {
+          "201": {
+            "description": "Accepted: database row and JSON copy written",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/RegistrationCreated" } } }
+          },
+          "400": {
+            "description": "Rejected: field errors (fieldErrors keys: type, firstName, lastName, email, organization, studyInstitution, studyProgramme, studentId, optionIds, consents, consents.<consentId>, recaptchaToken) or an unreadable body (fieldErrors empty). Nothing is stored and no email is sent.",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ErrorResponse" } } }
+          },
+          "413": { "description": "Body larger than 16 KiB", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ErrorResponse" } } } },
+          "415": { "description": "Content type is not application/json", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ErrorResponse" } } } },
+          "429": { "$ref": "#/components/responses/TooManyRequests" },
+          "500": {
+            "description": "Not stored (for example the JSON copy could not be written); no registration remains in the database",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ErrorResponse" } } }
+          }
+        }
+      }
+    },
+    "/api/organizer/registrations.xlsx": {
+      "get": {
+        "operationId": "exportRegistrations",
+        "summary": "Excel export of all registrations (organizer only)",
+        "security": [{ "organizerBasic": [] }],
+        "responses": {
+          "200": {
+            "description": "Workbook with a header row and one row per registration. Header: Content-Disposition: attachment; filename=\"registrations.xlsx\"",
+            "content": {
+              "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": { "schema": { "type": "string", "contentEncoding": "binary" } }
+            }
+          },
+          "401": {
+            "description": "Credentials missing or wrong; header WWW-Authenticate: Basic realm=\"organizer\"",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ErrorResponse" } } }
+          },
+          "403": {
+            "description": "HTTPS-only access is on and the request came over plain HTTP from a client that is not on localhost; credentials are not evaluated",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ErrorResponse" } } }
+          },
+          "429": { "$ref": "#/components/responses/TooManyRequests" }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "organizerBasic": { "type": "http", "scheme": "basic", "description": "ORGANIZER_USERNAME / ORGANIZER_PASSWORD; over HTTPS, or plain HTTP from localhost only" }
+    },
+    "responses": {
+      "TooManyRequests": {
+        "description": "Rate limit exceeded; header Retry-After in seconds",
+        "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ErrorResponse" } } }
+      }
+    },
+    "schemas": {
+      "RegistrationType": { "type": "string", "enum": ["EXTERNAL", "STUDENT"] },
+      "OptionCategory": { "type": "string", "enum": ["WORKSHOP", "EVENT", "MEAL", "OTHER"] },
+      "FormConfig": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["conferenceName", "recaptchaSiteKey", "recaptchaTestMode", "consents", "options"],
+        "properties": {
+          "conferenceName": { "type": "string" },
+          "recaptchaSiteKey": { "type": "string", "description": "Public site key; empty in test mode" },
+          "recaptchaTestMode": { "type": "boolean", "description": "When true the frontend shows the test-mode stand-in and sends the token test-mode-token" },
+          "consents": { "type": "array", "items": { "$ref": "#/components/schemas/Consent" } },
+          "options": { "type": "array", "items": { "$ref": "#/components/schemas/Option" } }
+        }
+      },
+      "Consent": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "text", "mandatory"],
+        "properties": {
+          "id": { "type": "string" },
+          "text": { "type": "string" },
+          "mandatory": { "type": "boolean" }
+        }
+      },
+      "Option": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "category", "availableTo"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "category": { "$ref": "#/components/schemas/OptionCategory" },
+          "availableTo": { "type": "array", "items": { "$ref": "#/components/schemas/RegistrationType" }, "minItems": 1 }
+        }
+      },
+      "RegistrationRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "description": "Text fields are trimmed before validation and storage. Fields of the other registration type must be absent, null or empty. Unknown properties are rejected.",
+        "properties": {
+          "type": { "$ref": "#/components/schemas/RegistrationType" },
+          "firstName": { "type": ["string", "null"], "maxLength": 100 },
+          "lastName": { "type": ["string", "null"], "maxLength": 100 },
+          "email": { "type": ["string", "null"], "maxLength": 254, "pattern": "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$" },
+          "organization": { "type": ["string", "null"], "maxLength": 200, "description": "EXTERNAL only, required" },
+          "studyInstitution": { "type": ["string", "null"], "maxLength": 200, "description": "STUDENT only, required" },
+          "studyProgramme": { "type": ["string", "null"], "maxLength": 200, "description": "STUDENT only, required" },
+          "studentId": { "type": ["string", "null"], "maxLength": 50, "description": "STUDENT only, required" },
+          "optionIds": { "type": ["array", "null"], "items": { "type": "string" }, "maxItems": 100, "description": "Distinct ids of active options available to the type" },
+          "consents": { "type": ["array", "null"], "items": { "type": "string" }, "description": "Ids of the consents given; every mandatory consent must be present" },
+          "recaptchaToken": { "type": ["string", "null"], "description": "reCAPTCHA v2 response token (test mode: test-mode-token)" }
+        }
+      },
+      "RegistrationCreated": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "registeredAt"],
+        "properties": {
+          "id": { "type": "string", "format": "uuid" },
+          "registeredAt": { "type": "string", "format": "date-time" }
+        }
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["message", "fieldErrors"],
+        "properties": {
+          "message": { "type": "string", "description": "User-facing text without technical details" },
+          "fieldErrors": { "type": "object", "additionalProperties": { "type": "string" } }
+        }
+      }
+    }
+  }
+}
