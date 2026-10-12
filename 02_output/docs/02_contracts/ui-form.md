@@ -24,7 +24,7 @@ The form shows only the fields of the selected type.
 
 ## Options
 
-One group per category with a heading `Workshops`, `Events`, `Meals`, `Other activities`, in that order; a group without options open to the selected type is not shown. Each option is a checkbox labelled with its display name. Only options from `GET /api/options` whose `registrationTypes` contain the selected type are shown (D-10). Switching type clears selections not open to the new type.
+One group per category (a `fieldset`, role `group`, whose accessible name is its heading) with a heading `Workshops`, `Events`, `Meals`, `Other activities`, in that order; a group without options open to the selected type is not shown. Each option is a checkbox labelled with its display name. Only options from `GET /api/options` whose `registrationTypes` contain the selected type are shown (D-10). Switching type clears selections not open to the new type.
 
 ## Consent and anti-automation
 
