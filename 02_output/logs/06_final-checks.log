@@ -1,0 +1,8 @@
+# Final checks 2026-10-12T20:45:02Z
+## backend: spotless:check pmd:check pmd:cpd-check spotbugs:check
+backend checks: clean
+## frontend: prettier, eslint, tsc, build
+frontend checks and build: clean
+## frontend tests
+ Test Files  7 passed (7)
+      Tests  52 passed (52)

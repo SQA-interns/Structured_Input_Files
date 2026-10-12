@@ -1,0 +1,69 @@
+# Runtime demonstration 2026-10-12T20:43:02Z
+## images rebuilt from HEAD
+ Container registration-backend-1 Waiting 
+ Container registration-backend-1 Healthy 
+backend: Up 11 seconds (healthy)
+frontend: Up 36 minutes (healthy)
+mailpit: Up 36 minutes (healthy)
+postgres: Up 36 minutes (healthy)
+## health (NFR-04)
+{"groups":["liveness","readiness"],"status":"UP"}
+{"status":"UP"}
+{"status":"UP"}
+## non-root processes (SB-11)
+backend: 10001
+frontend: 101
+## e2e scenarios against the stack (DoD-P01..P04)
+  ok 1 [chromium] › e2e\e2e-01-external-registration.spec.ts:15:1 › E2E-01 external participant registers (AC-001-01, AC-001-08, AC-004-01, AC-005-01, AC-005-02, AC-006-01, AC-007-01, AC-007-02) (2.4s)
+  ok 2 [chromium] › e2e\e2e-02-student-registration.spec.ts:16:1 › E2E-02 student registers (AC-002-01, AC-002-07, AC-004-01) (1.3s)
+  ok 3 [chromium] › e2e\e2e-03-field-errors.spec.ts:4:1 › E2E-03 field errors are shown next to the fields (AC-004-02, AC-004-03, NFR-03) (1.3s)
+  ok 4 [chromium] › e2e\e2e-04-slovenian-characters.spec.ts:19:1 › E2E-04 Slovenian characters survive the whole chain (AC-005-04, AC-008-03, NFR-01) (2.1s)
+  ok 5 [chromium] › e2e\e2e-05-organizer-export.spec.ts:6:1 › E2E-05 organizer exports registrations (AC-008-01, AC-008-02) (951ms)
+  5 passed (8.6s)
+## stored registrations (DoD-P02)
+EXTERNAL|6
+STUDENT|3
+rows: 9
+JSON copies: 9
+every row has its copy: 9 missing
+## Mailpit (DoD-P03)
+participant confirmations: 9
+organizer notifications: 9 with attachment: 9
+## export (DoD-P04)
+with credentials: 200 application/vnd.openxmlformats-officedocument.spreadsheetml.sheet 4653 bytes
+zip signature: PK
+without credentials: 401
+wrong password: 401
+## security headers (SB-10)
+Content-Security-Policy: default-src 'self'; script-src 'self' https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/; frame-src https://www.google.com/recaptcha/ https://recaptcha.google.com/recaptcha/; img-src 'self' data:; style-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+Referrer-Policy: no-referrer
+X-Content-Type-Options: nosniff
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+X-Frame-Options: DENY
+Content-Security-Policy: default-src 'none'; frame-ancestors 'none'
+Referrer-Policy: no-referrer
+Content-Security-Policy: default-src 'self'; script-src 'self' https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/; frame-src https://www.google.com/recaptcha/ https://recaptcha.google.com/recaptcha/; img-src 'self' data:; style-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+Referrer-Policy: no-referrer
+## body size limit (SR-03)
+20 kB body: 413
+## Host header (SR-08)
+spoofed Host header: 200
+## rate limit (SB-06, SR-03): 70 form-config requests
+     58 200
+     12 429
+## re-check: every row has its JSON copy (path conversion off)
+rows without copy: 0
+## persistence across container recreation (NFR-02)
+before: rows=9 copies=9
+ Network registration_default Removed 
+ Container registration-frontend-1 Started 
+backend: Up 22 seconds (healthy)
+frontend: Up 11 seconds (healthy)
+mailpit: Up 28 seconds (healthy)
+postgres: Up 28 seconds (healthy)
+after: rows=9 copies=9
+## end 2026-10-12T20:44:55Z
