@@ -2,10 +2,14 @@ package si.konferenca.registration.infra;
 
 import jakarta.mail.internet.InternetAddress;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
 import si.konferenca.registration.config.AppProperties;
+import si.konferenca.registration.domain.GivenConsent;
 import si.konferenca.registration.domain.Registration;
 import si.konferenca.registration.domain.RegistrationType;
 import si.konferenca.registration.domain.SelectedOption;
@@ -20,11 +24,13 @@ public class MailNotifier {
   private final JavaMailSender mailSender;
   private final String from;
   private final String conferenceName;
+  private final List<String> organizerEmails;
 
   public MailNotifier(JavaMailSender mailSender, AppProperties properties) {
     this.mailSender = mailSender;
     this.from = properties.mail().from();
     this.conferenceName = properties.conference().name();
+    this.organizerEmails = properties.organizer().emails().stream().map(String::trim).toList();
   }
 
   /** The confirmation to the participant (US-006). */
@@ -59,6 +65,79 @@ public class MailNotifier {
         .append(conferenceName)
         .append('\n');
     return text.toString();
+  }
+
+  /**
+   * One notification per organizer address with the JSON copy attached (US-007); returns the number
+   * of addresses that could not be notified.
+   */
+  public int sendOrganizerNotifications(Registration registration, byte[] jsonCopy) {
+    int failed = 0;
+    String text = organizerText(registration);
+    for (String organizer : organizerEmails) {
+      try {
+        mailSender.send(
+            message -> {
+              MimeMessageHelper helper =
+                  new MimeMessageHelper(
+                      message,
+                      MimeMessageHelper.MULTIPART_MODE_MIXED,
+                      StandardCharsets.UTF_8.name());
+              helper.setFrom(new InternetAddress(from, true));
+              helper.setTo(new InternetAddress(organizer, true));
+              helper.setSubject("New registration " + registration.getId());
+              helper.setText(text, false);
+              helper.addAttachment(
+                  "registration-" + registration.getId() + ".json",
+                  new ByteArrayResource(jsonCopy),
+                  "application/json");
+            });
+      } catch (MailException e) {
+        failed++;
+      }
+    }
+    return failed;
+  }
+
+  String organizerText(Registration registration) {
+    StringBuilder text = new StringBuilder();
+    text.append("New registration for ")
+        .append(conferenceName)
+        .append("\n\nRegistration ID: ")
+        .append(registration.getId())
+        .append("\nType: ")
+        .append(registration.getType().name())
+        .append("\nRegistered at: ")
+        .append(registration.getRegisteredAt())
+        .append("\nFirst name: ")
+        .append(registration.getFirstName())
+        .append("\nLast name: ")
+        .append(registration.getLastName())
+        .append("\nEmail: ")
+        .append(registration.getEmail())
+        .append('\n');
+    appendIfPresent(text, "Organization", registration.getOrganization());
+    appendIfPresent(text, "Study institution", registration.getStudyInstitution());
+    appendIfPresent(text, "Study programme", registration.getStudyProgramme());
+    appendIfPresent(text, "Student ID", registration.getStudentId());
+    text.append('\n');
+    appendOptions(text, registration);
+    text.append("\nConsents:\n");
+    for (GivenConsent consent : registration.getConsents()) {
+      text.append("- ")
+          .append(consent.consentId())
+          .append(" (given at ")
+          .append(consent.givenAt())
+          .append(")\n");
+    }
+    text.append("\nThe registration as accepted is attached as JSON.\n");
+    return text.toString();
+  }
+
+  private static void appendIfPresent(StringBuilder text, String label, String value) {
+    if (value != null) {
+      text.append(label).append(": ").append(value).append('\n');
+    }
   }
 
   static void appendOptions(StringBuilder text, Registration registration) {

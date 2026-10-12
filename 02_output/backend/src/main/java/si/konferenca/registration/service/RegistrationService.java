@@ -71,5 +71,13 @@ public class RegistrationService {
     } catch (RuntimeException e) {
       LOG.warn("Email participant-confirmation failed for registration {}", id);
     }
+    try {
+      int failed = mail.sendOrganizerNotifications(stored.registration(), stored.jsonCopy());
+      if (failed > 0) {
+        LOG.warn("Email organizer-notification failed {} time(s) for registration {}", failed, id);
+      }
+    } catch (RuntimeException e) {
+      LOG.warn("Email organizer-notification failed for registration {}", id);
+    }
   }
 }
