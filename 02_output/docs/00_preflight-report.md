@@ -9,7 +9,7 @@
 | Local environments and services running or reachable | `project/00_setup/environments.md` | pass — Docker Engine 29.8.1 running (Linux engine); all pinned images pulled and started; Testcontainers starts `postgres:16.15-alpine` (probe test, `out/logs/00_testcontainers-probe.log`); Maven Central and npm registry reachable |
 | Secrets present in `.env` or marked test-only | `project/00_setup/secrets.env.example` | pass — see "Secrets" |
 | Every listed dependency resolves | `project/00_setup/tech-stack.md` | pass — `mvnw dependency:list` and `npm install` resolve every pin exactly (`out/logs/00_backend-deps.txt`, `out/logs/00_backend-deps-test.txt`, `frontend/package-lock.json`) |
-| No listed dependency has a known Critical or High vulnerability | `project/00_setup/tech-stack.md` | **blocked** — test-scope matches D-07, D-08 await the human; PA-01/PA-02/PA-03 applied (D-02, D-03, D-04) |
+| No listed dependency has a known Critical or High vulnerability | `project/00_setup/tech-stack.md` | pass — 0 open after triage: PA-01/PA-02/PA-03 applied (D-02, D-03, D-04); test-scope matches classified Low by the human (D-07, D-08) and suppressed per artifact; re-scan 0 open, 49 suppressed |
 | Clean working tree on the starting commit | repository | pass — `git status` clean apart from untracked `03_statistics/run-log.json`; `.env` excluded via `.git/info/exclude`; HEAD `029038d` |
 | Input manifest written | `docs/00_input-manifest.sha256` | pass — 38 files, LF-normalised SHA-256 |
 
@@ -77,4 +77,4 @@ Scanners: OWASP Dependency-Check 12.1.0 (NVD analyser, all scopes incl. test, 11
 
 | When | What was missing | Answer | Re-check |
 |---|---|---|---|
-| 2026-10-12T19:12Z | D-07, D-08: Critical/High Dependency-Check results on test-scope Testcontainers artifacts | pending | |
+| 2026-10-12T19:12Z | D-07, D-08: Critical/High Dependency-Check results on test-scope Testcontainers artifacts | 19:15Z: apply proposed defaults (Low, suppress per artifact) | Dependency-Check re-run: BUILD SUCCESS, 0 open vulnerabilities |

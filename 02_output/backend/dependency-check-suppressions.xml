@@ -10,4 +10,17 @@
     <packageUrl regex="true">^pkg:maven/org\.hibernate\.validator/hibernate-validator@.*$</packageUrl>
     <cve>CVE-2025-15104</cve>
   </suppress>
+  <suppress>
+    <notes>D-07 (human-approved): CPE name collision of the test helper with the PostgreSQL server product. Low, false positive. This artifact only.</notes>
+    <packageUrl regex="true">^pkg:maven/org.testcontainers/testcontainers-postgresql@.*$</packageUrl>
+    <cpe>cpe:/a:postgresql:postgresql</cpe>
+  </suppress>
+  <suppress>
+    <notes>D-08 (human-approved): httpclient5/httpcore5 shaded in docker-java-transport-zerodep, test scope only, local Docker daemon only. Low. This artifact only.</notes>
+    <filePath regex="true">.*docker-java-transport-zerodep-.*.jar.*</filePath>
+    <cve>CVE-2026-71290</cve>
+    <cve>CVE-2026-54399</cve>
+    <cve>CVE-2026-54428</cve>
+    <cve>CVE-2026-64607</cve>
+  </suppress>
 </suppressions>

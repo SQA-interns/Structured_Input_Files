@@ -62,8 +62,8 @@
 - Type: blocking
 - Trigger: With test scope included, Dependency-Check maps `org.testcontainers:testcontainers-postgresql` 2.0.5 (test scope) to CPE `cpe:2.3:a:postgresql:postgresql:2.0.5` and reports 45 PostgreSQL **server** CVEs (4 Critical, e.g. CVE-2019-10211 "Postgresql Windows installer…"; 21 High, e.g. CVE-2026-6473 "integer wraparound in PostgreSQL server"). The jar is a Java test helper that starts a container; it contains no PostgreSQL server code. The database actually used is the `postgres:16.15-alpine` image, not this jar. Evidence: `out/logs/00_dependency-check-report.json`.
 - Options: 1. classify Low, false positive (CPE name collision); suppress these CVEs for `testcontainers-postgresql` only (proposed default); 2. keep them as Critical/High and stop the run; 3. replace Testcontainers (tech-stack change).
-- Human response: none
-- Resolution: pending
+- Human response: "apply proposed default" (2026-10-12T19:15Z)
+- Resolution: 1 — Low, false positive (CPE name collision); suppressed for `testcontainers-postgresql` only.
 
 ## D-08: Dependency-Check CVEs in httpclient5/httpcore5 shaded in docker-java-transport-zerodep
 - Timestamp: 2026-10-12T19:12:23Z
@@ -71,5 +71,5 @@
 - Type: blocking
 - Trigger: `com.github.docker-java:docker-java-transport-zerodep` 3.7.1 (transitive, test scope only, via Testcontainers 2.0.5) shades `httpclient5` 5.5.1 and `httpcore5` 5.3.6: CVE-2026-71290 (Critical 9.1, TLS hostname verification in the async client), CVE-2026-54399 and CVE-2026-54428 (High 7.5, HTTP/1.1 and HTTP/2 DoS by a malicious server), CVE-2026-64607 (Medium 5.3). The library is used only by tests to talk to the local Docker daemon over a local named pipe/socket; it is not in the shipped backend jar or image, and no untrusted server or TLS peer is contacted. Shaded code cannot be overridden by a version property.
 - Options: 1. classify Low (test-only, not shipped, no reachable attacker path); suppress for this artifact only; record as finding (proposed default); 2. keep them as Critical/High and stop the run; 3. change the Testcontainers version (tech-stack change).
-- Human response: none
-- Resolution: pending
+- Human response: "apply proposed default" (2026-10-12T19:15Z)
+- Resolution: 1 — Low (test-only, not shipped, no reachable attacker path); suppressed for `docker-java-transport-zerodep` only; recorded as a finding for phase 6.
