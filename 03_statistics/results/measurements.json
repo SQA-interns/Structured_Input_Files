@@ -1,0 +1,2683 @@
+{
+  "generatedAt": "2026-10-12T20:58:31.731Z",
+  "runId": "kyuhi-single-agent-sdd-v003-opus-5-5-t1.3-20261012T1355Z-5267",
+  "time": {
+    "wallMin": 372.2,
+    "agentMin": 104.3,
+    "humanWaitMin": 267.9,
+    "betweenPhasesMin": 0,
+    "modelMin": 52.4,
+    "toolMin": 65.8,
+    "humanReplyMin": 1.7,
+    "waitsOver60Min": 2,
+    "byPhase": [
+      {
+        "phase": 0,
+        "name": "preflight-and-bootstrap",
+        "wallMin": 110,
+        "waitMin": 99.1,
+        "agentMin": 10.9,
+        "modelMin": 6.4,
+        "toolMin": 8.5
+      },
+      {
+        "phase": 1,
+        "name": "requirements",
+        "wallMin": 1.8,
+        "waitMin": 0,
+        "agentMin": 1.8,
+        "modelMin": 1.8,
+        "toolMin": 0.1
+      },
+      {
+        "phase": 2,
+        "name": "design",
+        "wallMin": 5.3,
+        "waitMin": 0,
+        "agentMin": 5.3,
+        "modelMin": 4.9,
+        "toolMin": 0.3
+      },
+      {
+        "phase": 3,
+        "name": "test-design",
+        "wallMin": 19.4,
+        "waitMin": 0,
+        "agentMin": 19.4,
+        "modelMin": 9.9,
+        "toolMin": 9.5
+      },
+      {
+        "phase": 4,
+        "name": "build",
+        "wallMin": 163.7,
+        "waitMin": 141.7,
+        "agentMin": 22,
+        "modelMin": 11.2,
+        "toolMin": 10.8
+      },
+      {
+        "phase": 5,
+        "name": "unit-tests",
+        "wallMin": 7.7,
+        "waitMin": 0,
+        "agentMin": 7.7,
+        "modelMin": 5.2,
+        "toolMin": 2.6
+      },
+      {
+        "phase": 6,
+        "name": "verify",
+        "wallMin": 58.8,
+        "waitMin": 27.1,
+        "agentMin": 31.7,
+        "modelMin": 10.2,
+        "toolMin": 31.2
+      },
+      {
+        "phase": 7,
+        "name": "release",
+        "wallMin": 5.5,
+        "waitMin": 0,
+        "agentMin": 5.5,
+        "modelMin": 2.9,
+        "toolMin": 2.9
+      }
+    ],
+    "idleGaps": [
+      {
+        "start": "2026-10-12T14:04:52.486Z",
+        "end": "2026-10-12T15:43:39.361Z",
+        "min": 98.8,
+        "phase": 0
+      },
+      {
+        "start": "2026-10-12T16:29:55.184Z",
+        "end": "2026-10-12T18:51:36.608Z",
+        "min": 141.7,
+        "phase": 4
+      },
+      {
+        "start": "2026-10-12T19:45:39.058Z",
+        "end": "2026-10-12T20:01:16.552Z",
+        "min": 15.6,
+        "phase": 6
+      }
+    ],
+    "longWaits": [
+      {
+        "start": "2026-10-12T14:04:41.000Z",
+        "min": 99.1,
+        "source": "run-log",
+        "cause": "decision",
+        "reason": "Phase 0: host versions, vulnerable dev tooling, CVE false positive"
+      },
+      {
+        "start": "2026-10-12T16:29:55.184Z",
+        "min": 141.7,
+        "source": "transcript",
+        "cause": null,
+        "reason": "idle gap not recorded in humanInterventions"
+      }
+    ],
+    "unrecordedIdleMin": 141.7,
+    "phaseChecks": {
+      "viaHelper": 10,
+      "manual": 6,
+      "issues": [],
+      "boundaries": [
+        {
+          "phase": 0,
+          "which": "start",
+          "time": "2026-10-12T13:55:04Z",
+          "via": "stat.mjs"
+        },
+        {
+          "phase": 0,
+          "which": "end",
+          "time": "2026-10-12T15:45:05Z",
+          "via": "stat.mjs"
+        },
+        {
+          "phase": 1,
+          "which": "start",
+          "time": "2026-10-12T15:45:05Z",
+          "via": "stat.mjs"
+        },
+        {
+          "phase": 1,
+          "which": "end",
+          "time": "2026-10-12T15:46:54Z",
+          "via": "stat.mjs"
+        },
+        {
+          "phase": 2,
+          "which": "start",
+          "time": "2026-10-12T15:46:54Z",
+          "via": "manual"
+        },
+        {
+          "phase": 2,
+          "which": "end",
+          "time": "2026-10-12T15:52:12Z",
+          "via": "stat.mjs"
+        },
+        {
+          "phase": 3,
+          "which": "start",
+          "time": "2026-10-12T15:52:12Z",
+          "via": "manual"
+        },
+        {
+          "phase": 3,
+          "which": "end",
+          "time": "2026-10-12T16:11:37Z",
+          "via": "stat.mjs"
+        },
+        {
+          "phase": 4,
+          "which": "start",
+          "time": "2026-10-12T16:11:37Z",
+          "via": "manual"
+        },
+        {
+          "phase": 4,
+          "which": "end",
+          "time": "2026-10-12T18:55:19Z",
+          "via": "stat.mjs"
+        },
+        {
+          "phase": 5,
+          "which": "start",
+          "time": "2026-10-12T18:55:19Z",
+          "via": "manual"
+        },
+        {
+          "phase": 5,
+          "which": "end",
+          "time": "2026-10-12T19:03:00Z",
+          "via": "stat.mjs"
+        },
+        {
+          "phase": 6,
+          "which": "start",
+          "time": "2026-10-12T19:03:01Z",
+          "via": "manual"
+        },
+        {
+          "phase": 6,
+          "which": "end",
+          "time": "2026-10-12T20:01:46Z",
+          "via": "stat.mjs"
+        },
+        {
+          "phase": 7,
+          "which": "start",
+          "time": "2026-10-12T20:01:46Z",
+          "via": "manual"
+        },
+        {
+          "phase": 7,
+          "which": "end",
+          "time": "2026-10-12T20:07:14Z",
+          "via": "stat.mjs"
+        }
+      ]
+    }
+  },
+  "usage": {
+    "inputTokens": 450,
+    "outputTokens": 372443,
+    "thinkingTokens": 87759,
+    "cacheReadTokens": 69540173,
+    "cacheWriteTokens": 945461,
+    "modelCalls": 224,
+    "toolCalls": {
+      "total": 241,
+      "errors": 6,
+      "byTool": {
+        "Bash": 214,
+        "Read": 16,
+        "Write": 9,
+        "Edit": 2
+      }
+    },
+    "costUsd": 28.92,
+    "costUsdExclWaits": 26.36,
+    "priceTableDate": null,
+    "unpricedModels": [],
+    "models": {
+      "claude-opus-5-5": {
+        "calls": 224,
+        "inputTokens": 450,
+        "outputTokens": 372443,
+        "thinkingTokens": 87759,
+        "cacheReadTokens": 69540173,
+        "cacheWriteTokens": 945461,
+        "costUsd": 28.92
+      }
+    },
+    "subagents": {
+      "used": 0,
+      "transcripts": 0,
+      "modelCalls": 0,
+      "costUsd": 0,
+      "outputTokens": 0
+    },
+    "cacheRebuilds": [
+      {
+        "time": "2026-10-12T18:51:44.628Z",
+        "phase": 4,
+        "tokens": 328195,
+        "gapMinBefore": 141.7,
+        "causedByWait": true,
+        "extraCostUsd": 2.56
+      }
+    ],
+    "byPhase": [
+      {
+        "phase": 0,
+        "calls": 46,
+        "outputTokens": 44512,
+        "cacheReadTokens": 4933749,
+        "cacheWriteTokens": 206222,
+        "costUsd": 3.53,
+        "avgContextTokens": 111741,
+        "startContextTokens": 57841
+      },
+      {
+        "phase": 1,
+        "calls": 6,
+        "outputTokens": 11461,
+        "cacheReadTokens": 898203,
+        "cacheWriteTokens": 14609,
+        "costUsd": 0.53,
+        "avgContextTokens": 152137,
+        "startContextTokens": 145021
+      },
+      {
+        "phase": 2,
+        "calls": 13,
+        "outputTokens": 33260,
+        "cacheReadTokens": 2267883,
+        "cacheWriteTokens": 34534,
+        "costUsd": 1.4,
+        "avgContextTokens": 177111,
+        "startContextTokens": 159773
+      },
+      {
+        "phase": 3,
+        "calls": 34,
+        "outputTokens": 74067,
+        "cacheReadTokens": 8266176,
+        "cacheWriteTokens": 87635,
+        "costUsd": 3.84,
+        "avgContextTokens": 245702,
+        "startContextTokens": 196965
+      },
+      {
+        "phase": 4,
+        "calls": 42,
+        "outputTokens": 84263,
+        "cacheReadTokens": 13571594,
+        "cacheWriteTokens": 426124,
+        "costUsd": 7.81,
+        "avgContextTokens": 333281,
+        "startContextTokens": 282440
+      },
+      {
+        "phase": 5,
+        "calls": 15,
+        "outputTokens": 40621,
+        "cacheReadTokens": 6095296,
+        "cacheWriteTokens": 45951,
+        "costUsd": 2.4,
+        "avgContextTokens": 409418,
+        "startContextTokens": 379624
+      },
+      {
+        "phase": 6,
+        "calls": 55,
+        "outputTokens": 65238,
+        "cacheReadTokens": 26452950,
+        "cacheWriteTokens": 106815,
+        "costUsd": 7.45,
+        "avgContextTokens": 482907,
+        "startContextTokens": 425575
+      },
+      {
+        "phase": 7,
+        "calls": 13,
+        "outputTokens": 19021,
+        "cacheReadTokens": 7054322,
+        "cacheWriteTokens": 23571,
+        "costUsd": 1.98,
+        "avgContextTokens": 544455,
+        "startContextTokens": 532571
+      }
+    ],
+    "context": {
+      "peakTokens": 553937,
+      "avgTokens": 314670,
+      "pctCallsOver150k": 78.1
+    },
+    "toolTimeByCategory": {
+      "git": {
+        "calls": 21,
+        "minutes": 0.4
+      },
+      "Shell and file inspection": {
+        "calls": 35,
+        "minutes": 3.3
+      },
+      "Docker build/run": {
+        "calls": 7,
+        "minutes": 3.3
+      },
+      "Frontend build and test": {
+        "calls": 18,
+        "minutes": 1.6
+      },
+      "Dependency scan (CVE)": {
+        "calls": 23,
+        "minutes": 11.1
+      },
+      "Mutation testing": {
+        "calls": 38,
+        "minutes": 19.7
+      },
+      "Backend build and test": {
+        "calls": 39,
+        "minutes": 19.3
+      },
+      "End-to-end tests": {
+        "calls": 25,
+        "minutes": 7.4
+      },
+      "curl/sleep": {
+        "calls": 1,
+        "minutes": 0
+      },
+      "Other analysis tools": {
+        "calls": 7,
+        "minutes": 0.1
+      }
+    }
+  },
+  "panel": null,
+  "environment": {
+    "operator": "kyuhi",
+    "machine": "kyuhiPC",
+    "plan": "PRO",
+    "permissionMode": "auto",
+    "os": {
+      "platform": "linux",
+      "release": "7.0.0-34-generic",
+      "arch": "x64"
+    },
+    "shell": "/usr/bin/zsh",
+    "timezone": "Europe/Ljubljana",
+    "utcOffsetMin": 120,
+    "tools": {
+      "node": "v24.13.0",
+      "npm": "11.6.2",
+      "git": "git version 2.43.0",
+      "docker": "Docker version 29.5.0, build 98f1464",
+      "java": "openjdk version \"21.0.12.1\" 2026-08-18",
+      "maven": null,
+      "python": "Python 3.12.3"
+    },
+    "capturedAt": "2026-10-12T20:58:31.595Z",
+    "harness": {
+      "name": "claude-code",
+      "versions": [
+        "2.1.296"
+      ],
+      "entrypoints": [
+        "sdk-cli"
+      ]
+    },
+    "models": [
+      "claude-opus-5-5"
+    ],
+    "effort": [
+      "medium"
+    ],
+    "perTurnEffort": [
+      "medium"
+    ],
+    "advisorModels": [
+      "claude-opus-5-5"
+    ],
+    "permissionModes": [
+      "default",
+      "auto"
+    ],
+    "gitBranches": [
+      "main"
+    ],
+    "postRunHost": {
+      "platform": "linux",
+      "release": "7.0.0-34-generic",
+      "arch": "x64",
+      "cpus": 8,
+      "memoryGb": 31,
+      "nodeVersion": "v24.13.0",
+      "timezone": "Europe/Ljubljana"
+    }
+  },
+  "commits": [
+    {
+      "hash": "c8172ac",
+      "time": "2026-10-12T15:57:44+02:00",
+      "phase": 0,
+      "subject": "chore: add .gitattributes and .gitignore (ES-03, ES-02)",
+      "type": "chore",
+      "files": 2,
+      "lines": 36,
+      "linesAll": 36,
+      "categories": {
+        "build": 36
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [
+        "ES-03",
+        "ES-02"
+      ],
+      "idsExpected": false,
+      "burst": false,
+      "minutesSincePrev": 2.7,
+      "activeMinutesSincePrev": 2.7,
+      "modelCalls": 5,
+      "outputTokens": 5351,
+      "costUsdSincePrev": 0.28
+    },
+    {
+      "hash": "d26873f",
+      "time": "2026-10-12T15:59:03+02:00",
+      "phase": 0,
+      "subject": "build: add backend skeleton with Maven wrapper and pom (ES-04, ES-05)",
+      "type": "build",
+      "files": 6,
+      "lines": 640,
+      "linesAll": 640,
+      "categories": {
+        "build": 626,
+        "code": 14
+      },
+      "mixed": true,
+      "oversize": true,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [
+        "ES-04",
+        "ES-05"
+      ],
+      "idsExpected": false,
+      "burst": false,
+      "minutesSincePrev": 1.3,
+      "activeMinutesSincePrev": 1.3,
+      "modelCalls": 6,
+      "outputTokens": 6393,
+      "costUsdSincePrev": 0.31
+    },
+    {
+      "hash": "5e3d60c",
+      "time": "2026-10-12T16:00:12+02:00",
+      "phase": 0,
+      "subject": "build: add frontend skeleton with pinned package.json and lock (ES-04)",
+      "type": "build",
+      "files": 11,
+      "lines": 148,
+      "linesAll": 8890,
+      "categories": {
+        "build": 81,
+        "code": 67
+      },
+      "mixed": true,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [
+        "ES-04"
+      ],
+      "idsExpected": false,
+      "burst": false,
+      "minutesSincePrev": 1.2,
+      "activeMinutesSincePrev": 1.2,
+      "modelCalls": 4,
+      "outputTokens": 3376,
+      "costUsdSincePrev": 0.19
+    },
+    {
+      "hash": "42097de",
+      "time": "2026-10-12T16:04:35+02:00",
+      "phase": 0,
+      "subject": "build: disable OSS Index analyser in Dependency-Check (D-02)",
+      "type": "build",
+      "files": 1,
+      "lines": 2,
+      "linesAll": 2,
+      "categories": {
+        "build": 2
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": true,
+      "messageOk": true,
+      "ids": [
+        "D-02"
+      ],
+      "idsExpected": false,
+      "burst": false,
+      "minutesSincePrev": 4.4,
+      "activeMinutesSincePrev": 4.4,
+      "modelCalls": 14,
+      "outputTokens": 17172,
+      "costUsdSincePrev": 0.88
+    },
+    {
+      "hash": "8f2ea77",
+      "time": "2026-10-12T16:04:35+02:00",
+      "phase": 0,
+      "subject": "docs: add preflight report, input manifest and decisions (D-01..D-06)",
+      "type": "docs",
+      "files": 4,
+      "lines": 196,
+      "linesAll": 1047,
+      "categories": {
+        "docs": 196
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [
+        "D-01",
+        "D-06"
+      ],
+      "idsExpected": false,
+      "burst": true,
+      "minutesSincePrev": 0,
+      "activeMinutesSincePrev": 0,
+      "modelCalls": 0,
+      "outputTokens": 0,
+      "costUsdSincePrev": 0
+    },
+    {
+      "hash": "9bbd5f7",
+      "time": "2026-10-12T17:44:12+02:00",
+      "phase": 0,
+      "subject": "build: move vitest to 5.0.3 and jscpd to 5.4.0 (D-04, D-08)",
+      "type": "build",
+      "files": 1,
+      "lines": 6,
+      "linesAll": 2347,
+      "categories": {
+        "build": 6
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [
+        "D-04",
+        "D-08"
+      ],
+      "idsExpected": false,
+      "burst": false,
+      "minutesSincePrev": 99.6,
+      "activeMinutesSincePrev": 0.5,
+      "modelCalls": 6,
+      "outputTokens": 4146,
+      "costUsdSincePrev": 1.06
+    },
+    {
+      "hash": "2af7956",
+      "time": "2026-10-12T17:44:41+02:00",
+      "phase": 0,
+      "subject": "build: suppress CVE-2025-7962 false positive on angus-activation (D-05)",
+      "type": "build",
+      "files": 2,
+      "lines": 14,
+      "linesAll": 14,
+      "categories": {
+        "code": 11,
+        "build": 3
+      },
+      "mixed": true,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [
+        "D-05"
+      ],
+      "idsExpected": false,
+      "burst": true,
+      "minutesSincePrev": 0.5,
+      "activeMinutesSincePrev": 0.5,
+      "modelCalls": 2,
+      "outputTokens": 1307,
+      "costUsdSincePrev": 0.1
+    },
+    {
+      "hash": "66c53d9",
+      "time": "2026-10-12T17:44:59+02:00",
+      "phase": 0,
+      "subject": "docs: record phase 0 re-check and approvals (D-07, D-08, D-09)",
+      "type": "docs",
+      "files": 3,
+      "lines": 59,
+      "linesAll": 241,
+      "categories": {
+        "docs": 59
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [
+        "D-07",
+        "D-08",
+        "D-09"
+      ],
+      "idsExpected": false,
+      "burst": true,
+      "minutesSincePrev": 0.3,
+      "activeMinutesSincePrev": 0.3,
+      "modelCalls": 1,
+      "outputTokens": 2415,
+      "costUsdSincePrev": 0.08
+    },
+    {
+      "hash": "34458d4",
+      "time": "2026-10-12T17:46:46+02:00",
+      "phase": 1,
+      "subject": "docs: record decisions for open questions OQ-01..OQ-06 (D-10..D-15)",
+      "type": "docs",
+      "files": 1,
+      "lines": 54,
+      "linesAll": 54,
+      "categories": {
+        "docs": 54
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [
+        "D-10",
+        "D-15"
+      ],
+      "idsExpected": false,
+      "burst": false,
+      "minutesSincePrev": 1.8,
+      "activeMinutesSincePrev": 1.8,
+      "modelCalls": 6,
+      "outputTokens": 11312,
+      "costUsdSincePrev": 0.53
+    },
+    {
+      "hash": "9859be3",
+      "time": "2026-10-12T17:46:46+02:00",
+      "phase": 1,
+      "subject": "docs: add acceptance criteria for US-001..US-008",
+      "type": "docs",
+      "files": 1,
+      "lines": 127,
+      "linesAll": 127,
+      "categories": {
+        "docs": 127
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [
+        "US-001",
+        "US-008"
+      ],
+      "idsExpected": false,
+      "burst": true,
+      "minutesSincePrev": 0,
+      "activeMinutesSincePrev": 0,
+      "modelCalls": 0,
+      "outputTokens": 0,
+      "costUsdSincePrev": 0
+    },
+    {
+      "hash": "18a6b35",
+      "time": "2026-10-12T17:46:54+02:00",
+      "phase": 2,
+      "subject": "docs: update progress after phase 1 gate",
+      "type": "docs",
+      "files": 1,
+      "lines": 6,
+      "linesAll": 6,
+      "categories": {
+        "docs": 6
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [],
+      "idsExpected": false,
+      "burst": true,
+      "minutesSincePrev": 0.1,
+      "activeMinutesSincePrev": 0.1,
+      "modelCalls": 1,
+      "outputTokens": 784,
+      "costUsdSincePrev": 0.05
+    },
+    {
+      "hash": "118c926",
+      "time": "2026-10-12T17:51:43+02:00",
+      "phase": 2,
+      "subject": "docs: record phase 2 design decisions (D-16..D-20)",
+      "type": "docs",
+      "files": 1,
+      "lines": 45,
+      "linesAll": 45,
+      "categories": {
+        "docs": 45
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [
+        "D-16",
+        "D-20"
+      ],
+      "idsExpected": false,
+      "burst": false,
+      "minutesSincePrev": 4.8,
+      "activeMinutesSincePrev": 4.8,
+      "modelCalls": 12,
+      "outputTokens": 30335,
+      "costUsdSincePrev": 1.28
+    },
+    {
+      "hash": "e500238",
+      "time": "2026-10-12T17:51:43+02:00",
+      "phase": 2,
+      "subject": "docs: add specification with traceability (AR-02, SR, SB, NFR)",
+      "type": "docs",
+      "files": 1,
+      "lines": 205,
+      "linesAll": 205,
+      "categories": {
+        "docs": 205
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [
+        "AR-02"
+      ],
+      "idsExpected": false,
+      "burst": true,
+      "minutesSincePrev": 0,
+      "activeMinutesSincePrev": 0,
+      "modelCalls": 0,
+      "outputTokens": 0,
+      "costUsdSincePrev": 0
+    },
+    {
+      "hash": "1ff5216",
+      "time": "2026-10-12T17:51:43+02:00",
+      "phase": 2,
+      "subject": "docs: add OpenAPI contract for options, registration, export",
+      "type": "docs",
+      "files": 1,
+      "lines": 316,
+      "linesAll": 321,
+      "categories": {
+        "docs": 316
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [],
+      "idsExpected": false,
+      "burst": true,
+      "minutesSincePrev": 0,
+      "activeMinutesSincePrev": 0,
+      "modelCalls": 0,
+      "outputTokens": 0,
+      "costUsdSincePrev": 0
+    },
+    {
+      "hash": "235c73f",
+      "time": "2026-10-12T17:51:43+02:00",
+      "phase": 2,
+      "subject": "docs: add conference options schema contract (AR-04)",
+      "type": "docs",
+      "files": 2,
+      "lines": 62,
+      "linesAll": 62,
+      "categories": {
+        "docs": 62
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [
+        "AR-04"
+      ],
+      "idsExpected": false,
+      "burst": true,
+      "minutesSincePrev": 0,
+      "activeMinutesSincePrev": 0,
+      "modelCalls": 0,
+      "outputTokens": 0,
+      "costUsdSincePrev": 0
+    },
+    {
+      "hash": "069fb3a",
+      "time": "2026-10-12T17:51:43+02:00",
+      "phase": 2,
+      "subject": "docs: add JSON copy schema contract (BR-07)",
+      "type": "docs",
+      "files": 2,
+      "lines": 73,
+      "linesAll": 73,
+      "categories": {
+        "docs": 73
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [
+        "BR-07"
+      ],
+      "idsExpected": false,
+      "burst": true,
+      "minutesSincePrev": 0,
+      "activeMinutesSincePrev": 0,
+      "modelCalls": 0,
+      "outputTokens": 0,
+      "costUsdSincePrev": 0
+    },
+    {
+      "hash": "d1a92fd",
+      "time": "2026-10-12T17:51:43+02:00",
+      "phase": 2,
+      "subject": "docs: add database contract (BR-07, AR-05, AR-06)",
+      "type": "docs",
+      "files": 1,
+      "lines": 37,
+      "linesAll": 37,
+      "categories": {
+        "docs": 37
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [
+        "BR-07",
+        "AR-05",
+        "AR-06"
+      ],
+      "idsExpected": false,
+      "burst": true,
+      "minutesSincePrev": 0,
+      "activeMinutesSincePrev": 0,
+      "modelCalls": 0,
+      "outputTokens": 0,
+      "costUsdSincePrev": 0
+    },
+    {
+      "hash": "7f9118e",
+      "time": "2026-10-12T17:51:43+02:00",
+      "phase": 2,
+      "subject": "docs: add email contract (US-006, US-007, SR-05)",
+      "type": "docs",
+      "files": 1,
+      "lines": 18,
+      "linesAll": 18,
+      "categories": {
+        "docs": 18
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [
+        "US-006",
+        "US-007",
+        "SR-05"
+      ],
+      "idsExpected": false,
+      "burst": true,
+      "minutesSincePrev": 0,
+      "activeMinutesSincePrev": 0,
+      "modelCalls": 0,
+      "outputTokens": 0,
+      "costUsdSincePrev": 0
+    },
+    {
+      "hash": "4082020",
+      "time": "2026-10-12T17:51:43+02:00",
+      "phase": 2,
+      "subject": "docs: add anti-automation contract (SR-01, SR-02)",
+      "type": "docs",
+      "files": 1,
+      "lines": 17,
+      "linesAll": 17,
+      "categories": {
+        "docs": 17
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [
+        "SR-01",
+        "SR-02"
+      ],
+      "idsExpected": false,
+      "burst": true,
+      "minutesSincePrev": 0,
+      "activeMinutesSincePrev": 0,
+      "modelCalls": 0,
+      "outputTokens": 0,
+      "costUsdSincePrev": 0
+    },
+    {
+      "hash": "dd4b2d5",
+      "time": "2026-10-12T17:51:43+02:00",
+      "phase": 2,
+      "subject": "docs: add registration form UI contract (US-001, US-002, US-004)",
+      "type": "docs",
+      "files": 1,
+      "lines": 43,
+      "linesAll": 43,
+      "categories": {
+        "docs": 43
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [
+        "US-001",
+        "US-002",
+        "US-004"
+      ],
+      "idsExpected": false,
+      "burst": true,
+      "minutesSincePrev": 0,
+      "activeMinutesSincePrev": 0,
+      "modelCalls": 0,
+      "outputTokens": 0,
+      "costUsdSincePrev": 0
+    },
+    {
+      "hash": "a2012c7",
+      "time": "2026-10-12T17:52:12+02:00",
+      "phase": 3,
+      "subject": "docs: update progress after phase 2 gate",
+      "type": "docs",
+      "files": 1,
+      "lines": 6,
+      "linesAll": 6,
+      "categories": {
+        "docs": 6
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [],
+      "idsExpected": false,
+      "burst": true,
+      "minutesSincePrev": 0.5,
+      "activeMinutesSincePrev": 0.5,
+      "modelCalls": 1,
+      "outputTokens": 2925,
+      "costUsdSincePrev": 0.11
+    },
+    {
+      "hash": "7050e57",
+      "time": "2026-10-12T17:52:53+02:00",
+      "phase": 3,
+      "subject": "docs: define measurement exclusions before writing tests",
+      "type": "docs",
+      "files": 1,
+      "lines": 5,
+      "linesAll": 5,
+      "categories": {
+        "docs": 5
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": true,
+      "messageOk": true,
+      "ids": [],
+      "idsExpected": false,
+      "burst": true,
+      "minutesSincePrev": 0.7,
+      "activeMinutesSincePrev": 0.7,
+      "modelCalls": 2,
+      "outputTokens": 3959,
+      "costUsdSincePrev": 0.22
+    },
+    {
+      "hash": "7653c8b",
+      "time": "2026-10-12T17:57:39+02:00",
+      "phase": 3,
+      "subject": "docs: name option category groups in UI contract (US-001)",
+      "type": "docs",
+      "files": 1,
+      "lines": 2,
+      "linesAll": 2,
+      "categories": {
+        "docs": 2
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": true,
+      "messageOk": true,
+      "ids": [
+        "US-001"
+      ],
+      "idsExpected": false,
+      "burst": false,
+      "minutesSincePrev": 4.8,
+      "activeMinutesSincePrev": 4.8,
+      "modelCalls": 9,
+      "outputTokens": 29920,
+      "costUsdSincePrev": 1.23
+    },
+    {
+      "hash": "8aa888c",
+      "time": "2026-10-12T17:58:59+02:00",
+      "phase": 3,
+      "subject": "test: add acceptance and e2e test harness (US-001..US-008)",
+      "type": "test",
+      "files": 15,
+      "lines": 901,
+      "linesAll": 901,
+      "categories": {
+        "test": 880,
+        "code": 18,
+        "build": 3
+      },
+      "mixed": true,
+      "oversize": true,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [
+        "US-001",
+        "US-008"
+      ],
+      "idsExpected": true,
+      "burst": false,
+      "minutesSincePrev": 1.3,
+      "activeMinutesSincePrev": 1.3,
+      "modelCalls": 3,
+      "outputTokens": 3870,
+      "costUsdSincePrev": 0.28
+    },
+    {
+      "hash": "3d6a35c",
+      "time": "2026-10-12T17:58:59+02:00",
+      "phase": 3,
+      "subject": "test: add US-001 acceptance and e2e tests (AC-001-01..AC-001-16)",
+      "type": "test",
+      "files": 3,
+      "lines": 374,
+      "linesAll": 713,
+      "categories": {
+        "test": 374
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [
+        "US-001",
+        "AC-001-01",
+        "AC-001-16"
+      ],
+      "idsExpected": true,
+      "burst": true,
+      "minutesSincePrev": 0,
+      "activeMinutesSincePrev": 0,
+      "modelCalls": 0,
+      "outputTokens": 0,
+      "costUsdSincePrev": 0
+    },
+    {
+      "hash": "667af2a",
+      "time": "2026-10-12T17:59:58+02:00",
+      "phase": 3,
+      "subject": "test: add US-002 acceptance and e2e tests (AC-002-01..AC-002-09)",
+      "type": "test",
+      "files": 3,
+      "lines": 202,
+      "linesAll": 431,
+      "categories": {
+        "test": 202
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [
+        "US-002",
+        "AC-002-01",
+        "AC-002-09"
+      ],
+      "idsExpected": true,
+      "burst": true,
+      "minutesSincePrev": 1,
+      "activeMinutesSincePrev": 1,
+      "modelCalls": 2,
+      "outputTokens": 3594,
+      "costUsdSincePrev": 0.21
+    },
+    {
+      "hash": "c944cef",
+      "time": "2026-10-12T18:01:11+02:00",
+      "phase": 3,
+      "subject": "test: add US-003 acceptance tests (AC-003-01..AC-003-03)",
+      "type": "test",
+      "files": 2,
+      "lines": 189,
+      "linesAll": 559,
+      "categories": {
+        "test": 189
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [
+        "US-003",
+        "AC-003-01",
+        "AC-003-03"
+      ],
+      "idsExpected": true,
+      "burst": false,
+      "minutesSincePrev": 1.2,
+      "activeMinutesSincePrev": 1.2,
+      "modelCalls": 2,
+      "outputTokens": 6279,
+      "costUsdSincePrev": 0.26
+    },
+    {
+      "hash": "c2663aa",
+      "time": "2026-10-12T18:01:26+02:00",
+      "phase": 3,
+      "subject": "test: add US-004 acceptance tests (AC-004-01..AC-004-03)",
+      "type": "test",
+      "files": 1,
+      "lines": 116,
+      "linesAll": 116,
+      "categories": {
+        "test": 116
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [
+        "US-004",
+        "AC-004-01",
+        "AC-004-03"
+      ],
+      "idsExpected": true,
+      "burst": true,
+      "minutesSincePrev": 0.3,
+      "activeMinutesSincePrev": 0.3,
+      "modelCalls": 1,
+      "outputTokens": 366,
+      "costUsdSincePrev": 0.08
+    },
+    {
+      "hash": "aedad14",
+      "time": "2026-10-12T18:02:47+02:00",
+      "phase": 3,
+      "subject": "test: add US-005 acceptance tests (AC-005-01..AC-005-04)",
+      "type": "test",
+      "files": 2,
+      "lines": 156,
+      "linesAll": 414,
+      "categories": {
+        "test": 156
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [
+        "US-005",
+        "AC-005-01",
+        "AC-005-04"
+      ],
+      "idsExpected": true,
+      "burst": false,
+      "minutesSincePrev": 1.4,
+      "activeMinutesSincePrev": 1.4,
+      "modelCalls": 2,
+      "outputTokens": 7240,
+      "costUsdSincePrev": 0.28
+    },
+    {
+      "hash": "709de91",
+      "time": "2026-10-12T18:03:54+02:00",
+      "phase": 3,
+      "subject": "test: add US-006 acceptance tests (AC-006-01..AC-006-05)",
+      "type": "test",
+      "files": 2,
+      "lines": 152,
+      "linesAll": 409,
+      "categories": {
+        "test": 152
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [
+        "US-006",
+        "AC-006-01",
+        "AC-006-05"
+      ],
+      "idsExpected": true,
+      "burst": false,
+      "minutesSincePrev": 1.1,
+      "activeMinutesSincePrev": 1.1,
+      "modelCalls": 1,
+      "outputTokens": 5891,
+      "costUsdSincePrev": 0.2
+    },
+    {
+      "hash": "3080745",
+      "time": "2026-10-12T18:05:22+02:00",
+      "phase": 3,
+      "subject": "test: add US-007 acceptance tests (AC-007-01..AC-007-03)",
+      "type": "test",
+      "files": 1,
+      "lines": 86,
+      "linesAll": 86,
+      "categories": {
+        "test": 86
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [
+        "US-007",
+        "AC-007-01",
+        "AC-007-03"
+      ],
+      "idsExpected": true,
+      "burst": false,
+      "minutesSincePrev": 1.5,
+      "activeMinutesSincePrev": 1.5,
+      "modelCalls": 3,
+      "outputTokens": 4578,
+      "costUsdSincePrev": 0.31
+    },
+    {
+      "hash": "6031e5b",
+      "time": "2026-10-12T18:10:12+02:00",
+      "phase": 3,
+      "subject": "test: add US-008 acceptance and e2e tests (AC-008-01..06, NFR-01)",
+      "type": "test",
+      "files": 2,
+      "lines": 299,
+      "linesAll": 641,
+      "categories": {
+        "test": 299
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [
+        "US-008",
+        "AC-008-01",
+        "NFR-01"
+      ],
+      "idsExpected": true,
+      "burst": false,
+      "minutesSincePrev": 4.8,
+      "activeMinutesSincePrev": 4.8,
+      "modelCalls": 5,
+      "outputTokens": 3554,
+      "costUsdSincePrev": 0.41
+    },
+    {
+      "hash": "bd92804",
+      "time": "2026-10-12T18:10:12+02:00",
+      "phase": 3,
+      "subject": "test: add live reCAPTCHA path tests (AC-001-13, AC-001-03, DoD-P05)",
+      "type": "test",
+      "files": 1,
+      "lines": 155,
+      "linesAll": 334,
+      "categories": {
+        "test": 155
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [
+        "AC-001-13",
+        "AC-001-03",
+        "DoD-P05"
+      ],
+      "idsExpected": true,
+      "burst": true,
+      "minutesSincePrev": 0,
+      "activeMinutesSincePrev": 0,
+      "modelCalls": 0,
+      "outputTokens": 0,
+      "costUsdSincePrev": 0
+    },
+    {
+      "hash": "eb68da3",
+      "time": "2026-10-12T18:11:20+02:00",
+      "phase": 3,
+      "subject": "docs: record test levels and phase 3 run in test strategy",
+      "type": "docs",
+      "files": 1,
+      "lines": 25,
+      "linesAll": 1526,
+      "categories": {
+        "docs": 25
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [],
+      "idsExpected": false,
+      "burst": false,
+      "minutesSincePrev": 1.1,
+      "activeMinutesSincePrev": 1.1,
+      "modelCalls": 2,
+      "outputTokens": 3070,
+      "costUsdSincePrev": 0.19
+    },
+    {
+      "hash": "213da7a",
+      "time": "2026-10-12T18:11:25+02:00",
+      "phase": 3,
+      "subject": "test: freeze acceptance and e2e tests (manifest)",
+      "type": "test",
+      "files": 1,
+      "lines": 31,
+      "linesAll": 31,
+      "categories": {
+        "docs": 31
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [],
+      "idsExpected": true,
+      "burst": true,
+      "minutesSincePrev": 0.1,
+      "activeMinutesSincePrev": 0.1,
+      "modelCalls": 1,
+      "outputTokens": 545,
+      "costUsdSincePrev": 0.08
+    },
+    {
+      "hash": "dfe9282",
+      "time": "2026-10-12T18:11:37+02:00",
+      "phase": 4,
+      "subject": "docs: update progress after phase 3 gate",
+      "type": "docs",
+      "files": 1,
+      "lines": 7,
+      "linesAll": 7,
+      "categories": {
+        "docs": 7
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [],
+      "idsExpected": false,
+      "burst": true,
+      "minutesSincePrev": 0.2,
+      "activeMinutesSincePrev": 0.2,
+      "modelCalls": 1,
+      "outputTokens": 1201,
+      "costUsdSincePrev": 0.09
+    },
+    {
+      "hash": "b6fb493",
+      "time": "2026-10-12T18:16:21+02:00",
+      "phase": 4,
+      "subject": "feat: load configurable options and serve options/settings (US-003, AC-003-01, AC-003-03)",
+      "type": "feat",
+      "files": 16,
+      "lines": 597,
+      "linesAll": 1251,
+      "categories": {
+        "code": 597
+      },
+      "mixed": false,
+      "oversize": true,
+      "tiny": false,
+      "messageOk": false,
+      "ids": [
+        "US-003",
+        "AC-003-01",
+        "AC-003-03"
+      ],
+      "idsExpected": true,
+      "burst": false,
+      "minutesSincePrev": 4.7,
+      "activeMinutesSincePrev": 4.7,
+      "modelCalls": 11,
+      "outputTokens": 21706,
+      "costUsdSincePrev": 1.29
+    },
+    {
+      "hash": "ab82af5",
+      "time": "2026-10-12T18:17:43+02:00",
+      "phase": 4,
+      "subject": "feat: add registration validation and normalisation (US-001, US-002)",
+      "type": "feat",
+      "files": 8,
+      "lines": 279,
+      "linesAll": 279,
+      "categories": {
+        "code": 279
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [
+        "US-001",
+        "US-002"
+      ],
+      "idsExpected": true,
+      "burst": false,
+      "minutesSincePrev": 1.4,
+      "activeMinutesSincePrev": 1.4,
+      "modelCalls": 3,
+      "outputTokens": 5872,
+      "costUsdSincePrev": 0.36
+    },
+    {
+      "hash": "98eac54",
+      "time": "2026-10-12T18:23:07+02:00",
+      "phase": 4,
+      "subject": "feat: store registrations with atomic JSON copy (US-005, AC-005-01..04)",
+      "type": "feat",
+      "files": 10,
+      "lines": 524,
+      "linesAll": 524,
+      "categories": {
+        "code": 524
+      },
+      "mixed": false,
+      "oversize": true,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [
+        "US-005",
+        "AC-005-01"
+      ],
+      "idsExpected": true,
+      "burst": false,
+      "minutesSincePrev": 5.4,
+      "activeMinutesSincePrev": 5.4,
+      "modelCalls": 9,
+      "outputTokens": 19610,
+      "costUsdSincePrev": 1.2
+    },
+    {
+      "hash": "3aa465d",
+      "time": "2026-10-12T18:23:07+02:00",
+      "phase": 4,
+      "subject": "feat: add registration endpoint with anti-automation (US-001, US-002)",
+      "type": "feat",
+      "files": 8,
+      "lines": 306,
+      "linesAll": 1375,
+      "categories": {
+        "build": 1,
+        "code": 296,
+        "docs": 9
+      },
+      "mixed": true,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [
+        "US-001",
+        "US-002"
+      ],
+      "idsExpected": true,
+      "burst": true,
+      "minutesSincePrev": 0,
+      "activeMinutesSincePrev": 0,
+      "modelCalls": 0,
+      "outputTokens": 0,
+      "costUsdSincePrev": 0
+    },
+    {
+      "hash": "aac73dd",
+      "time": "2026-10-12T18:24:47+02:00",
+      "phase": 4,
+      "subject": "feat: send participant and organizer emails (US-006, US-007)",
+      "type": "feat",
+      "files": 4,
+      "lines": 183,
+      "linesAll": 767,
+      "categories": {
+        "code": 183
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [
+        "US-006",
+        "US-007"
+      ],
+      "idsExpected": true,
+      "burst": false,
+      "minutesSincePrev": 1.7,
+      "activeMinutesSincePrev": 1.7,
+      "modelCalls": 3,
+      "outputTokens": 5365,
+      "costUsdSincePrev": 0.37
+    },
+    {
+      "hash": "4d22a85",
+      "time": "2026-10-12T18:26:31+02:00",
+      "phase": 4,
+      "subject": "feat: add organizer Excel export (US-008, AC-008-01..AC-008-06)",
+      "type": "feat",
+      "files": 8,
+      "lines": 220,
+      "linesAll": 1353,
+      "categories": {
+        "code": 220
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [
+        "US-008",
+        "AC-008-01",
+        "AC-008-06"
+      ],
+      "idsExpected": true,
+      "burst": false,
+      "minutesSincePrev": 1.7,
+      "activeMinutesSincePrev": 1.7,
+      "modelCalls": 3,
+      "outputTokens": 4646,
+      "costUsdSincePrev": 0.34
+    },
+    {
+      "hash": "d2cdb5b",
+      "time": "2026-10-12T18:28:38+02:00",
+      "phase": 4,
+      "subject": "feat: add rate and size limits and HTTPS-only organizer access (SR-03, SR-06)",
+      "type": "feat",
+      "files": 6,
+      "lines": 306,
+      "linesAll": 306,
+      "categories": {
+        "code": 306
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": false,
+      "ids": [
+        "SR-03",
+        "SR-06"
+      ],
+      "idsExpected": true,
+      "burst": false,
+      "minutesSincePrev": 2.1,
+      "activeMinutesSincePrev": 2.1,
+      "modelCalls": 3,
+      "outputTokens": 7222,
+      "costUsdSincePrev": 0.41
+    },
+    {
+      "hash": "de033ab",
+      "time": "2026-10-12T20:52:01+02:00",
+      "phase": 4,
+      "subject": "feat: add registration form and confirmation (US-001, US-002, US-004)",
+      "type": "feat",
+      "files": 10,
+      "lines": 625,
+      "linesAll": 1356,
+      "categories": {
+        "code": 625
+      },
+      "mixed": false,
+      "oversize": true,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [
+        "US-001",
+        "US-002",
+        "US-004"
+      ],
+      "idsExpected": true,
+      "burst": false,
+      "minutesSincePrev": 143.4,
+      "activeMinutesSincePrev": 1.7,
+      "modelCalls": 4,
+      "outputTokens": 10420,
+      "costUsdSincePrev": 3.11
+    },
+    {
+      "hash": "cac697a",
+      "time": "2026-10-12T20:55:03+02:00",
+      "phase": 4,
+      "subject": "build: add container images and local compose stack (SB-10, SB-11, NFR-04)",
+      "type": "build",
+      "files": 7,
+      "lines": 167,
+      "linesAll": 348,
+      "categories": {
+        "code": 21,
+        "build": 146
+      },
+      "mixed": true,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": false,
+      "ids": [
+        "SB-10",
+        "SB-11",
+        "NFR-04"
+      ],
+      "idsExpected": false,
+      "burst": false,
+      "minutesSincePrev": 3,
+      "activeMinutesSincePrev": 3,
+      "modelCalls": 5,
+      "outputTokens": 7486,
+      "costUsdSincePrev": 0.6
+    },
+    {
+      "hash": "31f7850",
+      "time": "2026-10-12T20:55:19+02:00",
+      "phase": 5,
+      "subject": "docs: align specification with build (MAIL_AUTH, FormSettings, compose)",
+      "type": "docs",
+      "files": 1,
+      "lines": 5,
+      "linesAll": 5,
+      "categories": {
+        "docs": 5
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": true,
+      "messageOk": true,
+      "ids": [],
+      "idsExpected": false,
+      "burst": true,
+      "minutesSincePrev": 0.3,
+      "activeMinutesSincePrev": 0.3,
+      "modelCalls": 1,
+      "outputTokens": 1936,
+      "costUsdSincePrev": 0.12
+    },
+    {
+      "hash": "ec29582",
+      "time": "2026-10-12T20:55:19+02:00",
+      "phase": 5,
+      "subject": "docs: record compose .env workaround (D-22)",
+      "type": "docs",
+      "files": 1,
+      "lines": 9,
+      "linesAll": 9,
+      "categories": {
+        "docs": 9
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [
+        "D-22"
+      ],
+      "idsExpected": false,
+      "burst": true,
+      "minutesSincePrev": 0,
+      "activeMinutesSincePrev": 0,
+      "modelCalls": 0,
+      "outputTokens": 0,
+      "costUsdSincePrev": 0
+    },
+    {
+      "hash": "1f31bfd",
+      "time": "2026-10-12T20:55:19+02:00",
+      "phase": 5,
+      "subject": "docs: update progress after phase 4 gate",
+      "type": "docs",
+      "files": 1,
+      "lines": 6,
+      "linesAll": 6,
+      "categories": {
+        "docs": 6
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [],
+      "idsExpected": false,
+      "burst": true,
+      "minutesSincePrev": 0,
+      "activeMinutesSincePrev": 0,
+      "modelCalls": 0,
+      "outputTokens": 0,
+      "costUsdSincePrev": 0
+    },
+    {
+      "hash": "08c3834",
+      "time": "2026-10-12T21:01:52+02:00",
+      "phase": 5,
+      "subject": "test: add architecture rules for layers and cycles (AR-02, AR-03)",
+      "type": "test",
+      "files": 1,
+      "lines": 107,
+      "linesAll": 107,
+      "categories": {
+        "test": 107
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [
+        "AR-02",
+        "AR-03"
+      ],
+      "idsExpected": true,
+      "burst": false,
+      "minutesSincePrev": 6.6,
+      "activeMinutesSincePrev": 6.6,
+      "modelCalls": 13,
+      "outputTokens": 39528,
+      "costUsdSincePrev": 2.2
+    },
+    {
+      "hash": "ec0e50d",
+      "time": "2026-10-12T21:01:52+02:00",
+      "phase": 5,
+      "subject": "test: add domain unit tests for validation and model (BR-01..BR-05)",
+      "type": "test",
+      "files": 2,
+      "lines": 331,
+      "linesAll": 331,
+      "categories": {
+        "test": 331
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [
+        "BR-01",
+        "BR-05"
+      ],
+      "idsExpected": true,
+      "burst": true,
+      "minutesSincePrev": 0,
+      "activeMinutesSincePrev": 0,
+      "modelCalls": 0,
+      "outputTokens": 0,
+      "costUsdSincePrev": 0
+    },
+    {
+      "hash": "e8607a7",
+      "time": "2026-10-12T21:01:52+02:00",
+      "phase": 5,
+      "subject": "test: add config unit tests for options loader and startup guards (AR-04, SR-02)",
+      "type": "test",
+      "files": 2,
+      "lines": 179,
+      "linesAll": 179,
+      "categories": {
+        "test": 179
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": false,
+      "ids": [
+        "AR-04",
+        "SR-02"
+      ],
+      "idsExpected": true,
+      "burst": true,
+      "minutesSincePrev": 0,
+      "activeMinutesSincePrev": 0,
+      "modelCalls": 0,
+      "outputTokens": 0,
+      "costUsdSincePrev": 0
+    },
+    {
+      "hash": "71c7694",
+      "time": "2026-10-12T21:01:52+02:00",
+      "phase": 5,
+      "subject": "test: add application unit tests for registration and export (AR-05)",
+      "type": "test",
+      "files": 1,
+      "lines": 232,
+      "linesAll": 232,
+      "categories": {
+        "test": 232
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [
+        "AR-05"
+      ],
+      "idsExpected": true,
+      "burst": true,
+      "minutesSincePrev": 0,
+      "activeMinutesSincePrev": 0,
+      "modelCalls": 0,
+      "outputTokens": 0,
+      "costUsdSincePrev": 0
+    },
+    {
+      "hash": "97dc216",
+      "time": "2026-10-12T21:01:52+02:00",
+      "phase": 5,
+      "subject": "test: add adapter unit tests for copy, captcha, export, mail",
+      "type": "test",
+      "files": 5,
+      "lines": 436,
+      "linesAll": 436,
+      "categories": {
+        "test": 436
+      },
+      "mixed": false,
+      "oversize": true,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [],
+      "idsExpected": true,
+      "burst": true,
+      "minutesSincePrev": 0,
+      "activeMinutesSincePrev": 0,
+      "modelCalls": 0,
+      "outputTokens": 0,
+      "costUsdSincePrev": 0
+    },
+    {
+      "hash": "12c1612",
+      "time": "2026-10-12T21:01:52+02:00",
+      "phase": 5,
+      "subject": "test: add web filter and HTTP integration tests (SR-03, SR-06, SB-10)",
+      "type": "test",
+      "files": 2,
+      "lines": 352,
+      "linesAll": 352,
+      "categories": {
+        "test": 352
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [
+        "SR-03",
+        "SR-06",
+        "SB-10"
+      ],
+      "idsExpected": true,
+      "burst": true,
+      "minutesSincePrev": 0,
+      "activeMinutesSincePrev": 0,
+      "modelCalls": 0,
+      "outputTokens": 0,
+      "costUsdSincePrev": 0
+    },
+    {
+      "hash": "059a066",
+      "time": "2026-10-12T21:01:52+02:00",
+      "phase": 5,
+      "subject": "test: add frontend unit tests for validation, api, captcha, app",
+      "type": "test",
+      "files": 4,
+      "lines": 282,
+      "linesAll": 282,
+      "categories": {
+        "test": 282
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [],
+      "idsExpected": true,
+      "burst": true,
+      "minutesSincePrev": 0,
+      "activeMinutesSincePrev": 0,
+      "modelCalls": 0,
+      "outputTokens": 0,
+      "costUsdSincePrev": 0
+    },
+    {
+      "hash": "acabfba",
+      "time": "2026-10-12T21:01:52+02:00",
+      "phase": 5,
+      "subject": "docs: record and classify phase 5 first complete run",
+      "type": "docs",
+      "files": 1,
+      "lines": 20,
+      "linesAll": 991,
+      "categories": {
+        "docs": 20
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [],
+      "idsExpected": false,
+      "burst": true,
+      "minutesSincePrev": 0,
+      "activeMinutesSincePrev": 0,
+      "modelCalls": 0,
+      "outputTokens": 0,
+      "costUsdSincePrev": 0
+    },
+    {
+      "hash": "916b2ab",
+      "time": "2026-10-12T21:03:00+02:00",
+      "phase": 7,
+      "subject": "docs: update progress after phase 5 gate",
+      "type": "docs",
+      "files": 1,
+      "lines": 6,
+      "linesAll": 1252,
+      "categories": {
+        "docs": 6
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [],
+      "idsExpected": false,
+      "burst": false,
+      "minutesSincePrev": 1.1,
+      "activeMinutesSincePrev": 1.1,
+      "modelCalls": 2,
+      "outputTokens": 1093,
+      "costUsdSincePrev": 0.2
+    },
+    {
+      "hash": "2c206b7",
+      "time": "2026-10-12T21:15:54+02:00",
+      "phase": 6,
+      "subject": "fix: close unit test gaps found by surviving mutants (F-01)",
+      "type": "fix",
+      "files": 6,
+      "lines": 131,
+      "linesAll": 515,
+      "categories": {
+        "test": 131
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [
+        "F-01"
+      ],
+      "idsExpected": true,
+      "burst": false,
+      "minutesSincePrev": 12.9,
+      "activeMinutesSincePrev": 12.9,
+      "modelCalls": 12,
+      "outputTokens": 16777,
+      "costUsdSincePrev": 1.65
+    },
+    {
+      "hash": "a8465ce",
+      "time": "2026-10-12T21:22:53+02:00",
+      "phase": 6,
+      "subject": "build: configure coverage exclusions and mutation tools (D-23, D-24)",
+      "type": "build",
+      "files": 3,
+      "lines": 55,
+      "linesAll": 55,
+      "categories": {
+        "build": 30,
+        "code": 25
+      },
+      "mixed": true,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [
+        "D-23",
+        "D-24"
+      ],
+      "idsExpected": false,
+      "burst": false,
+      "minutesSincePrev": 7,
+      "activeMinutesSincePrev": 7,
+      "modelCalls": 15,
+      "outputTokens": 11602,
+      "costUsdSincePrev": 1.85
+    },
+    {
+      "hash": "b31a34e",
+      "time": "2026-10-12T21:22:53+02:00",
+      "phase": 6,
+      "subject": "docs: record mutation measurement decisions (D-23, D-24)",
+      "type": "docs",
+      "files": 1,
+      "lines": 18,
+      "linesAll": 18,
+      "categories": {
+        "docs": 18
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [
+        "D-23",
+        "D-24"
+      ],
+      "idsExpected": false,
+      "burst": true,
+      "minutesSincePrev": 0,
+      "activeMinutesSincePrev": 0,
+      "modelCalls": 0,
+      "outputTokens": 0,
+      "costUsdSincePrev": 0
+    },
+    {
+      "hash": "1326f5c",
+      "time": "2026-10-12T21:22:53+02:00",
+      "phase": 6,
+      "subject": "fix: redact generated skeleton passwords from phase 3 logs (F-02)",
+      "type": "fix",
+      "files": 0,
+      "lines": 0,
+      "linesAll": 445,
+      "categories": {},
+      "mixed": false,
+      "oversize": false,
+      "tiny": true,
+      "messageOk": true,
+      "ids": [
+        "F-02"
+      ],
+      "idsExpected": true,
+      "burst": true,
+      "minutesSincePrev": 0,
+      "activeMinutesSincePrev": 0,
+      "modelCalls": 0,
+      "outputTokens": 0,
+      "costUsdSincePrev": 0
+    },
+    {
+      "hash": "cfbc555",
+      "time": "2026-10-12T21:28:02+02:00",
+      "phase": 6,
+      "subject": "fix: send a fixed Host header from nginx to the backend (F-04)",
+      "type": "fix",
+      "files": 1,
+      "lines": 2,
+      "linesAll": 227,
+      "categories": {
+        "build": 2
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": true,
+      "messageOk": true,
+      "ids": [
+        "F-04"
+      ],
+      "idsExpected": true,
+      "burst": false,
+      "minutesSincePrev": 5.2,
+      "activeMinutesSincePrev": 5.2,
+      "modelCalls": 3,
+      "outputTokens": 3438,
+      "costUsdSincePrev": 0.4
+    },
+    {
+      "hash": "6431ff8",
+      "time": "2026-10-12T21:30:45+02:00",
+      "phase": 6,
+      "subject": "docs: add runtime demonstration log (DoD-P01..DoD-P04, NFR-02, NFR-04)",
+      "type": "docs",
+      "files": 0,
+      "lines": 0,
+      "linesAll": 44,
+      "categories": {},
+      "mixed": false,
+      "oversize": false,
+      "tiny": true,
+      "messageOk": true,
+      "ids": [
+        "DoD-P01",
+        "DoD-P04",
+        "NFR-02",
+        "NFR-04"
+      ],
+      "idsExpected": false,
+      "burst": false,
+      "minutesSincePrev": 2.7,
+      "activeMinutesSincePrev": 2.7,
+      "modelCalls": 3,
+      "outputTokens": 5614,
+      "costUsdSincePrev": 0.46
+    },
+    {
+      "hash": "2d4393b",
+      "time": "2026-10-12T21:32:27+02:00",
+      "phase": 6,
+      "subject": "docs: raise blocking decision on Basic auth finding (D-25, F-06)",
+      "type": "docs",
+      "files": 1,
+      "lines": 10,
+      "linesAll": 10,
+      "categories": {
+        "docs": 10
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [
+        "D-25",
+        "F-06"
+      ],
+      "idsExpected": false,
+      "burst": false,
+      "minutesSincePrev": 1.7,
+      "activeMinutesSincePrev": 1.7,
+      "modelCalls": 6,
+      "outputTokens": 5478,
+      "costUsdSincePrev": 0.76
+    },
+    {
+      "hash": "f270615",
+      "time": "2026-10-12T21:34:23+02:00",
+      "phase": 6,
+      "subject": "docs: update progress while D-25 is pending",
+      "type": "docs",
+      "files": 1,
+      "lines": 8,
+      "linesAll": 8,
+      "categories": {
+        "docs": 8
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [
+        "D-25"
+      ],
+      "idsExpected": false,
+      "burst": false,
+      "minutesSincePrev": 1.9,
+      "activeMinutesSincePrev": 1.9,
+      "modelCalls": 6,
+      "outputTokens": 11770,
+      "costUsdSincePrev": 0.95
+    },
+    {
+      "hash": "ff3650e",
+      "time": "2026-10-12T21:45:28+02:00",
+      "phase": 6,
+      "subject": "fix: add frontend tests for email anchor and type switch (F-12)",
+      "type": "fix",
+      "files": 2,
+      "lines": 76,
+      "linesAll": 8271,
+      "categories": {
+        "test": 76
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [
+        "F-12"
+      ],
+      "idsExpected": true,
+      "burst": false,
+      "minutesSincePrev": 11.1,
+      "activeMinutesSincePrev": 0,
+      "modelCalls": 5,
+      "outputTokens": 6668,
+      "costUsdSincePrev": 0.72
+    },
+    {
+      "hash": "ae3a1c9",
+      "time": "2026-10-12T21:45:33+02:00",
+      "phase": 6,
+      "subject": "docs: update progress after frontend mutation measurement",
+      "type": "docs",
+      "files": 1,
+      "lines": 4,
+      "linesAll": 4,
+      "categories": {
+        "docs": 4
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": true,
+      "messageOk": true,
+      "ids": [],
+      "idsExpected": false,
+      "burst": true,
+      "minutesSincePrev": 0.1,
+      "activeMinutesSincePrev": 0,
+      "modelCalls": 1,
+      "outputTokens": 454,
+      "costUsdSincePrev": 0.13
+    },
+    {
+      "hash": "41fb856",
+      "time": "2026-10-12T22:01:29+02:00",
+      "phase": 6,
+      "subject": "docs: record approval of D-25 (D-26)",
+      "type": "docs",
+      "files": 1,
+      "lines": 9,
+      "linesAll": 9,
+      "categories": {
+        "docs": 9
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [
+        "D-25",
+        "D-26"
+      ],
+      "idsExpected": false,
+      "burst": false,
+      "minutesSincePrev": 15.9,
+      "activeMinutesSincePrev": 0,
+      "modelCalls": 1,
+      "outputTokens": 509,
+      "costUsdSincePrev": 0.12
+    },
+    {
+      "hash": "4cfd811",
+      "time": "2026-10-12T22:01:29+02:00",
+      "phase": 6,
+      "subject": "docs: add verification report (phase 6)",
+      "type": "docs",
+      "files": 1,
+      "lines": 193,
+      "linesAll": 193,
+      "categories": {
+        "docs": 193
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [],
+      "idsExpected": false,
+      "burst": true,
+      "minutesSincePrev": 0,
+      "activeMinutesSincePrev": 0,
+      "modelCalls": 0,
+      "outputTokens": 0,
+      "costUsdSincePrev": 0
+    },
+    {
+      "hash": "8746f28",
+      "time": "2026-10-12T22:01:46+02:00",
+      "phase": 7,
+      "subject": "docs: add phase 6 evidence logs (coverage, scans, sizes)",
+      "type": "docs",
+      "files": 1,
+      "lines": 2,
+      "linesAll": 2381,
+      "categories": {
+        "docs": 2
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": true,
+      "messageOk": true,
+      "ids": [],
+      "idsExpected": false,
+      "burst": true,
+      "minutesSincePrev": 0.3,
+      "activeMinutesSincePrev": 0.3,
+      "modelCalls": 3,
+      "outputTokens": 2928,
+      "costUsdSincePrev": 0.4
+    },
+    {
+      "hash": "3335aae",
+      "time": "2026-10-12T22:01:46+02:00",
+      "phase": 7,
+      "subject": "docs: update progress after phase 6 gate",
+      "type": "docs",
+      "files": 1,
+      "lines": 8,
+      "linesAll": 8,
+      "categories": {
+        "docs": 8
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [],
+      "idsExpected": false,
+      "burst": true,
+      "minutesSincePrev": 0,
+      "activeMinutesSincePrev": 0,
+      "modelCalls": 0,
+      "outputTokens": 0,
+      "costUsdSincePrev": 0
+    },
+    {
+      "hash": "3495b01",
+      "time": "2026-10-12T22:03:05+02:00",
+      "phase": 7,
+      "subject": "docs: add root README (ES-06)",
+      "type": "docs",
+      "files": 1,
+      "lines": 38,
+      "linesAll": 38,
+      "categories": {
+        "docs": 38
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [
+        "ES-06"
+      ],
+      "idsExpected": false,
+      "burst": false,
+      "minutesSincePrev": 1.3,
+      "activeMinutesSincePrev": 1.3,
+      "modelCalls": 4,
+      "outputTokens": 8803,
+      "costUsdSincePrev": 0.69
+    },
+    {
+      "hash": "ae61555",
+      "time": "2026-10-12T22:03:05+02:00",
+      "phase": 7,
+      "subject": "docs: add backend README (ES-05, ES-06)",
+      "type": "docs",
+      "files": 1,
+      "lines": 60,
+      "linesAll": 60,
+      "categories": {
+        "docs": 60
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [
+        "ES-05",
+        "ES-06"
+      ],
+      "idsExpected": false,
+      "burst": true,
+      "minutesSincePrev": 0,
+      "activeMinutesSincePrev": 0,
+      "modelCalls": 0,
+      "outputTokens": 0,
+      "costUsdSincePrev": 0
+    },
+    {
+      "hash": "be007a9",
+      "time": "2026-10-12T22:03:05+02:00",
+      "phase": 7,
+      "subject": "docs: add frontend README (ES-05, ES-06)",
+      "type": "docs",
+      "files": 1,
+      "lines": 36,
+      "linesAll": 36,
+      "categories": {
+        "docs": 36
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [
+        "ES-05",
+        "ES-06"
+      ],
+      "idsExpected": false,
+      "burst": true,
+      "minutesSincePrev": 0,
+      "activeMinutesSincePrev": 0,
+      "modelCalls": 0,
+      "outputTokens": 0,
+      "costUsdSincePrev": 0
+    },
+    {
+      "hash": "96dae24",
+      "time": "2026-10-12T22:03:05+02:00",
+      "phase": 7,
+      "subject": "docs: record Redocly scan gap (D-27)",
+      "type": "docs",
+      "files": 1,
+      "lines": 9,
+      "linesAll": 9,
+      "categories": {
+        "docs": 9
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [
+        "D-27"
+      ],
+      "idsExpected": false,
+      "burst": true,
+      "minutesSincePrev": 0,
+      "activeMinutesSincePrev": 0,
+      "modelCalls": 0,
+      "outputTokens": 0,
+      "costUsdSincePrev": 0
+    },
+    {
+      "hash": "dd12194",
+      "time": "2026-10-12T22:03:05+02:00",
+      "phase": 7,
+      "subject": "docs: add release notes with manual tests and pending decisions",
+      "type": "docs",
+      "files": 1,
+      "lines": 55,
+      "linesAll": 55,
+      "categories": {
+        "docs": 55
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [],
+      "idsExpected": false,
+      "burst": true,
+      "minutesSincePrev": 0,
+      "activeMinutesSincePrev": 0,
+      "modelCalls": 0,
+      "outputTokens": 0,
+      "costUsdSincePrev": 0
+    },
+    {
+      "hash": "1ce3aed",
+      "time": "2026-10-12T22:06:04+02:00",
+      "phase": 7,
+      "subject": "fix: format frontend README so the check passes from a clean clone",
+      "type": "fix",
+      "files": 1,
+      "lines": 32,
+      "linesAll": 32,
+      "categories": {
+        "docs": 32
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [],
+      "idsExpected": true,
+      "burst": false,
+      "minutesSincePrev": 3,
+      "activeMinutesSincePrev": 3,
+      "modelCalls": 3,
+      "outputTokens": 2151,
+      "costUsdSincePrev": 0.39
+    },
+    {
+      "hash": "7ad1a3d",
+      "time": "2026-10-12T22:06:17+02:00",
+      "phase": 7,
+      "subject": "docs: record final run and clean-clone check (DoD-08)",
+      "type": "docs",
+      "files": 3,
+      "lines": 12,
+      "linesAll": 31,
+      "categories": {
+        "docs": 12
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [
+        "DoD-08"
+      ],
+      "idsExpected": false,
+      "burst": true,
+      "minutesSincePrev": 0.2,
+      "activeMinutesSincePrev": 0.2,
+      "modelCalls": 1,
+      "outputTokens": 1505,
+      "costUsdSincePrev": 0.14
+    },
+    {
+      "hash": "d4630d2",
+      "time": "2026-10-12T22:07:14+02:00",
+      "phase": 7,
+      "subject": "docs: mark run complete after phase 7 gate",
+      "type": "docs",
+      "files": 1,
+      "lines": 6,
+      "linesAll": 7,
+      "categories": {
+        "docs": 6
+      },
+      "mixed": false,
+      "oversize": false,
+      "tiny": false,
+      "messageOk": true,
+      "ids": [],
+      "idsExpected": false,
+      "burst": true,
+      "minutesSincePrev": 1,
+      "activeMinutesSincePrev": 1,
+      "modelCalls": 4,
+      "outputTokens": 5303,
+      "costUsdSincePrev": 0.6
+    }
+  ],
+  "commitSummary": {
+    "count": 79,
+    "byPhase": {
+      "0": 8,
+      "1": 2,
+      "2": 10,
+      "3": 15,
+      "4": 10,
+      "5": 11,
+      "6": 12,
+      "7": 11
+    },
+    "byType": {
+      "chore": 1,
+      "build": 7,
+      "docs": 40,
+      "test": 18,
+      "feat": 8,
+      "fix": 5
+    },
+    "linesMedian": 55,
+    "linesP90": 352,
+    "linesMax": 901,
+    "filesMedian": 1,
+    "pctOversize": 7.6,
+    "pctMixed": 8.9,
+    "pctTiny": 11.4,
+    "pctBurst": 55.7,
+    "pctMessageOk": 94.9,
+    "pctWithIds": 87.1,
+    "costPerCommitMedian": 0.13,
+    "costPerCommitMean": 0.36,
+    "activeMinPerCommitMedian": 0.3,
+    "activeMinPerCommitMean": 1.3,
+    "longestActiveGapMin": 12.9,
+    "costPer100Lines": 0.26,
+    "costAfterLastCommitUsd": 0.15,
+    "statsOnlyCommitsLeftOut": 0,
+    "range": "e74fb755c9a0c3afe1737cfb1b8b822116fadc2e..d4630d232abaff4a898a3472b653b11c31fc7cd8"
+  },
+  "notes": [
+    "no cost-state record in the transcript: the panel cross-check is not possible"
+  ],
+  "transcripts": {
+    "main": [
+      "/home/tjan-kazar/.claude/projects/-home-tjan-kazar-storage-Work-lab-Structured-Input-Files/d292a125-1671-5877-a4ad-79404d5f837c.jsonl"
+    ],
+    "subagents": [],
+    "backup": [
+      "data/d292a125-1671-5877-a4ad-79404d5f837c.jsonl"
+    ]
+  }
+}
