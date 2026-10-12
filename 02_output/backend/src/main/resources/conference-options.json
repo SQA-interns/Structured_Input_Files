@@ -1,0 +1,15 @@
+{
+  "consent": {
+    "id": "data-processing",
+    "text": "I agree that the organizer processes the personal data entered in this form to organise the conference, including the confirmation and notification emails."
+  },
+  "options": [
+    { "id": "ws-testing", "name": "Workshop: Test automation", "category": "WORKSHOP", "active": true },
+    { "id": "ws-security", "name": "Workshop: Secure web apps", "category": "WORKSHOP", "active": true, "registrationTypes": ["EXTERNAL"] },
+    { "id": "ev-dinner", "name": "Conference dinner", "category": "EVENT", "active": true },
+    { "id": "ev-excursion", "name": "Excursion to Bled", "category": "EVENT", "active": false },
+    { "id": "meal-lunch-1", "name": "Lunch, day 1", "category": "MEAL", "active": true },
+    { "id": "meal-vegetarian", "name": "Vegetarian meals", "category": "MEAL", "active": true },
+    { "id": "other-career-fair", "name": "Career fair", "category": "OTHER", "active": true, "registrationTypes": ["STUDENT"] }
+  ]
+}
