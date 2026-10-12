@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suppressions xmlns="https://jeremylong.github.io/DependencyCheck/dependency-suppression.1.3.xsd">
+  <suppress>
+    <notes>PA-01 (D-02): CVE-2025-7962 affects the mail library before 2.0.4; angus-mail 2.0.5 ships. Low, false positive. This artifact only.</notes>
+    <packageUrl regex="true">^pkg:maven/org\.eclipse\.angus/angus-activation@.*$</packageUrl>
+    <cve>CVE-2025-7962</cve>
+  </suppress>
+  <suppress>
+    <notes>PA-02 (D-03): CVE-2025-15104 concerns the Nu Html Checker; CPE name collision validator:validator. Low, false positive. This artifact only.</notes>
+    <packageUrl regex="true">^pkg:maven/org\.hibernate\.validator/hibernate-validator@.*$</packageUrl>
+    <cve>CVE-2025-15104</cve>
+  </suppress>
+</suppressions>
