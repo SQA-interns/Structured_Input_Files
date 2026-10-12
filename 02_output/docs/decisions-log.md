@@ -64,3 +64,39 @@
 - Options: 1. treat the "Open questions" table and the criteria as authoritative, ignore the stray line and the duplicate reference, leave `01_input/` unchanged (default); 2. ask the product owner to fix the files.
 - Human response: none
 - Resolution: 1
+
+## D-08: field limits and strict request validation
+- Timestamp: 2026-10-12T23:40:00Z
+- Phase: 2
+- Type: non-blocking
+- Trigger: the inputs give no length limits and do not say what happens to fields of the other registration type or unknown properties (requirements check G-2, G-3; BR-01, SB-01).
+- Options: 1. limits 100 (names), 254 (email), 200 (organization, institution, programme), 50 (student ID), 100 option ids; fields of the other type must be empty; unknown JSON properties rejected; email pattern `^[^\s@]+@[^\s@]+\.[^\s@]+$` (default, conservative); 2. no limits, ignore extra fields.
+- Human response: none
+- Resolution: pending review (option 1, spec 4.2)
+
+## D-09: status codes for HTTPS-only refusal and storage failure
+- Timestamp: 2026-10-12T23:40:00Z
+- Phase: 2
+- Type: non-blocking
+- Trigger: AC-008-04 says "refused" and AC-005-03 says "an error (not 201)" without a status (G-4).
+- Options: 1. 403 "HTTPS is required." before credentials are evaluated; 500 with a general message for storage failures (default); 2. 401 / 503.
+- Human response: none
+- Resolution: pending review (option 1, spec 4.3, 10)
+
+## D-10: rate-limit values and request-size limit
+- Timestamp: 2026-10-12T23:40:00Z
+- Phase: 2
+- Type: non-blocking
+- Trigger: SR-03 requires per-client rate limits and a body-size limit without values (G-5). A limit too low would lock out legitimate users behind one address (severity scale, High example).
+- Options: 1. per client and minute: form config 120, registrations 20, organizer export 10 (also limits failed logins); body ≤ 16 KiB; all configurable (default); 2. stricter values (risk of locking out a shared campus address).
+- Human response: none
+- Resolution: pending review (option 1, spec 11)
+
+## D-11: email delivery form
+- Timestamp: 2026-10-12T23:40:00Z
+- Phase: 2
+- Type: non-blocking
+- Trigger: OQ-03 fixes the order and failure handling of emails, not their form (G-6, G-7).
+- Options: 1. send synchronously after the commit, before the 201 answer, with 5 s timeouts; plain text only; one organizer message per address (addresses not disclosed to each other) (default); 2. asynchronous sending, one message to all organizers.
+- Human response: none
+- Resolution: pending review (option 1, spec 8, contract emails.md)
