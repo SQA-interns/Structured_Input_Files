@@ -5,7 +5,7 @@
 Updated at every gate and before any stop, so a fresh session can resume from here.
 
 - Workflow: spec-driven, acceptance tests first (`general/phases.md`), single agent
-- Current phase: 3 (test design)
-- Last gate result: phase 2 passed (spec maps every AC, SR, SB, AR, NFR; 6 contracts validated, out/logs/02_contract-validation.log)
-- Next step: write acceptance and e2e tests story by story, then the freeze commit
+- Current phase: 4 (build)
+- Last gate result: phase 3 passed (99 frozen tests fail for behavioural reasons; manifest a3dbbb7)
+- Next step: implement backend and frontend story by story until all frozen tests pass
 - Waiting for the human on: nothing
