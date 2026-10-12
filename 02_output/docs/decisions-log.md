@@ -199,3 +199,21 @@
 - Options: 1. Start the stack with `02_output/scripts/compose.sh`, which exports only the keys compose needs with the `sed` method of `working-rules.md` (chosen; works with any `.env`). 2. Ask the human to turn line 2 into a comment (recommended anyway, so `--env-file` also works).
 - Human response: none
 - Resolution: option 1; pending review (human may also fix line 2)
+
+## D-23: Backend mutation testing runs unit and architecture tests only
+- Timestamp: 2026-10-12T19:03:38Z
+- Phase: 6
+- Type: non-blocking
+- Trigger: `measurement-scope.md` asks for the full suite per mutant. The backend acceptance and integration tests start the Spring application with PostgreSQL and Mailpit containers (about 15 s per context, 59 tests); PIT would need hours to days for every mutant.
+- Options: 1. PIT over all production code (scope unchanged, entry point excluded) with the unit and architecture tests (`excludedTestClasses` acceptance and integration); report `score` and `scoreCovered`; list the tests run (chosen). 2. Full suite per mutant (infeasible in the run).
+- Human response: none
+- Resolution: option 1; pending review
+
+## D-24: Frontend mutation testing uses Stryker's command runner
+- Timestamp: 2026-10-12T19:22:52Z
+- Phase: 6
+- Type: non-blocking
+- Trigger: with `@stryker-mutator/vitest-runner` 10.0.0 (latest) and `vitest` 5.0.3 (D-08) Stryker ran 0.85-1.03 tests per mutant and reported mutants as surviving that unit tests assert directly (score 16.9 %); in debug mode the runner crashes serialising Vitest 5's configuration (`resolvedProjects -> viteConfig -> test` is circular). The measurement is invalid.
+- Options: 1. Keep `@stryker-mutator/core` 10.0.0 and switch to its built-in `command` test runner (`npx vitest run` per mutant, `coverageAnalysis` off): same scope, full Vitest suite, only pinned tools (chosen). 2. Change the runner or Vitest version (blocking, needs `tech-stack.md` approval).
+- Human response: none
+- Resolution: option 1; the invalid vitest-runner results are kept in `out/logs/phase6-mutation-frontend*.log` and not reported as the score; pending review
