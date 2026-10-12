@@ -217,3 +217,13 @@
 - Options: 1. Keep `@stryker-mutator/core` 10.0.0 and switch to its built-in `command` test runner (`npx vitest run` per mutant, `coverageAnalysis` off): same scope, full Vitest suite, only pinned tools (chosen). 2. Change the runner or Vitest version (blocking, needs `tech-stack.md` approval).
 - Human response: none
 - Resolution: option 1; the invalid vitest-runner results are kept in `out/logs/phase6-mutation-frontend*.log` and not reported as the score; pending review
+
+## D-25: Semgrep "use of basic authentication" (High) on the organizer export
+- Timestamp: 2026-10-12T19:32:27Z
+- Phase: 6
+- Type: blocking
+- Trigger: Semgrep rule `yaml.openapi.security.use-of-basic-authentication` (ERROR → High per `severity-scale.md`) on `docs/02_contracts/openapi.yaml` (`organizerBasic`), finding F-06. HTTP Basic is the organizer mechanism chosen in phase 2 (S9) for the one organizer role and one export operation (`security-requirements.md`: identity providers out of scope; ASVS Level 1).
+- Evidence for lowering: credentials are never accepted over plain HTTP from another host (SR-06, `OrganizerHttpsFilter`, integration test `organizerOverPlainHttpFromAnotherHostIsRefusedBeforeAuthentication`); TLS is terminated by the reverse proxy in production; the password is kept only as a BCrypt hash (SB-03); organizer requests including failed logins are rate limited (SR-03, SB-06); sessions are stateless, so no cookie or CSRF surface; the only protected operation is a read-only export.
+- Options: 1. Lower F-06 to Low and accept HTTP Basic as specified, with the controls above (proposed default). 2. Keep it High and replace HTTP Basic with another mechanism (form login with session, or OIDC, which is out of scope) before release.
+- Human response: none
+- Resolution: pending
