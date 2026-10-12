@@ -245,3 +245,12 @@
 - Options: 1. Record the gap; the tool never touches shipped code or runtime (chosen). 2. Scan it now in a scratch project.
 - Human response: none
 - Resolution: option 1; pending review
+
+## D-28: Human approves every decision pending review
+- Timestamp: 2026-10-12T20:18:59Z
+- Phase: 7 (after the run ended)
+- Type: blocking
+- Trigger: follow-up to D-06, D-10, D-11, D-12, D-13, D-14, D-15, D-17, D-18, D-19, D-20, D-21, D-22, D-23, D-24, D-27, listed as pending review in `docs/release-notes.md`.
+- Options: 1. Approve each proposed option. 2. Change individual decisions.
+- Human response: "chose proposed solutions for every one of them." (2026-10-12T20:18:59Z); the human also turned line 2 of `.env` into a comment, so `docker compose --env-file ../.env` now parses it (checked: exit 0).
+- Resolution: option 1 for all sixteen. D-11: the consent wording in the production option file still needs the organizer's text (manual test 5).
