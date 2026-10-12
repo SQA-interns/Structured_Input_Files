@@ -32,7 +32,7 @@ scripts/compose.sh ps                           # wait until every service is "h
 
 Stop with `scripts/compose.sh down` (data stays in the volumes `db-data` and `registration-copies`; `down -v` deletes it).
 
-`scripts/compose.sh` exists because `docker compose --env-file ../.env` needs every line of `.env` to be `KEY=value` or a comment (D-22).
+`scripts/compose.sh` reads only the keys it needs from `../.env`; with a `.env` whose lines are all `KEY=value` or comments, `docker compose --env-file ../.env up -d --build` works as well (D-22).
 
 ## Documentation
 

@@ -42,25 +42,6 @@ Version 0.1.0 of the conference registration system (run `kyuhi_single-agent_sdd
 
 Resolved by the human: D-01 → D-07, D-04 → D-08, D-05 → D-09, D-25 → D-26 (the original records keep "pending"; records are never rewritten).
 
-Chosen by the agent and pending review:
-
-| Decision | Subject |
-|---|---|
-| D-06 | Medium dependency findings recorded, not blocking |
-| D-10 | Options can be limited per registration type (OQ-01) |
-| D-11 | One mandatory data-processing consent; wording from configuration (OQ-02) |
-| D-12 | Email failure keeps the registration, no retry (OQ-03) |
-| D-13 | Any number of options per category, no duplicates (OQ-04) |
-| D-14 | Second registration with the same email rejected (OQ-05) |
-| D-15 | Retention 12 months after the conference, manual deletion (OQ-06) |
-| D-17 | English UI and emails |
-| D-18 | Field length limits (200 text, 254 email) |
-| D-19 | Rate-limit and request-size defaults |
-| D-20 | Option changes need a restart |
-| D-21 | SpotBugs EI_EXPOSE_REP2 excluded for injected collaborators |
-| D-22 | `scripts/compose.sh` because compose cannot parse `.env` line 2 |
-| D-23 | Backend mutation with unit and architecture tests only |
-| D-24 | Stryker command runner |
-| D-27 | Redocly CLI (contract validation only) not scanned |
+Chosen by the agent and approved by the human in D-28 (all proposed options): D-06, D-10, D-11, D-12, D-13, D-14, D-15, D-17, D-18, D-19, D-20, D-21, D-22, D-23, D-24, D-27. No decision is pending.
 
 Also for the human: change `ORGANIZER_USERNAME` in `.env`; part of it appeared in the session output (F-03).
