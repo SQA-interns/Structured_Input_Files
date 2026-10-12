@@ -18,16 +18,28 @@ Run `/cost` once at the end of the session, before the post-run step: the plan l
 
 | Item | Value |
 |---|---|
-| API time | |
-| Session wall time | |
+| API time | 50m |
+| Session wall time | 96m |
 | Approval prompts | |
-| Cost shown | |
-| Tokens shown per model (input, output, cache read, cache write) | |
+| Cost shown | $28.74 |
+| Tokens shown per model (input, output, cache read, cache write) | Opus 5.5: 438 in / 2.9k out / 81.4M cache read / 574k cache write |
 | Share of usage at over 150k context | |
-| Plan limits used (session, week) | |
-| Difference to `usage.costUsd` | |
+| Plan limits used (session, week) | session 90 % (resets 2026-10-12T22:49:59Z), week 48 % (resets 2026-10-17T02:59:59Z) |
+| Difference to `usage.costUsd` | $-0.16 (-0.6 %), ok; the panel total also holds $0.43 for 3 call(s) after the run's end |
 
 Raw panel text (filled from the session when `/cost` was run in it):
 
 ```text
+Claude Code usage report (2026-10-12T20:56:02.585Z)
+Client: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Claude/2.31226.1 Chrome/152.0.7977.130 Electron/44.4.3 Safari/537.36 MSIX
+
+Plan limits:
+- session-0: 90% (resets 2026-10-12T22:49:59.862582+00:00)
+- weekly_all-1: 48% (resets 2026-10-17T02:59:59.862602+00:00)
+
+Session:
+- Opus 5.5: 438 in / 2.9k out / 81.4M cache read / 574k cache write
+- Cost: $28.74 | API 50m | Wall 96m
+
+Local activity: 293 requests (24h) | 2073 (7d)
 ```
