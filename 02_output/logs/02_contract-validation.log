@@ -1,0 +1,18 @@
+# Contract validation 2026-10-12T19:21:04Z
+JSON parse OK: conference-config.schema.json
+  JSON Schema 2020-12, required: options,consents
+JSON parse OK: emails.json
+JSON parse OK: openapi.json
+  $refs resolved: 19
+  OpenAPI 3.1.0 paths: /api/form-config, /api/registrations, /api/export
+JSON parse OK: recaptcha.json
+JSON parse OK: registration-copy.schema.json
+  JSON Schema 2020-12, required: id,type,firstName,lastName,email,options,consents,registeredAt
+JSON parse OK: ui-registration-form.json
+node exit=0
+## database.sql applied to postgres:16.15-alpine
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE INDEX
+PostgreSQL init process complete; ready for start up.
