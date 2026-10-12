@@ -1,0 +1,16 @@
+{
+  "options": [
+    { "id": "ws-testing", "name": "Workshop: Software testing", "category": "WORKSHOP" },
+    { "id": "ws-security", "name": "Workshop: Secure coding", "category": "WORKSHOP" },
+    { "id": "ws-ai", "name": "Workshop: AI in industry", "category": "WORKSHOP", "availableTo": ["EXTERNAL"] },
+    { "id": "ws-legacy", "name": "Workshop: Legacy systems", "category": "WORKSHOP", "active": false },
+    { "id": "ev-opening", "name": "Opening reception", "category": "EVENT" },
+    { "id": "ev-panel", "name": "Industry panel", "category": "EVENT" },
+    { "id": "meal-lunch", "name": "Lunch", "category": "MEAL" },
+    { "id": "meal-dinner", "name": "Conference dinner", "category": "MEAL", "availableTo": ["EXTERNAL"] },
+    { "id": "oth-tour", "name": "City tour", "category": "OTHER" }
+  ],
+  "consents": [
+    { "id": "privacy", "text": "I agree that my personal data is processed for organizing the conference and that it is shared with the conference organizers.", "mandatory": true }
+  ]
+}
