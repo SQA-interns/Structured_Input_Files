@@ -1,0 +1,1 @@
+database.sql: applied with psql -v ON_ERROR_STOP=1 to postgres:16.15-alpine: CREATE TABLE x3, CREATE INDEX x1, exit 0 (2026-10-12T23:38:04Z)
