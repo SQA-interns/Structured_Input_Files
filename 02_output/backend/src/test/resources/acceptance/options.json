@@ -1,0 +1,15 @@
+{
+  "consent": {
+    "id": "data-processing",
+    "text": "I agree to the processing of my personal data for organising the conference."
+  },
+  "options": [
+    { "id": "ws-a", "name": "Workshop A: Testing", "category": "WORKSHOP", "active": true },
+    { "id": "ws-b", "name": "Workshop B: Security", "category": "WORKSHOP", "active": true },
+    { "id": "ws-ext", "name": "Workshop for professionals", "category": "WORKSHOP", "active": true, "registrationTypes": ["EXTERNAL"] },
+    { "id": "ev-dinner", "name": "Conference dinner", "category": "EVENT", "active": true },
+    { "id": "ev-old", "name": "Cancelled excursion", "category": "EVENT", "active": false },
+    { "id": "meal-lunch", "name": "Lunch", "category": "MEAL", "active": true, "registrationTypes": ["EXTERNAL", "STUDENT"] },
+    { "id": "other-fair", "name": "Career fair", "category": "OTHER", "active": true, "registrationTypes": ["STUDENT"] }
+  ]
+}
