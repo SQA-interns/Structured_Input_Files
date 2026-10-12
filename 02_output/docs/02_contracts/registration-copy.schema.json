@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konferenca.si/contracts/registration-copy.schema.json",
+  "title": "Raw JSON copy of an accepted registration",
+  "description": "Contract between the backend and the JSON copy volume (spec section 7). File name <id>.json, UTF-8, non-ASCII characters not escaped. The organizer notification attachment has exactly these bytes.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "type", "registeredAt", "firstName", "lastName", "email", "options", "consents"],
+  "properties": {
+    "id": { "type": "string", "format": "uuid" },
+    "type": { "enum": ["EXTERNAL", "STUDENT"] },
+    "registeredAt": { "type": "string", "format": "date-time" },
+    "firstName": { "type": "string", "minLength": 1, "maxLength": 100 },
+    "lastName": { "type": "string", "minLength": 1, "maxLength": 100 },
+    "email": { "type": "string", "minLength": 3, "maxLength": 254 },
+    "organization": { "type": "string", "minLength": 1, "maxLength": 200 },
+    "studyInstitution": { "type": "string", "minLength": 1, "maxLength": 200 },
+    "studyProgramme": { "type": "string", "minLength": 1, "maxLength": 200 },
+    "studentId": { "type": "string", "minLength": 1, "maxLength": 50 },
+    "options": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "category"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "category": { "enum": ["WORKSHOP", "EVENT", "MEAL", "OTHER"] }
+        }
+      }
+    },
+    "consents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "text", "givenAt"],
+        "properties": {
+          "id": { "type": "string" },
+          "text": { "type": "string" },
+          "givenAt": { "type": "string", "format": "date-time" }
+        }
+      }
+    }
+  },
+  "oneOf": [
+    {
+      "properties": { "type": { "const": "EXTERNAL" } },
+      "required": ["organization"],
+      "not": { "anyOf": [{ "required": ["studyInstitution"] }, { "required": ["studyProgramme"] }, { "required": ["studentId"] }] }
+    },
+    {
+      "properties": { "type": { "const": "STUDENT" } },
+      "required": ["studyInstitution", "studyProgramme", "studentId"],
+      "not": { "required": ["organization"] }
+    }
+  ]
+}
