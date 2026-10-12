@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "registration-copy.schema.json",
+  "title": "Raw JSON copy of an accepted registration",
+  "description": "File <JSON_COPY_DIR>/<id>.json, UTF-8, written before the database commit (specification 5.3, 5.4). The organizer notification attaches the same bytes (AC-007-02). Fields of the other registration type are absent.",
+  "type": "object",
+  "required": ["id", "type", "firstName", "lastName", "email", "options", "consents", "registeredAt"],
+  "additionalProperties": false,
+  "properties": {
+    "id": { "type": "string", "format": "uuid" },
+    "type": { "type": "string", "enum": ["EXTERNAL", "STUDENT"] },
+    "firstName": { "type": "string" },
+    "lastName": { "type": "string" },
+    "email": { "type": "string" },
+    "organization": { "type": "string" },
+    "studyInstitution": { "type": "string" },
+    "studyProgramme": { "type": "string" },
+    "studentId": { "type": "string" },
+    "options": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "category"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "category": { "type": "string", "enum": ["WORKSHOP", "EVENT", "MEAL", "OTHER"] }
+        }
+      }
+    },
+    "consents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "text", "givenAt"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string" },
+          "text": { "type": "string" },
+          "givenAt": { "type": "string", "format": "date-time" }
+        }
+      }
+    },
+    "registeredAt": { "type": "string", "format": "date-time" }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "type": { "const": "EXTERNAL" } } },
+      "then": { "required": ["organization"] }
+    },
+    {
+      "if": { "properties": { "type": { "const": "STUDENT" } } },
+      "then": { "required": ["studyInstitution", "studyProgramme", "studentId"] }
+    }
+  ]
+}
