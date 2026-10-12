@@ -55,3 +55,30 @@
 - Options: 1. Record as Medium, do not override versions not listed in `tech-stack.md`, re-scan in phase 6 (chosen). 2. Add version overrides (would add unlisted versions).
 - Human response: none
 - Resolution: option 1; pending review
+
+## D-07: Human approves D-01 (installed host versions)
+- Timestamp: 2026-10-12T15:43:48Z
+- Phase: 0
+- Type: blocking
+- Trigger: follow-up to D-01.
+- Options: as in D-01.
+- Human response: "i agree with d01, d04 and d05" (2026-10-12T15:43:48Z)
+- Resolution: D-01 option 1. Host tooling: OpenJDK 21.0.12.1, Docker Engine 29.3.1, Docker Compose 5.1.1. Container images and the Java release target stay as pinned.
+
+## D-08: Human approves D-04 (fixed vitest and jscpd versions)
+- Timestamp: 2026-10-12T15:43:48Z
+- Phase: 0
+- Type: blocking
+- Trigger: follow-up to D-04.
+- Options: as in D-04.
+- Human response: "i agree with d01, d04 and d05" (2026-10-12T15:43:48Z)
+- Resolution: D-04 option 1. `vitest` and `@vitest/coverage-v8` 5.0.3, `jscpd` 5.4.0 replace the `tech-stack.md` entries 3.2.7 and 4.3.0.
+
+## D-09: Human approves D-05 (CVE-2025-7962 false positive)
+- Timestamp: 2026-10-12T15:43:48Z
+- Phase: 0
+- Type: blocking
+- Trigger: follow-up to D-05.
+- Options: as in D-05.
+- Human response: "i agree with d01, d04 and d05" (2026-10-12T15:43:48Z)
+- Resolution: D-05 option 1. Lowered to Low; suppressed for `org.eclipse.angus:angus-activation` only in `backend/dependency-check-suppressions.xml`.
