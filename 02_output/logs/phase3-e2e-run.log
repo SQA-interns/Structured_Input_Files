@@ -1,0 +1,100 @@
+
+Running 4 tests using 1 worker
+
+  ✘  1 [chromium] › e2e/us001-external-registration.e2e.spec.ts:4:1 › AC-001-03 an external participant registers through the form and the registration is accepted (30.0s)
+  ✘  2 [chromium] › e2e/us002-student-registration.e2e.spec.ts:4:1 › AC-002-03 a student registers through the form and the registration is accepted (30.0s)
+  ✘  3 [chromium] › e2e/us008-export-and-slovenian-characters.e2e.spec.ts:11:1 › NFR-01 AC-001-07 AC-006-02 AC-007-02 AC-008-02 Slovenian characters survive form, emails, JSON copy and export (30.0s)
+  ✘  4 [chromium] › e2e/us008-export-and-slovenian-characters.e2e.spec.ts:86:1 › AC-008-03 the export is refused without organizer credentials (70ms)
+
+
+  1) [chromium] › e2e/us001-external-registration.e2e.spec.ts:4:1 › AC-001-03 an external participant registers through the form and the registration is accepted 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.check: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByRole('radio', { name: 'External participant' })
+
+
+       at support.ts:32
+
+      30 | ): Promise<{ status: number; body: { id: string } }> {
+      31 |   await page.goto("/");
+    > 32 |   await page.getByRole("radio", { name: type }).check();
+         |                                                 ^
+      33 |   for (const [label, value] of Object.entries(fields)) {
+      34 |     await page.getByRole("textbox", { name: label, exact: true }).fill(value);
+      35 |   }
+        at register (/home/tjan-kazar/storage/Work/lab/Structured_Input_Files/02_output/frontend/e2e/support.ts:32:49)
+        at /home/tjan-kazar/storage/Work/lab/Structured_Input_Files/02_output/frontend/e2e/us001-external-registration.e2e.spec.ts:9:20
+
+    Error Context: test-results/us001-external-registratio-454c6-he-registration-is-accepted-chromium/error-context.md
+
+  2) [chromium] › e2e/us002-student-registration.e2e.spec.ts:4:1 › AC-002-03 a student registers through the form and the registration is accepted 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.check: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByRole('radio', { name: 'Student' })
+
+
+       at support.ts:32
+
+      30 | ): Promise<{ status: number; body: { id: string } }> {
+      31 |   await page.goto("/");
+    > 32 |   await page.getByRole("radio", { name: type }).check();
+         |                                                 ^
+      33 |   for (const [label, value] of Object.entries(fields)) {
+      34 |     await page.getByRole("textbox", { name: label, exact: true }).fill(value);
+      35 |   }
+        at register (/home/tjan-kazar/storage/Work/lab/Structured_Input_Files/02_output/frontend/e2e/support.ts:32:49)
+        at /home/tjan-kazar/storage/Work/lab/Structured_Input_Files/02_output/frontend/e2e/us002-student-registration.e2e.spec.ts:9:20
+
+    Error Context: test-results/us002-student-registration-d607f-he-registration-is-accepted-chromium/error-context.md
+
+  3) [chromium] › e2e/us008-export-and-slovenian-characters.e2e.spec.ts:11:1 › NFR-01 AC-001-07 AC-006-02 AC-007-02 AC-008-02 Slovenian characters survive form, emails, JSON copy and export 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.check: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByRole('radio', { name: 'External participant' })
+
+
+       at support.ts:32
+
+      30 | ): Promise<{ status: number; body: { id: string } }> {
+      31 |   await page.goto("/");
+    > 32 |   await page.getByRole("radio", { name: type }).check();
+         |                                                 ^
+      33 |   for (const [label, value] of Object.entries(fields)) {
+      34 |     await page.getByRole("textbox", { name: label, exact: true }).fill(value);
+      35 |   }
+        at register (/home/tjan-kazar/storage/Work/lab/Structured_Input_Files/02_output/frontend/e2e/support.ts:32:49)
+        at /home/tjan-kazar/storage/Work/lab/Structured_Input_Files/02_output/frontend/e2e/us008-export-and-slovenian-characters.e2e.spec.ts:20:20
+
+    Error Context: test-results/us008-export-and-slovenian-1530f-emails-JSON-copy-and-export-chromium/error-context.md
+
+  4) [chromium] › e2e/us008-export-and-slovenian-characters.e2e.spec.ts:86:1 › AC-008-03 the export is refused without organizer credentials 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 401
+    Received: 500
+
+      89 |   const response = await request.get("/api/organizer/export");
+      90 |
+    > 91 |   expect(response.status()).toBe(401);
+         |                             ^
+      92 | });
+      93 |
+        at /home/tjan-kazar/storage/Work/lab/Structured_Input_Files/02_output/frontend/e2e/us008-export-and-slovenian-characters.e2e.spec.ts:91:29
+
+    Error Context: test-results/us008-export-and-slovenian-df3f6-thout-organizer-credentials-chromium/error-context.md
+
+  4 failed
+    [chromium] › e2e/us001-external-registration.e2e.spec.ts:4:1 › AC-001-03 an external participant registers through the form and the registration is accepted 
+    [chromium] › e2e/us002-student-registration.e2e.spec.ts:4:1 › AC-002-03 a student registers through the form and the registration is accepted 
+    [chromium] › e2e/us008-export-and-slovenian-characters.e2e.spec.ts:11:1 › NFR-01 AC-001-07 AC-006-02 AC-007-02 AC-008-02 Slovenian characters survive form, emails, JSON copy and export 
+    [chromium] › e2e/us008-export-and-slovenian-characters.e2e.spec.ts:86:1 › AC-008-03 the export is refused without organizer credentials 
