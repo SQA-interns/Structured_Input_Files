@@ -5,7 +5,7 @@
 Updated at every gate and before any stop, so a fresh session can resume from here.
 
 - Workflow: spec-driven, acceptance tests first (`general/phases.md`), single agent
-- Current phase: 7 (release)
-- Last gate result: phase 6 passed (all DoD evidence; 0 open Critical/High; manifests match; leak check clean)
-- Next step: root and component READMEs, release notes, clean-clone check, run summary
+- Current phase: done (phase 7 complete)
+- Last gate result: phase 7 passed (READMEs followed from a clean clone; release notes with manual tests; decisions resolved or pending review D-08..D-11)
+- Next step: none for the agent; human: manual tests in release-notes.md, review D-08..D-11, post-run statistics
 - Waiting for the human on: nothing
