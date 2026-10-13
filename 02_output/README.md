@@ -36,6 +36,8 @@ Prerequisites: Docker Engine with Compose, JDK 21, Node.js 24 (versions in `01_i
 
 End-to-end tests run against this stack: `cd frontend && npm run e2e`.
 
+On Windows, a clone in a deep folder can exceed the 260-character path limit ("Filename too long"); clone with `git -c core.longpaths=true clone <url>`.
+
 ## Documentation
 
 | Document | Content |
