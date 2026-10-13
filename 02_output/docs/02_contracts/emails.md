@@ -17,7 +17,7 @@ Both emails are sent after the database transaction (with the JSON copy) has com
 |---|---|
 | To | the participant's email (trimmed) |
 | Subject | `Registration confirmation – <CONFERENCE_NAME>` |
-| Body | lines, in order: `Dear <firstName> <lastName>,` · blank · `your registration for <CONFERENCE_NAME> has been received.` · blank · `Registration ID: <id>` · `Registration type: External participant` or `Student` · blank · `Selected options:` · one line `- <option name> (<Workshop|Event|Meal|Other activity>)` per selected option, or `- none` · blank · `Kind regards,` · `<CONFERENCE_NAME> organizers` |
+| Body | lines, in order: `Dear <firstName> <lastName>,` · blank · `your registration for <CONFERENCE_NAME> has been received.` · blank · `Registration ID: <id>` · `Registration type: External participant` or `Student` · the type's own fields as `Label: value` lines (`Organization / institution`, or `Study institution`, `Study programme`, `Student ID`; added in phase 4 so the participant has a record of what was submitted, as the frozen AC-006-02 test expects) · blank · `Selected options:` · one line `- <option name> (<Workshop|Event|Meal|Other activity>)` per selected option, or `- none` · blank · `Kind regards,` · `<CONFERENCE_NAME> organizers` |
 
 ## Organizer notification (US-007, AC-007-01, AC-007-02, SR-07)
 

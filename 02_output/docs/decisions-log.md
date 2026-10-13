@@ -109,3 +109,12 @@
 - Options: 1. Add `@types/node` 24.19.0 (MIT, matches Node 24, published 2026-09-25) as an exact dev dependency, under the `tech-stack.md` rule for unlisted tools (default); 2. exclude the e2e folder from type checking (weakens the check command).
 - Human response: none
 - Resolution: 1; `npm audit --omit=dev` still reports 0
+
+## D-13: PMD and SpotBugs rule adjustments for the backend
+- Timestamp: 2026-10-13T21:17Z
+- Phase: 4
+- Type: non-blocking
+- Trigger: the check command (ES-05, DoD-02) reported PMD `GuardLogStatement` on SLF4J placeholder calls (9) and SpotBugs `EI_EXPOSE_REP`/`EI_EXPOSE_REP2` (27) on records, JSON DTOs and Spring-injected collaborators and `CT_CONSTRUCTOR_THROW` (2) on Spring singletons that validate configuration in the constructor. All other PMD findings were fixed in the code (commit 178d8e1).
+- Options: 1. Exclude exactly these rules in `backend/pmd-ruleset.xml` (quickstart minus `GuardLogStatement`) and `backend/spotbugs-exclude.xml`, each with its reason (default; they are false positives here: SLF4J defers formatting, the collections are DTO payloads or injected beans, finalization is deprecated in Java 21); 2. guard every log call and copy every list (adds noise without behaviour change).
+- Human response: none
+- Resolution: 1; pending review (a lint configuration change)
