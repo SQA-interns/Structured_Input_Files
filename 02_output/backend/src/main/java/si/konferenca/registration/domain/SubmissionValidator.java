@@ -119,6 +119,11 @@ public final class SubmissionValidator {
     }
   }
 
+  /** Whether the value has the email format of BR-03 (no whitespace, so no line breaks). */
+  public static boolean isEmail(String value) {
+    return value != null && value.length() <= 254 && EMAIL.matcher(value).matches();
+  }
+
   private static boolean isBlank(String value) {
     return value == null || value.isBlank();
   }
