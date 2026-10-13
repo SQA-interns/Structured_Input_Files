@@ -7,7 +7,7 @@ Run `tanej-single-agent-sdd-v001-opus-5-5-t1.7-20261013T1947Z-3bcb`, started 202
 | Check | Source of truth | Result |
 |---|---|---|
 | Run configuration complete | `project/00_setup/run-config.md` | Pass. All lines filled; Run ID and Starting commit empty as required; `stat.mjs init` and `phase 0 start` recorded them. |
-| Platforms and tools installed at the listed versions | `project/00_setup/tech-stack.md` | **Open (D-03).** Node 24.13.0 and npm 11.6.2 match. JDK: Oracle 21.0.11 instead of Temurin 21.0.10+7 (D-01, PA-05). Docker Engine 29.8.2 instead of 29.8.1 (D-02, PA-05). Docker Compose 5.6.0 instead of 5.5.1: minor version, not covered by PA-05 (D-03, blocking). All tooling resolves and runs at the pinned version, except the `aldanial/cloc:2.10` image, which reports 1.98 (D-04). |
+| Platforms and tools installed at the listed versions | `project/00_setup/tech-stack.md` | Pass with approved deviations. Node 24.13.0 and npm 11.6.2 match. JDK: Oracle 21.0.11 instead of Temurin 21.0.10+7 (D-01, PA-05). Docker Engine 29.8.2 instead of 29.8.1 (D-02, PA-05). Docker Compose 5.6.0 instead of 5.5.1: minor version, not covered by PA-05 (D-03, approved by the human). All tooling resolves and runs at the pinned version, except the `aldanial/cloc:2.10` image, which reports 1.98 (D-04). |
 | Local environments and services running or reachable | `project/00_setup/environments.md` | Pass. Docker Desktop running; Docker Hub, Maven Central and the npm registry reachable; `postgres`, `axllent/mailpit`, `eclipse-temurin`, `node`, `nginx` images pulled and started at the pinned tags. |
 | Secrets present in `.env` or marked test-only | `project/00_setup/secrets.env.example` | Pass. `POSTGRES_PASSWORD`, `ORGANIZER_USERNAME`, `ORGANIZER_PASSWORD`, `ORGANIZER_EMAILS`, `NVD_API_KEY` non-empty. `RECAPTCHA_*` (test-mode only) and `SMTP_*` (not needed) are empty, as allowed. `.env` is git-ignored. |
 | Every listed dependency resolves | `project/00_setup/tech-stack.md` | Pass. Maven dependencies, plugins and Boot overrides resolve at the pinned versions (`dependency:tree`, `dependency:resolve-plugins`, `<plugin>:help`); `npm ls --depth=0` shows every npm pin; every container image pulls. |
@@ -66,4 +66,4 @@ Logs: `out/logs/00_*.log`.
 
 | When | What was missing | Answer | Re-check |
 |---|---|---|---|
-| 2026-10-13 phase 0 | Docker Compose 5.5.1 (installed 5.6.0): approve 5.6.0 or install 5.5.1 (D-03) | pending | |
+| 2026-10-13 phase 0 | Docker Compose 5.5.1 (installed 5.6.0): approve 5.6.0 or install 5.5.1 (D-03) | Approve 5.6.0 (2026-10-13T20:06:32Z) | `docker compose version`: v5.6.0, accepted |

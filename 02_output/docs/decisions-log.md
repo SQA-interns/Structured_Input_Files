@@ -26,8 +26,8 @@
 - Type: blocking
 - Trigger: `docker compose version` and the Docker client plugin list report v5.6.0; `tech-stack.md` pins 5.5.1. This is a different minor version and Compose is not named in PA-05, so it is not pre-approved.
 - Options: 1. Approve Compose 5.6.0 for this run (proposed default: the compose file format is unchanged and the local stack is only used for phases 3, 6 and 7); 2. the human installs Docker Compose 5.5.1.
-- Human response: none
-- Resolution: pending
+- Human response: Approve Compose 5.6.0 for this run (2026-10-13T20:06:32Z)
+- Resolution: 1 (approved by the human); `tech-stack.md` unchanged
 
 ## D-04: cloc image tag 2.10 reports version 1.98
 - Timestamp: 2026-10-13T19:52Z
