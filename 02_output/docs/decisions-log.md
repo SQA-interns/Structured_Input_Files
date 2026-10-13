@@ -73,3 +73,21 @@
 - Options: 1. Accept; record as Medium, accepted (default, PA-03).
 - Human response: none
 - Resolution: 1
+
+## D-09: Stray unformatted line at the top of scope.md
+- Timestamp: 2026-10-13T20:10Z
+- Phase: 1
+- Type: non-blocking
+- Trigger: `project/01_requirements/scope.md` starts with a line before `# Scope` that repeats the OQ-01 … OQ-06 answers in reverse order. Its text matches the open-questions table word for word (`docs/01_requirements-check.md`, G-1).
+- Options: 1. Treat the open-questions table as authoritative and ignore the stray line; do not edit the input (default).
+- Human response: none
+- Resolution: 1
+
+## D-10: Status code when organizer HTTPS-only access refuses plain HTTP
+- Timestamp: 2026-10-13T20:10Z
+- Phase: 1
+- Type: non-blocking
+- Trigger: AC-008-04 and SR-06 require refusing the export over plain HTTP from a non-localhost client but name no status code (G-3).
+- Options: 1. HTTP 403 with a generic error body, decided before credentials are evaluated, so valid credentials are never confirmed over plain HTTP (default, more conservative); 2. HTTP 401 like AC-008-02.
+- Human response: none
+- Resolution: pending review (option 1 applied)
