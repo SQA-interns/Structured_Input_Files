@@ -5,17 +5,15 @@ import java.util.UUID;
 import si.konferenca.registration.domain.Registration;
 
 /** The ports the use cases need; adapters implement them (spec §2). */
-public final class Ports {
-
-  private Ports() {}
+public interface Ports {
 
   /** Verifies an anti-automation token on the server side (SR-01). */
-  public interface CaptchaVerifier {
+  interface CaptchaVerifier {
     boolean verify(String token, String clientIp);
   }
 
   /** Database storage of registrations (BR-07). */
-  public interface RegistrationStore {
+  interface RegistrationStore {
     void save(Registration registration);
 
     /** Every stored registration, oldest first. */
@@ -23,7 +21,7 @@ public final class Ports {
   }
 
   /** Raw JSON copies on persistent storage (BR-07). */
-  public interface JsonCopyStore {
+  interface JsonCopyStore {
     /** Writes the copy and returns its exact bytes; fails with {@link StorageFailedException}. */
     byte[] write(Registration registration);
 
@@ -31,14 +29,14 @@ public final class Ports {
   }
 
   /** Participant and organizer emails (US-006, US-007). */
-  public interface RegistrationNotifier {
+  interface RegistrationNotifier {
     void sendConfirmation(Registration registration);
 
     void notifyOrganizers(Registration registration, byte[] jsonCopy);
   }
 
   /** The Excel export (US-008). */
-  public interface WorkbookWriter {
+  interface WorkbookWriter {
     byte[] write(List<Registration> registrations);
   }
 }

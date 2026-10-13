@@ -10,6 +10,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer.FrameOptionsConfig;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -53,7 +54,7 @@ public class SecurityConfiguration {
             h ->
                 h.contentSecurityPolicy(
                         c -> c.policyDirectives("default-src 'none'; frame-ancestors 'none'"))
-                    .frameOptions(f -> f.deny())
+                    .frameOptions(FrameOptionsConfig::deny)
                     .referrerPolicy(r -> r.policy(ReferrerPolicy.NO_REFERRER)))
         .authorizeHttpRequests(
             a ->

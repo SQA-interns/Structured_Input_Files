@@ -61,7 +61,10 @@ public class RegistrationEntity {
       joinColumns = @JoinColumn(name = "registration_id"))
   private List<ConsentRow> consents = new ArrayList<>();
 
-  protected RegistrationEntity() {}
+  /** For JPA. */
+  protected RegistrationEntity() {
+    // required by JPA
+  }
 
   RegistrationEntity(
       UUID id,
@@ -151,7 +154,9 @@ public class RegistrationEntity {
     @Column(name = "category", nullable = false)
     private String category;
 
-    protected OptionRow() {}
+    protected OptionRow() {
+      // required by JPA
+    }
 
     OptionRow(String optionId, String optionName, String category) {
       this.optionId = optionId;
@@ -185,7 +190,9 @@ public class RegistrationEntity {
     @Column(name = "given_at", nullable = false)
     private Instant givenAt;
 
-    protected ConsentRow() {}
+    protected ConsentRow() {
+      // required by JPA
+    }
 
     ConsentRow(String consentId, String consentText, Instant givenAt) {
       this.consentId = consentId;

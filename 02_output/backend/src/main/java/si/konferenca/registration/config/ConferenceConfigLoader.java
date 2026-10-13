@@ -40,7 +40,7 @@ public final class ConferenceConfigLoader {
       root = JSON.readTree(in);
     } catch (IOException | JacksonException e) {
       throw new InvalidConfigurationException(
-          "Conference configuration " + source + " is not valid JSON");
+          "Conference configuration " + source + " is not valid JSON", e);
     }
     if (root == null || !root.isObject()) {
       throw new InvalidConfigurationException(
