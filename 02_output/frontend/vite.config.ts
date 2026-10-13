@@ -14,5 +14,13 @@ export default defineConfig({
     include: ["src/**/*.test.{ts,tsx}", "tests/**/*.test.{ts,tsx}"],
     setupFiles: ["./tests/setup.ts"],
     passWithNoTests: true,
+    coverage: {
+      provider: "v8",
+      // Measurement scope: docs/03_test-strategy.md ("Measurement exclusions").
+      include: ["src/**/*.{ts,tsx}"],
+      exclude: ["src/main.tsx", "src/**/*.d.ts", "src/**/*.test.{ts,tsx}"],
+      reporter: ["text-summary", "json-summary", "html"],
+      reportsDirectory: "coverage",
+    },
   },
 });
