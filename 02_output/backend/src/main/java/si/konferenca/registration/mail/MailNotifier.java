@@ -1,13 +1,16 @@
 package si.konferenca.registration.mail;
 
+import jakarta.activation.DataHandler;
 import jakarta.mail.MessagingException;
+import jakarta.mail.Part;
 import jakarta.mail.internet.AddressException;
 import jakarta.mail.internet.InternetAddress;
+import jakarta.mail.internet.MimeBodyPart;
 import jakarta.mail.internet.MimeMessage;
+import jakarta.mail.util.ByteArrayDataSource;
 import java.nio.charset.StandardCharsets;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.core.io.ByteArrayResource;
 import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -75,15 +78,26 @@ public class MailNotifier implements RegistrationNotifier {
       helper.setSubject(subject);
       helper.setText(body, false);
       if (attachment != null) {
-        helper.addAttachment(
-            "registration-" + registration.id() + ".json",
-            new ByteArrayResource(attachment),
-            "application/json");
+        helper.getRootMimeMultipart().addBodyPart(jsonAttachment(registration, attachment));
       }
       sender.send(message);
     } catch (MessagingException | MailException e) {
       LOG.warn("Email {} failed for registration {}", kind, registration.id());
     }
+  }
+
+  /**
+   * The stored copy, base64-encoded so the transport cannot rewrite its line endings and the
+   * received bytes equal the copy (AC-007-02).
+   */
+  private static MimeBodyPart jsonAttachment(Registration registration, byte[] content)
+      throws MessagingException {
+    MimeBodyPart part = new MimeBodyPart();
+    part.setDataHandler(new DataHandler(new ByteArrayDataSource(content, "application/json")));
+    part.setFileName("registration-" + registration.id() + ".json");
+    part.setDisposition(Part.ATTACHMENT);
+    part.setHeader("Content-Transfer-Encoding", "base64");
+    return part;
   }
 
   /** Exactly one address, without a display name; anything else is rejected. */

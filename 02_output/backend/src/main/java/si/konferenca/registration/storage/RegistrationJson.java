@@ -4,14 +4,23 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import si.konferenca.registration.domain.Registration;
+import tools.jackson.core.util.DefaultIndenter;
+import tools.jackson.core.util.DefaultPrettyPrinter;
 import tools.jackson.databind.SerializationFeature;
 import tools.jackson.databind.json.JsonMapper;
 
-/** The JSON copy format (contract registration-copy.schema.json); UTF-8, nothing escaped. */
+/**
+ * The JSON copy format (contract registration-copy.schema.json); UTF-8, nothing escaped, LF line
+ * endings on every operating system.
+ */
 final class RegistrationJson {
 
   private static final JsonMapper JSON =
-      JsonMapper.builder().enable(SerializationFeature.INDENT_OUTPUT).build();
+      JsonMapper.builder()
+          .enable(SerializationFeature.INDENT_OUTPUT)
+          .defaultPrettyPrinter(
+              new DefaultPrettyPrinter().withObjectIndenter(new DefaultIndenter("  ", "\n")))
+          .build();
 
   private RegistrationJson() {}
 
