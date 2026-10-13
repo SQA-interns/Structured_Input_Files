@@ -104,6 +104,9 @@ public class MailNotifier implements RegistrationNotifier {
   private static InternetAddress singleAddress(String recipient) throws AddressException {
     InternetAddress address = new InternetAddress(recipient, true);
     address.validate();
-    return new InternetAddress(address.getAddress());
+    if (!recipient.equals(address.getAddress())) {
+      throw new AddressException("Not a single bare address");
+    }
+    return address;
   }
 }
