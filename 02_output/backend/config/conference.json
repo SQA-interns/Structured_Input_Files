@@ -1,0 +1,20 @@
+{
+  "options": [
+    { "id": "ws-cloud", "name": "Workshop: Cloud-native architecture", "category": "WORKSHOP", "active": true, "availableTo": ["EXTERNAL", "STUDENT"] },
+    { "id": "ws-industry", "name": "Workshop: Industry partnerships", "category": "WORKSHOP", "active": true, "availableTo": ["EXTERNAL"] },
+    { "id": "ws-legacy", "name": "Workshop: Legacy systems (cancelled)", "category": "WORKSHOP", "active": false, "availableTo": ["EXTERNAL", "STUDENT"] },
+    { "id": "ev-welcome", "name": "Welcome reception", "category": "EVENT", "active": true, "availableTo": ["EXTERNAL", "STUDENT"] },
+    { "id": "ev-gala", "name": "Gala dinner", "category": "EVENT", "active": true, "availableTo": ["EXTERNAL"] },
+    { "id": "meal-lunch-1", "name": "Lunch, day 1", "category": "MEAL", "active": true, "availableTo": ["EXTERNAL", "STUDENT"] },
+    { "id": "meal-lunch-2", "name": "Lunch, day 2", "category": "MEAL", "active": true, "availableTo": ["EXTERNAL", "STUDENT"] },
+    { "id": "ot-tour", "name": "Guided city tour", "category": "OTHER", "active": true, "availableTo": ["EXTERNAL", "STUDENT"] },
+    { "id": "ot-mentoring", "name": "Student mentoring session", "category": "OTHER", "active": true, "availableTo": ["STUDENT"] }
+  ],
+  "consents": [
+    {
+      "id": "privacy",
+      "text": "I agree that my personal data is processed for organizing the conference and that it is shared with the conference organizers.",
+      "mandatory": true
+    }
+  ]
+}
