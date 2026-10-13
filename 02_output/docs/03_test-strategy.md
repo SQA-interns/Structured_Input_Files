@@ -37,6 +37,16 @@ Nothing else is excluded. Test code (`backend/src/test/**`, `frontend/tests/**`,
 
 ## First complete run (before any fix)
 
+Phase 5, on the final phase 4 code, before any unit test or fix (logs `out/logs/05_first-run-*.log`):
+
+| Suite | Passed | Failed | Coverage (that suite alone) |
+|---|---|---|---|
+| backend acceptance (JUnit, Testcontainers) | 84 | 0 | lines 87.85 % (774/881), branches 68.33 % (192/281), JaCoCo 0.8.12 |
+| frontend acceptance (Vitest) | 10 | 0 | lines 74.85 % (125/167), branches 69.23 % (72/104), @vitest/coverage-v8 4.1.11 |
+| end-to-end (Playwright, local stack) | 5 | 0 | not instrumented (containers built from source) |
+
+No failure, so nothing to classify. The defect E2E-01 found in phase 4 (attachment line endings) was fixed in phase 4 (commit `fix: keep JSON attachment byte-equal to stored copy`).
+
 ## Final run (phase 6)
 
 ## Test measures (phase 5, updated in phase 6 only for a component that changed)
