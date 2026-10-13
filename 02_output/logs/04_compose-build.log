@@ -1,0 +1,134 @@
+ Image konferenca-registration-frontend Building 
+ Image konferenca-registration-backend Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.34kB done
+#1 DONE 0.0s
+
+#2 [frontend internal] load build definition from Dockerfile
+#2 transferring dockerfile: 552B done
+#2 DONE 0.0s
+
+#3 [backend internal] load build definition from Dockerfile
+#3 transferring dockerfile: 482B done
+#3 DONE 0.0s
+
+#4 [frontend internal] load metadata for docker.io/library/nginx:1.30.5-alpine
+#4 DONE 0.1s
+
+#5 [backend internal] load metadata for docker.io/library/eclipse-temurin:21.0.10_7-jre-alpine
+#5 DONE 0.1s
+
+#6 [frontend internal] load metadata for docker.io/library/node:24.13.0-alpine
+#6 DONE 0.1s
+
+#7 [backend internal] load .dockerignore
+#7 transferring context: 81B done
+#7 DONE 0.0s
+
+#8 [frontend internal] load .dockerignore
+#8 transferring context: 119B done
+#8 DONE 0.0s
+
+#9 [frontend internal] load build context
+#9 DONE 0.0s
+
+#10 [backend 1/4] FROM docker.io/library/eclipse-temurin:21.0.10_7-jre-alpine@sha256:ad0cdd9782db550ca7dde6939a16fd850d04e683d37d3cff79d84a5848ba6a5a
+#10 resolve docker.io/library/eclipse-temurin:21.0.10_7-jre-alpine@sha256:ad0cdd9782db550ca7dde6939a16fd850d04e683d37d3cff79d84a5848ba6a5a 0.1s done
+#10 DONE 0.1s
+
+#11 [backend internal] load build context
+#11 ...
+
+#12 [frontend stage-1 1/4] FROM docker.io/library/nginx:1.30.5-alpine@sha256:0985e772fb9f729e6fa0980da05fca5d9c468e870eed43071545afa9d2e27d94
+#12 resolve docker.io/library/nginx:1.30.5-alpine@sha256:0985e772fb9f729e6fa0980da05fca5d9c468e870eed43071545afa9d2e27d94 0.1s done
+#12 DONE 0.1s
+
+#13 [frontend build 1/9] FROM docker.io/library/node:24.13.0-alpine@sha256:cd6fb7efa6490f039f3471a189214d5f548c11df1ff9e5b181aa49e22c14383e
+#13 resolve docker.io/library/node:24.13.0-alpine@sha256:cd6fb7efa6490f039f3471a189214d5f548c11df1ff9e5b181aa49e22c14383e 0.1s done
+#13 DONE 0.1s
+
+#9 [frontend internal] load build context
+#9 transferring context: 1.47kB done
+#9 DONE 0.0s
+
+#14 [frontend build 3/9] COPY package.json package-lock.json .npmrc ./
+#14 CACHED
+
+#15 [frontend build 9/9] RUN npm run build
+#15 CACHED
+
+#16 [frontend build 4/9] RUN npm ci --ignore-scripts --no-audit --no-fund
+#16 CACHED
+
+#17 [frontend stage-1 2/4] COPY nginx.conf /etc/nginx/nginx.conf
+#17 CACHED
+
+#18 [frontend build 2/9] WORKDIR /app
+#18 CACHED
+
+#19 [frontend build 5/9] COPY index.html tsconfig.json vite.config.ts vitest.config.ts playwright.config.ts ./
+#19 CACHED
+
+#20 [frontend build 6/9] COPY src ./src
+#20 CACHED
+
+#21 [frontend build 7/9] COPY tests ./tests
+#21 CACHED
+
+#22 [frontend build 8/9] COPY e2e ./e2e
+#22 CACHED
+
+#23 [frontend stage-1 3/4] COPY --from=build /app/dist /usr/share/nginx/html
+#23 CACHED
+
+#24 [frontend stage-1 4/4] RUN mkdir -p /tmp/nginx && chown -R nginx:nginx /tmp/nginx /usr/share/nginx/html
+#24 CACHED
+
+#11 [backend internal] load build context
+#11 ...
+
+#25 [frontend] exporting to image
+#25 exporting layers done
+#25 exporting manifest sha256:88277808c1073078689204dd3e7ce880b1c0a6ef40b1e5483c587d48b88e6c2d done
+#25 exporting config sha256:7632bc350cbefcb06ae1b9b9a12308189f43c98cd91ec7084a3095d842168832 done
+#25 exporting attestation manifest sha256:9c6a72c4be0ece455e5d84b12e3768dcb14f823ceff26f73469d847d2b34ce97 0.0s done
+#25 exporting manifest list sha256:aef0125a63ddfc8cfcacc1b3451b84a0cb17132a55e7074909c82bafe04fa012 0.0s done
+#25 naming to docker.io/library/konferenca-registration-frontend:latest done
+#25 unpacking to docker.io/library/konferenca-registration-frontend:latest 0.0s done
+#25 DONE 0.2s
+
+#11 [backend internal] load build context
+#11 ...
+
+#26 [frontend] resolving provenance for metadata file
+#26 DONE 0.0s
+
+#11 [backend internal] load build context
+#11 transferring context: 80.24MB 3.6s done
+#11 DONE 3.6s
+
+#27 [backend 2/4] RUN addgroup -S app && adduser -S -G app -H -h /app app  && mkdir -p /app /data/json-copies  && chown app:app /data/json-copies
+#27 CACHED
+
+#28 [backend 3/4] WORKDIR /app
+#28 CACHED
+
+#29 [backend 4/4] COPY target/registration-backend-1.0.0.jar /app/app.jar
+#29 DONE 0.2s
+
+#30 [backend] exporting to image
+#30 exporting layers 2.1s done
+#30 exporting manifest sha256:bc23fcf4e969c932ecc67e393b1302a26f2a87c6000feb4129b88ddc9f035c23 0.0s done
+#30 exporting config sha256:43f0d9fde68b0b91a87c2c13589434daf8d15ea26ba9a018817bded01faed536 0.0s done
+#30 exporting attestation manifest sha256:ee9740ec6f548a2ddf367b1924b3838a6963222c509895f611dcd189c70d33e9 0.0s done
+#30 exporting manifest list sha256:a8f98153a516ac7076b555ef28725d45ed28762c395d2aeec11068cd60d8f077
+#30 exporting manifest list sha256:a8f98153a516ac7076b555ef28725d45ed28762c395d2aeec11068cd60d8f077 0.0s done
+#30 naming to docker.io/library/konferenca-registration-backend:latest done
+#30 unpacking to docker.io/library/konferenca-registration-backend:latest
+#30 unpacking to docker.io/library/konferenca-registration-backend:latest 0.4s done
+#30 DONE 2.7s
+
+#31 [backend] resolving provenance for metadata file
+#31 DONE 0.0s
+ Image konferenca-registration-frontend Built 
+ Image konferenca-registration-backend Built 
