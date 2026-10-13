@@ -19,7 +19,9 @@ final class MailTexts {
     text.append("your registration for ").append(conferenceName).append(" has been received.");
     text.append(NL).append(NL);
     text.append("Registration ID: ").append(r.id()).append(NL);
-    text.append("Registration type: ").append(r.type().label()).append(NL).append(NL);
+    text.append("Registration type: ").append(r.type().label()).append(NL);
+    typeFields(text, r);
+    text.append(NL);
     options(text, r);
     text.append(NL).append("Kind regards,").append(NL);
     text.append(conferenceName).append(" organizers").append(NL);
@@ -35,13 +37,7 @@ final class MailTexts {
     line(text, "First name", r.firstName());
     line(text, "Last name", r.lastName());
     line(text, "Email", r.email());
-    if (r.type() == RegistrationType.EXTERNAL) {
-      line(text, "Organization / institution", r.organization());
-    } else {
-      line(text, "Study institution", r.studyInstitution());
-      line(text, "Study programme", r.studyProgramme());
-      line(text, "Student ID", r.studentId());
-    }
+    typeFields(text, r);
     text.append(NL);
     options(text, r);
     text.append(NL).append("Consents:").append(NL);
@@ -67,6 +63,16 @@ final class MailTexts {
           .append(option.category().singular())
           .append(')')
           .append(NL);
+    }
+  }
+
+  private static void typeFields(StringBuilder text, Registration r) {
+    if (r.type() == RegistrationType.EXTERNAL) {
+      line(text, "Organization / institution", r.organization());
+    } else {
+      line(text, "Study institution", r.studyInstitution());
+      line(text, "Study programme", r.studyProgramme());
+      line(text, "Student ID", r.studentId());
     }
   }
 
