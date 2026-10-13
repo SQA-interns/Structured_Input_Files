@@ -1,0 +1,7 @@
+{
+  "options": [
+    { "id": "ws-ok", "name": "Workshop", "category": "WORKSHOP" },
+    { "id": "party-1", "name": "Party", "category": "PARTY" }
+  ],
+  "consents": [ { "id": "privacy", "text": "I agree.", "mandatory": true } ]
+}

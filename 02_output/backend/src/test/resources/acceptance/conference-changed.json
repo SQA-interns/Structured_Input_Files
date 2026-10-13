@@ -1,0 +1,13 @@
+{
+  "options": [
+    { "id": "ws-a", "name": "Workshop A", "category": "WORKSHOP", "active": false, "availableTo": ["EXTERNAL", "STUDENT"] },
+    { "id": "ws-ext", "name": "Workshop for externals", "category": "WORKSHOP", "active": true, "availableTo": ["EXTERNAL"] },
+    { "id": "ev-a", "name": "Evening event", "category": "EVENT", "active": true, "availableTo": ["EXTERNAL", "STUDENT"] },
+    { "id": "ev-new", "name": "Added hackathon", "category": "EVENT", "active": true, "availableTo": ["STUDENT"] },
+    { "id": "meal-a", "name": "Lunch", "category": "MEAL", "active": true },
+    { "id": "ot-a", "name": "City tour", "category": "OTHER", "active": true, "availableTo": ["EXTERNAL", "STUDENT"] }
+  ],
+  "consents": [
+    { "id": "privacy", "text": "I agree that my personal data is processed for organizing the conference and that it is shared with the conference organizers.", "mandatory": true }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "options": [
+    { "id": "ws-dup", "name": "Workshop one", "category": "WORKSHOP" },
+    { "id": "ws-dup", "name": "Workshop two", "category": "WORKSHOP" }
+  ],
+  "consents": [ { "id": "privacy", "text": "I agree.", "mandatory": true } ]
+}

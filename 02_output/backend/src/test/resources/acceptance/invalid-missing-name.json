@@ -1,0 +1,7 @@
+{
+  "options": [
+    { "id": "ws-ok", "name": "Workshop", "category": "WORKSHOP" },
+    { "id": "no-name", "category": "MEAL" }
+  ],
+  "consents": [ { "id": "privacy", "text": "I agree.", "mandatory": true } ]
+}
