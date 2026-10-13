@@ -51,7 +51,8 @@ class JsonCopyFailureAcceptanceTest {
   void ac00503JsonCopyFailureLeavesNoRegistration() {
     Api.Response response = api.postRegistration(Submissions.validExternal());
 
-    assertThat(response.status()).as("status").isNotEqualTo(201).isGreaterThanOrEqualTo(400);
+    // A storage failure is a server error (spec §4 step 5), never 201 and never a client error.
+    assertThat(response.status()).as("status").isNotEqualTo(201).isBetween(500, 599);
     assertThat(AcceptanceEnvironment.registrationCount()).as("database rows").isZero();
   }
 }
