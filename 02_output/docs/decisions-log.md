@@ -109,3 +109,12 @@
 - Options: 1. add `@types/node` 24.19.2 (MIT, matches Node 24.13.0) as an exact dev dependency, scanned in phase 6 (default); 2. exclude the e2e folder from the type check.
 - Human response: none
 - Resolution: 1 (tech-stack.md rule for unlisted dev-only tooling)
+
+## D-13: SpotBugs EI_EXPOSE_REP2 on constructor-injected Spring beans
+- Timestamp: 2026-10-13T00:18:46Z
+- Phase: 4
+- Type: non-blocking
+- Trigger: SpotBugs 4.10.4.1 (`spotbugs:check`, threshold Medium) reported 23 EI_EXPOSE_REP/EI_EXPOSE_REP2 findings. 20 were fixed with defensive copies (records, validator result). Three remain: `RegistrationExport` and `RegistrationStorage` keep their constructor-injected singleton collaborators (`RegistrationStore`, `JsonCopyStore`).
+- Options: 1. classify the three as Low (false positive: dependency injection by design), exclude only EI_EXPOSE_REP2 for these two classes in `backend/spotbugs-exclude.xml` (default); 2. copy or wrap the injected beans (no effect, beans are shared singletons).
+- Human response: none
+- Resolution: 1
