@@ -1,3 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <FindBugsFilter>
+  <!-- D-13: Spring beans keep their constructor-injected collaborators (singletons); storing
+       them is the intended design, not an exposed internal representation. -->
+  <Match>
+    <Bug pattern="EI_EXPOSE_REP2"/>
+    <Or>
+      <Class name="si.konferenca.registration.export.RegistrationExport"/>
+      <Class name="si.konferenca.registration.service.RegistrationStorage"/>
+    </Or>
+  </Match>
 </FindBugsFilter>
