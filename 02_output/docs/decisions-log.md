@@ -118,3 +118,12 @@
 - Options: 1. classify the three as Low (false positive: dependency injection by design), exclude only EI_EXPOSE_REP2 for these two classes in `backend/spotbugs-exclude.xml` (default); 2. copy or wrap the injected beans (no effect, beans are shared singletons).
 - Human response: none
 - Resolution: 1
+
+## D-14: end-to-end tests are not run inside the mutation runs
+- Timestamp: 2026-10-13T00:34:56Z
+- Phase: 5
+- Type: non-blocking
+- Trigger: `measurement-scope.md` ("Mutation score") asks for the full automated suite of each component. The 5 Playwright end-to-end tests run against the Docker images of both components; a mutant would need a rebuilt image and a restarted stack per mutant, which PIT and Stryker cannot do.
+- Options: 1. mutate with every other level: backend PIT runs all JUnit tests (unit, acceptance with Testcontainers, architecture); frontend Stryker runs all Vitest tests (unit, acceptance); record the e2e tests as not run (default); 2. drop the acceptance tests too (faster, less comparable).
+- Human response: none
+- Resolution: 1
