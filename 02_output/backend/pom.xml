@@ -182,7 +182,7 @@
         <version>${maven-pmd-plugin.version}</version>
         <configuration>
           <rulesets>
-            <ruleset>/rulesets/java/quickstart.xml</ruleset>
+            <ruleset>pmd-ruleset.xml</ruleset>
           </rulesets>
           <printFailingErrors>true</printFailingErrors>
           <linkXRef>false</linkXRef>
@@ -196,6 +196,7 @@
         <configuration>
           <effort>Max</effort>
           <threshold>Medium</threshold>
+          <excludeFilterFile>spotbugs-exclude.xml</excludeFilterFile>
         </configuration>
       </plugin>
     </plugins>
