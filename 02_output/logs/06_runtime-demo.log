@@ -1,0 +1,53 @@
+== 2026-10-13T21:59:23Z runtime demonstration (local stack)
+-- NFR-04 health and readiness (inside the backend container)
+{"status":"UP"}
+{"status":"UP"}
+backend Up 41 seconds (healthy)
+frontend Up 42 minutes (healthy)
+mailpit Up 42 minutes (healthy)
+postgres Up 42 minutes (healthy)
+-- DoD-P01..P03 state after the e2e run
+  db rows: 8
+  json copies: 8
+  mailpit messages: 16
+-- DoD-P04 export
+  with organizer credentials: HTTP 200 application/vnd.openxmlformats-officedocument.spreadsheetml.sheet 4724 bytes
+0000000   P   K
+  without credentials: HTTP 401
+  wrong password: HTTP 401
+-- SB-10 headers (frontend page)
+Server: nginx
+Content-Security-Policy: default-src 'self'; script-src 'self' https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/; frame-src https://www.google.com/recaptcha/ https://recaptcha.google.com/recaptcha/; connect-src 'self'; img-src 'self' data:; style-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+Referrer-Policy: no-referrer
+-- SB-10 headers (API)
+X-Content-Type-Options: nosniff
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+X-Frame-Options: DENY
+Content-Security-Policy: default-src 'none'; frame-ancestors 'none'
+Referrer-Policy: no-referrer
+Content-Security-Policy: default-src 'self'; script-src 'self' https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/; frame-src https://www.google.com/recaptcha/ https://recaptcha.google.com/recaptcha/; connect-src 'self'; img-src 'self' data:; style-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+Referrer-Policy: no-referrer
+-- SB-07/SB-01 malformed and unknown-property bodies
+{"message":"Validation failed","errors":[{"field":"body","message":"Malformed request."}]} HTTP 400
+{"message":"Validation failed","errors":[{"field":"body","message":"Malformed request."}]} HTTP 400
+-- SR-03 body size limit (20 000 bytes)
+  HTTP 413
+-- SR-03 rate limit form-config (61 requests in one minute)
+     56 200
+      5 429
+-- NFR-02 data survives recreation of every container
+  db rows: 8
+  json copies: 8
+  mailpit messages: 16
+  docker compose down done; containers: 0
+backend Up 22 seconds (healthy)
+frontend Up 11 seconds (healthy)
+mailpit Up 28 seconds (healthy)
+postgres Up 28 seconds (healthy)
+  db rows: 8
+  json copies: 8
+  mailpit messages: 0

@@ -5,7 +5,7 @@
 Updated at every gate and before any stop, so a fresh session can resume from here.
 
 - Workflow: single agent, spec-driven, phases 0-7 (`general/phases.md`)
-- Current phase: 6 (verify)
-- Last gate result: phase 5 gate passed: backend 200 tests, line 98.19 %, PIT 90.54 % (0 rounds); frontend 56 tests + 5 e2e, line 100 %, Stryker 92.58 % (1 round).
-- Next step: phase 6 verify-release: hashes, full suite and checks, runtime demonstration (NFR-02, NFR-04, DoD-P01..P04), scanners (Dependency-Check, npm audit, Semgrep, gitleaks), SB/SR evidence, leak check, trace-ac, report.
+- Current phase: 6 (verify) complete; next 7 (release)
+- Last gate result: phase 6 gate passed: DoD evidence recorded (DoD-08/09 in phase 7), no open Critical/High, hashes match, no secret leaked, backend re-measured once after F-01 (line 98.19 %, PIT 90.54 %).
+- Next step: phase 7: root README, backend and frontend READMEs, release notes with manual tests; check READMEs from a clean clone; run-summary.md; phase 7 end.
 - Waiting for the human on: nothing

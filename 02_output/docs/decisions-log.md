@@ -127,3 +127,12 @@
 - Options: 1. Measure backend coverage and PIT with the full JUnit suite (unit, integration, architecture, acceptance) and frontend coverage and Stryker with the full Vitest suite (unit, acceptance); record the e2e tests as run but not instrumented (default); 2. instrument the container JVM and replay e2e per mutant (hours per run, no gain: every e2e path is also exercised by the acceptance tests).
 - Human response: none
 - Resolution: 1; both components meet the gate without e2e coverage
+
+## D-15: Semgrep "basic authentication" on the organizer export (PA-04)
+- Timestamp: 2026-10-13T22:19Z
+- Phase: 6
+- Type: non-blocking
+- Trigger: Semgrep 1.177.0 rule `use-of-basic-authentication` (ERROR, High by `severity-scale.md`) on the organizer export in `docs/02_contracts/openapi.yaml` (F-02). Evidence matches PA-04: HTTP Basic is required by `architecture.md`/`security-requirements.md`; it is accepted only over HTTPS or from localhost (`OrganizerHttpsOnlyFilter`, AC-008-04); the password is kept only as a BCrypt hash (`SecurityConfiguration`); failed logins are rate limited (`RateLimitFilter`, export group).
+- Options: 1. Lower to Low and accept, citing PA-04 (default).
+- Human response: none
+- Resolution: 1
