@@ -2,33 +2,38 @@
 
 This setup is run three times, once each by kyuhi, tanej and tjan, in one shared environment, and the three runs are compared. Everything below is therefore the same for everyone; the only things that may differ are the four lines in the table "If you are not kyuhi".
 
-## 1. Prepare the run folder
-1. **Copy the template** (the folder `kyuhi_single-agent_sdd_v007_structure`) to a new folder named after the run, for example `kyuhi_single-agent_sdd_v007`. Open a terminal in it.
-2. **Initialise git on the run's branch and keep `.env` out of git before you create it.** The branch is named `<operator>/single-agent/sdd/v007` (for kyuhi: `kyuhi/single-agent/sdd/v007`).
-   - `git init -b kyuhi/single-agent/sdd/v007` (use your own operator name)
-   - then exclude `.env` (the template has no `.gitignore`; the agent writes one in phase 0):
+## 1. Prepare the run folder (clone, branch, .env)
+1. **Clone the template** into a new folder named after the run. `main` of the shared runs repository is the template; you never commit to it. Clone to a short path near the root of a drive (Windows stops at 260 characters in a path, and the run creates deep folders), then open a terminal in the new folder:
+   ```bash
+   git clone https://github.com/SQA-interns/Structured_Input_Files.git kyuhi_single-agent_sdd_v007
+   cd kyuhi_single-agent_sdd_v007
+   ```
+   Use your own operator name in the folder name. Sign in to GitHub when asked.
+2. **Create the run's branch** (it is the only branch you work and push on): `<operator>/single-agent/sdd/v007`, for kyuhi `kyuhi/single-agent/sdd/v007`:
+   ```bash
+   git switch -c kyuhi/single-agent/sdd/v007
+   ```
+3. **Keep `.env` out of git before you create it** (the template has no `.gitignore`; the agent writes one in phase 0):
    - Git Bash: `echo .env >> .git/info/exclude`
    - PowerShell: `Add-Content -Encoding ascii .git\info\exclude ".env"`
-3. **Copy the project inputs** `01_input/01_project/` and paste it into run directory.
-4. **Check `01_input/01_project/00_setup/run-config.md`.**
-      - operator `kyuhi`, 
-      - machine `kyuhiPC`, 
-      - plan `PRO`, 
-      - permission mode `auto`, 
-      - model `claude-opus-5-5`, 
+4. **Check `01_input/01_project/00_setup/run-config.md`** (the project inputs are already in the clone, there is nothing to copy).
+      - operator `kyuhi`,
+      - machine `kyuhiPC`,
+      - plan `PRO`,
+      - permission mode `auto`,
+      - model `claude-opus-5-5`,
       - effort `medium`
-      - Run label: **change it for every run** (`kyuhi_single-agent_sdd_v007`, then `v007`,...).
+      - Run label: **change it for every run** (`kyuhi_single-agent_sdd_v007`, then `v008`,...).
       - Run ID: **keep empty it generates by itself**
       - Starting commit: **keep empty it generates by itself**
 5. **Check the price row in `03_statistics/usage.md`.** It is pre-filled for Opus 5.5; change it only if the prices or the model changed.
 6. **Create `.env`**: copy `01_input/01_project/00_setup/secrets.env.example` to `.env` in the run folder and fill every value (database password, organizer login, NVD key). Never paste a secret into the chat.
-7. **Commit the inputs**: `git add -A`, `git commit -m "initial commit"`. Check that `git status` does not list `.env` (it must be clean) before anything is pushed.
-8. **Connect to the shared runs repository and push the initial setup** (so the start state is on record before the agent starts):
+7. **Commit your changes to `run-config.md` (and `usage.md`, if you changed it)** so the starting commit contains the right operator, machine, plan and label: `git add -A`, `git commit -m "run setup <run label>"`. If you changed nothing there is nothing to commit and the starting commit is the commit of `main` you cloned. Check that `git status` does not list `.env` before anything is pushed.
+8. **Push the run's branch** (so the start state is on record before the agent starts; `origin` is already set by the clone):
    ```bash
-   git remote add origin https://github.com/SQA-interns/Structured_Input_Files.git
    git push -u origin kyuhi/single-agent/sdd/v007
    ```
-   Use your own operator name in the branch. Every operator pushes to a branch of its own in this repository, never to `main`. Sign in to GitHub when asked. If `git remote add` says the remote already exists, check it with `git remote -v` and fix it with `git remote set-url origin https://github.com/SQA-interns/Structured_Input_Files.git`. Do not push before `.env` is confirmed absent from `git status`.
+   Use your own operator name in the branch. Every operator pushes to a branch of its own, never to `main`. Do not push before `.env` is confirmed absent from `git status`.
 9. **Set the same permission mode** you set in `run-config.md`.
 10. **Check the environment** (the same for all three operators): Docker Engine 29.8.1 and Compose 5.5.1, Node 24.13.0, Java 21, internet access for the scanners (NVD key in `.env`), no other heavy load on the machine during the run, one session only.
 
@@ -78,7 +83,7 @@ The measuring is automatic and nothing is typed or copied by hand: cost, tokens,
 
 3. Open `03_statistics/results/run-report.html`. At the top, "Quality gate" shows whether the run reached the gate (a run that did not is not comparable; write down which threshold failed). "Trust in the measurement" shows whether the evidence was complete (transcript found, clock tool used for every phase boundary, no idle time missing from the log).
 4. Commit the statistics: `git add -A`, `git commit -m "statistics <label>"`. `git status` must not list `.env`. Then push the statistics: `git push` (the branch is already connected from step 1.8).
-5. Hand in the run folder, or its branch and the commit SHAs from steps 1.7 and 4.4 (both pushed), plus a note on anything unusual (a repeated run, a usage limit, a manual change).
+5. Hand in the run folder, or its branch (pushed in steps 1.8 and 4.4) and the start and end commit shown in the Run section of `03_statistics/run-summary.md`, plus a note on anything unusual (a repeated run, a usage limit, a manual change).
 
 ## If something goes wrong
 | Problem | What to do |
