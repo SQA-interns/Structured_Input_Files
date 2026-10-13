@@ -1,6 +1,10 @@
 {
-  "_about": "One entry per attribute shown in the report. dir: lower = lower is better, higher = higher is better, target = should equal `target`, info = context only. goal says what we are trying to achieve; how says how it is computed. build-report.mjs computes the values, the page only renders this catalog.",
+  "_about": "One entry per attribute shown in the report. dir: lower = lower is better, higher = higher is better, target = should equal `target`, info = context only. goal says what we are trying to achieve; how says how it is computed. build-report.mjs computes the values, the page only renders this catalog. Quality is a gate, cost is the outcome: costToGate, gateMet and their companions are in the group 'gate'; test counts are cost drivers (info).",
   "groups": [
+    {
+      "id": "gate",
+      "label": "Quality gate: the same quality, and what it cost"
+    },
     {
       "id": "time",
       "label": "Time (human waiting excluded)"
@@ -31,6 +35,82 @@
     }
   ],
   "metrics": [
+    {
+      "id": "mutAdjFrontend",
+      "group": "gate",
+      "label": "Mutation score, frontend (adjusted)",
+      "unit": "pct",
+      "dir": "higher",
+      "goal": "As the backend row. Gate criterion.",
+      "how": "mutation.scoreAdjusted, else the raw score (noted)."
+    },
+    {
+      "id": "mutAdjBackend",
+      "group": "gate",
+      "label": "Mutation score, backend (adjusted)",
+      "unit": "pct",
+      "dir": "higher",
+      "goal": "Killed plus survivors justified as equivalent, over all mutants, full suite and the project's scope. Gate criterion. Compare only above the threshold as a tie-breaker.",
+      "how": "mutation.scoreAdjusted, else the raw score (noted)."
+    },
+    {
+      "id": "testsAfterFirstMutation",
+      "group": "gate",
+      "label": "Tests added after the first mutation run",
+      "unit": "count",
+      "dir": "lower",
+      "goal": "The iteration share of the test count: tests written only to reach the gate after measuring.",
+      "how": "Final passing tests minus the tests at the first mutation run (codeMetrics.gate.testsAtFirstMutation)."
+    },
+    {
+      "id": "mutationRounds",
+      "group": "gate",
+      "label": "Mutation survivor rounds",
+      "unit": "count",
+      "dir": "lower",
+      "goal": "How often the first full mutation run was not enough. 0 = the tests written before measuring already met the gate. Exposes first-pass luck.",
+      "how": "Sum of codeMetrics.gate.mutationRounds over the components."
+    },
+    {
+      "id": "gateOvershoot",
+      "group": "gate",
+      "label": "Gate overshoot (points)",
+      "unit": "count",
+      "dir": "lower",
+      "goal": "Quality above the threshold is not needed and cost money. Average points above the threshold over the criteria that passed. Lower means the run stopped at the gate.",
+      "how": "Mean of value minus threshold over passed coverage and mutation criteria."
+    },
+    {
+      "id": "gateShortfall",
+      "group": "gate",
+      "label": "Gate shortfall (points)",
+      "unit": "count",
+      "dir": "target",
+      "target": 0,
+      "goal": "How far the run is below the thresholds, summed over the coverage and mutation criteria it missed. Target: zero.",
+      "how": "Sum of threshold minus value for each missed criterion."
+    },
+    {
+      "id": "gateMet",
+      "group": "gate",
+      "label": "Quality gate met",
+      "unit": "yesno",
+      "dir": "target",
+      "target": 1,
+      "headline": true,
+      "goal": "All runs of a setup must reach the same quality: line coverage and adjusted mutation score at or above the thresholds per component, final run green, no open Critical or High finding. A run that misses it is not comparable.",
+      "how": "Computed from the run's coverage, adjusted mutation score, final run and open findings against the thresholds of quality-requirements.md (history: the thresholds set in the config, applied afterwards)."
+    },
+    {
+      "id": "costToGate",
+      "group": "gate",
+      "label": "Cost to reach the gate ($)",
+      "unit": "usd",
+      "dir": "lower",
+      "headline": true,
+      "goal": "The objective. What the run cost, human waiting excluded, to deliver a result that meets the quality gate. Shown only when the gate was met: a run below the gate did not deliver the same quality and cannot be compared.",
+      "how": "Cost excl. waits, only when every gate criterion that could be assessed passed."
+    },
     {
       "id": "agentMin",
       "group": "time",
@@ -101,8 +181,8 @@
       "group": "time",
       "label": "Agent minutes per passing test",
       "unit": "min2",
-      "dir": "lower",
-      "goal": "Time efficiency against what was delivered. A crude proxy: tests differ in value.",
+      "dir": "info",
+      "goal": "Not a goal: dividing by the test count would reward writing more tests. Shown for context only.",
       "how": "Agent time divided by the final passing test count."
     },
     {
@@ -122,7 +202,7 @@
       "unit": "usd",
       "dir": "info",
       "goal": "What the run actually cost. Higher than the line above only when waits caused cache rebuilds.",
-      "how": "Tokens times list prices (usage.costUsd), or the usage panel where no transcript exists."
+      "how": "Tokens times list prices (usage.costUsd); the run-log's own figure where no transcript exists."
     },
     {
       "id": "rebuildCost",
@@ -139,8 +219,8 @@
       "group": "cost",
       "label": "Cost per passing test",
       "unit": "usd3",
-      "dir": "lower",
-      "goal": "Cost efficiency against what was delivered. A crude proxy: tests differ in value.",
+      "dir": "info",
+      "goal": "Not a goal: dividing by the test count would reward writing more tests. Shown for context only.",
       "how": "Cost excl. waits divided by the final passing test count."
     },
     {
@@ -203,7 +283,7 @@
       "label": "Calls above 150k context",
       "unit": "pct",
       "dir": "lower",
-      "goal": "The usage panel warns about long contexts; this is the share of calls in that range.",
+      "goal": "Long contexts are expensive; this is the share of calls in that range.",
       "how": "Calls with more than 150k context tokens divided by all calls."
     },
     {
@@ -223,6 +303,15 @@
       "dir": "lower",
       "goal": "How often the human had to act or answer.",
       "how": "Entries in humanInterventions."
+    },
+    {
+      "id": "approvalPrompts",
+      "group": "flow",
+      "label": "Approval prompts",
+      "unit": "count",
+      "dir": "lower",
+      "goal": "How often the human had to approve a tool call; everything else was decided by the permission mode or the classifier.",
+      "how": "Permission decisions in the transcript whose source is not the configuration."
     },
     {
       "id": "decisions",
@@ -285,8 +374,8 @@
       "group": "quality",
       "label": "Passing tests (final run)",
       "unit": "count",
-      "dir": "higher",
-      "goal": "Breadth of what was verified. Only meaningful with zero failures and next to the mutation score.",
+      "dir": "info",
+      "goal": "A cost driver, not a quality measure: the number of tests the run needed to reach the quality gate. More tests are not better and fewer are not better; compare quality by the gate and cost by the cost rows.",
       "how": "finalTestRun.passed, all levels."
     },
     {
@@ -339,19 +428,19 @@
     {
       "id": "mutBackend",
       "group": "quality",
-      "label": "Mutation score, backend",
+      "label": "Mutation score, backend (raw)",
       "unit": "pct",
-      "dir": "higher",
-      "goal": "How well the tests catch changed code. Scores are comparable only for the same scope (see notes).",
+      "dir": "info",
+      "goal": "Killed mutants over all mutants, with the project's scope. Context: the gate uses the adjusted score. Comparable only for the same scope (see notes).",
       "how": "From codeMetrics or the run summary, with scope."
     },
     {
       "id": "mutFrontend",
       "group": "quality",
-      "label": "Mutation score, frontend",
+      "label": "Mutation score, frontend (raw)",
       "unit": "pct",
-      "dir": "higher",
-      "goal": "As above for the frontend.",
+      "dir": "info",
+      "goal": "Killed mutants over all mutants, with the project's scope. Context: the gate uses the adjusted score. Comparable only for the same scope (see notes).",
       "how": "From codeMetrics or the run summary."
     },
     {
@@ -360,7 +449,7 @@
       "label": "Line coverage, backend",
       "unit": "pct",
       "dir": "higher",
-      "goal": "Share of code the tests run. Compare only at the same level (unit, integration or all).",
+      "goal": "Share of backend code the tests run, all levels together. Part of the quality gate.",
       "how": "From codeMetrics or the run summary."
     },
     {
@@ -369,7 +458,7 @@
       "label": "Line coverage, frontend",
       "unit": "pct",
       "dir": "higher",
-      "goal": "As above for the frontend.",
+      "goal": "Share of frontend code the tests run, all levels together. Part of the quality gate.",
       "how": "From codeMetrics or the run summary."
     },
     {
@@ -465,16 +554,6 @@
       "how": "Cost between commits divided by committed lines, times 100."
     },
     {
-      "id": "panelDiffPct",
-      "group": "checks",
-      "label": "Cost difference to the harness's own total",
-      "unit": "pct",
-      "dir": "target",
-      "target": 0,
-      "goal": "Our calculation from the transcript against the cost the harness itself recorded. Within 1.5 % the measuring can be trusted; more points to sub-agents, resumed sessions or a missing price.",
-      "how": "Absolute difference between the cost-state record and the transcript cost, as a percentage."
-    },
-    {
       "id": "subagentCost",
       "group": "checks",
       "label": "Cost of sub-agents",
@@ -526,7 +605,7 @@
       "label": "Test lines",
       "unit": "count",
       "dir": "info",
-      "goal": "Size of the test code.",
+      "goal": "Size of the test code. A cost driver, not a quality measure.",
       "how": "cloc, backend plus frontend."
     },
     {
@@ -535,8 +614,35 @@
       "label": "Test to production lines",
       "unit": "ratio",
       "dir": "info",
-      "goal": "Depth of testing per line of product code.",
+      "goal": "Test lines per production line. A cost driver, not a quality measure.",
       "how": "Test lines divided by production lines."
+    },
+    {
+      "id": "testsPer1000Loc",
+      "group": "size",
+      "label": "Tests per 1000 production lines",
+      "unit": "count",
+      "dir": "info",
+      "goal": "Size of the suite relative to the product, a cost driver.",
+      "how": "Final passing tests divided by production lines, times 1000."
+    },
+    {
+      "id": "unitTests",
+      "group": "size",
+      "label": "Unit tests (final run)",
+      "unit": "count",
+      "dir": "info",
+      "goal": "Unit tests needed to reach the gate. Acceptance and end-to-end tests are fixed by the inputs.",
+      "how": "finalTestRun.byLevel.unit."
+    },
+    {
+      "id": "e2eTests",
+      "group": "size",
+      "label": "End-to-end tests (final run)",
+      "unit": "count",
+      "dir": "info",
+      "goal": "Fixed by the scenario list of the inputs; a different number means the scenarios were split or added.",
+      "how": "finalTestRun.byLevel.e2e."
     }
   ]
 }

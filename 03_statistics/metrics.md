@@ -28,18 +28,18 @@ Phase 0, first action: `node 03_statistics/tools/stat.mjs init`. It creates `run
 | `fixLoops[]` | each verify → fix → re-verify loop | `{loop, findings, category, needsHuman, change, start, end}`. `category`: `test-gap`, `security-config`, `dependency`, `defect`, `process`, `tooling`. `start` is the first fix action, `end` the clean re-check (UTC, `date -u +%FT%TZ`) | ↓ minutes per loop; a loop that repeats across runs belongs in the template |
 | `decisions[]` | each decision record | `{id, type, phase, category, start, end}`; `type` `blocking` or `non-blocking`; `category`: `environment`, `dependency`, `security-finding`, `frozen-test`, `requirement`, `other`; `end` = when resolved | ↓ blocking; a category that repeats across runs can be answered in advance |
 | `divergences[]` | whenever the run departs from `AGENTS.md`, `working-rules.md`, `phases.md` or the stack | `{phase, ref, divergence}`; includes steps done without the required question, scope reduced, versions replaced | = 0; each one makes the run less comparable |
-| `codeMetrics` | phase 6 | per component: `productionLoc`, `testLoc`, `lineCoverage` and `branchCoverage` as `{unit, nonUnit, all}`, `mutation` as `{score, scoreCovered, killed, total, covered, scope, tests, tool, excluded}`, plus complexity and duplication; scope, level and counting as in `general/quality/measurement-scope.md` | ↑ coverage and mutation score (always with scope); = 0 duplication |
+| `codeMetrics` | phase 5, updated in phase 6 for a changed component | per component: `productionLoc`, `testLoc`, `lineCoverage` and `branchCoverage` as `{unit, nonUnit, all}`, `mutation` as `{score, scoreAdjusted, scoreCovered, killed, equivalent, total, covered, scope, tests, tool, excluded}`, plus complexity and duplication; scope, level and counting as in `general/quality/measurement-scope.md` | ↑ coverage and mutation score (always with scope); = 0 duplication |
+| `codeMetrics.gate` | phase 5, updated in phase 6 | the quality gate of `general/quality/measurement-scope.md`: `thresholds`, `perComponent` (`lineMet`, `mutationMet`, shortfalls in points), `mutationRounds` and `testsAtFirstMutation` per component, `met` | `met` true; few rounds |
 
 `commits[]` and `commitSummary` are not recorded by the agent: the post-run step reads them from `git log`.
 
 ## 2. Post-run session → `run-log.json`, `results/`, `data/`
 
-Started after the run ends, in a new session whose only task is: "Run `node 03_statistics/tools/build-report.mjs --run 03_statistics` and report what it prints. Do not change anything else." Before it, run `/cost` once in the finished session (the plan limits are then captured in the transcript). The script:
+Started automatically by the Stop and SessionEnd hooks in `.claude/settings.json` once `run-log.json` has an `end`; if the hooks did not run, in a new session whose only task is: "Run `node 03_statistics/tools/build-report.mjs --run 03_statistics` and report what it prints. Do not change anything else." Nothing is typed in by hand. The script:
 
 1. measures the run from the session transcript(s), the sub-agent transcripts next to them and `git log`, and stores `time`, `usage`, `environment`, `commits`, `commitSummary` in `run-log.json`;
 2. copies the transcripts to `03_statistics/data/` (committed with the run, so the measuring can be repeated on any machine; the recorded path is used when it exists, the copy otherwise);
-3. writes everything it generates to `03_statistics/results/`: `run-report.html` (every attribute with goal, direction and value), `measurements.json`, `usage-panel.md`, `commits.csv`, `transcript.md` (readable session, needs Python 3);
-4. fills the empty cells of the panel table in `usage.md` from the harness's own accounting (the `cost-state` record in the transcript).
+3. writes everything it generates to `03_statistics/results/`: `run-report.html` (every attribute with goal, direction and value), `measurements.json`, `usage-summary.md`, `commits.csv`, `transcript.md` (readable session, needs Python 3);
 
 Options: `--no-write` leaves `run-log.json` and `usage.md` alone, `--no-md` skips `transcript.md`, `--no-backup` skips `data/`. If `transcript` is missing from `run-log.json`, find the session with `py 03_statistics/tools/claude_chat_to_md.py --list`, put the path of its `.jsonl` in `transcript` (a resumed run lists every session file in `transcripts`) and run the script again. Without any transcript the report still builds from phases and recorded waits; cost, tokens, model and tool time, context and cache rebuilds are then not recorded.
 
@@ -57,13 +57,12 @@ Options: `--no-write` leaves `run-log.json` and `usage.md` alone, `--no-md` skip
 | `usage.costUsdExclWaits` | `costUsd` minus the cache rebuilds that followed a wait over an hour | ↓ (the comparison figure) |
 | `usage.cacheRebuilds[]` | each cache write above 150k tokens, the wait before it and its extra cost | = none caused by waits |
 | `usage.subagents` | sub-agent calls, transcripts found, their cost (inside `costUsd`) | i; a call without a transcript is a measuring gap |
-| `usage.panel`, `usage.check` | the harness's own totals (`cost-state`) and the difference to our calculation | difference within 1.5 % |
 | `usage.byPhase[]` | calls, tokens, cost and average context per phase | ↓ in late phases, where context is largest |
 | `usage.context` | peak and average context tokens per call, share of calls above 150k | ↓ (every call re-reads the whole context) |
 | `usage.toolTimeByCategory` | minutes and calls per command class (backend build, mutation, e2e, …) | ↓ for the largest classes |
 | `commits[]` | per commit: phase, type, files, changed lines (without logs, lock files, generated folders), concerns touched, size and message checks, minutes since the previous commit (waits removed), model calls and cost since the previous commit | commits small and finished: ≤ 15 files and ≤ 400 lines, one concern, `<type>: <summary> (IDs)` |
 | `commitSummary` | counts, median and maximum size, shares over the size guide, mixed, with a correct message, in a burst (within a minute of the previous), cost and minutes between commits, cost per 100 lines | ↓ oversize, mixed and burst; ↑ correct messages |
-| `environment` | operator, machine, plan, permission mode (from `run-config.md`), operating system and tool versions (at the start), harness version, entry point, models, effort and permission modes seen (from the transcripts), measuring host | i; needed to explain differences between runs |
+| `environment` | operator, machine, plan, permission mode (from `run-config.md`), the host the run started on (account, CPU, memory, working directory; read by `stat.mjs init`), operating system and tool versions (at the start), harness version, entry point, models, effort and permission modes seen (from the transcripts), measuring host | i; needed to explain differences between runs |
 
 ## 3. Human → `usage.md`
 

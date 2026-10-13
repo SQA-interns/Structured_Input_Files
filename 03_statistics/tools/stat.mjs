@@ -99,6 +99,8 @@ function init() {
     operator: cfg["Operator"] || null, machine: cfg["Machine"] || null, plan: cfg["Plan"] || null, permissionMode: cfg["Permission mode"] || null,
     os: { platform: process.platform, release: os.release(), arch: os.arch() }, shell: process.env.SHELL || process.env.ComSpec || null,
     timezone: Intl.DateTimeFormat().resolvedOptions().timeZone, utcOffsetMin: -t.getTimezoneOffset(), tools: toolVersions(), capturedAt: now(),
+    // read from the machine the run happens on (operator, machine, plan and permission mode above are only what run-config.md declares)
+    host: { hostname: os.hostname(), account: os.userInfo().username, cpuModel: (os.cpus()[0] || {}).model || null, cpus: os.cpus().length, memoryGb: Math.round(os.totalmem() / 2 ** 30), workingDir: root },
   };
   writeLog(log);
   console.log(`run-log.json created\nrunId     ${runId}\nstart     ${log.start}\ncommit    ${log.startCommit || "(not a git repository yet)"}\ntranscript ${tr || "(none found)"}`);

@@ -95,7 +95,14 @@
   "codeMetrics": {
     "components": [],
     "complexity": null,
-    "duplicationPct": null
+    "duplicationPct": null,
+    "gate": {
+      "thresholds": { "lineCoverage": null, "mutationScore": null },
+      "perComponent": {},
+      "mutationRounds": {},
+      "testsAtFirstMutation": {},
+      "met": null
+    }
   },
   "commits": [],
   "commitSummary": null,
@@ -139,15 +146,13 @@
       "pctCallsOver150k": null
     },
     "toolTimeByCategory": {},
-    "panel": null,
     "subagents": {
       "used": null,
       "transcripts": null,
       "modelCalls": null,
       "costUsd": null,
       "outputTokens": null
-    },
-    "check": null
+    }
   },
   "environment": {
     "operator": null,
@@ -163,6 +168,8 @@
     "models": [],
     "effort": [],
     "permissionModes": [],
+    "host": null,
+    "workingDirs": [],
     "postRunHost": null,
     "capturedAt": null
   },

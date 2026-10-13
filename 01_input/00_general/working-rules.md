@@ -17,7 +17,7 @@ Ask all open questions of a phase in one message. While waiting, finish work tha
 
 When a requirement allows two behaviours a user would notice, choose the more conservative one, record it as "pending review", and continue.
 
-Also non-blocking, record and continue: a pinned tool that runs but reports another version; a scanner analyser disabled for lack of credentials; dev-only tooling added under the `tech-stack.md` rule.
+Also non-blocking, record and continue: a finding listed in project/00_setup/pre-approved.md whose evidence matches (cite its ID, apply its action, do not ask); a pinned tool that runs but reports another version; a scanner analyser disabled for lack of credentials; dev-only tooling added under the `tech-stack.md` rule.
 
 ## Decision record
 
@@ -41,7 +41,7 @@ Append each decision to `docs/decisions-log.md` in this format:
 
 | Prefix | Meaning | Defined in |
 |---|---|---|
-| `US-nnn` / `AC-nnn-nn` | User story / acceptance criterion | `project/01_requirements/user-stories.md` / `docs/01_acceptance-criteria.md` |
+| `US-nnn` / `AC-nnn-nn` | User story / acceptance criterion | `project/01_requirements/user-stories.md` / `project/01_requirements/acceptance-criteria.md` |
 | `BR-nn` / `OQ-nn` | Business rule / open question | `project/01_requirements/` |
 | `AR-nn` | Architecture constraint | `project/02_design/architecture.md` |
 | `SB-nn` / `SR-nn` | Security baseline / project security requirement | `general/security/` / `project/02_design/security-requirements.md` |
@@ -54,13 +54,14 @@ Tests, commits and findings reference these IDs.
 
 ## Commits
 
-Commit as a human developer would: small, finished steps, never half a project.
+Commit as a human developer would: small, finished steps, never half a project. The report measures every point below on every commit, so each is a check, not advice.
 
-- One commit = one logical change that can be reverted alone. Commit when it is done and its checks pass; do not batch.
-- At most about 15 files or 400 changed lines, not counting logs, lock files and generated files; otherwise split, or state in the message why it cannot be. Never a whole phase or component.
-- Keep code, tests, documents, dependency or build changes, and each fix (`F-nn`) in separate commits.
+- One commit = one logical change that can be reverted alone. Commit it when its checks pass, **before** starting the next change. Never collect several changes in the working tree and split them afterwards with commits in a row (commits less than 60 seconds apart are counted as a burst).
+- Size: at most 15 files and 400 changed lines, not counting logs, lock files and generated files. Check with `git diff --cached --shortstat` before every commit and split when over, for example by layer (domain and use case, then persistence and adapters, then web/API, then UI), or by test class group. "State why it cannot be split" is only for a single generated file.
+- One category per commit: code, tests, documents, or build/dependency files. Never mix them, and never add a document change (decision log, progress, README) to a code, test or build commit. A component skeleton is two commits: the build file with its pinned dependencies (`build`), then the source files (`chore`). A test harness or a docker/compose file is its own commit.
+- Each fix (`F-nn`) is its own commit.
 - The build passes at every commit and no previously passing test fails. Frozen acceptance and end-to-end tests of behaviour not yet built may fail.
-- Message: `<type>: <summary> (IDs)`; type `feat`, `test`, `fix`, `refactor`, `docs`, `build` or `chore`; imperative, at most 72 characters.
+- Message: `<type>: <summary> (IDs)`; type `feat`, `test`, `fix`, `refactor`, `docs`, `build` or `chore`; imperative; the **whole subject line including the IDs is at most 72 characters**. Name at most three IDs or one range (`AC-003-01..03`) in the subject; put the rest in the message body. Example: `feat: store registrations in one transaction (US-001, AC-001-01..07)`.
 - Units per phase: `general/phases.md`. Working tree clean at every gate, apart from `03_statistics/` (the clock tool changes `run-log.json` all the time; do not commit it phase by phase).
 - Do not squash, rebase or rewrite history.
 

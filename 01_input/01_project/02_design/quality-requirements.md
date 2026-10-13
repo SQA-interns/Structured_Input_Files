@@ -15,11 +15,13 @@ Adds to `general/quality/` (definition of done, test strategy, severity scale); 
 
 ## Thresholds
 
-| Measure | Threshold or "record only" |
+These thresholds are the **quality gate** of the project: the same in every run, per component (backend, frontend), over the scope and with the tests defined in `general/quality/measurement-scope.md`. The agent works until each component meets them, then stops adding tests for that component (rules and stop rule: "Quality gate" in `measurement-scope.md`). The rows below are read by `tools/build-report.mjs`; keep the format `>= <number> %`.
+
+| Measure | Threshold |
 |---|---|
-| Line coverage | record only |
+| Line coverage (all levels together) | >= 95 % |
+| Mutation score (adjusted) | >= 90 % |
 | Branch coverage | record only |
-| Mutation score | record only; a surviving mutant that a test should plausibly have caught is a finding |
 
 ## Mutation scope
 
@@ -27,6 +29,10 @@ The paths or packages whose code is mutated, the same in every run of this proje
 
 | Component | Paths or packages | Exclusions and reason |
 |---|---|---|
+| backend | `si.konferenca.registration.**` (all production code under the root package, including validation, security, persistence, business-rule, mail and export code) | The `@SpringBootApplication` entry-point class (no logic); generated code. Nothing else may be excluded. |
+| frontend | `src/**/*.{ts,tsx,js,jsx,vue}` (all production source of the frontend) | Test files, type-declaration files (`*.d.ts`), the bootstrap file that only mounts the app, generated code. Nothing else may be excluded. |
+
+The scope is all production code of both components, so mutation scores are on the same basis in every run. It is the root package and the source folder, not a list of sub-packages, because the agent chooses the sub-packages in phase 2. Each component's full automated suite runs against it (`measurement-scope.md`, "Mutation score").
 
 ## Additional done criteria
 

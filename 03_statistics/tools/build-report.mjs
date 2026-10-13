@@ -11,8 +11,8 @@
 //         1. measures the run (transcripts, sub-agents, git) and stores time, usage, environment and commits in run-log.json,
 //         2. backs up the transcripts to <03_statistics>/data/ (committed with the run),
 //         3. writes everything it generated to <03_statistics>/results/:
-//            run-report.html, measurements.json, usage-panel.md, commits.csv, transcript.md (needs Python 3),
-//         4. fills the empty cells of the usage panel table in usage.md from the harness's own numbers.
+//            run-report.html, measurements.json, usage-summary.md, commits.csv, transcript.md (needs Python 3),
+//         (every number comes from the session transcript and the run-log: nothing is typed or copied by hand)
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -63,52 +63,68 @@ function backupTranscripts(dataDir, files) {
   return { files: done, megabytes: r1(bytes / 1048576) };
 }
 
-const modelRow = (m, u) => `${m}: input ${u.inputTokens.toLocaleString("en-US")}, output ${u.outputTokens.toLocaleString("en-US")}, cache read ${u.cacheReadTokens.toLocaleString("en-US")}, cache write ${u.cacheWriteTokens.toLocaleString("en-US")} ($${u.costUsd.toFixed(2)})`;
+const modelRow = (m, u) => `${m}: input ${u.inputTokens.toLocaleString("en-US")}, output ${u.outputTokens.toLocaleString("en-US")}, cache read ${u.cacheReadTokens.toLocaleString("en-US")}, cache write ${u.cacheWriteTokens.toLocaleString("en-US")}${u.costUsd != null ? ` ($${u.costUsd.toFixed(2)})` : ""}`;
 
-function usagePanelMd(r, log) {
-  const p = r.panel, u = r.usage;
-  const L = [`# Usage panel (generated)`, ``, `> Written by \`tools/build-report.mjs\` · Source: ${p ? p.source : "none"} · Run: ${log.runId}`, ``];
-  if (!p) return L.concat(["No `cost-state` record in the transcript, so there is no panel to reproduce.", ""]).join("\n");
-  L.push(`| Item | Value |`, `|---|---|`,
-    `| Cost shown | $${p.costUsd.toFixed(2)} |`,
-    `| API time | ${fmtMin(p.apiMin)} (without retries ${fmtMin(p.apiMinWithoutRetries)}) |`,
-    `| Tool time (panel) | ${fmtMin(p.toolMin)} |`,
-    `| Session wall time | ${fmtMin(p.sessionWallMin)}${p.sessions > 1 ? ` (${p.sessions} sessions)` : ""} |`,
-    `| Lines added / removed | ${p.linesAdded.toLocaleString("en-US")} / ${p.linesRemoved.toLocaleString("en-US")} |`,
-    `| Cost from the transcript | $${u.costUsd.toFixed(2)}${u.check.afterRunCalls ? ` + $${u.check.afterRunCostUsd.toFixed(2)} for ${u.check.afterRunCalls} call(s) after the run's end` : ""} (difference ${u.check.diffUsd >= 0 ? "+" : ""}$${u.check.diffUsd.toFixed(2)}, ${u.check.diffPct} %, ${u.check.verdict}) |`);
-  if (p.plan) L.push(`| Plan limits used (session, week) | ${p.plan.sessionPctUsed ?? "?"} %, ${p.plan.weekPctUsed ?? "?"} % (read in the session at ${p.plan.capturedAt}) |`, `| Share of usage at over 150k context (panel text) | ${p.plan.pctUsageOver150k ?? "?"} % |`);
-  L.push(`| Approval prompts | not recorded in transcripts: a human adds it to \`usage.md\` |`, ``, `## Tokens per model`, ``, ...Object.entries(p.modelUsage).map(([m, x]) => `- ${modelRow(m, x)}`), ``);
-  if (p.plan?.raw) L.push(`## Raw panel text (from the session)`, ``, "```text", p.plan.raw, "```", ``);
+function usageTable(u, t, pd) {
+  return [
+    "| Item | Value |", "|---|---|",
+    "| Cost (calculated from tokens and the prices in usage.md) | $" + u.costUsd.toFixed(2) + " ($" + u.costUsdExclWaits.toFixed(2) + " without the cache rebuilds caused by waits) |",
+    "| Model calls / tool calls | " + u.modelCalls + " / " + (u.toolCalls?.total ?? "–") + " |",
+    "| Model time / tool time / agent time | " + fmtMin(t.modelMin) + " / " + fmtMin(t.toolMin) + " / " + fmtMin(t.agentMin) + " |",
+    "| Session wall time | " + fmtMin(t.wallMin) + " |",
+    "| Share of the cost at over 150k context | " + (u.context?.costPctOver150k ?? "–") + " % |",
+    "| Context per call (average / peak) | " + Math.round((u.context?.avgTokens || 0) / 1000) + "k / " + Math.round((u.context?.peakTokens || 0) / 1000) + "k |",
+    "| Approval prompts that needed a human | " + (pd && pd.total ? pd.byHuman + " (of " + pd.total + " permission decisions; " + pd.rejected + " rejected)" : "not recorded") + " |",
+  ];
+}
+
+function usageSummaryMd(r, log) {
+  const u = r.usage, t = r.time || {}, pd = r.environment?.permissionDecisions;
+  const L = ["# Usage summary (generated)", "", "> Written by `tools/build-report.mjs` from the session transcript · Run: " + log.runId, ""];
+  if (!u) return L.concat(["No transcript was found, so there is no usage to summarise. Put the path of the session file in `run-log.json` → `transcript` and run the report again."]).join("\n");
+  L.push(...usageTable(u, t, pd), "", "## Tokens per model", "", ...Object.entries(u.models || {}).map(([m, x]) => "- " + modelRow(m, x)), "");
   return L.join("\n");
+}
+
+// run-summary.md: the sections between <!-- auto:NAME --> markers are written here, after the run, so the agent never has to guess
+// them (its own last commit comes before this report). Anything outside the markers stays as the agent wrote it.
+function fillSummary(file, r, log) {
+  if (!fs.existsSync(file)) return { filled: [], missing: [] };
+  let text = fs.readFileSync(file, "utf8");
+  const t = r.time || {}, cs = r.commitSummary, filled = [], missing = [];
+  const sha = (s) => (s ? String(s).slice(0, 7) : "not set");
+  const blocks = {};
+  blocks.run = ["| Item | Value |", "|---|---|",
+    "| Run id | " + log.runId + " |", "| Model, effort | " + [log.model, log.effort].filter(Boolean).join(", ") + " |", "| Template version | " + (log.templateVersion ?? "–") + " |",
+    "| Start commit | " + sha(log.startCommit) + " |", "| End commit | " + sha(log.finalCommit) + " |", "| Start, end | " + (log.start ?? "–") + ", " + (log.end ?? "–") + " |"];
+  const rows = (t.byPhase || []).map((p) => "| " + p.phase + " " + (p.name || "") + " | " + fmtMin(p.wallMin) + " | " + fmtMin(p.waitMin) + " | " + fmtMin(p.agentMin) + " |");
+  blocks.time = ["| Phase | Wall | Waiting for the human | Agent time |", "|---|---|---|---|", ...rows,
+    "| **Total** | **" + fmtMin(t.wallMin) + "** | **" + fmtMin(t.humanWaitMin) + "** | **" + fmtMin(t.agentMin) + "** |", "",
+    "Waits over one hour: " + (t.waitsOver60Min ? t.waitsOver60Min + " (see the report)" : "none") + "."];
+  blocks.commits = cs && cs.count ? ["| Measure | Value |", "|---|---|",
+    "| Commits | " + cs.count + " (" + Object.entries(cs.byType || {}).map(([k, v]) => k + " " + v).join(", ") + ") |",
+    "| Changed lines per commit: median / 90th percentile / largest | " + cs.linesMedian + " / " + cs.linesP90 + " / " + cs.linesMax + " |",
+    "| Files per commit (median) | " + cs.filesMedian + " |",
+    "| Over the size guide / mixing concerns / in a burst | " + cs.pctOversize + " % / " + cs.pctMixed + " % / " + cs.pctBurst + " % |",
+    "| Subject follows the format and the 72-character limit | " + cs.pctMessageOk + " % |",
+    "| Active minutes between commits (median / longest gap) | " + cs.activeMinPerCommitMedian + " / " + cs.longestActiveGapMin + " |",
+    "| Cost per commit (median) / per 100 changed lines | " + (cs.costPerCommitMedian != null ? "$" + cs.costPerCommitMedian : "–") + " / " + (cs.costPer100Lines != null ? "$" + cs.costPer100Lines : "–") + " |"]
+    : ["The commits could not be read (no git history between the start and the end commit)."];
+  blocks.usage = r.usage ? usageTable(r.usage, t, r.environment?.permissionDecisions) : ["No transcript was found, so there is no usage to report."];
+  for (const [name, lines] of Object.entries(blocks)) {
+    const re = new RegExp("<!-- auto:" + name + " -->[\\s\\S]*?<!-- /auto:" + name + " -->");
+    if (!re.test(text)) { missing.push(name); continue; }
+    text = text.replace(re, () => "<!-- auto:" + name + " -->\n" + lines.join("\n") + "\n<!-- /auto:" + name + " -->");
+    filled.push(name);
+  }
+  if (filled.length) fs.writeFileSync(file, text);
+  return { filled, missing };
 }
 
 function commitsCsv(commits) {
   const esc = (s) => `"${String(s).replace(/"/g, '""')}"`;
   const head = ["hash", "time", "phase", "type", "files", "lines", "categories", "mixed", "oversize", "burst", "messageOk", "ids", "activeMinutesSincePrev", "modelCalls", "costUsdSincePrev", "subject"];
   return [head.join(","), ...commits.map((c) => [c.hash, c.time, c.phase, c.type || "", c.files, c.lines, esc(Object.entries(c.categories).map(([k, v]) => `${k}:${v}`).join(" ")), c.mixed, c.oversize, c.burst, c.messageOk, esc(c.ids.join(" ")), c.activeMinutesSincePrev, c.modelCalls, c.costUsdSincePrev, esc(c.subject)].join(","))].join("\n") + "\n";
-}
-
-// Fills only EMPTY cells of the usage panel table in usage.md; anything a human wrote stays.
-function fillUsageMd(file, r) {
-  if (!fs.existsSync(file) || !r.panel) return [];
-  let text = fs.readFileSync(file, "utf8");
-  const p = r.panel, u = r.usage, filled = [];
-  const set = (label, value) => {
-    const re = new RegExp(`^(\\| ${label.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")} \\|)[ ]*\\|[ ]*$`, "m");
-    if (value != null && re.test(text)) { text = text.replace(re, `$1 ${value} |`); filled.push(label); }
-  };
-  set("API time", `${fmtMin(p.apiMin)} (transcript cost-state)`);
-  set("Session wall time", fmtMin(p.sessionWallMin));
-  set("Cost shown", `$${p.costUsd.toFixed(2)} (transcript cost-state)`);
-  set("Tokens shown per model (input, output, cache read, cache write)", Object.entries(p.modelUsage).map(([m, x]) => `${m}: ${x.inputTokens}, ${x.outputTokens}, ${x.cacheReadTokens}, ${x.cacheWriteTokens}`).join("; "));
-  if (p.plan) {
-    set("Share of usage at over 150k context", p.plan.pctUsageOver150k != null ? `${p.plan.pctUsageOver150k} % (read in the session)` : null);
-    set("Plan limits used (session, week)", `${p.plan.sessionPctUsed ?? "?"} %, ${p.plan.weekPctUsed ?? "?"} % (read in the session)`);
-  }
-  set("Difference to `usage.costUsd`", `${u.check.diffUsd >= 0 ? "+" : ""}$${u.check.diffUsd.toFixed(2)} (${u.check.diffPct} %), ${u.check.verdict}${u.check.afterRunCalls ? `; the panel total also holds $${u.check.afterRunCostUsd.toFixed(2)} for ${u.check.afterRunCalls} call(s) after the run's end` : ""}`);
-  if (p.plan?.raw && /```text\s*\n```/.test(text)) { text = text.replace(/```text\s*\n```/, "```text\n" + p.plan.raw + "\n```"); filled.push("raw panel text"); }
-  if (filled.length) fs.writeFileSync(file, text);
-  return filled;
 }
 
 let config, outPath;
@@ -129,28 +145,29 @@ if (runDir) {
   // 2. run-log.json
   if (!args.includes("--no-write")) {
     log.time = r.time;
-    if (r.usage) log.usage = { ...(log.usage || {}), ...r.usage, panel: r.panel ? { ...r.panel, plan: r.panel.plan ? { ...r.panel.plan, raw: undefined } : null } : null };
+    if (r.usage) log.usage = { ...(log.usage || {}), ...r.usage };
     if (r.environment) log.environment = { ...(log.environment || {}), ...r.environment };
     if (r.commits) { log.commits = r.commits; log.commitSummary = r.commitSummary; }
     if (backup) log.transcriptBackup = backup.files;
     log.measuredAt = new Date().toISOString();
     fs.writeFileSync(logPath, JSON.stringify(log, null, 2) + "\n");
-    console.log(`run-log.json updated: agent ${r.time.agentMin} min, wait ${r.time.humanWaitMin} min` + (r.usage ? `, cost ${r.usage.costUsd} (${r.usage.costUsdExclWaits} excl. waits), panel check: ${r.usage.check?.verdict ?? "n/a"}` : ", no usage (no transcript)"));
+    console.log(`run-log.json updated: agent ${r.time.agentMin} min, wait ${r.time.humanWaitMin} min` + (r.usage ? `, cost ${r.usage.costUsd} (${r.usage.costUsdExclWaits} excl. waits)` : ", no usage (no transcript)"));
     if (r.commitSummary?.count != null) console.log(`commits: ${r.commitSummary.count} between ${r.commitSummary.range}`);
-    const filled = fillUsageMd(usageMd, r);
-    if (filled.length) console.log("usage.md filled: " + filled.join(", "));
   }
   // 3. results
-  fs.writeFileSync(path.join(resultsDir, "measurements.json"), JSON.stringify({ generatedAt: new Date().toISOString(), runId: log.runId, time: r.time, usage: r.usage, panel: r.panel, environment: { ...(log.environment || {}), ...(r.environment || {}) }, commits: r.commits, commitSummary: r.commitSummary, notes: r.notes, transcripts: { main: r.files.main, subagents: r.files.sub, backup: backup?.files || null } }, null, 2) + "\n");
-  fs.writeFileSync(path.join(resultsDir, "usage-panel.md"), usagePanelMd(r, log));
+  fs.writeFileSync(path.join(resultsDir, "measurements.json"), JSON.stringify({ generatedAt: new Date().toISOString(), runId: log.runId, time: r.time, usage: r.usage, environment: { ...(log.environment || {}), ...(r.environment || {}) }, commits: r.commits, commitSummary: r.commitSummary, notes: r.notes, transcripts: { main: r.files.main, subagents: r.files.sub, backup: backup?.files || null } }, null, 2) + "\n");
+  fs.writeFileSync(path.join(resultsDir, "usage-summary.md"), usageSummaryMd(r, log));
+  const sum = fillSummary(path.join(statsDir, "run-summary.md"), r, log);
+  if (sum.filled.length) console.log("run-summary.md filled: " + sum.filled.join(", "));
+  if (sum.missing.length) console.log("note: run-summary.md has no marker for: " + sum.missing.join(", ") + " (older template or markers removed)");
   if (r.commits) fs.writeFileSync(path.join(resultsDir, "commits.csv"), commitsCsv(r.commits));
   if (!args.includes("--no-md")) {
     const why = exportTranscriptMd(r.files.main[0], path.join(resultsDir, "transcript.md"));
     console.log(why ? "note: transcript.md not written: " + why : "transcript.md written");
   }
   outPath = path.resolve(flag("--out") || path.join(resultsDir, "run-report.html"));
-  config = { title: "Run report: " + (log.runId || "run"), subtitle: `Template ${log.templateVersion || "?"}, ${log.model || "model ?"}, effort ${log.effort || "?"}. Human waiting and everything it caused is excluded from every figure that is compared.`,
-    rebuildBaselineCacheWriteTokens: 550000, runs: [{ label: log.runId || "this run", series: "run", template: String(log.templateVersion || ""), statsDir }], excluded: [], single: true };
+  config = { title: "Run report: " + (log.runLabel || log.runId || "run"), subtitle: `Run ID ${log.runId || "?"} · Template ${log.templateVersion || "?"}, ${log.model || "model ?"}, effort ${log.effort || "?"}. Human waiting and everything it caused is excluded from every figure that is compared.`,
+    rebuildBaselineCacheWriteTokens: 550000, runs: [{ label: log.runLabel || log.runId || "this run", series: "run", template: String(log.templateVersion || ""), statsDir }], excluded: [], single: true };
 } else {
   const configPath = path.resolve(positional[0] || path.join(here, "runs.config.json"));
   config = readJson(configPath);
@@ -188,6 +205,42 @@ function scanRuns(cfg, base) {
     out.push({ label, series: String(log.templateVersion || "run"), template: String(log.templateVersion || ""), statsDir: f.statsDir, repo: { dir: f.repoDir } });
   }
   return out;
+}
+
+// ---------------------------------------------------------------- the quality gate
+// The gate is the same in every run of a setup: line coverage and adjusted mutation score per component, a green final run and no open Critical or High finding.
+// Thresholds come from the run-log (written by the agent), else from the project's quality-requirements.md, else from `gate` in the config (history: applied afterwards).
+function readThresholds(run, log) {
+  const t = log.codeMetrics?.gate?.thresholds;
+  if (t && num(t.lineCoverage) != null && num(t.mutationScore) != null) return { lineCoverage: Number(t.lineCoverage), mutationScore: Number(t.mutationScore), source: "run-log" };
+  const here2 = [path.join(run.statsDir, "..", "01_input", "01_project", "02_design", "quality-requirements.md"), run.repo?.dir ? path.join(run.repo.dir, "01_input", "01_project", "02_design", "quality-requirements.md") : null].filter(Boolean);
+  for (const f of here2) {
+    if (!fs.existsSync(f)) continue;
+    const text = fs.readFileSync(f, "utf8");
+    const line = /^\|\s*Line coverage[^|]*\|\s*>=\s*([0-9.]+)\s*%/im.exec(text), mut = /^\|\s*Mutation score[^|]*\|\s*>=\s*([0-9.]+)\s*%/im.exec(text);
+    if (line && mut) return { lineCoverage: Number(line[1]), mutationScore: Number(mut[1]), source: "quality-requirements.md" };
+  }
+  if (config.gate && num(config.gate.lineCoverage) != null && num(config.gate.mutationScore) != null) return { lineCoverage: config.gate.lineCoverage, mutationScore: config.gate.mutationScore, source: "config" };
+  return null;
+}
+function evalGate(m, th) {
+  if (!th) return null;
+  const items = [];
+  const add = (id, label, value, min, unit) => items.push({ id, label, value: value ?? null, threshold: min, unit, pass: value == null ? null : value >= min, shortfall: value == null ? null : value >= min ? 0 : r1(min - value) });
+  add("covBackend", "Backend line coverage", m.covBackend?.v, th.lineCoverage, "%");
+  add("covFrontend", "Frontend line coverage", m.covFrontend?.v, th.lineCoverage, "%");
+  add("mutAdjBackend", "Backend mutation score (adjusted)", m.mutAdjBackend?.v, th.mutationScore, "%");
+  add("mutAdjFrontend", "Frontend mutation score (adjusted)", m.mutAdjFrontend?.v, th.mutationScore, "%");
+  const failed = m.finalFailed?.v;
+  items.push({ id: "allGreen", label: "Final run all green", value: failed ?? null, threshold: 0, unit: "failing", pass: failed == null ? null : failed === 0 && (m.finalTests?.v || 0) > 0, shortfall: null });
+  const open = m.openCritHigh?.v;
+  items.push({ id: "openCritHigh", label: "No open Critical or High finding", value: open ?? null, threshold: 0, unit: "open", pass: open == null ? null : open === 0, shortfall: null });
+  // a criterion that cannot be assessed (a component the run does not have, an older log without the field) does not fail the gate; it is counted in `unknown`
+  const known = items.filter((i) => i.pass != null), unknown = items.length - known.length;
+  const met = known.some((i) => i.pass === false) ? false : known.filter((i) => i.unit === "%").length ? true : null;
+  const over = items.filter((i) => i.unit === "%" && i.pass).map((i) => i.value - i.threshold);
+  return { thresholds: { lineCoverage: th.lineCoverage, mutationScore: th.mutationScore }, source: th.source, appliedLater: th.source === "config", items, met, unknown,
+    shortfall: r1(items.filter((i) => i.shortfall).reduce((s, i) => s + i.shortfall, 0)), overshoot: over.length ? r1(over.reduce((s, v) => s + v, 0) / over.length) : null };
 }
 
 // ---------------------------------------------------------------- one run -> metrics for the page
@@ -256,13 +309,14 @@ function gather(run) {
     set("peakContext", U.context ? Math.round(U.context.peakTokens / 100) / 10 : null, "t");
     set("pctOver150k", U.context ? U.context.pctCallsOver150k : null, "t");
     set("subagentCost", U.subagents ? U.subagents.costUsd : null, "t", U.subagents?.used ? `${U.subagents.used} sub-agent call(s)` : "no sub-agents used");
-    set("panelDiffPct", U.check ? Math.abs(U.check.diffPct) : null, "t", U.check ? `panel $${U.check.panelCostUsd}, transcript $${U.check.transcriptCostUsd}: ${U.check.verdict}` : null);
   }
   set("unrecordedIdleMin", hasTranscript ? T.unrecordedIdleMin : null, "t");
+  const apd = a.environment?.permissionDecisions;
+  set("approvalPrompts", hasTranscript && apd && apd.total ? apd.byHuman : null, "t", apd && apd.total ? `${apd.total - apd.byHuman} of ${apd.total} permission decisions were made by the mode or classifier` : null);
   const pcx = T.phaseChecks;
   set("phaseHelperPct", hasTranscript && pcx && pcx.viaHelper + pcx.manual ? r1((100 * pcx.viaHelper) / (pcx.viaHelper + pcx.manual)) : null, "t", pcx?.issues?.length ? "issues: " + pcx.issues.join("; ") : null);
 
-  const cs = a.commitSummary;
+  const cs = a.commitSummary || (log.commitSummary && log.commitSummary.count ? log.commitSummary : null); // stored by the post-run step when no repository is configured
   if (cs && cs.count) {
     set("commitCount", cs.count, "l");
     set("commitLinesMedian", cs.linesMedian, "l");
@@ -314,6 +368,17 @@ function gather(run) {
   set("prodLoc", comps.length ? prod : null, "l");
   set("testLoc", comps.length ? test : null, "l");
   set("testRatio", comps.length && prod ? r2(test / prod) : null, "l");
+  set("testsPer1000Loc", comps.length && prod && finalTests ? r1((1000 * finalTests) / prod) : null, "l");
+  set("unitTests", num(log.finalTestRun?.byLevel?.unit?.passed ?? log.finalTestRun?.byLevel?.unit), "l");
+  set("e2eTests", num(log.finalTestRun?.byLevel?.e2e?.passed ?? log.finalTestRun?.byLevel?.e2e), "l");
+  // adjusted mutation score: survivors justified as equivalent count as killed; older runs recorded only the raw score
+  const muAdj = (c) => num(c?.mutation?.scoreAdjusted) ?? mu(c);
+  set("mutAdjBackend", muAdj(be), "l", num(be?.mutation?.scoreAdjusted) == null && mu(be) != null ? "raw score: no adjusted score recorded" : null);
+  set("mutAdjFrontend", muAdj(fe), "l", num(fe?.mutation?.scoreAdjusted) == null && mu(fe) != null ? "raw score: no adjusted score recorded" : null);
+  const lg = log.codeMetrics?.gate || {}, sumObj = (o) => (o && typeof o === "object" ? Object.values(o).reduce((s, v) => s + (num(v) || 0), 0) : null);
+  const roundsSum = sumObj(lg.mutationRounds), firstSum = sumObj(lg.testsAtFirstMutation);
+  set("mutationRounds", roundsSum != null && Object.keys(lg.mutationRounds || {}).length ? roundsSum : null, "l");
+  set("testsAfterFirstMutation", firstSum != null && Object.keys(lg.testsAtFirstMutation || {}).length && finalTests != null ? Math.max(0, finalTests - firstSum) : null, "l");
 
   // no .jsonl and no usage: the Markdown export still lets us count tool calls
   if (!m.toolCalls || m.toolCalls.v == null) {
@@ -327,20 +392,49 @@ function gather(run) {
   for (const [id, o] of Object.entries(run.metrics || {})) {
     if (!m[id] || m[id].v == null) m[id] = { v: o.v, src: "o", note: [o.note, o.source ? "source: " + o.source : null].filter(Boolean).join("; ") || null };
   }
+  // the gate is evaluated last, so that values taken from a summary (overrides) count too
+  for (const [adj, raw] of [["mutAdjBackend", "mutBackend"], ["mutAdjFrontend", "mutFrontend"]]) if (m[adj].v == null && m[raw]?.v != null) m[adj] = { ...m[raw], note: "raw score: no adjusted score recorded" };
+  const gate = evalGate(m, readThresholds(run, log));
+  set("gateMet", gate ? (gate.met === true ? 1 : gate.met === false ? 0 : null) : null, "l", gate?.appliedLater ? "gate applied afterwards: this run was not told the thresholds" : null);
+  set("gateShortfall", gate ? gate.shortfall : null, "l");
+  set("gateOvershoot", gate ? gate.overshoot : null, "l");
+  set("costToGate", gate?.met === true && U ? r2(costExcl) : null, srcCost, gate?.appliedLater ? "gate applied afterwards" : null);
   const phases = T.byPhase.map((p) => ({ phase: p.phase, name: p.name, agentMin: p.agentMin, waitMin: p.waitMin, modelMin: p.modelMin, toolMin: p.toolMin,
     costUsd: U?.byPhase?.find((q) => q.phase === p.phase)?.costUsd ?? null, avgContextK: U?.byPhase?.find((q) => q.phase === p.phase)?.avgContextTokens != null ? Math.round(U.byPhase.find((q) => q.phase === p.phase).avgContextTokens / 1000) : null }));
   const sources = { time: srcTime === "t" ? "transcript and run-log" : "run-log phases minus recorded waits", usage: srcUsage === "t" ? "transcript" : srcUsage === "l" ? "run-log usage (agent script)" : srcUsage === "o" ? "override: " + run.usage.source : "none" };
+  // postRunHost is the machine the post-run step ran on, stored in the run-log; rebuilding a report elsewhere must not replace it with the machine that builds the report
   const environment = { ...(log.environment || {}), ...(a.environment || {}) };
+  if (log.environment?.postRunHost) environment.postRunHost = log.environment.postRunHost;
   return { label: run.label, series: run.series, template: run.template, start: log.start, end: log.end, wallMin: T.wallMin, metrics: m, phases, sources, flags: run.flags || [], notes,
     longWaits: T.longWaits.map((w) => ({ min: w.min, reason: w.reason || null, source: w.source, cause: w.cause || null })), rebuilds: U?.cacheRebuilds || [], toolTime: U?.toolTimeByCategory || null,
     tokens: U ? { out: U.outputTokens, cr: U.cacheReadTokens, cw: U.cacheWriteTokens, inp: U.inputTokens } : null,
-    environment, check: U?.check || null, panel: a.panel ? { costUsd: a.panel.costUsd, apiMin: a.panel.apiMin, sessionWallMin: a.panel.sessionWallMin, linesAdded: a.panel.linesAdded, linesRemoved: a.panel.linesRemoved, plan: a.panel.plan ? { sessionPctUsed: a.panel.plan.sessionPctUsed, weekPctUsed: a.panel.plan.weekPctUsed } : null } : null,
+    environment,
     phaseChecks: pcx ? { viaHelper: pcx.viaHelper, manual: pcx.manual, issues: pcx.issues } : null, subagents: U?.subagents || null,
-    commitSummary: cs || null, commits: config.single ? (a.commits || null) : null };
+    commitSummary: cs || null, commits: config.single ? (a.commits || null) : null, gate };
+}
+
+// ---------------------------------------------------------------- setups: runs of the same template version, compared by median and range
+const median = (xs) => { const s = xs.slice().sort((p, q) => p - q), n = s.length; return n ? (n % 2 ? s[(n - 1) / 2] : (s[n / 2 - 1] + s[n / 2]) / 2) : null; };
+const SETUP_METRICS = ["agentMin", "costExcl", "costToGate", "toolCalls", "modelCalls", "avgContext", "blocking", "fixLoops", "loopMin", "finalTests", "unitTests", "e2eTests", "mutAdjBackend", "mutAdjFrontend", "covBackend", "covFrontend", "mutationRounds", "testsAfterFirstMutation", "gateOvershoot", "commitCount", "commitPctOversize"];
+function setupsOf(rs) {
+  const groups = new Map();
+  for (const r of rs) { const k = r.template || "?"; if (!groups.has(k)) groups.set(k, []); groups.get(k).push(r); }
+  return [...groups].map(([template, g]) => {
+    const stats = {};
+    for (const id of SETUP_METRICS) {
+      const vs = g.map((r) => r.metrics[id]?.v).filter((v) => typeof v === "number");
+      if (vs.length) stats[id] = { n: vs.length, median: r2(median(vs)), min: Math.min(...vs), max: Math.max(...vs) };
+    }
+    // differences in the environment inside one setup: runs of a setup are meant to share it
+    const envOf = (r) => ({ ...(r.environment?.tools || {}), os: r.environment?.os ? `${r.environment.os.platform} ${r.environment.os.release}` : null, model: (r.environment?.models || []).join(", "), harness: (r.environment?.harness?.versions || []).join(", "), permissionMode: r.environment?.permissionMode ?? null });
+    const keys = [...new Set(g.flatMap((r) => Object.keys(envOf(r))))];
+    const envDiffs = keys.map((k) => ({ key: k, values: g.map((r) => ({ label: r.label, value: envOf(r)[k] ?? null })) })).filter((d) => new Set(d.values.map((x) => x.value).filter((v) => v != null)).size > 1);
+    return { template, n: g.length, labels: g.map((r) => r.label), operators: [...new Set(g.map((r) => r.environment?.operator).filter(Boolean))], gatePassing: g.filter((r) => r.metrics.gateMet?.v === 1).length, stats, envDiffs };
+  });
 }
 
 const runs = config.runs.map(gather);
-const data = { title: config.title, subtitle: config.subtitle, built: new Date().toISOString().slice(0, 10), single: !!config.single, catalog, runs, excluded: config.excluded || [] };
+const data = { title: config.title, subtitle: config.subtitle, built: new Date().toISOString().slice(0, 10), single: !!config.single, catalog, runs, setups: setupsOf(runs), excluded: config.excluded || [] };
 
 const css = fs.readFileSync(path.join(here, "report.css"), "utf8");
 const html = fs.readFileSync(path.join(here, "report-template.html"), "utf8").replace("__STYLE__", () => css).replace("__DATA__", () => JSON.stringify(data));

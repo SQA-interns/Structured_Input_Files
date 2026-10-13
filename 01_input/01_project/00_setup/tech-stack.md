@@ -25,7 +25,7 @@ Versions verified to resolve on 2026-09-29. Spring Boot 4.1.1 manages the Spring
 platforms:
   - { id: java, name: Eclipse Temurin JDK, version: 21.0.10+7, source: https://adoptium.net }
   - { id: node, name: Node.js (with npm 11.6.2), version: 24.13.0, source: https://nodejs.org }
-  - { id: docker, name: Docker Engine, version: 29.8.0, source: https://docs.docker.com/engine/install }
+  - { id: docker, name: Docker Engine, version: 29.8.1, source: https://docs.docker.com/engine/install }
   - { id: compose, name: Docker Compose, version: 5.5.1, source: https://docs.docker.com/compose }
 ```
 
@@ -97,12 +97,12 @@ tooling:
   - { id: eslint-plugin-react-hooks, ecosystem: npm, version: 5.2.0, purpose: lint, component: frontend, source: npm }
   - { id: eslint-plugin-react-refresh, ecosystem: npm, version: 0.4.26, purpose: lint, component: frontend, source: npm }
   - { id: prettier, ecosystem: npm, version: 3.9.9, purpose: format, component: frontend, source: npm }
-  - { id: vitest, ecosystem: npm, version: 3.2.7, purpose: test (unit, component), component: frontend, source: npm }
-  - { id: "@vitest/coverage-v8", ecosystem: npm, version: 3.2.7, purpose: coverage, component: frontend, source: npm }
+  - { id: vitest, ecosystem: npm, version: 4.1.11, purpose: test (unit, component), component: frontend, source: npm }
+  - { id: "@vitest/coverage-v8", ecosystem: npm, version: 4.1.11, purpose: coverage, component: frontend, source: npm }
   - { id: "@playwright/test", ecosystem: npm, version: 1.63.0, purpose: test (end-to-end, with its bundled Chromium), component: frontend, source: npm }
   - { id: "@stryker-mutator/core", ecosystem: npm, version: 10.0.0, purpose: mutation, component: frontend, source: npm }
   - { id: "@stryker-mutator/vitest-runner", ecosystem: npm, version: 10.0.0, purpose: mutation, component: frontend, source: npm }
-  - { id: jscpd, ecosystem: npm, version: 4.3.0, purpose: duplication, component: frontend, source: npm }
+  - { id: jscpd, ecosystem: npm, version: 5.4.0, purpose: duplication, component: frontend, source: npm }
   - { id: npm audit (npm 11.6.2), ecosystem: npm, version: 11.6.2, purpose: dependency-scan, component: frontend, source: npm }
   # all components (run as containers, nothing installed on the host)
   - { id: semgrep/semgrep, ecosystem: container, version: 1.177.0, purpose: static-analysis (security rules), component: all, source: docker-hub }

@@ -9,7 +9,7 @@ Each item needs evidence in `docs/06_verification-report.md`.
 |---|---|---|
 | DoD-01 | The full test suite passes; frozen test hashes match the manifest | test report, hash check |
 | DoD-02 | Format, lint, type check and static analysis report no errors | tool output |
-| DoD-03 | Coverage and mutation score are recorded as defined in `general/quality/measurement-scope.md` and meet the project thresholds, if any | coverage and mutation reports, with scope |
+| DoD-03 | The quality gate of `general/quality/measurement-scope.md` ("Quality gate") is met for each component, or the shortfall after the third survivor round is recorded with a decision | coverage and mutation reports with scope, raw and adjusted score, rounds |
 | DoD-04 | Architecture constraints (`AR`) are checked automatically where possible; no dependency cycles | architecture test output |
 | DoD-05 | No open Critical or High finding from the security review and scanners | `general/skills/verify-release` output |
 | DoD-06 | Every component runs in its target environment and the core user flows work at runtime, not only in tests | runtime demonstration log |

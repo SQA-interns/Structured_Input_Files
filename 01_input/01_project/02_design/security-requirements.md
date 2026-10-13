@@ -36,11 +36,12 @@ Level 1 is a deliberate choice: the only authentication is one organizer role fo
 |---|---|
 | SR-01 | Every registration is protected by Google reCAPTCHA v2 and verified on the backend; the frontend check alone is never enough. |
 | SR-02 | reCAPTCHA test mode is enabled only by environment configuration, never by default; production refuses to start with test mode on or with empty keys. |
-| SR-03 | The registration and export endpoints are rate limited, and request bodies have a size limit. |
+| SR-03 | Every public `/api` endpoint (form configuration, registration, export) is rate limited per client, and request bodies have a size limit. |
 | SR-04 | Option identifiers are checked against the active configured set (BR-04). |
 | SR-05 | Email content is generated safely: user input cannot inject headers or markup. |
 | SR-06 | Organizer credentials are never accepted over plain HTTP, except on localhost. |
 | SR-07 | The export and the organizer email expose only registration data, never internal fields or other system data. |
+| SR-08 | The reverse proxy in front of the backend never forwards a client-supplied `Host` header; it sets the upstream host itself. |
 
 ## Overrides
 

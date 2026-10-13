@@ -8,7 +8,6 @@
 // What it measures, and why (targets in 03_statistics/metrics.md):
 //   time      wall clock split into agent time (what the workflow costs) and human wait (what it does not), phase checks
 //   usage     tokens and dollars per model and phase, sub-agents, the cache rebuilds that waits cause, a cross-check against
-//             the harness's own accounting (the `cost-state` record, which is what the usage panel shows)
 //   context   how large the context was on each call (every call re-reads all of it)
 //   commits   size, concern, message and the work and cost between commits
 //   environment  harness version, models, effort, machine
@@ -22,8 +21,7 @@ export const DEFAULTS = {
   idleGapMin: 10,           // a gap between two transcript events above this is a wait, not work
   cacheLifetimeMin: 55,     // a gap above this lets the 1-hour cache expire (5 min of margin)
   rebuildMinTokens: 150000, // a cache write above this right after such a gap is a rebuild of the whole context
-  bigContextTokens: 150000, // "long context" threshold used by the usage panel too
-  crossCheckTolerancePct: 1.5,
+  bigContextTokens: 150000, // "long context" threshold
   commit: { maxFiles: 15, maxLines: 400, tinyLines: 5 }, // size guide of working-rules.md, "Commits"
   // used only when usage.md has no parsable row for a model; per MTok
   prices: { "claude-opus-5-5": { input: 4, output: 20, cacheRead: 0.2, cacheWrite5m: 5, cacheWrite1h: 8 } },
@@ -119,33 +117,6 @@ function readRows(files, endMs) {
     }
   }
   return { rows, costStates, late };
-}
-
-// ---- the harness's own accounting (what the usage panel shows), one `cost-state` per session file, the last one counts
-function readPanel(costStates, rows) {
-  if (!costStates.length) return null;
-  const last = new Map();
-  for (const { file, x } of costStates) if (!last.has(file) || x.totalCostUSD >= last.get(file).totalCostUSD) last.set(file, x);
-  const sum = (k) => [...last.values()].reduce((s, x) => s + (x[k] || 0), 0);
-  const modelUsage = {};
-  for (const x of last.values()) for (const [m, u] of Object.entries(x.modelUsage || {})) {
-    const t = (modelUsage[m] ||= { inputTokens: 0, outputTokens: 0, thinkingTokens: 0, cacheReadTokens: 0, cacheWriteTokens: 0, costUsd: 0 });
-    t.inputTokens += u.inputTokens || 0; t.outputTokens += u.outputTokens || 0; t.thinkingTokens += u.thinkingTokens || 0;
-    t.cacheReadTokens += u.cacheReadInputTokens || 0; t.cacheWriteTokens += u.cacheCreationInputTokens || 0; t.costUsd += u.costUSD || 0;
-  }
-  for (const u of Object.values(modelUsage)) u.costUsd = r2(u.costUsd);
-  // the /usage or /cost text, if the human ran it in the session
-  let plan = null;
-  const cmds = rows.filter((x) => x.type === "system" && x.subtype === "local_command" && /Current session|Current week/.test(x.content || ""));
-  if (cmds.length) {
-    const c = cmds[cmds.length - 1], text = stripAnsi(String(c.content).replace(/<\/?local-command-stdout>/g, "")).trim();
-    const g = (re) => { const m = text.match(re); return m ? Number(m[1]) : null; };
-    plan = { capturedAt: c.timestamp, sessionPctUsed: g(/Current session:?\s*(\d+)\s*%\s*used/i), weekPctUsed: g(/Current week \(all models\):?\s*(\d+)\s*%\s*used/i),
-      pctUsageOver150k: g(/(\d+)\s*%\s*of (?:your )?usage was at\s*>?\s*150k/i), raw: text.slice(0, 4000) };
-  }
-  return { sessions: last.size, costUsd: r2(sum("totalCostUSD")), apiMin: r1(min(sum("totalAPIDuration"))), apiMinWithoutRetries: r1(min(sum("totalAPIDurationWithoutRetries"))),
-    toolMin: r1(min(sum("totalToolDuration"))), sessionWallMin: r1(min(sum("totalDuration"))), linesAdded: sum("totalLinesAdded"), linesRemoved: sum("totalLinesRemoved"), modelUsage, plan,
-    source: "cost-state record in the transcript (Claude Code's own accounting)" };
 }
 
 // ---- git: size, concern, message and the work between commits
@@ -319,7 +290,7 @@ export function analyse({ logPath, usageMdPath, transcriptPaths, transcriptPath,
   if (!have) {
     const cm = !readCommits ? { commits: null, summary: null, note: null } : analyseCommits({ repoDir, from: repo?.from || log.startCommit, to: repo?.to || log.finalCommit, calls: [], waitWins, phaseOf, startMs, limits: o.commit });
     if (cm.note) notes.push(cm.note);
-    return { time, usage: null, panel: null, environment: null, commits: cm.commits, commitSummary: cm.summary, notes, files, ...(detail ? { _calls: [] } : {}) };
+    return { time, usage: null, environment: null, commits: cm.commits, commitSummary: cm.summary, notes, files, ...(detail ? { _calls: [] } : {}) };
   }
 
   // ---- usage block
@@ -358,7 +329,7 @@ export function analyse({ logPath, usageMdPath, transcriptPaths, transcriptPath,
     if (g.sub) add(sub);
     calls.push({ t: g.first, cost: c, out: u.output_tokens || 0, sub: !!g.sub });
     const context = (u.input_tokens || 0) + (u.cache_read_input_tokens || 0) + (u.cache_creation_input_tokens || 0);
-    if (!g.sub) ctx.push({ t: g.first, ph, context }); // sub-agents have their own small contexts
+    if (!g.sub) ctx.push({ t: g.first, ph, context, cost: c }); // sub-agents have their own small contexts
     const w = u.cache_creation_input_tokens || 0;
     if (w > o.rebuildMinTokens && !g.sub) {
       // the wait that caused it ends just before the call: a human reply, then the call a few seconds later
@@ -422,24 +393,13 @@ export function analyse({ logPath, usageMdPath, transcriptPaths, transcriptPath,
     subagents: { used: subagentsUsed, transcripts: files.sub.length, modelCalls: sub.calls, costUsd: r2(sub.costUsd), outputTokens: sub.outputTokens },
     cacheRebuilds: rebuilds,
     byPhase: byPhaseUsage,
-    context: { peakTokens: Math.max(...cvals), avgTokens: Math.round(cvals.reduce((s, c) => s + c, 0) / cvals.length), pctCallsOver150k: r1((100 * cvals.filter((c) => c > o.bigContextTokens).length) / cvals.length) },
+    context: { peakTokens: Math.max(...cvals), avgTokens: Math.round(cvals.reduce((s, c) => s + c, 0) / cvals.length), pctCallsOver150k: r1((100 * cvals.filter((c) => c > o.bigContextTokens).length) / cvals.length), costPctOver150k: (() => { const tot = ctx.reduce((s, c) => s + c.cost, 0); return tot ? r1((100 * ctx.filter((c) => c.context > o.bigContextTokens).reduce((s, c) => s + c.cost, 0)) / tot) : null; })() },
     toolTimeByCategory: cats,
   };
   if (rebuilds.some((r) => !r.causedByWait)) notes.push("large cache writes without a preceding wait were kept in the cost (compaction or context change)");
-  if (subagentsUsed && !files.sub.length) notes.push(`${subagentsUsed} Agent/Task tool call(s) but no sub-agent transcript found: their cost may be missing (see the panel cross-check)`);
+  if (subagentsUsed && !files.sub.length) notes.push(`${subagentsUsed} Agent/Task tool call(s) but no sub-agent transcript found: their cost may be missing from the total`);
 
-  // ---- panel (the harness's own numbers) and the cross-check against our calculation
-  const panel = readPanel(costStates, rows);
-  if (panel) {
-    const expected = usage.costUsd + after.costUsd;
-    const diff = r2(panel.costUsd - expected), dp = expected ? r1((100 * diff) / expected) : null;
-    const sumPanel = (k) => Object.values(panel.modelUsage || {}).reduce((s, u) => s + (u[k] || 0), 0);
-    usage.check = { panelCostUsd: panel.costUsd, transcriptCostUsd: usage.costUsd, afterRunCostUsd: r2(after.costUsd), afterRunCalls: after.calls, diffUsd: diff, diffPct: dp,
-      outputTokensDiff: sumPanel("outputTokens") - usage.outputTokens - after.outputTokens, cacheReadTokensDiff: sumPanel("cacheReadTokens") - usage.cacheReadTokens - after.cacheReadTokens, cacheWriteTokensDiff: sumPanel("cacheWriteTokens") - usage.cacheWriteTokens - after.cacheWriteTokens,
-      verdict: dp != null && Math.abs(dp) <= o.crossCheckTolerancePct ? "ok" : "check: sub-agents, resumed sessions, activity after the run, or a missing price" };
-    if (after.calls) notes.push(`${after.calls} model call(s) after the run's end (the session went on) cost $${r2(after.costUsd)}: not part of the run, but included in the harness's session total`);
-    if (usage.check.verdict !== "ok") notes.push("cost differs from the harness's own total by " + dp + " %: " + usage.check.verdict);
-  } else notes.push("no cost-state record in the transcript: the panel cross-check is not possible");
+  if (after.calls) notes.push(`${after.calls} model call(s) after the run's end (the session went on) cost $${r2(after.costUsd)}: not part of the run`);
 
   // ---- environment: what the harness knows about itself
   const asst = rows.filter((x) => x.type === "assistant");
@@ -447,7 +407,9 @@ export function analyse({ logPath, usageMdPath, transcriptPaths, transcriptPath,
   const environment = {
     harness: { name: "claude-code", versions: uniq(rows.map((x) => x.version)), entrypoints: uniq(rows.map((x) => x.entrypoint)) },
     models: uniq(callList.map((g) => g.model)), effort: uniq(asst.map((x) => x.effort)), perTurnEffort: uniq(asst.map((x) => x.perTurnEffort)), advisorModels: uniq(asst.map((x) => x.advisorModel)),
-    permissionModes: uniq(rows.map((x) => x.permissionMode)), gitBranches: uniq(rows.map((x) => x.gitBranch)),
+    permissionModes: uniq(rows.map((x) => x.permissionMode)), gitBranches: uniq(rows.map((x) => x.gitBranch)), workingDirs: uniq(rows.map((x) => x.cwd)).slice(0, 5), userTypes: uniq(rows.map((x) => x.userType)),
+    // permission decisions recorded in the session: those whose source is not the configuration (mode or classifier) needed a human
+    permissionDecisions: (() => { const d = { total: 0, byHuman: 0, rejected: 0 }; for (const x of rows) { const p = x.permissionDecision; if (!p || typeof p !== "object") continue; d.total++; if (p.source && p.source !== "config") d.byHuman++; if (p.decision === "reject") d.rejected++; } return d; })(),
     postRunHost: { platform: os.platform(), release: os.release(), arch: os.arch(), cpus: os.cpus().length, memoryGb: Math.round(os.totalmem() / 2 ** 30), nodeVersion: process.version, timezone: Intl.DateTimeFormat().resolvedOptions().timeZone },
     capturedAt: new Date().toISOString(),
   };
@@ -456,7 +418,7 @@ export function analyse({ logPath, usageMdPath, transcriptPaths, transcriptPath,
   const cm = !readCommits ? { commits: null, summary: null, note: null } : analyseCommits({ repoDir, from: repo?.from || log.startCommit, to: repo?.to || log.finalCommit, calls, waitWins, phaseOf, startMs, limits: o.commit });
   if (cm.note) notes.push(cm.note);
 
-  return { time, usage, panel, environment, commits: cm.commits, commitSummary: cm.summary, notes, files, ...(detail ? { _calls: calls } : {}) };
+  return { time, usage, environment, commits: cm.commits, commitSummary: cm.summary, notes, files, ...(detail ? { _calls: calls } : {}) };
 }
 
 // ---- command line

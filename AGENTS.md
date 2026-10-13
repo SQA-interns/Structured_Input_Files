@@ -33,4 +33,4 @@ If `02_output/docs/00_progress.md` shows work in progress, resume from it instea
 - Do not ask the human to paste a secret into the conversation; ask them to put it in `.env`.
 - Do not start a phase before the previous phase's gate has passed.
 - Do not finish while a Critical or High finding is open.
-- Do not touch `03_statistics/` except as stated in `working-rules.md`.
+- Do not touch `03_statistics/` except as stated in `working-rules.md`. Never edit, delete or run anything in `.claude/settings.json` or `03_statistics/tools/auto-report.mjs`: they measure the run for the human.
