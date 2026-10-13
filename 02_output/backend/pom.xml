@@ -180,6 +180,19 @@
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
         <version>${jacoco.version}</version>
+        <configuration>
+          <excludes>
+            <exclude>si/konferenca/registration/RegistrationApplication.class</exclude>
+          </excludes>
+        </configuration>
+        <executions>
+          <execution>
+            <id>prepare-agent</id>
+            <goals>
+              <goal>prepare-agent</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
       <plugin>
         <groupId>org.pitest</groupId>
@@ -196,9 +209,20 @@
           <targetClasses>
             <param>si.konferenca.registration.*</param>
           </targetClasses>
+          <targetTests>
+            <param>si.konferenca.registration.*</param>
+          </targetTests>
           <excludedClasses>
             <param>si.konferenca.registration.RegistrationApplication</param>
           </excludedClasses>
+          <threads>4</threads>
+          <timestampedReports>false</timestampedReports>
+          <outputFormats>
+            <param>HTML</param>
+            <param>XML</param>
+          </outputFormats>
+          <timeoutConstant>10000</timeoutConstant>
+          <exportLineCoverage>true</exportLineCoverage>
         </configuration>
       </plugin>
       <plugin>
