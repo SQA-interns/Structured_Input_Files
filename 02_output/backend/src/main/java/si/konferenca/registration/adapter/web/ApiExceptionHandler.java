@@ -14,6 +14,7 @@ import org.springframework.web.servlet.resource.NoResourceFoundException;
 import si.konferenca.registration.adapter.web.ApiResponses.FieldErrorBody;
 import si.konferenca.registration.adapter.web.ApiResponses.GeneralError;
 import si.konferenca.registration.adapter.web.ApiResponses.ValidationError;
+import si.konferenca.registration.application.StorageFailedException;
 
 /** Maps exceptions to the error bodies of `openapi.yaml`, without internal details (SB-07). */
 @RestControllerAdvice
@@ -33,6 +34,15 @@ public class ApiExceptionHandler {
   @ExceptionHandler(RequestTooLargeException.class)
   public ResponseEntity<Object> tooLarge() {
     return error(HttpStatus.CONTENT_TOO_LARGE, "Request too large.");
+  }
+
+  /** The JSON copy or the row could not be stored; nothing remains (AC-005-03). */
+  @ExceptionHandler(StorageFailedException.class)
+  public ResponseEntity<Object> storageFailed(StorageFailedException e) {
+    LOG.error("Registration could not be stored ({})", e.getClass().getSimpleName());
+    return error(
+        HttpStatus.INTERNAL_SERVER_ERROR,
+        "Registration could not be stored. Please try again later.");
   }
 
   @ExceptionHandler(HttpMediaTypeNotSupportedException.class)
