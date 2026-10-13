@@ -199,3 +199,62 @@ describe("Google widget", () => {
     expect(reset).not.toHaveBeenCalled();
   });
 });
+
+describe("Google widget lifecycle", () => {
+  afterEach(() => {
+    delete window.grecaptcha;
+  });
+
+  it("does not render when the script becomes ready after unmount", async () => {
+    let ready: () => void = () => {};
+    const renderWidget = vi.fn(() => 1);
+    window.grecaptcha = {
+      ready: (callback) => (ready = callback),
+      render: renderWidget,
+      reset: vi.fn(),
+    };
+    const { unmount } = render(
+      <Recaptcha
+        testMode={false}
+        siteKey="k"
+        token=""
+        resetCount={0}
+        invalid={false}
+        onToken={vi.fn()}
+      />,
+    );
+    unmount();
+
+    await act(async () => ready());
+
+    expect(renderWidget).not.toHaveBeenCalled();
+  });
+
+  it("does not reset a widget that was never rendered", () => {
+    const reset = vi.fn();
+    window.grecaptcha = { ready: () => {}, render: vi.fn(() => 1), reset };
+    const { rerender } = render(
+      <Recaptcha
+        testMode={false}
+        siteKey="k"
+        token=""
+        resetCount={0}
+        invalid={false}
+        onToken={vi.fn()}
+      />,
+    );
+
+    rerender(
+      <Recaptcha
+        testMode={false}
+        siteKey="k"
+        token=""
+        resetCount={1}
+        invalid={false}
+        onToken={vi.fn()}
+      />,
+    );
+
+    expect(reset).not.toHaveBeenCalled();
+  });
+});

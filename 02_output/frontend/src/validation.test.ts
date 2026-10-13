@@ -161,4 +161,20 @@ describe("validate", () => {
     });
     expect(MESSAGES.tooLong(7)).toBe("Use at most 7 characters.");
   });
+
+  it("rejects text after an otherwise valid address", () => {
+    expect(validate(external({ email: "a@b.co x" }), consents)).toEqual({
+      email: MESSAGES.email,
+    });
+  });
+
+  it("uses the contract wording", () => {
+    expect(MESSAGES).toMatchObject({
+      required: "This field is required.",
+      email: "Enter a valid email address.",
+      type: "Choose a registration type.",
+      consent: "This consent is required.",
+      captcha: "Confirm that you are not a robot.",
+    });
+  });
 });

@@ -91,6 +91,9 @@ describe("App", () => {
     );
     render(<App />);
     expect(await screen.findByRole("alert")).toHaveTextContent(CONFIG_ERROR);
+    expect(CONFIG_ERROR).toBe(
+      "The registration form is currently unavailable. Please try again later.",
+    );
     expect(screen.queryByRole("form")).toBeNull();
     expect(screen.queryByText("boom")).toBeNull();
   });
