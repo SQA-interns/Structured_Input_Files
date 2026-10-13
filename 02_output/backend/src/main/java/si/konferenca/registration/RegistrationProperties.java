@@ -28,7 +28,11 @@ public record RegistrationProperties(
       organizerRecipients =
           organizerRecipients == null
               ? List.of()
-              : organizerRecipients.stream().map(String::strip).filter(s -> !s.isEmpty()).toList();
+              : List.copyOf(
+                  organizerRecipients.stream()
+                      .map(String::strip)
+                      .filter(s -> !s.isEmpty())
+                      .toList());
     }
   }
 
@@ -57,7 +61,8 @@ public record RegistrationProperties(
       allowedOrigins =
           allowedOrigins == null
               ? List.of()
-              : allowedOrigins.stream().map(String::strip).filter(s -> !s.isEmpty()).toList();
+              : List.copyOf(
+                  allowedOrigins.stream().map(String::strip).filter(s -> !s.isEmpty()).toList());
     }
   }
 

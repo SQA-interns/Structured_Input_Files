@@ -13,4 +13,16 @@ public record RegistrationSubmission(
     String studyProgramme,
     String studentId,
     List<String> optionIds,
-    List<String> consents) {}
+    List<String> consents) {
+
+  public RegistrationSubmission {
+    optionIds =
+        optionIds == null
+            ? null
+            : java.util.Collections.unmodifiableList(new java.util.ArrayList<>(optionIds));
+    consents =
+        consents == null
+            ? null
+            : java.util.Collections.unmodifiableList(new java.util.ArrayList<>(consents));
+  }
+}

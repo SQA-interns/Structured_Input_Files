@@ -17,6 +17,17 @@ public record RegistrationRequest(
     List<String> consents,
     String recaptchaToken) {
 
+  public RegistrationRequest {
+    optionIds =
+        optionIds == null
+            ? null
+            : java.util.Collections.unmodifiableList(new java.util.ArrayList<>(optionIds));
+    consents =
+        consents == null
+            ? null
+            : java.util.Collections.unmodifiableList(new java.util.ArrayList<>(consents));
+  }
+
   RegistrationSubmission toSubmission() {
     return new RegistrationSubmission(
         type,

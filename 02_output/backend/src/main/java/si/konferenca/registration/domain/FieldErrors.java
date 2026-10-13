@@ -13,8 +13,8 @@ public final class FieldErrors {
     errors.putIfAbsent(field, message);
   }
 
-  public void addAll(FieldErrors other) {
-    other.errors.forEach(this::add);
+  public void addAll(Map<String, String> other) {
+    other.forEach(this::add);
   }
 
   public boolean isEmpty() {

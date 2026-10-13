@@ -6,6 +6,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.util.UUID;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import si.konferenca.registration.RegistrationProperties;
 import si.konferenca.registration.domain.Registration;
@@ -14,6 +16,8 @@ import si.konferenca.registration.service.JsonCopyStore;
 /** JSON copies as {@code <id>.json} in the configured directory, written atomically. */
 @Component
 public class FileJsonCopyStore implements JsonCopyStore {
+
+  private static final Logger LOG = LoggerFactory.getLogger(FileJsonCopyStore.class);
 
   private final Path directory;
 
@@ -54,7 +58,7 @@ public class FileJsonCopyStore implements JsonCopyStore {
     try {
       Files.deleteIfExists(path);
     } catch (IOException e) {
-      // Nothing more can be done; the copy directory is unusable.
+      LOG.warn("JSON copy file {} could not be removed", path.getFileName());
     }
   }
 }

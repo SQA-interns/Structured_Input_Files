@@ -15,12 +15,22 @@ public record FormConfigResponse(
     List<Consent> consents,
     List<Option> options) {
 
+  public FormConfigResponse {
+    consents = List.copyOf(consents);
+    options = List.copyOf(options);
+  }
+
   /** A consent as shown on the form. */
   public record Consent(String id, String text, boolean mandatory) {}
 
   /** An active option with the registration types it is available to. */
   public record Option(
-      String id, String name, OptionCategory category, List<RegistrationType> availableTo) {}
+      String id, String name, OptionCategory category, List<RegistrationType> availableTo) {
+
+    public Option {
+      availableTo = List.copyOf(availableTo);
+    }
+  }
 
   static FormConfigResponse of(
       String conferenceName, String siteKey, boolean testMode, ConferenceCatalog catalog) {

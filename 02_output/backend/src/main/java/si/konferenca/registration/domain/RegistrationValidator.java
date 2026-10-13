@@ -3,6 +3,7 @@ package si.konferenca.registration.domain;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.regex.Pattern;
@@ -54,7 +55,7 @@ public final class RegistrationValidator {
     List<ConferenceOption> options = options(errors, s.optionIds(), type.orElse(null));
     List<ConsentDefinition> consents = consents(errors, s.consents());
     if (!errors.isEmpty()) {
-      return new Result(null, errors);
+      return new Result(null, errors.asMap());
     }
     return new Result(
         new ValidatedRegistration(
@@ -68,7 +69,7 @@ public final class RegistrationValidator {
             studentId,
             options,
             consents),
-        errors);
+        Map.of());
   }
 
   private static Optional<RegistrationType> type(String value) {
@@ -160,7 +161,11 @@ public final class RegistrationValidator {
   }
 
   /** Either a validated registration (no errors) or field errors (registration null). */
-  public record Result(ValidatedRegistration registration, FieldErrors errors) {
+  public record Result(ValidatedRegistration registration, Map<String, String> errors) {
+
+    public Result {
+      errors = Map.copyOf(errors);
+    }
 
     public boolean valid() {
       return registration != null;
