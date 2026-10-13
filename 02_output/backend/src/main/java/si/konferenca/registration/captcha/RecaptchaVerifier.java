@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 import si.konferenca.registration.RegistrationProperties;
 import si.konferenca.registration.service.CaptchaVerifier;
 import tools.jackson.core.JacksonException;
+import tools.jackson.databind.JsonNode;
 import tools.jackson.databind.json.JsonMapper;
 
 /** Google reCAPTCHA v2 siteverify, or the deterministic test mode (spec section 9). */
@@ -53,8 +54,11 @@ public class RecaptchaVerifier implements CaptchaVerifier {
             .build();
     try {
       HttpResponse<String> response = http.send(request, HttpResponse.BodyHandlers.ofString());
-      return response.statusCode() == 200
-          && json.readTree(response.body()).path("success").asBoolean(false);
+      if (response.statusCode() != 200) {
+        return false;
+      }
+      JsonNode success = json.readTree(response.body()).path("success");
+      return success.isBoolean() && success.booleanValue();
     } catch (IOException | JacksonException e) {
       LOG.warn("reCAPTCHA verification failed: {}", e.getClass().getSimpleName());
       return false;
