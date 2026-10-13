@@ -127,11 +127,38 @@
           <groupId>org.jacoco</groupId>
           <artifactId>jacoco-maven-plugin</artifactId>
           <version>${jacoco-maven-plugin.version}</version>
+          <configuration>
+            <!-- Measurement exclusion: application entry point (docs/03_test-strategy.md). -->
+            <excludes>
+              <exclude>si/konferenca/registration/RegistrationApplication.class</exclude>
+            </excludes>
+          </configuration>
         </plugin>
         <plugin>
           <groupId>org.pitest</groupId>
           <artifactId>pitest-maven</artifactId>
           <version>${pitest-maven.version}</version>
+          <configuration>
+            <!-- Mutation scope of quality-requirements.md: all production code but the entry point. -->
+            <targetClasses>
+              <param>si.konferenca.registration.*</param>
+            </targetClasses>
+            <excludedClasses>
+              <param>si.konferenca.registration.RegistrationApplication</param>
+            </excludedClasses>
+            <!-- The full automated suite of the component: unit, integration, architecture, acceptance. -->
+            <targetTests>
+              <param>si.konferenca.registration.*</param>
+            </targetTests>
+            <threads>4</threads>
+            <timeoutConstant>15000</timeoutConstant>
+            <outputFormats>
+              <param>XML</param>
+              <param>HTML</param>
+            </outputFormats>
+            <timestampedReports>false</timestampedReports>
+            <exportLineCoverage>true</exportLineCoverage>
+          </configuration>
           <dependencies>
             <dependency>
               <groupId>org.pitest</groupId>
@@ -164,6 +191,18 @@
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>prepare-agent</id>
+            <goals>
+              <goal>prepare-agent</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
       <plugin>
         <groupId>com.diffplug.spotless</groupId>
