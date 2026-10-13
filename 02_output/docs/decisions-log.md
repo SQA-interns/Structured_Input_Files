@@ -100,3 +100,12 @@
 - Options: 1. Use the container `redocly/cli:2.58.2` (exact tag, MIT, run on demand, nothing installed on the host or added to a manifest) for `openapi.yaml`, and Ajv 8.20.0, already in the frontend's locked dev dependency tree through ESLint, for the JSON schemas; PostgreSQL 16.15 from the stack for `database.sql` (default); 2. validate by inspection only (fails the gate).
 - Human response: none
 - Resolution: 1 (dev-only tooling, scanned with the rest in phase 6)
+
+## D-12: Add @types/node 24.19.0 (frontend, dev only)
+- Timestamp: 2026-10-13T20:30Z
+- Phase: 3
+- Type: non-blocking
+- Trigger: the end-to-end helpers (`frontend/e2e/support.ts`) and `playwright.config.ts` use Node APIs (`child_process`, `zlib`, `Buffer`, `process`); `tsc --noEmit` fails without Node type definitions, which `tech-stack.md` does not list.
+- Options: 1. Add `@types/node` 24.19.0 (MIT, matches Node 24, published 2026-09-25) as an exact dev dependency, under the `tech-stack.md` rule for unlisted tools (default); 2. exclude the e2e folder from type checking (weakens the check command).
+- Human response: none
+- Resolution: 1; `npm audit --omit=dev` still reports 0

@@ -1,0 +1,281 @@
+
+ RUN  v4.1.11 C:/Users/tanej/Documents/LAB/tanej_single-agent_sdd_v001/02_output/frontend
+
+ ❯ tests/acceptance/us001-external-form.test.tsx (1 test | 1 failed) 1069ms
+     × AC-001-08 shows exactly the external fields, active options grouped by category and unchecked consents 1062ms
+ ❯ tests/acceptance/us002-student-form.test.tsx (1 test | 1 failed) 1073ms
+     × AC-002-07 shows exactly the student fields, only student options grouped by category and unchecked consents 1067ms
+ ❯ tests/acceptance/us004-confirmation.test.tsx (5 tests | 5 failed) 5135ms
+     × AC-004-01 shows the confirmation with name and selected options and hides the form after acceptance 1064ms
+     × AC-004-02 shows backend field errors next to the fields, keeps the values and shows no confirmation 1011ms
+     × AC-004-03 shows field errors for an empty required field and an invalid email and sends no request 1022ms
+     × AC-004-04 shows a general error without technical details when the backend fails 1019ms
+     × AC-004-04 shows a general error when the backend cannot be reached 1012ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 7 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/acceptance/us001-external-form.test.tsx > US-001 external participant form > AC-001-08 shows exactly the external fields, active options grouped by category and unchecked consents
+TestingLibraryElementError: Unable to find role="radio" and name "External participant"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ renderPage tests/acceptance/support.tsx:121:16
+    119| export async function renderPage() {
+    120|   render(<App />);
+    121|   await screen.findByRole("radio", { name: "External participant" });
+       |                ^
+    122| }
+    123|
+ ❯ tests/acceptance/us001-external-form.test.tsx:10:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/7]⎯
+
+ FAIL  tests/acceptance/us002-student-form.test.tsx > US-002 student form > AC-002-07 shows exactly the student fields, only student options grouped by category and unchecked consents
+TestingLibraryElementError: Unable to find role="radio" and name "External participant"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ renderPage tests/acceptance/support.tsx:121:16
+    119| export async function renderPage() {
+    120|   render(<App />);
+    121|   await screen.findByRole("radio", { name: "External participant" });
+       |                ^
+    122| }
+    123|
+ ❯ tests/acceptance/us002-student-form.test.tsx:8:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/7]⎯
+
+ FAIL  tests/acceptance/us004-confirmation.test.tsx > US-004 registration confirmation > AC-004-01 shows the confirmation with name and selected options and hides the form after acceptance
+TestingLibraryElementError: Unable to find role="radio" and name "External participant"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ renderPage tests/acceptance/support.tsx:121:16
+    119| export async function renderPage() {
+    120|   render(<App />);
+    121|   await screen.findByRole("radio", { name: "External participant" });
+       |                ^
+    122| }
+    123|
+ ❯ tests/acceptance/us004-confirmation.test.tsx:34:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/7]⎯
+
+ FAIL  tests/acceptance/us004-confirmation.test.tsx > US-004 registration confirmation > AC-004-02 shows backend field errors next to the fields, keeps the values and shows no confirmation
+TestingLibraryElementError: Unable to find role="radio" and name "External participant"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ renderPage tests/acceptance/support.tsx:121:16
+    119| export async function renderPage() {
+    120|   render(<App />);
+    121|   await screen.findByRole("radio", { name: "External participant" });
+       |                ^
+    122| }
+    123|
+ ❯ tests/acceptance/us004-confirmation.test.tsx:82:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/7]⎯
+
+ FAIL  tests/acceptance/us004-confirmation.test.tsx > US-004 registration confirmation > AC-004-03 shows field errors for an empty required field and an invalid email and sends no request
+TestingLibraryElementError: Unable to find role="radio" and name "External participant"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ renderPage tests/acceptance/support.tsx:121:16
+    119| export async function renderPage() {
+    120|   render(<App />);
+    121|   await screen.findByRole("radio", { name: "External participant" });
+       |                ^
+    122| }
+    123|
+ ❯ tests/acceptance/us004-confirmation.test.tsx:117:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/7]⎯
+
+ FAIL  tests/acceptance/us004-confirmation.test.tsx > US-004 registration confirmation > AC-004-04 shows a general error without technical details when the backend fails
+TestingLibraryElementError: Unable to find role="radio" and name "External participant"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ renderPage tests/acceptance/support.tsx:121:16
+    119| export async function renderPage() {
+    120|   render(<App />);
+    121|   await screen.findByRole("radio", { name: "External participant" });
+       |                ^
+    122| }
+    123|
+ ❯ tests/acceptance/us004-confirmation.test.tsx:144:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/7]⎯
+
+ FAIL  tests/acceptance/us004-confirmation.test.tsx > US-004 registration confirmation > AC-004-04 shows a general error when the backend cannot be reached
+TestingLibraryElementError: Unable to find role="radio" and name "External participant"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mConference registration[0m
+      [36m</h1>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ renderPage tests/acceptance/support.tsx:121:16
+    119| export async function renderPage() {
+    120|   render(<App />);
+    121|   await screen.findByRole("radio", { name: "External participant" });
+       |                ^
+    122| }
+    123|
+ ❯ tests/acceptance/us004-confirmation.test.tsx:161:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/7]⎯
+
+
+ Test Files  3 failed (3)
+      Tests  7 failed (7)
+   Start at  22:41:01
+   Duration  42.59s (transform 769ms, setup 27.02s, import 670ms, tests 7.28s, environment 78.28s)
+

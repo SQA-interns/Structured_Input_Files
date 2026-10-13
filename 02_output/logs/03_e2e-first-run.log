@@ -1,0 +1,116 @@
+
+Running 5 tests using 1 worker
+
+  x  1 [chromium] › e2e\e2e-01-external-registration.spec.ts:22:1 › E2E-01 external participant registers (AC-001-01, AC-001-08, AC-004-01, AC-005-01, AC-005-02, AC-006-01, AC-007-01, AC-007-02) (1.5m)
+  x  2 [chromium] › e2e\e2e-02-student-registration.spec.ts:11:1 › E2E-02 student registers (AC-002-01, AC-002-07, AC-004-01) (1.5m)
+  x  3 [chromium] › e2e\e2e-03-field-errors.spec.ts:10:1 › E2E-03 field errors are shown next to the fields (AC-004-02, AC-004-03, NFR-03) (1.5m)
+  x  4 [chromium] › e2e\e2e-04-slovenian-characters.spec.ts:16:1 › E2E-04 Slovenian characters survive the whole chain (AC-005-04, AC-008-03, NFR-01) (1.5m)
+  x  5 [chromium] › e2e\e2e-05-organizer-export.spec.ts:14:1 › E2E-05 organizer exports registrations (AC-008-01, AC-008-02) (4.0s)
+
+
+  1) [chromium] › e2e\e2e-01-external-registration.spec.ts:22:1 › E2E-01 external participant registers (AC-001-01, AC-001-08, AC-004-01, AC-005-01, AC-005-02, AC-006-01, AC-007-01, AC-007-02) 
+
+    Test timeout of 90000ms exceeded.
+
+    Error: locator.check: Test timeout of 90000ms exceeded.
+    Call log:
+      - waiting for getByRole('radio', { name: 'External participant' })
+
+
+      29 |
+      30 |   await page.goto("/");
+    > 31 |   await page.getByRole("radio", { name: "External participant" }).check();
+         |                                                                   ^
+      32 |   await expect(page.getByLabel("Student ID", { exact: true })).toHaveCount(0);
+      33 |   await fillFields(page, {
+      34 |     "First name": firstName,
+        at C:\Users\tanej\Documents\LAB\tanej_single-agent_sdd_v001\02_output\frontend\e2e\e2e-01-external-registration.spec.ts:31:67
+
+    Error Context: test-results\e2e-01-external-registrati-e1515-006-01-AC-007-01-AC-007-02--chromium\error-context.md
+
+  2) [chromium] › e2e\e2e-02-student-registration.spec.ts:11:1 › E2E-02 student registers (AC-002-01, AC-002-07, AC-004-01) 
+
+    Test timeout of 90000ms exceeded.
+
+    Error: locator.check: Test timeout of 90000ms exceeded.
+    Call log:
+      - waiting for getByRole('radio', { name: 'Student' })
+
+
+      18 |
+      19 |   await page.goto("/");
+    > 20 |   await page.getByRole("radio", { name: "Student" }).check();
+         |                                                      ^
+      21 |
+      22 |   // Only the student fields and the options available to students (shipped configuration)
+      23 |   await expect(
+        at C:\Users\tanej\Documents\LAB\tanej_single-agent_sdd_v001\02_output\frontend\e2e\e2e-02-student-registration.spec.ts:20:54
+
+    Error Context: test-results\e2e-02-student-registratio-46705-002-01-AC-002-07-AC-004-01--chromium\error-context.md
+
+  3) [chromium] › e2e\e2e-03-field-errors.spec.ts:10:1 › E2E-03 field errors are shown next to the fields (AC-004-02, AC-004-03, NFR-03) 
+
+    Test timeout of 90000ms exceeded.
+
+    Error: locator.check: Test timeout of 90000ms exceeded.
+    Call log:
+      - waiting for getByRole('radio', { name: 'External participant' })
+
+
+      24 |
+      25 |   await page.goto("/");
+    > 26 |   await page.getByRole("radio", { name: "External participant" }).check();
+         |                                                                   ^
+      27 |   await fillFields(page, {
+      28 |     "Last name": `Napaka${run}`,
+      29 |     Email: "not-an-email",
+        at C:\Users\tanej\Documents\LAB\tanej_single-agent_sdd_v001\02_output\frontend\e2e\e2e-03-field-errors.spec.ts:26:67
+
+    Error Context: test-results\e2e-03-field-errors-E2E-03-cd491-AC-004-02-AC-004-03-NFR-03--chromium\error-context.md
+
+  4) [chromium] › e2e\e2e-04-slovenian-characters.spec.ts:16:1 › E2E-04 Slovenian characters survive the whole chain (AC-005-04, AC-008-03, NFR-01) 
+
+    Test timeout of 90000ms exceeded.
+
+    Error: locator.check: Test timeout of 90000ms exceeded.
+    Call log:
+      - waiting for getByRole('radio', { name: 'External participant' })
+
+
+      25 |
+      26 |   await page.goto("/");
+    > 27 |   await page.getByRole("radio", { name: "External participant" }).check();
+         |                                                                   ^
+      28 |   await fillFields(page, {
+      29 |     "First name": firstName,
+      30 |     "Last name": lastName,
+        at C:\Users\tanej\Documents\LAB\tanej_single-agent_sdd_v001\02_output\frontend\e2e\e2e-04-slovenian-characters.spec.ts:27:67
+
+    Error Context: test-results\e2e-04-slovenian-character-a1967-AC-005-04-AC-008-03-NFR-01--chromium\error-context.md
+
+  5) [chromium] › e2e\e2e-05-organizer-export.spec.ts:14:1 › E2E-05 organizer exports registrations (AC-008-01, AC-008-02) 
+
+    Error: registration accepted
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 201
+    Received: 502
+
+      30 |     },
+      31 |   });
+    > 32 |   expect(created.status(), "registration accepted").toBe(201);
+         |                                                     ^
+      33 |
+      34 |   // With organizer credentials: a valid workbook with one row per registration
+      35 |   const exported = await request.get("/api/registrations/export", {
+        at C:\Users\tanej\Documents\LAB\tanej_single-agent_sdd_v001\02_output\frontend\e2e\e2e-05-organizer-export.spec.ts:32:53
+
+    Error Context: test-results\e2e-05-organizer-export-E2-6b426-ations-AC-008-01-AC-008-02--chromium\error-context.md
+
+  5 failed
+    [chromium] › e2e\e2e-01-external-registration.spec.ts:22:1 › E2E-01 external participant registers (AC-001-01, AC-001-08, AC-004-01, AC-005-01, AC-005-02, AC-006-01, AC-007-01, AC-007-02) 
+    [chromium] › e2e\e2e-02-student-registration.spec.ts:11:1 › E2E-02 student registers (AC-002-01, AC-002-07, AC-004-01) 
+    [chromium] › e2e\e2e-03-field-errors.spec.ts:10:1 › E2E-03 field errors are shown next to the fields (AC-004-02, AC-004-03, NFR-03) 
+    [chromium] › e2e\e2e-04-slovenian-characters.spec.ts:16:1 › E2E-04 Slovenian characters survive the whole chain (AC-005-04, AC-008-03, NFR-01) 
+    [chromium] › e2e\e2e-05-organizer-export.spec.ts:14:1 › E2E-05 organizer exports registrations (AC-008-01, AC-008-02) 
