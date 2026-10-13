@@ -5,7 +5,7 @@
 Updated at every gate and before any stop, so a fresh session can resume from here.
 
 - Workflow: spec-driven, acceptance tests first (`general/phases.md`), single agent
-- Current phase: 5 (unit tests)
-- Last gate result: phase 4 passed (84 backend + 10 frontend acceptance + 5 e2e frozen tests pass; spotless, PMD, CPD, SpotBugs, prettier, eslint, tsc clean)
-- Next step: first full run with coverage, then unit/integration/architecture tests area by area, then mutation testing
+- Current phase: 6 (verify)
+- Last gate result: phase 5 passed (gate met: backend line 99.32 %, mutation 95.72 %, 0 rounds; frontend line 100 %, mutation 94.83 %, 1 round)
+- Next step: verify-release: hashes, full suite, scanners, runtime demo, secret leak check, traceability, DoD evidence
 - Waiting for the human on: nothing
