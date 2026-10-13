@@ -1,0 +1,23 @@
+### git -c core.longpaths=true clone (HEAD 43ab469)
+cloned
+.env created from the operator's values (not shown)
+### backend: ./mvnw -B package -DskipTests
+exit=0 jar=target/registration-backend-1.0.0.jar
+### frontend: npm ci, npm run build, npm test, npm run check
+added 443 packages in 12s
+build exit=0
+      Tests  69 passed (69)
+check exit=0
+### docker compose up -d --build --wait
+ Container konferenca-registration-frontend-1 Healthy 
+backend running healthy
+frontend running healthy
+mailpit running healthy
+postgres running healthy
+form config: 200
+page: <title>Conference registration</title>
+health: {"status":"UP"}
+### e2e from the clone: npm run e2e
+  5 passed (8.6s)
+### docker compose down
+ Network konferenca-registration_default Removed 

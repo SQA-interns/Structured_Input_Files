@@ -17,8 +17,8 @@ Verified on 2026-10-13 against commit range `6bf4a55..HEAD`. Raw outputs are in 
 | DoD-05 | Pass | No open Critical or High (Findings below) |
 | DoD-06 | Pass | Runtime demonstration below (`logs/06_runtime-demo.log`) and e2e 5/5 on the rebuilt images |
 | DoD-07 | Pass | Traceability table below: every AC has at least one test and one commit |
-| DoD-08 | Pending phase 7 | READMEs are written in phase 7 and followed from a clean clone there |
-| DoD-09 | Pending phase 7 | `release-notes.md` written in phase 7 |
+| DoD-08 | Pass (phase 7) | Fresh clone of `43ab469` followed by the READMEs: backend build, frontend `npm ci`, build, 69 tests, check, `docker compose up --build --wait` (all healthy), form config 200, e2e 5/5 from the clone (`logs/07_clean-clone.log`). On Windows a deep clone path needs `core.longpaths` (now in the root README). |
+| DoD-09 | Pass (phase 7) | `release-notes.md`, "Must be tested manually by a human": reCAPTCHA with production keys, SMTP delivery, TLS and proxy, HTTPS-only export, production start, backup and retention |
 | DoD-10 | Pass | D-01 … D-14 each have a resolution or "pending review" (D-08 … D-11); manifests unchanged |
 | DoD-11 | Pass with divergences | Phase 3 commits add no production code (only tests, harness, build/compose files); the freeze commit `a3dbbb7` adds only the manifest and every listed file was committed earlier; every story has `feat` commits naming its ID. Divergences recorded in `run-log.json`: three test commits over 400 lines (`b7b37af` 476, `7df20af` 445, `3ca6b52` 431), two subjects over 72 characters (`63b0068` 73, `14f0291` 75), phase 0 bootstrap committed in a burst. |
 | DoD-P01 | Pass | One external and one student registration through the frontend proxy: 201 each (`06_runtime-demo.log`, repeat section), plus E2E-01/02 |
