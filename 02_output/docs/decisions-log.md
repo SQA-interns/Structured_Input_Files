@@ -75,7 +75,7 @@
 - Resolution: 1
 
 ## D-09: Stray unformatted line at the top of scope.md
-- Timestamp: 2026-10-13T20:10Z
+- Timestamp: 2026-10-13T20:07Z
 - Phase: 1
 - Type: non-blocking
 - Trigger: `project/01_requirements/scope.md` starts with a line before `# Scope` that repeats the OQ-01 … OQ-06 answers in reverse order. Its text matches the open-questions table word for word (`docs/01_requirements-check.md`, G-1).
@@ -84,10 +84,19 @@
 - Resolution: 1
 
 ## D-10: Status code when organizer HTTPS-only access refuses plain HTTP
-- Timestamp: 2026-10-13T20:10Z
+- Timestamp: 2026-10-13T20:07Z
 - Phase: 1
 - Type: non-blocking
 - Trigger: AC-008-04 and SR-06 require refusing the export over plain HTTP from a non-localhost client but name no status code (G-3).
 - Options: 1. HTTP 403 with a generic error body, decided before credentials are evaluated, so valid credentials are never confirmed over plain HTTP (default, more conservative); 2. HTTP 401 like AC-008-02.
 - Human response: none
 - Resolution: pending review (option 1 applied)
+
+## D-11: Contract validators not listed in tech-stack.md
+- Timestamp: 2026-10-13T20:14Z
+- Phase: 2
+- Type: non-blocking
+- Trigger: the phase 2 gate requires the contracts to validate with a parser. `tech-stack.md` lists no OpenAPI or JSON Schema validator.
+- Options: 1. Use the container `redocly/cli:2.58.2` (exact tag, MIT, run on demand, nothing installed on the host or added to a manifest) for `openapi.yaml`, and Ajv 8.20.0, already in the frontend's locked dev dependency tree through ESLint, for the JSON schemas; PostgreSQL 16.15 from the stack for `database.sql` (default); 2. validate by inspection only (fails the gate).
+- Human response: none
+- Resolution: 1 (dev-only tooling, scanned with the rest in phase 6)

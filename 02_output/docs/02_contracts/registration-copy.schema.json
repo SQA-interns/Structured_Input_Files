@@ -1,0 +1,61 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://konferenca.si/schemas/registration-copy.schema.json",
+  "title": "Raw JSON copy of an accepted registration",
+  "description": "Written as <id>.json (UTF-8, no BOM) in the JSON copy directory before the database transaction commits (BR-07, AR-05). The organizer notification attaches the same bytes as registration-<id>.json (AC-007-02). Text values are stored trimmed (BR-02) and otherwise unchanged (NFR-01). Fields of the other registration type are absent.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "type", "registeredAt", "firstName", "lastName", "email", "options", "consents"],
+  "properties": {
+    "id": { "type": "string", "format": "uuid" },
+    "type": { "type": "string", "enum": ["EXTERNAL", "STUDENT"] },
+    "registeredAt": { "type": "string", "format": "date-time", "description": "UTC, ISO-8601 with millisecond precision, e.g. 2026-10-13T20:15:03.123Z" },
+    "firstName": { "type": "string", "minLength": 1, "maxLength": 100 },
+    "lastName": { "type": "string", "minLength": 1, "maxLength": 100 },
+    "email": { "type": "string", "minLength": 3, "maxLength": 254 },
+    "organization": { "type": "string", "minLength": 1, "maxLength": 200 },
+    "studyInstitution": { "type": "string", "minLength": 1, "maxLength": 200 },
+    "studyProgramme": { "type": "string", "minLength": 1, "maxLength": 200 },
+    "studentId": { "type": "string", "minLength": 1, "maxLength": 50 },
+    "options": {
+      "type": "array",
+      "description": "Selected options in the order submitted, with the name and category at the time of registration.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "category"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "category": { "type": "string", "enum": ["WORKSHOP", "EVENT", "MEAL", "OTHER"] }
+        }
+      }
+    },
+    "consents": {
+      "type": "array",
+      "description": "Every consent the participant gave, with the configured wording and the time it was given.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "text", "givenAt"],
+        "properties": {
+          "id": { "type": "string" },
+          "text": { "type": "string" },
+          "givenAt": { "type": "string", "format": "date-time" }
+        }
+      }
+    }
+  },
+  "oneOf": [
+    {
+      "properties": { "type": { "const": "EXTERNAL" } },
+      "required": ["organization"],
+      "not": { "anyOf": [{ "required": ["studyInstitution"] }, { "required": ["studyProgramme"] }, { "required": ["studentId"] }] }
+    },
+    {
+      "properties": { "type": { "const": "STUDENT" } },
+      "required": ["studyInstitution", "studyProgramme", "studentId"],
+      "not": { "required": ["organization"] }
+    }
+  ]
+}

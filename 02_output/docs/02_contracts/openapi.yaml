@@ -1,0 +1,334 @@
+openapi: 3.1.0
+info:
+  title: Conference registration API
+  version: 0.1.0
+  description: |
+    REST API of the registration backend (AR-01). All paths are under `/api`.
+    Every `/api` endpoint is rate limited per client IP (SR-03) and request bodies
+    are limited to `REQUEST_MAX_BODY_BYTES` (default 16384) bytes. Error bodies never
+    contain stack traces, class names, SQL or configuration values (SB-07).
+  license:
+    name: Proprietary
+    identifier: LicenseRef-Proprietary
+servers:
+  - url: /
+tags:
+  - name: registration
+    description: Public registration form and submission
+  - name: organizer
+    description: Organizer-only operations
+security: []
+paths:
+  /api/form-config:
+    get:
+      tags: [registration]
+      operationId: getFormConfig
+      summary: Form configuration (active options, consents, anti-automation mode)
+      description: |
+        Lists only active options (AC-003-01), in configuration order, each with the
+        registration types it is available to (OQ-01), and every configured consent (OQ-02).
+      responses:
+        '200':
+          description: Form configuration
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FormConfig'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+  /api/registrations:
+    post:
+      tags: [registration]
+      operationId: createRegistration
+      summary: Submit a registration
+      description: |
+        Validates the submission (BR-01 … BR-05, SR-04), verifies the reCAPTCHA token
+        on the backend (SR-01), stores the database row and the JSON copy in one
+        transaction (BR-07, AR-05), answers 201, then sends the participant and
+        organizer emails (OQ-03: a mail failure does not change the answer).
+        Field validation runs first; the token is verified only when every field is
+        valid. Any rejection stores nothing and sends no email.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegistrationRequest'
+      responses:
+        '201':
+          description: Registration accepted and stored
+          headers:
+            Location:
+              description: /api/registrations/{id} (informational; there is no public read endpoint)
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegistrationAccepted'
+        '400':
+          description: Rejected; nothing stored, no email sent
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+        '413':
+          $ref: '#/components/responses/PayloadTooLarge'
+        '415':
+          $ref: '#/components/responses/GeneralError'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/GeneralError'
+  /api/registrations/export:
+    get:
+      tags: [organizer]
+      operationId: exportRegistrations
+      summary: Excel export of every stored registration (organizer only)
+      description: |
+        HTTP Basic with the organizer credentials (BR-08, SB-02). One row per
+        registration, oldest first (AC-008-01). When organizer HTTPS-only access is on
+        (default), a plain-HTTP request from a client that is not on localhost is
+        refused with 403 before credentials are evaluated (SR-06, AC-008-04, D-10).
+      security:
+        - organizerBasic: []
+      responses:
+        '200':
+          description: Workbook
+          headers:
+            Content-Disposition:
+              description: attachment; filename="registrations.xlsx"
+              schema:
+                type: string
+            Cache-Control:
+              description: no-store
+              schema:
+                type: string
+          content:
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
+              schema:
+                type: string
+                contentEncoding: binary
+        '401':
+          description: Missing or wrong credentials; no registration data
+          headers:
+            WWW-Authenticate:
+              description: Basic realm="organizer"
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralError'
+        '403':
+          description: Plain HTTP from a non-local client while HTTPS-only access is on; no registration data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralError'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+components:
+  securitySchemes:
+    organizerBasic:
+      type: http
+      scheme: basic
+  responses:
+    TooManyRequests:
+      description: Rate limit exceeded for this client
+      headers:
+        Retry-After:
+          description: Seconds until the current window ends
+          schema:
+            type: integer
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GeneralError'
+    PayloadTooLarge:
+      description: Request body larger than the configured limit
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GeneralError'
+    GeneralError:
+      description: Generic error without internal details
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GeneralError'
+  schemas:
+    RegistrationType:
+      type: string
+      enum: [EXTERNAL, STUDENT]
+    OptionCategory:
+      type: string
+      enum: [WORKSHOP, EVENT, MEAL, OTHER]
+    FormConfig:
+      type: object
+      additionalProperties: false
+      required: [conferenceName, options, consents, captcha]
+      properties:
+        conferenceName:
+          type: string
+        options:
+          type: array
+          items:
+            $ref: '#/components/schemas/FormOption'
+        consents:
+          type: array
+          items:
+            $ref: '#/components/schemas/FormConsent'
+        captcha:
+          $ref: '#/components/schemas/CaptchaConfig'
+    FormOption:
+      type: object
+      additionalProperties: false
+      required: [id, name, category, availableTo]
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        category:
+          $ref: '#/components/schemas/OptionCategory'
+        availableTo:
+          type: array
+          items:
+            $ref: '#/components/schemas/RegistrationType'
+    FormConsent:
+      type: object
+      additionalProperties: false
+      required: [id, text, mandatory]
+      properties:
+        id:
+          type: string
+        text:
+          type: string
+        mandatory:
+          type: boolean
+    CaptchaConfig:
+      type: object
+      additionalProperties: false
+      required: [mode, siteKey]
+      properties:
+        mode:
+          type: string
+          enum: [recaptcha, test]
+          description: '`test` only when RECAPTCHA_TEST_MODE=true (SR-02)'
+        siteKey:
+          type: [string, 'null']
+          description: The public reCAPTCHA v2 site key in `recaptcha` mode, null in `test` mode (AR-07)
+    RegistrationRequest:
+      type: object
+      description: |
+        Unknown properties are rejected (400). Text values are trimmed before
+        validation and storage (BR-02). Fields of the other registration type must be
+        absent, null or blank; a non-blank value is a field error.
+      required: [type, firstName, lastName, email, optionIds, consents, recaptchaToken]
+      properties:
+        type:
+          $ref: '#/components/schemas/RegistrationType'
+        firstName:
+          type: [string, 'null']
+          maxLength: 100
+        lastName:
+          type: [string, 'null']
+          maxLength: 100
+        email:
+          type: [string, 'null']
+          maxLength: 254
+          description: 'Valid when the trimmed value matches ^[^\s@]+@[^\s@]+\.[^\s@]+$ and has at most 254 characters (BR-03)'
+        organization:
+          type: [string, 'null']
+          maxLength: 200
+          description: Required for EXTERNAL
+        studyInstitution:
+          type: [string, 'null']
+          maxLength: 200
+          description: Required for STUDENT
+        studyProgramme:
+          type: [string, 'null']
+          maxLength: 200
+          description: Required for STUDENT
+        studentId:
+          type: [string, 'null']
+          maxLength: 50
+          description: Required for STUDENT
+        optionIds:
+          type: [array, 'null']
+          maxItems: 50
+          description: 'Distinct ids of active options available to the type (BR-04, SR-04, OQ-01, OQ-04). null is treated as [].'
+          items:
+            type: string
+        consents:
+          type: [object, 'null']
+          description: 'Consent id → given. Every mandatory consent must be true (BR-05); an unknown consent id is a field error.'
+          additionalProperties:
+            type: boolean
+        recaptchaToken:
+          type: [string, 'null']
+          maxLength: 4096
+    RegistrationAccepted:
+      type: object
+      additionalProperties: false
+      required: [id, type, firstName, lastName, options, registeredAt]
+      properties:
+        id:
+          type: string
+          format: uuid
+        type:
+          $ref: '#/components/schemas/RegistrationType'
+        firstName:
+          type: string
+        lastName:
+          type: string
+        options:
+          type: array
+          items:
+            type: object
+            additionalProperties: false
+            required: [id, name, category]
+            properties:
+              id:
+                type: string
+              name:
+                type: string
+              category:
+                $ref: '#/components/schemas/OptionCategory'
+        registeredAt:
+          type: string
+          format: date-time
+    ValidationError:
+      type: object
+      additionalProperties: false
+      required: [message, errors]
+      properties:
+        message:
+          type: string
+          const: Validation failed
+        errors:
+          type: array
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/FieldError'
+    FieldError:
+      type: object
+      additionalProperties: false
+      required: [field, message]
+      properties:
+        field:
+          type: string
+          description: |
+            One of: type, firstName, lastName, email, organization, studyInstitution,
+            studyProgramme, studentId, options, consents.<consentId>, recaptchaToken, body.
+            `body` is used for malformed JSON or unknown properties.
+        message:
+          type: string
+    GeneralError:
+      type: object
+      additionalProperties: false
+      required: [message]
+      properties:
+        message:
+          type: string

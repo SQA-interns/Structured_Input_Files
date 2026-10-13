@@ -5,7 +5,7 @@
 Updated at every gate and before any stop, so a fresh session can resume from here.
 
 - Workflow: single agent, spec-driven, phases 0-7 (`general/phases.md`)
-- Current phase: 2 (design)
-- Last gate result: phase 1 gate passed (35 AC over 8 stories, OQ-01..06 answered; gaps G-1..G-7, D-09, D-10).
-- Next step: write `docs/02_specification.md` and `docs/02_contracts/` (OpenAPI, JSON schemas, options config schema); validate contracts with a parser.
+- Current phase: 3 (test design)
+- Last gate result: phase 2 gate passed: every AC, SR, SB, NFR and AR maps to a spec section; contracts validate (Redocly, Ajv, PostgreSQL).
+- Next step: write the frozen acceptance tests story by story (backend `acceptance/`, frontend `tests/acceptance/`) and the five e2e tests, then the freeze commit.
 - Waiting for the human on: nothing

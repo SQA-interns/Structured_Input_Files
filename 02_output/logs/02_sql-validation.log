@@ -1,0 +1,12 @@
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+CREATE TABLE
+                List of relations
+ Schema |         Name         | Type  |  Owner   
+--------+----------------------+-------+----------
+ public | registration         | table | postgres
+ public | registration_consent | table | postgres
+ public | registration_option  | table | postgres
+(3 rows)
+

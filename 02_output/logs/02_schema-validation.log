@@ -1,0 +1,13 @@
+unknown format "uuid" ignored in schema at path "#/properties/id"
+unknown format "uuid" ignored in schema at path "#/properties/id"
+unknown format "date-time" ignored in schema at path "#/properties/registeredAt"
+unknown format "date-time" ignored in schema at path "#/properties/registeredAt"
+unknown format "date-time" ignored in schema at path "#/properties/consents/items/properties/givenAt"
+unknown format "date-time" ignored in schema at path "#/properties/consents/items/properties/givenAt"
+PASS shipped conference.json valid
+PASS unknown category invalid -> data/options/0/category must be equal to one of the allowed values
+PASS missing name invalid -> data/options/0 must have required property 'name'
+PASS external copy valid
+PASS student copy valid
+PASS external with student field invalid -> data must NOT be valid, data must NOT be valid, data must have required property 'studyInstitution', data must have required property 'studyProgramme', data/type must be equal to constant, data must match exactly one schema in oneOf
+ajv-formats not available (formats not asserted)
