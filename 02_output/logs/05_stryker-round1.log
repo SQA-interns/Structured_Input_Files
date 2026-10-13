@@ -1,0 +1,206 @@
+[32m23:49:27 (46424) INFO ProjectReader[39m Found 5 of 65 file(s) to be mutated.
+[32m23:49:28 (46424) INFO Instrumenter[39m Instrumented 5 source file(s) with 203 mutant(s)
+[32m23:49:28 (46424) INFO ConcurrencyTokenProvider[39m Creating 3 test runner process(es).
+[32m23:49:29 (46424) INFO BroadcastReporter[39m Detected that current console does not support the "progress" reporter, downgrading to "progress-append-only" reporter
+[32m23:49:30 (46424) INFO DryRunExecutor[39m Starting initial test run (vitest test runner with "perTest" coverage analysis). This may take a while.
+[32m23:49:38 (46424) INFO DryRunExecutor[39m Initial test run succeeded. Ran 23 tests in 8 seconds (net 1837.0419000000006 ms, overhead 6395.9581 ms).
+Mutation testing 4% (elapsed: <1m, remaining: ~3m) 9/203 tested (0 survived, 0 timed out)
+Mutation testing 5% (elapsed: <1m, remaining: ~6m) 16/203 tested (2 survived, 0 timed out)
+Mutation testing 8% (elapsed: <1m, remaining: ~5m) 22/203 tested (5 survived, 0 timed out)
+Mutation testing 15% (elapsed: <1m, remaining: ~3m) 39/203 tested (5 survived, 0 timed out)
+Mutation testing 21% (elapsed: <1m, remaining: ~3m) 50/203 tested (5 survived, 0 timed out)
+Mutation testing 30% (elapsed: ~1m, remaining: ~2m) 63/203 tested (6 survived, 0 timed out)
+Mutation testing 33% (elapsed: ~1m, remaining: ~2m) 80/203 tested (6 survived, 0 timed out)
+Mutation testing 41% (elapsed: ~1m, remaining: ~1m) 93/203 tested (6 survived, 0 timed out)
+Mutation testing 50% (elapsed: ~1m, remaining: ~1m) 111/203 tested (7 survived, 0 timed out)
+Mutation testing 57% (elapsed: ~1m, remaining: ~1m) 125/203 tested (7 survived, 0 timed out)
+Mutation testing 66% (elapsed: ~1m, remaining: <1m) 141/203 tested (8 survived, 0 timed out)
+Mutation testing 69% (elapsed: ~2m, remaining: <1m) 157/203 tested (8 survived, 0 timed out)
+Mutation testing 79% (elapsed: ~2m, remaining: <1m) 175/203 tested (9 survived, 0 timed out)
+Mutation testing 90% (elapsed: ~2m, remaining: <1m) 190/203 tested (9 survived, 0 timed out)
+Mutation testing 96% (elapsed: ~2m, remaining: <1m) 199/203 tested (11 survived, 0 timed out)
+
+All tests
+  src
+    components/RegistrationForm.test.tsx
+      ✓ RegistrationForm shows no fields before a type is chosen and typed inputs afterwards (killed 23)
+      ✓ RegistrationForm sends trimmed own-type fields, toggled options and every consent (killed 59)
+      ✓ RegistrationForm drops options the new type cannot select (killed 3)
+      ✓ RegistrationForm marks consent and token errors next to their controls and clears errors on type change (killed 6)
+      ✓ RegistrationForm shows displayable backend errors, keeps the first message per field and reports others generally (killed 36)
+      ~ RegistrationForm treats an error for a field of the other type as general and shows own-type ones (covered 142)
+      ✓ RegistrationForm only field errors do not show the general error (killed 4)
+      ✓ RegistrationForm clears the general error when the form is submitted again (killed 4)
+      ✓ RegistrationForm disables the button and sends one request while submitting (killed 3)
+      ✓ RegistrationForm resets the Google widget after a rejected submission (killed 6)
+      ✓ RegistrationForm does not reset anything in test mode after a rejection (killed 1)
+    App.test.tsx
+      ✓ App shows loading until the configuration arrives, then the conference name (killed 20)
+      ✓ App shows an unavailable message and no form when the configuration fails (killed 7)
+      ~ App ignores an answer that arrives after unmounting (covered 29)
+      ✓ Confirmation says when no option was selected (killed 4)
+      ~ OptionGroups renders only categories with options and no error state without an error (covered 18)
+  tests/acceptance
+    us001-external-form.test.tsx
+      ✓ US-001 external participant form AC-001-08 shows exactly the external fields, active options grouped by category and unchecked consents (killed 3)
+    us002-student-form.test.tsx
+      ~ US-002 student form AC-002-07 shows exactly the student fields, only student options grouped by category and unchecked consents (covered 94)
+    us004-confirmation.test.tsx
+      ✓ US-004 registration confirmation AC-004-01 shows the confirmation with name and selected options and hides the form after acceptance (killed 8)
+      ✓ US-004 registration confirmation AC-004-02 shows backend field errors next to the fields, keeps the values and shows no confirmation (killed 3)
+      ~ US-004 registration confirmation AC-004-03 shows field errors for an empty required field and an invalid email and sends no request (covered 118)
+      ~ US-004 registration confirmation AC-004-04 shows a general error without technical details when the backend fails (covered 145)
+      ~ US-004 registration confirmation AC-004-04 shows a general error when the backend cannot be reached (covered 145)
+
+[Survived] StringLiteral
+src/components/OptionGroups.tsx:24:43
+-           aria-describedby={error ? errorId("options") : undefined}
++           aria-describedby={error ? errorId("") : undefined}
+Tests ran:
+    RegistrationForm only field errors do not show the general error
+    RegistrationForm does not reset anything in test mode after a rejection
+    US-004 registration confirmation AC-004-02 shows backend field errors next to the fields, keeps the values and shows no confirmation
+
+
+[NoCoverage] StringLiteral
+src/components/RegistrationForm.tsx:85:40
+-         request[name] = (values[name] ?? "").trim();
++         request[name] = (values[name] ?? "Stryker was here!").trim();
+
+[Survived] BooleanLiteral
+src/components/RegistrationForm.tsx:44:52
+-     const [generalError, setGeneralError] = useState(false);
++     const [generalError, setGeneralError] = useState(true);
+Tests ran:
+    RegistrationForm shows no fields before a type is chosen and typed inputs afterwards
+    RegistrationForm sends trimmed own-type fields, toggled options and every consent
+    RegistrationForm drops options the new type cannot select
+  and 16 more tests!
+
+
+[Survived] CallExpression
+src/components/RegistrationForm.tsx:91:5
+-       event.preventDefault();
++       ;
+Tests ran:
+    RegistrationForm sends trimmed own-type fields, toggled options and every consent
+    RegistrationForm drops options the new type cannot select
+    RegistrationForm marks consent and token errors next to their controls and clears errors on type change
+  and 12 more tests!
+
+
+[Survived] ConditionalExpression
+src/components/RegistrationForm.tsx:118:11
+-         if (config.captcha.mode === "recaptcha") {
++         if (true) {
+Tests ran:
+    RegistrationForm shows displayable backend errors, keeps the first message per field and reports others generally
+    RegistrationForm treats an error for a field of the other type as general and shows own-type ones
+    RegistrationForm only field errors do not show the general error
+  and 3 more tests!
+
+
+[Survived] ConditionalExpression
+src/components/RegistrationForm.tsx:189:32
+-                         checked={consents[consent.id] === true}
++                         checked={false}
+Tests ran:
+    RegistrationForm shows no fields before a type is chosen and typed inputs afterwards
+    RegistrationForm sends trimmed own-type fields, toggled options and every consent
+    RegistrationForm drops options the new type cannot select
+  and 15 more tests!
+
+
+[Survived] BooleanLiteral
+src/components/RegistrationForm.tsx:189:57
+-                         checked={consents[consent.id] === true}
++                         checked={consents[consent.id] === false}
+Tests ran:
+    RegistrationForm shows no fields before a type is chosen and typed inputs afterwards
+    RegistrationForm sends trimmed own-type fields, toggled options and every consent
+    RegistrationForm drops options the new type cannot select
+  and 15 more tests!
+
+
+[Survived] StringLiteral
+src/components/RegistrationForm.tsx:214:38
+-                 describedBy={described("recaptchaToken")}
++                 describedBy={described("")}
+Tests ran:
+    RegistrationForm shows no fields before a type is chosen and typed inputs afterwards
+    RegistrationForm sends trimmed own-type fields, toggled options and every consent
+    RegistrationForm drops options the new type cannot select
+  and 15 more tests!
+
+
+[Survived] ConditionalExpression
+src/App.tsx:25:13
+-           if (active) setState({ status: "failed" });
++           if (true) setState({ status: "failed" });
+Tests ran:
+    App shows an unavailable message and no form when the configuration fails
+    App ignores an answer that arrives after unmounting
+
+
+[Survived] ConditionalExpression
+src/App.tsx:22:13
+-           if (active) setState({ status: "ready", config });
++           if (true) setState({ status: "ready", config });
+Tests ran:
+    US-004 registration confirmation AC-004-01 shows the confirmation with name and selected options and hides the form after acceptance
+    US-004 registration confirmation AC-004-02 shows backend field errors next to the fields, keeps the values and shows no confirmation
+    US-004 registration confirmation AC-004-03 shows field errors for an empty required field and an invalid email and sends no request
+  and 5 more tests!
+
+
+[Survived] BlockStatement
+src/App.tsx:27:18
+-       return () => {
+-         active = false;
+-       };
++       return () => {};
+Tests ran:
+    US-004 registration confirmation AC-004-01 shows the confirmation with name and selected options and hides the form after acceptance
+    US-004 registration confirmation AC-004-02 shows backend field errors next to the fields, keeps the values and shows no confirmation
+    US-004 registration confirmation AC-004-03 shows field errors for an empty required field and an invalid email and sends no request
+  and 7 more tests!
+
+
+[Survived] BooleanLiteral
+src/App.tsx:28:16
+-         active = false;
++         active = true;
+Tests ran:
+    US-004 registration confirmation AC-004-01 shows the confirmation with name and selected options and hides the form after acceptance
+    US-004 registration confirmation AC-004-02 shows backend field errors next to the fields, keeps the values and shows no confirmation
+    US-004 registration confirmation AC-004-03 shows field errors for an empty required field and an invalid email and sends no request
+  and 7 more tests!
+
+
+[Survived] ArrayDeclaration
+src/App.tsx:30:6
+-     }, []);
++     }, ["Stryker was here"]);
+Tests ran:
+    US-004 registration confirmation AC-004-01 shows the confirmation with name and selected options and hides the form after acceptance
+    US-004 registration confirmation AC-004-02 shows backend field errors next to the fields, keeps the values and shows no confirmation
+    US-004 registration confirmation AC-004-03 shows field errors for an empty required field and an invalid email and sends no request
+  and 7 more tests!
+
+
+Ran 2.61 tests per mutant on average.
+-----------------------|------------------|----------|-----------|------------|----------|----------|
+                       | % Mutation score |          |           |            |          |          |
+File                   |  total | covered | # killed | # timeout | # survived | # no cov | # errors |
+-----------------------|--------|---------|----------|-----------|------------|----------|----------|
+All files              |  93.60 |   94.06 |      190 |         0 |         12 |        1 |        0 |
+ components            |  95.21 |   95.78 |      159 |         0 |          7 |        1 |        0 |
+  Confirmation.tsx     | 100.00 |  100.00 |        6 |         0 |          0 |        0 |        0 |
+  FieldErrorText.tsx   | 100.00 |  100.00 |        4 |         0 |          0 |        0 |        0 |
+  OptionGroups.tsx     |  93.75 |   93.75 |       15 |         0 |          1 |        0 |        0 |
+  RegistrationForm.tsx |  95.04 |   95.71 |      134 |         0 |          6 |        1 |        0 |
+ App.tsx               |  86.11 |   86.11 |       31 |         0 |          5 |        0 |        0 |
+-----------------------|--------|---------|----------|-----------|------------|----------|----------|
+[32m23:52:12 (46424) INFO JsonReporter[39m Your report can be found at: file:///C:/Users/tanej/Documents/LAB/tanej_single-agent_sdd_v001/02_output/frontend/reports/mutation/mutation.json
+[32m23:52:12 (46424) INFO HtmlReporter[39m Your report can be found at: file:///C:/Users/tanej/Documents/LAB/tanej_single-agent_sdd_v001/02_output/frontend/reports/mutation/index.html
+[32m23:52:12 (46424) INFO MutationTestExecutor[39m Done in 2 minutes and 45 seconds.

@@ -118,3 +118,12 @@
 - Options: 1. Exclude exactly these rules in `backend/pmd-ruleset.xml` (quickstart minus `GuardLogStatement`) and `backend/spotbugs-exclude.xml`, each with its reason (default; they are false positives here: SLF4J defers formatting, the collections are DTO payloads or injected beans, finalization is deprecated in Java 21); 2. guard every log call and copy every list (adds noise without behaviour change).
 - Human response: none
 - Resolution: 1; pending review (a lint configuration change)
+
+## D-14: End-to-end tests are not under the coverage and mutation tools
+- Timestamp: 2026-10-13T21:55Z
+- Phase: 5
+- Type: non-blocking
+- Trigger: `measurement-scope.md` asks for the full automated suite under coverage and mutation. The 5 Playwright e2e tests run against the containerised stack; JaCoCo is not attached to the backend container and the Stryker vitest runner cannot run Playwright.
+- Options: 1. Measure backend coverage and PIT with the full JUnit suite (unit, integration, architecture, acceptance) and frontend coverage and Stryker with the full Vitest suite (unit, acceptance); record the e2e tests as run but not instrumented (default); 2. instrument the container JVM and replay e2e per mutant (hours per run, no gain: every e2e path is also exercised by the acceptance tests).
+- Human response: none
+- Resolution: 1; both components meet the gate without e2e coverage

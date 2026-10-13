@@ -5,7 +5,7 @@
 Updated at every gate and before any stop, so a fresh session can resume from here.
 
 - Workflow: single agent, spec-driven, phases 0-7 (`general/phases.md`)
-- Current phase: 4 (build) complete; next 5 (unit tests)
-- Last gate result: phase 4 gate passed: frozen tests 80 backend + 7 frontend + 5 e2e all pass; backend check (Spotless, PMD, CPD, SpotBugs) and frontend check (Prettier, ESLint, tsc) clean; commits for US-001..US-008.
-- Next step: phase 5: first full run, then unit and integration tests area by area, coverage (JaCoCo, Vitest v8) to 95 % line, then PIT and Stryker to 90 % adjusted.
+- Current phase: 6 (verify)
+- Last gate result: phase 5 gate passed: backend 200 tests, line 98.19 %, PIT 90.54 % (0 rounds); frontend 56 tests + 5 e2e, line 100 %, Stryker 92.58 % (1 round).
+- Next step: phase 6 verify-release: hashes, full suite and checks, runtime demonstration (NFR-02, NFR-04, DoD-P01..P04), scanners (Dependency-Check, npm audit, Semgrep, gitleaks), SB/SR evidence, leak check, trace-ac, report.
 - Waiting for the human on: nothing

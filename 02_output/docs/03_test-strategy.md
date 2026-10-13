@@ -57,6 +57,10 @@ Tests that pass on the bootstrap code:
 
 ## First complete run (before any fix)
 
+Phase 5 start, on the phase 4 code (2026-10-13): backend 80/80 acceptance (JUnit), frontend 7/7 acceptance (Vitest), e2e 5/5 (Playwright against the local compose stack). No failure, so nothing to classify. Logs: `logs/04_backend-after-checks.log`, `logs/04_e2e-run.log`.
+
+Non-frozen test defects found while writing phase 5 tests (fixed in the test, not the code): the capturing mail sender in `MailRegistrationNotifierTest` first skipped `MimeMessage.saveChanges()`, so header values were stale; the stub now finalizes messages like the real sender.
+
 ## Final run (phase 6)
 
 ## Test measures (phase 5, updated in phase 6 only for a component that changed)
@@ -65,3 +69,36 @@ Tests that pass on the bootstrap code:
 
 | Component | Level | Tests passed / failed | Line coverage | Branch coverage | Mutation score (scope) | Tools |
 |---|---|---|---|---|---|---|
+| backend | unit | 103 / 0 | 70.21 % (660/940) | 90.28 % (260/288) | | JUnit 6, JaCoCo 0.8.12 |
+| backend | non-unit (integration 9, acceptance 80, architecture 8) | 97 / 0 | 88.09 % (828/940) | 71.18 % (205/288) | | JUnit 6, Testcontainers, ArchUnit 1.3.2, JaCoCo |
+| backend | all levels | 200 / 0 | **98.19 %** (923/940) | 97.57 % (281/288) | **90.54 %** raw = adjusted (335 killed of 370; 6 without coverage; 0 equivalents); covered 92.03 % (335/364); scope `si.konferenca.registration.*` minus `RegistrationApplication`; tests: full JUnit suite (200) | PIT 1.30.0 + junit5 plugin 1.2.3, one full run, 0 rounds |
+| frontend | unit | 49 / 0 | 99.41 % | 96.69 % | | Vitest 4.1.11, v8 |
+| frontend | non-unit (acceptance 7; e2e 5 not instrumented, D-14) | 7 / 0 (+ 5 e2e) | 78.23 % (133/170) | 67.76 % (82/121) | | Vitest, Playwright 1.63.0 |
+| frontend | all levels | 56 / 0 (+ 5 e2e) | **100 %** (170/170) | 98.34 % (119/121) | **92.58 %** raw = adjusted (412 killed of 445; 1 without coverage; 0 equivalents); covered 92.79 %; scope `src/**/*.{ts,tsx}` minus `main.tsx`, `*.d.ts`; tests: Vitest suite (56; e2e not runnable by the Stryker runner, D-14) | Stryker 10.0.0 vitest-runner, one full run (78.65 %) + 1 survivor round |
+
+Code size (cloc 2.10 image, reports 1.98, D-04): backend production 2 190 lines (Java 2 077, YAML 77, SQL 36), test 2 703; frontend production 711 (TS 653, CSS 46, HTML 12), test 1 461 (unit 765, acceptance and e2e 696).
+
+### Quality gate
+
+| Component | Line ≥ 95 % | Mutation (adjusted) ≥ 90 % | Rounds | Tests at first full mutation run |
+|---|---|---|---|---|
+| backend | 98.19 % met | 90.54 % met at the full run | 0 | 200 |
+| frontend | 100 % met | 92.58 % met after round 1 (≥ 1 point above, no confirming full run) | 1 | 40 |
+
+### Survivor rounds (frontend)
+
+Round 1 added `src/App.test.tsx` and `src/components/RegistrationForm.test.tsx` and re-ran Stryker on the five files they exercise. Per-file killed/total (re-run files from round 1, others from the full run):
+
+| File | Killed / total | Source |
+|---|---|---|
+| App.tsx | 31 / 36 | round 1 (was 16 / 36) |
+| components/RegistrationForm.tsx | 134 / 141 | round 1 (was 92 / 141) |
+| components/Confirmation.tsx | 6 / 6 | round 1 (was 4 / 6) |
+| components/FieldErrorText.tsx | 4 / 4 | round 1 (was 3 / 4) |
+| components/OptionGroups.tsx | 15 / 16 | round 1 (was 13 / 16) |
+| components/Captcha.tsx | 61 / 70 | full run |
+| api.ts | 74 / 84 | full run |
+| validation.ts | 87 / 88 | full run |
+| **Total** | **412 / 445 = 92.58 %** | |
+
+No survivor is counted as equivalent in either component, so no equivalence list applies. Remaining survivors: `logs/05_pit-survivors.txt` (backend, 29 survived + 6 without coverage), `logs/05_stryker-round1-mutation.json` and `logs/05_stryker-full-mutation.json` (frontend); those in security, validation and persistence code are classified individually in `docs/06_verification-report.md`.

@@ -1,0 +1,51 @@
+[32m23:32:20 (28104) INFO ProjectReader[39m Found 1 of 63 file(s) to be mutated.
+[32m23:32:21 (28104) INFO Instrumenter[39m Instrumented 1 source file(s) with 88 mutant(s)
+[32m23:32:22 (28104) INFO ConcurrencyTokenProvider[39m Creating 2 test runner process(es).
+[32m23:32:28 (28104) INFO DryRunExecutor[39m Starting initial test run (vitest test runner with "perTest" coverage analysis). This may take a while.
+[32m23:32:39 (28104) INFO DryRunExecutor[39m Initial test run succeeded. Ran 19 tests in 11 seconds (net 1541.1114000000016 ms, overhead 9633.888599999998 ms).
+[33m23:32:39 (28104) WARN MutantTestPlanner[39m Detected 57 static mutants (65% of total) that are estimated to take 79% of the time running the tests!
+  You might want to enable "ignoreStatic" to ignore these static mutants for your next run. 
+  For more information about static mutants visit: https://stryker-mutator.io/docs/mutation-testing-elements/static-mutants
+  (disable "warnings.slow" to ignore this warning)
+
+All tests
+  src/validation.test.ts
+    ✓ validate accepts a complete student form (killed 16)
+    ✓ validate reports every missing student field, the consent and the token (killed 7)
+    ✓ validate ignores fields of the other type (killed 1)
+    ✘ email pattern accepts a@b.si (covered 0)
+    ✓ email pattern accepts ana.novak@example.co.uk (killed 1)
+    ✘ email pattern rejects a@b (covered 0)
+    ✓ email pattern rejects a b@c.si (killed 1)
+    ✘ email pattern rejects @b.si (covered 0)
+    ✘ email pattern rejects a@ (covered 0)
+    ✘ email pattern rejects a@@b.si (covered 0)
+    ✘ email pattern rejects  a@b.si (covered 0)
+    ✓ builds error element ids (killed 2)
+  tests/acceptance
+    us001-external-form.test.tsx
+      ✘ US-001 external participant form AC-001-08 shows exactly the external fields, active options grouped by category and unchecked consents (covered 0)
+    us002-student-form.test.tsx
+      ✓ US-002 student form AC-002-07 shows exactly the student fields, only student options grouped by category and unchecked consents (killed 22)
+    us004-confirmation.test.tsx
+      ✓ US-004 registration confirmation AC-004-01 shows the confirmation with name and selected options and hides the form after acceptance (killed 25)
+      ~ US-004 registration confirmation AC-004-02 shows backend field errors next to the fields, keeps the values and shows no confirmation (covered 25)
+      ✓ US-004 registration confirmation AC-004-03 shows field errors for an empty required field and an invalid email and sends no request (killed 8)
+      ~ US-004 registration confirmation AC-004-04 shows a general error without technical details when the backend fails (covered 23)
+      ~ US-004 registration confirmation AC-004-04 shows a general error when the backend cannot be reached (covered 23)
+
+[Survived] Regex
+src/validation.ts:9:30
+-   export const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
++   export const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+/;
+Ran all tests for this mutant.
+
+Ran 2.86 tests per mutant on average.
+---------------|------------------|----------|-----------|------------|----------|----------|
+               | % Mutation score |          |           |            |          |          |
+File           |  total | covered | # killed | # timeout | # survived | # no cov | # errors |
+---------------|--------|---------|----------|-----------|------------|----------|----------|
+All files      |  98.86 |   98.86 |       83 |         4 |          1 |        0 |        0 |
+ validation.ts |  98.86 |   98.86 |       83 |         4 |          1 |        0 |        0 |
+---------------|--------|---------|----------|-----------|------------|----------|----------|
+[32m23:36:25 (28104) INFO MutationTestExecutor[39m Done in 4 minutes and 5 seconds.
