@@ -29,4 +29,8 @@ export default tseslint.config(
       ],
     },
   },
+  {
+    files: ["tests/**/*.{ts,tsx}", "e2e/**/*.ts", "src/**/*.test.{ts,tsx}"],
+    rules: { "react-refresh/only-export-components": "off" },
+  },
 );
