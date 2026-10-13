@@ -1,0 +1,19 @@
+{
+  "options": [
+    { "id": "ws-testing", "name": "Workshop: Test automation in practice", "category": "WORKSHOP" },
+    { "id": "ws-security", "name": "Workshop: Secure web development", "category": "WORKSHOP", "availableTo": ["EXTERNAL"] },
+    { "id": "ws-mainframe", "name": "Workshop: Mainframe modernisation", "category": "WORKSHOP", "active": false },
+    { "id": "ev-opening", "name": "Opening reception", "category": "EVENT" },
+    { "id": "ev-dinner", "name": "Conference dinner", "category": "EVENT", "availableTo": ["EXTERNAL"] },
+    { "id": "meal-lunch-1", "name": "Lunch, day 1", "category": "MEAL" },
+    { "id": "meal-lunch-2", "name": "Lunch, day 2", "category": "MEAL" },
+    { "id": "other-city-tour", "name": "Guided tour of Ljubljana", "category": "OTHER" }
+  ],
+  "consents": [
+    {
+      "id": "privacy",
+      "text": "I agree that my personal data is processed for organizing the conference and that it is shared with the conference organizers.",
+      "mandatory": true
+    }
+  ]
+}
