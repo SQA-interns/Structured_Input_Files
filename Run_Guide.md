@@ -42,8 +42,8 @@ This setup is run three times, once each by kyuhi, tanej and tjan, in one shared
    Use your own config in the branch. Every user pushes to a branch of its own, never to `main`. Do not push before `.env` is confirmed absent from `git status`.
    
 9. **Set the same permission mode** you set in `run-config.md`.
-
-10. Change these lines in `01_input/01_project/00_setup/run-config.md` according to your environment (the table bellow shows what you should input for yourself):
+10. **Check the environment** (the same for all three operators): Docker Engine 29.8.1 and Compose 5.5.1, Node 24.13.0, Java 21, internet access for the scanners (NVD key in `.env`), no other heavy load on the machine during the run, one session only.
+11. Change these lines in `01_input/01_project/00_setup/run-config.md` according to your environment (the table bellow shows what you should input for yourself):
 
 | Line | kyuhi | tanej | tjan |
 |---|---|---|---|
@@ -62,7 +62,7 @@ Read AGENTS.md and start.
 ## 3. During the run
 - Answer tooling and environment questions with the standard answers below, the same way in every run.
 - The acceptance criteria, the end-to-end scenarios and the answers to the open questions are inputs, so the agent should not ask about business behaviour. If it does anyway, answer only: *"No further information is available. Choose the proposed default option and record it as a decision."*
-- To **any other question not listed below**, give the same answer in every run: *"Choose the proposed default option and record it as a decision."
+- To **any other question not listed below**, give the same answer in every run: *"Choose the proposed default option and record it as a decision."* A frozen acceptance test that cannot pass (a defect in the test harness or in one assertion): approve the agent's proposed default fix (option 1). Do not add your own ideas or hints; different answers make the runs incomparable.
 - The agent works until the **quality gate** is met (mutation score 90 %, line coverage 95 %, per component). Do not tell it to stop earlier or to go further.
 - Do not change the input files. Do not leave a question unanswered for more than an hour: the cache expires and the wait is excluded from the results, but the time is lost. If you must stop, tell the agent so it records the wait.
 

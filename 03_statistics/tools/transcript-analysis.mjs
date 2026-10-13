@@ -58,7 +58,7 @@ export const categoryOf = (command) => {
 export function parsePrices(usageMdPath) {
   const prices = {};
   if (!usageMdPath || !fs.existsSync(usageMdPath)) return prices;
-  for (const line of fs.readFileSync(usageMdPath, "utf8").split("\n")) {
+  for (const line of fs.readFileSync(usageMdPath, "utf8").split(/\r?\n/)) { // a Windows clone has CRLF line endings
     const m = line.match(/^\|\s*`?(claude-[a-z0-9.\-]+)`?\s*\|(.*)\|\s*$/i);
     if (!m) continue;
     // prices carry a "$"; fall back to bare numbers. Text such as "(5 min)" has no "$" and is ignored.

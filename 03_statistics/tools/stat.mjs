@@ -39,7 +39,7 @@ const head = () => run("git", ["rev-parse", "HEAD"]);
 function parseConfig() {
   const cfg = {};
   if (!fs.existsSync(configPath)) return cfg;
-  for (const line of fs.readFileSync(configPath, "utf8").split("\n")) {
+  for (const line of fs.readFileSync(configPath, "utf8").split(/\r?\n/)) { // a Windows clone has CRLF line endings
     const m = line.match(/^-\s*([^:]+):\s*(.*)$/);
     if (m) cfg[m[1].trim()] = m[2].trim().replace(/^\(.*\)$/, "").trim(); // "(hint text)" left in a line counts as empty
   }
