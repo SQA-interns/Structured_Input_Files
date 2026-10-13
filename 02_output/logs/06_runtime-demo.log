@@ -1,0 +1,85 @@
+
+### state before recreation
+backend running healthy
+frontend running healthy
+mailpit running healthy
+postgres running healthy
+registrations=16 json_copies=16
+
+### NFR-02: docker compose down (containers removed, volumes kept) then up --wait
+ Network konferenca-registration_default Removing 
+ Network konferenca-registration_default Removed 
+ Container konferenca-registration-backend-1 Healthy 
+ Container konferenca-registration-frontend-1 Healthy 
+backend running healthy
+frontend running healthy
+mailpit running healthy
+postgres running healthy
+registrations=16 json_copies=16 (before: 16 / 16)
+
+### NFR-04: health and readiness
+/actuator/health -> 200 {"groups":["liveness","readiness"],"status":"UP"}
+/actuator/health/liveness -> 200 {"status":"UP"}
+/actuator/health/readiness -> 200 {"status":"UP"}
+/actuator/env -> 401 {"message":"Authentication required.","fieldErrors":{}}
+/actuator/beans -> 401 {"message":"Authentication required.","fieldErrors":{}}
+
+### DoD-P01: one external and one student registration through the frontend proxy
+400 {"message":"The request could not be read.","fieldErrors":{}}
+400 {"message":"The request could not be read.","fieldErrors":{}}
+
+### DoD-P02: rows and JSON copies of the two registrations
+
+### DoD-P03: Mailpit messages for the two registrations
+
+### DoD-P04: export with and without organizer access
+with credentials: 200 application/vnd.openxmlformats-officedocument.spreadsheetml.sheet bytes=5375 zip-signature=PK
+without credentials: 401 {"message":"Authentication required.","fieldErrors":{}}
+wrong password: 401 {"message":"Authentication required.","fieldErrors":{}}
+
+### SB-10: security headers (frontend page, API)
+Server: nginx
+Content-Security-Policy: default-src 'self'; script-src 'self' https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/; frame-src https://www.google.com/recaptcha/ https://recaptcha.google.com/recaptcha/; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+Referrer-Policy: no-referrer
+X-Content-Type-Options: nosniff
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+X-Frame-Options: DENY
+Content-Security-Policy: default-src 'none'; frame-ancestors 'none'
+Referrer-Policy: no-referrer
+Content-Security-Policy: default-src 'self'; script-src 'self' https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/; frame-src https://www.google.com/recaptcha/ https://recaptcha.google.com/recaptcha/; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+Referrer-Policy: no-referrer
+
+### SR-03: request size limit (17 KiB body) and rate limit on registrations (20 per minute)
+nginx proxy 17 KB: 413
+backend direct 17 KB: 413
+22 requests: 400 400 400 400 400 400 400 400 400 400 400 400 400 400 400 400 400 429 429 429 429 429
+
+### SR-08: client Host header is not forwarded
+Host: evil.example -> 200
+38:      proxy_set_header Host backend;
+
+### SR-02: production profile refuses to start with test mode on
+
+### SB-11: processes run as non-root
+backend user: app
+frontend user: nginx
+
+### SR-02 (repeat with the stack database reachable): prod profile, test mode on
+Refusing to start in production: RECAPTCHA_TEST_MODE is on; RECAPTCHA_SITE_KEY and RECAPTCHA_SECRET_KEY must be set
+exit status of the container: refused (no server started)
+
+### DoD-P01..P03 (repeat, request bodies sent from UTF-8 files)
+EXTERNAL -> {"id":"ff39e31c-9e38-4ee0-81a7-6dc66cac5b93","registeredAt":"2026-10-13T00:56:35.178Z"} 201
+STUDENT -> {"id":"beeea0bc-c727-4fc4-ba58-2af7bf2b6bdf","registeredAt":"2026-10-13T00:56:35.352Z"} 201
+ff39e31c-9e38-4ee0-81a7-6dc66cac5b93|EXTERNAL|Šuštar EXTERNAL
+beeea0bc-c727-4fc4-ba58-2af7bf2b6bdf|STUDENT|Šuštar STUDENT
+json copy: 711 bytes /data/json-copies/ff39e31c-9e38-4ee0-81a7-6dc66cac5b93.json
+json copy: 792 bytes /data/json-copies/beeea0bc-c727-4fc4-ba58-2af7bf2b6bdf.json
+mail to <organizer address> | New registration: Konferenca 2026 | attachments: 1
+mail to demo-EXTERNAL-14150@example.com | Registration confirmed: Konferenca 2026 | attachments: 0
+mail to <organizer address> | New registration: Konferenca 2026 | attachments: 1
+mail to demo-STUDENT-14150@example.com | Registration confirmed: Konferenca 2026 | attachments: 0
