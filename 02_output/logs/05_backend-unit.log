@@ -1,0 +1,85 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< si.konferenca:registration-backend >-----------------
+[INFO] Building registration-backend 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- jacoco:0.8.12:prepare-agent (prepare-agent) @ registration-backend ---
+[INFO] argLine set to "-javaagent:C:\\Users\\sense\\.m2\\repository\\org\\jacoco\\org.jacoco.agent\\0.8.12\\org.jacoco.agent-0.8.12-runtime.jar=destfile=E:\\13 - Lab Projects\\01_Runs\\_____SECOND______ROUND_____\\04_kyuhi_single-agent_sdd_v006\\02_output\\backend\\target\\jacoco-unit.exec,excludes=si/konferenca/registration/RegistrationApplication.class"
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ registration-backend ---
+[INFO] Copying 2 resources from src\main\resources to target\classes
+[INFO] Copying 2 resources from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ registration-backend ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ registration-backend ---
+[INFO] Copying 5 resources from src\test\resources to target\test-classes
+[INFO] 
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ registration-backend ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ registration-backend ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running si.konferenca.registration.architecture.ArchitectureTest
+02:29:39.807 [main] INFO com.tngtech.archunit.core.PluginLoader -- Detected Java version 21.0.10
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.373 s -- in si.konferenca.registration.architecture.ArchitectureTest
+[INFO] Running si.konferenca.registration.captcha.RecaptchaVerifierTest
+02:29:43.136 [main] WARN si.konferenca.registration.captcha.RecaptchaVerifier -- reCAPTCHA verification failed: StreamReadException
+02:29:43.163 [main] WARN si.konferenca.registration.captcha.RecaptchaVerifier -- reCAPTCHA verification failed: ConnectException
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.045 s -- in si.konferenca.registration.captcha.RecaptchaVerifierTest
+[INFO] Running si.konferenca.registration.catalog.ConferenceCatalogParserTest
+[INFO] Tests run: 36, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.250 s -- in si.konferenca.registration.catalog.ConferenceCatalogParserTest
+[INFO] Running si.konferenca.registration.domain.DomainModelTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.020 s -- in si.konferenca.registration.domain.DomainModelTest
+[INFO] Running si.konferenca.registration.domain.RegistrationValidatorTest
+[INFO] Tests run: 17, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.043 s -- in si.konferenca.registration.domain.RegistrationValidatorTest
+[INFO] Running si.konferenca.registration.export.RegistrationExportTest
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (C:\Users\sense\.m2\repository\net\bytebuddy\byte-buddy-agent\1.18.11\byte-buddy-agent-1.18.11.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.800 s -- in si.konferenca.registration.export.RegistrationExportTest
+[INFO] Running si.konferenca.registration.mail.MailNotifierTest
+02:29:47.877 [main] WARN si.konferenca.registration.mail.MailNotifier -- Email organizer notification failed for registration 6f1c1b7e-2f7a-4c55-9d0e-3c1f7c2b9a10
+02:29:48.023 [main] WARN si.konferenca.registration.mail.MailNotifier -- Email participant confirmation failed for registration 6f1c1b7e-2f7a-4c55-9d0e-3c1f7c2b9a10
+02:29:48.033 [main] WARN si.konferenca.registration.mail.MailNotifier -- Email participant confirmation failed for registration 6f1c1b7e-2f7a-4c55-9d0e-3c1f7c2b9a10
+02:29:48.044 [main] WARN si.konferenca.registration.mail.MailNotifier -- Email participant confirmation failed for registration 6f1c1b7e-2f7a-4c55-9d0e-3c1f7c2b9a10
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.731 s -- in si.konferenca.registration.mail.MailNotifierTest
+[INFO] Running si.konferenca.registration.persistence.RegistrationStoreTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.247 s -- in si.konferenca.registration.persistence.RegistrationStoreTest
+[INFO] Running si.konferenca.registration.RegistrationPropertiesTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s -- in si.konferenca.registration.RegistrationPropertiesTest
+[INFO] Running si.konferenca.registration.security.RequestFiltersTest
+[INFO] Tests run: 23, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.346 s -- in si.konferenca.registration.security.RequestFiltersTest
+[INFO] Running si.konferenca.registration.security.SecuritySettingsTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.292 s -- in si.konferenca.registration.security.SecuritySettingsTest
+[INFO] Running si.konferenca.registration.service.RegistrationServiceTest
+02:29:49.109 [main] WARN si.konferenca.registration.service.RegistrationService -- Email participant confirmation failed for registration 3b88e3bf-a74f-47c7-aa05-1be6fa5b3f80
+02:29:49.110 [main] WARN si.konferenca.registration.service.RegistrationService -- Email organizer notification failed for registration 3b88e3bf-a74f-47c7-aa05-1be6fa5b3f80
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.358 s -- in si.konferenca.registration.service.RegistrationServiceTest
+[INFO] Running si.konferenca.registration.storage.FileJsonCopyStoreTest
+02:29:49.327 [main] WARN si.konferenca.registration.storage.FileJsonCopyStore -- JSON copy file 6f1c1b7e-2f7a-4c55-9d0e-3c1f7c2b9a10.json could not be removed
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.129 s -- in si.konferenca.registration.storage.FileJsonCopyStoreTest
+[INFO] Running si.konferenca.registration.web.WebLayerTest
+02:29:49.575 [main] ERROR si.konferenca.registration.web.ApiExceptionHandler -- Request failed: java.lang.IllegalStateException
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.154 s -- in si.konferenca.registration.web.WebLayerTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 132, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  13.546 s
+[INFO] Finished at: 2026-10-13T02:29:49+02:00
+[INFO] ------------------------------------------------------------------------

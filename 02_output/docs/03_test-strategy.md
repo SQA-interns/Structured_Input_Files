@@ -47,6 +47,31 @@ Phase 5, on the final phase 4 code, before any unit test or fix (logs `out/logs/
 
 No failure, so nothing to classify. The defect E2E-01 found in phase 4 (attachment line endings) was fixed in phase 4 (commit `fix: keep JSON attachment byte-equal to stored copy`).
 
+### Quality gate (phase 5)
+
+| Component | Line (all) | Mutation (adjusted) | Gate | Survivor rounds | Tests at first full mutation run | Tests at the end |
+|---|---|---|---|---|---|---|
+| backend | 99.32 % ≥ 95 % | 95.72 % ≥ 90 % | met | 0 (first full run met it) | 216 | 216 |
+| frontend | 100 % ≥ 95 % | first full run 89.66 % (364/406); after round 1 (targeted re-run of api, App, Recaptcha, RegistrationForm, validation) and the confirming full run 94.83 % (385/406) ≥ 90 % | met | 1 | 56 | 69 |
+
+Mutation tooling check: both tools kill mutants in plainly covered code (backend 96 % test strength, frontend 89.7 % on the first run against 100 % line coverage), so mutants are activated.
+
+### Surviving mutants (classified; none counted as equivalent)
+
+Backend (PIT, 16; security and validation ones classified individually, all Low: the behaviour is checked elsewhere or the effect is not observable):
+
+| Class.method:line | Mutation | Classification |
+|---|---|---|
+| domain.RegistrationValidator.options:124 | return empty list | Low: the returned list is replaced only on the error path (field error already set); a valid submission with options is checked by acceptance tests through the stored options, but this mutant keeps errors identical |
+| security.RateLimitFilter.doFilterInternal:36,40,41 (4) | pass-through call removed, window arithmetic, cleanup boundary | Low: unit tests do not assert the chain call on unlimited paths, nor the exact cleanup boundary; limits themselves are tested |
+| security.BodySizeLimitFilter.doFilterInternal:37,42 (2) | boundary of the size checks | Low: limit+1 vs limit boundaries partly covered; off-by-one on 16 KiB has no security impact |
+| security.RequestLimitConfiguration (4) | URL pattern / order not set | Low: filter wiring; with no pattern the filter applies to all paths (still limited); order change keeps both filters before the controllers |
+| security.SecurityConfiguration:37 / :43 (2) | `WWW-Authenticate` header not set; access-denied JSON (no coverage) | Low: the 401 status and absence of data are tested (AC-008-02); the header and the 403 handler for authenticated-but-denied requests are not asserted |
+| security.ErrorResponses.write:23 | charset not set | Low: messages are ASCII |
+| mail.MailNotifier:98, :106 (2) | attachment disposition not set; `validate()` removed | Low: the attachment is still recognised by file name; the address is still parsed strictly and compared to the input |
+
+Frontend (Stryker, 21): api.ts 7 (body/field-error type checks whose mutants end in the same `failed` result through the surrounding `catch`), App.tsx 4 (state kind string and effect cleanup, not observable), Recaptcha.tsx 7 (widget lifecycle guards and effect dependencies), RegistrationForm.tsx 3 (initial option list and `type === null` guards already covered by validation). All Low; none is in validation code (validation.ts 100 %).
+
 ## Final run (phase 6)
 
 ## Test measures (phase 5, updated in phase 6 only for a component that changed)
@@ -55,3 +80,14 @@ No failure, so nothing to classify. The defect E2E-01 found in phase 4 (attachme
 
 | Component | Level | Tests passed / failed | Line coverage | Branch coverage | Mutation score (scope) | Tools |
 |---|---|---|---|---|---|---|
+| backend | acceptance | 84 / 0 | — | — | — | JUnit 6, Testcontainers PostgreSQL + Mailpit |
+| backend | integration | 0 / 0 (the acceptance tests are the integration level) | — | — | — | — |
+| backend | architecture | 5 / 0 | — | — | — | ArchUnit 1.3.2 |
+| backend | unit | 127 / 0 | 92.88 % (822/885) | 99.65 % (284/285) | — | JUnit 6, Mockito, JaCoCo 0.8.12 |
+| backend | non-unit | 84 / 0 | 87.68 % (776/885) | 68.07 % (194/285) | — | JaCoCo 0.8.12 |
+| backend | all levels | 216 / 0 | 99.32 % (879/885) | 99.65 % (284/285) | 95.72 % raw = adjusted (358 killed of 374; 15 survived, 1 no coverage; 0 equivalent), scope `si.konferenca.registration.**` minus `RegistrationApplication`, tests: all JUnit levels (D-14) | PIT 1.30.0 + junit5 plugin 1.2.3 |
+| frontend | acceptance | 10 / 0 | — | — | — | Vitest 4.1.11, Testing Library |
+| frontend | unit | 59 / 0 | 100 % (167/167) | 99.03 % (103/104) | — | Vitest, @vitest/coverage-v8 4.1.11 |
+| frontend | non-unit | 10 / 0 | 74.85 % (125/167) | 69.23 % (72/104) | — | @vitest/coverage-v8 4.1.11 |
+| frontend | all levels | 69 / 0 | 100 % (167/167) | 99.03 % (103/104) | 94.83 % raw = adjusted (385 killed of 406; 21 survived; 0 equivalent), scope `src/**/*.{ts,tsx}` minus `main.tsx`, `*.d.ts`, tests; tests: all Vitest levels (D-14) | Stryker 10.0.0, vitest-runner |
+| frontend + backend | end-to-end | 5 / 0 | — | — | — | Playwright 1.63.0 against `docker compose` |

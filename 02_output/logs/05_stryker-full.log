@@ -1,0 +1,540 @@
+[32m02:34:49 (44092) INFO ProjectReader[39m Found 7 of 171 file(s) to be mutated.
+[32m02:34:49 (44092) INFO Instrumenter[39m Instrumented 7 source file(s) with 406 mutant(s)
+[32m02:34:50 (44092) INFO ConcurrencyTokenProvider[39m Creating 4 test runner process(es).
+[32m02:34:51 (44092) INFO BroadcastReporter[39m Detected that current console does not support the "progress" reporter, downgrading to "progress-append-only" reporter
+[32m02:34:52 (44092) INFO DryRunExecutor[39m Starting initial test run (vitest test runner with "perTest" coverage analysis). This may take a while.
+[32m02:35:02 (44092) INFO DryRunExecutor[39m Initial test run succeeded. Ran 56 tests in 9 seconds (net 1918.6117000000027 ms, overhead 8073.388299999997 ms).
+Mutation testing 2% (elapsed: <1m, remaining: ~6m) 6/406 tested (0 survived, 0 timed out)
+Mutation testing 3% (elapsed: <1m, remaining: ~8m) 17/406 tested (3 survived, 0 timed out)
+Mutation testing 4% (elapsed: <1m, remaining: ~10m) 32/406 tested (6 survived, 0 timed out)
+Mutation testing 7% (elapsed: <1m, remaining: ~7m) 56/406 tested (6 survived, 0 timed out)
+Mutation testing 12% (elapsed: <1m, remaining: ~5m) 78/406 tested (7 survived, 0 timed out)
+Mutation testing 15% (elapsed: ~1m, remaining: ~5m) 90/406 tested (10 survived, 0 timed out)
+Mutation testing 21% (elapsed: ~1m, remaining: ~4m) 113/406 tested (11 survived, 0 timed out)
+Mutation testing 25% (elapsed: ~1m, remaining: ~3m) 142/406 tested (11 survived, 0 timed out)
+Mutation testing 26% (elapsed: ~1m, remaining: ~4m) 173/406 tested (20 survived, 0 timed out)
+Mutation testing 29% (elapsed: ~1m, remaining: ~3m) 187/406 tested (21 survived, 0 timed out)
+Mutation testing 36% (elapsed: ~1m, remaining: ~3m) 205/406 tested (25 survived, 0 timed out)
+Mutation testing 39% (elapsed: ~2m, remaining: ~3m) 225/406 tested (33 survived, 0 timed out)
+Mutation testing 42% (elapsed: ~2m, remaining: ~2m) 242/406 tested (35 survived, 0 timed out)
+Mutation testing 46% (elapsed: ~2m, remaining: ~2m) 260/406 tested (36 survived, 0 timed out)
+Mutation testing 52% (elapsed: ~2m, remaining: ~2m) 276/406 tested (37 survived, 0 timed out)
+Mutation testing 61% (elapsed: ~2m, remaining: ~1m) 298/406 tested (38 survived, 0 timed out)
+Mutation testing 65% (elapsed: ~2m, remaining: ~1m) 314/406 tested (39 survived, 0 timed out)
+Mutation testing 68% (elapsed: ~3m, remaining: ~1m) 326/406 tested (39 survived, 0 timed out)
+Mutation testing 73% (elapsed: ~3m, remaining: ~1m) 348/406 tested (39 survived, 0 timed out)
+Mutation testing 81% (elapsed: ~3m, remaining: <1m) 365/406 tested (40 survived, 0 timed out)
+Mutation testing 86% (elapsed: ~3m, remaining: <1m) 377/406 tested (40 survived, 0 timed out)
+Mutation testing 88% (elapsed: ~3m, remaining: <1m) 381/406 tested (41 survived, 0 timed out)
+Mutation testing 99% (elapsed: ~3m, remaining: <1m) 405/406 tested (42 survived, 0 timed out)
+
+All tests
+  src
+    api.test.ts
+      ✓ fetchFormConfig reads the form configuration as JSON (killed 3)
+      ✓ fetchFormConfig fails when the backend does not answer 2xx (killed 3)
+      ✓ submitRegistration posts the payload as JSON and returns the new id on 201 (killed 11)
+      ✓ submitRegistration returns the field errors of a 400 answer, keeping only text messages (killed 15)
+      ✓ submitRegistration treats a 400 with no field errors as a failure (killed 5)
+      ✓ submitRegistration treats a 400 with field errors not an object as a failure (killed 4)
+      ~ submitRegistration treats a 400 with field errors null as a failure (covered 38)
+      ~ submitRegistration treats a 400 with no body object as a failure (covered 28)
+      ~ submitRegistration treats a 400 with null body as a failure (covered 30)
+      ~ submitRegistration treats a 400 that is not JSON as a failure (covered 30)
+      ✓ submitRegistration treats status 500 as a failure (killed 1)
+      ~ submitRegistration treats status 413 as a failure (covered 16)
+      ~ submitRegistration treats status 429 as a failure (covered 16)
+      ~ submitRegistration treats status 401 as a failure (covered 16)
+      ~ submitRegistration treats status 200 as a failure (covered 16)
+      ✓ submitRegistration treats a network error as a failure (killed 2)
+    App.test.tsx
+      ✓ App shows loading, then the conference name and the form (killed 7)
+      ✓ App shows only a general message when the configuration cannot be loaded (killed 9)
+      ~ App does not update after unmount (covered 26)
+      ✓ App asks for a registration type before anything else (killed 9)
+      ✓ App sends only the student fields, trimmed, and drops options of the other type (killed 34)
+      ✓ App unticking removes options and consents; the button is disabled while sending (killed 12)
+      ✓ App shows unknown-consent and type errors from the backend (killed 4)
+      ✓ Confirmation says when no option was selected (killed 2)
+    Recaptcha.test.tsx
+      ✓ test-mode stand-in emits the test token when checked and clears it when unchecked (killed 9)
+      ✓ Google widget loads the script once, renders with the site key and forwards tokens (killed 41)
+      ✓ Google widget waits for the script before rendering (killed 3)
+      ✓ Google widget does not render after unmount and does not reset before rendering (killed 3)
+    validation.test.ts
+      ✓ validate accepts a complete external form (killed 15)
+      ✓ validate accepts a complete student form and ignores external fields (killed 5)
+      ✓ validate requires a type and checks no field without one (killed 1)
+      ✓ validate reports blank, missing and too long fields (killed 6)
+      ✓ validate accepts values at the length limit after trimming (killed 1)
+      ✓ validate rejects the email plain (killed 2)
+      ~ validate rejects the email a@b (covered 33)
+      ~ validate rejects the email @b.co (covered 33)
+      ✓ validate rejects the email a b@c.co (killed 1)
+      ~ validate rejects the email a@b@c.co (covered 33)
+      ~ validate rejects the email a@b. (covered 33)
+      ~ validate rejects the email a@.co (covered 33)
+      ~ validate accepts the email a@b.co (covered 32)
+      ~ validate accepts the email  a@b.co (covered 32)
+      ~ validate accepts the email č@š.si (covered 32)
+      ~ validate checks the email length before its format (covered 33)
+      ✓ validate requires mandatory consents only, and the reCAPTCHA (killed 7)
+      ~ validate declares the fields and limits of both types (covered 1)
+  tests/acceptance
+    confirmation.acceptance.test.tsx
+      ✓ US-004 registration confirmation AC-004-01 shows the confirmation with name and selected options and hides the form (killed 90)
+      ✓ US-004 registration confirmation AC-004-02 shows backend field errors next to their fields and keeps the entered values (killed 20)
+      ✓ US-004 registration confirmation AC-004-03 shows client-side field errors and sends no request (killed 12)
+      ✓ US-004 registration confirmation AC-004-03 an empty student field is reported without a request (killed 5)
+      ✓ US-004 registration confirmation AC-004-04 a backend failure shows only a general message without technical details (killed 5)
+      ✓ US-004 registration confirmation AC-004-04 an unreachable backend shows only a general message (killed 1)
+    external-form.acceptance.test.tsx
+      ~ US-001 external participant form AC-001-08 shows exactly the external fields, grouped active options and unchecked consents (covered 121)
+      ~ US-001 external participant form AC-001-08 lists the option groups in the order workshops, events, meals, other activities (covered 121)
+    student-form.acceptance.test.tsx
+      ✓ US-002 student form AC-002-07 shows exactly the student fields, only student options by category, unchecked consents (killed 16)
+      ~ US-002 student form AC-002-07 switching from external to student removes the external-only option and field (covered 121)
+
+[Survived] ConditionalExpression
+src/api.ts:21:7
+-     if (typeof body !== "object" || body === null) {
++     if (false) {
+Tests ran:
+    US-004 registration confirmation AC-004-02 shows backend field errors next to their fields and keeps the entered values
+    App shows unknown-consent and type errors from the backend
+    submitRegistration returns the field errors of a 400 answer, keeping only text messages
+  and 6 more tests!
+
+
+[Survived] LogicalOperator
+src/api.ts:21:7
+-     if (typeof body !== "object" || body === null) {
++     if (typeof body !== "object" && body === null) {
+Tests ran:
+    US-004 registration confirmation AC-004-02 shows backend field errors next to their fields and keeps the entered values
+    App shows unknown-consent and type errors from the backend
+    submitRegistration returns the field errors of a 400 answer, keeping only text messages
+  and 6 more tests!
+
+
+[Survived] ConditionalExpression
+src/api.ts:21:7
+-     if (typeof body !== "object" || body === null) {
++     if (false || body === null) {
+Tests ran:
+    US-004 registration confirmation AC-004-02 shows backend field errors next to their fields and keeps the entered values
+    App shows unknown-consent and type errors from the backend
+    submitRegistration returns the field errors of a 400 answer, keeping only text messages
+  and 6 more tests!
+
+
+[Survived] BlockStatement
+src/api.ts:21:50
+-     if (typeof body !== "object" || body === null) {
+-       return null;
+-     }
++     if (typeof body !== "object" || body === null) {}
+Tests ran:
+    submitRegistration treats a 400 with no body object as a failure
+    submitRegistration treats a 400 with null body as a failure
+    submitRegistration treats a 400 that is not JSON as a failure
+
+
+[Survived] ConditionalExpression
+src/api.ts:21:35
+-     if (typeof body !== "object" || body === null) {
++     if (typeof body !== "object" || false) {
+Tests ran:
+    US-004 registration confirmation AC-004-02 shows backend field errors next to their fields and keeps the entered values
+    App shows unknown-consent and type errors from the backend
+    submitRegistration returns the field errors of a 400 answer, keeping only text messages
+  and 5 more tests!
+
+
+[Survived] ConditionalExpression
+src/api.ts:25:37
+-     if (typeof errors !== "object" || errors === null) {
++     if (typeof errors !== "object" || false) {
+Tests ran:
+    US-004 registration confirmation AC-004-02 shows backend field errors next to their fields and keeps the entered values
+    App shows unknown-consent and type errors from the backend
+    submitRegistration returns the field errors of a 400 answer, keeping only text messages
+  and 2 more tests!
+
+
+[Survived] ArrowFunction
+src/api.ts:53:37
+-           await response.json().catch(() => null),
++           await response.json().catch(() => undefined),
+Tests ran:
+    US-004 registration confirmation AC-004-02 shows backend field errors next to their fields and keeps the entered values
+    App shows unknown-consent and type errors from the backend
+    submitRegistration returns the field errors of a 400 answer, keeping only text messages
+  and 6 more tests!
+
+
+[Survived] StringLiteral
+src/App.tsx:22:52
+-         .then((config) => active && setState({ kind: "form", config }))
++         .then((config) => active && setState({ kind: "", config }))
+Tests ran:
+    US-004 registration confirmation AC-004-01 shows the confirmation with name and selected options and hides the form
+    US-004 registration confirmation AC-004-02 shows backend field errors next to their fields and keeps the entered values
+    US-004 registration confirmation AC-004-03 shows client-side field errors and sends no request
+  and 12 more tests!
+
+
+[Survived] BooleanLiteral
+src/App.tsx:25:16
+-         active = false;
++         active = true;
+Tests ran:
+    US-004 registration confirmation AC-004-01 shows the confirmation with name and selected options and hides the form
+    US-004 registration confirmation AC-004-02 shows backend field errors next to their fields and keeps the entered values
+    US-004 registration confirmation AC-004-03 shows client-side field errors and sends no request
+  and 14 more tests!
+
+
+[Survived] BlockStatement
+src/App.tsx:24:18
+-       return () => {
+-         active = false;
+-       };
++       return () => {};
+Tests ran:
+    US-004 registration confirmation AC-004-01 shows the confirmation with name and selected options and hides the form
+    US-004 registration confirmation AC-004-02 shows backend field errors next to their fields and keeps the entered values
+    US-004 registration confirmation AC-004-03 shows client-side field errors and sends no request
+  and 14 more tests!
+
+
+[Survived] ArrayDeclaration
+src/App.tsx:27:6
+-     }, []);
++     }, ["Stryker was here"]);
+Tests ran:
+    US-004 registration confirmation AC-004-01 shows the confirmation with name and selected options and hides the form
+    US-004 registration confirmation AC-004-02 shows backend field errors next to their fields and keeps the entered values
+    US-004 registration confirmation AC-004-03 shows client-side field errors and sends no request
+  and 14 more tests!
+
+
+[Survived] StringLiteral
+src/App.tsx:8:3
+-     "The registration form is currently unavailable. Please try again later.";
++     "";
+Ran all tests for this mutant.
+
+[Survived] LogicalOperator
+src/Recaptcha.tsx:114:11
+-         if (!cancelled && container.current && widget.current === null) {
++         if (!cancelled || container.current && widget.current === null) {
+Tests ran:
+    Google widget loads the script once, renders with the site key and forwards tokens
+    Google widget waits for the script before rendering
+    Google widget does not render after unmount and does not reset before rendering
+
+
+[Survived] ConditionalExpression
+src/Recaptcha.tsx:114:46
+-         if (!cancelled && container.current && widget.current === null) {
++         if (!cancelled && container.current && true) {
+Tests ran:
+    Google widget loads the script once, renders with the site key and forwards tokens
+    Google widget waits for the script before rendering
+
+
+[Survived] BlockStatement
+src/Recaptcha.tsx:122:18
+-       return () => {
+-         cancelled = true;
+-       };
++       return () => {};
+Tests ran:
+    Google widget loads the script once, renders with the site key and forwards tokens
+    Google widget waits for the script before rendering
+    Google widget does not render after unmount and does not reset before rendering
+
+
+[Survived] BooleanLiteral
+src/Recaptcha.tsx:123:19
+-         cancelled = true;
++         cancelled = false;
+Tests ran:
+    Google widget loads the script once, renders with the site key and forwards tokens
+    Google widget waits for the script before rendering
+    Google widget does not render after unmount and does not reset before rendering
+
+
+[Survived] ArrayDeclaration
+src/Recaptcha.tsx:125:6
+-     }, [siteKey]);
++     }, []);
+Tests ran:
+    Google widget loads the script once, renders with the site key and forwards tokens
+    Google widget waits for the script before rendering
+    Google widget does not render after unmount and does not reset before rendering
+
+
+[Survived] LogicalOperator
+src/Recaptcha.tsx:128:9
+-       if (resetCount > 0 && widget.current !== null && window.grecaptcha) {
++       if (resetCount > 0 || widget.current !== null && window.grecaptcha) {
+Tests ran:
+    Google widget loads the script once, renders with the site key and forwards tokens
+    Google widget waits for the script before rendering
+    Google widget does not render after unmount and does not reset before rendering
+
+
+[Survived] ConditionalExpression
+src/Recaptcha.tsx:128:9
+-       if (resetCount > 0 && widget.current !== null && window.grecaptcha) {
++       if (true && widget.current !== null && window.grecaptcha) {
+Tests ran:
+    Google widget loads the script once, renders with the site key and forwards tokens
+    Google widget waits for the script before rendering
+    Google widget does not render after unmount and does not reset before rendering
+
+
+[Survived] EqualityOperator
+src/Recaptcha.tsx:128:9
+-       if (resetCount > 0 && widget.current !== null && window.grecaptcha) {
++       if (resetCount >= 0 && widget.current !== null && window.grecaptcha) {
+Tests ran:
+    Google widget loads the script once, renders with the site key and forwards tokens
+    Google widget waits for the script before rendering
+    Google widget does not render after unmount and does not reset before rendering
+
+
+[Survived] ConditionalExpression
+src/Recaptcha.tsx:128:27
+-       if (resetCount > 0 && widget.current !== null && window.grecaptcha) {
++       if (resetCount > 0 && true && window.grecaptcha) {
+Tests ran:
+    Google widget loads the script once, renders with the site key and forwards tokens
+    Google widget does not render after unmount and does not reset before rendering
+
+
+[Survived] ArrayDeclaration
+src/RegistrationForm.tsx:67:56
+-     const [optionIds, setOptionIds] = useState<string[]>([]);
++     const [optionIds, setOptionIds] = useState<string[]>(["Stryker was here"]);
+Tests ran:
+    US-004 registration confirmation AC-004-01 shows the confirmation with name and selected options and hides the form
+    US-004 registration confirmation AC-004-02 shows backend field errors next to their fields and keeps the entered values
+    US-004 registration confirmation AC-004-03 shows client-side field errors and sends no request
+  and 12 more tests!
+
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:69:38
+-     const [token, setToken] = useState("");
++     const [token, setToken] = useState("Stryker was here!");
+Tests ran:
+    US-004 registration confirmation AC-004-01 shows the confirmation with name and selected options and hides the form
+    US-004 registration confirmation AC-004-02 shows backend field errors next to their fields and keeps the entered values
+    US-004 registration confirmation AC-004-03 shows client-side field errors and sends no request
+  and 12 more tests!
+
+
+[Survived] BooleanLiteral
+src/RegistrationForm.tsx:72:40
+-     const [failed, setFailed] = useState(false);
++     const [failed, setFailed] = useState(true);
+Tests ran:
+    US-004 registration confirmation AC-004-01 shows the confirmation with name and selected options and hides the form
+    US-004 registration confirmation AC-004-02 shows backend field errors next to their fields and keeps the entered values
+    US-004 registration confirmation AC-004-03 shows client-side field errors and sends no request
+  and 12 more tests!
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:76:5
+-       type !== null && option.availableTo.includes(type);
++       true && option.availableTo.includes(type);
+Tests ran:
+    US-004 registration confirmation AC-004-01 shows the confirmation with name and selected options and hides the form
+    US-004 registration confirmation AC-004-02 shows backend field errors next to their fields and keeps the entered values
+    US-004 registration confirmation AC-004-03 shows client-side field errors and sends no request
+  and 12 more tests!
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:85:36
+-           config.options.some((o) => o.id === id && o.availableTo.includes(next)),
++           config.options.some((o) => true),
+Tests ran:
+    App sends only the student fields, trimmed, and drops options of the other type
+
+
+[Survived] LogicalOperator
+src/RegistrationForm.tsx:85:36
+-           config.options.some((o) => o.id === id && o.availableTo.includes(next)),
++           config.options.some((o) => o.id === id || o.availableTo.includes(next)),
+Tests ran:
+    App sends only the student fields, trimmed, and drops options of the other type
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:85:36
+-           config.options.some((o) => o.id === id && o.availableTo.includes(next)),
++           config.options.some((o) => true && o.availableTo.includes(next)),
+Tests ran:
+    App sends only the student fields, trimmed, and drops options of the other type
+
+
+[Survived] MethodExpression
+src/RegistrationForm.tsx:84:7
+-         ids.filter((id) =>
+-           config.options.some((o) => o.id === id && o.availableTo.includes(next)),
+-         ),
++         ids,
+Tests ran:
+    US-004 registration confirmation AC-004-01 shows the confirmation with name and selected options and hides the form
+    US-004 registration confirmation AC-004-02 shows backend field errors next to their fields and keeps the entered values
+    US-004 registration confirmation AC-004-03 shows client-side field errors and sends no request
+  and 10 more tests!
+
+
+[Survived] ArrowFunction
+src/RegistrationForm.tsx:90:38
+-       on ? [...list, id] : list.filter((x) => x !== id);
++       on ? [...list, id] : list.filter(() => undefined);
+Tests ran:
+    App unticking removes options and consents; the button is disabled while sending
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:90:45
+-       on ? [...list, id] : list.filter((x) => x !== id);
++       on ? [...list, id] : list.filter((x) => false);
+Tests ran:
+    App unticking removes options and consents; the button is disabled while sending
+
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:93:14
+-       setToken("");
++       setToken("Stryker was here!");
+Tests ran:
+    US-004 registration confirmation AC-004-02 shows backend field errors next to their fields and keeps the entered values
+    US-004 registration confirmation AC-004-04 a backend failure shows only a general message without technical details
+    US-004 registration confirmation AC-004-04 an unreachable backend shows only a general message
+  and 2 more tests!
+
+
+[Survived] ArrowFunction
+src/RegistrationForm.tsx:94:19
+-       setResetCount((n) => n + 1);
++       setResetCount(() => undefined);
+Tests ran:
+    US-004 registration confirmation AC-004-02 shows backend field errors next to their fields and keeps the entered values
+    US-004 registration confirmation AC-004-04 a backend failure shows only a general message without technical details
+    US-004 registration confirmation AC-004-04 an unreachable backend shows only a general message
+  and 2 more tests!
+
+
+[Survived] ArithmeticOperator
+src/RegistrationForm.tsx:94:26
+-       setResetCount((n) => n + 1);
++       setResetCount((n) => n - 1);
+Tests ran:
+    US-004 registration confirmation AC-004-02 shows backend field errors next to their fields and keeps the entered values
+    US-004 registration confirmation AC-004-04 a backend failure shows only a general message without technical details
+    US-004 registration confirmation AC-004-04 an unreachable backend shows only a general message
+  and 2 more tests!
+
+
+[Survived] CallExpression
+src/RegistrationForm.tsx:98:5
+-       event.preventDefault();
++       ;
+Tests ran:
+    US-004 registration confirmation AC-004-01 shows the confirmation with name and selected options and hides the form
+    US-004 registration confirmation AC-004-02 shows backend field errors next to their fields and keeps the entered values
+    US-004 registration confirmation AC-004-03 shows client-side field errors and sends no request
+  and 7 more tests!
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:104:49
+-       if (Object.keys(clientErrors).length > 0 || type === null) {
++       if (Object.keys(clientErrors).length > 0 || false) {
+Tests ran:
+    US-004 registration confirmation AC-004-01 shows the confirmation with name and selected options and hides the form
+    US-004 registration confirmation AC-004-02 shows backend field errors next to their fields and keeps the entered values
+    US-004 registration confirmation AC-004-04 a backend failure shows only a general message without technical details
+  and 4 more tests!
+
+
+[Survived] CallExpression
+src/RegistrationForm.tsx:132:7
+-         setErrors({});
++         ;
+Tests ran:
+    US-004 registration confirmation AC-004-04 a backend failure shows only a general message without technical details
+    US-004 registration confirmation AC-004-04 an unreachable backend shows only a general message
+    App unticking removes options and consents; the button is disabled while sending
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:148:24
+-                 checked={type === t}
++                 checked={false}
+Tests ran:
+    US-004 registration confirmation AC-004-01 shows the confirmation with name and selected options and hides the form
+    US-004 registration confirmation AC-004-02 shows backend field errors next to their fields and keeps the entered values
+    US-004 registration confirmation AC-004-03 shows client-side field errors and sends no request
+  and 12 more tests!
+
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:167:41
+-                   value={values[field] ?? ""}
++                   value={values[field] ?? "Stryker was here!"}
+Tests ran:
+    US-004 registration confirmation AC-004-01 shows the confirmation with name and selected options and hides the form
+    US-004 registration confirmation AC-004-02 shows backend field errors next to their fields and keeps the entered values
+    US-004 registration confirmation AC-004-03 shows client-side field errors and sends no request
+  and 10 more tests!
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:181:20
+-               return options.length === 0 ? null : (
++               return false ? null : (
+Tests ran:
+    US-004 registration confirmation AC-004-01 shows the confirmation with name and selected options and hides the form
+    US-004 registration confirmation AC-004-02 shows backend field errors next to their fields and keeps the entered values
+    US-004 registration confirmation AC-004-03 shows client-side field errors and sends no request
+  and 10 more tests!
+
+
+[Survived] StringLiteral
+src/validation.ts:15:12
+-     captcha: "Confirm that you are not a robot.",
++     captcha: "",
+Ran all tests for this mutant.
+
+[Survived] Regex
+src/validation.ts:19:15
+-   const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
++   const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+/;
+Ran all tests for this mutant.
+
+Ran 3.33 tests per mutant on average.
+----------------------|------------------|----------|-----------|------------|----------|----------|
+                      | % Mutation score |          |           |            |          |          |
+File                  |  total | covered | # killed | # timeout | # survived | # no cov | # errors |
+----------------------|--------|---------|----------|-----------|------------|----------|----------|
+All files             |  89.66 |   89.66 |      364 |         0 |         42 |        0 |        0 |
+ api.ts               |  89.71 |   89.71 |       61 |         0 |          7 |        0 |        0 |
+ App.tsx              |  86.84 |   86.84 |       33 |         0 |          5 |        0 |        0 |
+ Confirmation.tsx     | 100.00 |  100.00 |        5 |         0 |          0 |        0 |        0 |
+ Recaptcha.tsx        |  86.96 |   86.96 |       60 |         0 |          9 |        0 |        0 |
+ RegistrationForm.tsx |  87.58 |   87.58 |      134 |         0 |         19 |        0 |        0 |
+ validation.ts        |  97.26 |   97.26 |       71 |         0 |          2 |        0 |        0 |
+----------------------|--------|---------|----------|-----------|------------|----------|----------|
+[32m02:38:53 (44092) INFO JsonReporter[39m Your report can be found at: file:///E:/13%20-%20Lab%20Projects/01_Runs/_____SECOND______ROUND_____/04_kyuhi_single-agent_sdd_v006/02_output/frontend/reports/mutation/mutation.json
+[32m02:38:54 (44092) INFO HtmlReporter[39m Your report can be found at: file:///E:/13%20-%20Lab%20Projects/01_Runs/_____SECOND______ROUND_____/04_kyuhi_single-agent_sdd_v006/02_output/frontend/reports/mutation/index.html
+[32m02:38:54 (44092) INFO MutationTestExecutor[39m Done in 4 minutes and 5 seconds.
