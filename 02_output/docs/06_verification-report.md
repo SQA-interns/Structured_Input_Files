@@ -17,8 +17,8 @@ Run on branch `tanej/single-agent/sdd/v001`, 2026-10-13/14, local stack on Docke
 | DoD-05 | met | No open Critical or High (findings table). Dependency-Check online: 66 dependencies, 0 unsuppressed; npm audit `--omit=dev`: 0; gitleaks: no secret (F-05). |
 | DoD-06 | met | Runtime demonstration below: both components run in containers, all core flows exercised through the browser and the API. |
 | DoD-07 | met | Traceability table below (`trace-ac.mjs`): 35 AC, none without a test or a commit. |
-| DoD-08 | phase 7 | READMEs are written in phase 7 and checked from a clean clone there (`docs/release-notes.md`, this report is updated). |
-| DoD-09 | phase 7 | Manual-test list goes into `docs/release-notes.md` in phase 7. |
+| DoD-08 | met (phase 7) | Clean clone of `4eecd92` with a fresh `.env` from `secrets.env.example`: backend `verify` 203/203 and check clean, frontend `npm ci`, check, 56 tests, build; stack healthy, e2e 5/5, export 200 (`logs/07_clean-clone.log`). The first clone attempt failed on Windows path length; README now says to clone with `core.longpaths` (F-13). |
+| DoD-09 | met (phase 7) | `docs/release-notes.md` "Must be tested manually by a human": 7 items (live reCAPTCHA, real SMTP, TLS/proxy incl. SR-08, production export, production safety check, persistence on the host, other browsers and assistive technology). |
 | DoD-10 | met | Decisions D-01 … D-15 all have a resolution (D-01 vendor note, D-10, D-13 pending review). Input and protected files unchanged (hash check DoD-01). |
 | DoD-11 | met | Phase 3 commits add tests, harness, compose/Dockerfiles only (no production source beyond the skeleton); freeze commit `cde8baf` adds only the manifest, every listed file committed earlier in phase 3. Build has commits naming US-001 … US-008. Manifest hashes match. Commit size and message checks are measured by the post-run report (known divergences recorded in `run-log.json`). |
 | DoD-P01 | met | E2E-01 (external) and E2E-02 (student) pass against the local stack. |
@@ -127,8 +127,9 @@ Output of `node 01_input/00_general/skills/verify-release/trace-ac.mjs` (also `l
 | F-10 | Low | Stryker survivors (33) | UI rendering details; `validation.ts` 9: dropping the `$` anchor of the client email rule (backend still enforces BR-03) | accepted; gate met |
 | F-11 | Low | jscpd | one 6-line clone in test code (0.37 %) | accepted |
 | F-12 | Low | Semgrep | partial parse of the vendored `mvnw` script | informational |
+| F-13 | Low | clean-clone check (phase 7) | on Windows a clone into a deep folder fails: some test paths exceed 260 characters | fixed in the root README (clone with `core.longpaths=true`); re-check passed |
 
-Open after triage: Critical 0, High 0, Medium 2 accepted (F-03, F-07), Low 9.
+As found: Critical 0, High 2 (F-02, F-08; both pre-approved), Medium 4, Low 7. Open after triage: Critical 0, High 0, Medium 2 accepted (F-03, F-07), Low 10 accepted or informational; F-01 and F-13 fixed.
 
 ## Fix loops
 
