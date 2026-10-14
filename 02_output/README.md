@@ -19,6 +19,7 @@ The local stack in [docker-compose.yml](docker-compose.yml) runs both with Postg
 
 Prerequisites: Docker Engine with Docker Compose, JDK 21 (only to build the backend jar), Node.js 24 with npm 11 (only for frontend development and tests). Versions: [`01_input/01_project/00_setup/tech-stack.md`](../01_input/01_project/00_setup/tech-stack.md).
 
+0. On Windows, clone with long paths enabled (some test file paths exceed 260 characters in deep folders): `git -c core.longpaths=true clone <repository>`.
 1. At the repository root, copy `01_input/01_project/00_setup/secrets.env.example` to `.env` and fill `POSTGRES_PASSWORD`, `ORGANIZER_USERNAME`, `ORGANIZER_PASSWORD` (at least 16 characters) and `ORGANIZER_EMAILS`. `.env` is ignored by git.
 2. Build the backend jar:
 
