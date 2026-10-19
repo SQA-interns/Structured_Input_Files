@@ -1,0 +1,8 @@
+{
+  "conferenceName": "Konferenca Test 2026",
+  "consents": [{ "id": "privacy", "text": "I agree.", "mandatory": true }],
+  "options": [
+    { "id": "ws-ai", "name": "Workshop: AI in practice", "category": "WORKSHOP", "active": true },
+    { "id": "meal-lunch", "category": "MEAL", "active": true }
+  ]
+}
