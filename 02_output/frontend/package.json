@@ -15,9 +15,9 @@
     "coverage": "vitest run --coverage",
     "format": "prettier --write .",
     "lint": "eslint .",
-    "typecheck": "tsc --noEmit",
-    "check": "prettier --check . && eslint . && tsc --noEmit",
-    "e2e": "playwright test",
+    "typecheck": "tsc --noEmit && tsc --noEmit -p e2e",
+    "check": "prettier --check . && eslint . && tsc --noEmit && tsc --noEmit -p e2e",
+    "e2e": "playwright test -c e2e/playwright.config.ts",
     "mutation": "stryker run",
     "duplication": "jscpd src"
   },
