@@ -1,0 +1,485 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< si.konferenca:registration-backend >-----------------
+[INFO] Building registration-backend 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- spotless:2.44.3:apply (default-cli) @ registration-backend ---
+[INFO] clean file: E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\backend\src\main\java\si\konferenca\registration\web\RateLimitFilter.java
+[INFO] clean file: E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\backend\src\test\java\si\konferenca\registration\web\RequestSizeLimitFilterTest.java
+[INFO] clean file: E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\backend\src\test\java\si\konferenca\registration\web\WebProtectionIntegrationTest.java
+[INFO] Spotless.Java is keeping 94 files clean - 3 were changed to be clean, 2 were already clean, 89 were skipped because caching determined they were already clean
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ registration-backend ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ registration-backend ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 54 source files with javac [debug parameters release 21] to target\classes
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ registration-backend ---
+[INFO] Copying 5 resources from src\test\resources to target\test-classes
+[INFO] 
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ registration-backend ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 40 source files with javac [debug parameters release 21] to target\test-classes
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ registration-backend ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running si.konferenca.registration.web.RateLimitFilterTest
+[ERROR] Tests run: 5, Failures: 0, Errors: 5, Skipped: 0, Time elapsed: 0.157 s <<< FAILURE! -- in si.konferenca.registration.web.RateLimitFilterTest
+[ERROR] si.konferenca.registration.web.RateLimitFilterTest.SR_03_requestsAboveTheLimitGet429WithRetryAfter -- Time elapsed: 0.054 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.web.RateLimitFilter.doFilterInternal(RateLimitFilter.java:18)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at si.konferenca.registration.web.RateLimitFilterTest.call(RateLimitFilterTest.java:45)
+	at si.konferenca.registration.web.RateLimitFilterTest.SR_03_requestsAboveTheLimitGet429WithRetryAfter(RateLimitFilterTest.java:54)
+
+[ERROR] si.konferenca.registration.web.RateLimitFilterTest.SR_03_eachClientHasItsOwnLimit -- Time elapsed: 0.007 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.web.RateLimitFilter.doFilterInternal(RateLimitFilter.java:18)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at si.konferenca.registration.web.RateLimitFilterTest.call(RateLimitFilterTest.java:45)
+	at si.konferenca.registration.web.RateLimitFilterTest.SR_03_eachClientHasItsOwnLimit(RateLimitFilterTest.java:66)
+
+[ERROR] si.konferenca.registration.web.RateLimitFilterTest.SR_03_otherApiPathsShareTheStrictestLimitAndNonApiPathsAreNotLimited -- Time elapsed: 0.002 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.web.RateLimitFilter.doFilterInternal(RateLimitFilter.java:18)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at si.konferenca.registration.web.RateLimitFilterTest.call(RateLimitFilterTest.java:45)
+	at si.konferenca.registration.web.RateLimitFilterTest.SR_03_otherApiPathsShareTheStrictestLimitAndNonApiPathsAreNotLimited(RateLimitFilterTest.java:95)
+
+[ERROR] si.konferenca.registration.web.RateLimitFilterTest.SR_03_eachEndpointHasItsOwnLimit -- Time elapsed: 0.002 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.web.RateLimitFilter.doFilterInternal(RateLimitFilter.java:18)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at si.konferenca.registration.web.RateLimitFilterTest.call(RateLimitFilterTest.java:45)
+	at si.konferenca.registration.web.RateLimitFilterTest.SR_03_eachEndpointHasItsOwnLimit(RateLimitFilterTest.java:75)
+
+[ERROR] si.konferenca.registration.web.RateLimitFilterTest.SR_03_theLimitResetsInTheNextMinute -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.web.RateLimitFilter.doFilterInternal(RateLimitFilter.java:18)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at si.konferenca.registration.web.RateLimitFilterTest.call(RateLimitFilterTest.java:45)
+	at si.konferenca.registration.web.RateLimitFilterTest.SR_03_theLimitResetsInTheNextMinute(RateLimitFilterTest.java:85)
+
+[INFO] Running si.konferenca.registration.web.RequestSizeLimitFilterTest
+[ERROR] Tests run: 3, Failures: 0, Errors: 3, Skipped: 0, Time elapsed: 0.007 s <<< FAILURE! -- in si.konferenca.registration.web.RequestSizeLimitFilterTest
+[ERROR] si.konferenca.registration.web.RequestSizeLimitFilterTest.SR_03_undeclaredLargeBodyFailsWhileReading -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.web.RequestSizeLimitFilter.doFilterInternal(RequestSizeLimitFilter.java:16)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at si.konferenca.registration.web.RequestSizeLimitFilterTest.SR_03_undeclaredLargeBodyFailsWhileReading(RequestSizeLimitFilterTest.java:60)
+
+[ERROR] si.konferenca.registration.web.RequestSizeLimitFilterTest.SR_03_declaredLargeBodyIsRefusedWith413 -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.web.RequestSizeLimitFilter.doFilterInternal(RequestSizeLimitFilter.java:16)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at si.konferenca.registration.web.RequestSizeLimitFilterTest.SR_03_declaredLargeBodyIsRefusedWith413(RequestSizeLimitFilterTest.java:24)
+
+[ERROR] si.konferenca.registration.web.RequestSizeLimitFilterTest.SR_03_bodyWithinTheLimitPasses -- Time elapsed: 0 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.web.RequestSizeLimitFilter.doFilterInternal(RequestSizeLimitFilter.java:16)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at si.konferenca.registration.web.RequestSizeLimitFilterTest.SR_03_bodyWithinTheLimitPasses(RequestSizeLimitFilterTest.java:37)
+
+[INFO] Running si.konferenca.registration.web.WebProtectionIntegrationTest
+15:45:42.214 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.konferenca.registration.web.WebProtectionIntegrationTest]: WebProtectionIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+15:45:42.345 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration si.konferenca.registration.RegistrationApplication for test class si.konferenca.registration.web.WebProtectionIntegrationTest
+15:45:42.419 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.konferenca.registration.web.WebProtectionIntegrationTest]: WebProtectionIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+15:45:42.422 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration si.konferenca.registration.RegistrationApplication for test class si.konferenca.registration.web.WebProtectionIntegrationTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-10-19T15:45:42.737+02:00  INFO 22824 --- [registration-backend] [           main] org.testcontainers.images.PullPolicy     : Image pull policy will be performed by: DefaultPullPolicy()
+2026-10-19T15:45:42.740+02:00  INFO 22824 --- [registration-backend] [           main] o.t.utility.ImageNameSubstitutor         : Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2026-10-19T15:45:42.798+02:00  INFO 22824 --- [registration-backend] [           main] org.testcontainers.DockerClientFactory   : Testcontainers version: 2.0.5
+2026-10-19T15:45:43.085+02:00  INFO 22824 --- [registration-backend] [           main] o.t.d.DockerClientProviderStrategy       : Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2026-10-19T15:45:43.455+02:00  INFO 22824 --- [registration-backend] [           main] o.t.d.DockerClientProviderStrategy       : Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+2026-10-19T15:45:43.455+02:00  INFO 22824 --- [registration-backend] [           main] org.testcontainers.DockerClientFactory   : Docker host IP address is localhost
+2026-10-19T15:45:43.473+02:00  INFO 22824 --- [registration-backend] [           main] org.testcontainers.DockerClientFactory   : Connected to docker: 
+  Server Version: 29.8.1
+  API Version: 1.56
+  Operating System: Docker Desktop
+  Total Memory: 40065 MB
+  Labels: 
+    com.docker.desktop.address=npipe://\\.\pipe\docker_cli
+2026-10-19T15:45:43.577+02:00  INFO 22824 --- [registration-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Creating container for image: testcontainers/ryuk:0.14.0
+2026-10-19T15:45:43.846+02:00  INFO 22824 --- [registration-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Container testcontainers/ryuk:0.14.0 is starting: 8f47b2e1473042ee89b519f892c75f84d0f1a67c475be95f9ce841814fd50f7d
+2026-10-19T15:45:44.191+02:00  INFO 22824 --- [registration-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Container testcontainers/ryuk:0.14.0 started in PT0.6137821S
+2026-10-19T15:45:44.197+02:00  INFO 22824 --- [registration-backend] [           main] o.t.utility.RyukResourceReaper           : Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2026-10-19T15:45:44.197+02:00  INFO 22824 --- [registration-backend] [           main] org.testcontainers.DockerClientFactory   : Checking the system...
+2026-10-19T15:45:44.198+02:00  INFO 22824 --- [registration-backend] [           main] org.testcontainers.DockerClientFactory   : ?? Docker server version should be at least 1.6.0
+2026-10-19T15:45:44.198+02:00  INFO 22824 --- [registration-backend] [           main] tc.postgres:16.15-alpine                 : Creating container for image: postgres:16.15-alpine
+2026-10-19T15:45:44.325+02:00  INFO 22824 --- [registration-backend] [           main] tc.postgres:16.15-alpine                 : Container postgres:16.15-alpine is starting: b221bad08487f8f1711c0c5e8d13c838ea8a464c0db5577beb8e67af0e9b71f0
+2026-10-19T15:45:46.370+02:00  INFO 22824 --- [registration-backend] [           main] tc.postgres:16.15-alpine                 : Container postgres:16.15-alpine started in PT2.1717777S
+2026-10-19T15:45:46.371+02:00  INFO 22824 --- [registration-backend] [           main] tc.postgres:16.15-alpine                 : Container is started (JDBC URL: jdbc:postgresql://localhost:54172/test?loggerLevel=OFF)
+2026-10-19T15:45:46.372+02:00  INFO 22824 --- [registration-backend] [           main] tc.axllent/mailpit:v1.31.1               : Creating container for image: axllent/mailpit:v1.31.1
+2026-10-19T15:45:46.482+02:00  INFO 22824 --- [registration-backend] [           main] tc.axllent/mailpit:v1.31.1               : Container axllent/mailpit:v1.31.1 is starting: ca0f803fe0817b4c80edb6b2f1c9344b6d919c0e3ec3638bed2ae89942ccc090
+2026-10-19T15:45:46.751+02:00  INFO 22824 --- [registration-backend] [           main] o.t.c.wait.strategy.HttpWaitStrategy     : /xenodochial_kowalevski: Waiting for 60 seconds for URL: http://localhost:54174/api/v1/info (where port 54174 maps to container port 8025)
+2026-10-19T15:45:47.347+02:00  INFO 22824 --- [registration-backend] [           main] tc.axllent/mailpit:v1.31.1               : Container axllent/mailpit:v1.31.1 started in PT0.9742526S
+2026-10-19T15:45:47.356+02:00  INFO 22824 --- [registration-backend] [           main] s.k.r.web.WebProtectionIntegrationTest   : Starting WebProtectionIntegrationTest using Java 21.0.10 with PID 22824 (started by sense in E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\backend)
+2026-10-19T15:45:47.358+02:00  INFO 22824 --- [registration-backend] [           main] s.k.r.web.WebProtectionIntegrationTest   : No active profile set, falling back to 1 default profile: "default"
+2026-10-19T15:45:48.151+02:00  INFO 22824 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-19T15:45:48.193+02:00  INFO 22824 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 30 ms. Found 0 JPA repository interfaces.
+2026-10-19T15:45:49.342+02:00  INFO 22824 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-10-19T15:45:49.511+02:00  INFO 22824 --- [registration-backend] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@9976b27
+2026-10-19T15:45:49.512+02:00  INFO 22824 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-10-19T15:45:49.543+02:00  INFO 22824 --- [registration-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:54172/test?loggerLevel=OFF (PostgreSQL 16.15)
+2026-10-19T15:45:49.610+02:00  INFO 22824 --- [registration-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2026-10-19T15:45:49.613+02:00  INFO 22824 --- [registration-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.016s)
+2026-10-19T15:45:49.631+02:00  INFO 22824 --- [registration-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2026-10-19T15:45:49.688+02:00  INFO 22824 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-10-19T15:45:49.706+02:00  INFO 22824 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "1 - create registration tables"
+2026-10-19T15:45:49.750+02:00  INFO 22824 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 1 migration to schema "public", now at version v1 (execution time 00:00.022s)
+2026-10-19T15:45:49.944+02:00  INFO 22824 --- [registration-backend] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-10-19T15:45:50.040+02:00  INFO 22824 --- [registration-backend] [           main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.5.Final
+2026-10-19T15:45:50.505+02:00  INFO 22824 --- [registration-backend] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-19T15:45:50.579+02:00  INFO 22824 --- [registration-backend] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:54172/test?loggerLevel=OFF]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 16.15
+	Default catalog/schema: test/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-10-19T15:45:51.335+02:00  INFO 22824 --- [registration-backend] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-19T15:45:51.380+02:00  INFO 22824 --- [registration-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-19T15:45:51.787+02:00  INFO 22824 --- [registration-backend] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name organizers
+2026-10-19T15:45:52.861+02:00  INFO 22824 --- [registration-backend] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-10-19T15:45:52.862+02:00  INFO 22824 --- [registration-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-19T15:45:52.878+02:00  INFO 22824 --- [registration-backend] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-10-19T15:45:52.893+02:00  INFO 22824 --- [registration-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 31 ms
+2026-10-19T15:45:53.076+02:00  INFO 22824 --- [registration-backend] [           main] s.k.r.web.WebProtectionIntegrationTest   : Started WebProtectionIntegrationTest in 10.615 seconds (process running for 11.841)
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (C:\Users\sense\.m2\repository\net\bytebuddy\byte-buddy-agent\1.18.11\byte-buddy-agent-1.18.11.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /actuator/health/liveness
+       Parameters = {}
+          Headers = []
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = null
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 401
+    Error message = Unauthorized
+          Headers = [WWW-Authenticate:"Basic realm="Organizer export", charset="UTF-8"", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY"]
+     Content type = null
+             Body = 
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /api/form-config
+       Parameters = {}
+          Headers = []
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = si.konferenca.registration.web.FormConfigController
+           Method = si.konferenca.registration.web.FormConfigController#formConfig()
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY"]
+     Content type = application/json
+             Body = {"conferenceName":"Konferenca Test 2026","options":[{"id":"ws-ai","name":"Workshop: AI in practice","category":"WORKSHOP","availableTo":["EXTERNAL","STUDENT"]},{"id":"ev-dinner","name":"Conference dinner","category":"EVENT","availableTo":["EXTERNAL","STUDENT"]},{"id":"meal-lunch","name":"Lunch","category":"MEAL","availableTo":["EXTERNAL","STUDENT"]},{"id":"oth-tour","name":"City tour","category":"OTHER","availableTo":["EXTERNAL"]},{"id":"oth-mentoring","name":"Student mentoring","category":"OTHER","availableTo":["STUDENT"]}],"consents":[{"id":"privacy","text":"I agree that my personal data is processed for organizing the conference and that it is shared with the conference organizers.","mandatory":true},{"id":"photos","text":"I agree to appear in conference photos.","mandatory":false}],"recaptcha":{"siteKey":"","testMode":true}}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/registrations
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"3017"]
+             Body = {"firstName": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"}
+    Session Attrs = {}
+
+Handler:
+             Type = si.konferenca.registration.web.RegistrationController
+           Method = si.konferenca.registration.web.RegistrationController#register(JsonNode)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = si.konferenca.registration.application.RegistrationRejectedException
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 400
+    Error message = null
+          Headers = [Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY"]
+     Content type = application/json
+             Body = {"message":"The registration has errors.","fieldErrors":[{"field":"type","message":"Registration type is required."},{"field":"firstName","message":"First name is longer than 100 characters."},{"field":"lastName","message":"Last name is required."},{"field":"email","message":"Email is required."},{"field":"consents.privacy","message":"This consent is required."},{"field":"recaptchaToken","message":"Please confirm that you are not a robot."}]}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/registrations
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"2"]
+             Body = {}
+    Session Attrs = {}
+
+Handler:
+             Type = si.konferenca.registration.web.RegistrationController
+           Method = si.konferenca.registration.web.RegistrationController#register(JsonNode)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = si.konferenca.registration.application.RegistrationRejectedException
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 400
+    Error message = null
+          Headers = [Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY"]
+     Content type = application/json
+             Body = {"message":"The registration has errors.","fieldErrors":[{"field":"type","message":"Registration type is required."},{"field":"firstName","message":"First name is required."},{"field":"lastName","message":"Last name is required."},{"field":"email","message":"Email is required."},{"field":"consents.privacy","message":"This consent is required."},{"field":"recaptchaToken","message":"Please confirm that you are not a robot."}]}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/registrations
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"2"]
+             Body = {}
+    Session Attrs = {}
+
+Handler:
+             Type = si.konferenca.registration.web.RegistrationController
+           Method = si.konferenca.registration.web.RegistrationController#register(JsonNode)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = si.konferenca.registration.application.RegistrationRejectedException
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 400
+    Error message = null
+          Headers = [Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY"]
+     Content type = application/json
+             Body = {"message":"The registration has errors.","fieldErrors":[{"field":"type","message":"Registration type is required."},{"field":"firstName","message":"First name is required."},{"field":"lastName","message":"Last name is required."},{"field":"email","message":"Email is required."},{"field":"consents.privacy","message":"This consent is required."},{"field":"recaptchaToken","message":"Please confirm that you are not a robot."}]}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/registrations
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"2"]
+             Body = {}
+    Session Attrs = {}
+
+Handler:
+             Type = si.konferenca.registration.web.RegistrationController
+           Method = si.konferenca.registration.web.RegistrationController#register(JsonNode)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = si.konferenca.registration.application.RegistrationRejectedException
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 400
+    Error message = null
+          Headers = [Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY"]
+     Content type = application/json
+             Body = {"message":"The registration has errors.","fieldErrors":[{"field":"type","message":"Registration type is required."},{"field":"firstName","message":"First name is required."},{"field":"lastName","message":"Last name is required."},{"field":"email","message":"Email is required."},{"field":"consents.privacy","message":"This consent is required."},{"field":"recaptchaToken","message":"Please confirm that you are not a robot."}]}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+[ERROR] Tests run: 5, Failures: 4, Errors: 0, Skipped: 0, Time elapsed: 11.65 s <<< FAILURE! -- in si.konferenca.registration.web.WebProtectionIntegrationTest
+[ERROR] si.konferenca.registration.web.WebProtectionIntegrationTest.NFR_04_livenessAndReadinessAreUp -- Time elapsed: 0.012 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[liveness] 
+expected: 200
+ but was: 401
+	at si.konferenca.registration.web.WebProtectionIntegrationTest.NFR_04_livenessAndReadinessAreUp(WebProtectionIntegrationTest.java:55)
+
+[ERROR] si.konferenca.registration.web.WebProtectionIntegrationTest.SB_10_apiResponsesCarrySecurityHeaders -- Time elapsed: 0.050 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: "default-src 'none'; frame-ancestors 'none'"
+ but was: null
+	at si.konferenca.registration.web.WebProtectionIntegrationTest.SB_10_apiResponsesCarrySecurityHeaders(WebProtectionIntegrationTest.java:44)
+
+[ERROR] si.konferenca.registration.web.WebProtectionIntegrationTest.SR_03_oversizedBodyGets413 -- Time elapsed: 0.076 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: 413
+ but was: 400
+	at si.konferenca.registration.web.WebProtectionIntegrationTest.SR_03_oversizedBodyGets413(WebProtectionIntegrationTest.java:113)
+
+[ERROR] si.konferenca.registration.web.WebProtectionIntegrationTest.SR_03_registrationsAboveTheLimitGet429 -- Time elapsed: 0.024 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+Expecting actual:
+  [400, 400, 400]
+to contain exactly (and in same order):
+  [400, 400, 429]
+but some elements were not found:
+  [429]
+and others were not expected:
+  [400]
+
+	at si.konferenca.registration.web.WebProtectionIntegrationTest.SR_03_registrationsAboveTheLimitGet429(WebProtectionIntegrationTest.java:92)
+
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Failures: 
+[ERROR]   WebProtectionIntegrationTest.NFR_04_livenessAndReadinessAreUp:55 [liveness] 
+expected: 200
+ but was: 401
+[ERROR]   WebProtectionIntegrationTest.SB_10_apiResponsesCarrySecurityHeaders:44 
+expected: "default-src 'none'; frame-ancestors 'none'"
+ but was: null
+[ERROR]   WebProtectionIntegrationTest.SR_03_oversizedBodyGets413:113 
+expected: 413
+ but was: 400
+[ERROR]   WebProtectionIntegrationTest.SR_03_registrationsAboveTheLimitGet429:92 
+Expecting actual:
+  [400, 400, 400]
+to contain exactly (and in same order):
+  [400, 400, 429]
+but some elements were not found:
+  [429]
+and others were not expected:
+  [400]
+
+[ERROR] Errors: 
+[ERROR]   RateLimitFilterTest.SR_03_eachClientHasItsOwnLimit:66->call:45 » UnsupportedOperation not implemented
+[ERROR]   RateLimitFilterTest.SR_03_eachEndpointHasItsOwnLimit:75->call:45 » UnsupportedOperation not implemented
+[ERROR]   RateLimitFilterTest.SR_03_otherApiPathsShareTheStrictestLimitAndNonApiPathsAreNotLimited:95->call:45 » UnsupportedOperation not implemented
+[ERROR]   RateLimitFilterTest.SR_03_requestsAboveTheLimitGet429WithRetryAfter:54->call:45 » UnsupportedOperation not implemented
+[ERROR]   RateLimitFilterTest.SR_03_theLimitResetsInTheNextMinute:85->call:45 » UnsupportedOperation not implemented
+[ERROR]   RequestSizeLimitFilterTest.SR_03_bodyWithinTheLimitPasses:37 » UnsupportedOperation not implemented
+[ERROR]   RequestSizeLimitFilterTest.SR_03_declaredLargeBodyIsRefusedWith413:24 » UnsupportedOperation not implemented
+[ERROR]   RequestSizeLimitFilterTest.SR_03_undeclaredLargeBodyFailsWhileReading:60 » UnsupportedOperation not implemented
+[INFO] 
+[ERROR] Tests run: 13, Failures: 4, Errors: 8, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  21.163 s
+[INFO] Finished at: 2026-10-19T15:45:54+02:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.5.6:test (default-test) on project registration-backend: There are test failures.
+[ERROR] 
+[ERROR] See E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\backend\target\surefire-reports for the individual test results.
+[ERROR] See dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
