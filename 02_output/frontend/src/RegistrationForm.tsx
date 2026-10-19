@@ -21,7 +21,14 @@ const FIELDS: Record<RegistrationType, FieldDefinition[]> = {
     { name: "email", label: "Email", inputType: "email" },
     { name: "organization", label: "Organization / institution" },
   ],
-  STUDENT: [],
+  STUDENT: [
+    { name: "firstName", label: "First name" },
+    { name: "lastName", label: "Last name" },
+    { name: "email", label: "Email", inputType: "email" },
+    { name: "studyInstitution", label: "Study institution" },
+    { name: "studyProgramme", label: "Study programme" },
+    { name: "studentId", label: "Student ID" },
+  ],
 };
 
 const TEST_TOKEN = "test-pass";
@@ -38,6 +45,12 @@ export function RegistrationForm({ config }: RegistrationFormProps) {
   const [consentIds, setConsentIds] = useState<string[]>([]);
   const [captchaToken, setCaptchaToken] = useState("");
 
+  function chooseType(next: RegistrationType) {
+    const available = optionsFor(config.options, next).map((option) => option.id);
+    setOptionIds(optionIds.filter((id) => available.includes(id)));
+    setType(next);
+  }
+
   return (
     <form noValidate>
       <fieldset>
@@ -47,7 +60,7 @@ export function RegistrationForm({ config }: RegistrationFormProps) {
             type="radio"
             name="type"
             checked={type === "EXTERNAL"}
-            onChange={() => setType("EXTERNAL")}
+            onChange={() => chooseType("EXTERNAL")}
           />
           External participant
         </label>
@@ -56,7 +69,7 @@ export function RegistrationForm({ config }: RegistrationFormProps) {
             type="radio"
             name="type"
             checked={type === "STUDENT"}
-            onChange={() => setType("STUDENT")}
+            onChange={() => chooseType("STUDENT")}
           />
           Student
         </label>
