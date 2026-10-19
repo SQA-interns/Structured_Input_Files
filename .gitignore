@@ -3,9 +3,6 @@
 .env.*
 !*.env.example
 
-# Run statistics written by the clock tool (committed at the end of the run)
-03_statistics/run-log.json
-
 # Backend build output
 02_output/backend/target/
 02_output/backend/.mvn/wrapper/maven-wrapper.jar
