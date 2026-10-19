@@ -1,0 +1,57 @@
+[32m16:12:32 (12756) INFO ProjectReader[39m Found 1 of 52 file(s) to be mutated.
+[32m16:12:32 (12756) INFO Instrumenter[39m Instrumented 1 source file(s) with 30 mutant(s)
+[32m16:12:32 (12756) INFO ConcurrencyTokenProvider[39m Creating 4 test runner process(es).
+[32m16:12:34 (12756) INFO DryRunExecutor[39m Starting initial test run (vitest test runner with "perTest" coverage analysis). This may take a while.
+[32m16:12:44 (12756) INFO DryRunExecutor[39m Initial test run succeeded. Ran 30 tests in 10 seconds (net 2425.1291999999994 ms, overhead 7644.870800000001 ms).
+
+All tests
+  acceptance
+    confirmation.acceptance.test.tsx
+      ✓ US-004 registration confirmation and errors (ui.md) AC-004-01 accepted registration shows a confirmation with name and options and hides the form (killed 2)
+      ~ US-004 registration confirmation and errors (ui.md) AC-004-02 backend field errors are shown next to their fields and values remain (covered 17)
+      ~ US-004 registration confirmation and errors (ui.md) AC-004-03 empty required field and invalid email are shown without sending a request (covered 17)
+      ~ US-004 registration confirmation and errors (ui.md) AC-004-04 backend failure shows a general error without technical details (covered 17)
+      ~ US-004 registration confirmation and errors (ui.md) AC-004-04 unreachable backend shows a general error without technical details (covered 17)
+    externalForm.acceptance.test.tsx
+      ~ US-001 external participant form (ui.md) AC-001-08 shows exactly the external fields, grouped active options and unchecked consents (covered 17)
+    studentForm.acceptance.test.tsx
+      ✓ US-002 student form (ui.md) AC-002-07 shows exactly the student fields, only student options by category and unchecked consents (killed 2)
+  App.test.tsx
+    ✘ App AC-001-08 shows the form once the configuration is loaded (covered 0)
+    ✘ App AC-004-04 shows a general error when the configuration cannot be loaded (covered 0)
+    ~ App confirmation AC-004-01 replaces the form with the confirmation once accepted (covered 17)
+  options.test.ts
+    ~ options AC-001-08 externals see only options available to them (covered 3)
+    ~ options AC-002-07 students see only options available to them (covered 3)
+    ~ options AC-001-08 groups follow the category order and skip empty categories (covered 17)
+    ~ options AC-002-07 student groups include events (covered 17)
+  RecaptchaWidget.test.tsx
+    ~ reCAPTCHA widget (SR-01, AR-07) SR-01 renders the Google widget with the configured site key and sends its token (covered 17)
+    ~ reCAPTCHA widget (SR-01, AR-07) SR-01 loads the reCAPTCHA script once when it is not present (covered 17)
+  RegistrationForm.student.test.tsx
+    ~ RegistrationForm student AC-002-07 students get exactly the student fields (covered 17)
+    ✓ RegistrationForm student AC-002-07 students see only student options, grouped, unchecked (killed 5)
+    ~ RegistrationForm student AC-002-07 switching the type drops options the new type cannot select (covered 17)
+  RegistrationForm.submit.test.tsx
+    ✓ RegistrationForm submission AC-004-01 a valid form sends the type's fields and reports the accepted registration (killed 13)
+    ~ RegistrationForm submission AC-004-01 a second click while sending sends nothing more (covered 17)
+    ~ RegistrationForm submission AC-004-03 errors are shown next to the fields and nothing is sent (covered 17)
+    ~ RegistrationForm submission AC-004-03 fixed errors disappear on the next submit (covered 17)
+    ~ RegistrationForm submission AC-004-02 backend field errors are shown next to their fields and values remain (covered 17)
+    ~ RegistrationForm submission AC-004-04 an error for an unknown field shows the general message (covered 17)
+    ~ RegistrationForm submission AC-004-04 a failed request shows the general message and keeps the form (covered 17)
+  RegistrationForm.test.tsx
+    ✘ RegistrationForm external AC-001-08 shows no fields before a registration type is chosen (covered 0)
+    ✓ RegistrationForm external AC-001-08 external participants get their fields, groups and unchecked consents (killed 8)
+    ~ RegistrationForm external AC-001-08 checking an option or consent toggles it (covered 17)
+    ~ RegistrationForm external AC-001-08 typed values are kept in the fields (covered 17)
+
+Ran 7.27 tests per mutant on average.
+------------|------------------|----------|-----------|------------|----------|----------|
+            | % Mutation score |          |           |            |          |          |
+File        |  total | covered | # killed | # timeout | # survived | # no cov | # errors |
+------------|--------|---------|----------|-----------|------------|----------|----------|
+All files   | 100.00 |  100.00 |       30 |         0 |          0 |        0 |        0 |
+ options.ts | 100.00 |  100.00 |       30 |         0 |          0 |        0 |        0 |
+------------|--------|---------|----------|-----------|------------|----------|----------|
+[32m16:13:07 (12756) INFO MutationTestExecutor[39m Done in 35 seconds.

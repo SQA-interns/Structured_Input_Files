@@ -73,8 +73,25 @@ Nothing else is excluded; generated code (`target/`, `dist/`) is never measured.
 
 | Component | Tests (unit / integration) | Line coverage (all) | Branch coverage (all) | Tools |
 |---|---|---|---|---|
+| backend | 232 (131 unit / 18 integration, plus 77 acceptance and 6 architecture) | 96.34 % (816/847); unit only 81.11 %, non-unit only 88.31 % | 87.02 % (228/262); unit 83.21 %, non-unit 68.70 % | JaCoCo 0.8.12, `mvnw test jacoco:report`, fresh `jacoco.exec` per run |
+| frontend | 56 (49 unit, plus 7 acceptance) | 97.85 % (137/140); unit only 97.85 %, non-unit only 79.28 % | 93.58 % (73/78); unit 93.58 %, non-unit 67.94 % | Vitest 4.1.11 with @vitest/coverage-v8 |
+
+Measured on commit `4059c0d` before any test-after test. Both components are above the line threshold (95 %) with the test-first tests alone, so no coverage tests are added. Scope: production code as in "Measurement exclusions"; test helpers that live under `src/` (`frontend/src/testConfig.ts`, `frontend/src/acceptance/**`) are test code and never count. Logs: `out/logs/phase5-baseline-*`.
 
 ## First complete run (before any fix)
+
+Start of phase 5, after the TDD build, on commit `78133e6` (same production code as the baseline).
+
+| Level | Component | Passed | Failed |
+|---|---|---|---|
+| unit | backend / frontend | 131 / 49 | 0 |
+| integration | backend | 18 | 0 |
+| architecture | backend | 6 | 0 |
+| acceptance (frozen) | backend / frontend | 77 / 7 | 0 |
+| end-to-end (frozen) | stack | 5 | 0 |
+| **total** | | **293** | **0** |
+
+No failure, so nothing to classify and no fix. Logs: `out/logs/phase4-gate-backend.log`, `out/logs/phase4-gate-frontend-test.log`, `out/logs/phase4-e2e-run-1.log`.
 
 ## Final run (phase 6)
 
