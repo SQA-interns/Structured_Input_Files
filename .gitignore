@@ -1,0 +1,30 @@
+# Local configuration and secrets (ES-02)
+.env
+.env.*
+!*.env.example
+
+# Run statistics written by the clock tool (committed at the end of the run)
+03_statistics/run-log.json
+
+# Backend build output
+02_output/backend/target/
+02_output/backend/.mvn/wrapper/maven-wrapper.jar
+
+# Frontend dependencies and build output
+node_modules/
+02_output/frontend/dist/
+02_output/frontend/coverage/
+02_output/frontend/reports/
+02_output/frontend/.stryker-tmp/
+02_output/frontend/test-results/
+02_output/frontend/playwright-report/
+02_output/e2e/node_modules/
+02_output/e2e/test-results/
+02_output/e2e/playwright-report/
+
+# IDE and OS files
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
