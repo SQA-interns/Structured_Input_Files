@@ -95,9 +95,69 @@ No failure, so nothing to classify and no fix. Logs: `out/logs/phase4-gate-backe
 
 ## Final run (phase 6)
 
-## Test measures (phase 5, updated in phase 6 only for a component that changed)
 
-<!-- Filled in phase 5 from the runners and tools; copied into the run summary in phase 7. Definitions: general/quality/measurement-scope.md. Level rows: tests passed / failed. unit = coverage of the unit tests only; non-unit = integration, acceptance, architecture and end-to-end tests under the coverage tool; all levels = one merged report. Mutation score only on the all levels row, with scope, tool, killed of total and the tests run. -->
+## Mutation testing (phase 5)
+
+Tool check before the full runs: PIT killed its mutant in `Timestamps` with `FileJsonCopyStoreTest`, Stryker killed 30 of 30 mutants of `options.ts` (`out/logs/phase5-pit-sanity.log`, `out/logs/phase5-stryker-sanity.log`).
+
+### Frontend (Stryker 10.0.0, vitest-runner, full Vitest suite, scope `src/**/*.{ts,tsx}` without tests, `main.tsx`, `test-setup.ts`, `testConfig.ts`, `acceptance/**`)
+
+| Run | File | Killed | Survived | No coverage | Total |
+|---|---|---|---|---|---|
+| full (56 tests) | all files | 298 | 66 | 5 | 369 |
+| round 1 re-run (80 tests) | api.ts | 42 | 0 | 0 | 42 |
+| round 1 re-run | App.tsx | 19 | 2 | 0 | 21 |
+| round 1 re-run | RecaptchaWidget.tsx | 42 | 2 | 0 | 44 |
+| round 1 re-run | RegistrationForm.tsx | 156 | 2 | 1 | 159 |
+| round 1 re-run | validation.ts | 67 | 0 | 0 | 67 |
+| kept from full run | Confirmation.tsx, options.ts | 36 | 0 | 0 | 36 |
+
+Recomputed after round 1: killed 362 of 369, equivalent 7, raw score 98.10 %, adjusted score 100.00 %, covered score 98.37 %. Gate met (≥ 90 %, more than 1 point above), no confirming full run. Logs: `out/logs/phase5-stryker-full.log`, `out/logs/phase5-stryker-round1.log` (+ `.json`).
+
+Equivalent mutants (frontend):
+
+| File, place | Mutation | Why it cannot change behaviour |
+|---|---|---|
+| App.tsx, `setState({ kind: "ready", config })` | `"ready"` → `""` | the state tag is only compared with `"loading"` and `"failed"`; any other tag renders the form |
+| App.tsx, `useEffect(..., [])` | deps `[]` → `["Stryker was here"]` | a constant dependency list also runs the effect exactly once |
+| RecaptchaWidget.tsx, render effect deps | `[siteKey, onToken]` → `[]` | both values are stable for the life of the form (configuration and a state setter), and the guard `widgetId !== null` stops a second render anyway |
+| RecaptchaWidget.tsx, `resetSignal > 0 && widgetId.current !== null` | condition → `true` | `widgetId` is null only while the script is not loaded, and then `window.grecaptcha?.reset` is a no-op |
+| RegistrationForm.tsx, `useState<string[]>([])` for options | `[]` → `["Stryker was here"]` | the first type choice filters the selection to options available to the type, before anything can be sent |
+| RegistrationForm.tsx, `known.includes(error.field)` | condition → `true` | an unknown field stored in the error map has no element to show it; the general message is set by the separate `some(...)` check |
+| RegistrationForm.tsx, `(values[field.name] ?? "")` (no coverage) | `""` → `"Stryker was here!"` | the fallback runs only for an untouched field, and `validateForm` rejects every untouched required field before the body is built |
+
+### Backend (PIT 1.30.0 with pitest-junit5-plugin 1.2.3, default mutators, full suite of every level, scope `si.konferenca.registration.*` without `RegistrationApplication`)
+
+| Run | Classes | Killed (incl. timed out) | Survived | No coverage | Total |
+|---|---|---|---|---|---|
+| full (232 tests) | all 35 classes | 274 | 48 | 12 | 334 |
+| round 1 re-run (264 tests) | the 16 classes with survivors | 181 | 3 | 0 | 184 |
+| kept from full run | the other 19 classes | 150 | 0 | 0 | 150 |
+
+Per class after round 1 (killed / total): see `out/logs/phase5-pit-full-mutations.xml` and `out/logs/phase5-pit-round1-mutations.xml`; every class is at 100 % except `OrganizerHttpsOnlyFilter` 20/21 and `RequestSizeLimitFilter` 17/19 (the equivalents below).
+
+Recomputed after round 1: killed 331 of 334, equivalent 3, raw score 99.10 %, adjusted score 100.00 %, covered score 99.10 %. Gate met (more than 1 point above 90 %), no confirming full run.
+
+Most full-run survivors were `@Bean` factory methods and security settings: the Spring test context is cached inside a PIT minion, so a mutated bean definition was never used by the context tests. Round 1 added direct tests of the configuration classes (`ConfigurationBeansTest`, `MailBeansTest`) and `ApplicationWiringIntegrationTest`, whose context is rebuilt for every run (`@DirtiesContext`). The other round-1 tests aim at response headers, rate-limit window and cleanup, IPv6 loopback, quote-prefixed cells, `ConsentEmbeddable` equality, flush timing (AR-05), unknown nested configuration properties and the interrupt path of the reCAPTCHA client.
+
+Equivalent mutants (backend):
+
+| Class, method | Mutation | Why it cannot change behaviour |
+|---|---|---|
+| OrganizerHttpsOnlyFilter.doFilterInternal | removed `setCharacterEncoding(UTF-8)` | the body is a fixed ASCII string, identical in every charset |
+| RequestSizeLimitFilter.doFilterInternal | removed `setCharacterEncoding(UTF-8)` | same: fixed ASCII body |
+| RequestSizeLimitFilter.LimitedRequest stream.isReady | returns `true` | `isReady` is used only for non-blocking reads with a `ReadListener`; the application reads bodies blocking (Jackson), never asynchronously |
+
+## Test measures (phase 5)
 
 | Component | Level | Tests passed / failed | Line coverage | Branch coverage | Mutation score (scope) | Tools |
 |---|---|---|---|---|---|---|
+| backend | unit | 157 / 0 | 86.66 % | 89.69 % | | JUnit 6, JaCoCo 0.8.12 |
+| backend | non-unit (integration 22, acceptance 77, architecture 6, wiring 2) | 107 / 0 | 88.43 % | 69.08 % | | JUnit 6, Testcontainers, JaCoCo |
+| backend | all levels | 264 / 0 | 97.64 % (827/847) | 91.22 % (239/262) | adjusted 100.00 %, raw 99.10 % (331/334, all production code) | PIT 1.30.0 |
+| frontend | unit | 73 / 0 | 100.00 % | 98.71 % | | Vitest 4.1.11, coverage-v8 |
+| frontend | non-unit (acceptance) | 7 / 0 | 79.28 % | 67.94 % | | Vitest |
+| frontend | all levels | 80 / 0 | 100.00 % (140/140) | 98.71 % (77/78) | adjusted 100.00 %, raw 98.10 % (362/369, all production source) | Stryker 10.0.0 |
+| stack | end-to-end | 5 / 0 | | | | Playwright 1.63.0 |
+
+Code size (cloc 2.10 image, code lines): backend production 1982, backend tests 4268; frontend production 472, frontend tests 1848 (unit 937, acceptance 349, e2e 562). Duplication: PMD CPD reports none for the backend, jscpd 0 clones for the frontend production source. Logs: `out/logs/phase5-final-*`, `out/logs/phase5-cloc.log`, `out/logs/phase5-jscpd.log`.

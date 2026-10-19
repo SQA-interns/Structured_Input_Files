@@ -1,0 +1,6 @@
+backend production: 57,SUM,312,99,1982
+frontend production: 9,SUM,41,10,472
+backend tests: 55,SUM,694,109,4268
+frontend tests (unit): 16,SUM,195,1,937
+frontend tests (acceptance): 5,SUM,46,8,349
+e2e tests: 9,SUM,60,19,562

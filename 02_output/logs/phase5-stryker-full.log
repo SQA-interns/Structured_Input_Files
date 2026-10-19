@@ -1,0 +1,764 @@
+[33m16:13:16 (38684) WARN ProjectReader[39m Glob pattern "!src/**/*.d.ts" did not exclude any files.
+[32m16:13:16 (38684) INFO ProjectReader[39m Found 8 of 52 file(s) to be mutated.
+[32m16:13:16 (38684) INFO Instrumenter[39m Instrumented 8 source file(s) with 369 mutant(s)
+[32m16:13:16 (38684) INFO ConcurrencyTokenProvider[39m Creating 4 test runner process(es).
+[32m16:13:17 (38684) INFO BroadcastReporter[39m Detected that current console does not support the "progress" reporter, downgrading to "progress-append-only" reporter
+[32m16:13:18 (38684) INFO DryRunExecutor[39m Starting initial test run (vitest test runner with "perTest" coverage analysis). This may take a while.
+[32m16:13:32 (38684) INFO DryRunExecutor[39m Initial test run succeeded. Ran 56 tests in 13 seconds (net 2505.9192000000075 ms, overhead 10914.080799999992 ms).
+[33m16:13:32 (38684) WARN MutantTestPlanner[39m Detected 87 static mutants (24% of total) that are estimated to take 42% of the time running the tests!
+  You might want to enable "ignoreStatic" to ignore these static mutants for your next run. 
+  For more information about static mutants visit: https://stryker-mutator.io/docs/mutation-testing-elements/static-mutants
+  (disable "warnings.slow" to ignore this warning)
+Mutation testing 2% (elapsed: <1m, remaining: ~8m) 16/369 tested (4 survived, 0 timed out)
+Mutation testing 4% (elapsed: <1m, remaining: ~6m) 28/369 tested (5 survived, 0 timed out)
+Mutation testing 5% (elapsed: <1m, remaining: ~7m) 40/369 tested (8 survived, 0 timed out)
+Mutation testing 8% (elapsed: <1m, remaining: ~7m) 60/369 tested (9 survived, 0 timed out)
+Mutation testing 12% (elapsed: <1m, remaining: ~5m) 79/369 tested (10 survived, 0 timed out)
+Mutation testing 17% (elapsed: ~1m, remaining: ~4m) 99/369 tested (15 survived, 0 timed out)
+Mutation testing 18% (elapsed: ~1m, remaining: ~4m) 128/369 tested (27 survived, 0 timed out)
+Mutation testing 22% (elapsed: ~1m, remaining: ~4m) 147/369 tested (30 survived, 0 timed out)
+Mutation testing 25% (elapsed: ~1m, remaining: ~4m) 155/369 tested (33 survived, 0 timed out)
+Mutation testing 27% (elapsed: ~1m, remaining: ~4m) 168/369 tested (35 survived, 0 timed out)
+Mutation testing 30% (elapsed: ~1m, remaining: ~4m) 181/369 tested (39 survived, 0 timed out)
+Mutation testing 33% (elapsed: ~2m, remaining: ~3m) 194/369 tested (43 survived, 0 timed out)
+Mutation testing 36% (elapsed: ~2m, remaining: ~3m) 214/369 tested (45 survived, 0 timed out)
+Mutation testing 39% (elapsed: ~2m, remaining: ~3m) 222/369 tested (47 survived, 0 timed out)
+Mutation testing 43% (elapsed: ~2m, remaining: ~3m) 232/369 tested (49 survived, 0 timed out)
+Mutation testing 51% (elapsed: ~2m, remaining: ~2m) 252/369 tested (51 survived, 0 timed out)
+Mutation testing 56% (elapsed: ~2m, remaining: ~2m) 270/369 tested (53 survived, 0 timed out)
+Mutation testing 59% (elapsed: ~3m, remaining: ~2m) 285/369 tested (55 survived, 0 timed out)
+Mutation testing 65% (elapsed: ~3m, remaining: ~1m) 298/369 tested (55 survived, 0 timed out)
+Mutation testing 72% (elapsed: ~3m, remaining: ~1m) 311/369 tested (55 survived, 0 timed out)
+Mutation testing 75% (elapsed: ~3m, remaining: ~1m) 318/369 tested (56 survived, 0 timed out)
+Mutation testing 82% (elapsed: ~3m, remaining: <1m) 333/369 tested (56 survived, 0 timed out)
+Mutation testing 88% (elapsed: ~3m, remaining: <1m) 344/369 tested (57 survived, 0 timed out)
+Mutation testing 90% (elapsed: ~4m, remaining: <1m) 350/369 tested (60 survived, 0 timed out)
+Mutation testing 95% (elapsed: ~4m, remaining: <1m) 359/369 tested (61 survived, 0 timed out)
+Mutation testing 97% (elapsed: ~4m, remaining: <1m) 363/369 tested (65 survived, 0 timed out)
+
+All tests
+  acceptance
+    confirmation.acceptance.test.tsx
+      ✓ US-004 registration confirmation and errors (ui.md) AC-004-01 accepted registration shows a confirmation with name and options and hides the form (killed 35)
+      ✓ US-004 registration confirmation and errors (ui.md) AC-004-02 backend field errors are shown next to their fields and values remain (killed 8)
+      ✓ US-004 registration confirmation and errors (ui.md) AC-004-03 empty required field and invalid email are shown without sending a request (killed 2)
+      ✓ US-004 registration confirmation and errors (ui.md) AC-004-04 backend failure shows a general error without technical details (killed 1)
+      ✓ US-004 registration confirmation and errors (ui.md) AC-004-04 unreachable backend shows a general error without technical details (killed 1)
+    externalForm.acceptance.test.tsx
+      ~ US-001 external participant form (ui.md) AC-001-08 shows exactly the external fields, grouped active options and unchecked consents (covered 93)
+    studentForm.acceptance.test.tsx
+      ✓ US-002 student form (ui.md) AC-002-07 shows exactly the student fields, only student options by category and unchecked consents (killed 16)
+  api.submit.test.ts
+    ✓ submitRegistration AC-004-01 posts JSON to /api/registrations and returns the accepted registration (killed 5)
+    ✓ submitRegistration AC-004-02 a 400 with field errors is a rejection (killed 1)
+    ✓ submitRegistration AC-004-04 a 400 without field errors is a failure (killed 5)
+    ~ submitRegistration AC-004-04 status 500 is a failure (covered 20)
+    ~ submitRegistration AC-004-04 status 413 is a failure (covered 20)
+    ~ submitRegistration AC-004-04 status 429 is a failure (covered 20)
+    ~ submitRegistration AC-004-04 status 503 is a failure (covered 20)
+    ✓ submitRegistration AC-004-04 an unreadable answer is a failure (killed 2)
+    ~ submitRegistration AC-004-04 an unreachable backend is a failure (covered 11)
+  api.test.ts
+    ~ fetchFormConfig AC-001-08 loads the form configuration from /api/form-config (covered 8)
+    ✓ fetchFormConfig AC-001-08 fails when the backend answers with an error (killed 2)
+  App.test.tsx
+    ✓ App AC-001-08 shows the form once the configuration is loaded (killed 5)
+    ✓ App AC-004-04 shows a general error when the configuration cannot be loaded (killed 6)
+    ✓ App confirmation AC-004-01 replaces the form with the confirmation once accepted (killed 1)
+  Confirmation.test.tsx
+    ~ Confirmation AC-004-01 names the participant and lists the selected options (covered 6)
+    ✓ Confirmation AC-004-01 says so when no option was selected (killed 2)
+    ~ Confirmation AC-004-01 shows markup in names as text (covered 6)
+  options.test.ts
+    ~ options AC-001-08 externals see only options available to them (covered 3)
+    ~ options AC-002-07 students see only options available to them (covered 3)
+    ~ options AC-001-08 groups follow the category order and skip empty categories (covered 17)
+    ~ options AC-002-07 student groups include events (covered 17)
+  RecaptchaWidget.test.tsx
+    ✓ reCAPTCHA widget (SR-01, AR-07) SR-01 renders the Google widget with the configured site key and sends its token (killed 30)
+    ✓ reCAPTCHA widget (SR-01, AR-07) SR-01 loads the reCAPTCHA script once when it is not present (killed 8)
+  RegistrationForm.student.test.tsx
+    ✓ RegistrationForm student AC-002-07 students get exactly the student fields (killed 18)
+    ✓ RegistrationForm student AC-002-07 students see only student options, grouped, unchecked (killed 7)
+    ✓ RegistrationForm student AC-002-07 switching the type drops options the new type cannot select (killed 5)
+  RegistrationForm.submit.test.tsx
+    ✓ RegistrationForm submission AC-004-01 a valid form sends the type's fields and reports the accepted registration (killed 53)
+    ~ RegistrationForm submission AC-004-01 a second click while sending sends nothing more (covered 132)
+    ✓ RegistrationForm submission AC-004-03 errors are shown next to the fields and nothing is sent (killed 22)
+    ✓ RegistrationForm submission AC-004-03 fixed errors disappear on the next submit (killed 1)
+    ✓ RegistrationForm submission AC-004-02 backend field errors are shown next to their fields and values remain (killed 19)
+    ✓ RegistrationForm submission AC-004-04 an error for an unknown field shows the general message (killed 3)
+    ✓ RegistrationForm submission AC-004-04 a failed request shows the general message and keeps the form (killed 4)
+  RegistrationForm.test.tsx
+    ~ RegistrationForm external AC-001-08 shows no fields before a registration type is chosen (covered 20)
+    ✓ RegistrationForm external AC-001-08 external participants get their fields, groups and unchecked consents (killed 6)
+    ✓ RegistrationForm external AC-001-08 checking an option or consent toggles it (killed 4)
+    ~ RegistrationForm external AC-001-08 typed values are kept in the fields (covered 68)
+  validation.test.ts
+    ✓ validateForm AC-004-03 a complete external form has no errors (killed 6)
+    ✓ validateForm AC-004-03 a complete student form has no errors (killed 12)
+    ✓ validateForm AC-004-03 empty or blank required fields are errors (killed 1)
+    ✓ validateForm AC-004-03 every student field is required (killed 1)
+    ✓ validateForm AC-004-03 invalid email ana is an error (killed 2)
+    ~ validateForm AC-004-03 invalid email ana@ is an error (covered 24)
+    ~ validateForm AC-004-03 invalid email @example.com is an error (covered 24)
+    ~ validateForm AC-004-03 invalid email ana novak@example.com is an error (covered 24)
+    ~ validateForm AC-004-03 invalid email ana@example is an error (covered 24)
+    ~ validateForm AC-004-03 invalid email a@b..si is an error (covered 24)
+    ✓ validateForm AC-004-03 surrounding spaces around a valid email are accepted (killed 1)
+    ✓ validateForm AC-004-03 a missing mandatory consent is an error on that consent (killed 3)
+
+[Survived] ObjectLiteral
+src/api.ts:5:63
+-     const response = await fetch("/api/form-config", { headers: { Accept: "application/json" } });
++     const response = await fetch("/api/form-config", { headers: {} });
+Tests ran:
+    US-002 student form (ui.md) AC-002-07 shows exactly the student fields, only student options by category and unchecked consents
+    US-004 registration confirmation and errors (ui.md) AC-004-01 accepted registration shows a confirmation with name and options and hides the form
+    US-004 registration confirmation and errors (ui.md) AC-004-02 backend field errors are shown next to their fields and values remain
+  and 9 more tests!
+
+
+[Survived] ObjectLiteral
+src/api.ts:5:52
+-     const response = await fetch("/api/form-config", { headers: { Accept: "application/json" } });
++     const response = await fetch("/api/form-config", {});
+Tests ran:
+    US-002 student form (ui.md) AC-002-07 shows exactly the student fields, only student options by category and unchecked consents
+    US-004 registration confirmation and errors (ui.md) AC-004-01 accepted registration shows a confirmation with name and options and hides the form
+    US-004 registration confirmation and errors (ui.md) AC-004-02 backend field errors are shown next to their fields and values remain
+  and 9 more tests!
+
+
+[Survived] StringLiteral
+src/api.ts:7:21
+-       throw new Error(`form configuration answered ${response.status}`);
++       throw new Error(``);
+Tests ran:
+    fetchFormConfig AC-001-08 fails when the backend answers with an error
+
+
+[Survived] StringLiteral
+src/api.ts:5:73
+-     const response = await fetch("/api/form-config", { headers: { Accept: "application/json" } });
++     const response = await fetch("/api/form-config", { headers: { Accept: "" } });
+Tests ran:
+    US-002 student form (ui.md) AC-002-07 shows exactly the student fields, only student options by category and unchecked consents
+    US-004 registration confirmation and errors (ui.md) AC-004-01 accepted registration shows a confirmation with name and options and hides the form
+    US-004 registration confirmation and errors (ui.md) AC-004-02 backend field errors are shown next to their fields and values remain
+  and 9 more tests!
+
+
+[Survived] StringLiteral
+src/api.ts:32:62
+-         headers: { "Content-Type": "application/json", Accept: "application/json" },
++         headers: { "Content-Type": "application/json", Accept: "" },
+Tests ran:
+    RegistrationForm submission AC-004-01 a valid form sends the type's fields and reports the accepted registration
+    RegistrationForm submission AC-004-01 a second click while sending sends nothing more
+    RegistrationForm submission AC-004-03 fixed errors disappear on the next submit
+  and 18 more tests!
+
+
+[Survived] ConditionalExpression
+src/api.ts:40:9
+-       if (response.status === 400 && Array.isArray(fieldErrors) && fieldErrors.length > 0) {
++       if (true && fieldErrors.length > 0) {
+Tests ran:
+    RegistrationForm submission AC-004-02 backend field errors are shown next to their fields and values remain
+    RegistrationForm submission AC-004-04 an error for an unknown field shows the general message
+    RegistrationForm submission AC-004-04 a failed request shows the general message and keeps the form
+  and 9 more tests!
+
+
+[Survived] LogicalOperator
+src/api.ts:40:9
+-       if (response.status === 400 && Array.isArray(fieldErrors) && fieldErrors.length > 0) {
++       if (response.status === 400 || Array.isArray(fieldErrors) && fieldErrors.length > 0) {
+Tests ran:
+    RegistrationForm submission AC-004-02 backend field errors are shown next to their fields and values remain
+    RegistrationForm submission AC-004-04 an error for an unknown field shows the general message
+    RegistrationForm submission AC-004-04 a failed request shows the general message and keeps the form
+  and 9 more tests!
+
+
+[Survived] ConditionalExpression
+src/api.ts:40:9
+-       if (response.status === 400 && Array.isArray(fieldErrors) && fieldErrors.length > 0) {
++       if (true && Array.isArray(fieldErrors) && fieldErrors.length > 0) {
+Tests ran:
+    RegistrationForm submission AC-004-02 backend field errors are shown next to their fields and values remain
+    RegistrationForm submission AC-004-04 an error for an unknown field shows the general message
+    RegistrationForm submission AC-004-04 a failed request shows the general message and keeps the form
+  and 9 more tests!
+
+
+[Survived] StringLiteral
+src/App.tsx:15:42
+-         .then((config) => setState({ kind: "ready", config }))
++         .then((config) => setState({ kind: "", config }))
+Tests ran:
+    US-002 student form (ui.md) AC-002-07 shows exactly the student fields, only student options by category and unchecked consents
+    US-004 registration confirmation and errors (ui.md) AC-004-01 accepted registration shows a confirmation with name and options and hides the form
+    US-004 registration confirmation and errors (ui.md) AC-004-02 backend field errors are shown next to their fields and values remain
+  and 6 more tests!
+
+
+[Survived] ArrayDeclaration
+src/App.tsx:17:6
+-     }, []);
++     }, ["Stryker was here"]);
+Tests ran:
+    US-002 student form (ui.md) AC-002-07 shows exactly the student fields, only student options by category and unchecked consents
+    US-004 registration confirmation and errors (ui.md) AC-004-01 accepted registration shows a confirmation with name and options and hides the form
+    US-004 registration confirmation and errors (ui.md) AC-004-02 backend field errors are shown next to their fields and values remain
+  and 7 more tests!
+
+
+[NoCoverage] BlockStatement
+src/RecaptchaWidget.tsx:35:82
+-         if (!container.current || widgetId.current !== null || !window.grecaptcha) {
+-           return;
+-         }
++         if (!container.current || widgetId.current !== null || !window.grecaptcha) {}
+
+[NoCoverage] StringLiteral
+src/RecaptchaWidget.tsx:41:43
+-           "expired-callback": () => onToken(""),
++           "expired-callback": () => onToken("Stryker was here!"),
+
+[Survived] ConditionalExpression
+src/RecaptchaWidget.tsx:35:11
+-         if (!container.current || widgetId.current !== null || !window.grecaptcha) {
++         if (false) {
+Tests ran:
+    reCAPTCHA widget (SR-01, AR-07) SR-01 renders the Google widget with the configured site key and sends its token
+
+
+[Survived] LogicalOperator
+src/RecaptchaWidget.tsx:35:11
+-         if (!container.current || widgetId.current !== null || !window.grecaptcha) {
++         if ((!container.current || widgetId.current !== null) && !window.grecaptcha) {
+Tests ran:
+    reCAPTCHA widget (SR-01, AR-07) SR-01 renders the Google widget with the configured site key and sends its token
+
+
+[Survived] ConditionalExpression
+src/RecaptchaWidget.tsx:35:11
+-         if (!container.current || widgetId.current !== null || !window.grecaptcha) {
++         if (false || !window.grecaptcha) {
+Tests ran:
+    reCAPTCHA widget (SR-01, AR-07) SR-01 renders the Google widget with the configured site key and sends its token
+
+
+[Survived] LogicalOperator
+src/RecaptchaWidget.tsx:35:11
+-         if (!container.current || widgetId.current !== null || !window.grecaptcha) {
++         if (!container.current && widgetId.current !== null || !window.grecaptcha) {
+Tests ran:
+    reCAPTCHA widget (SR-01, AR-07) SR-01 renders the Google widget with the configured site key and sends its token
+
+
+[Survived] ConditionalExpression
+src/RecaptchaWidget.tsx:35:33
+-         if (!container.current || widgetId.current !== null || !window.grecaptcha) {
++         if (!container.current || false || !window.grecaptcha) {
+Tests ran:
+    reCAPTCHA widget (SR-01, AR-07) SR-01 renders the Google widget with the configured site key and sends its token
+
+
+[Survived] ArrowFunction
+src/RecaptchaWidget.tsx:41:29
+-           "expired-callback": () => onToken(""),
++           "expired-callback": () => undefined,
+Tests ran:
+    reCAPTCHA widget (SR-01, AR-07) SR-01 renders the Google widget with the configured site key and sends its token
+
+
+[Survived] ConditionalExpression
+src/RecaptchaWidget.tsx:49:9
+-       if (!document.querySelector("script[data-recaptcha]")) {
++       if (true) {
+Tests ran:
+    reCAPTCHA widget (SR-01, AR-07) SR-01 loads the reCAPTCHA script once when it is not present
+
+
+[Survived] BooleanLiteral
+src/RecaptchaWidget.tsx:52:22
+-         script.async = true;
++         script.async = false;
+Tests ran:
+    reCAPTCHA widget (SR-01, AR-07) SR-01 loads the reCAPTCHA script once when it is not present
+
+
+[Survived] BooleanLiteral
+src/RecaptchaWidget.tsx:53:22
+-         script.defer = true;
++         script.defer = false;
+Tests ran:
+    reCAPTCHA widget (SR-01, AR-07) SR-01 loads the reCAPTCHA script once when it is not present
+
+
+[Survived] StringLiteral
+src/RecaptchaWidget.tsx:54:34
+-         script.dataset.recaptcha = "true";
++         script.dataset.recaptcha = "";
+Tests ran:
+    reCAPTCHA widget (SR-01, AR-07) SR-01 loads the reCAPTCHA script once when it is not present
+
+
+[Survived] ArrayDeclaration
+src/RecaptchaWidget.tsx:57:6
+-     }, [siteKey, onToken]);
++     }, []);
+Tests ran:
+    reCAPTCHA widget (SR-01, AR-07) SR-01 renders the Google widget with the configured site key and sends its token
+    reCAPTCHA widget (SR-01, AR-07) SR-01 loads the reCAPTCHA script once when it is not present
+
+
+[Survived] ConditionalExpression
+src/RecaptchaWidget.tsx:60:9
+-       if (resetSignal > 0 && widgetId.current !== null) {
++       if (true) {
+Tests ran:
+    reCAPTCHA widget (SR-01, AR-07) SR-01 renders the Google widget with the configured site key and sends its token
+    reCAPTCHA widget (SR-01, AR-07) SR-01 loads the reCAPTCHA script once when it is not present
+
+
+[Survived] LogicalOperator
+src/RecaptchaWidget.tsx:60:9
+-       if (resetSignal > 0 && widgetId.current !== null) {
++       if (resetSignal > 0 || widgetId.current !== null) {
+Tests ran:
+    reCAPTCHA widget (SR-01, AR-07) SR-01 renders the Google widget with the configured site key and sends its token
+    reCAPTCHA widget (SR-01, AR-07) SR-01 loads the reCAPTCHA script once when it is not present
+
+
+[Survived] ConditionalExpression
+src/RecaptchaWidget.tsx:60:9
+-       if (resetSignal > 0 && widgetId.current !== null) {
++       if (true && widgetId.current !== null) {
+Tests ran:
+    reCAPTCHA widget (SR-01, AR-07) SR-01 renders the Google widget with the configured site key and sends its token
+    reCAPTCHA widget (SR-01, AR-07) SR-01 loads the reCAPTCHA script once when it is not present
+
+
+[Survived] EqualityOperator
+src/RecaptchaWidget.tsx:60:9
+-       if (resetSignal > 0 && widgetId.current !== null) {
++       if (resetSignal >= 0 && widgetId.current !== null) {
+Tests ran:
+    reCAPTCHA widget (SR-01, AR-07) SR-01 renders the Google widget with the configured site key and sends its token
+    reCAPTCHA widget (SR-01, AR-07) SR-01 loads the reCAPTCHA script once when it is not present
+
+
+[Survived] EqualityOperator
+src/RecaptchaWidget.tsx:60:9
+-       if (resetSignal > 0 && widgetId.current !== null) {
++       if (resetSignal <= 0 && widgetId.current !== null) {
+Tests ran:
+    reCAPTCHA widget (SR-01, AR-07) SR-01 renders the Google widget with the configured site key and sends its token
+    reCAPTCHA widget (SR-01, AR-07) SR-01 loads the reCAPTCHA script once when it is not present
+
+
+[Survived] ConditionalExpression
+src/RecaptchaWidget.tsx:60:28
+-       if (resetSignal > 0 && widgetId.current !== null) {
++       if (resetSignal > 0 && true) {
+Tests ran:
+    reCAPTCHA widget (SR-01, AR-07) SR-01 renders the Google widget with the configured site key and sends its token
+
+
+[Survived] OptionalChaining
+src/RecaptchaWidget.tsx:61:7
+-         window.grecaptcha?.reset(widgetId.current);
++         window.grecaptcha.reset(widgetId.current);
+Tests ran:
+    reCAPTCHA widget (SR-01, AR-07) SR-01 renders the Google widget with the configured site key and sends its token
+
+
+[NoCoverage] BlockStatement
+src/RegistrationForm.tsx:95:36
+-       if (!type || inFlight.current) {
+-         return;
+-       }
++       if (!type || inFlight.current) {}
+
+[NoCoverage] StringLiteral
+src/RegistrationForm.tsx:106:49
+-         body[field.name] = (values[field.name] ?? "").trim();
++         body[field.name] = (values[field.name] ?? "Stryker was here!").trim();
+
+[NoCoverage] StringLiteral
+src/RegistrationForm.tsx:213:84
+-                     onChange={(e) => setCaptchaToken(e.target.checked ? TEST_TOKEN : "")}
++                     onChange={(e) => setCaptchaToken(e.target.checked ? TEST_TOKEN : "Stryker was here!")}
+
+[Survived] ArrowFunction
+src/RegistrationForm.tsx:40:49
+-     return values.includes(value) ? values.filter((v) => v !== value) : [...values, value];
++     return values.includes(value) ? values.filter(() => undefined) : [...values, value];
+Tests ran:
+    RegistrationForm submission AC-004-03 errors are shown next to the fields and nothing is sent
+    RegistrationForm external AC-001-08 checking an option or consent toggles it
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:40:56
+-     return values.includes(value) ? values.filter((v) => v !== value) : [...values, value];
++     return values.includes(value) ? values.filter((v) => false) : [...values, value];
+Tests ran:
+    RegistrationForm submission AC-004-03 errors are shown next to the fields and nothing is sent
+    RegistrationForm external AC-001-08 checking an option or consent toggles it
+
+
+[Survived] ArrayDeclaration
+src/RegistrationForm.tsx:61:56
+-     const [optionIds, setOptionIds] = useState<string[]>([]);
++     const [optionIds, setOptionIds] = useState<string[]>(["Stryker was here"]);
+Tests ran:
+    US-002 student form (ui.md) AC-002-07 shows exactly the student fields, only student options by category and unchecked consents
+    RegistrationForm submission AC-004-01 a valid form sends the type's fields and reports the accepted registration
+    RegistrationForm submission AC-004-01 a second click while sending sends nothing more
+  and 22 more tests!
+
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:63:52
+-     const [captchaToken, setCaptchaToken] = useState("");
++     const [captchaToken, setCaptchaToken] = useState("Stryker was here!");
+Tests ran:
+    US-002 student form (ui.md) AC-002-07 shows exactly the student fields, only student options by category and unchecked consents
+    RegistrationForm submission AC-004-01 a valid form sends the type's fields and reports the accepted registration
+    RegistrationForm submission AC-004-01 a second click while sending sends nothing more
+  and 22 more tests!
+
+
+[Survived] BooleanLiteral
+src/RegistrationForm.tsx:65:52
+-     const [generalError, setGeneralError] = useState(false);
++     const [generalError, setGeneralError] = useState(true);
+Tests ran:
+    US-002 student form (ui.md) AC-002-07 shows exactly the student fields, only student options by category and unchecked consents
+    RegistrationForm submission AC-004-01 a valid form sends the type's fields and reports the accepted registration
+    RegistrationForm submission AC-004-01 a second click while sending sends nothing more
+  and 22 more tests!
+
+
+[Survived] CallExpression
+src/RegistrationForm.tsx:73:5
+-       setErrors({});
++       ;
+Tests ran:
+    US-002 student form (ui.md) AC-002-07 shows exactly the student fields, only student options by category and unchecked consents
+    RegistrationForm submission AC-004-01 a valid form sends the type's fields and reports the accepted registration
+    RegistrationForm submission AC-004-01 a second click while sending sends nothing more
+  and 20 more tests!
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:87:9
+-       if (!config.recaptcha.testMode) {
++       if (true) {
+Tests ran:
+    RegistrationForm submission AC-004-02 backend field errors are shown next to their fields and values remain
+    RegistrationForm submission AC-004-04 an error for an unknown field shows the general message
+    RegistrationForm submission AC-004-04 a failed request shows the general message and keeps the form
+  and 4 more tests!
+
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:88:23
+-         setCaptchaToken("");
++         setCaptchaToken("Stryker was here!");
+Tests ran:
+    reCAPTCHA widget (SR-01, AR-07) SR-01 renders the Google widget with the configured site key and sends its token
+
+
+[Survived] CallExpression
+src/RegistrationForm.tsx:94:5
+-       event.preventDefault();
++       ;
+Tests ran:
+    RegistrationForm submission AC-004-01 a valid form sends the type's fields and reports the accepted registration
+    RegistrationForm submission AC-004-01 a second click while sending sends nothing more
+    RegistrationForm submission AC-004-03 errors are shown next to the fields and nothing is sent
+  and 11 more tests!
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:95:9
+-       if (!type || inFlight.current) {
++       if (false) {
+Tests ran:
+    RegistrationForm submission AC-004-01 a valid form sends the type's fields and reports the accepted registration
+    RegistrationForm submission AC-004-01 a second click while sending sends nothing more
+    RegistrationForm submission AC-004-03 errors are shown next to the fields and nothing is sent
+  and 11 more tests!
+
+
+[Survived] LogicalOperator
+src/RegistrationForm.tsx:95:9
+-       if (!type || inFlight.current) {
++       if (!type && inFlight.current) {
+Tests ran:
+    RegistrationForm submission AC-004-01 a valid form sends the type's fields and reports the accepted registration
+    RegistrationForm submission AC-004-01 a second click while sending sends nothing more
+    RegistrationForm submission AC-004-03 errors are shown next to the fields and nothing is sent
+  and 11 more tests!
+
+
+[Survived] BooleanLiteral
+src/RegistrationForm.tsx:98:21
+-       setGeneralError(false);
++       setGeneralError(true);
+Tests ran:
+    RegistrationForm submission AC-004-01 a valid form sends the type's fields and reports the accepted registration
+    RegistrationForm submission AC-004-01 a second click while sending sends nothing more
+    RegistrationForm submission AC-004-03 errors are shown next to the fields and nothing is sent
+  and 11 more tests!
+
+
+[Survived] BooleanLiteral
+src/RegistrationForm.tsx:111:24
+-       inFlight.current = true;
++       inFlight.current = false;
+Tests ran:
+    RegistrationForm submission AC-004-01 a valid form sends the type's fields and reports the accepted registration
+    RegistrationForm submission AC-004-01 a second click while sending sends nothing more
+    RegistrationForm submission AC-004-03 fixed errors disappear on the next submit
+  and 9 more tests!
+
+
+[Survived] BooleanLiteral
+src/RegistrationForm.tsx:114:24
+-       inFlight.current = false;
++       inFlight.current = true;
+Tests ran:
+    RegistrationForm submission AC-004-01 a valid form sends the type's fields and reports the accepted registration
+    RegistrationForm submission AC-004-01 a second click while sending sends nothing more
+    RegistrationForm submission AC-004-03 fixed errors disappear on the next submit
+  and 9 more tests!
+
+
+[Survived] BooleanLiteral
+src/RegistrationForm.tsx:112:16
+-       setSending(true);
++       setSending(false);
+Tests ran:
+    RegistrationForm submission AC-004-01 a valid form sends the type's fields and reports the accepted registration
+    RegistrationForm submission AC-004-01 a second click while sending sends nothing more
+    RegistrationForm submission AC-004-03 fixed errors disappear on the next submit
+  and 9 more tests!
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:125:13
+-           if (known.includes(error.field)) {
++           if (true) {
+Tests ran:
+    RegistrationForm submission AC-004-02 backend field errors are shown next to their fields and values remain
+    RegistrationForm submission AC-004-04 an error for an unknown field shows the general message
+    US-004 registration confirmation and errors (ui.md) AC-004-02 backend field errors are shown next to their fields and values remain
+
+
+[Survived] MethodExpression
+src/RegistrationForm.tsx:130:23
+-         setGeneralError(result.fieldErrors.some((error) => !known.includes(error.field)));
++         setGeneralError(result.fieldErrors.every(error => !known.includes(error.field)));
+Tests ran:
+    RegistrationForm submission AC-004-02 backend field errors are shown next to their fields and values remain
+    RegistrationForm submission AC-004-04 an error for an unknown field shows the general message
+    US-004 registration confirmation and errors (ui.md) AC-004-02 backend field errors are shown next to their fields and values remain
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:144:22
+-               checked={type === "EXTERNAL"}
++               checked={false}
+Tests ran:
+    US-002 student form (ui.md) AC-002-07 shows exactly the student fields, only student options by category and unchecked consents
+    RegistrationForm submission AC-004-01 a valid form sends the type's fields and reports the accepted registration
+    RegistrationForm submission AC-004-01 a second click while sending sends nothing more
+  and 22 more tests!
+
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:144:31
+-               checked={type === "EXTERNAL"}
++               checked={type === ""}
+Tests ran:
+    US-002 student form (ui.md) AC-002-07 shows exactly the student fields, only student options by category and unchecked consents
+    RegistrationForm submission AC-004-01 a valid form sends the type's fields and reports the accepted registration
+    RegistrationForm submission AC-004-01 a second click while sending sends nothing more
+  and 22 more tests!
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:153:22
+-               checked={type === "STUDENT"}
++               checked={false}
+Tests ran:
+    US-002 student form (ui.md) AC-002-07 shows exactly the student fields, only student options by category and unchecked consents
+    RegistrationForm submission AC-004-01 a valid form sends the type's fields and reports the accepted registration
+    RegistrationForm submission AC-004-01 a second click while sending sends nothing more
+  and 22 more tests!
+
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:153:31
+-               checked={type === "STUDENT"}
++               checked={type === ""}
+Tests ran:
+    US-002 student form (ui.md) AC-002-07 shows exactly the student fields, only student options by category and unchecked consents
+    RegistrationForm submission AC-004-01 a valid form sends the type's fields and reports the accepted registration
+    RegistrationForm submission AC-004-01 a second click while sending sends nothing more
+  and 22 more tests!
+
+
+[Survived] LogicalOperator
+src/RegistrationForm.tsx:167:23
+-                   type={field.inputType ?? "text"}
++                   type={field.inputType && "text"}
+Tests ran:
+    US-002 student form (ui.md) AC-002-07 shows exactly the student fields, only student options by category and unchecked consents
+    RegistrationForm submission AC-004-01 a valid form sends the type's fields and reports the accepted registration
+    RegistrationForm submission AC-004-01 a second click while sending sends nothing more
+  and 20 more tests!
+
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:167:42
+-                   type={field.inputType ?? "text"}
++                   type={field.inputType ?? ""}
+Tests ran:
+    US-002 student form (ui.md) AC-002-07 shows exactly the student fields, only student options by category and unchecked consents
+    RegistrationForm submission AC-004-01 a valid form sends the type's fields and reports the accepted registration
+    RegistrationForm submission AC-004-01 a second click while sending sends nothing more
+  and 20 more tests!
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:212:28
+-                     checked={captchaToken === TEST_TOKEN}
++                     checked={false}
+Tests ran:
+    US-002 student form (ui.md) AC-002-07 shows exactly the student fields, only student options by category and unchecked consents
+    RegistrationForm submission AC-004-01 a valid form sends the type's fields and reports the accepted registration
+    RegistrationForm submission AC-004-01 a second click while sending sends nothing more
+  and 18 more tests!
+
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:23:49
+-       { name: "email", label: "Email", inputType: "email" },
++       { name: "email", label: "Email", inputType: "" },
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/RegistrationForm.tsx:29:49
+-       { name: "email", label: "Email", inputType: "email" },
++       { name: "email", label: "Email", inputType: "" },
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/validation.ts:37:34
+-     const email = (values.email ?? "").trim();
++     const email = (values.email ?? "Stryker was here!").trim();
+Tests ran:
+    validateForm AC-004-03 every student field is required
+
+
+[Survived] ConditionalExpression
+src/validation.ts:38:7
+-     if (email !== "" && !EMAIL.test(email)) {
++     if (true && !EMAIL.test(email)) {
+Tests ran:
+    RegistrationForm submission AC-004-01 a valid form sends the type's fields and reports the accepted registration
+    RegistrationForm submission AC-004-01 a second click while sending sends nothing more
+    RegistrationForm submission AC-004-03 errors are shown next to the fields and nothing is sent
+  and 23 more tests!
+
+
+[Survived] StringLiteral
+src/validation.ts:38:17
+-     if (email !== "" && !EMAIL.test(email)) {
++     if (email !== "Stryker was here!" && !EMAIL.test(email)) {
+Tests ran:
+    RegistrationForm submission AC-004-01 a valid form sends the type's fields and reports the accepted registration
+    RegistrationForm submission AC-004-01 a second click while sending sends nothing more
+    RegistrationForm submission AC-004-03 errors are shown next to the fields and nothing is sent
+  and 23 more tests!
+
+
+[Survived] StringLiteral
+src/validation.ts:6:18
+-       ["lastName", "Last name"],
++       ["lastName", ""],
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/validation.ts:7:15
+-       ["email", "Email"],
++       ["email", ""],
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/validation.ts:8:22
+-       ["organization", "Organization / institution"],
++       ["organization", ""],
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/validation.ts:11:19
+-       ["firstName", "First name"],
++       ["firstName", ""],
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/validation.ts:12:18
+-       ["lastName", "Last name"],
++       ["lastName", ""],
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/validation.ts:13:15
+-       ["email", "Email"],
++       ["email", ""],
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/validation.ts:14:26
+-       ["studyInstitution", "Study institution"],
++       ["studyInstitution", ""],
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/validation.ts:15:24
+-       ["studyProgramme", "Study programme"],
++       ["studyProgramme", ""],
+Ran all tests for this mutant.
+
+[Survived] StringLiteral
+src/validation.ts:16:19
+-       ["studentId", "Student ID"],
++       ["studentId", ""],
+Ran all tests for this mutant.
+
+Ran 5.54 tests per mutant on average.
+----------------------|------------------|----------|-----------|------------|----------|----------|
+                      | % Mutation score |          |           |            |          |          |
+File                  |  total | covered | # killed | # timeout | # survived | # no cov | # errors |
+----------------------|--------|---------|----------|-----------|------------|----------|----------|
+All files             |  80.76 |   81.87 |      298 |         0 |         66 |        5 |        0 |
+ api.ts               |  80.95 |   80.95 |       34 |         0 |          8 |        0 |        0 |
+ App.tsx              |  90.48 |   90.48 |       19 |         0 |          2 |        0 |        0 |
+ Confirmation.tsx     | 100.00 |  100.00 |        6 |         0 |          0 |        0 |        0 |
+ options.ts           | 100.00 |  100.00 |       30 |         0 |          0 |        0 |        0 |
+ RecaptchaWidget.tsx  |  54.55 |   57.14 |       24 |         0 |         18 |        2 |        0 |
+ RegistrationForm.tsx |  81.76 |   83.33 |      130 |         0 |         26 |        3 |        0 |
+ validation.ts        |  82.09 |   82.09 |       55 |         0 |         12 |        0 |        0 |
+----------------------|--------|---------|----------|-----------|------------|----------|----------|
+[32m16:18:00 (38684) INFO JsonReporter[39m Your report can be found at: file:///E:/13%20-%20Lab%20Projects/01_Runs/_____TDD_____TESTING_____/01_kyuhi_single-agent_tdd_v001/02_output/frontend/reports/mutation/mutation.json
+[32m16:18:01 (38684) INFO HtmlReporter[39m Your report can be found at: file:///E:/13%20-%20Lab%20Projects/01_Runs/_____TDD_____TESTING_____/01_kyuhi_single-agent_tdd_v001/02_output/frontend/reports/mutation/mutation.html
+[32m16:18:01 (38684) INFO MutationTestExecutor[39m Done in 4 minutes and 45 seconds.

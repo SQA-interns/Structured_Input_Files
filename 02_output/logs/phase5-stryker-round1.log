@@ -1,0 +1,208 @@
+[32m16:20:18 (33972) INFO ProjectReader[39m Found 5 of 56 file(s) to be mutated.
+[32m16:20:18 (33972) INFO Instrumenter[39m Instrumented 5 source file(s) with 333 mutant(s)
+[32m16:20:19 (33972) INFO ConcurrencyTokenProvider[39m Creating 4 test runner process(es).
+[32m16:20:19 (33972) INFO BroadcastReporter[39m Detected that current console does not support the "progress" reporter, downgrading to "progress-append-only" reporter
+[32m16:20:21 (33972) INFO DryRunExecutor[39m Starting initial test run (vitest test runner with "perTest" coverage analysis). This may take a while.
+[32m16:20:38 (33972) INFO DryRunExecutor[39m Initial test run succeeded. Ran 73 tests in 17 seconds (net 3642.002300000005 ms, overhead 13882.997699999994 ms).
+[33m16:20:38 (33972) WARN MutantTestPlanner[39m Detected 74 static mutants (22% of total) that are estimated to take 40% of the time running the tests!
+  You might want to enable "ignoreStatic" to ignore these static mutants for your next run. 
+  For more information about static mutants visit: https://stryker-mutator.io/docs/mutation-testing-elements/static-mutants
+  (disable "warnings.slow" to ignore this warning)
+Mutation testing 2% (elapsed: <1m, remaining: ~5m) 15/333 tested (0 survived, 0 timed out)
+Mutation testing 5% (elapsed: <1m, remaining: ~5m) 27/333 tested (0 survived, 0 timed out)
+Mutation testing 7% (elapsed: <1m, remaining: ~6m) 37/333 tested (0 survived, 0 timed out)
+Mutation testing 9% (elapsed: <1m, remaining: ~6m) 57/333 tested (1 survived, 0 timed out)
+Mutation testing 11% (elapsed: <1m, remaining: ~6m) 78/333 tested (2 survived, 0 timed out)
+Mutation testing 12% (elapsed: ~1m, remaining: ~6m) 107/333 tested (4 survived, 0 timed out)
+Mutation testing 16% (elapsed: ~1m, remaining: ~6m) 121/333 tested (4 survived, 0 timed out)
+Mutation testing 19% (elapsed: ~1m, remaining: ~5m) 127/333 tested (5 survived, 0 timed out)
+Mutation testing 22% (elapsed: ~1m, remaining: ~5m) 139/333 tested (5 survived, 0 timed out)
+Mutation testing 24% (elapsed: ~1m, remaining: ~5m) 152/333 tested (5 survived, 0 timed out)
+Mutation testing 28% (elapsed: ~1m, remaining: ~4m) 165/333 tested (5 survived, 0 timed out)
+Mutation testing 32% (elapsed: ~2m, remaining: ~4m) 178/333 tested (5 survived, 0 timed out)
+Mutation testing 36% (elapsed: ~2m, remaining: ~3m) 195/333 tested (6 survived, 0 timed out)
+Mutation testing 46% (elapsed: ~2m, remaining: ~2m) 217/333 tested (6 survived, 0 timed out)
+Mutation testing 54% (elapsed: ~2m, remaining: ~2m) 239/333 tested (6 survived, 0 timed out)
+Mutation testing 59% (elapsed: ~2m, remaining: ~1m) 254/333 tested (6 survived, 0 timed out)
+Mutation testing 68% (elapsed: ~2m, remaining: ~1m) 275/333 tested (6 survived, 0 timed out)
+Mutation testing 70% (elapsed: ~3m, remaining: ~1m) 279/333 tested (6 survived, 0 timed out)
+Mutation testing 77% (elapsed: ~3m, remaining: <1m) 291/333 tested (6 survived, 0 timed out)
+Mutation testing 86% (elapsed: ~3m, remaining: <1m) 308/333 tested (6 survived, 0 timed out)
+Mutation testing 97% (elapsed: ~3m, remaining: <1m) 328/333 tested (6 survived, 0 timed out)
+
+All tests
+  acceptance
+    confirmation.acceptance.test.tsx
+      ✓ US-004 registration confirmation and errors (ui.md) AC-004-01 accepted registration shows a confirmation with name and options and hides the form (killed 17)
+      ✓ US-004 registration confirmation and errors (ui.md) AC-004-02 backend field errors are shown next to their fields and values remain (killed 5)
+      ✓ US-004 registration confirmation and errors (ui.md) AC-004-03 empty required field and invalid email are shown without sending a request (killed 1)
+      ✓ US-004 registration confirmation and errors (ui.md) AC-004-04 backend failure shows a general error without technical details (killed 1)
+      ~ US-004 registration confirmation and errors (ui.md) AC-004-04 unreachable backend shows a general error without technical details (covered 146)
+    externalForm.acceptance.test.tsx
+      ~ US-001 external participant form (ui.md) AC-001-08 shows exactly the external fields, grouped active options and unchecked consents (covered 76)
+    studentForm.acceptance.test.tsx
+      ✓ US-002 student form (ui.md) AC-002-07 shows exactly the student fields, only student options by category and unchecked consents (killed 7)
+  api.headers.test.ts
+    ✓ api requests (phase 5 survivors) AC-001-08 the form configuration is requested as JSON (killed 3)
+    ✓ api requests (phase 5 survivors) AC-001-08 a failed configuration request names the status (killed 1)
+    ✓ api requests (phase 5 survivors) AC-004-01 the registration is sent and answered as JSON (killed 5)
+    ✓ api requests (phase 5 survivors) AC-004-04 field errors with another status than 400 are a failure (killed 6)
+    ~ api requests (phase 5 survivors) AC-004-04 a 400 whose field errors are not a list is a failure (covered 20)
+  api.submit.test.ts
+    ✓ submitRegistration AC-004-01 posts JSON to /api/registrations and returns the accepted registration (killed 1)
+    ✓ submitRegistration AC-004-02 a 400 with field errors is a rejection (killed 3)
+    ✓ submitRegistration AC-004-04 a 400 without field errors is a failure (killed 3)
+    ~ submitRegistration AC-004-04 status 500 is a failure (covered 20)
+    ~ submitRegistration AC-004-04 status 413 is a failure (covered 20)
+    ~ submitRegistration AC-004-04 status 429 is a failure (covered 20)
+    ~ submitRegistration AC-004-04 status 503 is a failure (covered 20)
+    ✓ submitRegistration AC-004-04 an unreadable answer is a failure (killed 3)
+    ~ submitRegistration AC-004-04 an unreachable backend is a failure (covered 11)
+  api.test.ts
+    ✓ fetchFormConfig AC-001-08 loads the form configuration from /api/form-config (killed 4)
+    ✓ fetchFormConfig AC-001-08 fails when the backend answers with an error (killed 2)
+  App.test.tsx
+    ✓ App AC-001-08 shows the form once the configuration is loaded (killed 4)
+    ✓ App AC-004-04 shows a general error when the configuration cannot be loaded (killed 6)
+    ✓ App confirmation AC-004-01 replaces the form with the confirmation once accepted (killed 2)
+  RecaptchaWidget.behaviour.test.tsx
+    ✓ RecaptchaWidget behaviour (phase 5 survivors) SR-01 the widget is rendered once, also when effects run twice (killed 17)
+    ✓ RecaptchaWidget behaviour (phase 5 survivors) SR-01 the script is added once, async and deferred, and renders when loaded (killed 12)
+    ✓ RecaptchaWidget behaviour (phase 5 survivors) SR-01 the widget is reset only when the reset signal increases (killed 4)
+    ✓ RecaptchaWidget behaviour (phase 5 survivors) SR-01 an expired token is not sent and a failed attempt needs a new token (killed 4)
+  RecaptchaWidget.test.tsx
+    ✓ reCAPTCHA widget (SR-01, AR-07) SR-01 renders the Google widget with the configured site key and sends its token (killed 17)
+    ✓ reCAPTCHA widget (SR-01, AR-07) SR-01 loads the reCAPTCHA script once when it is not present (killed 1)
+  RegistrationForm.behaviour.test.tsx
+    ✓ RegistrationForm behaviour (phase 5 survivors) AC-001-08 the chosen type radio is checked and the inputs have their types (killed 23)
+    ✓ RegistrationForm behaviour (phase 5 survivors) AC-001-08 unchecking one option keeps the others (killed 6)
+    ✓ RegistrationForm behaviour (phase 5 survivors) AC-004-01 nothing is selected or confirmed before the participant acts (killed 14)
+    ✓ RegistrationForm behaviour (phase 5 survivors) AC-004-01 the test-mode check box can be unchecked again (killed 2)
+    ✓ RegistrationForm behaviour (phase 5 survivors) AC-004-01 the form submit is handled in the page (killed 1)
+    ~ RegistrationForm behaviour (phase 5 survivors) AC-004-03 a submit before choosing a type sends nothing (covered 27)
+    ✓ RegistrationForm behaviour (phase 5 survivors) AC-004-01 a second submit while the first is pending sends nothing (killed 6)
+    ✓ RegistrationForm behaviour (phase 5 survivors) AC-004-04 after a failure the participant can submit again (killed 3)
+    ✓ RegistrationForm behaviour (phase 5 survivors) AC-004-04 in test mode a failure keeps the robot check (killed 1)
+    ✓ RegistrationForm behaviour (phase 5 survivors) AC-004-03 client errors after a failure replace the general message (killed 4)
+    ✓ RegistrationForm behaviour (phase 5 survivors) AC-004-02 known and unknown backend errors show both the field and the general message (killed 9)
+    ✓ RegistrationForm behaviour (phase 5 survivors) AC-004-03 switching the type clears the shown errors (killed 5)
+  RegistrationForm.student.test.tsx
+    ✓ RegistrationForm student AC-002-07 students get exactly the student fields (killed 6)
+    ~ RegistrationForm student AC-002-07 students see only student options, grouped, unchecked (covered 50)
+    ✓ RegistrationForm student AC-002-07 switching the type drops options the new type cannot select (killed 3)
+  RegistrationForm.submit.test.tsx
+    ✓ RegistrationForm submission AC-004-01 a valid form sends the type's fields and reports the accepted registration (killed 40)
+    ~ RegistrationForm submission AC-004-01 a second click while sending sends nothing more (covered 115)
+    ✓ RegistrationForm submission AC-004-03 errors are shown next to the fields and nothing is sent (killed 24)
+    ~ RegistrationForm submission AC-004-03 fixed errors disappear on the next submit (covered 121)
+    ✓ RegistrationForm submission AC-004-02 backend field errors are shown next to their fields and values remain (killed 11)
+    ✓ RegistrationForm submission AC-004-04 an error for an unknown field shows the general message (killed 3)
+    ✓ RegistrationForm submission AC-004-04 a failed request shows the general message and keeps the form (killed 2)
+  RegistrationForm.test.tsx
+    ~ RegistrationForm external AC-001-08 shows no fields before a registration type is chosen (covered 20)
+    ✓ RegistrationForm external AC-001-08 external participants get their fields, groups and unchecked consents (killed 1)
+    ~ RegistrationForm external AC-001-08 checking an option or consent toggles it (covered 57)
+    ~ RegistrationForm external AC-001-08 typed values are kept in the fields (covered 51)
+  validation.messages.test.ts
+    ✓ validateForm messages (phase 5 survivors) AC-004-03 every external field names itself in its message (killed 6)
+    ✓ validateForm messages (phase 5 survivors) AC-004-03 every student field names itself in its message (killed 19)
+    ~ validateForm messages (phase 5 survivors) AC-004-03 a blank email is reported as required, not as invalid (covered 23)
+  validation.test.ts
+    ✓ validateForm AC-004-03 a complete external form has no errors (killed 5)
+    ~ validateForm AC-004-03 a complete student form has no errors (covered 22)
+    ~ validateForm AC-004-03 empty or blank required fields are errors (covered 25)
+    ~ validateForm AC-004-03 every student field is required (covered 25)
+    ~ validateForm AC-004-03 invalid email ana is an error (covered 24)
+    ~ validateForm AC-004-03 invalid email ana@ is an error (covered 24)
+    ~ validateForm AC-004-03 invalid email @example.com is an error (covered 24)
+    ~ validateForm AC-004-03 invalid email ana novak@example.com is an error (covered 24)
+    ~ validateForm AC-004-03 invalid email ana@example is an error (covered 24)
+    ~ validateForm AC-004-03 invalid email a@b..si is an error (covered 24)
+    ✓ validateForm AC-004-03 surrounding spaces around a valid email are accepted (killed 1)
+    ✓ validateForm AC-004-03 a missing mandatory consent is an error on that consent (killed 2)
+
+[Survived] StringLiteral
+src/App.tsx:15:42
+-         .then((config) => setState({ kind: "ready", config }))
++         .then((config) => setState({ kind: "", config }))
+Tests ran:
+    US-004 registration confirmation and errors (ui.md) AC-004-01 accepted registration shows a confirmation with name and options and hides the form
+    US-004 registration confirmation and errors (ui.md) AC-004-02 backend field errors are shown next to their fields and values remain
+    US-004 registration confirmation and errors (ui.md) AC-004-03 empty required field and invalid email are shown without sending a request
+  and 6 more tests!
+
+
+[Survived] ArrayDeclaration
+src/App.tsx:17:6
+-     }, []);
++     }, ["Stryker was here"]);
+Tests ran:
+    US-004 registration confirmation and errors (ui.md) AC-004-01 accepted registration shows a confirmation with name and options and hides the form
+    US-004 registration confirmation and errors (ui.md) AC-004-02 backend field errors are shown next to their fields and values remain
+    US-004 registration confirmation and errors (ui.md) AC-004-03 empty required field and invalid email are shown without sending a request
+  and 7 more tests!
+
+
+[Survived] ArrayDeclaration
+src/RecaptchaWidget.tsx:57:6
+-     }, [siteKey, onToken]);
++     }, []);
+Tests ran:
+    reCAPTCHA widget (SR-01, AR-07) SR-01 renders the Google widget with the configured site key and sends its token
+    reCAPTCHA widget (SR-01, AR-07) SR-01 loads the reCAPTCHA script once when it is not present
+    RecaptchaWidget behaviour (phase 5 survivors) SR-01 the widget is rendered once, also when effects run twice
+  and 3 more tests!
+
+
+[Survived] ConditionalExpression
+src/RecaptchaWidget.tsx:60:28
+-       if (resetSignal > 0 && widgetId.current !== null) {
++       if (resetSignal > 0 && true) {
+Tests ran:
+    reCAPTCHA widget (SR-01, AR-07) SR-01 renders the Google widget with the configured site key and sends its token
+    RecaptchaWidget behaviour (phase 5 survivors) SR-01 the widget is reset only when the reset signal increases
+    RecaptchaWidget behaviour (phase 5 survivors) SR-01 an expired token is not sent and a failed attempt needs a new token
+
+
+[NoCoverage] StringLiteral
+src/RegistrationForm.tsx:106:49
+-         body[field.name] = (values[field.name] ?? "").trim();
++         body[field.name] = (values[field.name] ?? "Stryker was here!").trim();
+
+[Survived] ArrayDeclaration
+src/RegistrationForm.tsx:61:56
+-     const [optionIds, setOptionIds] = useState<string[]>([]);
++     const [optionIds, setOptionIds] = useState<string[]>(["Stryker was here"]);
+Tests ran:
+    RegistrationForm behaviour (phase 5 survivors) AC-001-08 the chosen type radio is checked and the inputs have their types
+    RegistrationForm behaviour (phase 5 survivors) AC-001-08 unchecking one option keeps the others
+    RegistrationForm behaviour (phase 5 survivors) AC-004-01 nothing is selected or confirmed before the participant acts
+  and 35 more tests!
+
+
+[Survived] ConditionalExpression
+src/RegistrationForm.tsx:125:13
+-           if (known.includes(error.field)) {
++           if (true) {
+Tests ran:
+    RegistrationForm behaviour (phase 5 survivors) AC-004-01 nothing is selected or confirmed before the participant acts
+    RegistrationForm behaviour (phase 5 survivors) AC-004-02 known and unknown backend errors show both the field and the general message
+    RegistrationForm submission AC-004-02 backend field errors are shown next to their fields and values remain
+  and 2 more tests!
+
+
+Ran 5.14 tests per mutant on average.
+----------------------|------------------|----------|-----------|------------|----------|----------|
+                      | % Mutation score |          |           |            |          |          |
+File                  |  total | covered | # killed | # timeout | # survived | # no cov | # errors |
+----------------------|--------|---------|----------|-----------|------------|----------|----------|
+All files             |  97.90 |   98.19 |      326 |         0 |          6 |        1 |        0 |
+ api.ts               | 100.00 |  100.00 |       42 |         0 |          0 |        0 |        0 |
+ App.tsx              |  90.48 |   90.48 |       19 |         0 |          2 |        0 |        0 |
+ RecaptchaWidget.tsx  |  95.45 |   95.45 |       42 |         0 |          2 |        0 |        0 |
+ RegistrationForm.tsx |  98.11 |   98.73 |      156 |         0 |          2 |        1 |        0 |
+ validation.ts        | 100.00 |  100.00 |       67 |         0 |          0 |        0 |        0 |
+----------------------|--------|---------|----------|-----------|------------|----------|----------|
+[32m16:24:14 (33972) INFO JsonReporter[39m Your report can be found at: file:///E:/13%20-%20Lab%20Projects/01_Runs/_____TDD_____TESTING_____/01_kyuhi_single-agent_tdd_v001/02_output/frontend/reports/mutation/mutation.json
+[32m16:24:14 (33972) INFO HtmlReporter[39m Your report can be found at: file:///E:/13%20-%20Lab%20Projects/01_Runs/_____TDD_____TESTING_____/01_kyuhi_single-agent_tdd_v001/02_output/frontend/reports/mutation/mutation.html
+[32m16:24:14 (33972) INFO MutationTestExecutor[39m Done in 3 minutes and 56 seconds.

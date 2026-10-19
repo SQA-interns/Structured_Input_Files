@@ -1,0 +1,10 @@
+
+ RUN  v4.1.11 E:/13 - Lab Projects/01_Runs/_____TDD_____TESTING_____/01_kyuhi_single-agent_tdd_v001/02_output/frontend
+      Coverage enabled with v8
+
+
+ Test Files  17 passed (17)
+      Tests  80 passed (80)
+   Start at  16:41:21
+   Duration  2.83s (transform 1.14s, setup 2.62s, import 3.13s, tests 5.35s, environment 16.09s)
+
