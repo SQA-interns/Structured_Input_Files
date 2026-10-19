@@ -1,0 +1,21 @@
+{
+  "conferenceName": "Slovenska konferenca o programskem inženirstvu 2026",
+  "consents": [
+    {
+      "id": "privacy",
+      "text": "I agree that my personal data is processed for organizing the conference and that it is shared with the conference organizers.",
+      "mandatory": true
+    }
+  ],
+  "options": [
+    { "id": "ws-tdd", "name": "Workshop: Test-driven development", "category": "WORKSHOP", "active": true },
+    { "id": "ws-security", "name": "Workshop: Secure web applications", "category": "WORKSHOP", "active": true },
+    { "id": "ws-archived", "name": "Workshop: Mainframe basics", "category": "WORKSHOP", "active": false },
+    { "id": "ev-reception", "name": "Welcome reception", "category": "EVENT", "active": true },
+    { "id": "ev-dinner", "name": "Conference dinner", "category": "EVENT", "active": true, "availableTo": ["EXTERNAL"] },
+    { "id": "meal-lunch", "name": "Lunch (both days)", "category": "MEAL", "active": true },
+    { "id": "meal-vegetarian", "name": "Vegetarian lunch (both days)", "category": "MEAL", "active": true },
+    { "id": "oth-tour", "name": "Guided tour of Ljubljana", "category": "OTHER", "active": true },
+    { "id": "oth-career", "name": "Career fair for students", "category": "OTHER", "active": true, "availableTo": ["STUDENT"] }
+  ]
+}
