@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- D-11: records that carry lists and Spring-injected collaborators match these patterns by design -->
+<FindBugsFilter>
+  <Match>
+    <Bug pattern="EI_EXPOSE_REP,EI_EXPOSE_REP2"/>
+  </Match>
+</FindBugsFilter>
