@@ -10,6 +10,12 @@
 
 | Path | Reason |
 |---|---|
+| `backend/src/main/java/si/konferenca/registration/RegistrationApplication.java` | application entry point, no logic (`quality-requirements.md`, mutation scope) |
+| `frontend/src/main.tsx` | bootstrap file that only mounts the app |
+| `frontend/src/**/*.d.ts` | type declarations, no runtime code |
+| `frontend/src/test-setup.ts` | test configuration, not production code |
+
+Nothing else is excluded; generated code (`target/`, `dist/`) is never measured.
 
 ## TDD baseline (phase 5, before any added test)
 
