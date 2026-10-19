@@ -1,0 +1,186 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< si.konferenca:registration-backend >-----------------
+[INFO] Building registration-backend 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- spotless:2.44.3:apply (default-cli) @ registration-backend ---
+[INFO] Spotless.Java is keeping 64 files clean - 0 were changed to be clean, 1 were already clean, 63 were skipped because caching determined they were already clean
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ registration-backend ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ registration-backend ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ registration-backend ---
+[INFO] Copying 5 resources from src\test\resources to target\test-classes
+[INFO] 
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ registration-backend ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 26 source files with javac [debug parameters release 21] to target\test-classes
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ registration-backend ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running si.konferenca.registration.domain.StudentRegistrationValidatorTest
+[ERROR] Tests run: 7, Failures: 7, Errors: 0, Skipped: 0, Time elapsed: 0.201 s <<< FAILURE! -- in si.konferenca.registration.domain.StudentRegistrationValidatorTest
+[ERROR] si.konferenca.registration.domain.StudentRegistrationValidatorTest.AC_002_01_validStudentSubmissionKeepsTrimmedStudentFieldsOnly -- Time elapsed: 0.096 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: "Univerza"
+ but was: null
+	at si.konferenca.registration.domain.StudentRegistrationValidatorTest.AC_002_01_validStudentSubmissionKeepsTrimmedStudentFieldsOnly(StudentRegistrationValidatorTest.java:44)
+
+[ERROR] si.konferenca.registration.domain.StudentRegistrationValidatorTest.AC_002_02_eachRequiredStudentFieldMustNotBeBlank(String)[1] -- Time elapsed: 0.017 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+Expecting actual:
+  []
+to contain exactly (and in same order):
+  ["studyInstitution"]
+but could not find the following elements:
+  ["studyInstitution"]
+
+	at si.konferenca.registration.domain.StudentRegistrationValidatorTest.AC_002_02_eachRequiredStudentFieldMustNotBeBlank(StudentRegistrationValidatorTest.java:56)
+
+[ERROR] si.konferenca.registration.domain.StudentRegistrationValidatorTest.AC_002_02_eachRequiredStudentFieldMustNotBeBlank(String)[2] -- Time elapsed: 0.003 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+Expecting actual:
+  []
+to contain exactly (and in same order):
+  ["studyInstitution"]
+but could not find the following elements:
+  ["studyInstitution"]
+
+	at si.konferenca.registration.domain.StudentRegistrationValidatorTest.AC_002_02_eachRequiredStudentFieldMustNotBeBlank(StudentRegistrationValidatorTest.java:56)
+
+[ERROR] si.konferenca.registration.domain.StudentRegistrationValidatorTest.AC_002_02_eachRequiredStudentFieldMustNotBeBlank(String)[3] -- Time elapsed: 0.002 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+Expecting actual:
+  []
+to contain exactly (and in same order):
+  ["studyInstitution"]
+but could not find the following elements:
+  ["studyInstitution"]
+
+	at si.konferenca.registration.domain.StudentRegistrationValidatorTest.AC_002_02_eachRequiredStudentFieldMustNotBeBlank(StudentRegistrationValidatorTest.java:56)
+
+[ERROR] si.konferenca.registration.domain.StudentRegistrationValidatorTest.AC_002_02_tooLongStudentFieldsAreRejected -- Time elapsed: 0.003 s <<< FAILURE!
+java.lang.AssertionError: 
+
+Expecting actual:
+  []
+to contain exactly in any order:
+  ["studyInstitution", "studyProgramme", "studentId"]
+but could not find the following elements:
+  ["studyInstitution", "studyProgramme", "studentId"]
+
+	at si.konferenca.registration.domain.StudentRegistrationValidatorTest.AC_002_02_tooLongStudentFieldsAreRejected(StudentRegistrationValidatorTest.java:68)
+
+[ERROR] si.konferenca.registration.domain.StudentRegistrationValidatorTest.AC_002_04_optionNotAvailableToExternalsIsRejectedToo -- Time elapsed: 0.003 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+Expecting actual:
+  []
+to contain exactly (and in same order):
+  ["optionIds"]
+but could not find the following elements:
+  ["optionIds"]
+
+	at si.konferenca.registration.domain.StudentRegistrationValidatorTest.AC_002_04_optionNotAvailableToExternalsIsRejectedToo(StudentRegistrationValidatorTest.java:93)
+
+[ERROR] si.konferenca.registration.domain.StudentRegistrationValidatorTest.AC_002_04_optionNotAvailableToStudentsIsRejected -- Time elapsed: 0.002 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+Expecting actual:
+  []
+to contain exactly (and in same order):
+  ["optionIds"]
+but could not find the following elements:
+  ["optionIds"]
+
+	at si.konferenca.registration.domain.StudentRegistrationValidatorTest.AC_002_04_optionNotAvailableToStudentsIsRejected(StudentRegistrationValidatorTest.java:74)
+
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Failures: 
+[ERROR]   StudentRegistrationValidatorTest.AC_002_01_validStudentSubmissionKeepsTrimmedStudentFieldsOnly:44 
+expected: "Univerza"
+ but was: null
+[ERROR]   StudentRegistrationValidatorTest.AC_002_02_eachRequiredStudentFieldMustNotBeBlank:56 
+Expecting actual:
+  []
+to contain exactly (and in same order):
+  ["studyInstitution"]
+but could not find the following elements:
+  ["studyInstitution"]
+
+[ERROR]   StudentRegistrationValidatorTest.AC_002_02_eachRequiredStudentFieldMustNotBeBlank:56 
+Expecting actual:
+  []
+to contain exactly (and in same order):
+  ["studyInstitution"]
+but could not find the following elements:
+  ["studyInstitution"]
+
+[ERROR]   StudentRegistrationValidatorTest.AC_002_02_eachRequiredStudentFieldMustNotBeBlank:56 
+Expecting actual:
+  []
+to contain exactly (and in same order):
+  ["studyInstitution"]
+but could not find the following elements:
+  ["studyInstitution"]
+
+[ERROR]   StudentRegistrationValidatorTest.AC_002_02_tooLongStudentFieldsAreRejected:68 
+Expecting actual:
+  []
+to contain exactly in any order:
+  ["studyInstitution", "studyProgramme", "studentId"]
+but could not find the following elements:
+  ["studyInstitution", "studyProgramme", "studentId"]
+
+[ERROR]   StudentRegistrationValidatorTest.AC_002_04_optionNotAvailableToExternalsIsRejectedToo:93 
+Expecting actual:
+  []
+to contain exactly (and in same order):
+  ["optionIds"]
+but could not find the following elements:
+  ["optionIds"]
+
+[ERROR]   StudentRegistrationValidatorTest.AC_002_04_optionNotAvailableToStudentsIsRejected:74 
+Expecting actual:
+  []
+to contain exactly (and in same order):
+  ["optionIds"]
+but could not find the following elements:
+  ["optionIds"]
+
+[INFO] 
+[ERROR] Tests run: 7, Failures: 7, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  6.453 s
+[INFO] Finished at: 2026-10-19T15:24:22+02:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.5.6:test (default-test) on project registration-backend: There are test failures.
+[ERROR] 
+[ERROR] See E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\backend\target\surefire-reports for the individual test results.
+[ERROR] See dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
