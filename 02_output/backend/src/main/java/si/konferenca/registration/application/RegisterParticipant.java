@@ -5,6 +5,7 @@ import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.UUID;
+import org.springframework.transaction.annotation.Transactional;
 import si.konferenca.registration.domain.ConferenceConfiguration;
 import si.konferenca.registration.domain.FieldError;
 import si.konferenca.registration.domain.GivenConsent;
@@ -20,6 +21,7 @@ public class RegisterParticipant {
   private final RegistrationValidator validator;
   private final CaptchaVerifier captchaVerifier;
   private final RegistrationStore store;
+  private final JsonCopyStore jsonCopyStore;
   private final Clock clock;
 
   public RegisterParticipant(
@@ -31,9 +33,12 @@ public class RegisterParticipant {
     this.validator = new RegistrationValidator(configuration);
     this.captchaVerifier = captchaVerifier;
     this.store = store;
+    this.jsonCopyStore = jsonCopyStore;
     this.clock = clock;
   }
 
+  /** Stores the row, then the JSON copy; a copy failure rolls the row back (AR-05). */
+  @Transactional
   public Registration register(RegistrationSubmission submission) {
     ValidationResult result = validator.validate(submission);
     if (!result.isValid()) {
@@ -60,6 +65,7 @@ public class RegisterParticipant {
             valid.options(),
             valid.consentIds().stream().map(id -> new GivenConsent(id, now)).toList());
     store.save(registration);
+    jsonCopyStore.write(registration);
     return registration;
   }
 }
