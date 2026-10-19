@@ -5,10 +5,10 @@
 Updated at every gate and before any stop, so a fresh session can resume from here.
 
 - Workflow: tdd
-- Current phase: 4 (TDD build)
-- Current cycle (phase 4): C08 next (C01–C07 done: every backend acceptance test green)
-- Last gate result: phase 3 passed (89 frozen tests, manifest committed in 0b8e69e); after C07 the full backend suite passes (201 tests) and backend checks are clean
-- Next step: C08 reCAPTCHA production verifier and SR-02, C09 limits/headers/health, then frontend cycles C10–C12 and the e2e run
+- Current phase: 5 (quality gate)
+- Current cycle (phase 4): none (C01–C12 done)
+- Last gate result: phase 4 passed (2026-10-19): frozen tests green (77 backend acceptance, 7 frontend acceptance, 5 e2e), full suites 232 backend + 56 frontend pass, checks clean, `trace-ac.mjs`: no AC without a test, all test-first (`out/logs/phase4-trace-ac.log`)
+- Next step: phase 5, TDD baseline coverage (JaCoCo, Vitest v8) before any added test, then first full run, then mutation (PIT, Stryker)
 - Waiting for the human on: nothing
 
 ## Component commands (ES-05)

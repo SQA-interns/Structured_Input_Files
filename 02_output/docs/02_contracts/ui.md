@@ -21,7 +21,7 @@ Only the fields of the chosen type are shown (no other textboxes).
 ## Validation and errors (NFR-03)
 
 - Before sending, the page checks every required field of the type (non-blank after trimming), the email format, and the mandatory consents; with any error it sends no request.
-- A field error is shown in an element with id `error-<field>` placed directly after its input, and the input has `aria-invalid="true"` and `aria-describedby="error-<field>"`. `<field>` uses the API field names (`firstName`, …, `optionIds`, `consents.<id>`, `recaptchaToken`); for `optionIds` and `consents.<id>` the described element is the options group or the consent checkbox.
+- A field error is shown in an element with id `error-<field>` placed directly after its input, and the input has `aria-invalid="true"` and `aria-describedby="error-<field>"`. `<field>` uses the API field names (`firstName`, …, `optionIds`, `consents.<id>`, `recaptchaToken`); for `optionIds` the described element is the element that contains all option groups, for `consents.<id>` the consent checkbox.
 - Backend field errors (400) are shown the same way; entered values remain.
 - Any other failure (other status, network error) shows an element with role `alert` and the text `Registration could not be completed. Please try again later.` and no technical details; the form and values remain.
 

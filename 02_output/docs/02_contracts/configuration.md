@@ -8,7 +8,7 @@ Spring relaxed binding: each variable may also be given as the property in the s
 |---|---|---|---|
 | `APP_ENVIRONMENT` | `app.environment` | `production` | `production`, `local` or `test`. Production refuses to start when reCAPTCHA test mode is on or a reCAPTCHA key is empty (SR-02) |
 | `SPRING_DATASOURCE_URL`, `SPRING_DATASOURCE_USERNAME` | `spring.datasource.*` | none | |
-| `POSTGRES_PASSWORD` | `spring.datasource.password` | none | secret |
+| `POSTGRES_PASSWORD` (or `SPRING_DATASOURCE_PASSWORD`) | `spring.datasource.password` | none | secret |
 | `MAIL_HOST`, `MAIL_PORT` | `spring.mail.host`, `spring.mail.port` | none | |
 | `MAIL_TLS` | `app.mail.tls` | `true` | STARTTLS required when true; local and test set false (Mailpit) |
 | `SMTP_USERNAME`, `SMTP_PASSWORD` | `spring.mail.username`, `spring.mail.password` | empty | secret; production only |
@@ -21,7 +21,6 @@ Spring relaxed binding: each variable may also be given as the property in the s
 | `RECAPTCHA_TEST_MODE` | `app.recaptcha.test-mode` | `false` | test mode accepts only the token `test-pass` and makes no network call |
 | `RECAPTCHA_SITE_KEY`, `RECAPTCHA_SECRET_KEY` | `app.recaptcha.site-key`, `app.recaptcha.secret-key` | empty | secret key never leaves the backend |
 | `RECAPTCHA_VERIFY_URL` | `app.recaptcha.verify-url` | `https://www.google.com/recaptcha/api/siteverify` | tests point it at a mock endpoint (DoD-P05) |
-| `CORS_ALLOWED_ORIGIN` | `app.cors.allowed-origin` | empty (no CORS) | local only |
 | `RATE_LIMIT_FORM_CONFIG_PER_MINUTE` | `app.rate-limit.form-config-per-minute` | `60` | per client address (SR-03) |
 | `RATE_LIMIT_REGISTRATION_PER_MINUTE` | `app.rate-limit.registration-per-minute` | `10` | |
 | `RATE_LIMIT_EXPORT_PER_MINUTE` | `app.rate-limit.export-per-minute` | `10` | counts failed logins too (SB-06) |
@@ -30,3 +29,5 @@ Spring relaxed binding: each variable may also be given as the property in the s
 The client address is the TCP peer, or the `X-Forwarded-For` value set by a trusted proxy (Tomcat RemoteIpValve, internal address ranges only; `server.forward-headers-strategy=native`).
 
 Health and readiness (ES-09, NFR-04): `/actuator/health/liveness` and `/actuator/health/readiness` on the backend port; not under `/api`, so the reverse proxy does not publish them.
+
+No CORS is configured: the frontend reaches the API on the same origin through nginx (and the Vite dev proxy), so cross-origin requests are refused by default.
