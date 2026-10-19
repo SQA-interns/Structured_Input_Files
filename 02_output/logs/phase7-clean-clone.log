@@ -1,0 +1,18 @@
+clean clone of kyuhi/single-agent/tdd/v001 at 2130270; .env copied (values not shown)
+## backend build
+exit=0 jar=target/registration-backend-1.0.0.jar
+## backend check
+exit=0
+## backend test
+exit=0 [INFO] Tests run: 264, Failures: 0, Errors: 0, Skipped: 0
+## frontend npm ci, build, check, test
+ci=0
+build=0
+check=0
+test=0       Tests  80 passed (80)
+## quick start
+up=0
+form page: 200 form config: 200 mailpit: 200
+## e2e
+e2e=0   5 passed (8.2s)
+down=0

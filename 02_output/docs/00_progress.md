@@ -5,10 +5,10 @@
 Updated at every gate and before any stop, so a fresh session can resume from here.
 
 - Workflow: tdd
-- Current phase: 7 (release)
+- Current phase: 7 (release) — done
 - Current cycle (phase 4): none (C01–C12 done)
-- Last gate result: phase 6 passed (2026-10-19): every DoD item has evidence (DoD-08, DoD-09 in phase 7), no open Critical/High, hashes match, no secret in files or commit messages
-- Next step: phase 7, READMEs (root and per component), release notes, clean-clone check, run summary
+- Last gate result: phase 7 passed (2026-10-19): READMEs work from a clean clone (`out/logs/phase7-clean-clone.log`), manual-test list in `docs/release-notes.md`, every decision resolved or pending review (D-08, D-09)
+- Next step: none; the run is complete (human review of D-08 and D-09, manual tests in the release notes)
 - Waiting for the human on: nothing
 
 ## Component commands (ES-05)

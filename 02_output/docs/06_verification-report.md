@@ -17,8 +17,8 @@ Verified on 2026-10-19 on branch `kyuhi/single-agent/tdd/v001`. Production code 
 | DoD-05 | met | No open Critical or High finding (Findings); the only High as reported (CVE-2025-7962) is pre-approved PA-01 |
 | DoD-06 | met | Runtime demonstration below (`phase6-runtime-demo.log`) and the 5 e2e journeys against the compose stack |
 | DoD-07 | met | `trace-ac.mjs` (Traceability): every AC has tests and commits |
-| DoD-08 | phase 7 | READMEs are written and followed from a clean clone in phase 7 |
-| DoD-09 | phase 7 | `docs/release-notes.md` (manual tests: real reCAPTCHA, real SMTP, TLS proxy, image scan) is written in phase 7 |
+| DoD-08 | met (phase 7) | Root and component READMEs followed in a fresh clone: build, checks, backend 264 / frontend 80 tests, quick start (page, API, Mailpit 200) and 5 e2e tests pass (`out/logs/phase7-clean-clone.log`) |
+| DoD-09 | met (phase 7) | `docs/release-notes.md`, "Must be tested manually by a human": production reCAPTCHA, real SMTP, TLS and reverse proxy (SR-08), Excel display, image scan, screen reader |
 | DoD-10 | met | Every decision record is resolved or pending review (D-08, D-09); input manifest unchanged |
 | DoD-11 | met | Phase 3 commits add tests, test fixtures and container files only; the freeze commit `0b8e69e` adds only the manifest, and every listed file was committed before it; test-first order per `trace-ac.mjs`; red runs in `out/logs/tdd/`; hashes match |
 | DoD-12 | met | `trace-ac.mjs`: "not test-first: none"; red logs `out/logs/tdd/C01-red.log` … `C12b-red.log` |
