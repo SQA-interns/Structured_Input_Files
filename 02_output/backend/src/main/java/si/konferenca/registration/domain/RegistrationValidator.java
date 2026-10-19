@@ -36,6 +36,9 @@ public class RegistrationValidator {
       email = null;
     }
     String organization = null;
+    String studyInstitution = null;
+    String studyProgramme = null;
+    String studentId = null;
     if (type == RegistrationType.EXTERNAL) {
       organization =
           required(
@@ -44,8 +47,20 @@ public class RegistrationValidator {
               submission.organization(),
               TEXT_MAX,
               errors);
+    } else if (type == RegistrationType.STUDENT) {
+      studyInstitution =
+          required(
+              "studyInstitution",
+              "Study institution",
+              submission.studyInstitution(),
+              TEXT_MAX,
+              errors);
+      studyProgramme =
+          required(
+              "studyProgramme", "Study programme", submission.studyProgramme(), TEXT_MAX, errors);
+      studentId = required("studentId", "Student ID", submission.studentId(), TEXT_MAX, errors);
     }
-    List<ConferenceOption> options = options(submission.optionIds(), errors);
+    List<ConferenceOption> options = options(submission.optionIds(), type, errors);
     List<String> consentIds = consents(submission.consentIds(), errors);
     String token = submission.recaptchaToken();
     if (token == null || token.isBlank()) {
@@ -62,9 +77,9 @@ public class RegistrationValidator {
             lastName,
             email,
             organization,
-            null,
-            null,
-            null,
+            studyInstitution,
+            studyProgramme,
+            studentId,
             options,
             consentIds,
             token));
@@ -98,12 +113,17 @@ public class RegistrationValidator {
     return trimmed;
   }
 
-  private List<ConferenceOption> options(List<String> optionIds, List<FieldError> errors) {
+  private List<ConferenceOption> options(
+      List<String> optionIds, RegistrationType type, List<FieldError> errors) {
     List<String> ids = optionIds == null ? List.of() : optionIds;
     Set<String> selected = new HashSet<>();
     for (String id : ids) {
       boolean available =
-          id != null && configuration.option(id).map(ConferenceOption::active).orElse(false);
+          id != null
+              && configuration
+                  .option(id)
+                  .map(o -> o.active() && (type == null || o.isAvailableTo(type)))
+                  .orElse(false);
       if (!available || !selected.add(id)) {
         errors.add(
             new FieldError(
