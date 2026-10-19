@@ -1,0 +1,296 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< si.konferenca:registration-backend >-----------------
+[INFO] Building registration-backend 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- spotless:2.44.3:apply (default-cli) @ registration-backend ---
+[INFO] clean file: E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\backend\src\test\java\si\konferenca\registration\web\FormConfigControllerTest.java
+[INFO] Spotless.Java is keeping 30 files clean - 1 were changed to be clean, 14 were already clean, 15 were skipped because caching determined they were already clean
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ registration-backend ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 0 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ registration-backend ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 12 source files with javac [debug parameters release 21] to target\classes
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ registration-backend ---
+[INFO] Copying 5 resources from src\test\resources to target\test-classes
+[INFO] 
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ registration-backend ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 18 source files with javac [debug parameters release 21] to target\test-classes
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ registration-backend ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running si.konferenca.registration.architecture.ArchitectureTest
+15:11:17.065 [main] INFO com.tngtech.archunit.core.PluginLoader -- Detected Java version 21.0.10
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.282 s -- in si.konferenca.registration.architecture.ArchitectureTest
+[INFO] Running si.konferenca.registration.domain.ConferenceConfigurationTest
+[ERROR] Tests run: 7, Failures: 5, Errors: 2, Skipped: 0, Time elapsed: 0.080 s <<< FAILURE! -- in si.konferenca.registration.domain.ConferenceConfigurationTest
+[ERROR] si.konferenca.registration.domain.ConferenceConfigurationTest.AC_003_01_activeOptionsKeepConfigurationOrderAndSkipInactive -- Time elapsed: 0.009 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.domain.ConferenceConfiguration.of(ConferenceConfiguration.java:13)
+	at si.konferenca.registration.domain.ConferenceConfigurationTest.AC_003_01_activeOptionsKeepConfigurationOrderAndSkipInactive(ConferenceConfigurationTest.java:22)
+
+[ERROR] si.konferenca.registration.domain.ConferenceConfigurationTest.AC_003_03_duplicateConsentIdIsRejected -- Time elapsed: 0.048 s <<< FAILURE!
+java.lang.AssertionError: 
+
+Expecting actual throwable to be an instance of:
+  si.konferenca.registration.domain.InvalidConfigurationException
+but was:
+  java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.domain.ConferenceConfiguration.of(ConferenceConfiguration.java:13)
+	at si.konferenca.registration.domain.ConferenceConfigurationTest.lambda$AC_003_03_duplicateConsentIdIsRejected$1(ConferenceConfigurationTest.java:74)
+	at org.assertj.core.api.ThrowableAssert.catchThrowable(ThrowableAssert.java:66)
+	...(85 remaining lines not displayed - this can be changed with Assertions.setMaxStackTraceElementsDisplayed)
+	at si.konferenca.registration.domain.ConferenceConfigurationTest.AC_003_03_duplicateConsentIdIsRejected(ConferenceConfigurationTest.java:75)
+
+[ERROR] si.konferenca.registration.domain.ConferenceConfigurationTest.AC_003_03_duplicateOptionIdIsRejected -- Time elapsed: 0.003 s <<< FAILURE!
+java.lang.AssertionError: 
+
+Expecting actual throwable to be an instance of:
+  si.konferenca.registration.domain.InvalidConfigurationException
+but was:
+  java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.domain.ConferenceConfiguration.of(ConferenceConfiguration.java:13)
+	at si.konferenca.registration.domain.ConferenceConfigurationTest.lambda$AC_003_03_duplicateOptionIdIsRejected$0(ConferenceConfigurationTest.java:64)
+	at org.assertj.core.api.ThrowableAssert.catchThrowable(ThrowableAssert.java:66)
+	...(85 remaining lines not displayed - this can be changed with Assertions.setMaxStackTraceElementsDisplayed)
+	at si.konferenca.registration.domain.ConferenceConfigurationTest.AC_003_03_duplicateOptionIdIsRejected(ConferenceConfigurationTest.java:66)
+
+[ERROR] si.konferenca.registration.domain.ConferenceConfigurationTest.AC_003_01_optionIsFoundById -- Time elapsed: 0.002 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.domain.ConferenceConfiguration.of(ConferenceConfiguration.java:13)
+	at si.konferenca.registration.domain.ConferenceConfigurationTest.AC_003_01_optionIsFoundById(ConferenceConfigurationTest.java:36)
+
+[ERROR] si.konferenca.registration.domain.ConferenceConfigurationTest.AC_003_01_availabilityDefaultsToBothTypes -- Time elapsed: 0.008 s <<< FAILURE!
+java.lang.AssertionError: 
+
+Expecting actual not to be null
+	at si.konferenca.registration.domain.ConferenceConfigurationTest.AC_003_01_availabilityDefaultsToBothTypes(ConferenceConfigurationTest.java:52)
+
+[ERROR] si.konferenca.registration.domain.ConferenceConfigurationTest.AC_003_03_blankOrMissingNamesAreRejected -- Time elapsed: 0.002 s <<< FAILURE!
+java.lang.AssertionError: 
+
+Expecting actual throwable to be an instance of:
+  si.konferenca.registration.domain.InvalidConfigurationException
+but was:
+  java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.domain.ConferenceConfiguration.of(ConferenceConfiguration.java:13)
+	at si.konferenca.registration.domain.ConferenceConfigurationTest.lambda$AC_003_03_blankOrMissingNamesAreRejected$2(ConferenceConfigurationTest.java:85)
+	at org.assertj.core.api.ThrowableAssert.catchThrowable(ThrowableAssert.java:66)
+	...(85 remaining lines not displayed - this can be changed with Assertions.setMaxStackTraceElementsDisplayed)
+	at si.konferenca.registration.domain.ConferenceConfigurationTest.AC_003_03_blankOrMissingNamesAreRejected(ConferenceConfigurationTest.java:86)
+
+[ERROR] si.konferenca.registration.domain.ConferenceConfigurationTest.AC_003_03_missingCategoryOrIdIsRejected -- Time elapsed: 0.002 s <<< FAILURE!
+java.lang.AssertionError: 
+
+Expecting actual throwable to be an instance of:
+  si.konferenca.registration.domain.InvalidConfigurationException
+but was:
+  java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.domain.ConferenceConfiguration.of(ConferenceConfiguration.java:13)
+	at si.konferenca.registration.domain.ConferenceConfigurationTest.lambda$AC_003_03_missingCategoryOrIdIsRejected$7(ConferenceConfigurationTest.java:103)
+	at org.assertj.core.api.ThrowableAssert.catchThrowable(ThrowableAssert.java:66)
+	...(85 remaining lines not displayed - this can be changed with Assertions.setMaxStackTraceElementsDisplayed)
+	at si.konferenca.registration.domain.ConferenceConfigurationTest.AC_003_03_missingCategoryOrIdIsRejected(ConferenceConfigurationTest.java:104)
+
+[INFO] Running si.konferenca.registration.infrastructure.config.ConferenceConfigurationLoaderTest
+[ERROR] Tests run: 6, Failures: 5, Errors: 1, Skipped: 0, Time elapsed: 0.073 s <<< FAILURE! -- in si.konferenca.registration.infrastructure.config.ConferenceConfigurationLoaderTest
+[ERROR] si.konferenca.registration.infrastructure.config.ConferenceConfigurationLoaderTest.AC_003_03_missingNameIsAConfigurationError -- Time elapsed: 0.042 s <<< FAILURE!
+java.lang.AssertionError: 
+
+Expecting actual throwable to be an instance of:
+  si.konferenca.registration.domain.InvalidConfigurationException
+but was:
+  java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.infrastructure.config.ConferenceConfigurationLoader.load(ConferenceConfigurationLoader.java:10)
+	at si.konferenca.registration.infrastructure.config.ConferenceConfigurationLoaderTest.lambda$AC_003_03_missingNameIsAConfigurationError$2(ConferenceConfigurationLoaderTest.java:96)
+	at org.assertj.core.api.ThrowableAssert.catchThrowable(ThrowableAssert.java:66)
+	...(85 remaining lines not displayed - this can be changed with Assertions.setMaxStackTraceElementsDisplayed)
+	at si.konferenca.registration.infrastructure.config.ConferenceConfigurationLoaderTest.AC_003_03_missingNameIsAConfigurationError(ConferenceConfigurationLoaderTest.java:96)
+
+[ERROR] si.konferenca.registration.infrastructure.config.ConferenceConfigurationLoaderTest.AC_003_03_missingListsOrActiveFlagAreConfigurationErrors -- Time elapsed: 0.006 s <<< FAILURE!
+java.lang.AssertionError: 
+
+Expecting actual throwable to be an instance of:
+  si.konferenca.registration.domain.InvalidConfigurationException
+but was:
+  java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.infrastructure.config.ConferenceConfigurationLoader.load(ConferenceConfigurationLoader.java:10)
+	at si.konferenca.registration.infrastructure.config.ConferenceConfigurationLoaderTest.lambda$AC_003_03_missingListsOrActiveFlagAreConfigurationErrors$6(ConferenceConfigurationLoaderTest.java:119)
+	at org.assertj.core.api.ThrowableAssert.catchThrowable(ThrowableAssert.java:66)
+	...(85 remaining lines not displayed - this can be changed with Assertions.setMaxStackTraceElementsDisplayed)
+	at si.konferenca.registration.infrastructure.config.ConferenceConfigurationLoaderTest.AC_003_03_missingListsOrActiveFlagAreConfigurationErrors(ConferenceConfigurationLoaderTest.java:120)
+
+[ERROR] si.konferenca.registration.infrastructure.config.ConferenceConfigurationLoaderTest.AC_003_02_loadsNameConsentsAndOptionsFromFile -- Time elapsed: 0.006 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.infrastructure.config.ConferenceConfigurationLoader.load(ConferenceConfigurationLoader.java:10)
+	at si.konferenca.registration.infrastructure.config.ConferenceConfigurationLoaderTest.AC_003_02_loadsNameConsentsAndOptionsFromFile(ConferenceConfigurationLoaderTest.java:42)
+
+[ERROR] si.konferenca.registration.infrastructure.config.ConferenceConfigurationLoaderTest.AC_003_03_unknownPropertyMalformedJsonOrMissingFileAreConfigurationErrors -- Time elapsed: 0.006 s <<< FAILURE!
+java.lang.AssertionError: 
+
+Expecting actual throwable to be an instance of:
+  si.konferenca.registration.domain.InvalidConfigurationException
+but was:
+  java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.infrastructure.config.ConferenceConfigurationLoader.load(ConferenceConfigurationLoader.java:10)
+	at si.konferenca.registration.infrastructure.config.ConferenceConfigurationLoaderTest.lambda$AC_003_03_unknownPropertyMalformedJsonOrMissingFileAreConfigurationErrors$3(ConferenceConfigurationLoaderTest.java:104)
+	at org.assertj.core.api.ThrowableAssert.catchThrowable(ThrowableAssert.java:66)
+	...(85 remaining lines not displayed - this can be changed with Assertions.setMaxStackTraceElementsDisplayed)
+	at si.konferenca.registration.infrastructure.config.ConferenceConfigurationLoaderTest.AC_003_03_unknownPropertyMalformedJsonOrMissingFileAreConfigurationErrors(ConferenceConfigurationLoaderTest.java:105)
+
+[ERROR] si.konferenca.registration.infrastructure.config.ConferenceConfigurationLoaderTest.AC_003_03_unknownCategoryIsAConfigurationError -- Time elapsed: 0.005 s <<< FAILURE!
+java.lang.AssertionError: 
+
+Expecting actual throwable to be an instance of:
+  si.konferenca.registration.domain.InvalidConfigurationException
+but was:
+  java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.infrastructure.config.ConferenceConfigurationLoader.load(ConferenceConfigurationLoader.java:10)
+	at si.konferenca.registration.infrastructure.config.ConferenceConfigurationLoaderTest.lambda$AC_003_03_unknownCategoryIsAConfigurationError$0(ConferenceConfigurationLoaderTest.java:69)
+	at org.assertj.core.api.ThrowableAssert.catchThrowable(ThrowableAssert.java:66)
+	...(85 remaining lines not displayed - this can be changed with Assertions.setMaxStackTraceElementsDisplayed)
+	at si.konferenca.registration.infrastructure.config.ConferenceConfigurationLoaderTest.AC_003_03_unknownCategoryIsAConfigurationError(ConferenceConfigurationLoaderTest.java:70)
+
+[ERROR] si.konferenca.registration.infrastructure.config.ConferenceConfigurationLoaderTest.AC_003_03_unknownRegistrationTypeIsAConfigurationError -- Time elapsed: 0.005 s <<< FAILURE!
+java.lang.AssertionError: 
+
+Expecting actual throwable to be an instance of:
+  si.konferenca.registration.domain.InvalidConfigurationException
+but was:
+  java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.infrastructure.config.ConferenceConfigurationLoader.load(ConferenceConfigurationLoader.java:10)
+	at si.konferenca.registration.infrastructure.config.ConferenceConfigurationLoaderTest.lambda$AC_003_03_unknownRegistrationTypeIsAConfigurationError$1(ConferenceConfigurationLoaderTest.java:84)
+	at org.assertj.core.api.ThrowableAssert.catchThrowable(ThrowableAssert.java:66)
+	...(85 remaining lines not displayed - this can be changed with Assertions.setMaxStackTraceElementsDisplayed)
+	at si.konferenca.registration.infrastructure.config.ConferenceConfigurationLoaderTest.AC_003_03_unknownRegistrationTypeIsAConfigurationError(ConferenceConfigurationLoaderTest.java:84)
+
+[INFO] Running si.konferenca.registration.web.FormConfigControllerTest
+[ERROR] Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.002 s <<< FAILURE! -- in si.konferenca.registration.web.FormConfigControllerTest
+[ERROR] si.konferenca.registration.web.FormConfigControllerTest.AC_003_01_formConfigListsActiveOptionsConsentsAndCaptchaSettings -- Time elapsed: 0 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.domain.ConferenceConfiguration.of(ConferenceConfiguration.java:13)
+	at si.konferenca.registration.web.FormConfigControllerTest.<init>(FormConfigControllerTest.java:23)
+
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Failures: 
+[ERROR]   ConferenceConfigurationTest.AC_003_01_availabilityDefaultsToBothTypes:52 
+Expecting actual not to be null
+[ERROR]   ConferenceConfigurationTest.AC_003_03_blankOrMissingNamesAreRejected:86 
+Expecting actual throwable to be an instance of:
+  si.konferenca.registration.domain.InvalidConfigurationException
+but was:
+  java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.domain.ConferenceConfiguration.of(ConferenceConfiguration.java:13)
+	at si.konferenca.registration.domain.ConferenceConfigurationTest.lambda$AC_003_03_blankOrMissingNamesAreRejected$2(ConferenceConfigurationTest.java:85)
+	at org.assertj.core.api.ThrowableAssert.catchThrowable(ThrowableAssert.java:66)
+	...(85 remaining lines not displayed - this can be changed with Assertions.setMaxStackTraceElementsDisplayed)
+[ERROR]   ConferenceConfigurationTest.AC_003_03_duplicateConsentIdIsRejected:75 
+Expecting actual throwable to be an instance of:
+  si.konferenca.registration.domain.InvalidConfigurationException
+but was:
+  java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.domain.ConferenceConfiguration.of(ConferenceConfiguration.java:13)
+	at si.konferenca.registration.domain.ConferenceConfigurationTest.lambda$AC_003_03_duplicateConsentIdIsRejected$1(ConferenceConfigurationTest.java:74)
+	at org.assertj.core.api.ThrowableAssert.catchThrowable(ThrowableAssert.java:66)
+	...(85 remaining lines not displayed - this can be changed with Assertions.setMaxStackTraceElementsDisplayed)
+[ERROR]   ConferenceConfigurationTest.AC_003_03_duplicateOptionIdIsRejected:66 
+Expecting actual throwable to be an instance of:
+  si.konferenca.registration.domain.InvalidConfigurationException
+but was:
+  java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.domain.ConferenceConfiguration.of(ConferenceConfiguration.java:13)
+	at si.konferenca.registration.domain.ConferenceConfigurationTest.lambda$AC_003_03_duplicateOptionIdIsRejected$0(ConferenceConfigurationTest.java:64)
+	at org.assertj.core.api.ThrowableAssert.catchThrowable(ThrowableAssert.java:66)
+	...(85 remaining lines not displayed - this can be changed with Assertions.setMaxStackTraceElementsDisplayed)
+[ERROR]   ConferenceConfigurationTest.AC_003_03_missingCategoryOrIdIsRejected:104 
+Expecting actual throwable to be an instance of:
+  si.konferenca.registration.domain.InvalidConfigurationException
+but was:
+  java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.domain.ConferenceConfiguration.of(ConferenceConfiguration.java:13)
+	at si.konferenca.registration.domain.ConferenceConfigurationTest.lambda$AC_003_03_missingCategoryOrIdIsRejected$7(ConferenceConfigurationTest.java:103)
+	at org.assertj.core.api.ThrowableAssert.catchThrowable(ThrowableAssert.java:66)
+	...(85 remaining lines not displayed - this can be changed with Assertions.setMaxStackTraceElementsDisplayed)
+[ERROR]   ConferenceConfigurationLoaderTest.AC_003_03_missingListsOrActiveFlagAreConfigurationErrors:120 
+Expecting actual throwable to be an instance of:
+  si.konferenca.registration.domain.InvalidConfigurationException
+but was:
+  java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.infrastructure.config.ConferenceConfigurationLoader.load(ConferenceConfigurationLoader.java:10)
+	at si.konferenca.registration.infrastructure.config.ConferenceConfigurationLoaderTest.lambda$AC_003_03_missingListsOrActiveFlagAreConfigurationErrors$6(ConferenceConfigurationLoaderTest.java:119)
+	at org.assertj.core.api.ThrowableAssert.catchThrowable(ThrowableAssert.java:66)
+	...(85 remaining lines not displayed - this can be changed with Assertions.setMaxStackTraceElementsDisplayed)
+[ERROR]   ConferenceConfigurationLoaderTest.AC_003_03_missingNameIsAConfigurationError:96 
+Expecting actual throwable to be an instance of:
+  si.konferenca.registration.domain.InvalidConfigurationException
+but was:
+  java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.infrastructure.config.ConferenceConfigurationLoader.load(ConferenceConfigurationLoader.java:10)
+	at si.konferenca.registration.infrastructure.config.ConferenceConfigurationLoaderTest.lambda$AC_003_03_missingNameIsAConfigurationError$2(ConferenceConfigurationLoaderTest.java:96)
+	at org.assertj.core.api.ThrowableAssert.catchThrowable(ThrowableAssert.java:66)
+	...(85 remaining lines not displayed - this can be changed with Assertions.setMaxStackTraceElementsDisplayed)
+[ERROR]   ConferenceConfigurationLoaderTest.AC_003_03_unknownCategoryIsAConfigurationError:70 
+Expecting actual throwable to be an instance of:
+  si.konferenca.registration.domain.InvalidConfigurationException
+but was:
+  java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.infrastructure.config.ConferenceConfigurationLoader.load(ConferenceConfigurationLoader.java:10)
+	at si.konferenca.registration.infrastructure.config.ConferenceConfigurationLoaderTest.lambda$AC_003_03_unknownCategoryIsAConfigurationError$0(ConferenceConfigurationLoaderTest.java:69)
+	at org.assertj.core.api.ThrowableAssert.catchThrowable(ThrowableAssert.java:66)
+	...(85 remaining lines not displayed - this can be changed with Assertions.setMaxStackTraceElementsDisplayed)
+[ERROR]   ConferenceConfigurationLoaderTest.AC_003_03_unknownPropertyMalformedJsonOrMissingFileAreConfigurationErrors:105 
+Expecting actual throwable to be an instance of:
+  si.konferenca.registration.domain.InvalidConfigurationException
+but was:
+  java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.infrastructure.config.ConferenceConfigurationLoader.load(ConferenceConfigurationLoader.java:10)
+	at si.konferenca.registration.infrastructure.config.ConferenceConfigurationLoaderTest.lambda$AC_003_03_unknownPropertyMalformedJsonOrMissingFileAreConfigurationErrors$3(ConferenceConfigurationLoaderTest.java:104)
+	at org.assertj.core.api.ThrowableAssert.catchThrowable(ThrowableAssert.java:66)
+	...(85 remaining lines not displayed - this can be changed with Assertions.setMaxStackTraceElementsDisplayed)
+[ERROR]   ConferenceConfigurationLoaderTest.AC_003_03_unknownRegistrationTypeIsAConfigurationError:84 
+Expecting actual throwable to be an instance of:
+  si.konferenca.registration.domain.InvalidConfigurationException
+but was:
+  java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.infrastructure.config.ConferenceConfigurationLoader.load(ConferenceConfigurationLoader.java:10)
+	at si.konferenca.registration.infrastructure.config.ConferenceConfigurationLoaderTest.lambda$AC_003_03_unknownRegistrationTypeIsAConfigurationError$1(ConferenceConfigurationLoaderTest.java:84)
+	at org.assertj.core.api.ThrowableAssert.catchThrowable(ThrowableAssert.java:66)
+	...(85 remaining lines not displayed - this can be changed with Assertions.setMaxStackTraceElementsDisplayed)
+[ERROR] Errors: 
+[ERROR]   ConferenceConfigurationTest.AC_003_01_activeOptionsKeepConfigurationOrderAndSkipInactive:22 » UnsupportedOperation not implemented
+[ERROR]   ConferenceConfigurationTest.AC_003_01_optionIsFoundById:36 » UnsupportedOperation not implemented
+[ERROR]   ConferenceConfigurationLoaderTest.AC_003_02_loadsNameConsentsAndOptionsFromFile:42 » UnsupportedOperation not implemented
+[ERROR]   FormConfigControllerTest.<init>:23 » UnsupportedOperation not implemented
+[INFO] 
+[ERROR] Tests run: 20, Failures: 10, Errors: 4, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  7.862 s
+[INFO] Finished at: 2026-10-19T15:11:18+02:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.5.6:test (default-test) on project registration-backend: There are test failures.
+[ERROR] 
+[ERROR] See E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\backend\target\surefire-reports for the individual test results.
+[ERROR] See dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
