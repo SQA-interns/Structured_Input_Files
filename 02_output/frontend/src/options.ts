@@ -6,15 +6,25 @@ export interface OptionGroup {
   options: ConferenceOption[];
 }
 
+const GROUPS: { category: OptionCategory; legend: string }[] = [
+  { category: "WORKSHOP", legend: "Workshops" },
+  { category: "EVENT", legend: "Events" },
+  { category: "MEAL", legend: "Meals" },
+  { category: "OTHER", legend: "Other activities" },
+];
+
 /** Active options available to the type (OQ-01). */
 export function optionsFor(
-  _options: ConferenceOption[],
-  _type: RegistrationType,
+  options: ConferenceOption[],
+  type: RegistrationType,
 ): ConferenceOption[] {
-  throw new Error("not implemented");
+  return options.filter((option) => option.availableTo.includes(type));
 }
 
 /** Groups in the order of ui.md, without empty groups. */
-export function groupByCategory(_options: ConferenceOption[]): OptionGroup[] {
-  throw new Error("not implemented");
+export function groupByCategory(options: ConferenceOption[]): OptionGroup[] {
+  return GROUPS.map((group) => ({
+    ...group,
+    options: options.filter((option) => option.category === group.category),
+  })).filter((group) => group.options.length > 0);
 }
