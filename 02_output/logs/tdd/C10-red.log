@@ -1,0 +1,175 @@
+
+ RUN  v4.1.11 E:/13 - Lab Projects/01_Runs/_____TDD_____TESTING_____/01_kyuhi_single-agent_tdd_v001/02_output/frontend
+
+ ❯ src/options.test.ts (4 tests | 4 failed) 6ms
+     × AC-001-08 externals see only options available to them 3ms
+     × AC-002-07 students see only options available to them 0ms
+     × AC-001-08 groups follow the category order and skip empty categories 0ms
+     × AC-002-07 student groups include events 0ms
+ ❯ src/api.test.ts (2 tests | 1 failed) 8ms
+     × AC-001-08 loads the form configuration from /api/form-config 6ms
+ ❯ src/RegistrationForm.test.tsx (4 tests | 4 failed) 22ms
+     × AC-001-08 shows no fields before a registration type is chosen 15ms
+     × AC-001-08 external participants get their fields, groups and unchecked consents 2ms
+     × AC-001-08 checking an option or consent toggles it 1ms
+     × AC-001-08 typed values are kept in the fields 1ms
+ ❯ src/App.test.tsx (2 tests | 2 failed) 2026ms
+     × AC-001-08 shows the form once the configuration is loaded 1017ms
+     × AC-004-04 shows a general error when the configuration cannot be loaded 1006ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 11 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/api.test.ts > fetchFormConfig > AC-001-08 loads the form configuration from /api/form-config
+AssertionError: promise rejected "Error: not implemented" instead of resolving
+ ❯ src/api.test.ts:14:35
+     12|     vi.stubGlobal("fetch", fetchMock);
+     13|
+     14|     await expect(fetchFormConfig()).resolves.toEqual(testConfig);
+       |                                   ^
+     15|     expect(fetchMock).toHaveBeenCalledWith("/api/form-config", expect.…
+     16|   });
+
+Caused by: Error: not implemented
+ ❯ fetchFormConfig src/api.ts:5:9
+ ❯ src/api.test.ts:14:18
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/11]⎯
+
+ FAIL  src/App.test.tsx > App > AC-001-08 shows the form once the configuration is loaded
+TestingLibraryElementError: Unable to find role="radio" and name "External participant"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main />[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main />[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/App.test.tsx:19:25
+     17|     render(<App />);
+     18|
+     19|     expect(await screen.findByRole("radio", { name: "External particip…
+       |                         ^
+     20|     expect(screen.getByRole("heading", { level: 1 })).toHaveTextConten…
+     21|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/11]⎯
+
+ FAIL  src/App.test.tsx > App > AC-004-04 shows a general error when the configuration cannot be loaded
+TestingLibraryElementError: Unable to find role="alert"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main />[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main />[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/App.test.tsx:33:32
+     31|     render(<App />);
+     32|
+     33|     const alert = await screen.findByRole("alert");
+       |                                ^
+     34|     expect(alert).toHaveTextContent("The registration form could not b…
+     35|     expect(alert).not.toHaveTextContent("Failed to fetch");
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/11]⎯
+
+ FAIL  src/options.test.ts > options > AC-001-08 externals see only options available to them
+Error: not implemented
+ ❯ optionsFor src/options.ts:14:9
+     12|   _type: RegistrationType,
+     13| ): ConferenceOption[] {
+     14|   throw new Error("not implemented");
+       |         ^
+     15| }
+     16|
+ ❯ src/options.test.ts:7:12
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/11]⎯
+
+ FAIL  src/options.test.ts > options > AC-002-07 students see only options available to them
+Error: not implemented
+ ❯ optionsFor src/options.ts:14:9
+     12|   _type: RegistrationType,
+     13| ): ConferenceOption[] {
+     14|   throw new Error("not implemented");
+       |         ^
+     15| }
+     16|
+ ❯ src/options.test.ts:15:12
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/11]⎯
+
+ FAIL  src/options.test.ts > options > AC-001-08 groups follow the category order and skip empty categories
+Error: not implemented
+ ❯ optionsFor src/options.ts:14:9
+     12|   _type: RegistrationType,
+     13| ): ConferenceOption[] {
+     14|   throw new Error("not implemented");
+       |         ^
+     15| }
+     16|
+ ❯ src/options.test.ts:24:36
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/11]⎯
+
+ FAIL  src/options.test.ts > options > AC-002-07 student groups include events
+Error: not implemented
+ ❯ optionsFor src/options.ts:14:9
+     12|   _type: RegistrationType,
+     13| ): ConferenceOption[] {
+     14|   throw new Error("not implemented");
+       |         ^
+     15| }
+     16|
+ ❯ src/options.test.ts:32:36
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/11]⎯
+
+ FAIL  src/RegistrationForm.test.tsx > RegistrationForm external > AC-001-08 shows no fields before a registration type is chosen
+ FAIL  src/RegistrationForm.test.tsx > RegistrationForm external > AC-001-08 external participants get their fields, groups and unchecked consents
+ FAIL  src/RegistrationForm.test.tsx > RegistrationForm external > AC-001-08 checking an option or consent toggles it
+ FAIL  src/RegistrationForm.test.tsx > RegistrationForm external > AC-001-08 typed values are kept in the fields
+Error: not implemented
+ ❯ RegistrationForm src/RegistrationForm.tsx:11:9
+      9| /** The registration form (ui.md). */
+     10| export function RegistrationForm(_props: RegistrationFormProps): never…
+     11|   throw new Error("not implemented");
+       |         ^
+     12| }
+     13|
+ ❯ Object.react_stack_bottom_frame node_modules/react-dom/cjs/react-dom-client.development.js:28571:20
+ ❯ renderWithHooks node_modules/react-dom/cjs/react-dom-client.development.js:8030:22
+ ❯ updateFunctionComponent node_modules/react-dom/cjs/react-dom-client.development.js:10569:19
+ ❯ beginWork node_modules/react-dom/cjs/react-dom-client.development.js:12205:18
+ ❯ runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:1048:13
+ ❯ performUnitOfWork node_modules/react-dom/cjs/react-dom-client.development.js:19176:22
+ ❯ workLoopSync node_modules/react-dom/cjs/react-dom-client.development.js:19004:41
+ ❯ renderRootSync node_modules/react-dom/cjs/react-dom-client.development.js:18985:11
+ ❯ performWorkOnRoot node_modules/react-dom/cjs/react-dom-client.development.js:18094:35
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/11]⎯
+
+
+ Test Files  4 failed (4)
+      Tests  11 failed | 1 passed (12)
+   Start at  15:48:58
+   Duration  3.03s (transform 233ms, setup 480ms, import 366ms, tests 2.06s, environment 2.18s)
+
