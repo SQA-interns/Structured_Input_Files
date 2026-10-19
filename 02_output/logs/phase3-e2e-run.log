@@ -1,0 +1,118 @@
+
+Running 5 tests using 1 worker
+
+  x  1 [chromium] › e2e\e01-e02-registration.e2e.ts:28:1 › E2E-01 external participant registers (AC-001-01, AC-001-08, AC-004-01, AC-005-01, AC-005-02, AC-006-01, AC-007-01, AC-007-02) (10.1s)
+  x  2 [chromium] › e2e\e01-e02-registration.e2e.ts:71:1 › E2E-02 student registers (AC-002-01, AC-002-07, AC-004-01) (10.1s)
+  x  3 [chromium] › e2e\e03-field-errors.e2e.ts:10:1 › E2E-03 field errors are shown next to the fields (AC-004-02, AC-004-03) (10.1s)
+  x  4 [chromium] › e2e\e04-slovenian-characters.e2e.ts:22:1 › E2E-04 Slovenian characters survive the whole chain (AC-005-04, AC-008-03) (10.1s)
+  x  5 [chromium] › e2e\e05-export.e2e.ts:7:1 › E2E-05 organizer exports registrations (AC-008-01, AC-008-02) (598ms)
+
+
+  1) [chromium] › e2e\e01-e02-registration.e2e.ts:28:1 › E2E-01 external participant registers (AC-001-01, AC-001-08, AC-004-01, AC-005-01, AC-005-02, AC-006-01, AC-007-01, AC-007-02) 
+
+    TimeoutError: locator.check: Timeout 10000ms exceeded.
+    Call log:
+      - waiting for getByRole('radio', { name: 'External participant', exact: true })
+
+
+       at support\form.ts:7
+
+       5 | export async function openForm(page: Page, type: "External participant" | "Student") {
+       6 |   await page.goto("/");
+    >  7 |   await page.getByRole("radio", { name: type, exact: true }).check();
+         |                                                              ^
+       8 | }
+       9 |
+      10 | export async function fill(page: Page, fields: Record<string, string>) {
+        at openForm (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\e2e\support\form.ts:7:62)
+        at E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\e2e\e01-e02-registration.e2e.ts:35:3
+
+    Error Context: test-results\e01-e02-registration.e2e.t-84031-006-01-AC-007-01-AC-007-02--chromium\error-context.md
+
+  2) [chromium] › e2e\e01-e02-registration.e2e.ts:71:1 › E2E-02 student registers (AC-002-01, AC-002-07, AC-004-01) 
+
+    TimeoutError: locator.check: Timeout 10000ms exceeded.
+    Call log:
+      - waiting for getByRole('radio', { name: 'Student', exact: true })
+
+
+       at support\form.ts:7
+
+       5 | export async function openForm(page: Page, type: "External participant" | "Student") {
+       6 |   await page.goto("/");
+    >  7 |   await page.getByRole("radio", { name: type, exact: true }).check();
+         |                                                              ^
+       8 | }
+       9 |
+      10 | export async function fill(page: Page, fields: Record<string, string>) {
+        at openForm (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\e2e\support\form.ts:7:62)
+        at E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\e2e\e01-e02-registration.e2e.ts:75:3
+
+    Error Context: test-results\e01-e02-registration.e2e.t-0d06c-002-01-AC-002-07-AC-004-01--chromium\error-context.md
+
+  3) [chromium] › e2e\e03-field-errors.e2e.ts:10:1 › E2E-03 field errors are shown next to the fields (AC-004-02, AC-004-03) 
+
+    TimeoutError: locator.check: Timeout 10000ms exceeded.
+    Call log:
+      - waiting for getByRole('radio', { name: 'External participant', exact: true })
+
+
+       at support\form.ts:7
+
+       5 | export async function openForm(page: Page, type: "External participant" | "Student") {
+       6 |   await page.goto("/");
+    >  7 |   await page.getByRole("radio", { name: type, exact: true }).check();
+         |                                                              ^
+       8 | }
+       9 |
+      10 | export async function fill(page: Page, fields: Record<string, string>) {
+        at openForm (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\e2e\support\form.ts:7:62)
+        at E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\e2e\e03-field-errors.e2e.ts:21:3
+
+    Error Context: test-results\e03-field-errors.e2e.ts-E2-d4c4f-fields-AC-004-02-AC-004-03--chromium\error-context.md
+
+  4) [chromium] › e2e\e04-slovenian-characters.e2e.ts:22:1 › E2E-04 Slovenian characters survive the whole chain (AC-005-04, AC-008-03) 
+
+    TimeoutError: locator.check: Timeout 10000ms exceeded.
+    Call log:
+      - waiting for getByRole('radio', { name: 'External participant', exact: true })
+
+
+       at support\form.ts:7
+
+       5 | export async function openForm(page: Page, type: "External participant" | "Student") {
+       6 |   await page.goto("/");
+    >  7 |   await page.getByRole("radio", { name: type, exact: true }).check();
+         |                                                              ^
+       8 | }
+       9 |
+      10 | export async function fill(page: Page, fields: Record<string, string>) {
+        at openForm (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\e2e\support\form.ts:7:62)
+        at E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\e2e\e04-slovenian-characters.e2e.ts:31:3
+
+    Error Context: test-results\e04-slovenian-characters.e-afeb9--chain-AC-005-04-AC-008-03--chromium\error-context.md
+
+  5) [chromium] › e2e\e05-export.e2e.ts:7:1 › E2E-05 organizer exports registrations (AC-008-01, AC-008-02) 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 200
+    Received: 401
+
+      13 |   });
+      14 |
+    > 15 |   expect(response.status()).toBe(200);
+         |                             ^
+      16 |   expect(response.headers()["content-type"]).toContain(XLSX);
+      17 |   expect(response.headers()["content-disposition"]).toContain("registrations.xlsx");
+      18 |   const rows = readWorkbookRows(await response.body());
+        at E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\e2e\e05-export.e2e.ts:15:29
+
+    Error Context: test-results\e05-export.e2e.ts-E2E-05-o-f209b-ations-AC-008-01-AC-008-02--chromium\error-context.md
+
+  5 failed
+    [chromium] › e2e\e01-e02-registration.e2e.ts:28:1 › E2E-01 external participant registers (AC-001-01, AC-001-08, AC-004-01, AC-005-01, AC-005-02, AC-006-01, AC-007-01, AC-007-02) 
+    [chromium] › e2e\e01-e02-registration.e2e.ts:71:1 › E2E-02 student registers (AC-002-01, AC-002-07, AC-004-01) 
+    [chromium] › e2e\e03-field-errors.e2e.ts:10:1 › E2E-03 field errors are shown next to the fields (AC-004-02, AC-004-03) 
+    [chromium] › e2e\e04-slovenian-characters.e2e.ts:22:1 › E2E-04 Slovenian characters survive the whole chain (AC-005-04, AC-008-03) 
+    [chromium] › e2e\e05-export.e2e.ts:7:1 › E2E-05 organizer exports registrations (AC-008-01, AC-008-02) 
