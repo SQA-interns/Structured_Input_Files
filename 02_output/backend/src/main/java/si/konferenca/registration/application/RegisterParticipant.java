@@ -6,6 +6,8 @@ import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.UUID;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.support.TransactionSynchronization;
+import org.springframework.transaction.support.TransactionSynchronizationManager;
 import si.konferenca.registration.domain.ConferenceConfiguration;
 import si.konferenca.registration.domain.FieldError;
 import si.konferenca.registration.domain.GivenConsent;
@@ -22,6 +24,7 @@ public class RegisterParticipant {
   private final CaptchaVerifier captchaVerifier;
   private final RegistrationStore store;
   private final JsonCopyStore jsonCopyStore;
+  private final RegistrationNotifier notifier;
   private final Clock clock;
 
   public RegisterParticipant(
@@ -35,6 +38,7 @@ public class RegisterParticipant {
     this.captchaVerifier = captchaVerifier;
     this.store = store;
     this.jsonCopyStore = jsonCopyStore;
+    this.notifier = notifier;
     this.clock = clock;
   }
 
@@ -67,6 +71,22 @@ public class RegisterParticipant {
             valid.consentIds().stream().map(id -> new GivenConsent(id, now)).toList());
     store.save(registration);
     jsonCopyStore.write(registration);
+    notifyAfterCommit(registration);
     return registration;
+  }
+
+  /** Emails start only once the row and the copy are committed (OQ-03). */
+  private void notifyAfterCommit(Registration registration) {
+    if (!TransactionSynchronizationManager.isSynchronizationActive()) {
+      notifier.registrationAccepted(registration);
+      return;
+    }
+    TransactionSynchronizationManager.registerSynchronization(
+        new TransactionSynchronization() {
+          @Override
+          public void afterCommit() {
+            notifier.registrationAccepted(registration);
+          }
+        });
   }
 }

@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import si.konferenca.registration.application.CaptchaVerifier;
 import si.konferenca.registration.application.JsonCopyStore;
 import si.konferenca.registration.application.RegisterParticipant;
+import si.konferenca.registration.application.RegistrationNotifier;
 import si.konferenca.registration.application.RegistrationStore;
 import si.konferenca.registration.domain.ConferenceConfiguration;
 import si.konferenca.registration.infrastructure.captcha.TestModeCaptchaVerifier;
@@ -41,8 +42,9 @@ public class RegistrationBeans {
       CaptchaVerifier captchaVerifier,
       RegistrationStore store,
       JsonCopyStore jsonCopyStore,
+      RegistrationNotifier notifier,
       Clock clock) {
     return new RegisterParticipant(
-        configuration, captchaVerifier, store, jsonCopyStore, registration -> {}, clock);
+        configuration, captchaVerifier, store, jsonCopyStore, notifier, clock);
   }
 }
