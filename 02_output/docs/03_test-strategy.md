@@ -153,7 +153,7 @@ Equivalent mutants (backend):
 | Component | Level | Tests passed / failed | Line coverage | Branch coverage | Mutation score (scope) | Tools |
 |---|---|---|---|---|---|---|
 | backend | unit | 157 / 0 | 86.66 % | 89.69 % | | JUnit 6, JaCoCo 0.8.12 |
-| backend | non-unit (integration 22, acceptance 77, architecture 6, wiring 2) | 107 / 0 | 88.43 % | 69.08 % | | JUnit 6, Testcontainers, JaCoCo |
+| backend | non-unit (integration 24, acceptance 77, architecture 6) | 107 / 0 | 88.43 % | 69.08 % | | JUnit 6, Testcontainers, JaCoCo |
 | backend | all levels | 264 / 0 | 97.64 % (827/847) | 91.22 % (239/262) | adjusted 100.00 %, raw 99.10 % (331/334, all production code) | PIT 1.30.0 |
 | frontend | unit | 73 / 0 | 100.00 % | 98.71 % | | Vitest 4.1.11, coverage-v8 |
 | frontend | non-unit (acceptance) | 7 / 0 | 79.28 % | 67.94 % | | Vitest |
