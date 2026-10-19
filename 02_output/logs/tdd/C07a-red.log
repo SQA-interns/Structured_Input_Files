@@ -1,0 +1,200 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< si.konferenca:registration-backend >-----------------
+[INFO] Building registration-backend 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- spotless:2.44.3:apply (default-cli) @ registration-backend ---
+[INFO] Spotless.Java is keeping 81 files clean - 0 were changed to be clean, 10 were already clean, 71 were skipped because caching determined they were already clean
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ registration-backend ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ registration-backend ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 48 source files with javac [debug parameters release 21] to target\classes
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ registration-backend ---
+[INFO] Copying 5 resources from src\test\resources to target\test-classes
+[INFO] 
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ registration-backend ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 33 source files with javac [debug parameters release 21] to target\test-classes
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ registration-backend ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running si.konferenca.registration.application.ExportRegistrationsTest
+[ERROR] Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.109 s <<< FAILURE! -- in si.konferenca.registration.application.ExportRegistrationsTest
+[ERROR] si.konferenca.registration.application.ExportRegistrationsTest.AC_008_01_exportWritesRegistrationsOrderedByRegistrationTime -- Time elapsed: 0.090 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.application.ExportRegistrations.export(ExportRegistrations.java:9)
+	at si.konferenca.registration.application.ExportRegistrationsTest.AC_008_01_exportWritesRegistrationsOrderedByRegistrationTime(ExportRegistrationsTest.java:45)
+
+[INFO] Running si.konferenca.registration.infrastructure.export.ExcelWorkbookWriterTest
+[ERROR] Tests run: 3, Failures: 0, Errors: 3, Skipped: 0, Time elapsed: 0.013 s <<< FAILURE! -- in si.konferenca.registration.infrastructure.export.ExcelWorkbookWriterTest
+[ERROR] si.konferenca.registration.infrastructure.export.ExcelWorkbookWriterTest.AC_008_01_formulaLikeTextStaysPlainText -- Time elapsed: 0.006 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.infrastructure.export.ExcelWorkbookWriter.write(ExcelWorkbookWriter.java:12)
+	at si.konferenca.registration.infrastructure.export.ExcelWorkbookWriterTest.AC_008_01_formulaLikeTextStaysPlainText(ExcelWorkbookWriterTest.java:140)
+
+[ERROR] si.konferenca.registration.infrastructure.export.ExcelWorkbookWriterTest.AC_008_01_workbookHasHeaderAndOneStringRowPerRegistration -- Time elapsed: 0.002 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.infrastructure.export.ExcelWorkbookWriter.write(ExcelWorkbookWriter.java:12)
+	at si.konferenca.registration.infrastructure.export.ExcelWorkbookWriterTest.AC_008_01_workbookHasHeaderAndOneStringRowPerRegistration(ExcelWorkbookWriterTest.java:87)
+
+[ERROR] si.konferenca.registration.infrastructure.export.ExcelWorkbookWriterTest.AC_008_01_emptyExportHasOnlyTheHeader -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.infrastructure.export.ExcelWorkbookWriter.write(ExcelWorkbookWriter.java:12)
+	at si.konferenca.registration.infrastructure.export.ExcelWorkbookWriterTest.AC_008_01_emptyExportHasOnlyTheHeader(ExcelWorkbookWriterTest.java:148)
+
+[INFO] Running si.konferenca.registration.infrastructure.persistence.JpaRegistrationStoreIntegrationTest
+15:35:51.537 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.konferenca.registration.infrastructure.persistence.JpaRegistrationStoreIntegrationTest]: JpaRegistrationStoreIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+15:35:51.642 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration si.konferenca.registration.RegistrationApplication for test class si.konferenca.registration.infrastructure.persistence.JpaRegistrationStoreIntegrationTest
+15:35:51.715 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.konferenca.registration.infrastructure.persistence.JpaRegistrationStoreIntegrationTest]: JpaRegistrationStoreIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+15:35:51.716 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration si.konferenca.registration.RegistrationApplication for test class si.konferenca.registration.infrastructure.persistence.JpaRegistrationStoreIntegrationTest
+15:35:51.757 [main] INFO org.testcontainers.images.PullPolicy -- Image pull policy will be performed by: DefaultPullPolicy()
+15:35:51.759 [main] INFO org.testcontainers.utility.ImageNameSubstitutor -- Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+15:35:51.769 [main] INFO org.testcontainers.DockerClientFactory -- Testcontainers version: 2.0.5
+15:35:51.976 [main] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+15:35:52.375 [main] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+15:35:52.377 [main] INFO org.testcontainers.DockerClientFactory -- Docker host IP address is localhost
+15:35:52.394 [main] INFO org.testcontainers.DockerClientFactory -- Connected to docker: 
+  Server Version: 29.8.1
+  API Version: 1.56
+  Operating System: Docker Desktop
+  Total Memory: 40065 MB
+  Labels: 
+    com.docker.desktop.address=npipe://\\.\pipe\docker_cli
+15:35:52.499 [main] INFO tc.testcontainers/ryuk:0.14.0 -- Creating container for image: testcontainers/ryuk:0.14.0
+15:35:52.769 [main] INFO tc.testcontainers/ryuk:0.14.0 -- Container testcontainers/ryuk:0.14.0 is starting: 5a65fa288039d4e3d53eb4e8f08e18e2bc3fb30520f039c605461c31a8cdd499
+15:35:53.118 [main] INFO tc.testcontainers/ryuk:0.14.0 -- Container testcontainers/ryuk:0.14.0 started in PT0.6197768S
+15:35:53.125 [main] INFO org.testcontainers.utility.RyukResourceReaper -- Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+15:35:53.125 [main] INFO org.testcontainers.DockerClientFactory -- Checking the system...
+15:35:53.126 [main] INFO org.testcontainers.DockerClientFactory -- ?? Docker server version should be at least 1.6.0
+15:35:53.126 [main] INFO tc.postgres:16.15-alpine -- Creating container for image: postgres:16.15-alpine
+15:35:53.248 [main] INFO tc.postgres:16.15-alpine -- Container postgres:16.15-alpine is starting: b63b9238df7d9045750460cea8d0dd5a4f52eea1f65f183ebcbc852ec70e90e2
+15:35:55.302 [main] INFO tc.postgres:16.15-alpine -- Container postgres:16.15-alpine started in PT2.1754573S
+15:35:55.302 [main] INFO tc.postgres:16.15-alpine -- Container is started (JDBC URL: jdbc:postgresql://localhost:54936/test?loggerLevel=OFF)
+15:35:55.303 [main] INFO tc.axllent/mailpit:v1.31.1 -- Creating container for image: axllent/mailpit:v1.31.1
+15:35:55.416 [main] INFO tc.axllent/mailpit:v1.31.1 -- Container axllent/mailpit:v1.31.1 is starting: d5dcb446696068707dad17110d42e588faf09d6f5e5e89f4924a67d6dc7f4743
+15:35:55.680 [main] INFO org.testcontainers.containers.wait.strategy.HttpWaitStrategy -- /pedantic_lewin: Waiting for 60 seconds for URL: http://localhost:54938/api/v1/info (where port 54938 maps to container port 8025)
+15:35:55.875 [main] INFO tc.axllent/mailpit:v1.31.1 -- Container axllent/mailpit:v1.31.1 started in PT0.5719217S
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-10-19T15:35:56.132+02:00  INFO 43016 --- [registration-backend] [           main] .i.p.JpaRegistrationStoreIntegrationTest : Starting JpaRegistrationStoreIntegrationTest using Java 21.0.10 with PID 43016 (started by sense in E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\backend)
+2026-10-19T15:35:56.137+02:00  INFO 43016 --- [registration-backend] [           main] .i.p.JpaRegistrationStoreIntegrationTest : No active profile set, falling back to 1 default profile: "default"
+2026-10-19T15:35:56.907+02:00  INFO 43016 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-19T15:35:56.963+02:00  INFO 43016 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 37 ms. Found 0 JPA repository interfaces.
+2026-10-19T15:35:57.907+02:00  INFO 43016 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-10-19T15:35:58.060+02:00  INFO 43016 --- [registration-backend] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@73fe7483
+2026-10-19T15:35:58.061+02:00  INFO 43016 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-10-19T15:35:58.079+02:00  INFO 43016 --- [registration-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:54936/test?loggerLevel=OFF (PostgreSQL 16.15)
+2026-10-19T15:35:58.140+02:00  INFO 43016 --- [registration-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2026-10-19T15:35:58.143+02:00  INFO 43016 --- [registration-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.017s)
+2026-10-19T15:35:58.160+02:00  INFO 43016 --- [registration-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2026-10-19T15:35:58.209+02:00  INFO 43016 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-10-19T15:35:58.221+02:00  INFO 43016 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "1 - create registration tables"
+2026-10-19T15:35:58.267+02:00  INFO 43016 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 1 migration to schema "public", now at version v1 (execution time 00:00.021s)
+2026-10-19T15:35:58.393+02:00  INFO 43016 --- [registration-backend] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-10-19T15:35:58.462+02:00  INFO 43016 --- [registration-backend] [           main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.5.Final
+2026-10-19T15:35:58.831+02:00  INFO 43016 --- [registration-backend] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-19T15:35:58.903+02:00  INFO 43016 --- [registration-backend] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:54936/test?loggerLevel=OFF]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 16.15
+	Default catalog/schema: test/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-10-19T15:35:59.598+02:00  INFO 43016 --- [registration-backend] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-19T15:35:59.638+02:00  INFO 43016 --- [registration-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-19T15:35:59.889+02:00  WARN 43016 --- [registration-backend] [           main] .s.a.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 6bde1d22-1e11-4e00-948b-198a7a661d10
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-10-19T15:35:59.902+02:00  INFO 43016 --- [registration-backend] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-10-19T15:36:01.097+02:00  INFO 43016 --- [registration-backend] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-10-19T15:36:01.172+02:00  INFO 43016 --- [registration-backend] [           main] .i.p.JpaRegistrationStoreIntegrationTest : Started JpaRegistrationStoreIntegrationTest in 5.266 seconds (process running for 10.607)
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (C:\Users\sense\.m2\repository\net\bytebuddy\byte-buddy-agent\1.18.11\byte-buddy-agent-1.18.11.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+[ERROR] Tests run: 3, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 10.58 s <<< FAILURE! -- in si.konferenca.registration.infrastructure.persistence.JpaRegistrationStoreIntegrationTest
+[ERROR] si.konferenca.registration.infrastructure.persistence.JpaRegistrationStoreIntegrationTest.AC_008_01_storedRegistrationsAreReadBackWithConfiguredOptionNames -- Time elapsed: 0.188 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.infrastructure.persistence.JpaRegistrationStore.findAll(JpaRegistrationStore.java:27)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:715)
+	at si.konferenca.registration.infrastructure.persistence.JpaRegistrationStore$$SpringCGLIB$$0.findAll(<generated>)
+	at si.konferenca.registration.infrastructure.persistence.JpaRegistrationStoreIntegrationTest.AC_008_01_storedRegistrationsAreReadBackWithConfiguredOptionNames(JpaRegistrationStoreIntegrationTest.java:140)
+
+[INFO] Running si.konferenca.registration.web.ExportControllerTest
+2026-10-19T15:36:02.022+02:00  INFO 43016 --- [registration-backend] [           main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2026-10-19T15:36:02.022+02:00  INFO 43016 --- [registration-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-19T15:36:02.023+02:00  INFO 43016 --- [registration-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-19T15:36:02.049+02:00  WARN 43016 --- [registration-backend] [           main] o.s.web.servlet.PageNotFound             : No mapping for GET /api/registrations/export
+2026-10-19T15:36:02.052+02:00  WARN 43016 --- [registration-backend] [           main] o.s.web.servlet.PageNotFound             : No endpoint GET /api/registrations/export.
+[ERROR] Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.049 s <<< FAILURE! -- in si.konferenca.registration.web.ExportControllerTest
+[ERROR] si.konferenca.registration.web.ExportControllerTest.AC_008_01_exportIsAnXlsxAttachment -- Time elapsed: 0.031 s <<< FAILURE!
+java.lang.AssertionError: Status expected:<200> but was:<404>
+	at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:62)
+	at org.springframework.test.util.AssertionErrors.assertEquals(AssertionErrors.java:129)
+	at org.springframework.test.web.servlet.result.StatusResultMatchers.lambda$matcher$0(StatusResultMatchers.java:600)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:212)
+	at si.konferenca.registration.web.ExportControllerTest.AC_008_01_exportIsAnXlsxAttachment(ExportControllerTest.java:25)
+
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Failures: 
+[ERROR]   ExportControllerTest.AC_008_01_exportIsAnXlsxAttachment:25 Status expected:<200> but was:<404>
+[ERROR] Errors: 
+[ERROR]   ExportRegistrationsTest.AC_008_01_exportWritesRegistrationsOrderedByRegistrationTime:45 » UnsupportedOperation not implemented
+[ERROR]   ExcelWorkbookWriterTest.AC_008_01_emptyExportHasOnlyTheHeader:148 » UnsupportedOperation not implemented
+[ERROR]   ExcelWorkbookWriterTest.AC_008_01_formulaLikeTextStaysPlainText:140 » UnsupportedOperation not implemented
+[ERROR]   ExcelWorkbookWriterTest.AC_008_01_workbookHasHeaderAndOneStringRowPerRegistration:87 » UnsupportedOperation not implemented
+[ERROR]   JpaRegistrationStoreIntegrationTest.AC_008_01_storedRegistrationsAreReadBackWithConfiguredOptionNames:140 » UnsupportedOperation not implemented
+[INFO] 
+[ERROR] Tests run: 8, Failures: 1, Errors: 5, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  18.396 s
+[INFO] Finished at: 2026-10-19T15:36:02+02:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.5.6:test (default-test) on project registration-backend: There are test failures.
+[ERROR] 
+[ERROR] See E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\backend\target\surefire-reports for the individual test results.
+[ERROR] See dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

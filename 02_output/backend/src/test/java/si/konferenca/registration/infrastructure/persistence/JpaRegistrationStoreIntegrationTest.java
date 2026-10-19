@@ -16,6 +16,7 @@ import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 import si.konferenca.registration.acceptance.support.AcceptanceEnvironment;
 import si.konferenca.registration.acceptance.support.AcceptanceTestBase;
+import si.konferenca.registration.application.RegistrationReader;
 import si.konferenca.registration.application.RegistrationStore;
 import si.konferenca.registration.domain.ConferenceOption;
 import si.konferenca.registration.domain.GivenConsent;
@@ -28,6 +29,7 @@ import si.konferenca.registration.domain.RegistrationType;
 class JpaRegistrationStoreIntegrationTest {
 
   @Autowired RegistrationStore store;
+  @Autowired RegistrationReader reader;
 
   private final JdbcTemplate jdbc = AcceptanceEnvironment.jdbc();
 
@@ -111,5 +113,49 @@ class JpaRegistrationStoreIntegrationTest {
             "study_programme",
             "student_id",
             "registered_at");
+  }
+
+  @Test
+  void AC_008_01_storedRegistrationsAreReadBackWithConfiguredOptionNames() {
+    Instant time = Instant.parse("2026-10-19T12:00:00.123Z");
+    UUID id = UUID.randomUUID();
+    store.save(
+        new Registration(
+            id,
+            RegistrationType.STUDENT,
+            time,
+            "Luka",
+            "Kranjc",
+            "luka@example.com",
+            null,
+            "Univerza",
+            "Računalništvo",
+            "6321",
+            List.of(
+                new ConferenceOption("meal-lunch", "x", OptionCategory.MEAL, true, null),
+                new ConferenceOption("ws-ai", "x", OptionCategory.WORKSHOP, true, null),
+                new ConferenceOption("gone", "x", OptionCategory.OTHER, true, null)),
+            List.of(new GivenConsent("privacy", time))));
+
+    List<Registration> all = reader.findAll();
+
+    assertThat(all).hasSize(1);
+    Registration read = all.get(0);
+    assertThat(read.id()).isEqualTo(id);
+    assertThat(read.type()).isEqualTo(RegistrationType.STUDENT);
+    assertThat(read.registeredAt()).isEqualTo(time);
+    assertThat(read.firstName()).isEqualTo("Luka");
+    assertThat(read.lastName()).isEqualTo("Kranjc");
+    assertThat(read.email()).isEqualTo("luka@example.com");
+    assertThat(read.organization()).isNull();
+    assertThat(read.studyInstitution()).isEqualTo("Univerza");
+    assertThat(read.studyProgramme()).isEqualTo("Računalništvo");
+    assertThat(read.studentId()).isEqualTo("6321");
+    assertThat(read.options())
+        .extracting(ConferenceOption::id)
+        .containsExactly("ws-ai", "meal-lunch", "gone");
+    assertThat(read.options().get(0).name()).isEqualTo("Workshop: AI in practice");
+    assertThat(read.options().get(2).name()).isEqualTo("gone");
+    assertThat(read.consents()).containsExactly(new GivenConsent("privacy", time));
   }
 }
