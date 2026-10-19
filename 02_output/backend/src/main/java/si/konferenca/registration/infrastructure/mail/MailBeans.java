@@ -1,5 +1,7 @@
 package si.konferenca.registration.infrastructure.mail;
 
+import java.util.Arrays;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,10 +33,28 @@ public class MailBeans {
   }
 
   @Bean
+  OrganizerMailComposer organizerMailComposer(
+      JavaMailSender sender,
+      @Value("${app.mail.from}") String from,
+      @Value("${app.organizer.emails}") String organizerEmails,
+      ConferenceConfiguration configuration) {
+    List<String> organizers =
+        Arrays.stream(organizerEmails.split(","))
+            .map(String::strip)
+            .filter(address -> !address.isEmpty())
+            .toList();
+    if (organizers.isEmpty()) {
+      throw new IllegalStateException("ORGANIZER_EMAILS is empty");
+    }
+    return new OrganizerMailComposer(sender, from, configuration.conferenceName(), organizers);
+  }
+
+  @Bean
   RegistrationNotifier registrationNotifier(
       JavaMailSender sender,
       ParticipantMailComposer participantMail,
+      OrganizerMailComposer organizerMail,
       ThreadPoolTaskExecutor mailExecutor) {
-    return new MailRegistrationNotifier(sender, participantMail, null, mailExecutor);
+    return new MailRegistrationNotifier(sender, participantMail, organizerMail, mailExecutor);
   }
 }
