@@ -1,0 +1,230 @@
+
+ RUN  v4.1.11 E:/13 - Lab Projects/01_Runs/_____TDD_____TESTING_____/01_kyuhi_single-agent_tdd_v001/02_output/frontend
+
+ ❯ src/RegistrationForm.student.test.tsx (3 tests | 2 failed) 211ms
+     × AC-002-07 students get exactly the student fields 125ms
+     × AC-002-07 switching the type drops options the new type cannot select 53ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/RegistrationForm.student.test.tsx > RegistrationForm student > AC-002-07 students get exactly the student fields
+TestingLibraryElementError: Unable to find an accessible element with the role "textbox"
+
+Here are the accessible roles:
+
+  group:
+
+  Name "Registration type":
+  [36m<fieldset />[39m
+
+  Name "Workshops":
+  [36m<fieldset />[39m
+
+  Name "Events":
+  [36m<fieldset />[39m
+
+  Name "Meals":
+  [36m<fieldset />[39m
+
+  Name "Other activities":
+  [36m<fieldset />[39m
+
+  --------------------------------------------------
+  radio:
+
+  Name "External participant":
+  [36m<input[39m
+    [33mname[39m=[32m"type"[39m
+    [33mtype[39m=[32m"radio"[39m
+  [36m/>[39m
+
+  Name "Student":
+  [36m<input[39m
+    [33mname[39m=[32m"type"[39m
+    [33mtype[39m=[32m"radio"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  checkbox:
+
+  Name "Workshop A":
+  [36m<input[39m
+    [33mtype[39m=[32m"checkbox"[39m
+  [36m/>[39m
+
+  Name "Student party":
+  [36m<input[39m
+    [33mtype[39m=[32m"checkbox"[39m
+  [36m/>[39m
+
+  Name "Lunch":
+  [36m<input[39m
+    [33mtype[39m=[32m"checkbox"[39m
+  [36m/>[39m
+
+  Name "Mentoring":
+  [36m<input[39m
+    [33mtype[39m=[32m"checkbox"[39m
+  [36m/>[39m
+
+  Name "I agree to the processing.":
+  [36m<input[39m
+    [33mtype[39m=[32m"checkbox"[39m
+  [36m/>[39m
+
+  Name "Photos are fine.":
+  [36m<input[39m
+    [33mtype[39m=[32m"checkbox"[39m
+  [36m/>[39m
+
+  Name "I am not a robot (test mode)":
+  [36m<input[39m
+    [33mtype[39m=[32m"checkbox"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  button:
+
+  Name "Register":
+  [36m<button[39m
+    [33mtype[39m=[32m"submit"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<form[39m
+      [33mnovalidate[39m=[32m""[39m
+    [36m>[39m
+      [36m<fieldset>[39m
+        [36m<legend>[39m
+          [0mRegistration type[0m
+        [36m</legend>[39m
+        [36m<label>[39m
+          [36m<input[39m
+            [33mname[39m=[32m"type"[39m
+            [33mtype[39m=[32m"radio"[39m
+          [36m/>[39m
+          [0mExternal participant[0m
+        [36m</label>[39m
+        [36m<label>[39m
+          [36m<input[39m
+            [33mname[39m=[32m"type"[39m
+            [33mtype[39m=[32m"radio"[39m
+          [36m/>[39m
+          [0mStudent[0m
+        [36m</label>[39m
+      [36m</fieldset>[39m
+      [36m<fieldset>[39m
+        [36m<legend>[39m
+          [0mWorkshops[0m
+        [36m</legend>[39m
+        [36m<label>[39m
+          [36m<input[39m
+            [33mtype[39m=[32m"checkbox"[39m
+          [36m/>[39m
+          [0mWorkshop A[0m
+        [36m</label>[39m
+      [36m</fieldset>[39m
+      [36m<fieldset>[39m
+        [36m<legend>[39m
+          [0mEvents[0m
+        [36m</legend>[39m
+        [36m<label>[39m
+          [36m<input[39m
+            [33mtype[39m=[32m"checkbox"[39m
+          [36m/>[39m
+          [0mStudent party[0m
+        [36m</label>[39m
+      [36m</fieldset>[39m
+      [36m<fieldset>[39m
+        [36m<legend>[39m
+          [0mMeals[0m
+        [36m</legend>[39m
+        [36m<label>[39m
+          [36m<input[39m
+            [33mtype[39m=[32m"checkbox"[39m
+          [36m/>[39m
+          [0mLunch[0m
+        [36m</label>[39m
+      [36m</fieldset>[39m
+      [36m<fieldset>[39m
+        [36m<legend>[39m
+          [0mOther activities[0m
+        [36m</legend>[39m
+        [36m<label>[39m
+          [36m<input[39m
+            [33mtype[39m=[32m"checkbox"[39m
+          [36m/>[39m
+          [0mMentoring[0m
+        [36m</label>[39m
+      [36m</fieldset>[39m
+      [36m<div>[39m
+        [36m<label>[39m
+          [36m<input[39m
+            [33mtype[39m=[32m"checkbox"[39m
+          [36m/>[39m
+          [0mI agree to the processing.[0m
+        [36m</label>[39m
+      [36m</div>[39m
+      [36m<div>[39m
+        [36m<label>[39m
+          [36m<input[39m
+            [33mtype[39m=[32m"checkbox"[39m
+          [36m/>[39m
+          [0mPhotos are fine.[0m
+        [36m</label>[39m
+      [36m</div>[39m
+      [36m<label>[39m
+        [36m<input[39m
+          [33mtype[39m=[32m"checkbox"[39m
+        [36m/>[39m
+        [0mI am not a robot (test mode)[0m
+      [36m</label>[39m
+      [36m<button[39m
+        [33mtype[39m=[32m"submit"[39m
+      [36m>[39m
+        [0mRegister[0m
+      [36m</button>[39m
+    [36m</form>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:109:15
+ ❯ src/RegistrationForm.student.test.tsx:15:19
+     13|     chooseStudent();
+     14|
+     15|     expect(screen.getAllByRole("textbox").map((t) => t.getAttribute("n…
+       |                   ^
+     16|       "firstName",
+     17|       "lastName",
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  src/RegistrationForm.student.test.tsx > RegistrationForm student > AC-002-07 switching the type drops options the new type cannot select
+Error: [2mexpect([22m[31melement[39m[2m).not.toBeChecked()[22m
+
+Received element is checked:
+  [31m<input
+  checked=""
+  type="checkbox"
+/>[39m
+ ❯ src/RegistrationForm.student.test.tsx:55:64
+     53|
+     54|     expect(screen.getByRole("checkbox", { name: "Workshop A" })).toBeC…
+     55|     expect(screen.getByRole("checkbox", { name: "Tour" })).not.toBeChe…
+       |                                                                ^
+     56|   });
+     57| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 1 passed (3)
+   Start at  15:50:25
+   Duration  1.15s (transform 72ms, setup 112ms, import 141ms, tests 211ms, environment 505ms)
+
