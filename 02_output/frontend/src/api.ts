@@ -25,6 +25,23 @@ export type SubmitResult =
   | { kind: "failed" };
 
 /** POST /api/registrations; never throws, every failure is a result. */
-export async function submitRegistration(_body: Record<string, unknown>): Promise<SubmitResult> {
-  throw new Error("not implemented");
+export async function submitRegistration(body: Record<string, unknown>): Promise<SubmitResult> {
+  try {
+    const response = await fetch("/api/registrations", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify(body),
+    });
+    const answer = await response.json();
+    if (response.status === 201) {
+      return { kind: "accepted", registration: answer as AcceptedRegistration };
+    }
+    const fieldErrors = (answer as { fieldErrors?: FieldError[] }).fieldErrors;
+    if (response.status === 400 && Array.isArray(fieldErrors) && fieldErrors.length > 0) {
+      return { kind: "rejected", fieldErrors };
+    }
+    return { kind: "failed" };
+  } catch {
+    return { kind: "failed" };
+  }
 }
