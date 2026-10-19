@@ -1,0 +1,379 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< si.konferenca:registration-backend >-----------------
+[INFO] Building registration-backend 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- spotless:2.44.3:apply (default-cli) @ registration-backend ---
+[INFO] clean file: E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\backend\src\test\java\si\konferenca\registration\acceptance\StorageAcceptanceTest.java
+[INFO] Spotless.Java is keeping 11 files clean - 1 were changed to be clean, 0 were already clean, 10 were skipped because caching determined they were already clean
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ registration-backend ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 0 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ registration-backend ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ registration-backend ---
+[INFO] Copying 5 resources from src\test\resources to target\test-classes
+[INFO] 
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ registration-backend ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 10 source files with javac [debug parameters release 21] to target\test-classes
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ registration-backend ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running si.konferenca.registration.acceptance.StorageAcceptanceTest
+14:48:11.269 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.konferenca.registration.acceptance.StorageAcceptanceTest]: StorageAcceptanceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+14:48:11.374 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration si.konferenca.registration.RegistrationApplication for test class si.konferenca.registration.acceptance.StorageAcceptanceTest
+14:48:11.447 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.konferenca.registration.acceptance.StorageAcceptanceTest]: StorageAcceptanceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+14:48:11.447 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.konferenca.registration.acceptance.support.AcceptanceTestBase]: AcceptanceTestBase does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+14:48:11.450 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration si.konferenca.registration.RegistrationApplication for test class si.konferenca.registration.acceptance.StorageAcceptanceTest
+14:48:11.631 [main] INFO org.testcontainers.images.PullPolicy -- Image pull policy will be performed by: DefaultPullPolicy()
+14:48:11.633 [main] INFO org.testcontainers.utility.ImageNameSubstitutor -- Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+14:48:11.678 [main] INFO org.testcontainers.DockerClientFactory -- Testcontainers version: 2.0.5
+14:48:11.889 [main] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+14:48:12.292 [main] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+14:48:12.293 [main] INFO org.testcontainers.DockerClientFactory -- Docker host IP address is localhost
+14:48:12.312 [main] INFO org.testcontainers.DockerClientFactory -- Connected to docker: 
+  Server Version: 29.8.1
+  API Version: 1.56
+  Operating System: Docker Desktop
+  Total Memory: 40065 MB
+  Labels: 
+    com.docker.desktop.address=npipe://\\.\pipe\docker_cli
+14:48:12.415 [main] INFO tc.testcontainers/ryuk:0.14.0 -- Creating container for image: testcontainers/ryuk:0.14.0
+14:48:12.684 [main] INFO tc.testcontainers/ryuk:0.14.0 -- Container testcontainers/ryuk:0.14.0 is starting: 37f02622b19ee590b36236f1f2efa30b3c1fd2ae3ea1211b5deb43f0f7532320
+14:48:13.031 [main] INFO tc.testcontainers/ryuk:0.14.0 -- Container testcontainers/ryuk:0.14.0 started in PT0.6160678S
+14:48:13.037 [main] INFO org.testcontainers.utility.RyukResourceReaper -- Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+14:48:13.038 [main] INFO org.testcontainers.DockerClientFactory -- Checking the system...
+14:48:13.038 [main] INFO org.testcontainers.DockerClientFactory -- ?? Docker server version should be at least 1.6.0
+14:48:13.039 [main] INFO tc.postgres:16.15-alpine -- Creating container for image: postgres:16.15-alpine
+14:48:13.160 [main] INFO tc.postgres:16.15-alpine -- Container postgres:16.15-alpine is starting: f028e3ef27c5f0bebc62caf3177aff1ce68dcaf1cd1a5f762d8a17f384892070
+14:48:15.218 [main] INFO tc.postgres:16.15-alpine -- Container postgres:16.15-alpine started in PT2.1789905S
+14:48:15.219 [main] INFO tc.postgres:16.15-alpine -- Container is started (JDBC URL: jdbc:postgresql://localhost:60585/test?loggerLevel=OFF)
+14:48:15.219 [main] INFO tc.axllent/mailpit:v1.31.1 -- Creating container for image: axllent/mailpit:v1.31.1
+14:48:15.338 [main] INFO tc.axllent/mailpit:v1.31.1 -- Container axllent/mailpit:v1.31.1 is starting: 8faa1a2108ae68201a0d446f026581ee909403401e5ce80fd78b8fc4f88cdc7a
+14:48:15.607 [main] INFO org.testcontainers.containers.wait.strategy.HttpWaitStrategy -- /lucid_jones: Waiting for 60 seconds for URL: http://localhost:60586/api/v1/info (where port 60586 maps to container port 8025)
+14:48:15.796 [main] INFO tc.axllent/mailpit:v1.31.1 -- Container axllent/mailpit:v1.31.1 started in PT0.5766088S
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-10-19T14:48:16.176+02:00  INFO 25812 --- [registration-backend] [           main] s.k.r.acceptance.StorageAcceptanceTest   : Starting StorageAcceptanceTest using Java 21.0.10 with PID 25812 (started by sense in E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\backend)
+2026-10-19T14:48:16.178+02:00  INFO 25812 --- [registration-backend] [           main] s.k.r.acceptance.StorageAcceptanceTest   : No active profile set, falling back to 1 default profile: "default"
+2026-10-19T14:48:17.130+02:00  INFO 25812 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-19T14:48:17.170+02:00  INFO 25812 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 29 ms. Found 0 JPA repository interfaces.
+2026-10-19T14:48:18.381+02:00  INFO 25812 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-10-19T14:48:18.549+02:00  INFO 25812 --- [registration-backend] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@5e83298e
+2026-10-19T14:48:18.550+02:00  INFO 25812 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-10-19T14:48:18.570+02:00  INFO 25812 --- [registration-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:60585/test?loggerLevel=OFF (PostgreSQL 16.15)
+2026-10-19T14:48:18.620+02:00  INFO 25812 --- [registration-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2026-10-19T14:48:18.622+02:00  INFO 25812 --- [registration-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 0 migrations (execution time 00:00.009s)
+2026-10-19T14:48:18.622+02:00  WARN 25812 --- [registration-backend] [           main] o.f.core.internal.command.DbValidate     : No migrations found. Are your locations set up correctly?
+2026-10-19T14:48:18.638+02:00  INFO 25812 --- [registration-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2026-10-19T14:48:18.715+02:00  INFO 25812 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-10-19T14:48:18.727+02:00  INFO 25812 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-10-19T14:48:18.913+02:00  INFO 25812 --- [registration-backend] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-10-19T14:48:18.996+02:00  INFO 25812 --- [registration-backend] [           main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.5.Final
+2026-10-19T14:48:19.433+02:00  INFO 25812 --- [registration-backend] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-19T14:48:19.511+02:00  INFO 25812 --- [registration-backend] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:60585/test?loggerLevel=OFF]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 16.15
+	Default catalog/schema: test/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-10-19T14:48:19.858+02:00  INFO 25812 --- [registration-backend] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-19T14:48:19.865+02:00  INFO 25812 --- [registration-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-19T14:48:19.950+02:00  WARN 25812 --- [registration-backend] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-10-19T14:48:20.704+02:00  WARN 25812 --- [registration-backend] [           main] .s.a.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: bd174361-ad07-4abd-89c7-ce8badb5ee28
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-10-19T14:48:20.742+02:00  INFO 25812 --- [registration-backend] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-10-19T14:48:21.095+02:00  INFO 25812 --- [registration-backend] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-10-19T14:48:21.186+02:00  INFO 25812 --- [registration-backend] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-10-19T14:48:21.186+02:00  INFO 25812 --- [registration-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-19T14:48:21.190+02:00  INFO 25812 --- [registration-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 4 ms
+2026-10-19T14:48:21.410+02:00  INFO 25812 --- [registration-backend] [           main] s.k.r.acceptance.StorageAcceptanceTest   : Started StorageAcceptanceTest in 5.512 seconds (process running for 11.059)
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (C:\Users\sense\.m2\repository\net\bytebuddy\byte-buddy-agent\1.18.11\byte-buddy-agent-1.18.11.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/registrations
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"248"]
+             Body = {"type":"EXTERNAL","firstName":"Ana","lastName":"Novak","email":"ana.novak.b3d3b17b@example.com","organization":"Institut Jozef Stefan","optionIds":["ws-ai","ev-dinner","meal-lunch","oth-tour"],"consentIds":["privacy"],"recaptchaToken":"test-pass"}
+    Session Attrs = {org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository.CSRF_TOKEN=org.springframework.security.web.csrf.DefaultCsrfToken@32317a37}
+
+Handler:
+             Type = null
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 403
+    Error message = Forbidden
+          Headers = [X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY"]
+     Content type = null
+             Body = 
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/registrations
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"248"]
+             Body = {"type":"EXTERNAL","firstName":"Ana","lastName":"Novak","email":"ana.novak.6b476caa@example.com","organization":"Institut Jozef Stefan","optionIds":["ws-ai","ev-dinner","meal-lunch","oth-tour"],"consentIds":["privacy"],"recaptchaToken":"test-pass"}
+    Session Attrs = {org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository.CSRF_TOKEN=org.springframework.security.web.csrf.DefaultCsrfToken@5dd88334}
+
+Handler:
+             Type = null
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 403
+    Error message = Forbidden
+          Headers = [X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY"]
+     Content type = null
+             Body = 
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/registrations
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"248"]
+             Body = {"type":"EXTERNAL","firstName":"Ana","lastName":"Novak","email":"ana.novak.69c29d05@example.com","organization":"Institut Jozef Stefan","optionIds":["ws-ai","ev-dinner","meal-lunch","oth-tour"],"consentIds":["privacy"],"recaptchaToken":"test-pass"}
+    Session Attrs = {org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository.CSRF_TOKEN=org.springframework.security.web.csrf.DefaultCsrfToken@4a04177e}
+
+Handler:
+             Type = null
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 403
+    Error message = Forbidden
+          Headers = [X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY"]
+     Content type = null
+             Body = 
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/registrations
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"332"]
+             Body = {"type":"STUDENT","firstName":"Luka","lastName":"Kranjc","email":"luka.kranjc.da09da76@example.com","studyInstitution":"Univerza v Ljubljani","studyProgramme":"Ra?unalništvo in informatika","studentId":"63210001","optionIds":["ws-ai","ev-dinner","meal-lunch","oth-mentoring"],"consentIds":["privacy"],"recaptchaToken":"test-pass"}
+    Session Attrs = {org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository.CSRF_TOKEN=org.springframework.security.web.csrf.DefaultCsrfToken@596690e5}
+
+Handler:
+             Type = null
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 403
+    Error message = Forbidden
+          Headers = [X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY"]
+     Content type = null
+             Body = 
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /api/registrations
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"297"]
+             Body = {"type":"EXTERNAL","firstName":"Žiga ?edomir","lastName":"Šuštarši?-Žužek","email":"ana.novak.8de6e141@example.com","organization":"Fakulteta za ra?unalništvo, ?ŠŽ ?šž","optionIds":["ws-ai","ev-dinner","meal-lunch","oth-tour"],"consentIds":["privacy"],"recaptchaToken":"test-pass"}
+    Session Attrs = {org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository.CSRF_TOKEN=org.springframework.security.web.csrf.DefaultCsrfToken@39b58f7d}
+
+Handler:
+             Type = null
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 403
+    Error message = Forbidden
+          Headers = [X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY"]
+     Content type = null
+             Body = 
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+[ERROR] Tests run: 5, Failures: 5, Errors: 0, Skipped: 0, Time elapsed: 11.39 s <<< FAILURE! -- in si.konferenca.registration.acceptance.StorageAcceptanceTest
+[ERROR] si.konferenca.registration.acceptance.StorageAcceptanceTest.AC_005_03_unwritableJsonCopyFailsTheRequestAndLeavesNoDatabaseRow -- Time elapsed: 0.660 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: 500
+ but was: 403
+	at si.konferenca.registration.acceptance.StorageAcceptanceTest.AC_005_03_unwritableJsonCopyFailsTheRequestAndLeavesNoDatabaseRow(StorageAcceptanceTest.java:109)
+
+[ERROR] si.konferenca.registration.acceptance.StorageAcceptanceTest.AC_005_02_jsonCopyNamedAfterIdContainsTheAcceptedRegistration -- Time elapsed: 0.079 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: 201
+ but was: 403
+	at si.konferenca.registration.acceptance.StorageAcceptanceTest.AC_005_02_jsonCopyNamedAfterIdContainsTheAcceptedRegistration(StorageAcceptanceTest.java:80)
+
+[ERROR] si.konferenca.registration.acceptance.StorageAcceptanceTest.AC_005_01_databaseHoldsExternalRegistrationWithFieldsOptionsConsentsAndTime -- Time elapsed: 0.079 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: 201
+ but was: 403
+	at si.konferenca.registration.acceptance.StorageAcceptanceTest.AC_005_01_databaseHoldsExternalRegistrationWithFieldsOptionsConsentsAndTime(StorageAcceptanceTest.java:32)
+
+[ERROR] si.konferenca.registration.acceptance.StorageAcceptanceTest.AC_005_01_databaseHoldsStudentRegistrationWithFieldsOptionsConsentsAndTime -- Time elapsed: 0.077 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: 201
+ but was: 403
+	at si.konferenca.registration.acceptance.StorageAcceptanceTest.AC_005_01_databaseHoldsStudentRegistrationWithFieldsOptionsConsentsAndTime(StorageAcceptanceTest.java:57)
+
+[ERROR] si.konferenca.registration.acceptance.StorageAcceptanceTest.AC_005_04_slovenianCharactersAreStoredUnchangedInDatabaseAndJsonCopy -- Time elapsed: 0.076 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: 201
+ but was: 403
+	at si.konferenca.registration.acceptance.StorageAcceptanceTest.AC_005_04_slovenianCharactersAreStoredUnchangedInDatabaseAndJsonCopy(StorageAcceptanceTest.java:125)
+
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Failures: 
+[ERROR]   StorageAcceptanceTest.AC_005_01_databaseHoldsExternalRegistrationWithFieldsOptionsConsentsAndTime:32 
+expected: 201
+ but was: 403
+[ERROR]   StorageAcceptanceTest.AC_005_01_databaseHoldsStudentRegistrationWithFieldsOptionsConsentsAndTime:57 
+expected: 201
+ but was: 403
+[ERROR]   StorageAcceptanceTest.AC_005_02_jsonCopyNamedAfterIdContainsTheAcceptedRegistration:80 
+expected: 201
+ but was: 403
+[ERROR]   StorageAcceptanceTest.AC_005_03_unwritableJsonCopyFailsTheRequestAndLeavesNoDatabaseRow:109 
+expected: 500
+ but was: 403
+[ERROR]   StorageAcceptanceTest.AC_005_04_slovenianCharactersAreStoredUnchangedInDatabaseAndJsonCopy:125 
+expected: 201
+ but was: 403
+[INFO] 
+[ERROR] Tests run: 5, Failures: 5, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  18.299 s
+[INFO] Finished at: 2026-10-19T14:48:23+02:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.5.6:test (default-test) on project registration-backend: There are test failures.
+[ERROR] 
+[ERROR] See E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\backend\target\surefire-reports for the individual test results.
+[ERROR] See dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
