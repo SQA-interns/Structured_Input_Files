@@ -1,0 +1,1740 @@
+
+ RUN  v4.1.11 E:/13 - Lab Projects/01_Runs/_____TDD_____TESTING_____/01_kyuhi_single-agent_tdd_v001/02_output/frontend
+
+ ❯ src/Confirmation.test.tsx (3 tests | 3 failed) 22ms
+     × AC-004-01 names the participant and lists the selected options 16ms
+     × AC-004-01 says so when no option was selected 2ms
+     × AC-004-01 shows markup in names as text 1ms
+Error: Not implemented: HTMLFormElement.prototype.requestSubmit
+    at module.exports (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\browser\not-implemented.js:9:17)
+    at HTMLFormElementImpl.requestSubmit (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\living\nodes\HTMLFormElement-impl.js:130:5)
+    at HTMLFormElementImpl._doRequestSubmit (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\living\nodes\HTMLFormElement-impl.js:100:10)
+    at HTMLButtonElementImpl._activationBehavior (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\living\nodes\HTMLButtonElement-impl.js:23:14)
+    at HTMLButtonElementImpl._dispatch (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:252:26)
+    at HTMLButtonElementImpl.dispatchEvent (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:104:17)
+    at HTMLButtonElement.dispatchEvent (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\living\generated\EventTarget.js:241:34)
+    at E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\@testing-library\dom\dist\events.js:19:20
+    at E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\@testing-library\react\dist\pure.js:113:18
+    at E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\@testing-library\react\dist\act-compat.js:47:24 undefined
+Error: Not implemented: HTMLFormElement.prototype.requestSubmit
+    at module.exports (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\browser\not-implemented.js:9:17)
+    at HTMLFormElementImpl.requestSubmit (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\living\nodes\HTMLFormElement-impl.js:130:5)
+    at HTMLFormElementImpl._doRequestSubmit (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\living\nodes\HTMLFormElement-impl.js:100:10)
+    at HTMLButtonElementImpl._activationBehavior (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\living\nodes\HTMLButtonElement-impl.js:23:14)
+    at HTMLButtonElementImpl._dispatch (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:252:26)
+    at HTMLButtonElementImpl.dispatchEvent (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:104:17)
+    at HTMLButtonElement.dispatchEvent (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\living\generated\EventTarget.js:241:34)
+    at E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\@testing-library\dom\dist\events.js:19:20
+    at E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\@testing-library\react\dist\pure.js:113:18
+    at E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\@testing-library\react\dist\act-compat.js:47:24 undefined
+ ❯ src/RecaptchaWidget.test.tsx (2 tests | 2 failed) 1197ms
+     × SR-01 renders the Google widget with the configured site key and sends its token 1147ms
+     × SR-01 loads the reCAPTCHA script once when it is not present 47ms
+ ❯ src/App.test.tsx (3 tests | 1 failed) 1210ms
+     × AC-004-01 replaces the form with the confirmation once accepted 1100ms
+Error: Not implemented: HTMLFormElement.prototype.requestSubmit
+    at module.exports (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\browser\not-implemented.js:9:17)
+    at HTMLFormElementImpl.requestSubmit (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\living\nodes\HTMLFormElement-impl.js:130:5)
+    at HTMLFormElementImpl._doRequestSubmit (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\living\nodes\HTMLFormElement-impl.js:100:10)
+    at HTMLButtonElementImpl._activationBehavior (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\living\nodes\HTMLButtonElement-impl.js:23:14)
+    at HTMLButtonElementImpl._dispatch (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:252:26)
+    at HTMLButtonElementImpl.dispatchEvent (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:104:17)
+    at HTMLButtonElement.dispatchEvent (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\living\generated\EventTarget.js:241:34)
+    at E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\@testing-library\dom\dist\events.js:19:20
+    at E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\@testing-library\react\dist\pure.js:113:18
+    at E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\@testing-library\react\dist\act-compat.js:47:24 undefined
+Error: Not implemented: HTMLFormElement.prototype.requestSubmit
+    at module.exports (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\browser\not-implemented.js:9:17)
+    at HTMLFormElementImpl.requestSubmit (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\living\nodes\HTMLFormElement-impl.js:130:5)
+    at HTMLFormElementImpl._doRequestSubmit (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\living\nodes\HTMLFormElement-impl.js:100:10)
+    at HTMLButtonElementImpl._activationBehavior (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\living\nodes\HTMLButtonElement-impl.js:23:14)
+    at HTMLButtonElementImpl._dispatch (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:252:26)
+    at HTMLButtonElementImpl.dispatchEvent (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:104:17)
+    at HTMLButtonElement.dispatchEvent (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\living\generated\EventTarget.js:241:34)
+    at E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\@testing-library\dom\dist\events.js:19:20
+    at E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\@testing-library\react\dist\pure.js:113:18
+    at E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\@testing-library\react\dist\act-compat.js:47:24 undefined
+Error: Not implemented: HTMLFormElement.prototype.requestSubmit
+    at module.exports (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\browser\not-implemented.js:9:17)
+    at HTMLFormElementImpl.requestSubmit (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\living\nodes\HTMLFormElement-impl.js:130:5)
+    at HTMLFormElementImpl._doRequestSubmit (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\living\nodes\HTMLFormElement-impl.js:100:10)
+    at HTMLButtonElementImpl._activationBehavior (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\living\nodes\HTMLButtonElement-impl.js:23:14)
+    at HTMLButtonElementImpl._dispatch (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:252:26)
+    at HTMLButtonElementImpl.dispatchEvent (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:104:17)
+    at HTMLButtonElement.dispatchEvent (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\living\generated\EventTarget.js:241:34)
+    at E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\@testing-library\dom\dist\events.js:19:20
+    at E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\@testing-library\react\dist\pure.js:113:18
+    at E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\@testing-library\react\dist\act-compat.js:47:24 undefined
+Error: Not implemented: HTMLFormElement.prototype.requestSubmit
+    at module.exports (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\browser\not-implemented.js:9:17)
+    at HTMLFormElementImpl.requestSubmit (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\living\nodes\HTMLFormElement-impl.js:130:5)
+    at HTMLFormElementImpl._doRequestSubmit (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\living\nodes\HTMLFormElement-impl.js:100:10)
+    at HTMLButtonElementImpl._activationBehavior (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\living\nodes\HTMLButtonElement-impl.js:23:14)
+    at HTMLButtonElementImpl._dispatch (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:252:26)
+    at HTMLButtonElementImpl.dispatchEvent (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:104:17)
+    at HTMLButtonElement.dispatchEvent (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\living\generated\EventTarget.js:241:34)
+    at E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\@testing-library\dom\dist\events.js:19:20
+    at E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\@testing-library\react\dist\pure.js:113:18
+    at E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\@testing-library\react\dist\act-compat.js:47:24 undefined
+Error: Not implemented: HTMLFormElement.prototype.requestSubmit
+    at module.exports (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\browser\not-implemented.js:9:17)
+    at HTMLFormElementImpl.requestSubmit (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\living\nodes\HTMLFormElement-impl.js:130:5)
+    at HTMLFormElementImpl._doRequestSubmit (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\living\nodes\HTMLFormElement-impl.js:100:10)
+    at HTMLButtonElementImpl._activationBehavior (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\living\nodes\HTMLButtonElement-impl.js:23:14)
+    at HTMLButtonElementImpl._dispatch (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:252:26)
+    at HTMLButtonElementImpl.dispatchEvent (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:104:17)
+    at HTMLButtonElement.dispatchEvent (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\living\generated\EventTarget.js:241:34)
+    at E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\@testing-library\dom\dist\events.js:19:20
+    at E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\@testing-library\react\dist\pure.js:113:18
+    at E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\@testing-library\react\dist\act-compat.js:47:24 undefined
+Error: Not implemented: HTMLFormElement.prototype.requestSubmit
+    at module.exports (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\browser\not-implemented.js:9:17)
+    at HTMLFormElementImpl.requestSubmit (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\living\nodes\HTMLFormElement-impl.js:130:5)
+    at HTMLFormElementImpl._doRequestSubmit (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\living\nodes\HTMLFormElement-impl.js:100:10)
+    at HTMLButtonElementImpl._activationBehavior (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\living\nodes\HTMLButtonElement-impl.js:23:14)
+    at HTMLButtonElementImpl._dispatch (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:252:26)
+    at HTMLButtonElementImpl.dispatchEvent (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:104:17)
+    at HTMLButtonElement.dispatchEvent (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\living\generated\EventTarget.js:241:34)
+    at E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\@testing-library\dom\dist\events.js:19:20
+    at E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\@testing-library\react\dist\pure.js:113:18
+    at E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\@testing-library\react\dist\act-compat.js:47:24 undefined
+Error: Not implemented: HTMLFormElement.prototype.requestSubmit
+    at module.exports (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\browser\not-implemented.js:9:17)
+    at HTMLFormElementImpl.requestSubmit (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\living\nodes\HTMLFormElement-impl.js:130:5)
+    at HTMLFormElementImpl._doRequestSubmit (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\living\nodes\HTMLFormElement-impl.js:100:10)
+    at HTMLButtonElementImpl._activationBehavior (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\living\nodes\HTMLButtonElement-impl.js:23:14)
+    at HTMLButtonElementImpl._dispatch (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:252:26)
+    at HTMLButtonElementImpl.dispatchEvent (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:104:17)
+    at HTMLButtonElement.dispatchEvent (E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\jsdom\lib\jsdom\living\generated\EventTarget.js:241:34)
+    at E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\@testing-library\dom\dist\events.js:19:20
+    at E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\@testing-library\react\dist\pure.js:113:18
+    at E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\frontend\node_modules\@testing-library\react\dist\act-compat.js:47:24 undefined
+ ❯ src/RegistrationForm.submit.test.tsx (7 tests | 7 failed) 5629ms
+     × AC-004-01 a valid form sends the type's fields and reports the accepted registration 1165ms
+     × AC-004-01 a second click while sending sends nothing more 1070ms
+     × AC-004-03 errors are shown next to the fields and nothing is sent 94ms
+     × AC-004-03 fixed errors disappear on the next submit 75ms
+     × AC-004-02 backend field errors are shown next to their fields and values remain 1070ms
+     × AC-004-04 an error for an unknown field shows the general message 1069ms
+     × AC-004-04 a failed request shows the general message and keeps the form 1082ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 13 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/App.test.tsx > App confirmation > AC-004-01 replaces the form with the confirmation once accepted
+TestingLibraryElementError: Unable to find role="status"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mKonferenca[0m
+      [36m</h1>[39m
+      [36m<form[39m
+        [33mnovalidate[39m=[32m""[39m
+      [36m>[39m
+        [36m<fieldset>[39m
+          [36m<legend>[39m
+            [0mRegistration type[0m
+          [36m</legend>[39m
+          [36m<label>[39m
+            [36m<input[39m
+              [33mname[39m=[32m"type"[39m
+              [33mtype[39m=[32m"radio"[39m
+            [36m/>[39m
+            [0mExternal participant[0m
+          [36m</label>[39m
+          [36m<label>[39m
+            [36m<input[39m
+              [33mname[39m=[32m"type"[39m
+              [33mtype[39m=[32m"radio"[39m
+            [36m/>[39m
+            [0mStudent[0m
+          [36m</label>[39m
+        [36m</fieldset>[39m
+        [36m<div>[39m
+          [36m<label[39m
+            [33mfor[39m=[32m"firstName"[39m
+          [36m>[39m
+            [0mFirst name[0m
+          [36m</label>[39m
+          [36m<input[39m
+            [33mid[39m=[32m"firstName"[39m
+            [33mname[39m=[32m"firstName"[39m
+            [33mtype[39m=[32m"text"[39m
+            [33mvalue[39m=[32m"Ana"[39m
+          [36m/>[39m
+        [36m</div>[39m
+        [36m<div>[39m
+          [36m<label[39m
+            [33mfor[39m=[32m"lastName"[39m
+          [36m>[39m
+            [0mLast name[0m
+          [36m</label>[39m
+          [36m<input[39m
+            [33mid[39m=[32m"lastName"[39m
+            [33mname[39m=[32m"lastName"[39m
+            [33mtype[39m=[32m"text"[39m
+            [33mvalue[39m=[32m"Novak"[39m
+          [36m/>[39m
+        [36m</div>[39m
+        [36m<div>[39m
+          [36m<label[39m
+            [33mfor[39m=[32m"email"[39m
+          [36m>[39m
+            [0mEmail[0m
+          [36m</label>[39m
+          [36m<input[39m
+            [33mid[39m=[32m"email"[39m
+            [33mname[39m=[32m"email"[39m
+            [33mtype[39m=[32m"email"[39m
+            [33mvalue[39m=[32m"ana@example.com"[39m
+          [36m/>[39m
+        [36m</div>[39m
+        [36m<div>[39m
+          [36m<label[39m
+            [33mfor[39m=[32m"organization"[39m
+          [36m>[39m
+            [0mOrganization / institution[0m
+          [36m</label>[39m
+          [36m<input[39m
+            [33mid[39m=[32m"organization"[39m
+            [33mname[39m=[32m"organization"[39m
+            [33mtype[39m=[32m"text"[39m
+            [33mvalue[39m=[32m"IJS"[39m
+          [36m/>[39m
+        [36m</div>[39m
+        [36m<fieldset>[39m
+          [36m<legend>[39m
+            [0mWorkshops[0m
+          [36m</legend>[39m
+          [36m<label>[39m
+            [36m<input[39m
+              [33mtype[39m=[32m"checkbox"[39m
+            [36m/>[39m
+            [0mWorkshop A[0m
+          [36m</label>[39m
+        [36m</fieldset>[39m
+        [36m<fieldset>[39m
+          [36m<legend>[39m
+            [0mMeals[0m
+          [36m</legend>[39m
+          [36m<label>[39m
+            [36m<input[39m
+              [33mtype[39m=[32m"checkbox"[39m
+            [36m/>[39m
+            [0mLunch[0m
+          [36m</label>[39m
+        [36m</fieldset>[39m
+        [36m<fieldset>[39m
+          [36m<legend>[39m
+            [0mOther activities[0m
+          [36m</legend>[39m
+          [36m<label>[39m
+            [36m<input[39m
+              [33mtype[39m=[32m"checkbox"[39m
+            [36m/>[39m
+            [0mTour[0m
+          [36m</label>[39m
+        [36m</fieldset>[39m
+        [36m<div>[39m
+          [36m<label>[39m
+            [36m<input[39m
+              [33mtype[39m=[32m"checkbox"[39m
+            [36m/>[39m
+            [0mI agree to the processing.[0m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<div>[39m
+          [36m<label>[39m
+            [36m<input[39m
+              [33mtype[39m=[32m"checkbox"[39m
+            [36m/>[39m
+            [0mPhotos are fine.[0m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<label>[39m
+          [36m<input[39m
+            [33mtype[39m=[32m"checkbox"[39m
+          [36m/>[39m
+          [0mI am not a robot (test mode)[0m
+        [36m</label>[39m
+        [36m<button[39m
+          [33mtype[39m=[32m"submit"[39m
+        [36m>[39m
+          [0mRegister[0m
+        [36m</button>[39m
+      [36m</form>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main>[39m
+      [36m<h1>[39m
+        [0mKonferenca[0m
+      [36m</h1>[39m
+      [36m<form[39m
+        [33mnovalidate[39m=[32m""[39m
+      [36m>[39m
+        [36m<fieldset>[39m
+          [36m<legend>[39m
+            [0mRegistration type[0m
+          [36m</legend>[39m
+          [36m<label>[39m
+            [36m<input[39m
+              [33mname[39m=[32m"type"[39m
+              [33mtype[39m=[32m"radio"[39m
+            [36m/>[39m
+            [0mExternal participant[0m
+          [36m</label>[39m
+          [36m<label>[39m
+            [36m<input[39m
+              [33mname[39m=[32m"type"[39m
+              [33mtype[39m=[32m"radio"[39m
+            [36m/>[39m
+            [0mStudent[0m
+          [36m</label>[39m
+        [36m</fieldset>[39m
+        [36m<div>[39m
+          [36m<label[39m
+            [33mfor[39m=[32m"firstName"[39m
+          [36m>[39m
+            [0mFirst name[0m
+          [36m</label>[39m
+          [36m<input[39m
+            [33mid[39m=[32m"firstName"[39m
+            [33mname[39m=[32m"firstName"[39m
+            [33mtype[39m=[32m"text"[39m
+            [33mvalue[39m=[32m"Ana"[39m
+          [36m/>[39m
+        [36m</div>[39m
+        [36m<div>[39m
+          [36m<label[39m
+            [33mfor[39m=[32m"lastName"[39m
+          [36m>[39m
+            [0mLast name[0m
+          [36m</label>[39m
+          [36m<input[39m
+            [33mid[39m=[32m"lastName"[39m
+            [33mname[39m=[32m"lastName"[39m
+            [33mtype[39m=[32m"text"[39m
+            [33mvalue[39m=[32m"Novak"[39m
+          [36m/>[39m
+        [36m</div>[39m
+        [36m<div>[39m
+          [36m<label[39m
+            [33mfor[39m=[32m"email"[39m
+          [36m>[39m
+            [0mEmail[0m
+          [36m</label>[39m
+          [36m<input[39m
+            [33mid[39m=[32m"email"[39m
+            [33mname[39m=[32m"email"[39m
+            [33mtype[39m=[32m"email"[39m
+            [33mvalue[39m=[32m"ana@example.com"[39m
+          [36m/>[39m
+        [36m</div>[39m
+        [36m<div>[39m
+          [36m<label[39m
+            [33mfor[39m=[32m"organization"[39m
+          [36m>[39m
+            [0mOrganization / institution[0m
+          [36m</label>[39m
+          [36m<input[39m
+            [33mid[39m=[32m"organization"[39m
+            [33mname[39m=[32m"organization"[39m
+            [33mtype[39m=[32m"text"[39m
+            [33mvalue[39m=[32m"IJS"[39m
+          [36m/>[39m
+        [36m</div>[39m
+        [36m<fieldset>[39m
+          [36m<legend>[39m
+            [0mWorkshops[0m
+          [36m</legend>[39m
+          [36m<label>[39m
+            [36m<input[39m
+              [33mtype[39m=[32m"checkbox"[39m
+            [36m/>[39m
+            [0mWorkshop A[0m
+          [36m</label>[39m
+        [36m</fieldset>[39m
+        [36m<fieldset>[39m
+          [36m<legend>[39m
+            [0mMeals[0m
+          [36m</legend>[39m
+          [36m<label>[39m
+            [36m<input[39m
+              [33mtype[39m=[32m"checkbox"[39m
+            [36m/>[39m
+            [0mLunch[0m
+          [36m</label>[39m
+        [36m</fieldset>[39m
+        [36m<fieldset>[39m
+          [36m<legend>[39m
+            [0mOther activities[0m
+          [36m</legend>[39m
+          [36m<label>[39m
+            [36m<input[39m
+              [33mtype[39m=[32m"checkbox"[39m
+            [36m/>[39m
+            [0mTour[0m
+          [36m</label>[39m
+        [36m</fieldset>[39m
+        [36m<div>[39m
+          [36m<label>[39m
+            [36m<input[39m
+              [33mtype[39m=[32m"checkbox"[39m
+            [36m/>[39m
+            [0mI agree to the processing.[0m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<div>[39m
+          [36m<label>[39m
+            [36m<input[39m
+              [33mtype[39m=[32m"checkbox"[39m
+            [36m/>[39m
+            [0mPhotos are fine.[0m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<label>[39m
+          [36m<input[39m
+            [33mtype[39m=[32m"checkbox"[39m
+          [36m/>[39m
+          [0mI am not a robot (test mode)[0m
+        [36m</label>[39m
+        [36m<button[39m
+          [33mtype[39m=[32m"submit"[39m
+        [36m>[39m
+          [0mRegister[0m
+        [36m</button>[39m
+      [36m</form>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/App.test.tsx:78:25
+     76|     fireEvent.click(screen.getByRole("button", { name: "Register" }));
+     77|
+     78|     expect(await screen.findByRole("status")).toHaveTextContent("Ana N…
+       |                         ^
+     79|     expect(screen.queryByRole("button", { name: "Register" })).not.toB…
+     80|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/13]⎯
+
+ FAIL  src/Confirmation.test.tsx > Confirmation > AC-004-01 names the participant and lists the selected options
+ FAIL  src/Confirmation.test.tsx > Confirmation > AC-004-01 says so when no option was selected
+ FAIL  src/Confirmation.test.tsx > Confirmation > AC-004-01 shows markup in names as text
+Error: not implemented
+ ❯ Confirmation src/Confirmation.tsx:5:9
+      3| /** The in-application confirmation (AC-004-01, BR-06). */
+      4| export function Confirmation(_props: { registration: AcceptedRegistrat…
+      5|   throw new Error("not implemented");
+       |         ^
+      6| }
+      7|
+ ❯ Object.react_stack_bottom_frame node_modules/react-dom/cjs/react-dom-client.development.js:28571:20
+ ❯ renderWithHooks node_modules/react-dom/cjs/react-dom-client.development.js:8030:22
+ ❯ updateFunctionComponent node_modules/react-dom/cjs/react-dom-client.development.js:10569:19
+ ❯ beginWork node_modules/react-dom/cjs/react-dom-client.development.js:12205:18
+ ❯ runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:1048:13
+ ❯ performUnitOfWork node_modules/react-dom/cjs/react-dom-client.development.js:19176:22
+ ❯ workLoopSync node_modules/react-dom/cjs/react-dom-client.development.js:19004:41
+ ❯ renderRootSync node_modules/react-dom/cjs/react-dom-client.development.js:18985:11
+ ❯ performWorkOnRoot node_modules/react-dom/cjs/react-dom-client.development.js:18094:35
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/13]⎯
+
+ FAIL  src/RecaptchaWidget.test.tsx > reCAPTCHA widget (SR-01, AR-07) > SR-01 renders the Google widget with the configured site key and sends its token
+AssertionError: expected "vi.fn()" to be called 1 times, but got 0 times
+
+Ignored nodes: comments, script, style
+[36m<html>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<form[39m
+        [33mnovalidate[39m=[32m""[39m
+      [36m>[39m
+        [36m<fieldset>[39m
+          [36m<legend>[39m
+            [0mRegistration type[0m
+          [36m</legend>[39m
+          [36m<label>[39m
+            [36m<input[39m
+              [33mname[39m=[32m"type"[39m
+              [33mtype[39m=[32m"radio"[39m
+            [36m/>[39m
+            [0mExternal participant[0m
+          [36m</label>[39m
+          [36m<label>[39m
+            [36m<input[39m
+              [33mname[39m=[32m"type"[39m
+              [33mtype[39m=[32m"radio"[39m
+            [36m/>[39m
+            [0mStudent[0m
+          [36m</label>[39m
+        [36m</fieldset>[39m
+        [36m<div>[39m
+          [36m<label[39m
+            [33mfor[39m=[32m"firstName"[39m
+          [36m>[39m
+            [0mFirst name[0m
+          [36m</label>[39m
+          [36m<input[39m
+            [33mid[39m=[32m"firstName"[39m
+            [33mname[39m=[32m"firstName"[39m
+            [33mtype[39m=[32m"text"[39m
+            [33mvalue[39m=[32m"Ana"[39m
+          [36m/>[39m
+        [36m</div>[39m
+        [36m<div>[39m
+          [36m<label[39m
+            [33mfor[39m=[32m"lastName"[39m
+          [36m>[39m
+            [0mLast name[0m
+          [36m</label>[39m
+          [36m<input[39m
+            [33mid[39m=[32m"lastName"[39m
+            [33mname[39m=[32m"lastName"[39m
+            [33mtype[39m=[32m"text"[39m
+            [33mvalue[39m=[32m"Novak"[39m
+          [36m/>[39m
+        [36m</div>[39m
+        [36m<div>[39m
+          [36m<label[39m
+            [33mfor[39m=[32m"email"[39m
+          [36m>[39m
+            [0mEmail[0m
+          [36m</label>[39m
+          [36m<input[39m
+            [33mid[39m=[32m"email"[39m
+            [33mname[39m=[32m"email"[39m
+            [33mtype[39m=[32m"email"[39m
+            [33mvalue[39m=[32m"ana@example.com"[39m
+          [36m/>[39m
+        [36m</div>[39m
+        [36m<div>[39m
+          [36m<label[39m
+            [33mfor[39m=[32m"organization"[39m
+          [36m>[39m
+            [0mOrganization / institution[0m
+          [36m</label>[39m
+          [36m<input[39m
+            [33mid[39m=[32m"organization"[39m
+            [33mname[39m=[32m"organization"[39m
+            [33mtype[39m=[32m"text"[39m
+            [33mvalue[39m=[32m"IJS"[39m
+          [36m/>[39m
+        [36m</div>[39m
+        [36m<fieldset>[39m
+          [36m<legend>[39m
+            [0mWorkshops[0m
+          [36m</legend>[39m
+          [36m<label>[39m
+            [36m<input[39m
+              [33mtype[39m=[32m"checkbox"[39m
+            [36m/>[39m
+            [0mWorkshop A[0m
+          [36m</label>[39m
+        [36m</fieldset>[39m
+        [36m<fieldset>[39m
+          [36m<legend>[39m
+            [0mMeals[0m
+          [36m</legend>[39m
+          [36m<label>[39m
+            [36m<input[39m
+              [33mtype[39m=[32m"checkbox"[39m
+            [36m/>[39m
+            [0mLunch[0m
+          [36m</label>[39m
+        [36m</fieldset>[39m
+        [36m<fieldset>[39m
+          [36m<legend>[39m
+            [0mOther activities[0m
+          [36m</legend>[39m
+          [36m<label>[39m
+            [36m<input[39m
+              [33mtype[39m=[32m"checkbox"[39m
+            [36m/>[39m
+            [0mTour[0m
+          [36m</label>[39m
+        [36m</fieldset>[39m
+        [36m<div>[39m
+          [36m<label>[39m
+            [36m<input[39m
+              [33mtype[39m=[32m"checkbox"[39m
+            [36m/>[39m
+            [0mI agree to the processing.[0m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<div>[39m
+          [36m<label>[39m
+            [36m<input[39m
+              [33mtype[39m=[32m"checkbox"[39m
+            [36m/>[39m
+            [0mPhotos are fine.[0m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<button[39m
+          [33mtype[39m=[32m"submit"[39m
+        [36m>[39m
+          [0mRegister[0m
+        [36m</button>[39m
+      [36m</form>[39m
+    [36m</div>[39m
+  [36m</body>[39m
+[36m</html>[39m
+ ❯ src/RecaptchaWidget.test.tsx:45:51
+     43|     fillExternal();
+     44|
+     45|     await waitFor(() => expect(grecaptcha.render).toHaveBeenCalledTime…
+       |                                                   ^
+     46|     expect(grecaptcha.render.mock.calls[0][1].sitekey).toBe("site-key-…
+     47|     expect(screen.queryByRole("checkbox", { name: "I am not a robot (t…
+ ❯ runWithExpensiveErrorDiagnosticsDisabled node_modules/@testing-library/dom/dist/config.js:47:12
+ ❯ checkCallback node_modules/@testing-library/dom/dist/wait-for.js:124:77
+ ❯ Timeout.checkRealTimersCallback node_modules/@testing-library/dom/dist/wait-for.js:118:16
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/13]⎯
+
+ FAIL  src/RecaptchaWidget.test.tsx > reCAPTCHA widget (SR-01, AR-07) > SR-01 loads the reCAPTCHA script once when it is not present
+AssertionError: expected  to have a length of 1 but got +0
+
+- Expected
++ Received
+
+- 1
++ 0
+
+ ❯ src/RecaptchaWidget.test.tsx:62:21
+     60|
+     61|     const scripts = document.head.querySelectorAll("script[data-recapt…
+     62|     expect(scripts).toHaveLength(1);
+       |                     ^
+     63|     expect(scripts[0].getAttribute("src")).toBe(
+     64|       "https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoad&…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/13]⎯
+
+ FAIL  src/RegistrationForm.submit.test.tsx > RegistrationForm submission > AC-004-01 a valid form sends the type's fields and reports the accepted registration
+AssertionError: expected "vi.fn()" to be called with arguments: [ { id: 'id-1', …(5) } ]
+
+Number of calls: 0
+
+
+Ignored nodes: comments, script, style
+[36m<html>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<form[39m
+        [33mnovalidate[39m=[32m""[39m
+      [36m>[39m
+        [36m<fieldset>[39m
+          [36m<legend>[39m
+            [0mRegistration type[0m
+          [36m</legend>[39m
+          [36m<label>[39m
+            [36m<input[39m
+              [33mname[39m=[32m"type"[39m
+              [33mtype[39m=[32m"radio"[39m
+            [36m/>[39m
+            [0mExternal participant[0m
+          [36m</label>[39m
+          [36m<label>[39m
+            [36m<input[39m
+              [33mname[39m=[32m"type"[39m
+              [33mtype[39m=[32m"radio"[39m
+            [36m/>[39m
+            [0mStudent[0m
+          [36m</label>[39m
+        [36m</fieldset>[39m
+        [36m<div>[39m
+          [36m<label[39m
+            [33mfor[39m=[32m"firstName"[39m
+          [36m>[39m
+            [0mFirst name[0m
+          [36m</label>[39m
+          [36m<input[39m
+            [33mid[39m=[32m"firstName"[39m
+            [33mname[39m=[32m"firstName"[39m
+            [33mtype[39m=[32m"text"[39m
+            [33mvalue[39m=[32m" Ana "[39m
+          [36m/>[39m
+        [36m</div>[39m
+        [36m<div>[39m
+          [36m<label[39m
+            [33mfor[39m=[32m"lastName"[39m
+          [36m>[39m
+            [0mLast name[0m
+          [36m</label>[39m
+          [36m<input[39m
+            [33mid[39m=[32m"lastName"[39m
+            [33mname[39m=[32m"lastName"[39m
+            [33mtype[39m=[32m"text"[39m
+            [33mvalue[39m=[32m"Novak"[39m
+          [36m/>[39m
+        [36m</div>[39m
+        [36m<div>[39m
+          [36m<label[39m
+            [33mfor[39m=[32m"email"[39m
+          [36m>[39m
+            [0mEmail[0m
+          [36m</label>[39m
+          [36m<input[39m
+            [33mid[39m=[32m"email"[39m
+            [33mname[39m=[32m"email"[39m
+            [33mtype[39m=[32m"email"[39m
+            [33mvalue[39m=[32m"ana@example.com"[39m
+          [36m/>[39m
+        [36m</div>[39m
+        [36m<div>[39m
+          [36m<label[39m
+            [33mfor[39m=[32m"organization"[39m
+          [36m>[39m
+            [0mOrganization / institution[0m
+          [36m</label>[39m
+          [36m<input[39m
+            [33mid[39m=[32m"organization"[39m
+            [33mname[39m=[32m"organization"[39m
+            [33mtype[39m=[32m"text"[39m
+            [33mvalue[39m=[32m"IJS"[39m
+          [36m/>[39m
+        [36m</div>[39m
+        [36m<fieldset>[39m
+          [36m<legend>[39m
+            [0mWorkshops[0m
+          [36m</legend>[39m
+          [36m<label>[39m
+            [36m<input[39m
+              [33mtype[39m=[32m"checkbox"[39m
+            [36m/>[39m
+            [0mWorkshop A[0m
+          [36m</label>[39m
+        [36m</fieldset>[39m
+        [36m<fieldset>[39m
+          [36m<legend>[39m
+            [0mMeals[0m
+          [36m</legend>[39m
+          [36m<label>[39m
+            [36m<input[39m
+              [33mtype[39m=[32m"checkbox"[39m
+            [36m/>[39m
+            [0mLunch[0m
+          [36m</label>[39m
+        [36m</fieldset>[39m
+        [36m<fieldset>[39m
+          [36m<legend>[39m
+            [0mOther activities[0m
+          [36m</legend>[39m
+          [36m<label>[39m
+            [36m<input[39m
+              [33mtype[39m=[32m"checkbox"[39m
+            [36m/>[39m
+            [0mTour[0m
+          [36m</label>[39m
+        [36m</fieldset>[39m
+        [36m<div>[39m
+          [36m<label>[39m
+            [36m<input[39m
+              [33mtype[39m=[32m"checkbox"[39m
+            [36m/>[39m
+            [0mI agree to the processing.[0m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<div>[39m
+          [36m<label>[39m
+            [36m<input[39m
+              [33mtype[39m=[32m"checkbox"[39m
+            [36m/>[39m
+            [0mPhotos are fine.[0m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<label>[39m
+          [36m<input[39m
+            [33mtype[39m=[32m"checkbox"[39m
+          [36m/>[39m
+          [0mI am not a robot (test mode)[0m
+        [36m</label>[39m
+        [36m<button[39m
+          [33mtype[39m=[32m"submit"[39m
+        [36m>[39m
+          [0mRegister[0m
+        [36m</button>[39m
+      [36m</form>[39m
+    [36m</div>[39m
+  [36m</body>[39m
+[36m</html>[39m
+ ❯ src/RegistrationForm.submit.test.tsx:58:44
+     56|     register();
+     57|
+     58|     await waitFor(() => expect(onAccepted).toHaveBeenCalledWith(accept…
+       |                                            ^
+     59|     expect(sentBody(fetchMock)).toEqual({
+     60|       type: "EXTERNAL",
+ ❯ runWithExpensiveErrorDiagnosticsDisabled node_modules/@testing-library/dom/dist/config.js:47:12
+ ❯ checkCallback node_modules/@testing-library/dom/dist/wait-for.js:124:77
+ ❯ Timeout.checkRealTimersCallback node_modules/@testing-library/dom/dist/wait-for.js:118:16
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/13]⎯
+
+ FAIL  src/RegistrationForm.submit.test.tsx > RegistrationForm submission > AC-004-01 a second click while sending sends nothing more
+AssertionError: expected "vi.fn()" to be called at least once
+
+Ignored nodes: comments, script, style
+[36m<html>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<form[39m
+        [33mnovalidate[39m=[32m""[39m
+      [36m>[39m
+        [36m<fieldset>[39m
+          [36m<legend>[39m
+            [0mRegistration type[0m
+          [36m</legend>[39m
+          [36m<label>[39m
+            [36m<input[39m
+              [33mname[39m=[32m"type"[39m
+              [33mtype[39m=[32m"radio"[39m
+            [36m/>[39m
+            [0mExternal participant[0m
+          [36m</label>[39m
+          [36m<label>[39m
+            [36m<input[39m
+              [33mname[39m=[32m"type"[39m
+              [33mtype[39m=[32m"radio"[39m
+            [36m/>[39m
+            [0mStudent[0m
+          [36m</label>[39m
+        [36m</fieldset>[39m
+        [36m<div>[39m
+          [36m<label[39m
+            [33mfor[39m=[32m"firstName"[39m
+          [36m>[39m
+            [0mFirst name[0m
+          [36m</label>[39m
+          [36m<input[39m
+            [33mid[39m=[32m"firstName"[39m
+            [33mname[39m=[32m"firstName"[39m
+            [33mtype[39m=[32m"text"[39m
+            [33mvalue[39m=[32m" Ana "[39m
+          [36m/>[39m
+        [36m</div>[39m
+        [36m<div>[39m
+          [36m<label[39m
+            [33mfor[39m=[32m"lastName"[39m
+          [36m>[39m
+            [0mLast name[0m
+          [36m</label>[39m
+          [36m<input[39m
+            [33mid[39m=[32m"lastName"[39m
+            [33mname[39m=[32m"lastName"[39m
+            [33mtype[39m=[32m"text"[39m
+            [33mvalue[39m=[32m"Novak"[39m
+          [36m/>[39m
+        [36m</div>[39m
+        [36m<div>[39m
+          [36m<label[39m
+            [33mfor[39m=[32m"email"[39m
+          [36m>[39m
+            [0mEmail[0m
+          [36m</label>[39m
+          [36m<input[39m
+            [33mid[39m=[32m"email"[39m
+            [33mname[39m=[32m"email"[39m
+            [33mtype[39m=[32m"email"[39m
+            [33mvalue[39m=[32m"ana@example.com"[39m
+          [36m/>[39m
+        [36m</div>[39m
+        [36m<div>[39m
+          [36m<label[39m
+            [33mfor[39m=[32m"organization"[39m
+          [36m>[39m
+            [0mOrganization / institution[0m
+          [36m</label>[39m
+          [36m<input[39m
+            [33mid[39m=[32m"organization"[39m
+            [33mname[39m=[32m"organization"[39m
+            [33mtype[39m=[32m"text"[39m
+            [33mvalue[39m=[32m"IJS"[39m
+          [36m/>[39m
+        [36m</div>[39m
+        [36m<fieldset>[39m
+          [36m<legend>[39m
+            [0mWorkshops[0m
+          [36m</legend>[39m
+          [36m<label>[39m
+            [36m<input[39m
+              [33mtype[39m=[32m"checkbox"[39m
+            [36m/>[39m
+            [0mWorkshop A[0m
+          [36m</label>[39m
+        [36m</fieldset>[39m
+        [36m<fieldset>[39m
+          [36m<legend>[39m
+            [0mMeals[0m
+          [36m</legend>[39m
+          [36m<label>[39m
+            [36m<input[39m
+              [33mtype[39m=[32m"checkbox"[39m
+            [36m/>[39m
+            [0mLunch[0m
+          [36m</label>[39m
+        [36m</fieldset>[39m
+        [36m<fieldset>[39m
+          [36m<legend>[39m
+            [0mOther activities[0m
+          [36m</legend>[39m
+          [36m<label>[39m
+            [36m<input[39m
+              [33mtype[39m=[32m"checkbox"[39m
+            [36m/>[39m
+            [0mTour[0m
+          [36m</label>[39m
+        [36m</fieldset>[39m
+        [36m<div>[39m
+          [36m<label>[39m
+            [36m<input[39m
+              [33mtype[39m=[32m"checkbox"[39m
+            [36m/>[39m
+            [0mI agree to the processing.[0m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<div>[39m
+          [36m<label>[39m
+            [36m<input[39m
+              [33mtype[39m=[32m"checkbox"[39m
+            [36m/>[39m
+            [0mPhotos are fine.[0m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<label>[39m
+          [36m<input[39m
+            [33mtype[39m=[32m"checkbox"[39m
+          [36m/>[39m
+          [0mI am not a robot (test mode)[0m
+        [36m</label>[39m
+        [36m<button[39m
+          [33mtype[39m=[32m"submit"[39m
+        [36m>[39m
+          [0mRegister[0m
+        [36m</button>[39m
+      [36m</form>[39m
+    [36m</div>[39m
+  [36m</body>[39m
+[36m</html>[39m
+ ❯ src/RegistrationForm.submit.test.tsx:78:44
+     76|     register();
+     77|
+     78|     await waitFor(() => expect(onAccepted).toHaveBeenCalled());
+       |                                            ^
+     79|     expect(fetchMock).toHaveBeenCalledTimes(1);
+     80|   });
+ ❯ runWithExpensiveErrorDiagnosticsDisabled node_modules/@testing-library/dom/dist/config.js:47:12
+ ❯ checkCallback node_modules/@testing-library/dom/dist/wait-for.js:124:77
+ ❯ Timeout.checkRealTimersCallback node_modules/@testing-library/dom/dist/wait-for.js:118:16
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/13]⎯
+
+ FAIL  src/RegistrationForm.submit.test.tsx > RegistrationForm submission > AC-004-03 errors are shown next to the fields and nothing is sent
+Error: [2mexpect([22m[31melement[39m[2m).toHaveAttribute([22m[32m[32m"aria-invalid"[32m[39m[2m, [22m[32m[32m"true"[32m[39m[2m) // element.getAttribute("aria-invalid") === "true"[22m
+
+Expected the element to have attribute:
+[32m  aria-invalid="true"[39m
+Received:
+[31m  null[39m
+ ❯ src/RegistrationForm.submit.test.tsx:91:35
+     89|     register();
+     90|
+     91|     expect(textbox("First name")).toHaveAttribute("aria-invalid", "tru…
+       |                                   ^
+     92|     expect(textbox("First name")).toHaveAccessibleDescription("First n…
+     93|     expect(textbox("First name").nextElementSibling).toHaveAttribute("…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/13]⎯
+
+ FAIL  src/RegistrationForm.submit.test.tsx > RegistrationForm submission > AC-004-03 fixed errors disappear on the next submit
+Error: [2mexpect([22m[31melement[39m[2m).toHaveAttribute([22m[32m[32m"aria-invalid"[32m[39m[2m, [22m[32m[32m"true"[32m[39m[2m) // element.getAttribute("aria-invalid") === "true"[22m
+
+Expected the element to have attribute:
+[32m  aria-invalid="true"[39m
+Received:
+[31m  null[39m
+ ❯ src/RegistrationForm.submit.test.tsx:107:35
+    105|     fireEvent.change(textbox("First name"), { target: { value: "" } });
+    106|     register();
+    107|     expect(textbox("First name")).toHaveAttribute("aria-invalid", "tru…
+       |                                   ^
+    108|
+    109|     fireEvent.change(textbox("First name"), { target: { value: "Ana" }…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/13]⎯
+
+ FAIL  src/RegistrationForm.submit.test.tsx > RegistrationForm submission > AC-004-02 backend field errors are shown next to their fields and values remain
+Error: [2mexpect([22m[31melement[39m[2m).toHaveAccessibleDescription()[22m
+
+Expected element to have accessible description:
+[32m  Too long[39m
+Received:
+[31m[39m
+
+Ignored nodes: comments, script, style
+[36m<html>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<form[39m
+        [33mnovalidate[39m=[32m""[39m
+      [36m>[39m
+        [36m<fieldset>[39m
+          [36m<legend>[39m
+            [0mRegistration type[0m
+          [36m</legend>[39m
+          [36m<label>[39m
+            [36m<input[39m
+              [33mname[39m=[32m"type"[39m
+              [33mtype[39m=[32m"radio"[39m
+            [36m/>[39m
+            [0mExternal participant[0m
+          [36m</label>[39m
+          [36m<label>[39m
+            [36m<input[39m
+              [33mname[39m=[32m"type"[39m
+              [33mtype[39m=[32m"radio"[39m
+            [36m/>[39m
+            [0mStudent[0m
+          [36m</label>[39m
+        [36m</fieldset>[39m
+        [36m<div>[39m
+          [36m<label[39m
+            [33mfor[39m=[32m"firstName"[39m
+          [36m>[39m
+            [0mFirst name[0m
+          [36m</label>[39m
+          [36m<input[39m
+            [33mid[39m=[32m"firstName"[39m
+            [33mname[39m=[32m"firstName"[39m
+            [33mtype[39m=[32m"text"[39m
+            [33mvalue[39m=[32m" Ana "[39m
+          [36m/>[39m
+        [36m</div>[39m
+        [36m<div>[39m
+          [36m<label[39m
+            [33mfor[39m=[32m"lastName"[39m
+          [36m>[39m
+            [0mLast name[0m
+          [36m</label>[39m
+          [36m<input[39m
+            [33mid[39m=[32m"lastName"[39m
+            [33mname[39m=[32m"lastName"[39m
+            [33mtype[39m=[32m"text"[39m
+            [33mvalue[39m=[32m"Novak"[39m
+          [36m/>[39m
+        [36m</div>[39m
+        [36m<div>[39m
+          [36m<label[39m
+            [33mfor[39m=[32m"email"[39m
+          [36m>[39m
+            [0mEmail[0m
+          [36m</label>[39m
+          [36m<input[39m
+            [33mid[39m=[32m"email"[39m
+            [33mname[39m=[32m"email"[39m
+            [33mtype[39m=[32m"email"[39m
+            [33mvalue[39m=[32m"ana@example.com"[39m
+          [36m/>[39m
+        [36m</div>[39m
+        [36m<div>[39m
+          [36m<label[39m
+            [33mfor[39m=[32m"organization"[39m
+          [36m>[39m
+            [0mOrganization / institution[0m
+          [36m</label>[39m
+          [36m<input[39m
+            [33mid[39m=[32m"organization"[39m
+            [33mname[39m=[32m"organization"[39m
+            [33mtype[39m=[32m"text"[39m
+            [33mvalue[39m=[32m"IJS"[39m
+          [36m/>[39m
+        [36m</div>[39m
+        [36m<fieldset>[39m
+          [36m<legend>[39m
+            [0mWorkshops[0m
+          [36m</legend>[39m
+          [36m<label>[39m
+            [36m<input[39m
+              [33mtype[39m=[32m"checkbox"[39m
+            [36m/>[39m
+            [0mWorkshop A[0m
+          [36m</label>[39m
+        [36m</fieldset>[39m
+        [36m<fieldset>[39m
+          [36m<legend>[39m
+            [0mMeals[0m
+          [36m</legend>[39m
+          [36m<label>[39m
+            [36m<input[39m
+              [33mtype[39m=[32m"checkbox"[39m
+            [36m/>[39m
+            [0mLunch[0m
+          [36m</label>[39m
+        [36m</fieldset>[39m
+        [36m<fieldset>[39m
+          [36m<legend>[39m
+            [0mOther activities[0m
+          [36m</legend>[39m
+          [36m<label>[39m
+            [36m<input[39m
+              [33mtype[39m=[32m"checkbox"[39m
+            [36m/>[39m
+            [0mTour[0m
+          [36m</label>[39m
+        [36m</fieldset>[39m
+        [36m<div>[39m
+          [36m<label>[39m
+            [36m<input[39m
+              [33mtype[39m=[32m"checkbox"[39m
+            [36m/>[39m
+            [0mI agree to the processing.[0m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<div>[39m
+          [36m<label>[39m
+            [36m<input[39m
+              [33mtype[39m=[32m"checkbox"[39m
+            [36m/>[39m
+            [0mPhotos are fine.[0m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<label>[39m
+          [36m<input[39m
+            [33mtype[39m=[32m"checkbox"[39m
+          [36m/>[39m
+          [0mI am not a robot (test mode)[0m
+        [36m</label>[39m
+        [36m<button[39m
+          [33mtype[39m=[32m"submit"[39m
+        [36m>[39m
+          [0mRegister[0m
+        [36m</button>[39m
+      [36m</form>[39m
+    [36m</div>[39m
+  [36m</body>[39m
+[36m</html>[39m
+ ❯ src/RegistrationForm.submit.test.tsx:131:53
+    129|
+    130|     await waitFor(() =>
+    131|       expect(textbox("Organization / institution")).toHaveAccessibleDe…
+       |                                                     ^
+    132|     );
+    133|     const options = document.querySelector('[aria-describedby~="error-…
+ ❯ runWithExpensiveErrorDiagnosticsDisabled node_modules/@testing-library/dom/dist/config.js:47:12
+ ❯ checkCallback node_modules/@testing-library/dom/dist/wait-for.js:124:77
+ ❯ Timeout.checkRealTimersCallback node_modules/@testing-library/dom/dist/wait-for.js:118:16
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/13]⎯
+
+ FAIL  src/RegistrationForm.submit.test.tsx > RegistrationForm submission > AC-004-04 an error for an unknown field shows the general message
+TestingLibraryElementError: Unable to find role="alert"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<form[39m
+      [33mnovalidate[39m=[32m""[39m
+    [36m>[39m
+      [36m<fieldset>[39m
+        [36m<legend>[39m
+          [0mRegistration type[0m
+        [36m</legend>[39m
+        [36m<label>[39m
+          [36m<input[39m
+            [33mname[39m=[32m"type"[39m
+            [33mtype[39m=[32m"radio"[39m
+          [36m/>[39m
+          [0mExternal participant[0m
+        [36m</label>[39m
+        [36m<label>[39m
+          [36m<input[39m
+            [33mname[39m=[32m"type"[39m
+            [33mtype[39m=[32m"radio"[39m
+          [36m/>[39m
+          [0mStudent[0m
+        [36m</label>[39m
+      [36m</fieldset>[39m
+      [36m<div>[39m
+        [36m<label[39m
+          [33mfor[39m=[32m"firstName"[39m
+        [36m>[39m
+          [0mFirst name[0m
+        [36m</label>[39m
+        [36m<input[39m
+          [33mid[39m=[32m"firstName"[39m
+          [33mname[39m=[32m"firstName"[39m
+          [33mtype[39m=[32m"text"[39m
+          [33mvalue[39m=[32m" Ana "[39m
+        [36m/>[39m
+      [36m</div>[39m
+      [36m<div>[39m
+        [36m<label[39m
+          [33mfor[39m=[32m"lastName"[39m
+        [36m>[39m
+          [0mLast name[0m
+        [36m</label>[39m
+        [36m<input[39m
+          [33mid[39m=[32m"lastName"[39m
+          [33mname[39m=[32m"lastName"[39m
+          [33mtype[39m=[32m"text"[39m
+          [33mvalue[39m=[32m"Novak"[39m
+        [36m/>[39m
+      [36m</div>[39m
+      [36m<div>[39m
+        [36m<label[39m
+          [33mfor[39m=[32m"email"[39m
+        [36m>[39m
+          [0mEmail[0m
+        [36m</label>[39m
+        [36m<input[39m
+          [33mid[39m=[32m"email"[39m
+          [33mname[39m=[32m"email"[39m
+          [33mtype[39m=[32m"email"[39m
+          [33mvalue[39m=[32m"ana@example.com"[39m
+        [36m/>[39m
+      [36m</div>[39m
+      [36m<div>[39m
+        [36m<label[39m
+          [33mfor[39m=[32m"organization"[39m
+        [36m>[39m
+          [0mOrganization / institution[0m
+        [36m</label>[39m
+        [36m<input[39m
+          [33mid[39m=[32m"organization"[39m
+          [33mname[39m=[32m"organization"[39m
+          [33mtype[39m=[32m"text"[39m
+          [33mvalue[39m=[32m"IJS"[39m
+        [36m/>[39m
+      [36m</div>[39m
+      [36m<fieldset>[39m
+        [36m<legend>[39m
+          [0mWorkshops[0m
+        [36m</legend>[39m
+        [36m<label>[39m
+          [36m<input[39m
+            [33mtype[39m=[32m"checkbox"[39m
+          [36m/>[39m
+          [0mWorkshop A[0m
+        [36m</label>[39m
+      [36m</fieldset>[39m
+      [36m<fieldset>[39m
+        [36m<legend>[39m
+          [0mMeals[0m
+        [36m</legend>[39m
+        [36m<label>[39m
+          [36m<input[39m
+            [33mtype[39m=[32m"checkbox"[39m
+          [36m/>[39m
+          [0mLunch[0m
+        [36m</label>[39m
+      [36m</fieldset>[39m
+      [36m<fieldset>[39m
+        [36m<legend>[39m
+          [0mOther activities[0m
+        [36m</legend>[39m
+        [36m<label>[39m
+          [36m<input[39m
+            [33mtype[39m=[32m"checkbox"[39m
+          [36m/>[39m
+          [0mTour[0m
+        [36m</label>[39m
+      [36m</fieldset>[39m
+      [36m<div>[39m
+        [36m<label>[39m
+          [36m<input[39m
+            [33mtype[39m=[32m"checkbox"[39m
+          [36m/>[39m
+          [0mI agree to the processing.[0m
+        [36m</label>[39m
+      [36m</div>[39m
+      [36m<div>[39m
+        [36m<label>[39m
+          [36m<input[39m
+            [33mtype[39m=[32m"checkbox"[39m
+          [36m/>[39m
+          [0mPhotos are fine.[0m
+        [36m</label>[39m
+      [36m</div>[39m
+      [36m<label>[39m
+        [36m<input[39m
+          [33mtype[39m=[32m"checkbox"[39m
+        [36m/>[39m
+        [0mI am not a robot (test mode)[0m
+      [36m</label>[39m
+      [36m<button[39m
+        [33mtype[39m=[32m"submit"[39m
+      [36m>[39m
+        [0mRegister[0m
+      [36m</button>[39m
+    [36m</form>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<form[39m
+      [33mnovalidate[39m=[32m""[39m
+    [36m>[39m
+      [36m<fieldset>[39m
+        [36m<legend>[39m
+          [0mRegistration type[0m
+        [36m</legend>[39m
+        [36m<label>[39m
+          [36m<input[39m
+            [33mname[39m=[32m"type"[39m
+            [33mtype[39m=[32m"radio"[39m
+          [36m/>[39m
+          [0mExternal participant[0m
+        [36m</label>[39m
+        [36m<label>[39m
+          [36m<input[39m
+            [33mname[39m=[32m"type"[39m
+            [33mtype[39m=[32m"radio"[39m
+          [36m/>[39m
+          [0mStudent[0m
+        [36m</label>[39m
+      [36m</fieldset>[39m
+      [36m<div>[39m
+        [36m<label[39m
+          [33mfor[39m=[32m"firstName"[39m
+        [36m>[39m
+          [0mFirst name[0m
+        [36m</label>[39m
+        [36m<input[39m
+          [33mid[39m=[32m"firstName"[39m
+          [33mname[39m=[32m"firstName"[39m
+          [33mtype[39m=[32m"text"[39m
+          [33mvalue[39m=[32m" Ana "[39m
+        [36m/>[39m
+      [36m</div>[39m
+      [36m<div>[39m
+        [36m<label[39m
+          [33mfor[39m=[32m"lastName"[39m
+        [36m>[39m
+          [0mLast name[0m
+        [36m</label>[39m
+        [36m<input[39m
+          [33mid[39m=[32m"lastName"[39m
+          [33mname[39m=[32m"lastName"[39m
+          [33mtype[39m=[32m"text"[39m
+          [33mvalue[39m=[32m"Novak"[39m
+        [36m/>[39m
+      [36m</div>[39m
+      [36m<div>[39m
+        [36m<label[39m
+          [33mfor[39m=[32m"email"[39m
+        [36m>[39m
+          [0mEmail[0m
+        [36m</label>[39m
+        [36m<input[39m
+          [33mid[39m=[32m"email"[39m
+          [33mname[39m=[32m"email"[39m
+          [33mtype[39m=[32m"email"[39m
+          [33mvalue[39m=[32m"ana@example.com"[39m
+        [36m/>[39m
+      [36m</div>[39m
+      [36m<div>[39m
+        [36m<label[39m
+          [33mfor[39m=[32m"organization"[39m
+        [36m>[39m
+          [0mOrganization / institution[0m
+        [36m</label>[39m
+        [36m<input[39m
+          [33mid[39m=[32m"organization"[39m
+          [33mname[39m=[32m"organization"[39m
+          [33mtype[39m=[32m"text"[39m
+          [33mvalue[39m=[32m"IJS"[39m
+        [36m/>[39m
+      [36m</div>[39m
+      [36m<fieldset>[39m
+        [36m<legend>[39m
+          [0mWorkshops[0m
+        [36m</legend>[39m
+        [36m<label>[39m
+          [36m<input[39m
+            [33mtype[39m=[32m"checkbox"[39m
+          [36m/>[39m
+          [0mWorkshop A[0m
+        [36m</label>[39m
+      [36m</fieldset>[39m
+      [36m<fieldset>[39m
+        [36m<legend>[39m
+          [0mMeals[0m
+        [36m</legend>[39m
+        [36m<label>[39m
+          [36m<input[39m
+            [33mtype[39m=[32m"checkbox"[39m
+          [36m/>[39m
+          [0mLunch[0m
+        [36m</label>[39m
+      [36m</fieldset>[39m
+      [36m<fieldset>[39m
+        [36m<legend>[39m
+          [0mOther activities[0m
+        [36m</legend>[39m
+        [36m<label>[39m
+          [36m<input[39m
+            [33mtype[39m=[32m"checkbox"[39m
+          [36m/>[39m
+          [0mTour[0m
+        [36m</label>[39m
+      [36m</fieldset>[39m
+      [36m<div>[39m
+        [36m<label>[39m
+          [36m<input[39m
+            [33mtype[39m=[32m"checkbox"[39m
+          [36m/>[39m
+          [0mI agree to the processing.[0m
+        [36m</label>[39m
+      [36m</div>[39m
+      [36m<div>[39m
+        [36m<label>[39m
+          [36m<input[39m
+            [33mtype[39m=[32m"checkbox"[39m
+          [36m/>[39m
+          [0mPhotos are fine.[0m
+        [36m</label>[39m
+      [36m</div>[39m
+      [36m<label>[39m
+        [36m<input[39m
+          [33mtype[39m=[32m"checkbox"[39m
+        [36m/>[39m
+        [0mI am not a robot (test mode)[0m
+      [36m</label>[39m
+      [36m<button[39m
+        [33mtype[39m=[32m"submit"[39m
+      [36m>[39m
+        [0mRegister[0m
+      [36m</button>[39m
+    [36m</form>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/RegistrationForm.submit.test.tsx:151:25
+    149|     register();
+    150|
+    151|     expect(await screen.findByRole("alert")).toHaveTextContent(
+       |                         ^
+    152|       "Registration could not be completed. Please try again later.",
+    153|     );
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/13]⎯
+
+ FAIL  src/RegistrationForm.submit.test.tsx > RegistrationForm submission > AC-004-04 a failed request shows the general message and keeps the form
+TestingLibraryElementError: Unable to find role="alert"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<form[39m
+      [33mnovalidate[39m=[32m""[39m
+    [36m>[39m
+      [36m<fieldset>[39m
+        [36m<legend>[39m
+          [0mRegistration type[0m
+        [36m</legend>[39m
+        [36m<label>[39m
+          [36m<input[39m
+            [33mname[39m=[32m"type"[39m
+            [33mtype[39m=[32m"radio"[39m
+          [36m/>[39m
+          [0mExternal participant[0m
+        [36m</label>[39m
+        [36m<label>[39m
+          [36m<input[39m
+            [33mname[39m=[32m"type"[39m
+            [33mtype[39m=[32m"radio"[39m
+          [36m/>[39m
+          [0mStudent[0m
+        [36m</label>[39m
+      [36m</fieldset>[39m
+      [36m<div>[39m
+        [36m<label[39m
+          [33mfor[39m=[32m"firstName"[39m
+        [36m>[39m
+          [0mFirst name[0m
+        [36m</label>[39m
+        [36m<input[39m
+          [33mid[39m=[32m"firstName"[39m
+          [33mname[39m=[32m"firstName"[39m
+          [33mtype[39m=[32m"text"[39m
+          [33mvalue[39m=[32m" Ana "[39m
+        [36m/>[39m
+      [36m</div>[39m
+      [36m<div>[39m
+        [36m<label[39m
+          [33mfor[39m=[32m"lastName"[39m
+        [36m>[39m
+          [0mLast name[0m
+        [36m</label>[39m
+        [36m<input[39m
+          [33mid[39m=[32m"lastName"[39m
+          [33mname[39m=[32m"lastName"[39m
+          [33mtype[39m=[32m"text"[39m
+          [33mvalue[39m=[32m"Novak"[39m
+        [36m/>[39m
+      [36m</div>[39m
+      [36m<div>[39m
+        [36m<label[39m
+          [33mfor[39m=[32m"email"[39m
+        [36m>[39m
+          [0mEmail[0m
+        [36m</label>[39m
+        [36m<input[39m
+          [33mid[39m=[32m"email"[39m
+          [33mname[39m=[32m"email"[39m
+          [33mtype[39m=[32m"email"[39m
+          [33mvalue[39m=[32m"ana@example.com"[39m
+        [36m/>[39m
+      [36m</div>[39m
+      [36m<div>[39m
+        [36m<label[39m
+          [33mfor[39m=[32m"organization"[39m
+        [36m>[39m
+          [0mOrganization / institution[0m
+        [36m</label>[39m
+        [36m<input[39m
+          [33mid[39m=[32m"organization"[39m
+          [33mname[39m=[32m"organization"[39m
+          [33mtype[39m=[32m"text"[39m
+          [33mvalue[39m=[32m"IJS"[39m
+        [36m/>[39m
+      [36m</div>[39m
+      [36m<fieldset>[39m
+        [36m<legend>[39m
+          [0mWorkshops[0m
+        [36m</legend>[39m
+        [36m<label>[39m
+          [36m<input[39m
+            [33mtype[39m=[32m"checkbox"[39m
+          [36m/>[39m
+          [0mWorkshop A[0m
+        [36m</label>[39m
+      [36m</fieldset>[39m
+      [36m<fieldset>[39m
+        [36m<legend>[39m
+          [0mMeals[0m
+        [36m</legend>[39m
+        [36m<label>[39m
+          [36m<input[39m
+            [33mtype[39m=[32m"checkbox"[39m
+          [36m/>[39m
+          [0mLunch[0m
+        [36m</label>[39m
+      [36m</fieldset>[39m
+      [36m<fieldset>[39m
+        [36m<legend>[39m
+          [0mOther activities[0m
+        [36m</legend>[39m
+        [36m<label>[39m
+          [36m<input[39m
+            [33mtype[39m=[32m"checkbox"[39m
+          [36m/>[39m
+          [0mTour[0m
+        [36m</label>[39m
+      [36m</fieldset>[39m
+      [36m<div>[39m
+        [36m<label>[39m
+          [36m<input[39m
+            [33mtype[39m=[32m"checkbox"[39m
+          [36m/>[39m
+          [0mI agree to the processing.[0m
+        [36m</label>[39m
+      [36m</div>[39m
+      [36m<div>[39m
+        [36m<label>[39m
+          [36m<input[39m
+            [33mtype[39m=[32m"checkbox"[39m
+          [36m/>[39m
+          [0mPhotos are fine.[0m
+        [36m</label>[39m
+      [36m</div>[39m
+      [36m<label>[39m
+        [36m<input[39m
+          [33mtype[39m=[32m"checkbox"[39m
+        [36m/>[39m
+        [0mI am not a robot (test mode)[0m
+      [36m</label>[39m
+      [36m<button[39m
+        [33mtype[39m=[32m"submit"[39m
+      [36m>[39m
+        [0mRegister[0m
+      [36m</button>[39m
+    [36m</form>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<form[39m
+      [33mnovalidate[39m=[32m""[39m
+    [36m>[39m
+      [36m<fieldset>[39m
+        [36m<legend>[39m
+          [0mRegistration type[0m
+        [36m</legend>[39m
+        [36m<label>[39m
+          [36m<input[39m
+            [33mname[39m=[32m"type"[39m
+            [33mtype[39m=[32m"radio"[39m
+          [36m/>[39m
+          [0mExternal participant[0m
+        [36m</label>[39m
+        [36m<label>[39m
+          [36m<input[39m
+            [33mname[39m=[32m"type"[39m
+            [33mtype[39m=[32m"radio"[39m
+          [36m/>[39m
+          [0mStudent[0m
+        [36m</label>[39m
+      [36m</fieldset>[39m
+      [36m<div>[39m
+        [36m<label[39m
+          [33mfor[39m=[32m"firstName"[39m
+        [36m>[39m
+          [0mFirst name[0m
+        [36m</label>[39m
+        [36m<input[39m
+          [33mid[39m=[32m"firstName"[39m
+          [33mname[39m=[32m"firstName"[39m
+          [33mtype[39m=[32m"text"[39m
+          [33mvalue[39m=[32m" Ana "[39m
+        [36m/>[39m
+      [36m</div>[39m
+      [36m<div>[39m
+        [36m<label[39m
+          [33mfor[39m=[32m"lastName"[39m
+        [36m>[39m
+          [0mLast name[0m
+        [36m</label>[39m
+        [36m<input[39m
+          [33mid[39m=[32m"lastName"[39m
+          [33mname[39m=[32m"lastName"[39m
+          [33mtype[39m=[32m"text"[39m
+          [33mvalue[39m=[32m"Novak"[39m
+        [36m/>[39m
+      [36m</div>[39m
+      [36m<div>[39m
+        [36m<label[39m
+          [33mfor[39m=[32m"email"[39m
+        [36m>[39m
+          [0mEmail[0m
+        [36m</label>[39m
+        [36m<input[39m
+          [33mid[39m=[32m"email"[39m
+          [33mname[39m=[32m"email"[39m
+          [33mtype[39m=[32m"email"[39m
+          [33mvalue[39m=[32m"ana@example.com"[39m
+        [36m/>[39m
+      [36m</div>[39m
+      [36m<div>[39m
+        [36m<label[39m
+          [33mfor[39m=[32m"organization"[39m
+        [36m>[39m
+          [0mOrganization / institution[0m
+        [36m</label>[39m
+        [36m<input[39m
+          [33mid[39m=[32m"organization"[39m
+          [33mname[39m=[32m"organization"[39m
+          [33mtype[39m=[32m"text"[39m
+          [33mvalue[39m=[32m"IJS"[39m
+        [36m/>[39m
+      [36m</div>[39m
+      [36m<fieldset>[39m
+        [36m<legend>[39m
+          [0mWorkshops[0m
+        [36m</legend>[39m
+        [36m<label>[39m
+          [36m<input[39m
+            [33mtype[39m=[32m"checkbox"[39m
+          [36m/>[39m
+          [0mWorkshop A[0m
+        [36m</label>[39m
+      [36m</fieldset>[39m
+      [36m<fieldset>[39m
+        [36m<legend>[39m
+          [0mMeals[0m
+        [36m</legend>[39m
+        [36m<label>[39m
+          [36m<input[39m
+            [33mtype[39m=[32m"checkbox"[39m
+          [36m/>[39m
+          [0mLunch[0m
+        [36m</label>[39m
+      [36m</fieldset>[39m
+      [36m<fieldset>[39m
+        [36m<legend>[39m
+          [0mOther activities[0m
+        [36m</legend>[39m
+        [36m<label>[39m
+          [36m<input[39m
+            [33mtype[39m=[32m"checkbox"[39m
+          [36m/>[39m
+          [0mTour[0m
+        [36m</label>[39m
+      [36m</fieldset>[39m
+      [36m<div>[39m
+        [36m<label>[39m
+          [36m<input[39m
+            [33mtype[39m=[32m"checkbox"[39m
+          [36m/>[39m
+          [0mI agree to the processing.[0m
+        [36m</label>[39m
+      [36m</div>[39m
+      [36m<div>[39m
+        [36m<label>[39m
+          [36m<input[39m
+            [33mtype[39m=[32m"checkbox"[39m
+          [36m/>[39m
+          [0mPhotos are fine.[0m
+        [36m</label>[39m
+      [36m</div>[39m
+      [36m<label>[39m
+        [36m<input[39m
+          [33mtype[39m=[32m"checkbox"[39m
+        [36m/>[39m
+        [0mI am not a robot (test mode)[0m
+      [36m</label>[39m
+      [36m<button[39m
+        [33mtype[39m=[32m"submit"[39m
+      [36m>[39m
+        [0mRegister[0m
+      [36m</button>[39m
+    [36m</form>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/RegistrationForm.submit.test.tsx:162:32
+    160|     register();
+    161|
+    162|     const alert = await screen.findByRole("alert");
+       |                                ^
+    163|     expect(alert.textContent).toBe("Registration could not be complete…
+    164|     expect(onAccepted).not.toHaveBeenCalled();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/13]⎯
+
+
+ Test Files  4 failed (4)
+      Tests  13 failed | 2 passed (15)
+   Start at  15:52:59
+   Duration  6.82s (transform 318ms, setup 475ms, import 707ms, tests 8.06s, environment 2.20s)
+
