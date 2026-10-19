@@ -1,0 +1,312 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< si.konferenca:registration-backend >-----------------
+[INFO] Building registration-backend 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- spotless:2.44.3:apply (default-cli) @ registration-backend ---
+[INFO] Spotless.Java is keeping 89 files clean - 0 were changed to be clean, 4 were already clean, 85 were skipped because caching determined they were already clean
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ registration-backend ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ registration-backend ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 52 source files with javac [debug parameters release 21] to target\classes
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ registration-backend ---
+[INFO] Copying 5 resources from src\test\resources to target\test-classes
+[INFO] 
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ registration-backend ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 37 source files with javac [debug parameters release 21] to target\test-classes
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ registration-backend ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactoryTest
+[ERROR] Tests run: 12, Failures: 9, Errors: 3, Skipped: 0, Time elapsed: 0.204 s <<< FAILURE! -- in si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactoryTest
+[ERROR] si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactoryTest.SR_02_withoutTestModeKeysAreRequiredEverywhere -- Time elapsed: 0.095 s <<< FAILURE!
+java.lang.AssertionError: 
+
+Expecting actual throwable to be an instance of:
+  java.lang.IllegalStateException
+but was:
+  java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactory.create(CaptchaVerifierFactory.java:12)
+	at si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactoryTest.lambda$SR_02_withoutTestModeKeysAreRequiredEverywhere$4(CaptchaVerifierFactoryTest.java:48)
+	at org.assertj.core.api.ThrowableAssert.catchThrowable(ThrowableAssert.java:66)
+	...(85 remaining lines not displayed - this can be changed with Assertions.setMaxStackTraceElementsDisplayed)
+	at si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactoryTest.SR_02_withoutTestModeKeysAreRequiredEverywhere(CaptchaVerifierFactoryTest.java:49)
+
+[ERROR] si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactoryTest.SR_02_testModeIsAllowedOnlyInLocalAndTest(String)[1] -- Time elapsed: 0.008 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactory.create(CaptchaVerifierFactory.java:12)
+	at si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactoryTest.SR_02_testModeIsAllowedOnlyInLocalAndTest(CaptchaVerifierFactoryTest.java:42)
+
+[ERROR] si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactoryTest.SR_02_testModeIsAllowedOnlyInLocalAndTest(String)[2] -- Time elapsed: 0.003 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactory.create(CaptchaVerifierFactory.java:12)
+	at si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactoryTest.SR_02_testModeIsAllowedOnlyInLocalAndTest(CaptchaVerifierFactoryTest.java:42)
+
+[ERROR] si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactoryTest.SR_02_invalidVerifyUrlRefusesToStart -- Time elapsed: 0.001 s <<< FAILURE!
+java.lang.AssertionError: 
+
+Expecting actual throwable to be an instance of:
+  java.lang.IllegalStateException
+but was:
+  java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactory.create(CaptchaVerifierFactory.java:12)
+	at si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactoryTest.lambda$SR_02_invalidVerifyUrlRefusesToStart$6(CaptchaVerifierFactoryTest.java:63)
+	at org.assertj.core.api.ThrowableAssert.catchThrowable(ThrowableAssert.java:66)
+	...(85 remaining lines not displayed - this can be changed with Assertions.setMaxStackTraceElementsDisplayed)
+	at si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactoryTest.SR_02_invalidVerifyUrlRefusesToStart(CaptchaVerifierFactoryTest.java:64)
+
+[ERROR] si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactoryTest.SR_02_productionWithKeysUsesTheVerifyEndpoint -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactory.create(CaptchaVerifierFactory.java:12)
+	at si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactoryTest.SR_02_productionWithKeysUsesTheVerifyEndpoint(CaptchaVerifierFactoryTest.java:17)
+
+[ERROR] si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactoryTest.SR_02_productionRefusesTestMode -- Time elapsed: 0.002 s <<< FAILURE!
+java.lang.AssertionError: 
+
+Expecting actual throwable to be an instance of:
+  java.lang.IllegalStateException
+but was:
+  java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactory.create(CaptchaVerifierFactory.java:12)
+	at si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactoryTest.lambda$SR_02_productionRefusesTestMode$0(CaptchaVerifierFactoryTest.java:23)
+	at org.assertj.core.api.ThrowableAssert.catchThrowable(ThrowableAssert.java:66)
+	...(85 remaining lines not displayed - this can be changed with Assertions.setMaxStackTraceElementsDisplayed)
+	at si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactoryTest.SR_02_productionRefusesTestMode(CaptchaVerifierFactoryTest.java:24)
+
+[ERROR] si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactoryTest.SR_02_productionRefusesEmptyKeys(String)[1] -- Time elapsed: 0.003 s <<< FAILURE!
+java.lang.AssertionError: 
+
+Expecting actual throwable to be an instance of:
+  java.lang.IllegalStateException
+but was:
+  java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactory.create(CaptchaVerifierFactory.java:12)
+	at si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactoryTest.lambda$SR_02_productionRefusesEmptyKeys$1(CaptchaVerifierFactoryTest.java:31)
+	at org.assertj.core.api.ThrowableAssert.catchThrowable(ThrowableAssert.java:66)
+	...(135 remaining lines not displayed - this can be changed with Assertions.setMaxStackTraceElementsDisplayed)
+	at si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactoryTest.SR_02_productionRefusesEmptyKeys(CaptchaVerifierFactoryTest.java:32)
+
+[ERROR] si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactoryTest.SR_02_productionRefusesEmptyKeys(String)[2] -- Time elapsed: 0.003 s <<< FAILURE!
+java.lang.AssertionError: 
+
+Expecting actual throwable to be an instance of:
+  java.lang.IllegalStateException
+but was:
+  java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactory.create(CaptchaVerifierFactory.java:12)
+	at si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactoryTest.lambda$SR_02_productionRefusesEmptyKeys$1(CaptchaVerifierFactoryTest.java:31)
+	at org.assertj.core.api.ThrowableAssert.catchThrowable(ThrowableAssert.java:66)
+	...(135 remaining lines not displayed - this can be changed with Assertions.setMaxStackTraceElementsDisplayed)
+	at si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactoryTest.SR_02_productionRefusesEmptyKeys(CaptchaVerifierFactoryTest.java:32)
+
+[ERROR] si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactoryTest.SR_02_unknownEnvironmentRefusesToStart(String)[1] -- Time elapsed: 0.002 s <<< FAILURE!
+java.lang.AssertionError: 
+
+Expecting actual throwable to be an instance of:
+  java.lang.IllegalStateException
+but was:
+  java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactory.create(CaptchaVerifierFactory.java:12)
+	at si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactoryTest.lambda$SR_02_unknownEnvironmentRefusesToStart$5(CaptchaVerifierFactoryTest.java:57)
+	at org.assertj.core.api.ThrowableAssert.catchThrowable(ThrowableAssert.java:66)
+	...(135 remaining lines not displayed - this can be changed with Assertions.setMaxStackTraceElementsDisplayed)
+	at si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactoryTest.SR_02_unknownEnvironmentRefusesToStart(CaptchaVerifierFactoryTest.java:58)
+
+[ERROR] si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactoryTest.SR_02_unknownEnvironmentRefusesToStart(String)[2] -- Time elapsed: 0.002 s <<< FAILURE!
+java.lang.AssertionError: 
+
+Expecting actual throwable to be an instance of:
+  java.lang.IllegalStateException
+but was:
+  java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactory.create(CaptchaVerifierFactory.java:12)
+	at si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactoryTest.lambda$SR_02_unknownEnvironmentRefusesToStart$5(CaptchaVerifierFactoryTest.java:57)
+	at org.assertj.core.api.ThrowableAssert.catchThrowable(ThrowableAssert.java:66)
+	...(135 remaining lines not displayed - this can be changed with Assertions.setMaxStackTraceElementsDisplayed)
+	at si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactoryTest.SR_02_unknownEnvironmentRefusesToStart(CaptchaVerifierFactoryTest.java:58)
+
+[ERROR] si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactoryTest.SR_02_unknownEnvironmentRefusesToStart(String)[3] -- Time elapsed: 0.003 s <<< FAILURE!
+java.lang.AssertionError: 
+
+Expecting actual throwable to be an instance of:
+  java.lang.IllegalStateException
+but was:
+  java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactory.create(CaptchaVerifierFactory.java:12)
+	at si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactoryTest.lambda$SR_02_unknownEnvironmentRefusesToStart$5(CaptchaVerifierFactoryTest.java:57)
+	at org.assertj.core.api.ThrowableAssert.catchThrowable(ThrowableAssert.java:66)
+	...(135 remaining lines not displayed - this can be changed with Assertions.setMaxStackTraceElementsDisplayed)
+	at si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactoryTest.SR_02_unknownEnvironmentRefusesToStart(CaptchaVerifierFactoryTest.java:58)
+
+[ERROR] si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactoryTest.SR_02_unknownEnvironmentRefusesToStart(String)[4] -- Time elapsed: 0.002 s <<< FAILURE!
+java.lang.AssertionError: 
+
+Expecting actual throwable to be an instance of:
+  java.lang.IllegalStateException
+but was:
+  java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactory.create(CaptchaVerifierFactory.java:12)
+	at si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactoryTest.lambda$SR_02_unknownEnvironmentRefusesToStart$5(CaptchaVerifierFactoryTest.java:57)
+	at org.assertj.core.api.ThrowableAssert.catchThrowable(ThrowableAssert.java:66)
+	...(135 remaining lines not displayed - this can be changed with Assertions.setMaxStackTraceElementsDisplayed)
+	at si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactoryTest.SR_02_unknownEnvironmentRefusesToStart(CaptchaVerifierFactoryTest.java:58)
+
+[INFO] Running si.konferenca.registration.infrastructure.captcha.RecaptchaVerifierTest
+[ERROR] Tests run: 6, Failures: 0, Errors: 6, Skipped: 0, Time elapsed: 0.126 s <<< FAILURE! -- in si.konferenca.registration.infrastructure.captcha.RecaptchaVerifierTest
+[ERROR] si.konferenca.registration.infrastructure.captcha.RecaptchaVerifierTest.DoD_P05_rejectedTokenIsRejected -- Time elapsed: 0.103 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.infrastructure.captcha.RecaptchaVerifier.verify(RecaptchaVerifier.java:14)
+	at si.konferenca.registration.infrastructure.captcha.RecaptchaVerifierTest.DoD_P05_rejectedTokenIsRejected(RecaptchaVerifierTest.java:78)
+
+[ERROR] si.konferenca.registration.infrastructure.captcha.RecaptchaVerifierTest.SR_01_blankTokenIsRejectedWithoutACall -- Time elapsed: 0.003 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.infrastructure.captcha.RecaptchaVerifier.verify(RecaptchaVerifier.java:14)
+	at si.konferenca.registration.infrastructure.captcha.RecaptchaVerifierTest.SR_01_blankTokenIsRejectedWithoutACall(RecaptchaVerifierTest.java:111)
+
+[ERROR] si.konferenca.registration.infrastructure.captcha.RecaptchaVerifierTest.SR_01_slowEndpointTimesOutAndRejects -- Time elapsed: 0.003 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.infrastructure.captcha.RecaptchaVerifier.verify(RecaptchaVerifier.java:14)
+	at si.konferenca.registration.infrastructure.captcha.RecaptchaVerifierTest.SR_01_slowEndpointTimesOutAndRejects(RecaptchaVerifierTest.java:98)
+
+[ERROR] si.konferenca.registration.infrastructure.captcha.RecaptchaVerifierTest.SR_01_failingOrMalformedVerificationRejects -- Time elapsed: 0.003 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.infrastructure.captcha.RecaptchaVerifier.verify(RecaptchaVerifier.java:14)
+	at si.konferenca.registration.infrastructure.captcha.RecaptchaVerifierTest.SR_01_failingOrMalformedVerificationRejects(RecaptchaVerifierTest.java:84)
+
+[ERROR] si.konferenca.registration.infrastructure.captcha.RecaptchaVerifierTest.SR_01_acceptedTokenIsVerifiedWithSecretAndResponse -- Time elapsed: 0.003 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.infrastructure.captcha.RecaptchaVerifier.verify(RecaptchaVerifier.java:14)
+	at si.konferenca.registration.infrastructure.captcha.RecaptchaVerifierTest.SR_01_acceptedTokenIsVerifiedWithSecretAndResponse(RecaptchaVerifierTest.java:65)
+
+[ERROR] si.konferenca.registration.infrastructure.captcha.RecaptchaVerifierTest.SR_01_unreachableEndpointRejects -- Time elapsed: 0.003 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.infrastructure.captcha.RecaptchaVerifier.verify(RecaptchaVerifier.java:14)
+	at si.konferenca.registration.infrastructure.captcha.RecaptchaVerifierTest.SR_01_unreachableEndpointRejects(RecaptchaVerifierTest.java:106)
+
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Failures: 
+[ERROR]   CaptchaVerifierFactoryTest.SR_02_invalidVerifyUrlRefusesToStart:64 
+Expecting actual throwable to be an instance of:
+  java.lang.IllegalStateException
+but was:
+  java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactory.create(CaptchaVerifierFactory.java:12)
+	at si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactoryTest.lambda$SR_02_invalidVerifyUrlRefusesToStart$6(CaptchaVerifierFactoryTest.java:63)
+	at org.assertj.core.api.ThrowableAssert.catchThrowable(ThrowableAssert.java:66)
+	...(85 remaining lines not displayed - this can be changed with Assertions.setMaxStackTraceElementsDisplayed)
+[ERROR]   CaptchaVerifierFactoryTest.SR_02_productionRefusesEmptyKeys:32 
+Expecting actual throwable to be an instance of:
+  java.lang.IllegalStateException
+but was:
+  java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactory.create(CaptchaVerifierFactory.java:12)
+	at si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactoryTest.lambda$SR_02_productionRefusesEmptyKeys$1(CaptchaVerifierFactoryTest.java:31)
+	at org.assertj.core.api.ThrowableAssert.catchThrowable(ThrowableAssert.java:66)
+	...(135 remaining lines not displayed - this can be changed with Assertions.setMaxStackTraceElementsDisplayed)
+[ERROR]   CaptchaVerifierFactoryTest.SR_02_productionRefusesEmptyKeys:32 
+Expecting actual throwable to be an instance of:
+  java.lang.IllegalStateException
+but was:
+  java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactory.create(CaptchaVerifierFactory.java:12)
+	at si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactoryTest.lambda$SR_02_productionRefusesEmptyKeys$1(CaptchaVerifierFactoryTest.java:31)
+	at org.assertj.core.api.ThrowableAssert.catchThrowable(ThrowableAssert.java:66)
+	...(135 remaining lines not displayed - this can be changed with Assertions.setMaxStackTraceElementsDisplayed)
+[ERROR]   CaptchaVerifierFactoryTest.SR_02_productionRefusesTestMode:24 
+Expecting actual throwable to be an instance of:
+  java.lang.IllegalStateException
+but was:
+  java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactory.create(CaptchaVerifierFactory.java:12)
+	at si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactoryTest.lambda$SR_02_productionRefusesTestMode$0(CaptchaVerifierFactoryTest.java:23)
+	at org.assertj.core.api.ThrowableAssert.catchThrowable(ThrowableAssert.java:66)
+	...(85 remaining lines not displayed - this can be changed with Assertions.setMaxStackTraceElementsDisplayed)
+[ERROR]   CaptchaVerifierFactoryTest.SR_02_unknownEnvironmentRefusesToStart:58 
+Expecting actual throwable to be an instance of:
+  java.lang.IllegalStateException
+but was:
+  java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactory.create(CaptchaVerifierFactory.java:12)
+	at si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactoryTest.lambda$SR_02_unknownEnvironmentRefusesToStart$5(CaptchaVerifierFactoryTest.java:57)
+	at org.assertj.core.api.ThrowableAssert.catchThrowable(ThrowableAssert.java:66)
+	...(135 remaining lines not displayed - this can be changed with Assertions.setMaxStackTraceElementsDisplayed)
+[ERROR]   CaptchaVerifierFactoryTest.SR_02_unknownEnvironmentRefusesToStart:58 
+Expecting actual throwable to be an instance of:
+  java.lang.IllegalStateException
+but was:
+  java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactory.create(CaptchaVerifierFactory.java:12)
+	at si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactoryTest.lambda$SR_02_unknownEnvironmentRefusesToStart$5(CaptchaVerifierFactoryTest.java:57)
+	at org.assertj.core.api.ThrowableAssert.catchThrowable(ThrowableAssert.java:66)
+	...(135 remaining lines not displayed - this can be changed with Assertions.setMaxStackTraceElementsDisplayed)
+[ERROR]   CaptchaVerifierFactoryTest.SR_02_unknownEnvironmentRefusesToStart:58 
+Expecting actual throwable to be an instance of:
+  java.lang.IllegalStateException
+but was:
+  java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactory.create(CaptchaVerifierFactory.java:12)
+	at si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactoryTest.lambda$SR_02_unknownEnvironmentRefusesToStart$5(CaptchaVerifierFactoryTest.java:57)
+	at org.assertj.core.api.ThrowableAssert.catchThrowable(ThrowableAssert.java:66)
+	...(135 remaining lines not displayed - this can be changed with Assertions.setMaxStackTraceElementsDisplayed)
+[ERROR]   CaptchaVerifierFactoryTest.SR_02_unknownEnvironmentRefusesToStart:58 
+Expecting actual throwable to be an instance of:
+  java.lang.IllegalStateException
+but was:
+  java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactory.create(CaptchaVerifierFactory.java:12)
+	at si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactoryTest.lambda$SR_02_unknownEnvironmentRefusesToStart$5(CaptchaVerifierFactoryTest.java:57)
+	at org.assertj.core.api.ThrowableAssert.catchThrowable(ThrowableAssert.java:66)
+	...(135 remaining lines not displayed - this can be changed with Assertions.setMaxStackTraceElementsDisplayed)
+[ERROR]   CaptchaVerifierFactoryTest.SR_02_withoutTestModeKeysAreRequiredEverywhere:49 
+Expecting actual throwable to be an instance of:
+  java.lang.IllegalStateException
+but was:
+  java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactory.create(CaptchaVerifierFactory.java:12)
+	at si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactoryTest.lambda$SR_02_withoutTestModeKeysAreRequiredEverywhere$4(CaptchaVerifierFactoryTest.java:48)
+	at org.assertj.core.api.ThrowableAssert.catchThrowable(ThrowableAssert.java:66)
+	...(85 remaining lines not displayed - this can be changed with Assertions.setMaxStackTraceElementsDisplayed)
+[ERROR] Errors: 
+[ERROR]   CaptchaVerifierFactoryTest.SR_02_productionWithKeysUsesTheVerifyEndpoint:17 » UnsupportedOperation not implemented
+[ERROR]   CaptchaVerifierFactoryTest.SR_02_testModeIsAllowedOnlyInLocalAndTest:42 » UnsupportedOperation not implemented
+[ERROR]   CaptchaVerifierFactoryTest.SR_02_testModeIsAllowedOnlyInLocalAndTest:42 » UnsupportedOperation not implemented
+[ERROR]   RecaptchaVerifierTest.DoD_P05_rejectedTokenIsRejected:78 » UnsupportedOperation not implemented
+[ERROR]   RecaptchaVerifierTest.SR_01_acceptedTokenIsVerifiedWithSecretAndResponse:65 » UnsupportedOperation not implemented
+[ERROR]   RecaptchaVerifierTest.SR_01_blankTokenIsRejectedWithoutACall:111 » UnsupportedOperation not implemented
+[ERROR]   RecaptchaVerifierTest.SR_01_failingOrMalformedVerificationRejects:84 » UnsupportedOperation not implemented
+[ERROR]   RecaptchaVerifierTest.SR_01_slowEndpointTimesOutAndRejects:98 » UnsupportedOperation not implemented
+[ERROR]   RecaptchaVerifierTest.SR_01_unreachableEndpointRejects:106 » UnsupportedOperation not implemented
+[INFO] 
+[ERROR] Tests run: 18, Failures: 9, Errors: 9, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  9.004 s
+[INFO] Finished at: 2026-10-19T15:42:55+02:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.5.6:test (default-test) on project registration-backend: There are test failures.
+[ERROR] 
+[ERROR] See E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\backend\target\surefire-reports for the individual test results.
+[ERROR] See dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
