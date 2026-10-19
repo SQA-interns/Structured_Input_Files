@@ -1,0 +1,438 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< si.konferenca:registration-backend >-----------------
+[INFO] Building registration-backend 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- spotless:2.44.3:apply (default-cli) @ registration-backend ---
+[INFO] clean file: E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\backend\src\test\java\si\konferenca\registration\web\ExportSecurityIntegrationTest.java
+[INFO] clean file: E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\backend\src\test\java\si\konferenca\registration\web\OrganizerHttpsOnlyFilterTest.java
+[INFO] Spotless.Java is keeping 85 files clean - 2 were changed to be clean, 1 were already clean, 82 were skipped because caching determined they were already clean
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ registration-backend ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ registration-backend ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 50 source files with javac [debug parameters release 21] to target\classes
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ registration-backend ---
+[INFO] Copying 5 resources from src\test\resources to target\test-classes
+[INFO] 
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ registration-backend ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 35 source files with javac [debug parameters release 21] to target\test-classes
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ registration-backend ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running si.konferenca.registration.web.ExportSecurityIntegrationTest
+15:38:26.535 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.konferenca.registration.web.ExportSecurityIntegrationTest]: ExportSecurityIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+15:38:26.663 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration si.konferenca.registration.RegistrationApplication for test class si.konferenca.registration.web.ExportSecurityIntegrationTest
+15:38:26.733 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.konferenca.registration.web.ExportSecurityIntegrationTest]: ExportSecurityIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+15:38:26.736 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration si.konferenca.registration.RegistrationApplication for test class si.konferenca.registration.web.ExportSecurityIntegrationTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-10-19T15:38:27.067+02:00  INFO 42472 --- [registration-backend] [           main] org.testcontainers.images.PullPolicy     : Image pull policy will be performed by: DefaultPullPolicy()
+2026-10-19T15:38:27.072+02:00  INFO 42472 --- [registration-backend] [           main] o.t.utility.ImageNameSubstitutor         : Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2026-10-19T15:38:27.110+02:00  INFO 42472 --- [registration-backend] [           main] org.testcontainers.DockerClientFactory   : Testcontainers version: 2.0.5
+2026-10-19T15:38:27.368+02:00  INFO 42472 --- [registration-backend] [           main] o.t.d.DockerClientProviderStrategy       : Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2026-10-19T15:38:27.757+02:00  INFO 42472 --- [registration-backend] [           main] o.t.d.DockerClientProviderStrategy       : Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+2026-10-19T15:38:27.758+02:00  INFO 42472 --- [registration-backend] [           main] org.testcontainers.DockerClientFactory   : Docker host IP address is localhost
+2026-10-19T15:38:27.775+02:00  INFO 42472 --- [registration-backend] [           main] org.testcontainers.DockerClientFactory   : Connected to docker: 
+  Server Version: 29.8.1
+  API Version: 1.56
+  Operating System: Docker Desktop
+  Total Memory: 40065 MB
+  Labels: 
+    com.docker.desktop.address=npipe://\\.\pipe\docker_cli
+2026-10-19T15:38:27.874+02:00  INFO 42472 --- [registration-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Creating container for image: testcontainers/ryuk:0.14.0
+2026-10-19T15:38:28.150+02:00  INFO 42472 --- [registration-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Container testcontainers/ryuk:0.14.0 is starting: 34a3c7dd93f007a3ed6e74123fccab96109fb418616dbbe87aba0798354f63ac
+2026-10-19T15:38:28.516+02:00  INFO 42472 --- [registration-backend] [           main] tc.testcontainers/ryuk:0.14.0            : Container testcontainers/ryuk:0.14.0 started in PT0.6420272S
+2026-10-19T15:38:28.522+02:00  INFO 42472 --- [registration-backend] [           main] o.t.utility.RyukResourceReaper           : Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2026-10-19T15:38:28.522+02:00  INFO 42472 --- [registration-backend] [           main] org.testcontainers.DockerClientFactory   : Checking the system...
+2026-10-19T15:38:28.523+02:00  INFO 42472 --- [registration-backend] [           main] org.testcontainers.DockerClientFactory   : ?? Docker server version should be at least 1.6.0
+2026-10-19T15:38:28.523+02:00  INFO 42472 --- [registration-backend] [           main] tc.postgres:16.15-alpine                 : Creating container for image: postgres:16.15-alpine
+2026-10-19T15:38:28.655+02:00  INFO 42472 --- [registration-backend] [           main] tc.postgres:16.15-alpine                 : Container postgres:16.15-alpine is starting: 2ce50c1e7d99e07d432b7dae412b27fdde9e75493243ee84a0ba6ac55946b94b
+2026-10-19T15:38:30.702+02:00  INFO 42472 --- [registration-backend] [           main] tc.postgres:16.15-alpine                 : Container postgres:16.15-alpine started in PT2.1788573S
+2026-10-19T15:38:30.703+02:00  INFO 42472 --- [registration-backend] [           main] tc.postgres:16.15-alpine                 : Container is started (JDBC URL: jdbc:postgresql://localhost:52661/test?loggerLevel=OFF)
+2026-10-19T15:38:30.703+02:00  INFO 42472 --- [registration-backend] [           main] tc.axllent/mailpit:v1.31.1               : Creating container for image: axllent/mailpit:v1.31.1
+2026-10-19T15:38:30.818+02:00  INFO 42472 --- [registration-backend] [           main] tc.axllent/mailpit:v1.31.1               : Container axllent/mailpit:v1.31.1 is starting: 57a3911d969d3855ba18e87a7695b5cff54f35787fff69c8360c4cf54c9e6247
+2026-10-19T15:38:31.085+02:00  INFO 42472 --- [registration-backend] [           main] o.t.c.wait.strategy.HttpWaitStrategy     : /objective_sanderson: Waiting for 60 seconds for URL: http://localhost:52662/api/v1/info (where port 52662 maps to container port 8025)
+2026-10-19T15:38:31.275+02:00  INFO 42472 --- [registration-backend] [           main] tc.axllent/mailpit:v1.31.1               : Container axllent/mailpit:v1.31.1 started in PT0.5712631S
+2026-10-19T15:38:31.285+02:00  INFO 42472 --- [registration-backend] [           main] s.k.r.web.ExportSecurityIntegrationTest  : Starting ExportSecurityIntegrationTest using Java 21.0.10 with PID 42472 (started by sense in E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\backend)
+2026-10-19T15:38:31.286+02:00  INFO 42472 --- [registration-backend] [           main] s.k.r.web.ExportSecurityIntegrationTest  : No active profile set, falling back to 1 default profile: "default"
+2026-10-19T15:38:32.116+02:00  INFO 42472 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-19T15:38:32.158+02:00  INFO 42472 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 30 ms. Found 0 JPA repository interfaces.
+2026-10-19T15:38:33.243+02:00  INFO 42472 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-10-19T15:38:33.403+02:00  INFO 42472 --- [registration-backend] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@7d8d671b
+2026-10-19T15:38:33.405+02:00  INFO 42472 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-10-19T15:38:33.424+02:00  INFO 42472 --- [registration-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:52661/test?loggerLevel=OFF (PostgreSQL 16.15)
+2026-10-19T15:38:33.482+02:00  INFO 42472 --- [registration-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2026-10-19T15:38:33.485+02:00  INFO 42472 --- [registration-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.015s)
+2026-10-19T15:38:33.502+02:00  INFO 42472 --- [registration-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2026-10-19T15:38:33.556+02:00  INFO 42472 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-10-19T15:38:33.570+02:00  INFO 42472 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "1 - create registration tables"
+2026-10-19T15:38:33.615+02:00  INFO 42472 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 1 migration to schema "public", now at version v1 (execution time 00:00.021s)
+2026-10-19T15:38:33.865+02:00  INFO 42472 --- [registration-backend] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-10-19T15:38:33.990+02:00  INFO 42472 --- [registration-backend] [           main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.5.Final
+2026-10-19T15:38:34.414+02:00  INFO 42472 --- [registration-backend] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-19T15:38:34.491+02:00  INFO 42472 --- [registration-backend] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:52661/test?loggerLevel=OFF]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 16.15
+	Default catalog/schema: test/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-10-19T15:38:35.222+02:00  INFO 42472 --- [registration-backend] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-19T15:38:35.267+02:00  INFO 42472 --- [registration-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-19T15:38:35.555+02:00  WARN 42472 --- [registration-backend] [           main] .s.a.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: d1c45e8f-c155-4c77-9442-0712a5ec8552
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-10-19T15:38:35.563+02:00  INFO 42472 --- [registration-backend] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-10-19T15:38:36.879+02:00  INFO 42472 --- [registration-backend] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-10-19T15:38:36.879+02:00  INFO 42472 --- [registration-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-19T15:38:36.894+02:00  INFO 42472 --- [registration-backend] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-10-19T15:38:36.905+02:00  INFO 42472 --- [registration-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 26 ms
+2026-10-19T15:38:37.112+02:00  INFO 42472 --- [registration-backend] [           main] s.k.r.web.ExportSecurityIntegrationTest  : Started ExportSecurityIntegrationTest in 10.326 seconds (process running for 11.496)
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (C:\Users\sense\.m2\repository\net\bytebuddy\byte-buddy-agent\1.18.11\byte-buddy-agent-1.18.11.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /api/registrations/export
+       Parameters = {}
+          Headers = [Authorization:"Basic b3JnYW5pemVyOk9yZ2FuaXplci1UZXN0LVBhc3N3b3JkLTIwMjY="]
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = null
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 403
+    Error message = Forbidden
+          Headers = [X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", Strict-Transport-Security:"max-age=31536000 ; includeSubDomains", X-Frame-Options:"DENY"]
+     Content type = null
+             Body = 
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /api/registrations/export
+       Parameters = {}
+          Headers = [Authorization:"Basic b3JnYW5pemVyOm5vcGU="]
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = null
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 403
+    Error message = Forbidden
+          Headers = [X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY"]
+     Content type = null
+             Body = 
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /api/registrations/export
+       Parameters = {}
+          Headers = []
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = null
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 403
+    Error message = Forbidden
+          Headers = [X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY"]
+     Content type = null
+             Body = 
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /api/registrations/export
+       Parameters = {}
+          Headers = [Authorization:"Basic b3JnYW5pemVyOk9yZ2FuaXplci1UZXN0LVBhc3N3b3JkLTIwMjY="]
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = null
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 403
+    Error message = Forbidden
+          Headers = [X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY"]
+     Content type = null
+             Body = 
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+[ERROR] Tests run: 6, Failures: 4, Errors: 1, Skipped: 0, Time elapsed: 11.39 s <<< FAILURE! -- in si.konferenca.registration.web.ExportSecurityIntegrationTest
+[ERROR] si.konferenca.registration.web.ExportSecurityIntegrationTest.AC_008_04_validCredentialsOverHttpsFromRemoteClientGetTheWorkbook -- Time elapsed: 0.463 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: 200
+ but was: 403
+	at si.konferenca.registration.web.ExportSecurityIntegrationTest.AC_008_04_validCredentialsOverHttpsFromRemoteClientGetTheWorkbook(ExportSecurityIntegrationTest.java:90)
+
+[ERROR] si.konferenca.registration.web.ExportSecurityIntegrationTest.AC_008_02_passwordIsKeptOnlyAsBcryptHash -- Time elapsed: 0.006 s <<< ERROR!
+org.springframework.security.core.userdetails.UsernameNotFoundException: user not found
+	at org.springframework.security.core.userdetails.UsernameNotFoundException.fromUsername(UsernameNotFoundException.java:77)
+	at org.springframework.security.provisioning.InMemoryUserDetailsManager.loadUserByUsername(InMemoryUserDetailsManager.java:173)
+	at si.konferenca.registration.web.ExportSecurityIntegrationTest.AC_008_02_passwordIsKeptOnlyAsBcryptHash(ExportSecurityIntegrationTest.java:111)
+
+[ERROR] si.konferenca.registration.web.ExportSecurityIntegrationTest.AC_008_02_wrongPasswordIs401 -- Time elapsed: 0.006 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: 401
+ but was: 403
+	at si.konferenca.registration.web.ExportSecurityIntegrationTest.AC_008_02_wrongPasswordIs401(ExportSecurityIntegrationTest.java:66)
+
+[ERROR] si.konferenca.registration.web.ExportSecurityIntegrationTest.AC_008_02_missingCredentialsAre401WithBasicChallenge -- Time elapsed: 0.007 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: 401
+ but was: 403
+	at si.konferenca.registration.web.ExportSecurityIntegrationTest.AC_008_02_missingCredentialsAre401WithBasicChallenge(ExportSecurityIntegrationTest.java:53)
+
+[ERROR] si.konferenca.registration.web.ExportSecurityIntegrationTest.AC_008_01_validCredentialsFromLoopbackGetTheWorkbook -- Time elapsed: 0.007 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: 200
+ but was: 403
+	at si.konferenca.registration.web.ExportSecurityIntegrationTest.AC_008_01_validCredentialsFromLoopbackGetTheWorkbook(ExportSecurityIntegrationTest.java:73)
+
+[INFO] Running si.konferenca.registration.web.OrganizerHttpsOnlyFilterTest
+[ERROR] Tests run: 12, Failures: 0, Errors: 12, Skipped: 0, Time elapsed: 0.069 s <<< FAILURE! -- in si.konferenca.registration.web.OrganizerHttpsOnlyFilterTest
+[ERROR] si.konferenca.registration.web.OrganizerHttpsOnlyFilterTest.AC_008_04_switchedOffItLetsPlainHttpThrough -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.web.OrganizerHttpsOnlyFilter.doFilterInternal(OrganizerHttpsOnlyFilter.java:16)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at si.konferenca.registration.web.OrganizerHttpsOnlyFilterTest.passes(OrganizerHttpsOnlyFilterTest.java:24)
+	at si.konferenca.registration.web.OrganizerHttpsOnlyFilterTest.AC_008_04_switchedOffItLetsPlainHttpThrough(OrganizerHttpsOnlyFilterTest.java:60)
+
+[ERROR] si.konferenca.registration.web.OrganizerHttpsOnlyFilterTest.AC_008_04_otherAddressesOverPlainHttpAreRefused(String)[1] -- Time elapsed: 0.006 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.web.OrganizerHttpsOnlyFilter.doFilterInternal(OrganizerHttpsOnlyFilter.java:16)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at si.konferenca.registration.web.OrganizerHttpsOnlyFilterTest.passes(OrganizerHttpsOnlyFilterTest.java:24)
+	at si.konferenca.registration.web.OrganizerHttpsOnlyFilterTest.AC_008_04_otherAddressesOverPlainHttpAreRefused(OrganizerHttpsOnlyFilterTest.java:55)
+
+[ERROR] si.konferenca.registration.web.OrganizerHttpsOnlyFilterTest.AC_008_04_otherAddressesOverPlainHttpAreRefused(String)[2] -- Time elapsed: 0.002 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.web.OrganizerHttpsOnlyFilter.doFilterInternal(OrganizerHttpsOnlyFilter.java:16)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at si.konferenca.registration.web.OrganizerHttpsOnlyFilterTest.passes(OrganizerHttpsOnlyFilterTest.java:24)
+	at si.konferenca.registration.web.OrganizerHttpsOnlyFilterTest.AC_008_04_otherAddressesOverPlainHttpAreRefused(OrganizerHttpsOnlyFilterTest.java:55)
+
+[ERROR] si.konferenca.registration.web.OrganizerHttpsOnlyFilterTest.AC_008_04_otherAddressesOverPlainHttpAreRefused(String)[3] -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.web.OrganizerHttpsOnlyFilter.doFilterInternal(OrganizerHttpsOnlyFilter.java:16)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at si.konferenca.registration.web.OrganizerHttpsOnlyFilterTest.passes(OrganizerHttpsOnlyFilterTest.java:24)
+	at si.konferenca.registration.web.OrganizerHttpsOnlyFilterTest.AC_008_04_otherAddressesOverPlainHttpAreRefused(OrganizerHttpsOnlyFilterTest.java:55)
+
+[ERROR] si.konferenca.registration.web.OrganizerHttpsOnlyFilterTest.AC_008_04_otherAddressesOverPlainHttpAreRefused(String)[4] -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.web.OrganizerHttpsOnlyFilter.doFilterInternal(OrganizerHttpsOnlyFilter.java:16)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at si.konferenca.registration.web.OrganizerHttpsOnlyFilterTest.passes(OrganizerHttpsOnlyFilterTest.java:24)
+	at si.konferenca.registration.web.OrganizerHttpsOnlyFilterTest.AC_008_04_otherAddressesOverPlainHttpAreRefused(OrganizerHttpsOnlyFilterTest.java:55)
+
+[ERROR] si.konferenca.registration.web.OrganizerHttpsOnlyFilterTest.AC_008_04_publicEndpointsAreNotAffected -- Time elapsed: 0.002 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.web.OrganizerHttpsOnlyFilter.doFilterInternal(OrganizerHttpsOnlyFilter.java:16)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at si.konferenca.registration.web.OrganizerHttpsOnlyFilterTest.passes(OrganizerHttpsOnlyFilterTest.java:24)
+	at si.konferenca.registration.web.OrganizerHttpsOnlyFilterTest.AC_008_04_publicEndpointsAreNotAffected(OrganizerHttpsOnlyFilterTest.java:68)
+
+[ERROR] si.konferenca.registration.web.OrganizerHttpsOnlyFilterTest.AC_008_04_plainHttpFromLoopbackPasses(String)[1] -- Time elapsed: 0.002 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.web.OrganizerHttpsOnlyFilter.doFilterInternal(OrganizerHttpsOnlyFilter.java:16)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at si.konferenca.registration.web.OrganizerHttpsOnlyFilterTest.passes(OrganizerHttpsOnlyFilterTest.java:24)
+	at si.konferenca.registration.web.OrganizerHttpsOnlyFilterTest.AC_008_04_plainHttpFromLoopbackPasses(OrganizerHttpsOnlyFilterTest.java:49)
+
+[ERROR] si.konferenca.registration.web.OrganizerHttpsOnlyFilterTest.AC_008_04_plainHttpFromLoopbackPasses(String)[2] -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.web.OrganizerHttpsOnlyFilter.doFilterInternal(OrganizerHttpsOnlyFilter.java:16)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at si.konferenca.registration.web.OrganizerHttpsOnlyFilterTest.passes(OrganizerHttpsOnlyFilterTest.java:24)
+	at si.konferenca.registration.web.OrganizerHttpsOnlyFilterTest.AC_008_04_plainHttpFromLoopbackPasses(OrganizerHttpsOnlyFilterTest.java:49)
+
+[ERROR] si.konferenca.registration.web.OrganizerHttpsOnlyFilterTest.AC_008_04_plainHttpFromLoopbackPasses(String)[3] -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.web.OrganizerHttpsOnlyFilter.doFilterInternal(OrganizerHttpsOnlyFilter.java:16)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at si.konferenca.registration.web.OrganizerHttpsOnlyFilterTest.passes(OrganizerHttpsOnlyFilterTest.java:24)
+	at si.konferenca.registration.web.OrganizerHttpsOnlyFilterTest.AC_008_04_plainHttpFromLoopbackPasses(OrganizerHttpsOnlyFilterTest.java:49)
+
+[ERROR] si.konferenca.registration.web.OrganizerHttpsOnlyFilterTest.AC_008_04_plainHttpFromLoopbackPasses(String)[4] -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.web.OrganizerHttpsOnlyFilter.doFilterInternal(OrganizerHttpsOnlyFilter.java:16)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at si.konferenca.registration.web.OrganizerHttpsOnlyFilterTest.passes(OrganizerHttpsOnlyFilterTest.java:24)
+	at si.konferenca.registration.web.OrganizerHttpsOnlyFilterTest.AC_008_04_plainHttpFromLoopbackPasses(OrganizerHttpsOnlyFilterTest.java:49)
+
+[ERROR] si.konferenca.registration.web.OrganizerHttpsOnlyFilterTest.AC_008_04_httpsFromARemoteClientPasses -- Time elapsed: 0 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.web.OrganizerHttpsOnlyFilter.doFilterInternal(OrganizerHttpsOnlyFilter.java:16)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at si.konferenca.registration.web.OrganizerHttpsOnlyFilterTest.passes(OrganizerHttpsOnlyFilterTest.java:24)
+	at si.konferenca.registration.web.OrganizerHttpsOnlyFilterTest.AC_008_04_httpsFromARemoteClientPasses(OrganizerHttpsOnlyFilterTest.java:43)
+
+[ERROR] si.konferenca.registration.web.OrganizerHttpsOnlyFilterTest.AC_008_04_plainHttpFromARemoteClientIsRefusedWithoutData -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.web.OrganizerHttpsOnlyFilter.doFilterInternal(OrganizerHttpsOnlyFilter.java:16)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at si.konferenca.registration.web.OrganizerHttpsOnlyFilterTest.AC_008_04_plainHttpFromARemoteClientIsRefusedWithoutData(OrganizerHttpsOnlyFilterTest.java:33)
+
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Failures: 
+[ERROR]   ExportSecurityIntegrationTest.AC_008_01_validCredentialsFromLoopbackGetTheWorkbook:73 
+expected: 200
+ but was: 403
+[ERROR]   ExportSecurityIntegrationTest.AC_008_02_missingCredentialsAre401WithBasicChallenge:53 
+expected: 401
+ but was: 403
+[ERROR]   ExportSecurityIntegrationTest.AC_008_02_wrongPasswordIs401:66 
+expected: 401
+ but was: 403
+[ERROR]   ExportSecurityIntegrationTest.AC_008_04_validCredentialsOverHttpsFromRemoteClientGetTheWorkbook:90 
+expected: 200
+ but was: 403
+[ERROR] Errors: 
+[ERROR]   ExportSecurityIntegrationTest.AC_008_02_passwordIsKeptOnlyAsBcryptHash:111 » UsernameNotFound user not found
+[ERROR]   OrganizerHttpsOnlyFilterTest.AC_008_04_httpsFromARemoteClientPasses:43->passes:24 » UnsupportedOperation not implemented
+[ERROR]   OrganizerHttpsOnlyFilterTest.AC_008_04_otherAddressesOverPlainHttpAreRefused:55->passes:24 » UnsupportedOperation not implemented
+[ERROR]   OrganizerHttpsOnlyFilterTest.AC_008_04_otherAddressesOverPlainHttpAreRefused:55->passes:24 » UnsupportedOperation not implemented
+[ERROR]   OrganizerHttpsOnlyFilterTest.AC_008_04_otherAddressesOverPlainHttpAreRefused:55->passes:24 » UnsupportedOperation not implemented
+[ERROR]   OrganizerHttpsOnlyFilterTest.AC_008_04_otherAddressesOverPlainHttpAreRefused:55->passes:24 » UnsupportedOperation not implemented
+[ERROR]   OrganizerHttpsOnlyFilterTest.AC_008_04_plainHttpFromARemoteClientIsRefusedWithoutData:33 » UnsupportedOperation not implemented
+[ERROR]   OrganizerHttpsOnlyFilterTest.AC_008_04_plainHttpFromLoopbackPasses:49->passes:24 » UnsupportedOperation not implemented
+[ERROR]   OrganizerHttpsOnlyFilterTest.AC_008_04_plainHttpFromLoopbackPasses:49->passes:24 » UnsupportedOperation not implemented
+[ERROR]   OrganizerHttpsOnlyFilterTest.AC_008_04_plainHttpFromLoopbackPasses:49->passes:24 » UnsupportedOperation not implemented
+[ERROR]   OrganizerHttpsOnlyFilterTest.AC_008_04_plainHttpFromLoopbackPasses:49->passes:24 » UnsupportedOperation not implemented
+[ERROR]   OrganizerHttpsOnlyFilterTest.AC_008_04_publicEndpointsAreNotAffected:68->passes:24 » UnsupportedOperation not implemented
+[ERROR]   OrganizerHttpsOnlyFilterTest.AC_008_04_switchedOffItLetsPlainHttpThrough:60->passes:24 » UnsupportedOperation not implemented
+[INFO] 
+[ERROR] Tests run: 18, Failures: 4, Errors: 13, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  20.518 s
+[INFO] Finished at: 2026-10-19T15:38:38+02:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.5.6:test (default-test) on project registration-backend: There are test failures.
+[ERROR] 
+[ERROR] See E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\backend\target\surefire-reports for the individual test results.
+[ERROR] See dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
