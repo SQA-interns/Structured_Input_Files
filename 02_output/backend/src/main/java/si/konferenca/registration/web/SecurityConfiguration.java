@@ -14,6 +14,7 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.www.BasicAuthenticationEntryPoint;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
+import org.springframework.security.web.header.writers.ReferrerPolicyHeaderWriter.ReferrerPolicy;
 
 /** Public API endpoints, the organizer export, deny-by-default for everything else (SB-02). */
 @Configuration
@@ -31,6 +32,12 @@ public class SecurityConfiguration {
         .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
         .httpBasic(basic -> basic.authenticationEntryPoint(entryPoint))
         .exceptionHandling(e -> e.authenticationEntryPoint(entryPoint))
+        .headers(
+            h ->
+                h.contentSecurityPolicy(
+                        csp -> csp.policyDirectives("default-src 'none'; frame-ancestors 'none'"))
+                    .referrerPolicy(r -> r.policy(ReferrerPolicy.NO_REFERRER))
+                    .frameOptions(f -> f.deny()))
         .addFilterBefore(new OrganizerHttpsOnlyFilter(httpsOnly), BasicAuthenticationFilter.class)
         .authorizeHttpRequests(
             auth ->
@@ -40,6 +47,8 @@ public class SecurityConfiguration {
                     .permitAll()
                     .requestMatchers(HttpMethod.GET, OrganizerHttpsOnlyFilter.EXPORT_PATH)
                     .hasRole(ORGANIZER)
+                    .requestMatchers(HttpMethod.GET, "/actuator/health", "/actuator/health/**")
+                    .permitAll()
                     .anyRequest()
                     .denyAll());
     return http.build();
