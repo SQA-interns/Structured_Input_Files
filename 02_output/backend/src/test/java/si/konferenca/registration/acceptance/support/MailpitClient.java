@@ -61,7 +61,7 @@ public final class MailpitClient {
 
   /** Waits a fixed time so that a wrongly sent message would have arrived, then lists them. */
   public List<JsonNode> messagesToAfterGracePeriod(String address) {
-    pause(2000);
+    pause(1000);
     return messagesTo(address);
   }
 
