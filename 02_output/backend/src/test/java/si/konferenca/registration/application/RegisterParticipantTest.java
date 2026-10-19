@@ -19,6 +19,7 @@ import si.konferenca.registration.domain.Registration;
 import si.konferenca.registration.domain.RegistrationSubmission;
 import si.konferenca.registration.domain.RegistrationType;
 
+/** Covers AC-001-01, AC-001-02, AC-001-03, AC-001-07, AC-005-02, AC-005-03, AC-006-03. */
 class RegisterParticipantTest {
 
   static final ConferenceConfiguration CONFIG =

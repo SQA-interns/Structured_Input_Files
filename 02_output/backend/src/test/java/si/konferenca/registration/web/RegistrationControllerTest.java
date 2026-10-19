@@ -24,6 +24,7 @@ import si.konferenca.registration.domain.ConferenceOption;
 import si.konferenca.registration.domain.ConsentDefinition;
 import si.konferenca.registration.domain.OptionCategory;
 
+/** Covers AC-001-01, AC-001-02, AC-001-07, AC-005-03. */
 class RegistrationControllerTest {
 
   static final ConferenceConfiguration CONFIG =

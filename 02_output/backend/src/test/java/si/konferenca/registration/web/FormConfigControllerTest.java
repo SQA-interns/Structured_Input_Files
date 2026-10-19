@@ -17,6 +17,7 @@ import si.konferenca.registration.domain.ConsentDefinition;
 import si.konferenca.registration.domain.OptionCategory;
 import si.konferenca.registration.domain.RegistrationType;
 
+/** Covers AC-003-01. */
 class FormConfigControllerTest {
 
   private final ConferenceConfiguration configuration =

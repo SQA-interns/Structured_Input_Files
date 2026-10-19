@@ -23,6 +23,7 @@ import si.konferenca.registration.domain.Registration;
 import si.konferenca.registration.domain.RegistrationType;
 import si.konferenca.registration.infrastructure.file.FileJsonCopyStore;
 
+/** Covers AC-007-01, AC-007-02. */
 class OrganizerMailComposerTest {
 
   static final Instant TIME = Instant.parse("2026-10-19T12:00:00.123Z");

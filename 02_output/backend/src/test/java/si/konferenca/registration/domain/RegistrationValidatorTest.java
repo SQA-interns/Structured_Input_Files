@@ -11,6 +11,11 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+/**
+ * Covers AC-001-01, AC-001-02, AC-001-03, AC-001-04, AC-001-05, AC-001-06, AC-001-07; the consent
+ * and token rules do not depend on the registration type, so they are also the unit tests of
+ * AC-002-05 and AC-002-06.
+ */
 class RegistrationValidatorTest {
 
   static final ConferenceConfiguration CONFIG =

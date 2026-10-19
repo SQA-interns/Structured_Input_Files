@@ -16,6 +16,7 @@ import si.konferenca.registration.domain.OptionCategory;
 import si.konferenca.registration.domain.Registration;
 import si.konferenca.registration.domain.RegistrationType;
 
+/** Covers AC-006-01, AC-006-02. */
 class ParticipantMailComposerTest {
 
   static final Instant TIME = Instant.parse("2026-10-19T12:00:00.123Z");

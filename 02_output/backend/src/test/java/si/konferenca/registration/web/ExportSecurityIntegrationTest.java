@@ -18,7 +18,11 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import si.konferenca.registration.acceptance.support.AcceptanceEnvironment;
 
-/** BR-08, SB-02, SB-03, SR-06: organizer access to the export. */
+/**
+ * BR-08, SB-02, SB-03, SR-06: organizer access to the export.
+ *
+ * <p>Covers AC-008-01, AC-008-02, AC-008-04.
+ */
 @SpringBootTest
 @AutoConfigureMockMvc
 class ExportSecurityIntegrationTest {

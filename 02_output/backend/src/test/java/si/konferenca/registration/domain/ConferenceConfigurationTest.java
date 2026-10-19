@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Set;
 import org.junit.jupiter.api.Test;
 
+/** Covers AC-003-01, AC-003-03. */
 class ConferenceConfigurationTest {
 
   private static final ConsentDefinition PRIVACY =

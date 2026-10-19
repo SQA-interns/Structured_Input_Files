@@ -11,6 +11,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import si.konferenca.registration.application.ExportRegistrations;
 
+/** Covers AC-008-01. */
 class ExportControllerTest {
 
   final MockMvc mvc =

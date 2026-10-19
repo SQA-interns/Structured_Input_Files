@@ -19,6 +19,7 @@ import si.konferenca.registration.domain.RegistrationType;
 import tools.jackson.databind.JsonNode;
 import tools.jackson.databind.json.JsonMapper;
 
+/** Covers AC-005-02, AC-005-03, AC-005-04. */
 class FileJsonCopyStoreTest {
 
   @TempDir Path dir;

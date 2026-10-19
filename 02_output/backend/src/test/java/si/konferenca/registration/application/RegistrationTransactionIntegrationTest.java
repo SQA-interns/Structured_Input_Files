@@ -20,7 +20,11 @@ import si.konferenca.registration.acceptance.support.AcceptanceTestBase;
 import si.konferenca.registration.domain.Registration;
 import si.konferenca.registration.domain.RegistrationSubmission;
 
-/** AR-05: the database row and the JSON copy are written in one transaction. */
+/**
+ * AR-05: the database row and the JSON copy are written in one transaction.
+ *
+ * <p>Covers AC-005-02, AC-005-03.
+ */
 @SpringBootTest
 class RegistrationTransactionIntegrationTest {
 

@@ -20,6 +20,7 @@ import si.konferenca.registration.domain.OptionCategory;
 import si.konferenca.registration.domain.Registration;
 import si.konferenca.registration.domain.RegistrationType;
 
+/** Covers AC-008-01, AC-008-03. */
 class ExcelWorkbookWriterTest {
 
   static final Instant T1 = Instant.parse("2026-10-19T10:00:00.100Z");

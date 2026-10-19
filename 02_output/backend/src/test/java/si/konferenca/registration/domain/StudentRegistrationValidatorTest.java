@@ -8,6 +8,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+/** Covers AC-002-01, AC-002-02, AC-002-03, AC-002-04. */
 class StudentRegistrationValidatorTest {
 
   final RegistrationValidator validator =

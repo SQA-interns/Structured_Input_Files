@@ -7,6 +7,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+/** Covers AC-001-07, AC-002-06. */
 class TestModeCaptchaVerifierTest {
 
   private final TestModeCaptchaVerifier verifier = new TestModeCaptchaVerifier();

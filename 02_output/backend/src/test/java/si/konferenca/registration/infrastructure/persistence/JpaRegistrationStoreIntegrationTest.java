@@ -24,7 +24,11 @@ import si.konferenca.registration.domain.OptionCategory;
 import si.konferenca.registration.domain.Registration;
 import si.konferenca.registration.domain.RegistrationType;
 
-/** The JPA store against PostgreSQL with the Flyway schema (database.sql, AR-06). */
+/**
+ * The JPA store against PostgreSQL with the Flyway schema (database.sql, AR-06).
+ *
+ * <p>Covers AC-001-01, AC-005-01, AC-005-04, AC-008-01.
+ */
 @SpringBootTest
 class JpaRegistrationStoreIntegrationTest {
 

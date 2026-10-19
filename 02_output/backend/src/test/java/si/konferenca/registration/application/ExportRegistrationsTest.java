@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import si.konferenca.registration.domain.Registration;
 import si.konferenca.registration.domain.RegistrationType;
 
+/** Covers AC-008-01. */
 class ExportRegistrationsTest {
 
   static Registration at(String time) {

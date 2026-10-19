@@ -23,7 +23,11 @@ import si.konferenca.registration.acceptance.support.AcceptanceEnvironment;
 import si.konferenca.registration.acceptance.support.AcceptanceTestBase;
 import si.konferenca.registration.domain.Registration;
 
-/** OQ-03: emails start only after the row and the JSON copy were committed. */
+/**
+ * OQ-03: emails start only after the row and the JSON copy were committed.
+ *
+ * <p>Covers AC-006-01, AC-006-03.
+ */
 @SpringBootTest
 class RegistrationNotificationIntegrationTest {
 

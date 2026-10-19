@@ -18,6 +18,7 @@ import org.springframework.mail.MailSendException;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import si.konferenca.registration.domain.Registration;
 
+/** Covers AC-006-01, AC-006-03, AC-007-01. */
 class MailRegistrationNotifierTest {
 
   final List<MimeMessage> sent = new ArrayList<>();

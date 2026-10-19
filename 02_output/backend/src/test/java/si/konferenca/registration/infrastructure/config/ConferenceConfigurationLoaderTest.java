@@ -14,6 +14,7 @@ import si.konferenca.registration.domain.InvalidConfigurationException;
 import si.konferenca.registration.domain.OptionCategory;
 import si.konferenca.registration.domain.RegistrationType;
 
+/** Covers AC-003-02, AC-003-03. */
 class ConferenceConfigurationLoaderTest {
 
   @TempDir Path dir;
