@@ -20,5 +20,5 @@
 | H | Study institution | empty for external participants |
 | I | Study programme | empty for external participants |
 | J | Student ID | empty for external participants |
-| K | Options | selected option ids, in submission order, joined by `, ` (empty when none) |
+| K | Options | selected option ids, in configuration order, joined by `, ` (empty when none) |
 | L | Consents | `<consentId> (<givenAt>)` per consent, joined by `, ` |

@@ -20,5 +20,5 @@ Common to both: `From` = `MAIL_FROM`; `Content-Type: text/plain; charset=UTF-8` 
 |---|---|
 | To | every address in `ORGANIZER_EMAILS` (comma separated), one message per address |
 | Subject | `New registration - <conferenceName>` |
-| Body | registration id, type, every submitted field of the type, the selected options and the consents with the time given; no internal or system data (SR-07) |
+| Body | registration id, type (`EXTERNAL` or `STUDENT`), every submitted field of the type, each selected option as `<name> (<id>)` and each consent as `<id> (<givenAt>)`; no internal or system data (SR-07) |
 | Attachment | `registration-<id>.json`, `application/json`, bytes equal to the stored JSON copy |
