@@ -19,6 +19,8 @@ public class SecurityConfiguration {
             auth ->
                 auth.requestMatchers(HttpMethod.GET, "/api/form-config")
                     .permitAll()
+                    .requestMatchers(HttpMethod.POST, "/api/registrations")
+                    .permitAll()
                     .anyRequest()
                     .denyAll());
     return http.build();
