@@ -1,0 +1,36 @@
+               
+               
+┌─────────────┐
+│ Scan Status │
+└─────────────┘
+  Scanning 141 files tracked by git with 725 Code rules:
+                                                                                                                        
+  Language      Rules   Files          Origin      Rules                                                                
+ ─────────────────────────────        ───────────────────                                                               
+  <multilang>      64      94          Community     725                                                                
+  java             86      55                                                                                           
+  ts               84      39                                                                                           
+  json              3      10                                                                                           
+  js               78       2                                                                                           
+  dockerfile        4       2                                                                                           
+  yaml             24       1                                                                                           
+  bash              1       1                                                                                           
+  html              1       1                                                                                           
+                                                                                                                        
+                
+                
+┌──────────────┐
+│ Scan Summary │
+└──────────────┘
+✅ Scan completed successfully.
+ • Findings: 1 (1 blocking)
+ • Rules run: 267
+ • Targets scanned: 141
+ • Parsed lines: ~99.9%
+ • Scan skipped: 
+   ◦ Matching --exclude patterns: 6
+   ◦ Files matching .semgrepignore patterns: 2
+ • For a detailed list of skipped files and lines, run semgrep with the --verbose flag
+Ran 267 rules on 141 files: 1 finding.
+
+A new version of Semgrep is available. See https://semgrep.dev/docs/upgrading

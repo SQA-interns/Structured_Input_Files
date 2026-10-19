@@ -1,0 +1,39 @@
+| AC | Tests | Commits | First test commit | First feat commit | TDD order |
+|---|---|---|---|---|---|
+| AC-001-01 | RegisterParticipantTest.java, RegistrationValidatorTest.java (2), JpaRegistrationStoreIntegrationTest.java, RegistrationControllerTest.java, e01-e02-registration.e2e.ts | 4d21f37, 3b65520, f6b35a2, 7c236f6, 90084b2, 4a39b4d (+7) | 7c236f6 | c514192 | ok |
+| AC-001-02 | ExternalRegistrationAcceptanceTest.java, RegisterParticipantTest.java, RegistrationValidatorTest.java (2), RegistrationControllerTest.java | 4d21f37, 3b65520, f6b35a2, 7c236f6, 90084b2, 4a39b4d (+4) | 7c236f6 | c514192 | ok |
+| AC-001-03 | RegisterParticipantTest.java, RegistrationValidatorTest.java | 4d21f37, 3b65520, f6b35a2, 7c236f6, 90084b2, 4a39b4d (+4) | 7c236f6 | c514192 | ok |
+| AC-001-04 | ExternalRegistrationAcceptanceTest.java, RegistrationValidatorTest.java (3) | 4d21f37, 3b65520, f6b35a2, 7c236f6, 90084b2, 4a39b4d (+4) | 7c236f6 | c514192 | ok |
+| AC-001-05 | ExternalRegistrationAcceptanceTest.java, RegistrationValidatorTest.java | 4d21f37, 3b65520, f6b35a2, 7c236f6, 90084b2, 4a39b4d (+4) | 7c236f6 | c514192 | ok |
+| AC-001-06 | ExternalRegistrationAcceptanceTest.java, RegistrationValidatorTest.java | 4d21f37, 3b65520, f6b35a2, 7c236f6, 90084b2, 4a39b4d (+4) | 7c236f6 | c514192 | ok |
+| AC-001-07 | ExternalRegistrationAcceptanceTest.java, RegisterParticipantTest.java, RegistrationValidatorTest.java (2), TestModeCaptchaVerifierTest.java (2), RegistrationControllerTest.java | 4d21f37, 3b65520, f6b35a2, 7c236f6, 90084b2, 4a39b4d (+4) | 7c236f6 | c514192 | ok |
+| AC-001-08 | e01-e02-registration.e2e.ts, App.test.tsx, RegistrationForm.behaviour.test.tsx (2), RegistrationForm.test.tsx (4), externalForm.acceptance.test.tsx, api.headers.test.ts (2), api.test.ts (2), options.test.ts (2) | 4d21f37, 3b65520, f6b35a2, 7c236f6, 90084b2, 4a39b4d (+2) | 90084b2 | d0da240 | ok |
+| AC-002-01 | StudentRegistrationValidatorTest.java, e01-e02-registration.e2e.ts | 7c4dc29, 928ecda, f02e5a4, 8e46ee6 | 7c4dc29 | 8e46ee6 | ok |
+| AC-002-02 | StudentRegistrationAcceptanceTest.java, StudentRegistrationValidatorTest.java (2) | 7c4dc29, 928ecda, f02e5a4, 8e46ee6 | 7c4dc29 | 8e46ee6 | ok |
+| AC-002-03 | StudentRegistrationAcceptanceTest.java, StudentRegistrationValidatorTest.java | 7c4dc29, 928ecda, f02e5a4, 8e46ee6 | 7c4dc29 | 8e46ee6 | ok |
+| AC-002-04 | StudentRegistrationValidatorTest.java | 7c4dc29, 928ecda, f02e5a4, 8e46ee6 | 7c4dc29 | 8e46ee6 | ok |
+| AC-002-05 | RegistrationValidatorTest.java | 7c4dc29, 928ecda, f02e5a4, 8e46ee6 | 7c4dc29 | 8e46ee6 | ok |
+| AC-002-06 | StudentRegistrationAcceptanceTest.java, RegistrationValidatorTest.java, TestModeCaptchaVerifierTest.java | 7c4dc29, 928ecda, f02e5a4, 8e46ee6 | 7c4dc29 | 8e46ee6 | ok |
+| AC-002-07 | e01-e02-registration.e2e.ts, RegistrationForm.student.test.tsx (3), studentForm.acceptance.test.tsx, options.test.ts (2) | 7c4dc29, 928ecda, 37f4caf, a983cea | 928ecda | a983cea | ok |
+| AC-003-01 | ConferenceConfigurationTest.java, ConfigurationBeansTest.java, ApplicationWiringIntegrationTest.java, FormConfigControllerTest.java | 61efb2d, f8eb0a0, 0b837fa, 11f1505 | 61efb2d | 0b837fa | ok |
+| AC-003-02 | ConferenceConfigurationLoaderTest.java, ConfigurationBeansTest.java | 61efb2d, f8eb0a0, 0b837fa | 61efb2d | 0b837fa | ok |
+| AC-003-03 | InvalidConfigurationAcceptanceTest.java, ConferenceConfigurationTest.java, AdapterDetailsTest.java, ConferenceConfigurationLoaderTest.java | 61efb2d, f8eb0a0, 0b837fa, c93c864 | 61efb2d | 0b837fa | ok |
+| AC-004-01 | e01-e02-registration.e2e.ts (2), App.test.tsx, Confirmation.test.tsx (3), RegistrationForm.behaviour.test.tsx (4), RegistrationForm.submit.test.tsx (2), confirmation.acceptance.test.tsx, api.headers.test.ts, api.submit.test.ts | 2c8cf76, 1ea6172, def629d, b5e07fa, 791bbd1, 0c962af | 2c8cf76 | def629d | ok |
+| AC-004-02 | e03-field-errors.e2e.ts, RegistrationForm.behaviour.test.tsx, RegistrationForm.submit.test.tsx, confirmation.acceptance.test.tsx, api.submit.test.ts | 2c8cf76, 1ea6172, def629d, b5e07fa, 791bbd1, 0c962af | 2c8cf76 | def629d | ok |
+| AC-004-03 | e03-field-errors.e2e.ts, RegistrationForm.behaviour.test.tsx (3), RegistrationForm.submit.test.tsx (2), confirmation.acceptance.test.tsx, validation.messages.test.ts (3), validation.test.ts (7) | 2c8cf76, 1ea6172, def629d, b5e07fa, 791bbd1, 7b960dc (+1) | 2c8cf76 | def629d | ok |
+| AC-004-04 | ApiExceptionHandlerTest.java, App.test.tsx, RegistrationForm.behaviour.test.tsx (2), RegistrationForm.submit.test.tsx (2), confirmation.acceptance.test.tsx (2), api.headers.test.ts (2), api.submit.test.ts (4) | 2c8cf76, 1ea6172, def629d, b5e07fa, 791bbd1, 7b960dc (+1) | 2c8cf76 | def629d | ok |
+| AC-005-01 | ConsentEmbeddableTest.java, JpaRegistrationStoreIntegrationTest.java, e01-e02-registration.e2e.ts | e75edee, 4e2374a, 3fabee8 | e75edee | 3fabee8 | ok |
+| AC-005-02 | RegisterParticipantTest.java, RegistrationTransactionIntegrationTest.java, ConfigurationBeansTest.java, FileJsonCopyStoreTest.java, e01-e02-registration.e2e.ts | e75edee, 4e2374a, 3fabee8 | e75edee | 3fabee8 | ok |
+| AC-005-03 | RegisterParticipantTest.java, RegistrationTransactionIntegrationTest.java, FileJsonCopyStoreTest.java, JpaRegistrationFlushIntegrationTest.java, RegistrationControllerTest.java | e75edee, 4e2374a, 3fabee8, c93c864 | e75edee | 3fabee8 | ok |
+| AC-005-04 | FileJsonCopyStoreTest.java, JpaRegistrationStoreIntegrationTest.java, e04-slovenian-characters.e2e.ts | e75edee, 4e2374a, 3fabee8 | e75edee | 3fabee8 | ok |
+| AC-006-01 | RegistrationNotificationIntegrationTest.java, MailBeansTest.java, MailRegistrationNotifierTest.java, ParticipantMailComposerTest.java, e01-e02-registration.e2e.ts | 7974452, 01f3f83, 80bfd6e | 7974452 | 80bfd6e | ok |
+| AC-006-02 | ParticipantMailComposerTest.java | 7974452, 01f3f83, 80bfd6e | 7974452 | 80bfd6e | ok |
+| AC-006-03 | RegisterParticipantTest.java, RegistrationNotificationIntegrationTest.java, MailRegistrationNotifierTest.java | 7974452, 01f3f83, 80bfd6e | 7974452 | 80bfd6e | ok |
+| AC-007-01 | MailBeansTest.java, MailRegistrationNotifierTest.java, OrganizerMailComposerTest.java, OrganizerMailDetailsTest.java, e01-e02-registration.e2e.ts | 0f19632, 7997e79, 68bc1de, 0b109c2, 11f1505, c93c864 | 0f19632 | 0b109c2 | ok |
+| AC-007-02 | OrganizerMailComposerTest.java, e01-e02-registration.e2e.ts | 0f19632, 68bc1de, 0b109c2 | 0f19632 | 0b109c2 | ok |
+| AC-008-01 | ExportRegistrationsTest.java, ConfigurationBeansTest.java, ExcelWorkbookStyleTest.java, ExcelWorkbookWriterTest.java, JpaRegistrationStoreIntegrationTest.java, ExportControllerTest.java, ExportSecurityIntegrationTest.java, e05-export.e2e.ts | f6b35a2, 47f0a6c, 4a39b4d, 975b4d0, d73ae1a | 47f0a6c | d73ae1a | ok |
+| AC-008-02 | ApplicationWiringIntegrationTest.java, ExportSecurityIntegrationTest.java, e05-export.e2e.ts | f6b35a2, 47f0a6c, 4a39b4d, 58055e1, 575246e, e77bc3c | 47f0a6c | 575246e | ok |
+| AC-008-03 | ExcelWorkbookWriterTest.java, e04-slovenian-characters.e2e.ts | f6b35a2, 47f0a6c, 4a39b4d, 975b4d0, d73ae1a | 47f0a6c | d73ae1a | ok |
+| AC-008-04 | ExportSecurityIntegrationTest.java, FilterResponsesTest.java (2), OrganizerHttpsOnlyFilterTest.java (2) | f6b35a2, 47f0a6c, 4a39b4d, 0b8e69e, 58055e1, 575246e | 47f0a6c | 575246e | ok |
+
+35 acceptance criteria; without a test: none; without a commit: none; not test-first: none.

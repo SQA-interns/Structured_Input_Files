@@ -1,0 +1,9 @@
+
+ RUN  v4.1.11 E:/13 - Lab Projects/01_Runs/_____TDD_____TESTING_____/01_kyuhi_single-agent_tdd_v001/02_output/frontend
+
+
+ Test Files  17 passed (17)
+      Tests  80 passed (80)
+   Start at  16:52:03
+   Duration  2.36s (transform 1.22s, setup 2.19s, import 3.12s, tests 4.01s, environment 15.20s)
+

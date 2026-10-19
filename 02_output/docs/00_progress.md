@@ -5,10 +5,10 @@
 Updated at every gate and before any stop, so a fresh session can resume from here.
 
 - Workflow: tdd
-- Current phase: 6 (verify)
+- Current phase: 7 (release)
 - Current cycle (phase 4): none (C01–C12 done)
-- Last gate result: phase 5 passed (2026-10-19): TDD baseline recorded, first run 293/0, quality gate met for both components after 1 survivor round each (backend line 97.64 %, mutation adjusted 100 %; frontend line 100 %, mutation adjusted 100 %)
-- Next step: phase 6 verify-release: scans (Dependency-Check, npm audit, Semgrep, gitleaks), manifest hashes, runtime demonstration, verification report
+- Last gate result: phase 6 passed (2026-10-19): every DoD item has evidence (DoD-08, DoD-09 in phase 7), no open Critical/High, hashes match, no secret in files or commit messages
+- Next step: phase 7, READMEs (root and per component), release notes, clean-clone check, run summary
 - Waiting for the human on: nothing
 
 ## Component commands (ES-05)

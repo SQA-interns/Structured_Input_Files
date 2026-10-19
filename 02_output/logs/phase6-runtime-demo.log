@@ -1,0 +1,55 @@
+## 1. health, users, headers
+backend readiness: {"status":"UP"}
+backend liveness:  {"status":"UP"}
+backend uid: 100  frontend uid: 101
+frontend headers:
+Content-Security-Policy: default-src 'self'; script-src 'self' https://www.googl
+X-Frame-Options: DENY
+X-Content-Type-Options: nosniff
+Referrer-Policy: no-referrer
+api headers:
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+Content-Security-Policy: default-src 'none'; frame-ancestors 'none'
+Referrer-Policy: no-referrer
+Content-Security-Policy: default-src 'self'; script-src 'self' https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/; frame-src https://www.google.com/recaptcha/ https://recaptcha.google.com/recaptcha/; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'
+X-Frame-Options: DENY
+X-Content-Type-Options: nosniff
+Referrer-Policy: no-referrer
+actuator through the proxy (body type): <!doctype html>
+## 2. registrations (DoD-P01)
+external: {"id":"fbd8c1d2-2235-408e-a74d-e9fae7fc917b","type":"EXTERNAL","firstName":"Demo","lastName":"Zunanji","options":[{"id":"ws-tdd","name":"Workshop: Test-driven development","category":"WORKSHOP"},{"id":"ev-dinner","name":"Conference dinner","category":"EVENT"}],"registeredAt":"2026-10-19T14:49:54.572Z"} HTTP 201
+student:  {"id":"8b788e25-2923-4d3c-a0e2-4dcc01f42632","type":"STUDENT","firstName":"Demo","lastName":"Študent","options":[{"id":"oth-career","name":"Career fair for students","category":"OTHER"}],"registeredAt":"2026-10-19T14:49:54.695Z"} HTTP 201
+rejected (unavailable option for a student): 400
+## 3. database and JSON copies (DoD-P02)
+fbd8c1d2-2235-408e-a74d-e9fae7fc917b|EXTERNAL|Demo|Zunanji|demo.external@example.com|Arnes Čšž
+8b788e25-2923-4d3c-a0e2-4dcc01f42632|STUDENT|Demo|Študent|demo.student@example.com|UL FRI
+8b788e25-2923-4d3c-a0e2-4dcc01f42632|oth-career
+fbd8c1d2-2235-408e-a74d-e9fae7fc917b|ev-dinner
+fbd8c1d2-2235-408e-a74d-e9fae7fc917b|ws-tdd
+8b788e25-2923-4d3c-a0e2-4dcc01f42632|privacy
+fbd8c1d2-2235-408e-a74d-e9fae7fc917b|privacy
+JSON copies:
+total 8
+-rw-r--r-- 1 app app 401 Oct 19 14:49 8b788e25-2923-4d3c-a0e2-4dcc01f42632.json
+-rw-r--r-- 1 app app 436 Oct 19 14:49 fbd8c1d2-2235-408e-a74d-e9fae7fc917b.json
+external copy: {"id":"fbd8c1d2-2235-408e-a74d-e9fae7fc917b","type":"EXTERNAL","registeredAt":"2026-10-19T14:49:54.572Z","firstName":"Demo","lastName":"Zunanji","email":"demo.external@example.com","organization":"Arnes Čšž","options":[{"id":"ws-tdd","name":"Workshop: Test-driven development","category":"WORKSHOP"},{"id":"ev-dinner","name":"Conference dinner","category":"EVENT"}],"consents":[{"id":"privacy","givenAt":"2026-10-19T14:49:54.572Z"}]}
+## 4. emails in Mailpit (DoD-P03)
+<organizer address from ORGANIZER_EMAILS> | New registration - Slovenska konferenca o programskem inženirstvu 2026 | attachments: 1
+demo.student@example.com | Registration confirmation - Slovenska konferenca o programskem inženirstvu 2026 | attachments: 0
+<organizer address from ORGANIZER_EMAILS> | New registration - Slovenska konferenca o programskem inženirstvu 2026 | attachments: 1
+demo.external@example.com | Registration confirmation - Slovenska konferenca o programskem inženirstvu 2026 | attachments: 0
+## 5. export (DoD-P04)
+with credentials: HTTP 200 application/vnd.openxmlformats-officedocument.spreadsheetml.sheet 3826 bytes
+xlsx entries: 2 of 2 expected parts
+without credentials: 401
+wrong password: 401
+## 6. persistence across container recreation (NFR-02)
+rows after down/up: 2
+copies after down/up: 2
+health after down/up: {"status":"UP"}
+student copy still there: yes
+rows: 3
+Registration ID | Type | Registered at | First name | Last name | Email | Organization / institution | Options | Consents
+fbd8c1d2-2235-408e-a74d-e9fae7fc917b | EXTERNAL | 2026-10-19T14:49:54.572Z | Demo | Zunanji | <participant email> | Arnes Čšž | ws-tdd, ev-dinner | privacy (2026-10-19T14:49:54.572Z)
+8b788e25-2923-4d3c-a0e2-4dcc01f42632 | STUDENT | 2026-10-19T14:49:54.695Z | Demo | Študent | <participant email> |  | oth-career | privacy (2026-10-19T14:49:54.695Z)
