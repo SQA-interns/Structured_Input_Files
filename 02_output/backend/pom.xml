@@ -206,6 +206,11 @@
         <version>${dependency-check.version}</version>
         <configuration>
           <nvdApiKeyEnvironmentVariable>NVD_API_KEY</nvdApiKeyEnvironmentVariable>
+          <!-- Sonatype OSS Index needs credentials that secrets.env.example does not list (D-04) -->
+          <ossindexAnalyzerEnabled>false</ossindexAnalyzerEnabled>
+          <suppressionFiles>
+            <suppressionFile>dependency-check-suppressions.xml</suppressionFile>
+          </suppressionFiles>
           <formats>
             <format>HTML</format>
             <format>JSON</format>
