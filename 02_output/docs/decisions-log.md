@@ -46,3 +46,21 @@
 - Options: 1. (proposed default) apply PA-01 and PA-02: classify both Low, false positive, and suppress each for its one artifact only (`backend/dependency-check-suppressions.xml`).
 - Human response: none (pre-approved, PA-01, PA-02)
 - Resolution: option 1; re-scan with `failBuildOnCVSS=7`: 0 open, 2 suppressed
+
+## D-06: Stray answer fragment in business-rules.md
+- Timestamp: 2026-10-19T12:36Z
+- Phase: 1
+- Type: non-blocking
+- Trigger: `project/01_requirements/business-rules.md` ends with a header-less table fragment repeating the OQ-01..06 answers (`docs/01_requirements-check.md`, G-1). It does not contradict `scope.md`.
+- Options: 1. (proposed default) treat the answers in `scope.md` as authoritative and ignore the fragment; 2. ask the product owner.
+- Human response: none
+- Resolution: option 1
+
+## D-07: Timestamp correction for D-03, D-04, D-05
+- Timestamp: 2026-10-19T12:36Z
+- Phase: 1
+- Type: non-blocking
+- Trigger: D-03, D-04 and D-05 carry timestamps 12:34Z, 12:52Z and 12:55Z; the clock (`stat.mjs`, phase 0 end 12:36:02Z) shows all three were written between 12:33Z and 12:36Z. Records are not rewritten.
+- Options: 1. (proposed default) read the three timestamps as 2026-10-19T12:35Z; take times from `date -u` from now on.
+- Human response: none
+- Resolution: option 1
