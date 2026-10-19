@@ -1,0 +1,203 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Conference registration API",
+    "version": "1.0.0",
+    "description": "REST contract between the frontend or the organizer and the backend (AR-01). Every path is under /api. Errors never contain internal details (SB-07)."
+  },
+  "servers": [{ "url": "/" }],
+  "paths": {
+    "/api/form-config": {
+      "get": {
+        "operationId": "getFormConfig",
+        "summary": "Form configuration: conference name, active options, consents, reCAPTCHA settings (AC-003-01, AC-003-02)",
+        "responses": {
+          "200": {
+            "description": "Only active options are listed, in configuration order.",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/FormConfig" } } }
+          },
+          "429": { "$ref": "#/components/responses/TooManyRequests" }
+        }
+      }
+    },
+    "/api/registrations": {
+      "post": {
+        "operationId": "createRegistration",
+        "summary": "Submit a registration (US-001, US-002, US-005)",
+        "description": "Accepted only after the database row and the JSON copy are written (AR-05). Emails are sent after acceptance; an email failure does not change the response (OQ-03). Rejected (400) means: field errors, no database row, no JSON copy, no email. Unknown JSON properties are rejected. Body limit: 16 KiB by default (413).",
+        "requestBody": {
+          "required": true,
+          "content": { "application/json": { "schema": { "$ref": "#/components/schemas/RegistrationRequest" } } }
+        },
+        "responses": {
+          "201": {
+            "description": "Accepted. Location: /api/registrations/{id}.",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/RegistrationResponse" } } }
+          },
+          "400": {
+            "description": "Rejected with field errors.",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ErrorResponse" } } }
+          },
+          "413": { "$ref": "#/components/responses/GeneralError" },
+          "415": { "$ref": "#/components/responses/GeneralError" },
+          "429": { "$ref": "#/components/responses/TooManyRequests" },
+          "500": { "$ref": "#/components/responses/GeneralError" }
+        }
+      }
+    },
+    "/api/registrations/export": {
+      "get": {
+        "operationId": "exportRegistrations",
+        "summary": "Excel export for organizers (US-008, BR-08)",
+        "security": [{ "organizerBasic": [] }],
+        "description": "One row per registration, ordered by registration time (columns in excel-export.md). When organizer HTTPS-only access is on, a request that is neither HTTPS (directly or via X-Forwarded-Proto from a trusted proxy) nor from a loopback address is refused with 403 before any data is read (SR-06).",
+        "responses": {
+          "200": {
+            "description": "Workbook, Content-Disposition: attachment; filename=\"registrations.xlsx\".",
+            "content": {
+              "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": {
+                "schema": { "type": "string", "contentEncoding": "binary" }
+              }
+            }
+          },
+          "401": { "description": "Missing or wrong credentials; WWW-Authenticate: Basic. No registration data." },
+          "403": { "description": "Credentials sent over plain HTTP from a non-loopback client while HTTPS-only access is on. No registration data." },
+          "429": { "$ref": "#/components/responses/TooManyRequests" }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "organizerBasic": { "type": "http", "scheme": "basic", "description": "ORGANIZER_USERNAME / ORGANIZER_PASSWORD; the password is kept only as a BCrypt hash." }
+    },
+    "responses": {
+      "GeneralError": {
+        "description": "General error without technical details.",
+        "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ErrorResponse" } } }
+      },
+      "TooManyRequests": {
+        "description": "Rate limit per client exceeded (SR-03). Retry-After header in seconds.",
+        "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ErrorResponse" } } }
+      }
+    },
+    "schemas": {
+      "RegistrationType": { "type": "string", "enum": ["EXTERNAL", "STUDENT"] },
+      "OptionCategory": { "type": "string", "enum": ["WORKSHOP", "EVENT", "MEAL", "OTHER"] },
+      "FormConfig": {
+        "type": "object",
+        "required": ["conferenceName", "options", "consents", "recaptcha"],
+        "additionalProperties": false,
+        "properties": {
+          "conferenceName": { "type": "string" },
+          "options": { "type": "array", "items": { "$ref": "#/components/schemas/Option" } },
+          "consents": { "type": "array", "items": { "$ref": "#/components/schemas/Consent" } },
+          "recaptcha": {
+            "type": "object",
+            "required": ["siteKey", "testMode"],
+            "additionalProperties": false,
+            "properties": {
+              "siteKey": { "type": "string", "description": "Empty in test mode." },
+              "testMode": { "type": "boolean" }
+            }
+          }
+        }
+      },
+      "Option": {
+        "type": "object",
+        "required": ["id", "name", "category", "availableTo"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "category": { "$ref": "#/components/schemas/OptionCategory" },
+          "availableTo": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "$ref": "#/components/schemas/RegistrationType" } }
+        }
+      },
+      "Consent": {
+        "type": "object",
+        "required": ["id", "text", "mandatory"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string" },
+          "text": { "type": "string" },
+          "mandatory": { "type": "boolean" }
+        }
+      },
+      "RegistrationRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "description": "All text is trimmed before validation and storage (BR-02). Fields of the other registration type are ignored and not stored (SB-12). Maximum lengths after trimming: names 100, email 254, other text 200 (error on that field).",
+        "properties": {
+          "type": { "$ref": "#/components/schemas/RegistrationType" },
+          "firstName": { "type": "string" },
+          "lastName": { "type": "string" },
+          "email": { "type": "string", "description": "Valid email format (BR-03)." },
+          "organization": { "type": "string", "description": "Required for EXTERNAL." },
+          "studyInstitution": { "type": "string", "description": "Required for STUDENT." },
+          "studyProgramme": { "type": "string", "description": "Required for STUDENT." },
+          "studentId": { "type": "string", "description": "Required for STUDENT." },
+          "optionIds": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Distinct ids of active options available to the type; missing means none. Error field: optionIds."
+          },
+          "consentIds": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Ids of the consents given. A missing mandatory consent gives an error on field consents.<id>; an unknown id an error on consentIds."
+          },
+          "recaptchaToken": { "type": "string", "description": "Verified on the backend (SR-01). Error field: recaptchaToken." }
+        }
+      },
+      "RegistrationResponse": {
+        "type": "object",
+        "required": ["id", "type", "firstName", "lastName", "options", "registeredAt"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "format": "uuid" },
+          "type": { "$ref": "#/components/schemas/RegistrationType" },
+          "firstName": { "type": "string" },
+          "lastName": { "type": "string" },
+          "options": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["id", "name", "category"],
+              "additionalProperties": false,
+              "properties": {
+                "id": { "type": "string" },
+                "name": { "type": "string" },
+                "category": { "$ref": "#/components/schemas/OptionCategory" }
+              }
+            }
+          },
+          "registeredAt": { "type": "string", "format": "date-time" }
+        }
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "required": ["message", "fieldErrors"],
+        "additionalProperties": false,
+        "properties": {
+          "message": { "type": "string", "description": "Generic text, no internals." },
+          "fieldErrors": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["field", "message"],
+              "additionalProperties": false,
+              "properties": {
+                "field": {
+                  "type": "string",
+                  "description": "One of type, firstName, lastName, email, organization, studyInstitution, studyProgramme, studentId, optionIds, consentIds, consents.<consentId>, recaptchaToken."
+                },
+                "message": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

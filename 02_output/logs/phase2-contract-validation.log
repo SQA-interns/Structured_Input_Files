@@ -1,0 +1,5 @@
+openapi.json parsed; refs 19 unresolved 0 / conference-config.schema.json parsed / registration-copy.schema.json parsed (node JSON.parse + $ref walk); database.sql loaded into postgres:16.15-alpine with 0 errors:
+0
+public|registration|table|postgres
+public|registration_consent|table|postgres
+public|registration_option|table|postgres

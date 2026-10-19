@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "registration-copy.schema.json",
+  "title": "Raw JSON copy of an accepted registration (BR-07)",
+  "description": "Written as UTF-8 to <JSON_COPY_DIR>/<id>.json inside the registration transaction; a write failure rolls the database row back and the API answers 500 (AR-05, AC-005-03). The directory is created when missing. The organizer email attaches the same bytes as registration-<id>.json (AC-007-02). Fields of the other registration type are absent.",
+  "type": "object",
+  "required": ["id", "type", "registeredAt", "firstName", "lastName", "email", "options", "consents"],
+  "additionalProperties": false,
+  "properties": {
+    "id": { "type": "string", "format": "uuid" },
+    "type": { "type": "string", "enum": ["EXTERNAL", "STUDENT"] },
+    "registeredAt": { "type": "string", "format": "date-time", "description": "UTC instant, millisecond precision, e.g. 2026-10-19T12:00:00.123Z." },
+    "firstName": { "type": "string" },
+    "lastName": { "type": "string" },
+    "email": { "type": "string" },
+    "organization": { "type": "string" },
+    "studyInstitution": { "type": "string" },
+    "studyProgramme": { "type": "string" },
+    "studentId": { "type": "string" },
+    "options": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "category"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "category": { "type": "string", "enum": ["WORKSHOP", "EVENT", "MEAL", "OTHER"] }
+        }
+      }
+    },
+    "consents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "givenAt"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string" },
+          "givenAt": { "type": "string", "format": "date-time" }
+        }
+      }
+    }
+  }
+}
