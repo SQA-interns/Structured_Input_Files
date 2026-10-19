@@ -1,0 +1,446 @@
+{
+  "schemaVersion": 2,
+  "runId": "kyuhi-single-agent-tdd-v001-opus-5-5-t2.0-20261019T1224Z-583e",
+  "runLabel": "kyuhi_single-agent_tdd_v001",
+  "model": "claude-opus-5-5",
+  "effort": "medium",
+  "templateVersion": "2.0",
+  "transcript": "C:\\Users\\sense\\.claude\\projects\\E--13---Lab-Projects-01-Runs------TDD-----TESTING------01-kyuhi-single-agent-tdd-v001\\de60ae0b-7252-4212-8f5f-29818acc1bfd.jsonl",
+  "transcripts": [
+    "C:\\Users\\sense\\.claude\\projects\\E--13---Lab-Projects-01-Runs------TDD-----TESTING------01-kyuhi-single-agent-tdd-v001\\de60ae0b-7252-4212-8f5f-29818acc1bfd.jsonl"
+  ],
+  "transcriptBackup": [],
+  "startCommit": "0fab2b2112117a2e650b939f5b8528fc901704fa",
+  "finalCommit": "6948a14f1549bbc3ca88aa2b20aac1ad130d374f",
+  "start": "2026-10-19T12:24:35Z",
+  "end": "2026-10-19T15:02:54Z",
+  "phases": [
+    {
+      "phase": 0,
+      "name": "preflight-and-bootstrap",
+      "start": "2026-10-19T12:24:36Z",
+      "end": "2026-10-19T12:36:02Z"
+    },
+    {
+      "phase": 1,
+      "name": "requirements",
+      "start": "2026-10-19T12:36:02Z",
+      "end": "2026-10-19T12:36:50Z"
+    },
+    {
+      "phase": 2,
+      "name": "design",
+      "start": "2026-10-19T12:36:51Z",
+      "end": "2026-10-19T12:41:33Z"
+    },
+    {
+      "phase": 3,
+      "name": "acceptance-tests",
+      "start": "2026-10-19T12:41:33Z",
+      "end": "2026-10-19T13:08:37Z"
+    },
+    {
+      "phase": 4,
+      "name": "tdd-build",
+      "start": "2026-10-19T13:08:37Z",
+      "end": "2026-10-19T14:01:58Z"
+    },
+    {
+      "phase": 5,
+      "name": "quality-gate",
+      "start": "2026-10-19T14:01:59Z",
+      "end": "2026-10-19T14:43:08Z"
+    },
+    {
+      "phase": 6,
+      "name": "verify",
+      "start": "2026-10-19T14:43:08Z",
+      "end": "2026-10-19T14:56:20Z"
+    },
+    {
+      "phase": 7,
+      "name": "release",
+      "start": "2026-10-19T14:56:20Z",
+      "end": "2026-10-19T15:02:54Z"
+    }
+  ],
+  "firstTestRun": {
+    "passed": 293,
+    "failed": 0,
+    "byLevel": {
+      "unit": 180,
+      "integration": 18,
+      "acceptance": 84,
+      "architecture": 6,
+      "e2e": 5
+    }
+  },
+  "finalTestRun": {
+    "passed": 349,
+    "failed": 0,
+    "byLevel": {
+      "unit": 230,
+      "integration": 24,
+      "acceptance": 84,
+      "architecture": 6,
+      "e2e": 5
+    }
+  },
+  "acceptanceCriteria": {
+    "total": 35,
+    "frozenTests": 89,
+    "frozenTestChanges": []
+  },
+  "findings": {
+    "critical": 0,
+    "high": 1,
+    "medium": 3,
+    "low": 3
+  },
+  "openAtEnd": {
+    "critical": 0,
+    "high": 0,
+    "medium": 0
+  },
+  "fixLoops": [],
+  "decisions": [
+    {
+      "id": "D-01",
+      "type": "blocking",
+      "phase": 0,
+      "category": "environment",
+      "start": "2026-10-19T12:31:26Z",
+      "end": "2026-10-19T12:32:05Z"
+    },
+    {
+      "id": "D-02",
+      "type": "non-blocking",
+      "phase": 0,
+      "category": "security-finding",
+      "start": "2026-10-19T12:31:00Z",
+      "end": "2026-10-19T12:31:00Z"
+    },
+    {
+      "id": "D-03",
+      "type": "non-blocking",
+      "phase": 0,
+      "category": "environment",
+      "start": "2026-10-19T12:33:00Z",
+      "end": "2026-10-19T12:33:00Z"
+    },
+    {
+      "id": "D-04",
+      "type": "non-blocking",
+      "phase": 0,
+      "category": "dependency",
+      "start": "2026-10-19T12:34:00Z",
+      "end": "2026-10-19T12:35:00Z"
+    },
+    {
+      "id": "D-05",
+      "type": "non-blocking",
+      "phase": 0,
+      "category": "security-finding",
+      "start": "2026-10-19T12:35:00Z",
+      "end": "2026-10-19T12:35:30Z"
+    },
+    {
+      "id": "D-06",
+      "type": "non-blocking",
+      "phase": 1,
+      "category": "requirement",
+      "start": "2026-10-19T12:36:00Z",
+      "end": "2026-10-19T12:36:00Z"
+    },
+    {
+      "id": "D-07",
+      "type": "non-blocking",
+      "phase": 1,
+      "category": "other",
+      "start": "2026-10-19T12:36:00Z",
+      "end": "2026-10-19T12:36:00Z"
+    },
+    {
+      "id": "D-08",
+      "type": "non-blocking",
+      "phase": 2,
+      "category": "requirement",
+      "start": "2026-10-19T12:41:00Z",
+      "end": "2026-10-19T12:41:00Z"
+    },
+    {
+      "id": "D-09",
+      "type": "non-blocking",
+      "phase": 2,
+      "category": "requirement",
+      "start": "2026-10-19T12:41:00Z",
+      "end": "2026-10-19T12:41:00Z"
+    },
+    {
+      "id": "D-10",
+      "type": "non-blocking",
+      "phase": 3,
+      "category": "dependency",
+      "start": "2026-10-19T12:55:00Z",
+      "end": "2026-10-19T12:55:00Z"
+    },
+    {
+      "id": "D-11",
+      "type": "non-blocking",
+      "phase": 4,
+      "category": "security-finding",
+      "start": "2026-10-19T13:26:00Z",
+      "end": "2026-10-19T13:26:00Z"
+    }
+  ],
+  "humanInterventions": [
+    {
+      "start": "2026-10-19T12:31:26Z",
+      "end": "2026-10-19T12:32:05Z",
+      "phase": 0,
+      "cause": "environment",
+      "decisionId": "D-01",
+      "reason": "Docker engine not running; asked human to start it"
+    }
+  ],
+  "divergences": [
+    {
+      "phase": 2,
+      "ref": "working-rules.md Commits (size)",
+      "divergence": "The specification commit (de51bfe) has 521 changed lines in 10 files, over the 400-line guide; it followed the phases.md unit \"the specification with all its contracts (one commit)\" instead of splitting."
+    },
+    {
+      "phase": 3,
+      "ref": "working-rules.md Commits (subject length)",
+      "divergence": "Freeze commit 0b8e69e has a subject line longer than 72 characters."
+    },
+    {
+      "phase": 4,
+      "ref": "working-rules.md Commits (subject length)",
+      "divergence": "Commit 575246e (C07b feat) has a subject line longer than 72 characters."
+    },
+    {
+      "phase": 4,
+      "ref": "phases.md phase 4 gate (unit test per AC)",
+      "divergence": "AC-002-05 and AC-002-06 have no student-specific unit test; their consent and token rules are type-independent and unit-tested through the AC-001-06/AC-001-07 tests (RegistrationValidatorTest, TestModeCaptchaVerifierTest) plus the frozen StudentRegistrationAcceptanceTest."
+    },
+    {
+      "phase": 4,
+      "ref": "phases.md Commit units",
+      "divergence": "Coverage IDs were added to the backend unit test classes after their cycles (515f7d0, text only) so that trace-ac.mjs, which reads only hyphenated IDs, finds them."
+    }
+  ],
+  "codeMetrics": {
+    "components": [
+      {
+        "name": "backend",
+        "productionLoc": 1982,
+        "testLoc": 4268,
+        "lineCoverage": {
+          "unit": 86.66,
+          "nonUnit": 88.43,
+          "all": 97.64
+        },
+        "branchCoverage": {
+          "unit": 89.69,
+          "nonUnit": 69.08,
+          "all": 91.22
+        },
+        "mutation": {
+          "score": 99.1,
+          "scoreAdjusted": 100,
+          "scoreCovered": 99.1,
+          "killed": 331,
+          "equivalent": 3,
+          "total": 334,
+          "covered": 334,
+          "scope": "si.konferenca.registration.* without RegistrationApplication",
+          "tests": "full suite, 264 tests (unit, integration, acceptance, architecture)",
+          "tool": "PIT 1.30.0 + pitest-junit5-plugin 1.2.3",
+          "excluded": [
+            "RegistrationApplication"
+          ]
+        }
+      },
+      {
+        "name": "frontend",
+        "productionLoc": 472,
+        "testLoc": 1848,
+        "lineCoverage": {
+          "unit": 100,
+          "nonUnit": 79.28,
+          "all": 100
+        },
+        "branchCoverage": {
+          "unit": 98.71,
+          "nonUnit": 67.94,
+          "all": 98.71
+        },
+        "mutation": {
+          "score": 98.1,
+          "scoreAdjusted": 100,
+          "scoreCovered": 98.37,
+          "killed": 362,
+          "equivalent": 7,
+          "total": 369,
+          "covered": 368,
+          "scope": "src/**/*.{ts,tsx} without tests, main.tsx, test-setup.ts, testConfig.ts, acceptance/**",
+          "tests": "full Vitest suite, 80 tests",
+          "tool": "Stryker 10.0.0 + vitest-runner",
+          "excluded": [
+            "src/main.tsx",
+            "src/test-setup.ts"
+          ]
+        }
+      }
+    ],
+    "complexity": null,
+    "duplicationPct": 0,
+    "tddBaseline": {
+      "backend": {
+        "lineCoverage": 96.34,
+        "branchCoverage": 87.02,
+        "tests": 232,
+        "unit": {
+          "lineCoverage": 81.11,
+          "branchCoverage": 83.21,
+          "tests": 131
+        },
+        "nonUnit": {
+          "lineCoverage": 88.31,
+          "branchCoverage": 68.7,
+          "tests": 101
+        },
+        "tool": "JaCoCo 0.8.12"
+      },
+      "frontend": {
+        "lineCoverage": 97.85,
+        "branchCoverage": 93.58,
+        "tests": 56,
+        "unit": {
+          "lineCoverage": 97.85,
+          "branchCoverage": 93.58,
+          "tests": 49
+        },
+        "nonUnit": {
+          "lineCoverage": 79.28,
+          "branchCoverage": 67.94,
+          "tests": 7
+        },
+        "tool": "Vitest 4.1.11 coverage-v8"
+      }
+    },
+    "gate": {
+      "thresholds": {
+        "lineCoverage": 95,
+        "mutationScore": 90
+      },
+      "perComponent": {
+        "backend": {
+          "lineMet": true,
+          "mutationMet": true,
+          "lineShortfall": 0,
+          "mutationShortfall": 0
+        },
+        "frontend": {
+          "lineMet": true,
+          "mutationMet": true,
+          "lineShortfall": 0,
+          "mutationShortfall": 0
+        }
+      },
+      "mutationRounds": {
+        "backend": 1,
+        "frontend": 1
+      },
+      "testsAtFirstMutation": {
+        "backend": 232,
+        "frontend": 56
+      },
+      "met": true
+    }
+  },
+  "commits": [],
+  "commitSummary": null,
+  "time": {
+    "wallMin": null,
+    "agentMin": null,
+    "humanWaitMin": null,
+    "betweenPhasesMin": null,
+    "modelMin": null,
+    "toolMin": null,
+    "humanReplyMin": null,
+    "waitsOver60Min": null,
+    "byPhase": [],
+    "idleGaps": [],
+    "longWaits": [],
+    "unrecordedIdleMin": null,
+    "phaseChecks": null
+  },
+  "usage": {
+    "inputTokens": null,
+    "outputTokens": null,
+    "thinkingTokens": null,
+    "cacheReadTokens": null,
+    "cacheWriteTokens": null,
+    "modelCalls": null,
+    "toolCalls": {
+      "total": null,
+      "errors": null,
+      "byTool": {}
+    },
+    "costUsd": null,
+    "costUsdExclWaits": null,
+    "priceTableDate": null,
+    "unpricedModels": [],
+    "models": {},
+    "cacheRebuilds": [],
+    "byPhase": [],
+    "context": {
+      "peakTokens": null,
+      "avgTokens": null,
+      "pctCallsOver150k": null
+    },
+    "toolTimeByCategory": {},
+    "subagents": {
+      "used": null,
+      "transcripts": null,
+      "modelCalls": null,
+      "costUsd": null,
+      "outputTokens": null
+    }
+  },
+  "environment": {
+    "operator": "kyuhi",
+    "machine": "kyuhiPC",
+    "plan": "PRO",
+    "permissionMode": "auto",
+    "os": {
+      "platform": "win32",
+      "release": "10.0.26200",
+      "arch": "x64"
+    },
+    "shell": "C:\\Program Files\\Git\\bin\\bash.exe",
+    "timezone": "Europe/Ljubljana",
+    "utcOffsetMin": 120,
+    "tools": {
+      "node": "v24.13.0",
+      "npm": "11.6.2",
+      "git": "git version 2.53.0.windows.1",
+      "docker": "Docker version 29.8.1, build 4a63305",
+      "java": "openjdk version \"21.0.10\" 2026-01-20 LTS\r",
+      "maven": null,
+      "python": "Python 3.13.15"
+    },
+    "capturedAt": "2026-10-19T12:24:36Z",
+    "host": {
+      "hostname": "Kyuhi",
+      "account": "sense",
+      "cpuModel": "AMD Ryzen 9 5950X 16-Core Processor            ",
+      "cpus": 32,
+      "memoryGb": 80,
+      "workingDir": "E:\\13 - Lab Projects\\01_Runs\\_____TDD_____TESTING_____\\01_kyuhi_single-agent_tdd_v001"
+    }
+  },
+  "measuredAt": null
+}
