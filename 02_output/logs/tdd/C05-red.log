@@ -1,0 +1,265 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< si.konferenca:registration-backend >-----------------
+[INFO] Building registration-backend 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- spotless:2.44.3:apply (default-cli) @ registration-backend ---
+[INFO] clean file: E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\backend\src\test\java\si\konferenca\registration\infrastructure\mail\MailRegistrationNotifierTest.java
+[INFO] clean file: E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\backend\src\test\java\si\konferenca\registration\infrastructure\mail\ParticipantMailComposerTest.java
+[INFO] Spotless.Java is keeping 70 files clean - 2 were changed to be clean, 8 were already clean, 60 were skipped because caching determined they were already clean
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ registration-backend ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ registration-backend ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 41 source files with javac [debug parameters release 21] to target\classes
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ registration-backend ---
+[INFO] Copying 5 resources from src\test\resources to target\test-classes
+[INFO] 
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ registration-backend ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 29 source files with javac [debug parameters release 21] to target\test-classes
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ registration-backend ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running si.konferenca.registration.application.RegisterParticipantTest
+[ERROR] Tests run: 8, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.255 s <<< FAILURE! -- in si.konferenca.registration.application.RegisterParticipantTest
+[ERROR] si.konferenca.registration.application.RegisterParticipantTest.AC_006_03_notificationFollowsStorageAndIsSkippedWhenStorageFails -- Time elapsed: 0.016 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+Expecting actual:
+  ["save", "copy"]
+to contain exactly (and in same order):
+  ["save", "copy", "notify"]
+but could not find the following elements:
+  ["notify"]
+
+	at si.konferenca.registration.application.RegisterParticipantTest.AC_006_03_notificationFollowsStorageAndIsSkippedWhenStorageFails(RegisterParticipantTest.java:153)
+
+[ERROR] si.konferenca.registration.application.RegisterParticipantTest.AC_005_02_jsonCopyIsWrittenAfterTheDatabaseRow -- Time elapsed: 0.002 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+Expecting actual:
+  ["save", "copy"]
+to contain exactly (and in same order):
+  ["save", "copy", "notify"]
+but could not find the following elements:
+  ["notify"]
+
+	at si.konferenca.registration.application.RegisterParticipantTest.AC_005_02_jsonCopyIsWrittenAfterTheDatabaseRow(RegisterParticipantTest.java:130)
+
+[INFO] Running si.konferenca.registration.application.RegistrationNotificationIntegrationTest
+15:28:25.345 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration si.konferenca.registration.RegistrationApplication for test class si.konferenca.registration.application.RegistrationNotificationIntegrationTest
+15:28:25.421 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration si.konferenca.registration.RegistrationApplication for test class si.konferenca.registration.application.RegistrationNotificationIntegrationTest
+15:28:25.462 [main] INFO org.testcontainers.images.PullPolicy -- Image pull policy will be performed by: DefaultPullPolicy()
+15:28:25.464 [main] INFO org.testcontainers.utility.ImageNameSubstitutor -- Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+15:28:25.475 [main] INFO org.testcontainers.DockerClientFactory -- Testcontainers version: 2.0.5
+15:28:25.684 [main] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+15:28:26.095 [main] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+15:28:26.096 [main] INFO org.testcontainers.DockerClientFactory -- Docker host IP address is localhost
+15:28:26.114 [main] INFO org.testcontainers.DockerClientFactory -- Connected to docker: 
+  Server Version: 29.8.1
+  API Version: 1.56
+  Operating System: Docker Desktop
+  Total Memory: 40065 MB
+  Labels: 
+    com.docker.desktop.address=npipe://\\.\pipe\docker_cli
+15:28:26.219 [main] INFO tc.testcontainers/ryuk:0.14.0 -- Creating container for image: testcontainers/ryuk:0.14.0
+15:28:26.498 [main] INFO tc.testcontainers/ryuk:0.14.0 -- Container testcontainers/ryuk:0.14.0 is starting: 5fdacb29db147f5968dac853302500b3f9afe5202b6a7c99014c0f151cc6dac3
+15:28:26.846 [main] INFO tc.testcontainers/ryuk:0.14.0 -- Container testcontainers/ryuk:0.14.0 started in PT0.6279082S
+15:28:26.853 [main] INFO org.testcontainers.utility.RyukResourceReaper -- Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+15:28:26.853 [main] INFO org.testcontainers.DockerClientFactory -- Checking the system...
+15:28:26.854 [main] INFO org.testcontainers.DockerClientFactory -- ?? Docker server version should be at least 1.6.0
+15:28:26.854 [main] INFO tc.postgres:16.15-alpine -- Creating container for image: postgres:16.15-alpine
+15:28:26.974 [main] INFO tc.postgres:16.15-alpine -- Container postgres:16.15-alpine is starting: 6d79ec66a4911b8eeebabbc050e5aa541271aa4c94b6b29b35f9b0a002e8aadc
+15:28:29.041 [main] INFO tc.postgres:16.15-alpine -- Container postgres:16.15-alpine started in PT2.1866183S
+15:28:29.041 [main] INFO tc.postgres:16.15-alpine -- Container is started (JDBC URL: jdbc:postgresql://localhost:51936/test?loggerLevel=OFF)
+15:28:29.042 [main] INFO tc.axllent/mailpit:v1.31.1 -- Creating container for image: axllent/mailpit:v1.31.1
+15:28:29.157 [main] INFO tc.axllent/mailpit:v1.31.1 -- Container axllent/mailpit:v1.31.1 is starting: 19c1d668fc115416038165df72c81f89935481204ea2ee2f3174be2a80075d82
+15:28:29.444 [main] INFO org.testcontainers.containers.wait.strategy.HttpWaitStrategy -- /flamboyant_knuth: Waiting for 60 seconds for URL: http://localhost:51937/api/v1/info (where port 51937 maps to container port 8025)
+15:28:29.642 [main] INFO tc.axllent/mailpit:v1.31.1 -- Container axllent/mailpit:v1.31.1 started in PT0.600326S
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-10-19T15:28:29.937+02:00  INFO 45284 --- [registration-backend] [           main] .RegistrationNotificationIntegrationTest : Starting RegistrationNotificationIntegrationTest using Java 21.0.10 with PID 45284 (started by sense in E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\backend)
+2026-10-19T15:28:29.938+02:00  INFO 45284 --- [registration-backend] [           main] .RegistrationNotificationIntegrationTest : No active profile set, falling back to 1 default profile: "default"
+2026-10-19T15:28:30.692+02:00  INFO 45284 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-19T15:28:30.720+02:00  INFO 45284 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 20 ms. Found 0 JPA repository interfaces.
+2026-10-19T15:28:31.735+02:00  INFO 45284 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-10-19T15:28:31.878+02:00  INFO 45284 --- [registration-backend] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@58690f5e
+2026-10-19T15:28:31.879+02:00  INFO 45284 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-10-19T15:28:31.897+02:00  INFO 45284 --- [registration-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:51936/test?loggerLevel=OFF (PostgreSQL 16.15)
+2026-10-19T15:28:31.958+02:00  INFO 45284 --- [registration-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2026-10-19T15:28:31.961+02:00  INFO 45284 --- [registration-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.016s)
+2026-10-19T15:28:31.978+02:00  INFO 45284 --- [registration-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2026-10-19T15:28:32.032+02:00  INFO 45284 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-10-19T15:28:32.047+02:00  INFO 45284 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "1 - create registration tables"
+2026-10-19T15:28:32.088+02:00  INFO 45284 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 1 migration to schema "public", now at version v1 (execution time 00:00.021s)
+2026-10-19T15:28:32.223+02:00  INFO 45284 --- [registration-backend] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-10-19T15:28:32.278+02:00  INFO 45284 --- [registration-backend] [           main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.5.Final
+2026-10-19T15:28:32.631+02:00  INFO 45284 --- [registration-backend] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-19T15:28:32.702+02:00  INFO 45284 --- [registration-backend] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:51936/test?loggerLevel=OFF]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 16.15
+	Default catalog/schema: test/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-10-19T15:28:33.434+02:00  INFO 45284 --- [registration-backend] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-19T15:28:33.475+02:00  INFO 45284 --- [registration-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-19T15:28:33.668+02:00  WARN 45284 --- [registration-backend] [           main] .s.a.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 4a4dd36f-a37e-4043-93fb-6b318f99e75a
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-10-19T15:28:33.677+02:00  INFO 45284 --- [registration-backend] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-10-19T15:28:34.873+02:00  INFO 45284 --- [registration-backend] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-10-19T15:28:34.948+02:00  INFO 45284 --- [registration-backend] [           main] .RegistrationNotificationIntegrationTest : Started RegistrationNotificationIntegrationTest in 5.274 seconds (process running for 10.812)
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (C:\Users\sense\.m2\repository\net\bytebuddy\byte-buddy-agent\1.18.11\byte-buddy-agent-1.18.11.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+[ERROR] Tests run: 2, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 10.54 s <<< FAILURE! -- in si.konferenca.registration.application.RegistrationNotificationIntegrationTest
+[ERROR] si.konferenca.registration.application.RegistrationNotificationIntegrationTest.AC_006_01_notifierRunsAfterTheRegistrationIsCommitted -- Time elapsed: 0.516 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+Expecting actual:
+  []
+to contain exactly (and in same order):
+  [1]
+but could not find the following elements:
+  [1]
+
+	at si.konferenca.registration.application.RegistrationNotificationIntegrationTest.AC_006_01_notifierRunsAfterTheRegistrationIsCommitted(RegistrationNotificationIntegrationTest.java:71)
+
+[INFO] Running si.konferenca.registration.infrastructure.mail.MailRegistrationNotifierTest
+[ERROR] Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.010 s <<< FAILURE! -- in si.konferenca.registration.infrastructure.mail.MailRegistrationNotifierTest
+[ERROR] si.konferenca.registration.infrastructure.mail.MailRegistrationNotifierTest.AC_006_03_sendFailureIsLoggedWithTheRegistrationIdOnly -- Time elapsed: 0.002 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.infrastructure.mail.MailRegistrationNotifier.registrationAccepted(MailRegistrationNotifier.java:16)
+	at si.konferenca.registration.infrastructure.mail.MailRegistrationNotifierTest.AC_006_03_sendFailureIsLoggedWithTheRegistrationIdOnly(MailRegistrationNotifierTest.java:76)
+
+[ERROR] si.konferenca.registration.infrastructure.mail.MailRegistrationNotifierTest.AC_006_01_confirmationIsSentOnTheExecutor -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.infrastructure.mail.MailRegistrationNotifier.registrationAccepted(MailRegistrationNotifier.java:16)
+	at si.konferenca.registration.infrastructure.mail.MailRegistrationNotifierTest.AC_006_01_confirmationIsSentOnTheExecutor(MailRegistrationNotifierTest.java:64)
+
+[INFO] Running si.konferenca.registration.infrastructure.mail.ParticipantMailComposerTest
+[ERROR] Tests run: 3, Failures: 0, Errors: 3, Skipped: 0, Time elapsed: 0.012 s <<< FAILURE! -- in si.konferenca.registration.infrastructure.mail.ParticipantMailComposerTest
+[ERROR] si.konferenca.registration.infrastructure.mail.ParticipantMailComposerTest.AC_006_02_inputCannotAddHeadersRecipientsOrMarkup -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.infrastructure.mail.ParticipantMailComposer.compose(ParticipantMailComposer.java:13)
+	at si.konferenca.registration.infrastructure.mail.ParticipantMailComposerTest.AC_006_02_inputCannotAddHeadersRecipientsOrMarkup(ParticipantMailComposerTest.java:73)
+
+[ERROR] si.konferenca.registration.infrastructure.mail.ParticipantMailComposerTest.AC_006_01_confirmationWithoutOptionsSaysNone -- Time elapsed: 0.002 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.infrastructure.mail.ParticipantMailComposer.compose(ParticipantMailComposer.java:13)
+	at si.konferenca.registration.infrastructure.mail.ParticipantMailComposerTest.AC_006_01_confirmationWithoutOptionsSaysNone(ParticipantMailComposerTest.java:65)
+
+[ERROR] si.konferenca.registration.infrastructure.mail.ParticipantMailComposerTest.AC_006_01_confirmationNamesConferenceParticipantAndOptions -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.infrastructure.mail.ParticipantMailComposer.compose(ParticipantMailComposer.java:13)
+	at si.konferenca.registration.infrastructure.mail.ParticipantMailComposerTest.AC_006_01_confirmationNamesConferenceParticipantAndOptions(ParticipantMailComposerTest.java:51)
+
+[INFO] Running si.konferenca.registration.web.RegistrationControllerTest
+2026-10-19T15:28:35.730+02:00  INFO 45284 --- [registration-backend] [           main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2026-10-19T15:28:35.730+02:00  INFO 45284 --- [registration-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-19T15:28:35.730+02:00  INFO 45284 --- [registration-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-10-19T15:28:35.787+02:00  INFO 45284 --- [registration-backend] [           main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2026-10-19T15:28:35.787+02:00  INFO 45284 --- [registration-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-19T15:28:35.788+02:00  INFO 45284 --- [registration-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-10-19T15:28:35.799+02:00  INFO 45284 --- [registration-backend] [           main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2026-10-19T15:28:35.800+02:00  INFO 45284 --- [registration-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-19T15:28:35.800+02:00  INFO 45284 --- [registration-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-10-19T15:28:35.808+02:00  INFO 45284 --- [registration-backend] [           main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2026-10-19T15:28:35.808+02:00  INFO 45284 --- [registration-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-19T15:28:35.808+02:00  INFO 45284 --- [registration-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-10-19T15:28:35.809+02:00 ERROR 45284 --- [registration-backend] [           main] s.k.r.web.ApiExceptionHandler            : Request failed with java.lang.IllegalStateException
+2026-10-19T15:28:35.816+02:00  INFO 45284 --- [registration-backend] [           main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2026-10-19T15:28:35.816+02:00  INFO 45284 --- [registration-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-19T15:28:35.816+02:00  INFO 45284 --- [registration-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-10-19T15:28:35.893+02:00  INFO 45284 --- [registration-backend] [           main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2026-10-19T15:28:35.893+02:00  INFO 45284 --- [registration-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-19T15:28:35.894+02:00  INFO 45284 --- [registration-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-19T15:28:35.904+02:00  INFO 45284 --- [registration-backend] [           main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2026-10-19T15:28:35.904+02:00  INFO 45284 --- [registration-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-19T15:28:35.904+02:00  INFO 45284 --- [registration-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.196 s -- in si.konferenca.registration.web.RegistrationControllerTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Failures: 
+[ERROR]   RegisterParticipantTest.AC_005_02_jsonCopyIsWrittenAfterTheDatabaseRow:130 
+Expecting actual:
+  ["save", "copy"]
+to contain exactly (and in same order):
+  ["save", "copy", "notify"]
+but could not find the following elements:
+  ["notify"]
+
+[ERROR]   RegisterParticipantTest.AC_006_03_notificationFollowsStorageAndIsSkippedWhenStorageFails:153 
+Expecting actual:
+  ["save", "copy"]
+to contain exactly (and in same order):
+  ["save", "copy", "notify"]
+but could not find the following elements:
+  ["notify"]
+
+[ERROR]   RegistrationNotificationIntegrationTest.AC_006_01_notifierRunsAfterTheRegistrationIsCommitted:71 
+Expecting actual:
+  []
+to contain exactly (and in same order):
+  [1]
+but could not find the following elements:
+  [1]
+
+[ERROR] Errors: 
+[ERROR]   MailRegistrationNotifierTest.AC_006_01_confirmationIsSentOnTheExecutor:64 » UnsupportedOperation not implemented
+[ERROR]   MailRegistrationNotifierTest.AC_006_03_sendFailureIsLoggedWithTheRegistrationIdOnly:76 » UnsupportedOperation not implemented
+[ERROR]   ParticipantMailComposerTest.AC_006_01_confirmationNamesConferenceParticipantAndOptions:51 » UnsupportedOperation not implemented
+[ERROR]   ParticipantMailComposerTest.AC_006_01_confirmationWithoutOptionsSaysNone:65 » UnsupportedOperation not implemented
+[ERROR]   ParticipantMailComposerTest.AC_006_02_inputCannotAddHeadersRecipientsOrMarkup:73 » UnsupportedOperation not implemented
+[INFO] 
+[ERROR] Tests run: 20, Failures: 3, Errors: 5, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  18.720 s
+[INFO] Finished at: 2026-10-19T15:28:36+02:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.5.6:test (default-test) on project registration-backend: There are test failures.
+[ERROR] 
+[ERROR] See E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\backend\target\surefire-reports for the individual test results.
+[ERROR] See dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

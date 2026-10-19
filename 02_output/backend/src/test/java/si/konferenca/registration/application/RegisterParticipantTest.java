@@ -52,6 +52,7 @@ class RegisterParticipantTest {
               throw copyFailure;
             }
           },
+          registration -> events.add("notify"),
           Clock.fixed(NOW, ZoneOffset.UTC));
 
   static RegistrationSubmission submission(String firstName, String token) {
@@ -126,7 +127,7 @@ class RegisterParticipantTest {
   void AC_005_02_jsonCopyIsWrittenAfterTheDatabaseRow() {
     useCase.register(submission("Ana", "t"));
 
-    assertThat(events).containsExactly("save", "copy");
+    assertThat(events).containsExactly("save", "copy", "notify");
   }
 
   @Test
@@ -144,5 +145,16 @@ class RegisterParticipantTest {
     assertThatThrownBy(() -> useCase.register(submission("Ana", "t")))
         .isInstanceOf(RegistrationRejectedException.class);
     assertThat(events).isEmpty();
+  }
+
+  @Test
+  void AC_006_03_notificationFollowsStorageAndIsSkippedWhenStorageFails() {
+    useCase.register(submission("Ana", "t"));
+    assertThat(events).containsExactly("save", "copy", "notify");
+
+    events.clear();
+    copyFailure = new IllegalStateException("disk full");
+    assertThatThrownBy(() -> useCase.register(submission("Ana", "t")));
+    assertThat(events).containsExactly("save", "copy");
   }
 }

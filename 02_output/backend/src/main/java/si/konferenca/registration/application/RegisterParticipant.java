@@ -29,6 +29,7 @@ public class RegisterParticipant {
       CaptchaVerifier captchaVerifier,
       RegistrationStore store,
       JsonCopyStore jsonCopyStore,
+      RegistrationNotifier notifier,
       Clock clock) {
     this.validator = new RegistrationValidator(configuration);
     this.captchaVerifier = captchaVerifier;

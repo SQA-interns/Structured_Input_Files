@@ -42,6 +42,7 @@ public class RegistrationBeans {
       RegistrationStore store,
       JsonCopyStore jsonCopyStore,
       Clock clock) {
-    return new RegisterParticipant(configuration, captchaVerifier, store, jsonCopyStore, clock);
+    return new RegisterParticipant(
+        configuration, captchaVerifier, store, jsonCopyStore, registration -> {}, clock);
   }
 }
