@@ -1,4 +1,4 @@
-import type { FormConfig } from "./types";
+import type { FieldError, FormConfig } from "./types";
 
 /** GET /api/form-config (AR-01: relative /api URLs only). */
 export async function fetchFormConfig(): Promise<FormConfig> {
@@ -17,4 +17,14 @@ export interface AcceptedRegistration {
   lastName: string;
   options: { id: string; name: string; category: string }[];
   registeredAt: string;
+}
+
+export type SubmitResult =
+  | { kind: "accepted"; registration: AcceptedRegistration }
+  | { kind: "rejected"; fieldErrors: FieldError[] }
+  | { kind: "failed" };
+
+/** POST /api/registrations; never throws, every failure is a result. */
+export async function submitRegistration(_body: Record<string, unknown>): Promise<SubmitResult> {
+  throw new Error("not implemented");
 }

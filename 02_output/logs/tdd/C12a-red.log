@@ -1,0 +1,227 @@
+
+ RUN  v4.1.11 E:/13 - Lab Projects/01_Runs/_____TDD_____TESTING_____/01_kyuhi_single-agent_tdd_v001/02_output/frontend
+
+ ❯ src/api.submit.test.ts (9 tests | 9 failed) 12ms
+     × AC-004-01 posts JSON to /api/registrations and returns the accepted registration 4ms
+     × AC-004-02 a 400 with field errors is a rejection 2ms
+     × AC-004-04 a 400 without field errors is a failure 1ms
+     × AC-004-04 status 500 is a failure 1ms
+     × AC-004-04 status 413 is a failure 1ms
+     × AC-004-04 status 429 is a failure 1ms
+     × AC-004-04 status 503 is a failure 0ms
+     × AC-004-04 an unreadable answer is a failure 0ms
+     × AC-004-04 an unreachable backend is a failure 1ms
+ ❯ src/validation.test.ts (12 tests | 12 failed) 8ms
+     × AC-004-03 a complete external form has no errors 3ms
+     × AC-004-03 a complete student form has no errors 0ms
+     × AC-004-03 empty or blank required fields are errors 0ms
+     × AC-004-03 every student field is required 0ms
+     × AC-004-03 invalid email ana is an error 0ms
+     × AC-004-03 invalid email ana@ is an error 0ms
+     × AC-004-03 invalid email @example.com is an error 0ms
+     × AC-004-03 invalid email ana novak@example.com is an error 0ms
+     × AC-004-03 invalid email ana@example is an error 0ms
+     × AC-004-03 invalid email a@b..si is an error 0ms
+     × AC-004-03 surrounding spaces around a valid email are accepted 0ms
+     × AC-004-03 a missing mandatory consent is an error on that consent 0ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 21 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/api.submit.test.ts > submitRegistration > AC-004-01 posts JSON to /api/registrations and returns the accepted registration
+Error: not implemented
+ ❯ submitRegistration src/api.ts:29:9
+     27| /** POST /api/registrations; never throws, every failure is a result. …
+     28| export async function submitRegistration(_body: Record<string, unknown…
+     29|   throw new Error("not implemented");
+       |         ^
+     30| }
+     31|
+ ❯ src/api.submit.test.ts:33:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/21]⎯
+
+ FAIL  src/api.submit.test.ts > submitRegistration > AC-004-02 a 400 with field errors is a rejection
+AssertionError: promise rejected "Error: not implemented" instead of resolving
+ ❯ src/api.submit.test.ts:46:40
+     44|     reply(400, { message: "x", fieldErrors: [{ field: "email", message…
+     45|
+     46|     await expect(submitRegistration({})).resolves.toEqual({
+       |                                        ^
+     47|       kind: "rejected",
+     48|       fieldErrors: [{ field: "email", message: "Bad email" }],
+
+Caused by: Error: not implemented
+ ❯ submitRegistration src/api.ts:29:9
+ ❯ src/api.submit.test.ts:46:18
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/21]⎯
+
+ FAIL  src/api.submit.test.ts > submitRegistration > AC-004-04 a 400 without field errors is a failure
+AssertionError: promise rejected "Error: not implemented" instead of resolving
+ ❯ src/api.submit.test.ts:55:40
+     53|     reply(400, { message: "The request could not be read.", fieldError…
+     54|
+     55|     await expect(submitRegistration({})).resolves.toEqual({ kind: "fai…
+       |                                        ^
+     56|   });
+     57|
+
+Caused by: Error: not implemented
+ ❯ submitRegistration src/api.ts:29:9
+ ❯ src/api.submit.test.ts:55:18
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/21]⎯
+
+ FAIL  src/api.submit.test.ts > submitRegistration > AC-004-04 status 500 is a failure
+ FAIL  src/api.submit.test.ts > submitRegistration > AC-004-04 status 413 is a failure
+ FAIL  src/api.submit.test.ts > submitRegistration > AC-004-04 status 429 is a failure
+ FAIL  src/api.submit.test.ts > submitRegistration > AC-004-04 status 503 is a failure
+AssertionError: promise rejected "Error: not implemented" instead of resolving
+ ❯ src/api.submit.test.ts:61:40
+     59|     reply(status, { message: "internal", fieldErrors: [] });
+     60|
+     61|     await expect(submitRegistration({})).resolves.toEqual({ kind: "fai…
+       |                                        ^
+     62|   });
+     63|
+
+Caused by: Error: not implemented
+ ❯ submitRegistration src/api.ts:29:9
+ ❯ src/api.submit.test.ts:61:18
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/21]⎯
+
+ FAIL  src/api.submit.test.ts > submitRegistration > AC-004-04 an unreadable answer is a failure
+AssertionError: promise rejected "Error: not implemented" instead of resolving
+ ❯ src/api.submit.test.ts:67:40
+     65|     reply(201, "<html>proxy error</html>");
+     66|
+     67|     await expect(submitRegistration({})).resolves.toEqual({ kind: "fai…
+       |                                        ^
+     68|   });
+     69|
+
+Caused by: Error: not implemented
+ ❯ submitRegistration src/api.ts:29:9
+ ❯ src/api.submit.test.ts:67:18
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/21]⎯
+
+ FAIL  src/api.submit.test.ts > submitRegistration > AC-004-04 an unreachable backend is a failure
+AssertionError: promise rejected "Error: not implemented" instead of resolving
+ ❯ src/api.submit.test.ts:78:40
+     76|     );
+     77|
+     78|     await expect(submitRegistration({})).resolves.toEqual({ kind: "fai…
+       |                                        ^
+     79|   });
+     80| });
+
+Caused by: Error: not implemented
+ ❯ submitRegistration src/api.ts:29:9
+ ❯ src/api.submit.test.ts:78:18
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/21]⎯
+
+ FAIL  src/validation.test.ts > validateForm > AC-004-03 a complete external form has no errors
+Error: not implemented
+ ❯ validateForm src/validation.ts:10:9
+      8|   _consents: Consent[],
+      9| ): Record<string, string> {
+     10|   throw new Error("not implemented");
+       |         ^
+     11| }
+     12|
+ ❯ src/validation.test.ts:23:12
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/21]⎯
+
+ FAIL  src/validation.test.ts > validateForm > AC-004-03 a complete student form has no errors
+Error: not implemented
+ ❯ validateForm src/validation.ts:10:9
+      8|   _consents: Consent[],
+      9| ): Record<string, string> {
+     10|   throw new Error("not implemented");
+       |         ^
+     11| }
+     12|
+ ❯ src/validation.test.ts:27:12
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/21]⎯
+
+ FAIL  src/validation.test.ts > validateForm > AC-004-03 empty or blank required fields are errors
+Error: not implemented
+ ❯ validateForm src/validation.ts:10:9
+      8|   _consents: Consent[],
+      9| ): Record<string, string> {
+     10|   throw new Error("not implemented");
+       |         ^
+     11| }
+     12|
+ ❯ src/validation.test.ts:31:20
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/21]⎯
+
+ FAIL  src/validation.test.ts > validateForm > AC-004-03 every student field is required
+Error: not implemented
+ ❯ validateForm src/validation.ts:10:9
+      8|   _consents: Consent[],
+      9| ): Record<string, string> {
+     10|   throw new Error("not implemented");
+       |         ^
+     11| }
+     12|
+ ❯ src/validation.test.ts:43:20
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/21]⎯
+
+ FAIL  src/validation.test.ts > validateForm > AC-004-03 invalid email ana is an error
+ FAIL  src/validation.test.ts > validateForm > AC-004-03 invalid email ana@ is an error
+ FAIL  src/validation.test.ts > validateForm > AC-004-03 invalid email @example.com is an error
+ FAIL  src/validation.test.ts > validateForm > AC-004-03 invalid email ana novak@example.com is an error
+ FAIL  src/validation.test.ts > validateForm > AC-004-03 invalid email ana@example is an error
+ FAIL  src/validation.test.ts > validateForm > AC-004-03 invalid email a@b..si is an error
+Error: not implemented
+ ❯ validateForm src/validation.ts:10:9
+      8|   _consents: Consent[],
+      9| ): Record<string, string> {
+     10|   throw new Error("not implemented");
+       |         ^
+     11| }
+     12|
+ ❯ src/validation.test.ts:58:22
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/21]⎯
+
+ FAIL  src/validation.test.ts > validateForm > AC-004-03 surrounding spaces around a valid email are accepted
+Error: not implemented
+ ❯ validateForm src/validation.ts:10:9
+      8|   _consents: Consent[],
+      9| ): Record<string, string> {
+     10|   throw new Error("not implemented");
+       |         ^
+     11| }
+     12|
+ ❯ src/validation.test.ts:72:7
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/21]⎯
+
+ FAIL  src/validation.test.ts > validateForm > AC-004-03 a missing mandatory consent is an error on that consent
+Error: not implemented
+ ❯ validateForm src/validation.ts:10:9
+      8|   _consents: Consent[],
+      9| ): Record<string, string> {
+     10|   throw new Error("not implemented");
+       |         ^
+     11| }
+     12|
+ ❯ src/validation.test.ts:82:20
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/21]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  21 failed (21)
+   Start at  15:51:30
+   Duration  876ms (transform 105ms, setup 224ms, import 75ms, tests 20ms, environment 1.04s)
+
