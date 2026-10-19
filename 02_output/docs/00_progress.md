@@ -5,10 +5,10 @@
 Updated at every gate and before any stop, so a fresh session can resume from here.
 
 - Workflow: tdd
-- Current phase: 3 (acceptance tests)
-- Current cycle (phase 4): none
-- Last gate result: phase 2 passed (2026-10-19): every AC assigned to a component and contract, every SB, SR, NFR mapped, AR-02 and AR-04 declared, contracts validated (`out/logs/phase2-contract-validation.log`)
-- Next step: phase 3, backend acceptance harness and tests story by story, then frontend, then e2e, then the freeze commit
+- Current phase: 4 (TDD build)
+- Current cycle (phase 4): C08 next (C01–C07 done: every backend acceptance test green)
+- Last gate result: phase 3 passed (89 frozen tests, manifest committed in 0b8e69e); after C07 the full backend suite passes (201 tests) and backend checks are clean
+- Next step: C08 reCAPTCHA production verifier and SR-02, C09 limits/headers/health, then frontend cycles C10–C12 and the e2e run
 - Waiting for the human on: nothing
 
 ## Component commands (ES-05)

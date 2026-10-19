@@ -91,3 +91,12 @@
 - Options: 1. (proposed default) add `@types/node` 24.19.2 (MIT, matches Node 24) as an exact dev dependency of the frontend under the `tech-stack.md` rule for unlisted dev tooling; scanned in phase 6; 2. write the end-to-end tests in untyped JavaScript.
 - Human response: none
 - Resolution: option 1
+
+## D-11: SpotBugs patterns EI_EXPOSE_REP and EI_EXPOSE_REP2 excluded
+- Timestamp: 2026-10-19T13:26Z
+- Phase: 4
+- Type: non-blocking
+- Trigger: `spotbugs:check` reports 29 Medium findings, all EI_EXPOSE_REP or EI_EXPOSE_REP2: Java records that carry lists (domain values, request and response records) and constructors that keep Spring-injected collaborators. No other pattern is reported (`out/logs/phase4-backend-check-1.log`). Severity by `severity-scale.md`: Low (a stylistic or theoretical finding; the records are values created per request and never shared).
+- Options: 1. (proposed default) exclude only these two patterns in `backend/spotbugs-exclude.xml`, keep every other pattern at threshold Medium; 2. add defensive copies to every record and suppress the dependency-injection matches one by one.
+- Human response: none
+- Resolution: option 1
