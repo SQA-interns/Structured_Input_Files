@@ -1,5 +1,7 @@
 package si.konferenca.registration.infrastructure.persistence;
 
+import static java.lang.Integer.MAX_VALUE;
+
 import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
@@ -11,9 +13,15 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Table;
 import java.time.Instant;
+import java.util.Comparator;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
+import si.konferenca.registration.domain.ConferenceConfiguration;
+import si.konferenca.registration.domain.ConferenceOption;
+import si.konferenca.registration.domain.GivenConsent;
+import si.konferenca.registration.domain.OptionCategory;
 import si.konferenca.registration.domain.Registration;
 import si.konferenca.registration.domain.RegistrationType;
 
@@ -84,5 +92,43 @@ public class RegistrationEntity {
         .consents()
         .forEach(c -> entity.consents.add(new ConsentEmbeddable(c.id(), c.givenAt())));
     return entity;
+  }
+
+  /**
+   * The registration with its options in configuration order; an option no longer configured keeps
+   * its id as name and comes last.
+   */
+  Registration toDomain(ConferenceConfiguration configuration) {
+    List<String> configured = configuration.options().stream().map(ConferenceOption::id).toList();
+    List<ConferenceOption> options =
+        optionIds.stream()
+            .sorted(
+                Comparator.comparing(
+                        (String id) -> configured.contains(id) ? configured.indexOf(id) : MAX_VALUE)
+                    .thenComparing(Comparator.naturalOrder()))
+            .map(
+                id ->
+                    configuration
+                        .option(id)
+                        .orElse(new ConferenceOption(id, id, OptionCategory.OTHER, false, null)))
+            .toList();
+    List<GivenConsent> given =
+        consents.stream()
+            .map(c -> new GivenConsent(c.consentId(), c.givenAt()))
+            .sorted(Comparator.comparing(GivenConsent::id))
+            .toList();
+    return new Registration(
+        id,
+        type,
+        registeredAt,
+        firstName,
+        lastName,
+        email,
+        organization,
+        studyInstitution,
+        studyProgramme,
+        studentId,
+        options,
+        given);
   }
 }

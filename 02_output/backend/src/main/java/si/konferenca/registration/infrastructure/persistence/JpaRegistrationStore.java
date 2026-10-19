@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import si.konferenca.registration.application.RegistrationReader;
 import si.konferenca.registration.application.RegistrationStore;
+import si.konferenca.registration.domain.ConferenceConfiguration;
 import si.konferenca.registration.domain.Registration;
 
 /** Stores and reads registrations in PostgreSQL (database.sql). */
@@ -14,6 +15,12 @@ import si.konferenca.registration.domain.Registration;
 public class JpaRegistrationStore implements RegistrationStore, RegistrationReader {
 
   @PersistenceContext private EntityManager entityManager;
+
+  private final ConferenceConfiguration configuration;
+
+  public JpaRegistrationStore(ConferenceConfiguration configuration) {
+    this.configuration = configuration;
+  }
 
   @Override
   @Transactional
@@ -23,7 +30,14 @@ public class JpaRegistrationStore implements RegistrationStore, RegistrationRead
   }
 
   @Override
+  @Transactional(readOnly = true)
   public List<Registration> findAll() {
-    throw new UnsupportedOperationException("not implemented");
+    return entityManager
+        .createQuery(
+            "select r from RegistrationEntity r order by r.registeredAt", RegistrationEntity.class)
+        .getResultList()
+        .stream()
+        .map(entity -> entity.toDomain(configuration))
+        .toList();
   }
 }
