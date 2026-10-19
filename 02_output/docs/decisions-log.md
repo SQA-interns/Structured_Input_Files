@@ -64,3 +64,21 @@
 - Options: 1. (proposed default) read the three timestamps as 2026-10-19T12:35Z; take times from `date -u` from now on.
 - Human response: none
 - Resolution: option 1
+
+## D-08: UI text in English
+- Timestamp: 2026-10-19T12:41Z
+- Phase: 2
+- Type: non-blocking
+- Trigger: the inputs do not state the UI language; the criteria and scenarios use English terms ("external participant", "student"), the conference is Slovenian.
+- Options: 1. (proposed default) English UI text exactly as in `docs/02_contracts/ui.md`; 2. Slovenian UI text.
+- Human response: none
+- Resolution: pending review
+
+## D-09: Behaviour the requirements leave open (status codes and limits)
+- Timestamp: 2026-10-19T12:41Z
+- Phase: 2
+- Type: non-blocking
+- Trigger: requirements check G-3 (AC-008-04 says "refused" without a status), G-4 (SR-03 gives no numbers), and no maximum field lengths in BR-01.
+- Options: 1. (proposed default, the more conservative) 403 for organizer credentials over plain HTTP from a non-loopback client; rate limits per client 60/min form configuration, 10/min registration, 10/min export (failed logins included); request body limit 16 KiB (413); maximum lengths names 100, email 254, other text 200; unknown JSON properties rejected; fields of the other registration type ignored and not stored; all configurable (`docs/02_contracts/configuration.md`); 2. no limits.
+- Human response: none
+- Resolution: pending review
