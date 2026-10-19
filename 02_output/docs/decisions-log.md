@@ -82,3 +82,12 @@
 - Options: 1. (proposed default, the more conservative) 403 for organizer credentials over plain HTTP from a non-loopback client; rate limits per client 60/min form configuration, 10/min registration, 10/min export (failed logins included); request body limit 16 KiB (413); maximum lengths names 100, email 254, other text 200; unknown JSON properties rejected; fields of the other registration type ignored and not stored; all configurable (`docs/02_contracts/configuration.md`); 2. no limits.
 - Human response: none
 - Resolution: pending review
+
+## D-10: Dev-only dependency @types/node for the end-to-end tests
+- Timestamp: 2026-10-19T12:55Z
+- Phase: 3
+- Type: non-blocking
+- Trigger: the end-to-end tests read the database row and the JSON copy inside the containers (`docker compose exec`, E2E-01, E2E-04) through `node:child_process`; TypeScript needs `@types/node`, which `tech-stack.md` does not list and nothing installs transitively.
+- Options: 1. (proposed default) add `@types/node` 24.19.2 (MIT, matches Node 24) as an exact dev dependency of the frontend under the `tech-stack.md` rule for unlisted dev tooling; scanned in phase 6; 2. write the end-to-end tests in untyped JavaScript.
+- Human response: none
+- Resolution: option 1
