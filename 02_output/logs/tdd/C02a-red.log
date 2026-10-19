@@ -1,0 +1,322 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< si.konferenca:registration-backend >-----------------
+[INFO] Building registration-backend 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- spotless:2.44.3:apply (default-cli) @ registration-backend ---
+[INFO] clean file: E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\backend\src\test\java\si\konferenca\registration\application\RegisterParticipantTest.java
+[INFO] clean file: E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\backend\src\test\java\si\konferenca\registration\domain\RegistrationValidatorTest.java
+[INFO] Spotless.Java is keeping 45 files clean - 2 were changed to be clean, 11 were already clean, 32 were skipped because caching determined they were already clean
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ registration-backend ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 0 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ registration-backend ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 25 source files with javac [debug parameters release 21] to target\classes
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ registration-backend ---
+[INFO] Copying 5 resources from src\test\resources to target\test-classes
+[INFO] 
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ registration-backend ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 20 source files with javac [debug parameters release 21] to target\test-classes
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ registration-backend ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running si.konferenca.registration.application.RegisterParticipantTest
+[ERROR] Tests run: 4, Failures: 2, Errors: 2, Skipped: 0, Time elapsed: 0.173 s <<< FAILURE! -- in si.konferenca.registration.application.RegisterParticipantTest
+[ERROR] si.konferenca.registration.application.RegisterParticipantTest.AC_001_01_eachRegistrationGetsItsOwnId -- Time elapsed: 0.046 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.application.RegisterParticipant.register(RegisterParticipant.java:18)
+	at si.konferenca.registration.application.RegisterParticipantTest.AC_001_01_eachRegistrationGetsItsOwnId(RegisterParticipantTest.java:80)
+
+[ERROR] si.konferenca.registration.application.RegisterParticipantTest.AC_001_01_acceptedRegistrationIsStoredWithIdTimeAndConsentTimes -- Time elapsed: 0.006 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.application.RegisterParticipant.register(RegisterParticipant.java:18)
+	at si.konferenca.registration.application.RegisterParticipantTest.AC_001_01_acceptedRegistrationIsStoredWithIdTimeAndConsentTimes(RegisterParticipantTest.java:63)
+
+[ERROR] si.konferenca.registration.application.RegisterParticipantTest.AC_001_02_invalidFieldsAreRejectedWithoutCaptchaCallOrStorage -- Time elapsed: 0.080 s <<< FAILURE!
+java.lang.AssertionError: 
+
+Expecting actual throwable to be an instance of:
+  si.konferenca.registration.application.RegistrationRejectedException
+but was:
+  java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.application.RegisterParticipant.register(RegisterParticipant.java:18)
+	at si.konferenca.registration.application.RegisterParticipantTest.lambda$AC_001_02_invalidFieldsAreRejectedWithoutCaptchaCallOrStorage$1(RegisterParticipantTest.java:88)
+	at org.assertj.core.api.ThrowableAssert.catchThrowable(ThrowableAssert.java:66)
+	...(85 remaining lines not displayed - this can be changed with Assertions.setMaxStackTraceElementsDisplayed)
+	at si.konferenca.registration.application.RegisterParticipantTest.AC_001_02_invalidFieldsAreRejectedWithoutCaptchaCallOrStorage(RegisterParticipantTest.java:89)
+
+[ERROR] si.konferenca.registration.application.RegisterParticipantTest.AC_001_07_tokenRejectedByVerifierIsAFieldErrorAndNothingIsStored -- Time elapsed: 0.002 s <<< FAILURE!
+java.lang.AssertionError: 
+
+Expecting actual throwable to be an instance of:
+  si.konferenca.registration.application.RegistrationRejectedException
+but was:
+  java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.application.RegisterParticipant.register(RegisterParticipant.java:18)
+	at si.konferenca.registration.application.RegisterParticipantTest.lambda$AC_001_07_tokenRejectedByVerifierIsAFieldErrorAndNothingIsStored$3(RegisterParticipantTest.java:103)
+	at org.assertj.core.api.ThrowableAssert.catchThrowable(ThrowableAssert.java:66)
+	...(85 remaining lines not displayed - this can be changed with Assertions.setMaxStackTraceElementsDisplayed)
+	at si.konferenca.registration.application.RegisterParticipantTest.AC_001_07_tokenRejectedByVerifierIsAFieldErrorAndNothingIsStored(RegisterParticipantTest.java:104)
+
+[INFO] Running si.konferenca.registration.domain.RegistrationValidatorTest
+[ERROR] Tests run: 34, Failures: 0, Errors: 34, Skipped: 0, Time elapsed: 0.117 s <<< FAILURE! -- in si.konferenca.registration.domain.RegistrationValidatorTest
+[ERROR] si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_04_validEmailIsAccepted(String)[1] -- Time elapsed: 0.007 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.domain.RegistrationValidator.validate(RegistrationValidator.java:9)
+	at si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_04_validEmailIsAccepted(RegistrationValidatorTest.java:198)
+
+[ERROR] si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_04_validEmailIsAccepted(String)[2] -- Time elapsed: 0.002 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.domain.RegistrationValidator.validate(RegistrationValidator.java:9)
+	at si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_04_validEmailIsAccepted(RegistrationValidatorTest.java:198)
+
+[ERROR] si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_04_validEmailIsAccepted(String)[3] -- Time elapsed: 0.002 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.domain.RegistrationValidator.validate(RegistrationValidator.java:9)
+	at si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_04_validEmailIsAccepted(RegistrationValidatorTest.java:198)
+
+[ERROR] si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_04_validEmailIsAccepted(String)[4] -- Time elapsed: 0.002 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.domain.RegistrationValidator.validate(RegistrationValidator.java:9)
+	at si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_04_validEmailIsAccepted(RegistrationValidatorTest.java:198)
+
+[ERROR] si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_06_missingMandatoryConsentIsReportedOnThatConsent -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.domain.RegistrationValidator.validate(RegistrationValidator.java:9)
+	at si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_06_missingMandatoryConsentIsReportedOnThatConsent(RegistrationValidatorTest.java:233)
+
+[ERROR] si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_01_missingOrUnknownTypeIsAFieldError(String)[1] -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.domain.RegistrationValidator.validate(RegistrationValidator.java:9)
+	at si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_01_missingOrUnknownTypeIsAFieldError(RegistrationValidatorTest.java:290)
+
+[ERROR] si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_01_missingOrUnknownTypeIsAFieldError(String)[2] -- Time elapsed: 0.002 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.domain.RegistrationValidator.validate(RegistrationValidator.java:9)
+	at si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_01_missingOrUnknownTypeIsAFieldError(RegistrationValidatorTest.java:290)
+
+[ERROR] si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_01_missingOrUnknownTypeIsAFieldError(String)[3] -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.domain.RegistrationValidator.validate(RegistrationValidator.java:9)
+	at si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_01_missingOrUnknownTypeIsAFieldError(RegistrationValidatorTest.java:290)
+
+[ERROR] si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_01_missingOrUnknownTypeIsAFieldError(String)[4] -- Time elapsed: 0.002 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.domain.RegistrationValidator.validate(RegistrationValidator.java:9)
+	at si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_01_missingOrUnknownTypeIsAFieldError(RegistrationValidatorTest.java:290)
+
+[ERROR] si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_04_invalidEmailIsRejected(String)[1] -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.domain.RegistrationValidator.validate(RegistrationValidator.java:9)
+	at si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_04_invalidEmailIsRejected(RegistrationValidatorTest.java:190)
+
+[ERROR] si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_04_invalidEmailIsRejected(String)[2] -- Time elapsed: 0.002 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.domain.RegistrationValidator.validate(RegistrationValidator.java:9)
+	at si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_04_invalidEmailIsRejected(RegistrationValidatorTest.java:190)
+
+[ERROR] si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_04_invalidEmailIsRejected(String)[3] -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.domain.RegistrationValidator.validate(RegistrationValidator.java:9)
+	at si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_04_invalidEmailIsRejected(RegistrationValidatorTest.java:190)
+
+[ERROR] si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_04_invalidEmailIsRejected(String)[4] -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.domain.RegistrationValidator.validate(RegistrationValidator.java:9)
+	at si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_04_invalidEmailIsRejected(RegistrationValidatorTest.java:190)
+
+[ERROR] si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_04_invalidEmailIsRejected(String)[5] -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.domain.RegistrationValidator.validate(RegistrationValidator.java:9)
+	at si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_04_invalidEmailIsRejected(RegistrationValidatorTest.java:190)
+
+[ERROR] si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_04_invalidEmailIsRejected(String)[6] -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.domain.RegistrationValidator.validate(RegistrationValidator.java:9)
+	at si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_04_invalidEmailIsRejected(RegistrationValidatorTest.java:190)
+
+[ERROR] si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_04_invalidEmailIsRejected(String)[7] -- Time elapsed: 0.003 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.domain.RegistrationValidator.validate(RegistrationValidator.java:9)
+	at si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_04_invalidEmailIsRejected(RegistrationValidatorTest.java:190)
+
+[ERROR] si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_04_invalidEmailIsRejected(String)[8] -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.domain.RegistrationValidator.validate(RegistrationValidator.java:9)
+	at si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_04_invalidEmailIsRejected(RegistrationValidatorTest.java:190)
+
+[ERROR] si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_04_invalidEmailIsRejected(String)[9] -- Time elapsed: 0.002 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.domain.RegistrationValidator.validate(RegistrationValidator.java:9)
+	at si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_04_invalidEmailIsRejected(RegistrationValidatorTest.java:190)
+
+[ERROR] si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_04_invalidEmailIsRejected(String)[10] -- Time elapsed: 0.002 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.domain.RegistrationValidator.validate(RegistrationValidator.java:9)
+	at si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_04_invalidEmailIsRejected(RegistrationValidatorTest.java:190)
+
+[ERROR] si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_03_textFieldsAreTrimmed -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.domain.RegistrationValidator.validate(RegistrationValidator.java:9)
+	at si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_03_textFieldsAreTrimmed(RegistrationValidatorTest.java:143)
+
+[ERROR] si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_03_fieldsOfTheOtherTypeAreNotKept -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.domain.RegistrationValidator.validate(RegistrationValidator.java:9)
+	at si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_03_fieldsOfTheOtherTypeAreNotKept(RegistrationValidatorTest.java:168)
+
+[ERROR] si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_07_missingTokenIsAFieldError(String)[1] -- Time elapsed: 0 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.domain.RegistrationValidator.validate(RegistrationValidator.java:9)
+	at si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_07_missingTokenIsAFieldError(RegistrationValidatorTest.java:269)
+
+[ERROR] si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_07_missingTokenIsAFieldError(String)[2] -- Time elapsed: 0.002 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.domain.RegistrationValidator.validate(RegistrationValidator.java:9)
+	at si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_07_missingTokenIsAFieldError(RegistrationValidatorTest.java:269)
+
+[ERROR] si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_07_missingTokenIsAFieldError(String)[3] -- Time elapsed: 0 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.domain.RegistrationValidator.validate(RegistrationValidator.java:9)
+	at si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_07_missingTokenIsAFieldError(RegistrationValidatorTest.java:269)
+
+[ERROR] si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_02_allMissingFieldsAreReportedTogether -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.domain.RegistrationValidator.validate(RegistrationValidator.java:9)
+	at si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_02_allMissingFieldsAreReportedTogether(RegistrationValidatorTest.java:131)
+
+[ERROR] si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_02_eachRequiredExternalFieldMustNotBeBlank(String)[1] -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.domain.RegistrationValidator.validate(RegistrationValidator.java:9)
+	at si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_02_eachRequiredExternalFieldMustNotBeBlank(RegistrationValidatorTest.java:119)
+
+[ERROR] si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_02_eachRequiredExternalFieldMustNotBeBlank(String)[2] -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.domain.RegistrationValidator.validate(RegistrationValidator.java:9)
+	at si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_02_eachRequiredExternalFieldMustNotBeBlank(RegistrationValidatorTest.java:119)
+
+[ERROR] si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_02_eachRequiredExternalFieldMustNotBeBlank(String)[3] -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.domain.RegistrationValidator.validate(RegistrationValidator.java:9)
+	at si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_02_eachRequiredExternalFieldMustNotBeBlank(RegistrationValidatorTest.java:119)
+
+[ERROR] si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_02_eachRequiredExternalFieldMustNotBeBlank(String)[4] -- Time elapsed: 0 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.domain.RegistrationValidator.validate(RegistrationValidator.java:9)
+	at si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_02_eachRequiredExternalFieldMustNotBeBlank(RegistrationValidatorTest.java:119)
+
+[ERROR] si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_04_tooLongValuesAreRejected -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.domain.RegistrationValidator.validate(RegistrationValidator.java:9)
+	at si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_04_tooLongValuesAreRejected(RegistrationValidatorTest.java:207)
+
+[ERROR] si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_01_noOptionsAndAnOptionalConsentAreAccepted -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.domain.RegistrationValidator.validate(RegistrationValidator.java:9)
+	at si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_01_noOptionsAndAnOptionalConsentAreAccepted(RegistrationValidatorTest.java:108)
+
+[ERROR] si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_01_validExternalSubmissionPassesWithOptionsInConfigurationOrder -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.domain.RegistrationValidator.validate(RegistrationValidator.java:9)
+	at si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_01_validExternalSubmissionPassesWithOptionsInConfigurationOrder(RegistrationValidatorTest.java:93)
+
+[ERROR] si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_05_unknownInactiveOrDuplicateOptionsAreRejected -- Time elapsed: 0 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.domain.RegistrationValidator.validate(RegistrationValidator.java:9)
+	at si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_05_unknownInactiveOrDuplicateOptionsAreRejected(RegistrationValidatorTest.java:218)
+
+[ERROR] si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_06_unknownOrRepeatedConsentIsRejected -- Time elapsed: 0 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.domain.RegistrationValidator.validate(RegistrationValidator.java:9)
+	at si.konferenca.registration.domain.RegistrationValidatorTest.AC_001_06_unknownOrRepeatedConsentIsRejected(RegistrationValidatorTest.java:244)
+
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Failures: 
+[ERROR]   RegisterParticipantTest.AC_001_02_invalidFieldsAreRejectedWithoutCaptchaCallOrStorage:89 
+Expecting actual throwable to be an instance of:
+  si.konferenca.registration.application.RegistrationRejectedException
+but was:
+  java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.application.RegisterParticipant.register(RegisterParticipant.java:18)
+	at si.konferenca.registration.application.RegisterParticipantTest.lambda$AC_001_02_invalidFieldsAreRejectedWithoutCaptchaCallOrStorage$1(RegisterParticipantTest.java:88)
+	at org.assertj.core.api.ThrowableAssert.catchThrowable(ThrowableAssert.java:66)
+	...(85 remaining lines not displayed - this can be changed with Assertions.setMaxStackTraceElementsDisplayed)
+[ERROR]   RegisterParticipantTest.AC_001_07_tokenRejectedByVerifierIsAFieldErrorAndNothingIsStored:104 
+Expecting actual throwable to be an instance of:
+  si.konferenca.registration.application.RegistrationRejectedException
+but was:
+  java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.application.RegisterParticipant.register(RegisterParticipant.java:18)
+	at si.konferenca.registration.application.RegisterParticipantTest.lambda$AC_001_07_tokenRejectedByVerifierIsAFieldErrorAndNothingIsStored$3(RegisterParticipantTest.java:103)
+	at org.assertj.core.api.ThrowableAssert.catchThrowable(ThrowableAssert.java:66)
+	...(85 remaining lines not displayed - this can be changed with Assertions.setMaxStackTraceElementsDisplayed)
+[ERROR] Errors: 
+[ERROR]   RegisterParticipantTest.AC_001_01_acceptedRegistrationIsStoredWithIdTimeAndConsentTimes:63 » UnsupportedOperation not implemented
+[ERROR]   RegisterParticipantTest.AC_001_01_eachRegistrationGetsItsOwnId:80 » UnsupportedOperation not implemented
+[ERROR]   RegistrationValidatorTest.AC_001_01_missingOrUnknownTypeIsAFieldError:290 » UnsupportedOperation not implemented
+[ERROR]   RegistrationValidatorTest.AC_001_01_missingOrUnknownTypeIsAFieldError:290 » UnsupportedOperation not implemented
+[ERROR]   RegistrationValidatorTest.AC_001_01_missingOrUnknownTypeIsAFieldError:290 » UnsupportedOperation not implemented
+[ERROR]   RegistrationValidatorTest.AC_001_01_missingOrUnknownTypeIsAFieldError:290 » UnsupportedOperation not implemented
+[ERROR]   RegistrationValidatorTest.AC_001_01_noOptionsAndAnOptionalConsentAreAccepted:108 » UnsupportedOperation not implemented
+[ERROR]   RegistrationValidatorTest.AC_001_01_validExternalSubmissionPassesWithOptionsInConfigurationOrder:93 » UnsupportedOperation not implemented
+[ERROR]   RegistrationValidatorTest.AC_001_02_allMissingFieldsAreReportedTogether:131 » UnsupportedOperation not implemented
+[ERROR]   RegistrationValidatorTest.AC_001_02_eachRequiredExternalFieldMustNotBeBlank:119 » UnsupportedOperation not implemented
+[ERROR]   RegistrationValidatorTest.AC_001_02_eachRequiredExternalFieldMustNotBeBlank:119 » UnsupportedOperation not implemented
+[ERROR]   RegistrationValidatorTest.AC_001_02_eachRequiredExternalFieldMustNotBeBlank:119 » UnsupportedOperation not implemented
+[ERROR]   RegistrationValidatorTest.AC_001_02_eachRequiredExternalFieldMustNotBeBlank:119 » UnsupportedOperation not implemented
+[ERROR]   RegistrationValidatorTest.AC_001_03_fieldsOfTheOtherTypeAreNotKept:168 » UnsupportedOperation not implemented
+[ERROR]   RegistrationValidatorTest.AC_001_03_textFieldsAreTrimmed:143 » UnsupportedOperation not implemented
+[ERROR]   RegistrationValidatorTest.AC_001_04_invalidEmailIsRejected:190 » UnsupportedOperation not implemented
+[ERROR]   RegistrationValidatorTest.AC_001_04_invalidEmailIsRejected:190 » UnsupportedOperation not implemented
+[ERROR]   RegistrationValidatorTest.AC_001_04_invalidEmailIsRejected:190 » UnsupportedOperation not implemented
+[ERROR]   RegistrationValidatorTest.AC_001_04_invalidEmailIsRejected:190 » UnsupportedOperation not implemented
+[ERROR]   RegistrationValidatorTest.AC_001_04_invalidEmailIsRejected:190 » UnsupportedOperation not implemented
+[ERROR]   RegistrationValidatorTest.AC_001_04_invalidEmailIsRejected:190 » UnsupportedOperation not implemented
+[ERROR]   RegistrationValidatorTest.AC_001_04_invalidEmailIsRejected:190 » UnsupportedOperation not implemented
+[ERROR]   RegistrationValidatorTest.AC_001_04_invalidEmailIsRejected:190 » UnsupportedOperation not implemented
+[ERROR]   RegistrationValidatorTest.AC_001_04_invalidEmailIsRejected:190 » UnsupportedOperation not implemented
+[ERROR]   RegistrationValidatorTest.AC_001_04_invalidEmailIsRejected:190 » UnsupportedOperation not implemented
+[ERROR]   RegistrationValidatorTest.AC_001_04_tooLongValuesAreRejected:207 » UnsupportedOperation not implemented
+[ERROR]   RegistrationValidatorTest.AC_001_04_validEmailIsAccepted:198 » UnsupportedOperation not implemented
+[ERROR]   RegistrationValidatorTest.AC_001_04_validEmailIsAccepted:198 » UnsupportedOperation not implemented
+[ERROR]   RegistrationValidatorTest.AC_001_04_validEmailIsAccepted:198 » UnsupportedOperation not implemented
+[ERROR]   RegistrationValidatorTest.AC_001_04_validEmailIsAccepted:198 » UnsupportedOperation not implemented
+[ERROR]   RegistrationValidatorTest.AC_001_05_unknownInactiveOrDuplicateOptionsAreRejected:218 » UnsupportedOperation not implemented
+[ERROR]   RegistrationValidatorTest.AC_001_06_missingMandatoryConsentIsReportedOnThatConsent:233 » UnsupportedOperation not implemented
+[ERROR]   RegistrationValidatorTest.AC_001_06_unknownOrRepeatedConsentIsRejected:244 » UnsupportedOperation not implemented
+[ERROR]   RegistrationValidatorTest.AC_001_07_missingTokenIsAFieldError:269 » UnsupportedOperation not implemented
+[ERROR]   RegistrationValidatorTest.AC_001_07_missingTokenIsAFieldError:269 » UnsupportedOperation not implemented
+[ERROR]   RegistrationValidatorTest.AC_001_07_missingTokenIsAFieldError:269 » UnsupportedOperation not implemented
+[INFO] 
+[ERROR] Tests run: 38, Failures: 2, Errors: 36, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  7.209 s
+[INFO] Finished at: 2026-10-19T15:14:45+02:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.5.6:test (default-test) on project registration-backend: There are test failures.
+[ERROR] 
+[ERROR] See E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\backend\target\surefire-reports for the individual test results.
+[ERROR] See dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
