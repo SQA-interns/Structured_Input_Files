@@ -11,7 +11,7 @@ import si.konferenca.registration.application.RegisterParticipant;
 import si.konferenca.registration.application.RegistrationNotifier;
 import si.konferenca.registration.application.RegistrationStore;
 import si.konferenca.registration.domain.ConferenceConfiguration;
-import si.konferenca.registration.infrastructure.captcha.TestModeCaptchaVerifier;
+import si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactory;
 import si.konferenca.registration.infrastructure.file.FileJsonCopyStore;
 
 /** Wires the registration use case to its ports. */
@@ -24,11 +24,13 @@ public class RegistrationBeans {
   }
 
   @Bean
-  CaptchaVerifier captchaVerifier(@Value("${app.recaptcha.test-mode}") boolean testMode) {
-    if (!testMode) {
-      throw new IllegalStateException("reCAPTCHA verification is not configured");
-    }
-    return new TestModeCaptchaVerifier();
+  CaptchaVerifier captchaVerifier(
+      @Value("${app.environment}") String environment,
+      @Value("${app.recaptcha.test-mode}") boolean testMode,
+      @Value("${app.recaptcha.site-key}") String siteKey,
+      @Value("${app.recaptcha.secret-key}") String secretKey,
+      @Value("${app.recaptcha.verify-url}") String verifyUrl) {
+    return CaptchaVerifierFactory.create(environment, testMode, siteKey, secretKey, verifyUrl);
   }
 
   @Bean

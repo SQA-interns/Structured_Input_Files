@@ -1,0 +1,142 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< si.konferenca:registration-backend >-----------------
+[INFO] Building registration-backend 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- spotless:2.44.3:apply (default-cli) @ registration-backend ---
+[INFO] Spotless.Java is keeping 89 files clean - 0 were changed to be clean, 3 were already clean, 86 were skipped because caching determined they were already clean
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ registration-backend ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ registration-backend ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 52 source files with javac [debug parameters release 21] to target\classes
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ registration-backend ---
+[INFO] Copying 5 resources from src\test\resources to target\test-classes
+[INFO] 
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ registration-backend ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 37 source files with javac [debug parameters release 21] to target\test-classes
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ registration-backend ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running si.konferenca.registration.acceptance.ExternalRegistrationAcceptanceTest
+15:43:37.600 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.konferenca.registration.acceptance.ExternalRegistrationAcceptanceTest]: ExternalRegistrationAcceptanceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+15:43:37.708 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration si.konferenca.registration.RegistrationApplication for test class si.konferenca.registration.acceptance.ExternalRegistrationAcceptanceTest
+15:43:37.784 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.konferenca.registration.acceptance.ExternalRegistrationAcceptanceTest]: ExternalRegistrationAcceptanceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+15:43:37.785 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.konferenca.registration.acceptance.support.AcceptanceTestBase]: AcceptanceTestBase does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+15:43:37.788 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration si.konferenca.registration.RegistrationApplication for test class si.konferenca.registration.acceptance.ExternalRegistrationAcceptanceTest
+15:43:37.991 [main] INFO org.testcontainers.images.PullPolicy -- Image pull policy will be performed by: DefaultPullPolicy()
+15:43:37.992 [main] INFO org.testcontainers.utility.ImageNameSubstitutor -- Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+15:43:38.037 [main] INFO org.testcontainers.DockerClientFactory -- Testcontainers version: 2.0.5
+15:43:38.254 [main] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+15:43:38.636 [main] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+15:43:38.637 [main] INFO org.testcontainers.DockerClientFactory -- Docker host IP address is localhost
+15:43:38.654 [main] INFO org.testcontainers.DockerClientFactory -- Connected to docker: 
+  Server Version: 29.8.1
+  API Version: 1.56
+  Operating System: Docker Desktop
+  Total Memory: 40065 MB
+  Labels: 
+    com.docker.desktop.address=npipe://\\.\pipe\docker_cli
+15:43:38.755 [main] INFO tc.testcontainers/ryuk:0.14.0 -- Creating container for image: testcontainers/ryuk:0.14.0
+15:43:39.038 [main] INFO tc.testcontainers/ryuk:0.14.0 -- Container testcontainers/ryuk:0.14.0 is starting: 032ff902c7dc090dfa6e0ef7986b340fa5ba3d870ec331cc27289bc3b8e11e5e
+15:43:39.401 [main] INFO tc.testcontainers/ryuk:0.14.0 -- Container testcontainers/ryuk:0.14.0 started in PT0.646317S
+15:43:39.407 [main] INFO org.testcontainers.utility.RyukResourceReaper -- Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+15:43:39.407 [main] INFO org.testcontainers.DockerClientFactory -- Checking the system...
+15:43:39.408 [main] INFO org.testcontainers.DockerClientFactory -- ?? Docker server version should be at least 1.6.0
+15:43:39.408 [main] INFO tc.postgres:16.15-alpine -- Creating container for image: postgres:16.15-alpine
+15:43:39.528 [main] INFO tc.postgres:16.15-alpine -- Container postgres:16.15-alpine is starting: fc6d66df2de84c5a2fef5381848fa77d270c62b84dd5f2f2b233c1b474b9a4ba
+15:43:41.575 [main] INFO tc.postgres:16.15-alpine -- Container postgres:16.15-alpine started in PT2.1667713S
+15:43:41.576 [main] INFO tc.postgres:16.15-alpine -- Container is started (JDBC URL: jdbc:postgresql://localhost:55451/test?loggerLevel=OFF)
+15:43:41.576 [main] INFO tc.axllent/mailpit:v1.31.1 -- Creating container for image: axllent/mailpit:v1.31.1
+15:43:41.689 [main] INFO tc.axllent/mailpit:v1.31.1 -- Container axllent/mailpit:v1.31.1 is starting: 5e95358ae93a3987b7fb322b221106ad0748f55c7d245c23a661039192f67330
+15:43:41.965 [main] INFO org.testcontainers.containers.wait.strategy.HttpWaitStrategy -- /nostalgic_pike: Waiting for 60 seconds for URL: http://localhost:52424/api/v1/info (where port 52424 maps to container port 8025)
+15:43:42.615 [main] INFO tc.axllent/mailpit:v1.31.1 -- Container axllent/mailpit:v1.31.1 started in PT1.0387568S
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-10-19T15:43:42.991+02:00  INFO 26540 --- [registration-backend] [           main] k.r.a.ExternalRegistrationAcceptanceTest : Starting ExternalRegistrationAcceptanceTest using Java 21.0.10 with PID 26540 (started by sense in E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\backend)
+2026-10-19T15:43:42.994+02:00  INFO 26540 --- [registration-backend] [           main] k.r.a.ExternalRegistrationAcceptanceTest : No active profile set, falling back to 1 default profile: "default"
+2026-10-19T15:43:44.028+02:00  INFO 26540 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-19T15:43:44.073+02:00  INFO 26540 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 28 ms. Found 0 JPA repository interfaces.
+2026-10-19T15:43:45.317+02:00  INFO 26540 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-10-19T15:43:45.471+02:00  INFO 26540 --- [registration-backend] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@160cf225
+2026-10-19T15:43:45.473+02:00  INFO 26540 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-10-19T15:43:45.498+02:00  INFO 26540 --- [registration-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:55451/test?loggerLevel=OFF (PostgreSQL 16.15)
+2026-10-19T15:43:45.565+02:00  INFO 26540 --- [registration-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2026-10-19T15:43:45.569+02:00  INFO 26540 --- [registration-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.018s)
+2026-10-19T15:43:45.587+02:00  INFO 26540 --- [registration-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2026-10-19T15:43:45.693+02:00  INFO 26540 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-10-19T15:43:45.711+02:00  INFO 26540 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "1 - create registration tables"
+2026-10-19T15:43:45.753+02:00  INFO 26540 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 1 migration to schema "public", now at version v1 (execution time 00:00.021s)
+2026-10-19T15:43:46.015+02:00  INFO 26540 --- [registration-backend] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-10-19T15:43:46.186+02:00  INFO 26540 --- [registration-backend] [           main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.5.Final
+2026-10-19T15:43:46.673+02:00  INFO 26540 --- [registration-backend] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-19T15:43:46.744+02:00  INFO 26540 --- [registration-backend] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:55451/test?loggerLevel=OFF]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 16.15
+	Default catalog/schema: test/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-10-19T15:43:47.502+02:00  INFO 26540 --- [registration-backend] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-19T15:43:47.544+02:00  INFO 26540 --- [registration-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-19T15:43:47.984+02:00  INFO 26540 --- [registration-backend] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name organizers
+2026-10-19T15:43:49.184+02:00  INFO 26540 --- [registration-backend] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-10-19T15:43:49.185+02:00  INFO 26540 --- [registration-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-19T15:43:49.198+02:00  INFO 26540 --- [registration-backend] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-10-19T15:43:49.210+02:00  INFO 26540 --- [registration-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 25 ms
+2026-10-19T15:43:49.375+02:00  INFO 26540 --- [registration-backend] [           main] k.r.a.ExternalRegistrationAcceptanceTest : Started ExternalRegistrationAcceptanceTest in 6.665 seconds (process running for 12.762)
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (C:\Users\sense\.m2\repository\net\bytebuddy\byte-buddy-agent\1.18.11\byte-buddy-agent-1.18.11.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+[INFO] Tests run: 30, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 45.00 s -- in si.konferenca.registration.acceptance.ExternalRegistrationAcceptanceTest
+[INFO] Running si.konferenca.registration.architecture.ArchitectureTest
+2026-10-19T15:44:22.406+02:00  INFO 26540 --- [registration-backend] [           main] com.tngtech.archunit.core.PluginLoader   : Detected Java version 21.0.10
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.290 s -- in si.konferenca.registration.architecture.ArchitectureTest
+[INFO] Running si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactoryTest
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.038 s -- in si.konferenca.registration.infrastructure.captcha.CaptchaVerifierFactoryTest
+[INFO] Running si.konferenca.registration.infrastructure.captcha.RecaptchaVerifierTest
+2026-10-19T15:44:25.325+02:00  WARN 26540 --- [registration-backend] [           main] s.k.r.i.captcha.RecaptchaVerifier        : reCAPTCHA verification failed: HttpTimeoutException
+2026-10-19T15:44:26.834+02:00  WARN 26540 --- [registration-backend] [           main] s.k.r.i.captcha.RecaptchaVerifier        : reCAPTCHA verification answered status 500
+2026-10-19T15:44:26.837+02:00  WARN 26540 --- [registration-backend] [           main] s.k.r.i.captcha.RecaptchaVerifier        : reCAPTCHA verification failed: StreamReadException
+2026-10-19T15:44:26.858+02:00  WARN 26540 --- [registration-backend] [           main] s.k.r.i.captcha.RecaptchaVerifier        : reCAPTCHA verification failed: ConnectException
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.134 s -- in si.konferenca.registration.infrastructure.captcha.RecaptchaVerifierTest
+[INFO] Running si.konferenca.registration.infrastructure.captcha.TestModeCaptchaVerifierTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.009 s -- in si.konferenca.registration.infrastructure.captcha.TestModeCaptchaVerifierTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 61, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  58.684 s
+[INFO] Finished at: 2026-10-19T15:44:27+02:00
+[INFO] ------------------------------------------------------------------------
