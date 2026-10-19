@@ -47,6 +47,7 @@ class RegistrationControllerTest {
             CONFIG,
             "ok"::equals,
             r -> store.save(r),
+            r -> {},
             Clock.fixed(Instant.parse("2026-10-19T10:00:00Z"), ZoneOffset.UTC));
     return MockMvcBuilders.standaloneSetup(new RegistrationController(useCase))
         .setControllerAdvice(new ApiExceptionHandler())

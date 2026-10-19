@@ -30,6 +30,8 @@ class RegisterParticipantTest {
   static final Instant NOW = Instant.parse("2026-10-19T12:00:00.123456Z");
 
   final List<Registration> stored = new ArrayList<>();
+  final List<String> events = new ArrayList<>();
+  RuntimeException copyFailure = null;
   final List<String> verifiedTokens = new ArrayList<>();
   boolean captchaAccepts = true;
 
@@ -40,7 +42,16 @@ class RegisterParticipantTest {
             verifiedTokens.add(token);
             return captchaAccepts;
           },
-          stored::add,
+          registration -> {
+            events.add("save");
+            stored.add(registration);
+          },
+          registration -> {
+            events.add("copy");
+            if (copyFailure != null) {
+              throw copyFailure;
+            }
+          },
           Clock.fixed(NOW, ZoneOffset.UTC));
 
   static RegistrationSubmission submission(String firstName, String token) {
@@ -109,5 +120,29 @@ class RegisterParticipantTest {
                     .containsExactly("recaptchaToken"));
     assertThat(verifiedTokens).containsExactly("forged");
     assertThat(stored).isEmpty();
+  }
+
+  @Test
+  void AC_005_02_jsonCopyIsWrittenAfterTheDatabaseRow() {
+    useCase.register(submission("Ana", "t"));
+
+    assertThat(events).containsExactly("save", "copy");
+  }
+
+  @Test
+  void AC_005_03_jsonCopyFailureFailsTheRegistration() {
+    copyFailure = new IllegalStateException("disk full");
+
+    assertThatThrownBy(() -> useCase.register(submission("Ana", "t"))).isSameAs(copyFailure);
+    assertThat(events).containsExactly("save", "copy");
+  }
+
+  @Test
+  void AC_005_02_rejectedSubmissionWritesNoCopy() {
+    captchaAccepts = false;
+
+    assertThatThrownBy(() -> useCase.register(submission("Ana", "t")))
+        .isInstanceOf(RegistrationRejectedException.class);
+    assertThat(events).isEmpty();
   }
 }

@@ -1,0 +1,269 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< si.konferenca:registration-backend >-----------------
+[INFO] Building registration-backend 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- spotless:2.44.3:apply (default-cli) @ registration-backend ---
+[INFO] clean file: E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\backend\src\test\java\si\konferenca\registration\application\RegisterParticipantTest.java
+[INFO] clean file: E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\backend\src\test\java\si\konferenca\registration\infrastructure\file\FileJsonCopyStoreTest.java
+[INFO] Spotless.Java is keeping 62 files clean - 2 were changed to be clean, 7 were already clean, 53 were skipped because caching determined they were already clean
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ registration-backend ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ registration-backend ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 37 source files with javac [debug parameters release 21] to target\classes
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ registration-backend ---
+[INFO] Copying 5 resources from src\test\resources to target\test-classes
+[INFO] 
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ registration-backend ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 25 source files with javac [debug parameters release 21] to target\test-classes
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ registration-backend ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running si.konferenca.registration.application.RegisterParticipantTest
+[ERROR] Tests run: 7, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.226 s <<< FAILURE! -- in si.konferenca.registration.application.RegisterParticipantTest
+[ERROR] si.konferenca.registration.application.RegisterParticipantTest.AC_005_03_jsonCopyFailureFailsTheRegistration -- Time elapsed: 0.012 s <<< FAILURE!
+java.lang.AssertionError: 
+
+Expecting code to raise a throwable.
+	at si.konferenca.registration.application.RegisterParticipantTest.AC_005_03_jsonCopyFailureFailsTheRegistration(RegisterParticipantTest.java:136)
+
+[ERROR] si.konferenca.registration.application.RegisterParticipantTest.AC_005_02_jsonCopyIsWrittenAfterTheDatabaseRow -- Time elapsed: 0.010 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+Expecting actual:
+  ["save"]
+to contain exactly (and in same order):
+  ["save", "copy"]
+but could not find the following elements:
+  ["copy"]
+
+	at si.konferenca.registration.application.RegisterParticipantTest.AC_005_02_jsonCopyIsWrittenAfterTheDatabaseRow(RegisterParticipantTest.java:129)
+
+[INFO] Running si.konferenca.registration.application.RegistrationTransactionIntegrationTest
+15:22:33.082 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.konferenca.registration.application.RegistrationTransactionIntegrationTest]: RegistrationTransactionIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+15:22:33.177 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration si.konferenca.registration.RegistrationApplication for test class si.konferenca.registration.application.RegistrationTransactionIntegrationTest
+15:22:33.249 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [si.konferenca.registration.application.RegistrationTransactionIntegrationTest]: RegistrationTransactionIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+15:22:33.251 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration si.konferenca.registration.RegistrationApplication for test class si.konferenca.registration.application.RegistrationTransactionIntegrationTest
+15:22:33.291 [main] INFO org.testcontainers.images.PullPolicy -- Image pull policy will be performed by: DefaultPullPolicy()
+15:22:33.292 [main] INFO org.testcontainers.utility.ImageNameSubstitutor -- Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+15:22:33.303 [main] INFO org.testcontainers.DockerClientFactory -- Testcontainers version: 2.0.5
+15:22:33.515 [main] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+15:22:33.912 [main] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+15:22:33.913 [main] INFO org.testcontainers.DockerClientFactory -- Docker host IP address is localhost
+15:22:33.930 [main] INFO org.testcontainers.DockerClientFactory -- Connected to docker: 
+  Server Version: 29.8.1
+  API Version: 1.56
+  Operating System: Docker Desktop
+  Total Memory: 40065 MB
+  Labels: 
+    com.docker.desktop.address=npipe://\\.\pipe\docker_cli
+15:22:34.031 [main] INFO tc.testcontainers/ryuk:0.14.0 -- Creating container for image: testcontainers/ryuk:0.14.0
+15:22:34.304 [main] INFO tc.testcontainers/ryuk:0.14.0 -- Container testcontainers/ryuk:0.14.0 is starting: 412c57f4cc90ed0ae553f8d111de160f8504470d2d0d2196ae7dd3a7c4a5528a
+15:22:34.661 [main] INFO tc.testcontainers/ryuk:0.14.0 -- Container testcontainers/ryuk:0.14.0 started in PT0.6300095S
+15:22:34.667 [main] INFO org.testcontainers.utility.RyukResourceReaper -- Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+15:22:34.667 [main] INFO org.testcontainers.DockerClientFactory -- Checking the system...
+15:22:34.667 [main] INFO org.testcontainers.DockerClientFactory -- ?? Docker server version should be at least 1.6.0
+15:22:34.668 [main] INFO tc.postgres:16.15-alpine -- Creating container for image: postgres:16.15-alpine
+15:22:34.806 [main] INFO tc.postgres:16.15-alpine -- Container postgres:16.15-alpine is starting: 0d85b0940a0952cf6acc0900052fc5e1c6e8b9a9994b92cc1ba8b85b7064e916
+15:22:36.846 [main] INFO tc.postgres:16.15-alpine -- Container postgres:16.15-alpine started in PT2.177708S
+15:22:36.846 [main] INFO tc.postgres:16.15-alpine -- Container is started (JDBC URL: jdbc:postgresql://localhost:54396/test?loggerLevel=OFF)
+15:22:36.847 [main] INFO tc.axllent/mailpit:v1.31.1 -- Creating container for image: axllent/mailpit:v1.31.1
+15:22:36.965 [main] INFO tc.axllent/mailpit:v1.31.1 -- Container axllent/mailpit:v1.31.1 is starting: 0691c1ac2f10566981d3d7c9d7becf0c0cc0e97e08ae35cc86683307f6aa3542
+15:22:37.233 [main] INFO org.testcontainers.containers.wait.strategy.HttpWaitStrategy -- /flamboyant_hypatia: Waiting for 60 seconds for URL: http://localhost:54398/api/v1/info (where port 54398 maps to container port 8025)
+15:22:37.858 [main] INFO tc.axllent/mailpit:v1.31.1 -- Container axllent/mailpit:v1.31.1 started in PT1.0112543S
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-10-19T15:22:38.133+02:00  INFO 36856 --- [registration-backend] [           main] a.RegistrationTransactionIntegrationTest : Starting RegistrationTransactionIntegrationTest using Java 21.0.10 with PID 36856 (started by sense in E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\backend)
+2026-10-19T15:22:38.134+02:00  INFO 36856 --- [registration-backend] [           main] a.RegistrationTransactionIntegrationTest : No active profile set, falling back to 1 default profile: "default"
+2026-10-19T15:22:38.913+02:00  INFO 36856 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-19T15:22:38.940+02:00  INFO 36856 --- [registration-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 17 ms. Found 0 JPA repository interfaces.
+2026-10-19T15:22:39.867+02:00  INFO 36856 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-10-19T15:22:40.022+02:00  INFO 36856 --- [registration-backend] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@16745abd
+2026-10-19T15:22:40.023+02:00  INFO 36856 --- [registration-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-10-19T15:22:40.042+02:00  INFO 36856 --- [registration-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:54396/test?loggerLevel=OFF (PostgreSQL 16.15)
+2026-10-19T15:22:40.100+02:00  INFO 36856 --- [registration-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2026-10-19T15:22:40.104+02:00  INFO 36856 --- [registration-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.015s)
+2026-10-19T15:22:40.122+02:00  INFO 36856 --- [registration-backend] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2026-10-19T15:22:40.179+02:00  INFO 36856 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-10-19T15:22:40.194+02:00  INFO 36856 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "1 - create registration tables"
+2026-10-19T15:22:40.247+02:00  INFO 36856 --- [registration-backend] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 1 migration to schema "public", now at version v1 (execution time 00:00.022s)
+2026-10-19T15:22:40.397+02:00  INFO 36856 --- [registration-backend] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-10-19T15:22:40.450+02:00  INFO 36856 --- [registration-backend] [           main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.5.Final
+2026-10-19T15:22:40.798+02:00  INFO 36856 --- [registration-backend] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-19T15:22:40.870+02:00  INFO 36856 --- [registration-backend] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:54396/test?loggerLevel=OFF]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 16.15
+	Default catalog/schema: test/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-10-19T15:22:41.599+02:00  INFO 36856 --- [registration-backend] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-19T15:22:41.639+02:00  INFO 36856 --- [registration-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-19T15:22:41.811+02:00  WARN 36856 --- [registration-backend] [           main] .s.a.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: e84d9571-b50b-4a72-a490-65c6e36720dc
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-10-19T15:22:41.819+02:00  INFO 36856 --- [registration-backend] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-10-19T15:22:42.869+02:00  INFO 36856 --- [registration-backend] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-10-19T15:22:42.939+02:00  INFO 36856 --- [registration-backend] [           main] a.RegistrationTransactionIntegrationTest : Started RegistrationTransactionIntegrationTest in 5.053 seconds (process running for 10.929)
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (C:\Users\sense\.m2\repository\net\bytebuddy\byte-buddy-agent\1.18.11\byte-buddy-agent-1.18.11.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+[ERROR] Tests run: 2, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 10.73 s <<< FAILURE! -- in si.konferenca.registration.application.RegistrationTransactionIntegrationTest
+[ERROR] si.konferenca.registration.application.RegistrationTransactionIntegrationTest.AC_005_02_acceptedRegistrationHasRowAndCopy -- Time elapsed: 0.535 s <<< FAILURE!
+java.lang.AssertionError: 
+
+Expecting path:
+  C:\Users\sense\AppData\Local\Temp\json-copies-tx7369688725458485964\1491079d-421f-4c6b-b903-e0b713a05b02.json
+to exist (symbolic links were followed).
+	at si.konferenca.registration.application.RegistrationTransactionIntegrationTest.AC_005_02_acceptedRegistrationHasRowAndCopy(RegistrationTransactionIntegrationTest.java:69)
+
+[ERROR] si.konferenca.registration.application.RegistrationTransactionIntegrationTest.AC_005_03_copyFailureRollsTheDatabaseRowBack -- Time elapsed: 0.144 s <<< FAILURE!
+java.lang.AssertionError: 
+
+Expecting code to raise a throwable.
+	at si.konferenca.registration.application.RegistrationTransactionIntegrationTest.AC_005_03_copyFailureRollsTheDatabaseRowBack(RegistrationTransactionIntegrationTest.java:77)
+
+[INFO] Running si.konferenca.registration.infrastructure.file.FileJsonCopyStoreTest
+[ERROR] Tests run: 5, Failures: 1, Errors: 4, Skipped: 0, Time elapsed: 0.037 s <<< FAILURE! -- in si.konferenca.registration.infrastructure.file.FileJsonCopyStoreTest
+[ERROR] si.konferenca.registration.infrastructure.file.FileJsonCopyStoreTest.AC_005_04_copyIsUtf8AndEqualsTheContentBytes -- Time elapsed: 0.013 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.infrastructure.file.FileJsonCopyStore.write(FileJsonCopyStore.java:19)
+	at si.konferenca.registration.infrastructure.file.FileJsonCopyStoreTest.AC_005_04_copyIsUtf8AndEqualsTheContentBytes(FileJsonCopyStoreTest.java:102)
+
+[ERROR] si.konferenca.registration.infrastructure.file.FileJsonCopyStoreTest.AC_005_02_missingDirectoryIsCreated -- Time elapsed: 0.004 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.infrastructure.file.FileJsonCopyStore.write(FileJsonCopyStore.java:19)
+	at si.konferenca.registration.infrastructure.file.FileJsonCopyStoreTest.AC_005_02_missingDirectoryIsCreated(FileJsonCopyStoreTest.java:113)
+
+[ERROR] si.konferenca.registration.infrastructure.file.FileJsonCopyStoreTest.AC_005_02_studentCopyHasStudentFieldsAndMillisecondTimes -- Time elapsed: 0.004 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.infrastructure.file.FileJsonCopyStore.write(FileJsonCopyStore.java:19)
+	at si.konferenca.registration.infrastructure.file.FileJsonCopyStoreTest.AC_005_02_studentCopyHasStudentFieldsAndMillisecondTimes(FileJsonCopyStoreTest.java:85)
+
+[ERROR] si.konferenca.registration.infrastructure.file.FileJsonCopyStoreTest.AC_005_03_unwritableDirectoryFailsTheWrite -- Time elapsed: 0.008 s <<< FAILURE!
+java.lang.AssertionError: 
+
+Expecting actual throwable to be an instance of:
+  si.konferenca.registration.infrastructure.file.JsonCopyWriteException
+but was:
+  java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.infrastructure.file.FileJsonCopyStore.write(FileJsonCopyStore.java:19)
+	at si.konferenca.registration.infrastructure.file.FileJsonCopyStoreTest.lambda$AC_005_03_unwritableDirectoryFailsTheWrite$0(FileJsonCopyStoreTest.java:123)
+	at org.assertj.core.api.ThrowableAssert.catchThrowable(ThrowableAssert.java:66)
+	...(85 remaining lines not displayed - this can be changed with Assertions.setMaxStackTraceElementsDisplayed)
+	at si.konferenca.registration.infrastructure.file.FileJsonCopyStoreTest.AC_005_03_unwritableDirectoryFailsTheWrite(FileJsonCopyStoreTest.java:124)
+
+[ERROR] si.konferenca.registration.infrastructure.file.FileJsonCopyStoreTest.AC_005_02_copyIsNamedAfterTheIdAndHoldsTheRegistration -- Time elapsed: 0.004 s <<< ERROR!
+java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.infrastructure.file.FileJsonCopyStore.write(FileJsonCopyStore.java:19)
+	at si.konferenca.registration.infrastructure.file.FileJsonCopyStoreTest.AC_005_02_copyIsNamedAfterTheIdAndHoldsTheRegistration(FileJsonCopyStoreTest.java:62)
+
+[INFO] Running si.konferenca.registration.web.RegistrationControllerTest
+2026-10-19T15:22:43.762+02:00  INFO 36856 --- [registration-backend] [           main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2026-10-19T15:22:43.763+02:00  INFO 36856 --- [registration-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-19T15:22:43.763+02:00  INFO 36856 --- [registration-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-10-19T15:22:43.848+02:00  INFO 36856 --- [registration-backend] [           main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2026-10-19T15:22:43.848+02:00  INFO 36856 --- [registration-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-19T15:22:43.848+02:00  INFO 36856 --- [registration-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-10-19T15:22:43.860+02:00  INFO 36856 --- [registration-backend] [           main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2026-10-19T15:22:43.861+02:00  INFO 36856 --- [registration-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-19T15:22:43.861+02:00  INFO 36856 --- [registration-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-10-19T15:22:43.871+02:00  INFO 36856 --- [registration-backend] [           main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2026-10-19T15:22:43.871+02:00  INFO 36856 --- [registration-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-19T15:22:43.871+02:00  INFO 36856 --- [registration-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-10-19T15:22:43.872+02:00 ERROR 36856 --- [registration-backend] [           main] s.k.r.web.ApiExceptionHandler            : Request failed with java.lang.IllegalStateException
+2026-10-19T15:22:43.879+02:00  INFO 36856 --- [registration-backend] [           main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2026-10-19T15:22:43.879+02:00  INFO 36856 --- [registration-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-19T15:22:43.880+02:00  INFO 36856 --- [registration-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-19T15:22:43.943+02:00  INFO 36856 --- [registration-backend] [           main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2026-10-19T15:22:43.943+02:00  INFO 36856 --- [registration-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-19T15:22:43.943+02:00  INFO 36856 --- [registration-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-10-19T15:22:43.952+02:00  INFO 36856 --- [registration-backend] [           main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2026-10-19T15:22:43.952+02:00  INFO 36856 --- [registration-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-19T15:22:43.952+02:00  INFO 36856 --- [registration-backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.213 s -- in si.konferenca.registration.web.RegistrationControllerTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Failures: 
+[ERROR]   RegisterParticipantTest.AC_005_02_jsonCopyIsWrittenAfterTheDatabaseRow:129 
+Expecting actual:
+  ["save"]
+to contain exactly (and in same order):
+  ["save", "copy"]
+but could not find the following elements:
+  ["copy"]
+
+[ERROR]   RegisterParticipantTest.AC_005_03_jsonCopyFailureFailsTheRegistration:136 
+Expecting code to raise a throwable.
+[ERROR]   RegistrationTransactionIntegrationTest.AC_005_02_acceptedRegistrationHasRowAndCopy:69 
+Expecting path:
+  C:\Users\sense\AppData\Local\Temp\json-copies-tx7369688725458485964\1491079d-421f-4c6b-b903-e0b713a05b02.json
+to exist (symbolic links were followed).
+[ERROR]   RegistrationTransactionIntegrationTest.AC_005_03_copyFailureRollsTheDatabaseRowBack:77 
+Expecting code to raise a throwable.
+[ERROR]   FileJsonCopyStoreTest.AC_005_03_unwritableDirectoryFailsTheWrite:124 
+Expecting actual throwable to be an instance of:
+  si.konferenca.registration.infrastructure.file.JsonCopyWriteException
+but was:
+  java.lang.UnsupportedOperationException: not implemented
+	at si.konferenca.registration.infrastructure.file.FileJsonCopyStore.write(FileJsonCopyStore.java:19)
+	at si.konferenca.registration.infrastructure.file.FileJsonCopyStoreTest.lambda$AC_005_03_unwritableDirectoryFailsTheWrite$0(FileJsonCopyStoreTest.java:123)
+	at org.assertj.core.api.ThrowableAssert.catchThrowable(ThrowableAssert.java:66)
+	...(85 remaining lines not displayed - this can be changed with Assertions.setMaxStackTraceElementsDisplayed)
+[ERROR] Errors: 
+[ERROR]   FileJsonCopyStoreTest.AC_005_02_copyIsNamedAfterTheIdAndHoldsTheRegistration:62 » UnsupportedOperation not implemented
+[ERROR]   FileJsonCopyStoreTest.AC_005_02_missingDirectoryIsCreated:113 » UnsupportedOperation not implemented
+[ERROR]   FileJsonCopyStoreTest.AC_005_02_studentCopyHasStudentFieldsAndMillisecondTimes:85 » UnsupportedOperation not implemented
+[ERROR]   FileJsonCopyStoreTest.AC_005_04_copyIsUtf8AndEqualsTheContentBytes:102 » UnsupportedOperation not implemented
+[INFO] 
+[ERROR] Tests run: 19, Failures: 5, Errors: 4, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  18.727 s
+[INFO] Finished at: 2026-10-19T15:22:44+02:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.5.6:test (default-test) on project registration-backend: There are test failures.
+[ERROR] 
+[ERROR] See E:\13 - Lab Projects\01_Runs\_____TDD_____TESTING_____\01_kyuhi_single-agent_tdd_v001\02_output\backend\target\surefire-reports for the individual test results.
+[ERROR] See dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

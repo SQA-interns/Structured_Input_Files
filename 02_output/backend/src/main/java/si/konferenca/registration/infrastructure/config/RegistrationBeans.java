@@ -33,6 +33,6 @@ public class RegistrationBeans {
       CaptchaVerifier captchaVerifier,
       RegistrationStore store,
       Clock clock) {
-    return new RegisterParticipant(configuration, captchaVerifier, store, clock);
+    return new RegisterParticipant(configuration, captchaVerifier, store, null, clock);
   }
 }
