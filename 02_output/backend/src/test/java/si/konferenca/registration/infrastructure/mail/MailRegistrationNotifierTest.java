@@ -39,8 +39,14 @@ class MailRegistrationNotifierTest {
   final Executor executor = queued::add;
   final ParticipantMailComposer composer =
       new ParticipantMailComposer(sender, "registration@konferenca.test", "Konferenca 2026");
+  final OrganizerMailComposer organizerComposer =
+      new OrganizerMailComposer(
+          sender,
+          "registration@konferenca.test",
+          "Konferenca 2026",
+          List.of("one@konferenca.test", "two@konferenca.test"));
   final MailRegistrationNotifier notifier =
-      new MailRegistrationNotifier(sender, composer, executor);
+      new MailRegistrationNotifier(sender, composer, organizerComposer, executor);
 
   final ListAppender<ILoggingEvent> logs = new ListAppender<>();
   final Logger logger = (Logger) LoggerFactory.getLogger(MailRegistrationNotifier.class);
@@ -60,13 +66,24 @@ class MailRegistrationNotifierTest {
   }
 
   @Test
-  void AC_006_01_confirmationIsSentOnTheExecutor() {
+  void AC_006_01_confirmationIsSentOnTheExecutor() throws Exception {
     notifier.registrationAccepted(registration);
 
     assertThat(sent).isEmpty();
     assertThat(queued).hasSize(1);
     queued.get(0).run();
-    assertThat(sent).hasSize(1);
+    assertThat(sent).hasSize(3);
+    assertThat(sent.get(0).getSubject()).startsWith("Registration confirmation");
+  }
+
+  @Test
+  void AC_007_01_eachOrganizerNotificationIsSentAfterTheConfirmation() throws Exception {
+    notifier.registrationAccepted(registration);
+    queued.forEach(Runnable::run);
+
+    assertThat(sent.subList(1, 3))
+        .allSatisfy(
+            m -> assertThat(m.getSubject()).isEqualTo("New registration - Konferenca 2026"));
   }
 
   @Test

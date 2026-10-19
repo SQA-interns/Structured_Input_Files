@@ -35,6 +35,6 @@ public class MailBeans {
       JavaMailSender sender,
       ParticipantMailComposer participantMail,
       ThreadPoolTaskExecutor mailExecutor) {
-    return new MailRegistrationNotifier(sender, participantMail, mailExecutor);
+    return new MailRegistrationNotifier(sender, participantMail, null, mailExecutor);
   }
 }

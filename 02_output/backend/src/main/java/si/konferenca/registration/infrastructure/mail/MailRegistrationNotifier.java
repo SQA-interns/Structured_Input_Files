@@ -17,7 +17,10 @@ public class MailRegistrationNotifier implements RegistrationNotifier {
   private final Executor executor;
 
   public MailRegistrationNotifier(
-      JavaMailSender sender, ParticipantMailComposer participantMail, Executor executor) {
+      JavaMailSender sender,
+      ParticipantMailComposer participantMail,
+      OrganizerMailComposer organizerMail,
+      Executor executor) {
     this.sender = sender;
     this.participantMail = participantMail;
     this.executor = executor;
