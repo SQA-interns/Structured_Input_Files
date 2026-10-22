@@ -67,3 +67,28 @@ Options: `--no-write` leaves `run-log.json` and `usage.md` alone, `--no-md` skip
 ## 3. Human → `usage.md`
 
 Prices before the post-run session (one row per model id, shape as in the file). After it only `Approval prompts` is yours; the other cells are filled automatically when empty, and anything you wrote stays. A mismatch between the harness's total and our calculation is reported in the last row.
+
+## 4. Change run (a signed change request on a finished baseline)
+
+A change run (`general/change-phases.md`) keeps every field above, per phase and for the whole run, and adds the following. `base` is the baseline commit in `cr/change.md`; the interview is the time from the run `start` to `phase 0 start`. `time.agentMin` covers phases 0 to 7, the build; the interview is reported under `change.interview`, while `usage` counts the model calls of both sessions.
+
+Recorded by the agent in `run-log.json`:
+
+| Field | When | How | Goal |
+|---|---|---|---|
+| `change.baselineTestRun` | phase 0 | the full suite on the unchanged baseline, as `firstTestRun` (`passed`, `failed`, `byLevel`) | `failed` = 0 |
+| `firstTestRun.failedBaseline` | phase 5 | the failures of the first full run in tests that existed at `base` | = 0 |
+| `codeMetrics.<component>.mutation.changed` | phase 5, updated in phase 6 | `{killed, total}` of the mutants in lines changed since `base`, filtered from the report of the component's full run; `null` and a reason if the report cannot be filtered | ↑ |
+
+Computed after the run by `tools/build-report.mjs` from the CR files, git, the manifests and the interview log:
+
+| Field | What it is | Goal |
+|---|---|---|
+| `change.delta` | counts of ADDED, MODIFIED and REMOVED stories, rules, design rows, criteria and scenarios in the CR; the number of criteria | i; the divisor for comparing change runs |
+| `change.size` | production and test lines added and removed since `base`, counted as in `general/quality/measurement-scope.md` ("Code size") | i |
+| `change.impact` | `docs/02_impact.md` against `git diff --name-status base`: precision, recall, files outside the table, rows under "Found during build" | ↑ precision and recall; ↓ outside |
+| `change.supersession` | baseline frozen test files that changed: declared (MODIFIED or REMOVED id) and undeclared | undeclared = 0 |
+| `change.baselineDrift` | per changed component, coverage and adjusted mutation score against the baseline's recorded figures | ≥ 0 |
+| `change.cost` | `usage.costUsdExclWaits` and `time.agentMin` per criterion of the CR, for the whole run, the interview and the build | ↓ |
+| `change.interview` | questions asked and their share answered by `human`, `default` and `looked up` (from `interview-log.md`); agent and human-wait minutes; lint warnings left at sign-off | i; the looked-up share ↑ |
+| `change.escapes` | decisions of category `requirement` raised in phases 1 to 7: an ambiguity that the interview did not close | ↓; 0 is the aim |

@@ -86,3 +86,12 @@ The measuring is automatic and nothing is typed or copied by hand: cost, tokens,
 
 3. Generated report `03_statistics/results/run-report.html` should automatically fill in all necessary run comparison data. 
 4. Commit the statistics: `git add -A`, `git commit -m "statistics <label>"`. `git status` must not list `.env`. Then push the statistics: `git push` (the branch is already connected from step 1.8).
+
+## 5. Add, change or remove a feature (change request)
+For a finished run only (phase 7 complete, statistics committed and pushed). The interview is its own session and ends with a signed change request; it does not build anything.
+1. **Branch from the finished run**, in its folder: `git switch -c <user>/single-agent/sdd/<version>-cr<n>`, for kyuhi `kyuhi/single-agent/sdd/v007-cr1`.
+2. **New run label** in `01_input/01_project/00_setup/run-config.md`: `kyuhi_single-agent_sdd_v007-cr1`. Commit it as `run setup <label>`; the agent stops if the working tree is not clean.
+3. **Open a new session in the folder** and send `/change` followed by what you want, for example `/change add an optional dietary requirements field to both forms`.
+4. **Answer the questions.** Each comes with a recommended answer; "yes" accepts it. The agent looks up everything the finished run already answers, so it asks only about decisions. It makes no change to the system and no change to any baseline file.
+5. **Read the summary and approve it explicitly.** The agent then records the approval time and a hash of the request, commits `04_changes/CR-nnn_<slug>/` and stops. After that the request is read-only; to change it, start a new request.
+6. **Build in a new session** in the same folder, sending exactly `Read AGENTS.md and implement CR-nnn`, with the number of the request. It is a change run (`01_input/00_general/change-phases.md`): the same phases, gates and quality gate as the first run. The rules of section 3 apply unchanged, and section 4 builds the report when the run ends. The interview and the build are two sessions of one run; do not open any other session in the folder.
