@@ -43,7 +43,6 @@ Append each decision to `docs/decisions-log.md` in this format:
 |---|---|---|
 | `US-nnn` / `AC-nnn-nn` | User story / acceptance criterion | `project/01_requirements/user-stories.md` / `project/01_requirements/acceptance-criteria.md` |
 | `BR-nn` / `OQ-nn` | Business rule / open question | `project/01_requirements/` |
-| `CR-nnn` | Change request; its items continue the numbering of the ids above | `04_changes/` |
 | `AR-nn` | Architecture constraint | `project/02_design/architecture.md` |
 | `SB-nn` / `SR-nn` | Security baseline / project security requirement | `general/security/` / `project/02_design/security-requirements.md` |
 | `ES-nn` | Engineering standard | `general/engineering-standards.md` |
@@ -88,5 +87,3 @@ You never need to see a secret value; the tools that run need it, not you.
 ## Statistics
 
 Record with `03_statistics/tools/stat.mjs`, which writes the real clock: `init` once in phase 0; `phase <n> start` and `phase <n> end` at every phase boundary (a start closes the previous phase, `phase 7 end` closes the run); `wait start <cause> "<reason>" [decisionId]` and `wait end` around every wait for the human, including stops and restarts. Edit `03_statistics/run-log.json` directly for test runs, findings, fix loops, decisions, deviations and quality results, as defined in `03_statistics/metrics.md`, and write `03_statistics/run-summary.md` in phase 7. Do nothing else in `03_statistics/`; in particular do not run `tools/build-report.mjs`, which belongs to the post-run session.
-
-A change interview (`general/skills/change-interview`) runs `init --force` once, after its baseline check, and records only waits; it opens no phase.

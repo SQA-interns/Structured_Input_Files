@@ -12,11 +12,6 @@ Humans start at `README.md`.
 
 If `02_output/docs/00_progress.md` shows work in progress, resume from it instead of starting over.
 
-## Change requests
-
-- A request to add, change or remove a feature of a finished system is handled by `/change` (skill `general/skills/change-interview`), in a session of its own: it writes only `04_changes/CR-nnn_<slug>/` and does not start the build. `general/phases.md` does not apply to it.
-- A request to implement a signed change request (`04_changes/CR-nnn_<slug>/` with `input.sha256`) is a change run: read `general/change-phases.md` right after `general/phases.md` and follow it. Its paths and precedence replace those below.
-
 ## Paths and precedence
 
 - Aliases used in all files: `general/` = `01_input/00_general/`, `project/` = `01_input/01_project/`, `out/` = `02_output/`, `docs/` = `02_output/docs/`.
@@ -29,7 +24,7 @@ If `02_output/docs/00_progress.md` shows work in progress, resume from it instea
 
 - Do not create, modify or delete anything under `01_input/`, or any file in sections 1 and 2 of `README.md`.
 - Write only the files in section 3 of `README.md`.
-- Do not edit a file listed in `02_output/docs/03_acceptance-manifest.sha256`; raise a decision record instead. In a change run the test cases named by a MODIFIED or REMOVED id of the signed request are the only exception (`general/change-phases.md`).
+- Do not edit a file listed in `02_output/docs/03_acceptance-manifest.sha256`; raise a decision record instead.
 - Do not change `02_output/docs/00_input-manifest.sha256` after phase 0.
 - Do not change a technology, version, service or secret named in `01_project/00_setup/tech-stack.md` or `01_project/00_setup/secrets.env.example` without human approval.
 - Do not install or upgrade software on the host without human approval.
